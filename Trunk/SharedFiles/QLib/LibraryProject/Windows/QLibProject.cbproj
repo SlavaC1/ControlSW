@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{1b39a298-3713-45e2-83d6-5287f4bb60d4}</ProjectGuid>
+    <ProjectType>CppStaticLibrary</ProjectType>
+    <Config Condition="'$(Config)'==''">Debug Build</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug Build' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release Build' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <OutputExt>lib</OutputExt>
+    <DCC_Optimize>false</DCC_Optimize>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <BCC_OutputDir>..\..\Temp_Debug\</BCC_OutputDir>
+    <DynamicRTL>true</DynamicRTL>
+    <BCC_InstructionSet>6</BCC_InstructionSet>
+    <BRCC_OutputDir>..\..\Temp_Debug\</BRCC_OutputDir>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
+    <DCC_MakeModifiedUnits>true</DCC_MakeModifiedUnits>
+    <BCC_ZeroLengthEmptyMemberFuncs>true</BCC_ZeroLengthEmptyMemberFuncs>
+    <FinalOutputDir>.</FinalOutputDir>
+    <TASM_AdditionalSwitches> /w2 ..\..\Temp_Debug\</TASM_AdditionalSwitches>
+    <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
+    <BRCC_UserSuppliedOptions> -I..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+    <DCC_DcuOutput>..\..\Temp_Debug\</DCC_DcuOutput>
+    <IncludePath>..\..\LogFile;..\..\OSWrappers\Windows;..\..\Monitor\Windows;..\..\Utils;..\..\Sequencer;..\..\OSWrappers;..\..\..\QLib</IncludePath>
+    <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
+    <DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BRCC_IncludePath>..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_IncludePath>
+    <TASM_IncludePath>..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <BCC_IncludePath>..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BCC_IncludePath>
+    <TLIB_PageSize>256</TLIB_PageSize>
+    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
+    <BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <Multithreaded>true</Multithreaded>
+    <TASM_Defines>OS_WINDOWS _DEBUG</TASM_Defines>
+    <BRCC_Defines>OS_WINDOWS;_DEBUG</BRCC_Defines>
+    <DCC_ObjOutput>..\..\Temp_Debug\</DCC_ObjOutput>
+    <BCC_Defines>NO_STRICT;OS_WINDOWS</BCC_Defines>
+    <TASM_Debugging>Full</TASM_Debugging>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    <DCC_MapFile>3</DCC_MapFile>
+    <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
+    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <BRCC_UserSuppliedOptions>
+    </BRCC_UserSuppliedOptions>
+    <MapFile>3</MapFile>
+    <ILINK_MapFileType>DetailedSegments</ILINK_MapFileType>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <DCC_Optimize>true</DCC_Optimize>
+    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+    <BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
+    <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
+    <DCC_DebugInformation>false</DCC_DebugInformation>
+    <IntermediateOutputDir>Release_Build</IntermediateOutputDir>
+    <BCC_StackFrames>false</BCC_StackFrames>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>None</TASM_Debugging>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppStaticLibrary</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1033</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">11</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">..\..\LogFile;..\..\OSWrappers\Windows;..\..\Monitor\Windows;..\..\Utils;..\..\Sequencer;..\..\OSWrappers;..\..\..\QLib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item2">..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item3">..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item4">..\..\Utils;..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item5">..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item6">..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\Quadra2\Q2RT\Sources\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item7">..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl;C:\Projects\Quadra2\Q2RT\Sources\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item8">..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item9">..\..\Monitor\Windows;..\..\MiniSequencer;..\..\MiniDebugger\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;..\..;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item10">..\..\MiniSequencer;..\..\MiniDebugger\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;..\..;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Count">10</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item0">..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item1">..\..\LogFile;..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item2">..\..\Sequencer;..\..\..\..\Quadra2\Q2RT\Sources\MachineManager;..\..\Utils;..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item3">..\..\Utils;..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item4">..\..;..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item5">..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item6">..\..\Monitor\Windows;..\..\MiniSequencer;..\..\OSWrappers\Windows;..\..\OSWrappers;..\..;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item7">$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item8">..\..\Monitor\Windows;..\..\MiniSequencer;..\..\MiniDebugger\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;..\..;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item9">..\..\MiniSequencer;..\..\MiniDebugger\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers;..\..;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath></HistoryLists_hlLibraryPath><HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath></HistoryLists_hlDebugSourcePath><HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Count">4</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item0">OS_WINDOWS;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item1">OS_WINDOWS</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item2">_DEBUG;OS_WINDOWS</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item3">_DEBUG</HistoryLists_hlConditionals></HistoryLists_hlConditionals><HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Count">4</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item0">..\..\Temp_Debug</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item1">..\..\Temp_Release</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item2">..\..\Temp</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item3">C:\Projects\SharedFiles\QLib\Temp</HistoryLists_hlIntOutputDir></HistoryLists_hlIntOutputDir><HistoryLists_hlTlibPageSize><HistoryLists_hlTlibPageSize Name="Count">5</HistoryLists_hlTlibPageSize><HistoryLists_hlTlibPageSize Name="Item0">0x0100</HistoryLists_hlTlibPageSize><HistoryLists_hlTlibPageSize Name="Item1">0x0080</HistoryLists_hlTlibPageSize><HistoryLists_hlTlibPageSize Name="Item2">0x0040</HistoryLists_hlTlibPageSize><HistoryLists_hlTlibPageSize Name="Item3">0x0020</HistoryLists_hlTlibPageSize><HistoryLists_hlTlibPageSize Name="Item4">0x0010</HistoryLists_hlTlibPageSize></HistoryLists_hlTlibPageSize><Debugging><Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Compiler><Compiler Name="ShowInfoMsgs">0</Compiler><Compiler Name="LinkDebugVcl">0</Compiler><Compiler Name="LinkCGLIB">0</Compiler></Compiler><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">.</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\debug;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Count">1</HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Item0">Debug_Build</HistoryLists_hlIntermediateOutputDir></HistoryLists_hlIntermediateOutputDir><HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength></HistoryLists_hlBCC_MaxIdentifierLength></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <CppCompile Include="..\..\LogFile\QLogFile.cpp">
+      <BuildOrder>35</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Monitor\Windows\QWinMenu.cpp">
+      <BuildOrder>22</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Monitor\Windows\QWinMenusHandler.cpp">
+      <BuildOrder>23</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Monitor\Windows\QWinMonitor.cpp">
+      <BuildOrder>24</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\QConditionMonitor.cpp">
+      <BuildOrder>3</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\QNullComPort.cpp">
+      <BuildOrder>19</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\QTcpIpClientComPort.cpp">
+      <BuildOrder>21</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\QTcpIpServerComPort.cpp">
+      <BuildOrder>20</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QResourceStringStream.cpp">
+      <BuildOrder>17</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinApplication.cpp">
+      <BuildOrder>12</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinEvent.cpp">
+      <BuildOrder>11</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinFile.cpp">
+      <BuildOrder>18</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinFileSystem.cpp">
+      <BuildOrder>15</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinMutex.cpp">
+      <BuildOrder>5</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinSemaphore.cpp">
+      <BuildOrder>6</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinSimpleQueue.cpp">
+      <BuildOrder>7</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinStdComPort.cpp">
+      <BuildOrder>8</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinTcpIpClient.cpp">
+      <BuildOrder>13</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinTcpIpServer.cpp">
+      <BuildOrder>14</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinThread.cpp">
+      <BuildOrder>9</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinThreadUtils.cpp">
+      <BuildOrder>10</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinTimer.cpp">
+      <BuildOrder>4</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\OSWrappers\Windows\QWinVersionInfo.cpp">
+      <BuildOrder>16</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\QComponent.cpp">
+      <BuildOrder>2</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\QFileParamsStream.cpp">
+      <BuildOrder>36</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\QFileWithChecksumParamsStream.cpp">
+      <BuildOrder>30</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\QMonitorParamsStream.cpp">
+      <BuildOrder>31</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\QObjectsRoster.cpp">
+      <BuildOrder>1</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\QParameter.cpp">
+      <BuildOrder>37</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\QParamsContainer.cpp">
+      <BuildOrder>0</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Sequencer\MiniSequencer.cpp">
+      <BuildOrder>32</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Sequencer\QEvaluate.cpp">
+      <BuildOrder>34</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Sequencer\QSequencer.cpp">
+      <BuildOrder>33</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Utils\CMovingAverage.cpp">
+      <DependentOn>..\..\Utils\CMovingAverage.h</DependentOn>
+      <BuildOrder>29</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Utils\QFileWithCheckSum.cpp">
+      <BuildOrder>28</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Utils\QMultiLang.cpp">
+      <BuildOrder>27</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Utils\QStringList.cpp">
+      <BuildOrder>25</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\Utils\QUtils.cpp">
+      <BuildOrder>26</BuildOrder>
+    </CppCompile>
+    <BuildConfiguration Include="Debug Build">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release Build">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>

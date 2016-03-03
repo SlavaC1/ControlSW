@@ -1,0 +1,942 @@
+Document file - DO NOT EDIT
+
+<BEGIN> BUILD_RULE_QLibTestApp.out
+
+<END>
+
+<BEGIN> BUILD_RULE_archive
+
+<END>
+
+<BEGIN> BUILD_RULE_objects
+
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_BUILDRULE
+QLibTestApp.out
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_AR
+arsimpc
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_ARCHIVE
+$(PRJ_DIR)/SIMNTgnu/QLibTestApp.a
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_AS
+ccsimpc
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_CC
+ccsimpc
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_CFLAGS
+-U__WINNT \
+	-UWIN32 \
+	-U__WINNT__ \
+	-UWINNT \
+	-U__MINGW32__ \
+	-U_WIN32 \
+	-U__WIN32 \
+	-U__WIN32__ \
+	-U__WIN32 \
+	-mpentium \
+	-ansi \
+	-nostdinc \
+	-g \
+	-nostdlib \
+	-fno-builtin \
+	-fno-defer-pop \
+	-Wall \
+	-DRW_MULTI_THREAD \
+	-DOS_VXWORKS \
+	-D_REENTRANT \
+	-I. \
+	-I$(WIND_BASE)/target/h \
+	-IC:/Projects/SharedFiles/QLib \
+	-IC:/Projects/SharedFiles/QLib/OSWrappers \
+	-DCPU=SIMNT
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_CFLAGS_AS
+-mpentium \
+	-ansi \
+	-nostdinc \
+	-g \
+	-nostdlib \
+	-fno-builtin \
+	-fno-defer-pop \
+	-P \
+	-x \
+	assembler-with-cpp \
+	-I. \
+	-I$(WIND_BASE)/target/h \
+	-DCPU=SIMNT
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_CPP
+ccsimpc -E -P -xc
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_LD
+ldsimpc
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_LDDEPS
+
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_LDFLAGS
+--subsystem=windows
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_LD_PARTIAL_FLAGS
+-r
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_NM
+nmsimpc -g
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_OPTION_DEFINE_MACRO
+-D
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_OPTION_INCLUDE_DIR
+-I
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_POST_BUILD_RULE
+
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_PRJ_LIBS
+
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_MACRO_SIZE
+sizesimpc
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_RO_DEPEND_PATH
+{$(WIND_BASE)/target/h/} {$(WIND_BASE)/target/src/} {$(WIND_BASE)/target/config/}
+<END>
+
+<BEGIN> BUILD_SIMNTgnu_TC
+::tc_SIMNTgnu
+<END>
+
+<BEGIN> BUILD__CURRENT
+pentiumGnu
+<END>
+
+<BEGIN> BUILD__LIST
+SIMNTgnu pentiumGnu
+<END>
+
+<BEGIN> BUILD_pentiumGnu_BUILDRULE
+QLibTestApp.out
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_AR
+ar386
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_ARCHIVE
+$(PRJ_DIR)/pentiumGnu/QLibTestApp.a
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_AS
+cc386
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_CC
+cc386
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_CFLAGS
+-O0 \
+	-g \
+	-mpentium \
+	-ansi \
+	-nostdinc \
+	-DRW_MULTI_THREAD \
+	-D_REENTRANT \
+	-fvolatile \
+	-nostdlib \
+	-fno-builtin \
+	-fno-defer-pop \
+	-I. \
+	-I$(WIND_BASE)/target/h \
+	-DCPU=PENTIUM \
+	-DOS_VXWORKS \
+	-IC:/Projects/SharedFiles/QLib \
+	-IC:/Projects/SharedFiles/QLib/OSWrappers
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_CFLAGS_AS
+-g \
+	-mpentium \
+	-ansi \
+	-nostdinc \
+	-fvolatile \
+	-nostdlib \
+	-fno-builtin \
+	-fno-defer-pop \
+	-P \
+	-x \
+	assembler-with-cpp \
+	-I. \
+	-I$(WIND_BASE)/target/h \
+	-DCPU=PENTIUM
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_CPP
+cc386 -E -P -xc
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_LD
+ld386
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_LDFLAGS
+-X -N
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_LD_PARTIAL_FLAGS
+-X -r
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_NM
+nm386 -g
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_OPTION_DEFINE_MACRO
+-D
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_OPTION_INCLUDE_DIR
+-I
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_POST_BUILD_RULE
+
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_PRJ_LIBS
+
+<END>
+
+<BEGIN> BUILD_pentiumGnu_MACRO_SIZE
+size386
+<END>
+
+<BEGIN> BUILD_pentiumGnu_RO_DEPEND_PATH
+{$(WIND_BASE)/target/h/} {$(WIND_BASE)/target/src/} {$(WIND_BASE)/target/config/}
+<END>
+
+<BEGIN> BUILD_pentiumGnu_TC
+::tc_PENTIUMgnu
+<END>
+
+<BEGIN> CORE_INFO_TYPE
+::prj_vxApp
+<END>
+
+<BEGIN> CORE_INFO_VERSION
+2.0
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/QNullComPort.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/QNullComPort.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/QNullComPort.h \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/QComPort.h \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/QNullComPort.cpp_objects
+QNullComPort.o
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/QNullComPort.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpClient.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpClient.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QTcpIpClient.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/QException.h
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpClient.cpp_objects
+QVxWorksTcpIpClient.o
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpClient.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QFileParamsStream.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QFileParamsStream.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/QFileParamsStream.h \
+	C:/PROJECTS/SharedFiles/QLib/QParamsContainer.h \
+	C:/PROJECTS/SharedFiles/QLib/QComponent.h \
+	C:/PROJECTS/SharedFiles/QLib/QProperty.h \
+	C:/PROJECTS/SharedFiles/QLib/QObject.h \
+	C:/PROJECTS/SharedFiles/QLib/QTypes.h \
+	C:/PROJECTS/SharedFiles/QLib/QException.h \
+	C:/PROJECTS/SharedFiles/QLib/QUtils.h \
+	C:/PROJECTS/SharedFiles/QLib/QMethod.h \
+	C:/PROJECTS/SharedFiles/QLib/QObjectsRoster.h \
+	C:/PROJECTS/SharedFiles/QLib/QParameter.h \
+	C:/PROJECTS/SharedFiles/QLib/QErrors.h
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QFileParamsStream.cpp_objects
+QFileParamsStream.o
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QFileParamsStream.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QMonitorParamsStream.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QMonitorParamsStream.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/QMonitorParamsStream.h \
+	C:/PROJECTS/SharedFiles/QLib/QParamsContainer.h \
+	C:/PROJECTS/SharedFiles/QLib/QComponent.h \
+	C:/PROJECTS/SharedFiles/QLib/QProperty.h \
+	C:/PROJECTS/SharedFiles/QLib/QObject.h \
+	C:/PROJECTS/SharedFiles/QLib/QTypes.h \
+	C:/PROJECTS/SharedFiles/QLib/QException.h \
+	C:/PROJECTS/SharedFiles/QLib/QUtils.h \
+	C:/PROJECTS/SharedFiles/QLib/QMethod.h \
+	C:/PROJECTS/SharedFiles/QLib/QObjectsRoster.h \
+	C:/PROJECTS/SharedFiles/QLib/QParameter.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/QException.h
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QMonitorParamsStream.cpp_objects
+QMonitorParamsStream.o
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/QMonitorParamsStream.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/MiniSequencer.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/MiniSequencer.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+	C:/Projects/SharedFiles/QLib/QErrors.h \
+	C:/Projects/SharedFiles/QLib/MiniSequencer.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThread.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+	C:/Projects/SharedFiles/QLib/QStringList.h
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/MiniSequencer.cpp_objects
+MiniSequencer.o
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/MiniSequencer.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/QSequencer.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/QSequencer.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QSequencer.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/QSequencer.cpp_objects
+QSequencer.o
+<END>
+
+<BEGIN> FILE_C:/PROJECTS/SharedFiles/QLib/Sequencer/QSequencer.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenu.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenu.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMenu.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenu.cpp_objects
+QVxWorksMenu.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenu.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenusHandler.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenusHandler.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMenusHandler.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMenu.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThread.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenusHandler.cpp_objects
+QVxWorksMenusHandler.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenusHandler.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMonitor.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMonitor.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/QErrors.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMonitor.cpp_objects
+QVxWorksMonitor.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMonitor.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/QConditionMonitor.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/QConditionMonitor.cpp_dependencies
+C:/Projects/SharedFiles/QLib/OSWrappers/QConditionMonitor.h \
+	C:/Projects/SharedFiles/QLib/OSWrappers/QMutex.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/OSWrappers/QEvent.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/QConditionMonitor.cpp_objects
+QConditionMonitor.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/QConditionMonitor.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksApplication.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksApplication.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThread.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+	C:/Projects/SharedFiles/QLib/QErrors.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QApplication.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksApplication.cpp_objects
+QVxWorksApplication.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksApplication.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksEvent.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksEvent.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksEvent.cpp_objects
+QVxWorksEvent.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksEvent.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksMutex.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksMutex.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMutex.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksMutex.cpp_objects
+QVxWorksMutex.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksMutex.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSemaphore.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSemaphore.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QSemaphore.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSemaphore.cpp_objects
+QVxWorksSemaphore.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSemaphore.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSimpleQueue.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSimpleQueue.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QSimpleQueue.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/QErrors.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSimpleQueue.cpp_objects
+QVxWorksSimpleQueue.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSimpleQueue.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksStdComPort.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksStdComPort.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QStdComPort.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QComPort.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QTimer.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksStdComPort.cpp_objects
+QVxWorksStdComPort.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksStdComPort.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThread.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThread.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QApplication.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h \
+	C:/Projects/SharedFiles/QLib/QErrors.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThread.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThread.cpp_objects
+QVxWorksThread.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThread.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThreadUtils.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThreadUtils.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/QException.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThreadUtils.cpp_objects
+QVxWorksThreadUtils.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThreadUtils.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTimer.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTimer.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QTimer.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTimer.cpp_objects
+QVxWorksTimer.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTimer.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QComponent.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QComponent.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QComponent.cpp_objects
+QComponent.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QComponent.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QObjectsRoster.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QObjectsRoster.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QObjectsRoster.cpp_objects
+QObjectsRoster.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QObjectsRoster.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QParamsContainer.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QParamsContainer.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QParamsContainer.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+	C:/Projects/SharedFiles/QLib/QParameter.h \
+	C:/Projects/SharedFiles/QLib/QErrors.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QParamsContainer.cpp_objects
+QParamsContainer.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/QParamsContainer.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QStringList.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QStringList.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QStringList.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QStringList.cpp_objects
+QStringList.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QStringList.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QUtils.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QUtils.cpp_dependencies
+C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QUtils.cpp_objects
+QUtils.o
+<END>
+
+<BEGIN> FILE_C:/Projects/SharedFiles/QLib/Utils/QUtils.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_C:/projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpServer.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_C:/projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpServer.cpp_dependencies
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QTcpIpServer.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThread.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h
+<END>
+
+<BEGIN> FILE_C:/projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpServer.cpp_objects
+QVxWorksTcpIpServer.o
+<END>
+
+<BEGIN> FILE_C:/projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpServer.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/QLibTest.cpp_dependDone
+TRUE
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/QLibTest.cpp_dependencies
+C:/Projects/SharedFiles/QLib/AllQLib.h \
+	C:/Projects/SharedFiles/QLib/QComponent.h \
+	C:/Projects/SharedFiles/QLib/QProperty.h \
+	C:/Projects/SharedFiles/QLib/QObject.h \
+	C:/Projects/SharedFiles/QLib/QTypes.h \
+	C:/Projects/SharedFiles/QLib/QException.h \
+	C:/Projects/SharedFiles/QLib/QUtils.h \
+	C:/Projects/SharedFiles/QLib/QMethod.h \
+	C:/Projects/SharedFiles/QLib/QObjectsRoster.h \
+	C:/Projects/SharedFiles/QLib/QParamsContainer.h \
+	C:/Projects/SharedFiles/QLib/QParameter.h \
+	C:/Projects/SharedFiles/QLib/QFileParamsStream.h \
+	C:/Projects/SharedFiles/QLib/QMonitorParamsStream.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QEvent.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QOSWrapper.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QSemaphore.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMutex.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QConditionMonitor.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMessageQueue.h \
+	C:/Projects/SharedFiles/QLib/QErrors.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QSimpleQueue.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThread.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QThreadUtils.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QTimer.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMonitor.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMenusHandler.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QMenu.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QApplication.h \
+	C:/Projects/SharedFiles/QLib/QStringList.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QStdComPort.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QComPort.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QNullComPort.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QTcpIpClient.h \
+C:/PROJECTS/SharedFiles/QLib/OSWrappers/QTcpIpServer.h
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/QLibTest.cpp_objects
+QLibTest.o
+<END>
+
+<BEGIN> FILE_$(PRJ_DIR)/QLibTest.cpp_tool
+C/C++ compiler
+<END>
+
+<BEGIN> PROJECT_FILES
+C:/Projects/SharedFiles/QLib/QObjectsRoster.cpp \
+	C:/Projects/SharedFiles/QLib/QParamsContainer.cpp \
+	C:/Projects/SharedFiles/QLib/QComponent.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/QConditionMonitor.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThreadUtils.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksMutex.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSemaphore.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksSimpleQueue.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksThread.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksEvent.cpp \
+	$(PRJ_DIR)/QLibTest.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTimer.cpp \
+	C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMonitor.cpp \
+	C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenu.cpp \
+	C:/Projects/SharedFiles/QLib/Monitor/VxWorks/QVxWorksMenusHandler.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksStdComPort.cpp \
+	C:/Projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksApplication.cpp \
+	C:/Projects/SharedFiles/QLib/Utils/QStringList.cpp \
+	C:/Projects/SharedFiles/QLib/Utils/QUtils.cpp \
+	C:/PROJECTS/SharedFiles/QLib/QMonitorParamsStream.cpp \
+	C:/PROJECTS/SharedFiles/QLib/QFileParamsStream.cpp \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/QNullComPort.cpp \
+	C:/PROJECTS/SharedFiles/QLib/Sequencer/QSequencer.cpp \
+	C:/PROJECTS/SharedFiles/QLib/Sequencer/MiniSequencer.cpp \
+	C:/PROJECTS/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpClient.cpp \
+	C:/projects/SharedFiles/QLib/OSWrappers/VxWorks/QVxWorksTcpIpServer.cpp
+<END>
+
+<BEGIN> userComments
+
+<END>
+

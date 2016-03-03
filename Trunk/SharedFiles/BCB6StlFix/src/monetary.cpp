@@ -1,0 +1,212 @@
+/*
+ * Copyright (c) 1999
+ * Silicon Graphics Computer Systems, Inc.
+ *
+ * Copyright (c) 1999 
+ * Boris Fomitchev
+ *
+ * This material is provided "as is", with absolutely no warranty expressed
+ * or implied. Any use is at your own risk.
+ *
+ * Permission to use or copy this software for any purpose is hereby granted 
+ * without fee, provided the above notices are retained on all copies.
+ * Permission to modify the code and to distribute modified code is granted,
+ * provided the above notices are retained, and a notice that the code was
+ * modified is included with the above copyright notice.
+ *
+ */ 
+# include "stlport_prefix.h"
+
+#include <stl/_monetary.h>
+#include <stl/_istream.h>
+
+_STLP_BEGIN_NAMESPACE
+
+# if defined (__BORLANDC__)
+
+template<> locale::id money_get<char, istreambuf_iterator<char, char_traits<char> > >::id = {8};
+template<> locale::id money_get<char, const char*>::id = {9};
+template<> locale::id money_put<char, ostreambuf_iterator<char, char_traits<char> > >::id = {10};
+template<> locale::id money_put<char, char*>::id = {11};
+# ifndef _STLP_NO_WCHAR_T
+template<> locale::id money_get<wchar_t, istreambuf_iterator<wchar_t, char_traits<wchar_t> > >::id = {27};
+template<> locale::id money_get<wchar_t, const wchar_t*>::id = {28};
+template<> locale::id money_put<wchar_t, ostreambuf_iterator<wchar_t, char_traits<wchar_t> > >::id = {29};
+template<> locale::id money_put<wchar_t, wchar_t*>::id = {30};
+# endif  
+
+void dummy_monetary_id_inst_func() {
+  money_get<char, istreambuf_iterator<char, char_traits<char> > >::id._M_index = 8;
+  money_get<char, const char*>::id._M_index = 9;
+  money_put<char, ostreambuf_iterator<char, char_traits<char> > >::id._M_index = 10;
+  money_put<char, char*>::id._M_index = 11;
+# ifndef _STLP_NO_WCHAR_T
+  money_get<wchar_t, istreambuf_iterator<wchar_t, char_traits<wchar_t> > >::id._M_index =  27;
+  money_get<wchar_t, const wchar_t*>::id._M_index = 28;
+  money_put<wchar_t, ostreambuf_iterator<wchar_t, char_traits<wchar_t> > >::id._M_index = 29;
+  money_put<wchar_t, wchar_t*>::id._M_index = 30;
+# endif  
+}
+
+# if ( _STLP_STATIC_TEMPLATE_DATA > 0 )
+
+template <class _CharT, class _InputIterator>
+locale::id money_get<_CharT, _InputIterator>::id;
+
+template <class _CharT, class _OutputIterator>
+locale::id money_put<_CharT, _OutputIterator>::id;
+
+# else /* ( _STLP_STATIC_TEMPLATE_DATA > 0 ) */
+
+typedef money_get<char, const char*> money_get_char;
+typedef money_put<char, char*> money_put_char;
+typedef money_get<char, istreambuf_iterator<char, char_traits<char> > > money_get_char_2;
+typedef money_put<char, ostreambuf_iterator<char, char_traits<char> > > money_put_char_2;
+
+__DECLARE_INSTANCE(locale::id, money_get_char::id, );
+__DECLARE_INSTANCE(locale::id, money_put_char::id, );
+__DECLARE_INSTANCE(locale::id, money_get_char_2::id, );
+__DECLARE_INSTANCE(locale::id, money_put_char_2::id, );
+
+# ifndef _STLP_NO_WCHAR_T
+
+typedef money_get<wchar_t, const wchar_t*> money_get_wchar_t;
+typedef money_get<wchar_t, istreambuf_iterator<wchar_t, char_traits<wchar_t> > > money_get_wchar_t_2;
+typedef money_put<wchar_t, wchar_t*> money_put_wchar_t;
+typedef money_put<wchar_t, ostreambuf_iterator<wchar_t, char_traits<wchar_t> > > money_put_wchar_t_2;
+
+__DECLARE_INSTANCE(locale::id, money_get_wchar_t::id, );
+__DECLARE_INSTANCE(locale::id, money_put_wchar_t::id, );
+__DECLARE_INSTANCE(locale::id, money_get_wchar_t_2::id, );
+__DECLARE_INSTANCE(locale::id, money_put_wchar_t_2::id, );
+
+# endif
+# endif /* ( _STLP_STATIC_TEMPLATE_DATA > 0 ) */
+
+#endif /* __BORLANDC__ */
+
+static void _Init_monetary_formats(money_base::pattern& pos_format,
+				   money_base::pattern& neg_format) {
+  pos_format.field[0] = (char) money_base::symbol;
+  pos_format.field[1] = (char) money_base::sign;
+  pos_format.field[2] = (char) money_base::none;
+  pos_format.field[3] = (char) money_base::value;
+
+  neg_format.field[0] = (char) money_base::symbol;
+  neg_format.field[1] = (char) money_base::sign;
+  neg_format.field[2] = (char) money_base::none;
+  neg_format.field[3] = (char) money_base::value;
+}
+
+// This is being used throughout the library
+string _S_empty_string("");
+# ifndef _STLP_NO_WCHAR_T
+wstring _S_empty_wstring(L"");
+# endif
+
+//
+// moneypunct<>
+//
+
+moneypunct<char, true>::moneypunct(size_t __refs) : _BaseFacet(__refs) { 
+    _Init_monetary_formats(_M_pos_format, _M_neg_format); 
+}
+moneypunct<char, true>::~moneypunct() {}
+
+char moneypunct<char, true>::do_decimal_point() const {return ' ';}
+char moneypunct<char, true>::do_thousands_sep() const {return ' ';}
+string moneypunct<char, true>::do_grouping() const { return _S_empty_string; }
+string moneypunct<char, true>::do_curr_symbol() const { return _S_empty_string; }
+string moneypunct<char, true>::do_positive_sign() const { return _S_empty_string; }
+string moneypunct<char, true>::do_negative_sign() const { return _S_empty_string; }
+money_base::pattern moneypunct<char, true>::do_pos_format() const  {return _M_pos_format;}
+money_base::pattern moneypunct<char, true>::do_neg_format() const {return _M_neg_format;}
+int moneypunct<char, true>::do_frac_digits() const {return 0;}
+
+moneypunct<char, false>::moneypunct(size_t __refs) : _BaseFacet(__refs) { 
+    _Init_monetary_formats(_M_pos_format, _M_neg_format); 
+}
+moneypunct<char, false>::~moneypunct() {}
+
+char moneypunct<char, false>::do_decimal_point() const {return ' ';}
+char moneypunct<char, false>::do_thousands_sep() const {return ' ';}
+
+string moneypunct<char, false>::do_grouping() const { return _S_empty_string; }
+string moneypunct<char, false>::do_curr_symbol() const { return _S_empty_string; }
+string moneypunct<char, false>::do_positive_sign() const { return _S_empty_string; }
+string moneypunct<char, false>::do_negative_sign() const { return _S_empty_string; }
+money_base::pattern moneypunct<char, false>::do_pos_format() const {return _M_pos_format;}
+money_base::pattern moneypunct<char, false>::do_neg_format() const {return _M_neg_format;}
+int moneypunct<char, false>::do_frac_digits() const {return 0;}
+
+
+# ifndef _STLP_NO_WCHAR_T
+
+moneypunct<wchar_t, true>::moneypunct(size_t __refs) : _BaseFacet(__refs) { 
+    _Init_monetary_formats(_M_pos_format, _M_neg_format); 
+}
+moneypunct<wchar_t, true>::~moneypunct() {}
+
+wchar_t moneypunct<wchar_t, true>::do_decimal_point() const {return L' ';}
+wchar_t moneypunct<wchar_t, true>::do_thousands_sep() const {return L' ';}
+string moneypunct<wchar_t, true>::do_grouping() const {return _S_empty_string;}
+
+wstring moneypunct<wchar_t, true>::do_curr_symbol() const
+  {return _S_empty_wstring;}
+wstring moneypunct<wchar_t, true>::do_positive_sign() const
+  {return _S_empty_wstring;}
+wstring moneypunct<wchar_t, true>::do_negative_sign() const
+  {return _S_empty_wstring;}
+int moneypunct<wchar_t, true>::do_frac_digits() const {return 0;}
+money_base::pattern moneypunct<wchar_t, true>::do_pos_format() const
+  {return _M_pos_format;}
+money_base::pattern moneypunct<wchar_t, true>::do_neg_format() const
+  {return _M_neg_format;}
+
+moneypunct<wchar_t, false>::moneypunct(size_t __refs) : _BaseFacet(__refs) { 
+    _Init_monetary_formats(_M_pos_format, _M_neg_format); 
+}
+moneypunct<wchar_t, false>::~moneypunct() {}
+
+wchar_t moneypunct<wchar_t, false>::do_decimal_point() const {return L' ';}
+wchar_t moneypunct<wchar_t, false>::do_thousands_sep() const {return L' ';}
+string moneypunct<wchar_t, false>::do_grouping() const { return _S_empty_string;}
+wstring moneypunct<wchar_t, false>::do_curr_symbol() const
+  {return _S_empty_wstring;}
+wstring moneypunct<wchar_t, false>::do_positive_sign() const
+  {return _S_empty_wstring;}
+wstring moneypunct<wchar_t, false>::do_negative_sign() const
+  {return _S_empty_wstring;}
+int moneypunct<wchar_t, false>::do_frac_digits() const {return 0;}
+
+money_base::pattern moneypunct<wchar_t, false>::do_pos_format() const
+  {return _M_pos_format;}
+money_base::pattern moneypunct<wchar_t, false>::do_neg_format() const
+  {return _M_neg_format;}
+
+# endif /* WCHAR_T */
+
+//
+// Instantiations
+//
+
+# if !defined(_STLP_NO_FORCE_INSTANTIATE)
+
+template class money_get<char, istreambuf_iterator<char, char_traits<char> > >;
+template class money_put<char, ostreambuf_iterator<char, char_traits<char> > >;
+// template class money_put<char, char*>;
+
+#ifndef _STLP_NO_WCHAR_T
+template class money_get<wchar_t, istreambuf_iterator<wchar_t, char_traits<wchar_t> > >;
+template class money_put<wchar_t, ostreambuf_iterator<wchar_t, char_traits<wchar_t> > >;
+// template class money_put<wchar_t, wchar_t*>;
+// template class money_get<wchar_t, const wchar_t*>;
+#endif
+
+# endif
+
+_STLP_END_NAMESPACE  
+
+// Local Variables:
+// mode:C++
+// End:

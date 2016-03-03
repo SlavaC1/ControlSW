@@ -1,0 +1,42 @@
+// VideoCameraAutomation.idl : IDL source for VideoCameraAutomation
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VideoCameraAutomation.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(C881069E-1B80-46AA-9C0E-391E5AA52591),
+	dual,
+	nonextensible,
+	helpstring("IVideoCamera Interface"),
+	pointer_default(unique)
+]
+interface IVideoCamera : IDispatch{
+	[id(1), helpstring("Samples a frame from the video camera, stores it in a HBITMAP in memory and returns the HBITMAP.")] HRESULT sampleToBitmap([out,retval] HBITMAP* phbitmap);
+
+	[propget, id(2), helpstring("Set/Get Gamma")] HRESULT Gamma([out, retval] double* pVal);
+	[propput, id(2), helpstring("Set/Get Gamma")] HRESULT Gamma([in] double newVal);
+
+	[id(3), helpstring("Opens the property pages (settings dialog) of the video camera.")] HRESULT openSettingsDialog([in] HWND hwndOwner);
+};
+[
+	uuid(8C0F7857-3DB5-49A9-A4D7-0DE16C5A8061),
+	version(1.0),
+	helpstring("VideoCameraAutomation 1.0 Type Library")
+]
+library VideoCameraAutomationLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(999F1681-6DE1-4249-8334-52184982A842),
+		helpstring("VideoCameraComWrapper Class")
+	]
+	coclass VideoCameraComWrapper
+	{
+		[default] interface IVideoCamera;
+	};
+};

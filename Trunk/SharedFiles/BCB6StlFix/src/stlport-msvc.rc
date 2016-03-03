@@ -1,0 +1,62 @@
+///////////////////////////
+//
+// Version
+//
+
+#include <winres.h>
+
+#define VER_MAJOR 3
+#define VER_MINOR 99
+#define VER_YEAR 2000
+#define VER_MMDD 0225
+
+#define VERSION_STRING2(x) #x "\0"
+#define VERSION_STRING(x) VERSION_STRING2(x)
+#define VERSION_ID VER_MAJOR, VER_MINOR, VER_YEAR, VER_MMDD
+#define VERSION_STR VERSION_STRING(VER_MAJOR.VER_MINOR.VER_YEAR.VER_MMDD)
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION VERSION_ID
+PRODUCTVERSION VERSION_ID
+FILEFLAGSMASK 0x3fL
+
+FILEFLAGS VS_FF_DEBUG | VS_FF_PRERELEASE
+
+FILEOS VOS__WINDOWS32
+FILETYPE VFT_DLL
+FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+BLOCK "StringFileInfo"
+BEGIN
+BLOCK "040904B0"
+BEGIN
+VALUE "CompanyName", "STLport Consulting, Inc.\0"
+VALUE "FileDescription", "Stl Port\0"
+VALUE "FileVersion", VERSION_STR
+VALUE "InternalName", "stlport.dll\0"
+VALUE "LegalCopyright", "Copyright (C) Boris Fomitchev\0"
+#ifdef __STL_DEBUG
+VALUE "OriginalFilename", "STLPORT_MSVC_STLDEBUG.DLL\0"
+#else
+#ifdef _DEBUG
+VALUE "OriginalFilename", "STLPORT_MSVC_DEBUG.DLL\0"
+#else
+VALUE "OriginalFilename", "STLPORT_MSVC.DLL\0"
+#endif
+#endif
+VALUE "ProductName", "STL\0"
+VALUE "ProductVersion", VERSION_STR
+#ifdef __STLDEBUG
+VALUE "SpecialBuild", "STLDEBUG Build\0"
+#else
+#ifdef _DEBUG
+VALUE "SpecialBuild", "DEBUG Build\0"
+#endif
+#endif
+END
+END
+BLOCK "VarFileInfo"
+BEGIN
+VALUE "Translation", 0x409, 1200
+END
+END

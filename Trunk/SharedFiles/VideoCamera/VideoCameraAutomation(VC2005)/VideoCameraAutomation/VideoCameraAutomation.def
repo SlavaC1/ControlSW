@@ -1,0 +1,9 @@
+; VideoCameraAutomation.def : Declares the module parameters.
+
+LIBRARY      "VideoCameraAutomation.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

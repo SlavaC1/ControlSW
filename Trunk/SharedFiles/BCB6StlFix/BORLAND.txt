@@ -1,0 +1,20 @@
+======================================
+Borland Build Instructions for
+STLport 4.5 with Borland CBuilder 6
+======================================
+
+1) Unpack the STLport sources.
+
+2) Change directories to the STLport root (i.e. "cd STLport").
+
+3) Make STLport
+
+     -To make single-threaded static STLport library: make
+     -To make single-threaded dynamic STLport library: make -DDLL
+     -To make multi-threaded static STLport library: make -DMT
+     -To make multi-threaded dynamic STLport library: make -DMT -DDLL\
+
+4) Resulting libraries are in STLport\lib
+
+Note: You may need to change the parameters to "md" and "rd" in bcb60.mak
+and bcb60mt.mak before building.

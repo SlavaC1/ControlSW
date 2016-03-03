@@ -1,0 +1,6 @@
+This library is not the precompiled library (~288kb) that comes with LDK 7.3's API.
+
+1. when changing the API library, make sure the vendor code is entered correctly in the embedded (HaspDefs),
+2. remember to replace the .lib files in the solution.
+3. overwrite the HASP's Include folder's *.h files with the new API's
+    (i.e. hasp_api.h ,hasp_api_cpp.h ,hasp_api_cpp_.h ,haspdiag.h)

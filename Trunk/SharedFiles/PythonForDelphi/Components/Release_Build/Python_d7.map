@@ -1,0 +1,2983 @@
+
+ Start         Length     Name                   Class
+ 0001:00401000 0001A1D8H .text                   CODE
+ 0002:0041C000 00000164H .itext                  ICODE
+ 0003:0041D000 000000DCH .data                   DATA
+ 0004:0041E000 00000038H .bss                    BSS
+ 0005:00000000 00000000H .tls                    TLS
+
+
+Detailed map of segments
+
+ 0001:00000000 000002C6 C=CODE     S=.text    G=(none)   M=System   ACBP=A9
+ 0001:000002C8 000001C3 C=CODE     S=.text    G=(none)   M=SysInit  ACBP=A9
+ 0001:0000048C 000000AC C=CODE     S=.text    G=(none)   M=Windows  ACBP=A9
+ 0001:00000538 00000196 C=CODE     S=.text    G=(none)   M=Classes  ACBP=A9
+ 0001:000006D0 00000006 C=CODE     S=.text    G=(none)   M=TypInfo  ACBP=A9
+ 0001:000006D8 00000086 C=CODE     S=.text    G=(none)   M=SysUtils ACBP=A9
+ 0001:00000760 000001BE C=CODE     S=.text    G=(none)   M=Variants ACBP=A9
+ 0001:00000920 00000006 C=CODE     S=.text    G=(none)   M=VarUtils ACBP=A9
+ 0001:00000928 00000016 C=CODE     S=.text    G=(none)   M=SyncObjs ACBP=A9
+ 0001:00000940 000002F1 C=CODE     S=.text    G=(none)   M=MethodCallBack ACBP=A9
+ 0001:00000C34 00000036 C=CODE     S=.text    G=(none)   M=Registry ACBP=A9
+ 0001:00000C6C 00000006 C=CODE     S=.text    G=(none)   M=IniFiles ACBP=A9
+ 0001:00000C74 00015081 C=CODE     S=.text    G=(none)   M=PythonEngine ACBP=A9
+ 0001:00015CF8 00000006 C=CODE     S=.text    G=(none)   M=Graphics ACBP=A9
+ 0001:00015D00 0000000E C=CODE     S=.text    G=(none)   M=Controls ACBP=A9
+ 0001:00015D10 00000006 C=CODE     S=.text    G=(none)   M=ActnList ACBP=A9
+ 0001:00015D18 00000006 C=CODE     S=.text    G=(none)   M=Themes   ACBP=A9
+ 0001:00015D20 00000006 C=CODE     S=.text    G=(none)   M=Menus    ACBP=A9
+ 0001:00015D28 00000006 C=CODE     S=.text    G=(none)   M=UxTheme  ACBP=A9
+ 0001:00015D30 00000006 C=CODE     S=.text    G=(none)   M=MultiMon ACBP=A9
+ 0001:00015D38 00000006 C=CODE     S=.text    G=(none)   M=DwmApi   ACBP=A9
+ 0001:00015D40 00000006 C=CODE     S=.text    G=(none)   M=Forms    ACBP=A9
+ 0001:00015D48 00000006 C=CODE     S=.text    G=(none)   M=HelpIntfs ACBP=A9
+ 0001:00015D50 0000000E C=CODE     S=.text    G=(none)   M=Dialogs  ACBP=A9
+ 0001:00015D60 00000006 C=CODE     S=.text    G=(none)   M=Printers ACBP=A9
+ 0001:00015D68 00000006 C=CODE     S=.text    G=(none)   M=ExtCtrls ACBP=A9
+ 0001:00015D70 00000006 C=CODE     S=.text    G=(none)   M=GraphUtil ACBP=A9
+ 0001:00015D78 00000006 C=CODE     S=.text    G=(none)   M=Clipbrd  ACBP=A9
+ 0001:00015D80 00000006 C=CODE     S=.text    G=(none)   M=FlatSB   ACBP=A9
+ 0001:00015D88 00000006 C=CODE     S=.text    G=(none)   M=ComCtrls ACBP=A9
+ 0001:00015D90 00000006 C=CODE     S=.text    G=(none)   M=ExtActns ACBP=A9
+ 0001:00015D98 00000006 C=CODE     S=.text    G=(none)   M=ExtDlgs  ACBP=A9
+ 0001:00015DA0 00000006 C=CODE     S=.text    G=(none)   M=Buttons  ACBP=A9
+ 0001:00015DA8 00000006 C=CODE     S=.text    G=(none)   M=Mapi     ACBP=A9
+ 0001:00015DB0 00000352 C=CODE     S=.text    G=(none)   M=PythonGUIInputOutput ACBP=A9
+ 0001:00016104 00000006 C=CODE     S=.text    G=(none)   M=ComObj   ACBP=A9
+ 0001:0001610C 000007FE C=CODE     S=.text    G=(none)   M=PythonAtom ACBP=A9
+ 0001:0001690C 0000016E C=CODE     S=.text    G=(none)   M=AtomPythonEngine ACBP=A9
+ 0001:00016A7C 0000350A C=CODE     S=.text    G=(none)   M=VarPyth  ACBP=A9
+ 0001:00019F88 0000024F C=CODE     S=.text    G=(none)   M=.Python_d7 ACBP=A9
+ 0002:00000000 00000006 C=ICODE    S=.itext   G=(none)   M=System   ACBP=A9
+ 0002:00000008 00000011 C=ICODE    S=.itext   G=(none)   M=Windows  ACBP=A9
+ 0002:0000001C 00000006 C=ICODE    S=.itext   G=(none)   M=Classes  ACBP=A9
+ 0002:00000024 00000006 C=ICODE    S=.itext   G=(none)   M=TypInfo  ACBP=A9
+ 0002:0000002C 00000006 C=ICODE    S=.itext   G=(none)   M=SysUtils ACBP=A9
+ 0002:00000034 00000006 C=ICODE    S=.itext   G=(none)   M=Variants ACBP=A9
+ 0002:0000003C 00000006 C=ICODE    S=.itext   G=(none)   M=VarUtils ACBP=A9
+ 0002:00000044 0000001B C=ICODE    S=.itext   G=(none)   M=MethodCallBack ACBP=A9
+ 0002:00000060 00000006 C=ICODE    S=.itext   G=(none)   M=Registry ACBP=A9
+ 0002:00000068 00000006 C=ICODE    S=.itext   G=(none)   M=IniFiles ACBP=A9
+ 0002:00000070 00000008 C=ICODE    S=.itext   G=(none)   M=PythonEngine ACBP=A9
+ 0002:00000078 00000006 C=ICODE    S=.itext   G=(none)   M=Graphics ACBP=A9
+ 0002:00000080 00000006 C=ICODE    S=.itext   G=(none)   M=Controls ACBP=A9
+ 0002:00000088 00000006 C=ICODE    S=.itext   G=(none)   M=ActnList ACBP=A9
+ 0002:00000090 00000006 C=ICODE    S=.itext   G=(none)   M=Themes   ACBP=A9
+ 0002:00000098 00000006 C=ICODE    S=.itext   G=(none)   M=Menus    ACBP=A9
+ 0002:000000A0 00000006 C=ICODE    S=.itext   G=(none)   M=UxTheme  ACBP=A9
+ 0002:000000A8 00000006 C=ICODE    S=.itext   G=(none)   M=MultiMon ACBP=A9
+ 0002:000000B0 00000006 C=ICODE    S=.itext   G=(none)   M=DwmApi   ACBP=A9
+ 0002:000000B8 00000006 C=ICODE    S=.itext   G=(none)   M=Forms    ACBP=A9
+ 0002:000000C0 00000006 C=ICODE    S=.itext   G=(none)   M=HelpIntfs ACBP=A9
+ 0002:000000C8 00000006 C=ICODE    S=.itext   G=(none)   M=Dialogs  ACBP=A9
+ 0002:000000D0 00000006 C=ICODE    S=.itext   G=(none)   M=Printers ACBP=A9
+ 0002:000000D8 00000006 C=ICODE    S=.itext   G=(none)   M=ExtCtrls ACBP=A9
+ 0002:000000E0 00000006 C=ICODE    S=.itext   G=(none)   M=GraphUtil ACBP=A9
+ 0002:000000E8 00000006 C=ICODE    S=.itext   G=(none)   M=Clipbrd  ACBP=A9
+ 0002:000000F0 00000006 C=ICODE    S=.itext   G=(none)   M=FlatSB   ACBP=A9
+ 0002:000000F8 00000006 C=ICODE    S=.itext   G=(none)   M=ComCtrls ACBP=A9
+ 0002:00000100 00000006 C=ICODE    S=.itext   G=(none)   M=ExtActns ACBP=A9
+ 0002:00000108 00000006 C=ICODE    S=.itext   G=(none)   M=ExtDlgs  ACBP=A9
+ 0002:00000110 00000006 C=ICODE    S=.itext   G=(none)   M=Buttons  ACBP=A9
+ 0002:00000118 00000006 C=ICODE    S=.itext   G=(none)   M=Mapi     ACBP=A9
+ 0002:00000120 00000008 C=ICODE    S=.itext   G=(none)   M=PythonGUIInputOutput ACBP=A9
+ 0002:00000128 00000006 C=ICODE    S=.itext   G=(none)   M=ComObj   ACBP=A9
+ 0002:00000130 00000008 C=ICODE    S=.itext   G=(none)   M=PythonAtom ACBP=A9
+ 0002:00000138 00000008 C=ICODE    S=.itext   G=(none)   M=AtomPythonEngine ACBP=A9
+ 0002:00000140 0000001B C=ICODE    S=.itext   G=(none)   M=VarPyth  ACBP=A9
+ 0002:0000015C 00000005 C=ICODE    S=.itext   G=(none)   M=.Python_d7 ACBP=A9
+ 0003:00000000 00000030 C=DATA     S=.data    G=DGROUP   M=SysInit  ACBP=A9
+ 0003:00000030 0000002A C=DATA     S=.data    G=DGROUP   M=MethodCallBack ACBP=A9
+ 0003:0000005C 00000074 C=DATA     S=.data    G=DGROUP   M=PythonEngine ACBP=A9
+ 0003:000000D0 00000004 C=DATA     S=.data    G=DGROUP   M=VarPyth  ACBP=A9
+ 0004:00000000 0000000C C=BSS      S=.bss     G=DGROUP   M=SysInit  ACBP=A9
+ 0004:0000000C 00000008 C=BSS      S=.bss     G=DGROUP   M=Windows  ACBP=A9
+ 0004:00000014 00000008 C=BSS      S=.bss     G=DGROUP   M=MethodCallBack ACBP=A9
+ 0004:0000001C 0000000C C=BSS      S=.bss     G=DGROUP   M=PythonEngine ACBP=A9
+ 0004:00000028 00000004 C=BSS      S=.bss     G=DGROUP   M=PythonGUIInputOutput ACBP=A9
+ 0004:0000002C 00000004 C=BSS      S=.bss     G=DGROUP   M=PythonAtom ACBP=A9
+ 0004:00000030 00000004 C=BSS      S=.bss     G=DGROUP   M=AtomPythonEngine ACBP=A9
+ 0004:00000034 00000004 C=BSS      S=.bss     G=DGROUP   M=VarPyth  ACBP=A9
+
+
+  Address             Publics by Name
+
+ 0002:0000015C       .Python_d7..Python_d7
+ 0001:0001A1B8       .Python_d7.@GetPackageInfoTable
+ 0001:0001A1C0       .Python_d7.@PackageLoad
+ 0001:0001A1CC       .Python_d7.@PackageUnload
+ 0004:00000030       AtomPythonEngine..2
+ 0001:0001690C       AtomPythonEngine..TAtomPythonEngine
+ 0002:00000138       AtomPythonEngine.AtomPythonEngine
+ 0001:00016A4C       AtomPythonEngine.Finalization
+ 0001:00016A20       AtomPythonEngine.Register
+ 0001:000169EC       AtomPythonEngine.TAtomPythonEngine.PyObjectAsVariant
+ 0004:00000014       MethodCallBack..1
+ 0003:00000040       MethodCallBack.C1
+ 0003:00000044       MethodCallBack.C2
+ 0003:00000048       MethodCallBack.C3
+ 0004:00000018       MethodCallBack.CallBackList
+ 0001:00000BA0       MethodCallBack.DeleteCallBack
+ 0001:00000BFC       MethodCallBack.Finalization
+ 0001:00000BBC       MethodCallBack.FreeCallBacks
+ 0001:00000A80       MethodCallBack.GetCallBack
+ 0001:00000A4C       MethodCallBack.GetDDECallBack
+ 0001:00000A68       MethodCallBack.GetOfObjectCallBack
+ 0002:00000044       MethodCallBack.MethodCallBack
+ 0003:00000030       MethodCallBack.S1
+ 0004:0000002C       PythonAtom..2
+ 0001:00016190       PythonAtom..TPythonAtom
+ 0001:000168DC       PythonAtom.Finalization
+ 0001:00016218       PythonAtom.GetAtom
+ 0001:0001646C       PythonAtom.IsBasicType
+ 0001:000164C4       PythonAtom.IsCallableType
+ 0002:00000130       PythonAtom.PythonAtom
+ 0001:000168CC       PythonAtom.TPythonAtom.AddRef
+ 0001:00016260       PythonAtom.TPythonAtom.Create
+ 0001:000162A4       PythonAtom.TPythonAtom.Destroy
+ 0001:000162DC       PythonAtom.TPythonAtom.GetAsAtom
+ 0001:00016348       PythonAtom.TPythonAtom.GetIDsOfNames
+ 0001:00016454       PythonAtom.TPythonAtom.GetTypeInfo
+ 0001:00016460       PythonAtom.TPythonAtom.GetTypeInfoCount
+ 0001:000164F4       PythonAtom.TPythonAtom.Invoke
+ 0001:00016880       PythonAtom.TPythonAtom.PythonAddRef
+ 0001:00016898       PythonAtom.TPythonAtom.PythonRelease
+ 0001:000168D4       PythonAtom.TPythonAtom.Release
+ 0001:000168B0       PythonAtom.TPythonAtom.SetPythonObject
+ 0001:00016238       PythonAtom.WideCharToShortString
+ 0004:0000001C       PythonEngine..77
+ 0001:000010B8       PythonEngine..EDLLImportError
+ 0001:00001030       PythonEngine..EDLLLoadError
+ 0001:00001398       PythonEngine..EPyArithmeticError
+ 0001:000014B8       PythonEngine..EPyAssertionError
+ 0001:00001548       PythonEngine..EPyAttributeError
+ 0001:0000268C       PythonEngine..EPyDeprecationWarning
+ 0001:000016F4       PythonEngine..EPyEnvironmentError
+ 0001:000015D8       PythonEngine..EPyEOFError
+ 0001:00001280       PythonEngine..EPyException
+ 0001:000011F8       PythonEngine..EPyExecError
+ 0001:0000165C       PythonEngine..EPyFloatingPointError
+ 0001:00001890       PythonEngine..EPyImportError
+ 0001:00001E34       PythonEngine..EPyIndentationError
+ 0001:0000191C       PythonEngine..EPyIndexError
+ 0001:00001788       PythonEngine..EPyIOError
+ 0001:00001A28       PythonEngine..EPyKeyboardInterrupt
+ 0001:000019A4       PythonEngine..EPyKeyError
+ 0001:0000142C       PythonEngine..EPyLookupError
+ 0001:00001AC0       PythonEngine..EPyMemoryError
+ 0001:00001B4C       PythonEngine..EPyNameError
+ 0001:00001CF0       PythonEngine..EPyNotImplementedError
+ 0001:0000180C       PythonEngine..EPyOSError
+ 0001:00001BD4       PythonEngine..EPyOverflowError
+ 0001:000028DC       PythonEngine..EPyOverflowWarning
+ 0001:00002A00       PythonEngine..EPyReferenceError
+ 0001:00001C64       PythonEngine..EPyRuntimeError
+ 0001:00002970       PythonEngine..EPyRuntimeWarning
+ 0001:00001308       PythonEngine..EPyStandardError
+ 0001:000024EC       PythonEngine..EPyStopIteration
+ 0001:00001D8C       PythonEngine..EPySyntaxError
+ 0001:0000284C       PythonEngine..EPySyntaxWarning
+ 0001:00001F4C       PythonEngine..EPySystemError
+ 0001:00001FD8       PythonEngine..EPySystemExit
+ 0001:00001EC8       PythonEngine..EPyTabError
+ 0001:00001158       PythonEngine..EPythonError
+ 0001:00002060       PythonEngine..EPyTypeError
+ 0001:000020E8       PythonEngine..EPyUnboundLocalError
+ 0001:00002208       PythonEngine..EPyUnicodeError
+ 0001:00002600       PythonEngine..EPyUserWarning
+ 0001:00002180       PythonEngine..EPyValueError
+ 0001:0000257C       PythonEngine..EPyWarning
+ 0001:00002A90       PythonEngine..EPyWindowsError
+ 0001:00002454       PythonEngine..EPyZeroDivisionError
+ 0001:000027C4       PythonEngine..FutureWarning
+ 0001:00002724       PythonEngine..PendingDeprecationWarning
+ 0001:00002D38       PythonEngine..TDynamicDll
+ 0001:000035E0       PythonEngine..TEngineClient
+ 0001:00003DA8       PythonEngine..TError
+ 0001:00003EE8       PythonEngine..TErrors
+ 0001:00003814       PythonEngine..TEventDef
+ 0001:00003934       PythonEngine..TEventDefs
+ 0001:00003BA8       PythonEngine..TGetSetContainer
+ 0001:00003AD8       PythonEngine..TMembersContainer
+ 0001:000039E8       PythonEngine..TMethodsContainer
+ 0001:00003CB4       PythonEngine..TParentClassError
+ 0001:00004104       PythonEngine..TPyObject
+ 0001:00004AC8       PythonEngine..TPythonDelphiVar
+ 0001:0000336C       PythonEngine..TPythonEngine
+ 0001:00002B98       PythonEngine..TPythonInputOutput
+ 0001:00002FE8       PythonEngine..TPythonInterface
+ 0001:00003F94       PythonEngine..TPythonModule
+ 0001:00004EA4       PythonEngine..TPythonThread
+ 0001:000032DC       PythonEngine..TPythonTraceback
+ 0001:00004800       PythonEngine..TPythonType
+ 0001:00004CA8       PythonEngine..TPyVar
+ 0001:00003234       PythonEngine..TTracebackItem
+ 0001:000046BC       PythonEngine..TTypeServices
+ 0001:00002328       PythonEngine..UnicodeDecodeError
+ 0001:00002294       PythonEngine..UnicodeEncodeError
+ 0001:000023BC       PythonEngine..UnicodeTranslateError
+ 0001:00014BD8       PythonEngine.AdjustName
+ 0001:0000DDE8       PythonEngine.ArrayVarDim1
+ 0001:0000DED0       PythonEngine.ArrayVarDim2
+ 0001:0000E05C       PythonEngine.ArrayVarDim3
+ 0001:00011328       PythonEngine.CheckName
+ 0001:00014A70       PythonEngine.CheckVarName
+ 0001:0000C558       PythonEngine.Define
+ 0001:0000C604       PythonEngine.DefineSyntaxError
+ 0001:00005004       PythonEngine.DropLine
+ 0001:0000E9E4       PythonEngine.ExtractDate
+ 0001:00015CB0       PythonEngine.Finalization
+ 0001:000116C0       PythonEngine.FindParentClass
+ 0001:0001580C       PythonEngine.FindType
+ 0001:00013CC0       PythonEngine.FreeSubtypeInst
+ 0001:0000FFF8       PythonEngine.GetBit
+ 0001:0000B46C       PythonEngine.GetDateTimeTypes
+ 0001:000159B0       PythonEngine.GetPythonEngine
+ 0001:0000F008       PythonEngine.GetSequenceItem
+ 0001:0000E904       PythonEngine.GetStructMember
+ 0001:0000B3C0       PythonEngine.GetTimeStructType
+ 0001:0000CA9C       PythonEngine.GetTypeAsString
+ 0001:0000B334       PythonEngine.GetVal
+ 0004:00000020       PythonEngine.gPythonEngine
+ 0003:000000C0       PythonEngine.GUID_NULL
+ 0004:00000024       PythonEngine.gVarType
+ 0001:0001577C       PythonEngine.HandleType
+ 0001:00015A8C       PythonEngine.IsDelphiObject
+ 0001:00015888       PythonEngine.pyio_GetTypesStats
+ 0001:00015608       PythonEngine.pyio_read
+ 0001:000156B4       PythonEngine.pyio_SetDelayWrites
+ 0001:0001571C       PythonEngine.pyio_SetMaxLines
+ 0001:000154CC       PythonEngine.pyio_write
+ 0001:00012DB4       PythonEngine.PyObjectDestructor
+ 0002:00000070       PythonEngine.PythonEngine
+ 0001:00015A64       PythonEngine.PythonOK
+ 0001:00012CF8       PythonEngine.PythonToDelphi
+ 0003:0000005C       PythonEngine.PYTHON_KNOWN_VERSIONS
+ 0001:00015B08       PythonEngine.PyType_HasFeature
+ 0001:00015AB4       PythonEngine.Register
+ 0001:000100D8       PythonEngine.SetBit
+ 0001:0000B238       PythonEngine.SetFlag
+ 0001:00005624       PythonEngine.TDynamicDll.AfterLoad
+ 0001:00005610       PythonEngine.TDynamicDll.BeforeLoad
+ 0001:00005638       PythonEngine.TDynamicDll.BeforeUnload
+ 0001:000054A0       PythonEngine.TDynamicDll.Create
+ 0001:000054E8       PythonEngine.TDynamicDll.Destroy
+ 0001:000052C4       PythonEngine.TDynamicDll.DoOpenDll
+ 0001:0000533C       PythonEngine.TDynamicDll.GetDllPath
+ 0001:0000564C       PythonEngine.TDynamicDll.GetQuitMessage
+ 0001:0000551C       PythonEngine.TDynamicDll.Import
+ 0001:00005720       PythonEngine.TDynamicDll.IsAPIVersionStored
+ 0001:00005728       PythonEngine.TDynamicDll.IsDllNameStored
+ 0001:000055D4       PythonEngine.TDynamicDll.IsHandleValid
+ 0001:00005730       PythonEngine.TDynamicDll.IsRegVersionStored
+ 0001:000055DC       PythonEngine.TDynamicDll.LoadDll
+ 0001:000055B4       PythonEngine.TDynamicDll.Loaded
+ 0001:0000539C       PythonEngine.TDynamicDll.OpenDll
+ 0001:000056AC       PythonEngine.TDynamicDll.Quit
+ 0001:000055E8       PythonEngine.TDynamicDll.UnloadDll
+ 0001:00010510       PythonEngine.TEngineClient.CheckEngine
+ 0001:00010508       PythonEngine.TEngineClient.ClearEngine
+ 0001:000103A8       PythonEngine.TEngineClient.Create
+ 0001:00010444       PythonEngine.TEngineClient.Destroy
+ 0001:000104E8       PythonEngine.TEngineClient.Finalize
+ 0001:000104C8       PythonEngine.TEngineClient.Initialize
+ 0001:00010484       PythonEngine.TEngineClient.Loaded
+ 0001:000104A0       PythonEngine.TEngineClient.Notification
+ 0001:0001037C       PythonEngine.TEngineClient.SetEngine
+ 0003:000000B8       PythonEngine.tenthousand
+ 0001:00011680       PythonEngine.TError.Assign
+ 0001:000118D0       PythonEngine.TError.BuildError
+ 0001:00011608       PythonEngine.TError.Create
+ 0001:00011650       PythonEngine.TError.Destroy
+ 0001:00011304       PythonEngine.TError.GetDisplayName
+ 0001:00011D10       PythonEngine.TError.Owner
+ 0001:00011AC0       PythonEngine.TError.RaiseError
+ 0001:00011B00       PythonEngine.TError.RaiseErrorObj
+ 0001:000115C8       PythonEngine.TError.SetErrorType
+ 0001:00011548       PythonEngine.TError.SetName
+ 0001:000115F0       PythonEngine.TError.SetParentClass
+ 0001:000115A0       PythonEngine.TError.SetText
+ 0001:00011D9C       PythonEngine.TErrors.Add
+ 0001:00011D58       PythonEngine.TErrors.Create
+ 0001:00011D30       PythonEngine.TErrors.GetError
+ 0001:00011D4C       PythonEngine.TErrors.GetOwner
+ 0001:00011DA8       PythonEngine.TErrors.Owner
+ 0001:00011D44       PythonEngine.TErrors.SetError
+ 0001:00011D50       PythonEngine.TErrors.Update
+ 0001:0001077C       PythonEngine.TEventDef.Assign
+ 0001:00010574       PythonEngine.TEventDef.Create
+ 0001:0001063C       PythonEngine.TEventDef.Destroy
+ 0001:0001066C       PythonEngine.TEventDef.GetDisplayName
+ 0001:00010680       PythonEngine.TEventDef.GetDocString
+ 0001:0001074C       PythonEngine.TEventDef.Owner
+ 0001:0001070C       PythonEngine.TEventDef.PythonEvent
+ 0001:00010760       PythonEngine.TEventDef.SetDisplayName
+ 0001:000107BC       PythonEngine.TEventDef.SetDocString
+ 0001:00010830       PythonEngine.TEventDefs.Add
+ 0001:000107CC       PythonEngine.TEventDefs.Create
+ 0001:00010810       PythonEngine.TEventDefs.GetItems
+ 0001:0001082C       PythonEngine.TEventDefs.GetOwner
+ 0001:0001083C       PythonEngine.TEventDefs.RegisterEvents
+ 0001:00010824       PythonEngine.TEventDefs.SetItems
+ 0001:00011008       PythonEngine.TGetSetContainer.AddGetSet
+ 0001:0001105C       PythonEngine.TGetSetContainer.AllocGetSets
+ 0001:0001111C       PythonEngine.TGetSetContainer.ClearGetSets
+ 0001:00011140       PythonEngine.TGetSetContainer.Create
+ 0001:0001117C       PythonEngine.TGetSetContainer.Destroy
+ 0001:000111A8       PythonEngine.TGetSetContainer.Finalize
+ 0001:000111C4       PythonEngine.TGetSetContainer.FreeGetSets
+ 0001:000111F0       PythonEngine.TGetSetContainer.GetGetSet
+ 0001:0001127C       PythonEngine.TGetSetContainer.ReallocGetSets
+ 0001:00010C14       PythonEngine.TMembersContainer.AddMember
+ 0001:00010DD8       PythonEngine.TMembersContainer.AllocMembers
+ 0001:00010E8C       PythonEngine.TMembersContainer.ClearMembers
+ 0001:00010EA8       PythonEngine.TMembersContainer.Create
+ 0001:00010EE4       PythonEngine.TMembersContainer.Destroy
+ 0001:00010F10       PythonEngine.TMembersContainer.Finalize
+ 0001:00010F2C       PythonEngine.TMembersContainer.FreeMembers
+ 0001:00010F4C       PythonEngine.TMembersContainer.GetMembers
+ 0001:00010C10       PythonEngine.TMembersContainer.GetMembersStartOffset
+ 0001:00010FD0       PythonEngine.TMembersContainer.ReallocMembers
+ 0001:00010B84       PythonEngine.TMethodsContainer.AddDelphiMethod
+ 0001:00010B40       PythonEngine.TMethodsContainer.AddMethod
+ 0001:00010BB8       PythonEngine.TMethodsContainer.AddMethodWithExtraArg
+ 0001:000108D4       PythonEngine.TMethodsContainer.AllocMethods
+ 0001:00010BF8       PythonEngine.TMethodsContainer.ClearMethods
+ 0001:00010A84       PythonEngine.TMethodsContainer.Create
+ 0001:00010AD4       PythonEngine.TMethodsContainer.Destroy
+ 0001:00010B24       PythonEngine.TMethodsContainer.Finalize
+ 0001:00010988       PythonEngine.TMethodsContainer.FreeMethods
+ 0001:000109DC       PythonEngine.TMethodsContainer.GetMethods
+ 0001:00010B10       PythonEngine.TMethodsContainer.Initialize
+ 0001:000109A8       PythonEngine.TMethodsContainer.ReallocMethods
+ 0001:00010A64       PythonEngine.TMethodsContainer.StoreEventDefs
+ 0001:000112C4       PythonEngine.TParentClassError.AssignTo
+ 0001:00012874       PythonEngine.TPyObject.Adjust
+ 0001:00012B44       PythonEngine.TPyObject.Call
+ 0001:00012B4C       PythonEngine.TPyObject.Clear
+ 0001:00012AEC       PythonEngine.TPyObject.Compare
+ 0001:00012744       PythonEngine.TPyObject.Create
+ 0001:0001279C       PythonEngine.TPyObject.CreateWith
+ 0001:000127DC       PythonEngine.TPyObject.Destroy
+ 0001:00012844       PythonEngine.TPyObject.FreeInstance
+ 0001:000128E4       PythonEngine.TPyObject.GetAttr
+ 0001:00012AFC       PythonEngine.TPyObject.GetAttrO
+ 0001:00012884       PythonEngine.TPyObject.GetModule
+ 0001:00012860       PythonEngine.TPyObject.GetSelf
+ 0001:00012898       PythonEngine.TPyObject.Get_ob_refcnt
+ 0001:000128A8       PythonEngine.TPyObject.Get_ob_type
+ 0001:00012AF0       PythonEngine.TPyObject.Hash
+ 0001:00012864       PythonEngine.TPyObject.IncRef
+ 0001:00012B5C       PythonEngine.TPyObject.Init
+ 0001:00012B54       PythonEngine.TPyObject.Iter
+ 0001:00012B58       PythonEngine.TPyObject.IterNext
+ 0001:00012C58       PythonEngine.TPyObject.MpAssSubscript
+ 0001:00012C48       PythonEngine.TPyObject.MpLength
+ 0001:00012C4C       PythonEngine.TPyObject.MpSubscript
+ 0001:00012B8C       PythonEngine.TPyObject.NbAbsolute
+ 0001:00012B60       PythonEngine.TPyObject.NbAdd
+ 0001:00012BA0       PythonEngine.TPyObject.NbAnd
+ 0001:00012BAC       PythonEngine.TPyObject.NbCoerce
+ 0001:00012B6C       PythonEngine.TPyObject.NbDivide
+ 0001:00012B7C       PythonEngine.TPyObject.NbDivmod
+ 0001:00012BB8       PythonEngine.TPyObject.NbFloat
+ 0001:00012B70       PythonEngine.TPyObject.NbFloorDivide
+ 0001:00012BC0       PythonEngine.TPyObject.NbHex
+ 0001:00012BC4       PythonEngine.TPyObject.NbInplaceAdd
+ 0001:00012BC8       PythonEngine.TPyObject.NbInplaceAnd
+ 0001:00012BCC       PythonEngine.TPyObject.NbInplaceDivide
+ 0001:00012BD0       PythonEngine.TPyObject.NbInplaceFloorDivide
+ 0001:00012BD8       PythonEngine.TPyObject.NbInplaceLshift
+ 0001:00012BDC       PythonEngine.TPyObject.NbInplaceMultiply
+ 0001:00012BE0       PythonEngine.TPyObject.NbInplaceOr
+ 0001:00012BE4       PythonEngine.TPyObject.NbInplacePower
+ 0001:00012BE8       PythonEngine.TPyObject.NbInplaceRemainder
+ 0001:00012BEC       PythonEngine.TPyObject.NbInplaceRshift
+ 0001:00012BF0       PythonEngine.TPyObject.NbInplaceSubtract
+ 0001:00012BD4       PythonEngine.TPyObject.NbInplaceTrueDivide
+ 0001:00012BF4       PythonEngine.TPyObject.NbInplaceXor
+ 0001:00012BB0       PythonEngine.TPyObject.NbInt
+ 0001:00012B94       PythonEngine.TPyObject.NbInvert
+ 0001:00012BB4       PythonEngine.TPyObject.NbLong
+ 0001:00012B98       PythonEngine.TPyObject.NbLShift
+ 0001:00012B68       PythonEngine.TPyObject.NbMultiply
+ 0001:00012B84       PythonEngine.TPyObject.NbNegative
+ 0001:00012B90       PythonEngine.TPyObject.NbNonZero
+ 0001:00012BBC       PythonEngine.TPyObject.NbOct
+ 0001:00012BA8       PythonEngine.TPyObject.NbOr
+ 0001:00012B88       PythonEngine.TPyObject.NbPositive
+ 0001:00012B80       PythonEngine.TPyObject.NbPower
+ 0001:00012B78       PythonEngine.TPyObject.NbRemainder
+ 0001:00012B9C       PythonEngine.TPyObject.NbRShift
+ 0001:00012B64       PythonEngine.TPyObject.NbSubstract
+ 0001:00012B74       PythonEngine.TPyObject.NbTrueDivide
+ 0001:00012BA4       PythonEngine.TPyObject.NbXor
+ 0001:00012818       PythonEngine.TPyObject.NewInstance
+ 0001:000128E0       PythonEngine.TPyObject.Print
+ 0001:00012C64       PythonEngine.TPyObject.RegisterGetSets
+ 0001:00012C60       PythonEngine.TPyObject.RegisterMembers
+ 0001:00012C5C       PythonEngine.TPyObject.RegisterMethods
+ 0001:00012A50       PythonEngine.TPyObject.Repr
+ 0001:00012B50       PythonEngine.TPyObject.RichCompare
+ 0001:000129A8       PythonEngine.TPyObject.SetAttr
+ 0001:00012B1C       PythonEngine.TPyObject.SetAttrO
+ 0001:000128B8       PythonEngine.TPyObject.Set_ob_refcnt
+ 0001:000128CC       PythonEngine.TPyObject.Set_ob_type
+ 0001:00012C2C       PythonEngine.TPyObject.SqAssItem
+ 0001:00012C30       PythonEngine.TPyObject.SqAssSlice
+ 0001:00012BFC       PythonEngine.TPyObject.SqConcat
+ 0001:00012C3C       PythonEngine.TPyObject.SqContains
+ 0001:00012C40       PythonEngine.TPyObject.SqInplaceConcat
+ 0001:00012C44       PythonEngine.TPyObject.SqInplaceRepeat
+ 0001:00012C14       PythonEngine.TPyObject.SqItem
+ 0001:00012BF8       PythonEngine.TPyObject.SqLength
+ 0001:00012C08       PythonEngine.TPyObject.SqRepeat
+ 0001:00012C20       PythonEngine.TPyObject.SqSlice
+ 0001:00012AF4       PythonEngine.TPyObject.Str
+ 0001:00012B48       PythonEngine.TPyObject.Traverse
+ 0001:00014CF4       PythonEngine.TPythonDelphiVar.Create
+ 0001:00014698       PythonEngine.TPythonDelphiVar.CreateVar
+ 0001:00014628       PythonEngine.TPythonDelphiVar.CreateVarType
+ 0001:00014DB0       PythonEngine.TPythonDelphiVar.Finalize
+ 0001:00014804       PythonEngine.TPythonDelphiVar.GetValue
+ 0001:000148B8       PythonEngine.TPythonDelphiVar.GetValueAsPyObject
+ 0001:000149B4       PythonEngine.TPythonDelphiVar.GetValueAsString
+ 0001:00014D90       PythonEngine.TPythonDelphiVar.Initialize
+ 0001:00014964       PythonEngine.TPythonDelphiVar.IsVariantOk
+ 0001:00014860       PythonEngine.TPythonDelphiVar.SetValue
+ 0001:0001490C       PythonEngine.TPythonDelphiVar.SetValueFromPyObject
+ 0001:00014BA0       PythonEngine.TPythonDelphiVar.SetVarName
+ 0001:0000DB3C       PythonEngine.TPythonEngine.AddClient
+ 0001:0000B150       PythonEngine.TPythonEngine.AfterLoad
+ 0001:0000F8A4       PythonEngine.TPythonEngine.ArrayToPyDict
+ 0001:0000F714       PythonEngine.TPythonEngine.ArrayToPyList
+ 0001:0000F654       PythonEngine.TPythonEngine.ArrayToPyTuple
+ 0001:0000B248       PythonEngine.TPythonEngine.AssignPyFlags
+ 0001:0000B164       PythonEngine.TPythonEngine.BeforeLoad
+ 0001:000101CC       PythonEngine.TPythonEngine.CheckError
+ 0001:0000C50C       PythonEngine.TPythonEngine.CheckEvalSyntax
+ 0001:0000C518       PythonEngine.TPythonEngine.CheckExecSyntax
+ 0001:0000B918       PythonEngine.TPythonEngine.CheckRegistry
+ 0001:0000C524       PythonEngine.TPythonEngine.CheckSyntax
+ 0001:0000BDF0       PythonEngine.TPythonEngine.CleanString
+ 0001:00015B14       PythonEngine.TPythonEngine.ClearModuleDictionary
+ 0001:0000ACE0       PythonEngine.TPythonEngine.Create
+ 0001:0000AE68       PythonEngine.TPythonEngine.Destroy
+ 0001:0000B180       PythonEngine.TPythonEngine.DoOpenDll
+ 0001:0000D7FC       PythonEngine.TPythonEngine.DoRedirectIO
+ 0001:0000BF8C       PythonEngine.TPythonEngine.EvalFunction
+ 0001:0000C014       PythonEngine.TPythonEngine.EvalFunctionNoArgs
+ 0001:0000BE78       PythonEngine.TPythonEngine.EvalPyFunction
+ 0001:0000C104       PythonEngine.TPythonEngine.EvalString
+ 0001:0000C07C       PythonEngine.TPythonEngine.EvalStringAsStr
+ 0001:0000C098       PythonEngine.TPythonEngine.EvalStringAsStrUseDict
+ 0001:0000C42C       PythonEngine.TPythonEngine.EvalStrings
+ 0001:0000C49C       PythonEngine.TPythonEngine.EvalStringsAsStr
+ 0001:0000C110       PythonEngine.TPythonEngine.ExecString
+ 0001:0000C3B8       PythonEngine.TPythonEngine.ExecStrings
+ 0001:0000C154       PythonEngine.TPythonEngine.ExecStringUseDict
+ 0001:0000AEDC       PythonEngine.TPythonEngine.Finalize
+ 0001:0000DB80       PythonEngine.TPythonEngine.FindClient
+ 0001:0000FF50       PythonEngine.TPythonEngine.FindFunction
+ 0001:0000FF10       PythonEngine.TPythonEngine.FindModule
+ 0001:0000BDAC       PythonEngine.TPythonEngine.GetAttrString
+ 0001:0000B884       PythonEngine.TPythonEngine.GetClientCount
+ 0001:0000B890       PythonEngine.TPythonEngine.GetClients
+ 0001:0000B828       PythonEngine.TPythonEngine.GetInterpreterState
+ 0001:000101F4       PythonEngine.TPythonEngine.GetMainModule
+ 0001:0000B844       PythonEngine.TPythonEngine.GetThreadState
+ 0001:0000B694       PythonEngine.TPythonEngine.Initialize
+ 0001:0000BB90       PythonEngine.TPythonEngine.InitWinConsole
+ 0001:0000BDA4       PythonEngine.TPythonEngine.IsType
+ 0001:00010120       PythonEngine.TPythonEngine.ListToSet
+ 0001:0000B138       PythonEngine.TPythonEngine.Lock
+ 0001:0000F5B4       PythonEngine.TPythonEngine.MakePyList
+ 0001:0000F514       PythonEngine.TPythonEngine.MakePyTuple
+ 0001:0000DD38       PythonEngine.TPythonEngine.MethodsByName
+ 0001:0000DC8C       PythonEngine.TPythonEngine.ModuleByName
+ 0001:0000B8A8       PythonEngine.TPythonEngine.Notification
+ 0001:00010248       PythonEngine.TPythonEngine.PyDateTime_Check
+ 0001:00010254       PythonEngine.TPythonEngine.PyDateTime_CheckExact
+ 0001:0001030C       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_HOUR
+ 0001:00010324       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_MICROSECOND
+ 0001:00010314       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_MINUTE
+ 0001:0001031C       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_SECOND
+ 0001:00010304       PythonEngine.TPythonEngine.PyDateTime_GET_DAY
+ 0001:000102FC       PythonEngine.TPythonEngine.PyDateTime_GET_MONTH
+ 0001:000102E8       PythonEngine.TPythonEngine.PyDateTime_GET_YEAR
+ 0001:00010344       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_HOUR
+ 0001:0001035C       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_MICROSECOND
+ 0001:0001034C       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_MINUTE
+ 0001:00010354       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_SECOND
+ 0001:00010224       PythonEngine.TPythonEngine.PyDate_Check
+ 0001:00010230       PythonEngine.TPythonEngine.PyDate_CheckExact
+ 0001:00010298       PythonEngine.TPythonEngine.PyDelta_Check
+ 0001:000102A4       PythonEngine.TPythonEngine.PyDelta_CheckExact
+ 0001:0000FC08       PythonEngine.TPythonEngine.PyListToStrings
+ 0001:0000D71C       PythonEngine.TPythonEngine.PyObjectAsString
+ 0001:0000F070       PythonEngine.TPythonEngine.PyObjectAsVariant
+ 0001:0001020C       PythonEngine.TPythonEngine.PyTimeStruct_Check
+ 0001:00010270       PythonEngine.TPythonEngine.PyTime_Check
+ 0001:0001027C       PythonEngine.TPythonEngine.PyTime_CheckExact
+ 0001:0000FCEC       PythonEngine.TPythonEngine.PyTupleToStrings
+ 0001:000102C0       PythonEngine.TPythonEngine.PyTZInfo_Check
+ 0001:000102CC       PythonEngine.TPythonEngine.PyTZInfo_CheckExact
+ 0001:0000FDD4       PythonEngine.TPythonEngine.PyUnicode_AsWideString
+ 0001:0000FED8       PythonEngine.TPythonEngine.PyUnicode_FromWideString
+ 0001:0000CAE4       PythonEngine.TPythonEngine.RaiseError
+ 0001:0000DB48       PythonEngine.TPythonEngine.RemoveClient
+ 0001:0000FEFC       PythonEngine.TPythonEngine.ReturnNone
+ 0001:0000C22C       PythonEngine.TPythonEngine.Run_CommandAsObject
+ 0001:0000C1E8       PythonEngine.TPythonEngine.Run_CommandAsString
+ 0001:0000BBCC       PythonEngine.TPythonEngine.SetGlobalVars
+ 0001:0000B818       PythonEngine.TPythonEngine.SetInitScript
+ 0001:0000B858       PythonEngine.TPythonEngine.SetInitThreads
+ 0001:0000BC74       PythonEngine.TPythonEngine.SetLocalVars
+ 0001:0000BA78       PythonEngine.TPythonEngine.SetProgramArgs
+ 0001:0000BD1C       PythonEngine.TPythonEngine.SetPyFlags
+ 0001:00010044       PythonEngine.TPythonEngine.SetToList
+ 0001:0000BBB8       PythonEngine.TPythonEngine.SetUseWindowsConsole
+ 0001:0000FA38       PythonEngine.TPythonEngine.StringsToPyList
+ 0001:0000FB20       PythonEngine.TPythonEngine.StringsToPyTuple
+ 0001:0000DBDC       PythonEngine.TPythonEngine.TypeByName
+ 0001:0000B144       PythonEngine.TPythonEngine.Unlock
+ 0001:0000E284       PythonEngine.TPythonEngine.VariantAsPyObject
+ 0001:0000F2AC       PythonEngine.TPythonEngine.VarRecAsPyObject
+ 0001:00005240       PythonEngine.TPythonInputOutput.AddPendingWrite
+ 0001:000051D4       PythonEngine.TPythonInputOutput.AddWrite
+ 0001:00004F38       PythonEngine.TPythonInputOutput.Create
+ 0001:00004FAC       PythonEngine.TPythonInputOutput.Destroy
+ 0001:0000528C       PythonEngine.TPythonInputOutput.GetCurrentThreadLine
+ 0001:00005244       PythonEngine.TPythonInputOutput.GetCurrentThreadSlotIdx
+ 0001:00004FEC       PythonEngine.TPythonInputOutput.Lock
+ 0001:0000521C       PythonEngine.TPythonInputOutput.ReceiveData
+ 0001:00005204       PythonEngine.TPythonInputOutput.SendData
+ 0001:00004FF8       PythonEngine.TPythonInputOutput.Unlock
+ 0001:000052A8       PythonEngine.TPythonInputOutput.UpdateCurrentThreadLine
+ 0001:00005058       PythonEngine.TPythonInputOutput.Write
+ 0001:00005174       PythonEngine.TPythonInputOutput.WriteLine
+ 0001:00005798       PythonEngine.TPythonInterface.AfterLoad
+ 0001:000058B4       PythonEngine.TPythonInterface.CheckPython
+ 0001:00005738       PythonEngine.TPythonInterface.Create
+ 0001:00005894       PythonEngine.TPythonInterface.GetInitialized
+ 0001:00005828       PythonEngine.TPythonInterface.GetQuitMessage
+ 0001:00005908       PythonEngine.TPythonInterface.GetUnicodeTypeSuffix
+ 0001:0000593C       PythonEngine.TPythonInterface.MapDll
+ 0001:0000A214       PythonEngine.TPythonInterface.PyArg_Parse
+ 0001:0000A250       PythonEngine.TPythonInterface.PyArg_ParseTuple
+ 0001:0000A754       PythonEngine.TPythonInterface.PyBaseString_Check
+ 0001:0000A73C       PythonEngine.TPythonInterface.PyBool_Check
+ 0001:0000A594       PythonEngine.TPythonInterface.PyClass_Check
+ 0001:0000A28C       PythonEngine.TPythonInterface.PyCode_Addr2Line
+ 0001:0000A5E8       PythonEngine.TPythonInterface.PyDict_Check
+ 0001:0000A5F4       PythonEngine.TPythonInterface.PyDict_CheckExact
+ 0001:0000A760       PythonEngine.TPythonInterface.PyEnum_Check
+ 0001:0000A4EC       PythonEngine.TPythonInterface.PyFloat_Check
+ 0001:0000A4F8       PythonEngine.TPythonInterface.PyFloat_CheckExact
+ 0001:0000A648       PythonEngine.TPythonInterface.PyFunction_Check
+ 0001:0000A320       PythonEngine.TPythonInterface.PyImport_ExecCodeModule
+ 0001:0000A57C       PythonEngine.TPythonInterface.PyInstance_Check
+ 0001:0000A510       PythonEngine.TPythonInterface.PyInt_Check
+ 0001:0000A51C       PythonEngine.TPythonInterface.PyInt_CheckExact
+ 0001:0000A5C4       PythonEngine.TPythonInterface.PyList_Check
+ 0001:0000A5D0       PythonEngine.TPythonInterface.PyList_CheckExact
+ 0001:0000A534       PythonEngine.TPythonInterface.PyLong_Check
+ 0001:0000A540       PythonEngine.TPythonInterface.PyLong_CheckExact
+ 0001:0000A5AC       PythonEngine.TPythonInterface.PyMethod_Check
+ 0001:0000A60C       PythonEngine.TPythonInterface.PyModule_Check
+ 0001:0000A618       PythonEngine.TPythonInterface.PyModule_CheckExact
+ 0001:0000A69C       PythonEngine.TPythonInterface.PyObject_IS_GC
+ 0001:0000A778       PythonEngine.TPythonInterface.PyObject_TypeCheck
+ 0001:0000A630       PythonEngine.TPythonInterface.PySlice_Check
+ 0001:0000A4C8       PythonEngine.TPythonInterface.PyString_Check
+ 0001:0000A4D4       PythonEngine.TPythonInterface.PyString_CheckExact
+ 0001:0000A558       PythonEngine.TPythonInterface.PyTuple_Check
+ 0001:0000A564       PythonEngine.TPythonInterface.PyTuple_CheckExact
+ 0001:0000A68C       PythonEngine.TPythonInterface.PyType_IS_GC
+ 0001:0000A668       PythonEngine.TPythonInterface.PyUnicode_Check
+ 0001:0000A674       PythonEngine.TPythonInterface.PyUnicode_CheckExact
+ 0001:0000A6D4       PythonEngine.TPythonInterface.PyWeakref_Check
+ 0001:0000A71C       PythonEngine.TPythonInterface.PyWeakref_CheckProxy
+ 0001:0000A704       PythonEngine.TPythonInterface.PyWeakref_CheckRef
+ 0001:0000A1C4       PythonEngine.TPythonInterface.Py_BuildValue
+ 0001:0000A184       PythonEngine.TPythonInterface.Py_DECREF
+ 0001:0000A2F8       PythonEngine.TPythonInterface.Py_GetBuildInfo
+ 0001:0000A1B0       PythonEngine.TPythonInterface.Py_GetPlatform
+ 0001:0000A180       PythonEngine.TPythonInterface.Py_INCREF
+ 0001:0000A7B4       PythonEngine.TPythonInterface.Py_InitModule
+ 0001:0000A1A4       PythonEngine.TPythonInterface.Py_XDECREF
+ 0001:0000A198       PythonEngine.TPythonInterface.Py_XINCREF
+ 0001:00012190       PythonEngine.TPythonModule.AddClient
+ 0001:000122F4       PythonEngine.TPythonModule.BuildErrors
+ 0001:00011F04       PythonEngine.TPythonModule.Create
+ 0001:00011FBC       PythonEngine.TPythonModule.DefineDocString
+ 0001:00012550       PythonEngine.TPythonModule.DeleteVar
+ 0001:00011F6C       PythonEngine.TPythonModule.Destroy
+ 0001:0001219C       PythonEngine.TPythonModule.ErrorByName
+ 0001:00011DC8       PythonEngine.TPythonModule.GetClientCount
+ 0001:00011DD0       PythonEngine.TPythonModule.GetClients
+ 0001:00012490       PythonEngine.TPythonModule.GetVar
+ 0001:000126D8       PythonEngine.TPythonModule.GetVarAsVariant
+ 0001:000120A8       PythonEngine.TPythonModule.Initialize
+ 0001:00012120       PythonEngine.TPythonModule.InitializeForNewInterpreter
+ 0001:00012070       PythonEngine.TPythonModule.MakeModule
+ 0001:00012230       PythonEngine.TPythonModule.RaiseError
+ 0001:00012250       PythonEngine.TPythonModule.RaiseErrorFmt
+ 0001:000122CC       PythonEngine.TPythonModule.RaiseErrorObj
+ 0001:00011FAC       PythonEngine.TPythonModule.SetDocString
+ 0001:00011DE4       PythonEngine.TPythonModule.SetErrors
+ 0001:00011EC8       PythonEngine.TPythonModule.SetModuleName
+ 0001:00012378       PythonEngine.TPythonModule.SetVar
+ 0001:0001266C       PythonEngine.TPythonModule.SetVarFromVariant
+ 0001:00015398       PythonEngine.TPythonThread.Execute
+ 0001:0001548C       PythonEngine.TPythonThread.Py_Begin_Allow_Threads
+ 0001:000154BC       PythonEngine.TPythonThread.Py_Begin_Block_Threads
+ 0001:000154C4       PythonEngine.TPythonThread.Py_Begin_Unblock_Threads
+ 0001:000154A4       PythonEngine.TPythonThread.Py_End_Allow_Threads
+ 0001:0000A878       PythonEngine.TPythonTraceback.Clear
+ 0001:0000A7F8       PythonEngine.TPythonTraceback.Create
+ 0001:0000A844       PythonEngine.TPythonTraceback.Destroy
+ 0001:0000A7E4       PythonEngine.TPythonTraceback.GetItem
+ 0001:0000A7DC       PythonEngine.TPythonTraceback.GetItemCount
+ 0001:0000A8AC       PythonEngine.TPythonTraceback.Refresh
+ 0001:000143B8       PythonEngine.TPythonType.AddTypeVar
+ 0001:00013CA4       PythonEngine.TPythonType.AllocSubtypeInst
+ 0001:00013AE4       PythonEngine.TPythonType.Call
+ 0001:00013B1C       PythonEngine.TPythonType.Clear
+ 0001:00013A70       PythonEngine.TPythonType.Compare
+ 0001:000141BC       PythonEngine.TPythonType.Create
+ 0001:0001431C       PythonEngine.TPythonType.CreateInstance
+ 0001:00014368       PythonEngine.TPythonType.CreateInstanceWith
+ 0001:00012F00       PythonEngine.TPythonType.CreateMethod
+ 0001:00014248       PythonEngine.TPythonType.Destroy
+ 0001:000142F8       PythonEngine.TPythonType.Finalize
+ 0001:00013A28       PythonEngine.TPythonType.GetAttr
+ 0001:00013AB0       PythonEngine.TPythonType.GetAttrO
+ 0001:00014620       PythonEngine.TPythonType.GetMembersStartOffset
+ 0001:00014284       PythonEngine.TPythonType.GetTypePtr
+ 0001:00013A88       PythonEngine.TPythonType.Hash
+ 0001:0001428C       PythonEngine.TPythonType.Initialize
+ 0001:00012F10       PythonEngine.TPythonType.InitServices
+ 0001:00013C20       PythonEngine.TPythonType.InitSubtype
+ 0001:00013BF8       PythonEngine.TPythonType.Iter
+ 0001:00013C0C       PythonEngine.TPythonType.IterNext
+ 0001:00014154       PythonEngine.TPythonType.MpAssSubscript
+ 0001:00014124       PythonEngine.TPythonType.MpLength
+ 0001:0001413C       PythonEngine.TPythonType.MpSubscript
+ 0001:00013DDC       PythonEngine.TPythonType.NbAbsolute
+ 0001:00013CD8       PythonEngine.TPythonType.NbAdd
+ 0001:00013E48       PythonEngine.TPythonType.NbAnd
+ 0001:00013E90       PythonEngine.TPythonType.NbCoerce
+ 0001:00013D20       PythonEngine.TPythonType.NbDivide
+ 0001:00013D80       PythonEngine.TPythonType.NbDivmod
+ 0001:00013ED8       PythonEngine.TPythonType.NbFloat
+ 0001:00013D38       PythonEngine.TPythonType.NbFloorDivide
+ 0001:00013F08       PythonEngine.TPythonType.NbHex
+ 0001:00013F20       PythonEngine.TPythonType.NbInplaceAdd
+ 0001:00013F38       PythonEngine.TPythonType.NbInplaceAnd
+ 0001:00013F50       PythonEngine.TPythonType.NbInplaceDivide
+ 0001:00013F68       PythonEngine.TPythonType.NbInplaceFloorDivide
+ 0001:00013F98       PythonEngine.TPythonType.NbInplaceLshift
+ 0001:00013FB0       PythonEngine.TPythonType.NbInplaceMultiply
+ 0001:00013FC8       PythonEngine.TPythonType.NbInplaceOr
+ 0001:00013FE0       PythonEngine.TPythonType.NbInplacePower
+ 0001:00014000       PythonEngine.TPythonType.NbInplaceRemainder
+ 0001:00014018       PythonEngine.TPythonType.NbInplaceRshift
+ 0001:00014030       PythonEngine.TPythonType.NbInplaceSubtract
+ 0001:00013F80       PythonEngine.TPythonType.NbInplaceTrueDivide
+ 0001:00014048       PythonEngine.TPythonType.NbInplaceXor
+ 0001:00013EA8       PythonEngine.TPythonType.NbInt
+ 0001:00013E04       PythonEngine.TPythonType.NbInvert
+ 0001:00013EC0       PythonEngine.TPythonType.NbLong
+ 0001:00013E18       PythonEngine.TPythonType.NbLShift
+ 0001:00013D08       PythonEngine.TPythonType.NbMultiply
+ 0001:00013DB4       PythonEngine.TPythonType.NbNegative
+ 0001:00013DF0       PythonEngine.TPythonType.NbNonZero
+ 0001:00013EF0       PythonEngine.TPythonType.NbOct
+ 0001:00013E78       PythonEngine.TPythonType.NbOr
+ 0001:00013DC8       PythonEngine.TPythonType.NbPositive
+ 0001:00013D98       PythonEngine.TPythonType.NbPower
+ 0001:00013D68       PythonEngine.TPythonType.NbRemainder
+ 0001:00013E30       PythonEngine.TPythonType.NbRShift
+ 0001:00013CF0       PythonEngine.TPythonType.NbSubstract
+ 0001:00013D50       PythonEngine.TPythonType.NbTrueDivide
+ 0001:00013E60       PythonEngine.TPythonType.NbXor
+ 0001:00013C3C       PythonEngine.TPythonType.NewSubtypeInst
+ 0001:00012E00       PythonEngine.TPythonType.Notification
+ 0001:00013A0C       PythonEngine.TPythonType.Print
+ 0001:00013A5C       PythonEngine.TPythonType.Repr
+ 0001:00013B30       PythonEngine.TPythonType.RichCmp
+ 0001:00013A40       PythonEngine.TPythonType.SetAttr
+ 0001:00013AC8       PythonEngine.TPythonType.SetAttrO
+ 0001:00013938       PythonEngine.TPythonType.SetDocString
+ 0001:00012E94       PythonEngine.TPythonType.SetModule
+ 0001:00012E30       PythonEngine.TPythonType.SetPyObjectClass
+ 0001:00012EC8       PythonEngine.TPythonType.SetServices
+ 0001:00012ED4       PythonEngine.TPythonType.SetTypeName
+ 0001:000140E0       PythonEngine.TPythonType.SqAssItem
+ 0001:00014100       PythonEngine.TPythonType.SqAssSlice
+ 0001:00014078       PythonEngine.TPythonType.SqConcat
+ 0001:00014174       PythonEngine.TPythonType.SqContains
+ 0001:0001418C       PythonEngine.TPythonType.SqInplaceConcat
+ 0001:000141A4       PythonEngine.TPythonType.SqInplaceRepeat
+ 0001:000140A8       PythonEngine.TPythonType.SqItem
+ 0001:00014060       PythonEngine.TPythonType.SqLength
+ 0001:00014090       PythonEngine.TPythonType.SqRepeat
+ 0001:000140C0       PythonEngine.TPythonType.SqSlice
+ 0001:00013A9C       PythonEngine.TPythonType.Str
+ 0001:00013B00       PythonEngine.TPythonType.Traverse
+ 0001:00013948       PythonEngine.TPythonType.TypeFlagsAsInt
+ 0001:00014DF4       PythonEngine.TPyVar.Create
+ 0001:00014E2C       PythonEngine.TPyVar.CreateWith
+ 0001:00014EA8       PythonEngine.TPyVar.Destroy
+ 0001:00014EE4       PythonEngine.TPyVar.GetAttr
+ 0001:000150FC       PythonEngine.TPyVar.GetValue
+ 0001:000151C4       PythonEngine.TPyVar.GetValueAsVariant
+ 0001:000150F4       PythonEngine.TPyVar.RegisterMethods
+ 0001:00015000       PythonEngine.TPyVar.Repr
+ 0001:00014F68       PythonEngine.TPyVar.SetAttr
+ 0001:00015294       PythonEngine.TPyVar.SetValue
+ 0001:00015368       PythonEngine.TPyVar.SetValueFromVariant
+ 0001:00012CAC       PythonEngine.TTypeServices.AssignTo
+ 0001:00012C68       PythonEngine.TTypeServices.Create
+ 0001:00011DF4       PythonEngine.UpdateDependencies
+ 0001:00011420       PythonEngine.UpdateDependencies
+ 0001:0000F7D4       PythonEngine.VarRecAsString
+ 0004:00000028       PythonGUIInputOutput..2
+ 0001:00015DB0       PythonGUIInputOutput..TPythonGUIInputOutput
+ 0001:000160D4       PythonGUIInputOutput.Finalization
+ 0002:00000120       PythonGUIInputOutput.PythonGUIInputOutput
+ 0001:000160A8       PythonGUIInputOutput.Register
+ 0001:00015F5C       PythonGUIInputOutput.TPythonGUIInputOutput.AddPendingWrite
+ 0001:00015FD8       PythonGUIInputOutput.TPythonGUIInputOutput.Create
+ 0001:0001601C       PythonGUIInputOutput.TPythonGUIInputOutput.Destroy
+ 0001:0001604C       PythonGUIInputOutput.TPythonGUIInputOutput.DisplayString
+ 0001:00015EB0       PythonGUIInputOutput.TPythonGUIInputOutput.Notification
+ 0001:00015ED8       PythonGUIInputOutput.TPythonGUIInputOutput.pyGUIOutputWndProc
+ 0001:00015EFC       PythonGUIInputOutput.TPythonGUIInputOutput.ReceiveData
+ 0001:00015EE8       PythonGUIInputOutput.TPythonGUIInputOutput.SendData
+ 0001:00015F70       PythonGUIInputOutput.TPythonGUIInputOutput.WriteOutput
+ 0001:00000410       SysInit.@InitPkg
+ 0001:00000474       SysInit.@PackageLoad
+ 0001:00000480       SysInit.@PackageUnload
+ 0001:00000300       SysInit.AllocTlsBuffer
+ 0001:000003BC       SysInit.ExitProcessTLS
+ 0001:00000384       SysInit.ExitThreadTLS
+ 0001:000002C8       SysInit.FreeLibrary
+ 0001:0000030C       SysInit.GetTlsSize
+ 0004:00000004       SysInit.HInstance
+ 0001:000003E0       SysInit.InitializeModule
+ 0001:00000358       SysInit.InitProcessTLS
+ 0001:00000314       SysInit.InitThreadTLS
+ 0001:000002D0       SysInit.LocalAlloc
+ 0001:000002D8       SysInit.LocalFree
+ 0003:00000008       SysInit.Module
+ 0004:00000000       SysInit.ModuleIsLib
+ 0004:00000001       SysInit.ModuleIsPackage
+ 0003:00000004       SysInit.PtrToNil
+ 0001:000002E0       SysInit.TlsAlloc
+ 0004:00000008       SysInit.tlsBuffer
+ 0001:000002E8       SysInit.TlsFree
+ 0001:000002F0       SysInit.TlsGetValue
+ 0003:00000000       SysInit.TlsIndex
+ 0005:00000000       SysInit.TlsLast
+ 0003:00000020       SysInit.TlsProc
+ 0001:000002F8       SysInit.TlsSetValue
+ 0001:000003EC       SysInit.UninitializeModule
+ 0004:00000034       VarPyth..1
+ 0001:00016BCC       VarPyth..TPythonData
+ 0001:00016B14       VarPyth..TPythonVariantType
+ 0001:00018654       VarPyth.ArgAsPythonObject
+ 0001:0001780C       VarPyth.BuiltinModule
+ 0001:00017854       VarPyth.DatetimeModule
+ 0001:000189B0       VarPyth.DeleteObjectItem
+ 0001:00018CB8       VarPyth.DelSequenceSlice
+ 0001:00017748       VarPyth.Ellipsis
+ 0001:00016F48       VarPyth.ExtractPythonObjectFrom
+ 0001:00018A8C       VarPyth.ExtractSliceIndexes
+ 0001:00019F4C       VarPyth.Finalization
+ 0001:00016EC0       VarPyth.GetAtom
+ 0001:000186F0       VarPyth.GetObjectItem
+ 0001:00018DF4       VarPyth.GetObjectLength
+ 0001:00018B58       VarPyth.GetSequenceSlice
+ 0001:0001787C       VarPyth.Import
+ 0001:00019688       VarPyth.IsBasicType
+ 0001:000179B8       VarPyth.len
+ 0001:00017764       VarPyth.MainModule
+ 0001:000176D0       VarPyth.NewPythonDict
+ 0001:00017610       VarPyth.NewPythonList
+ 0001:00017670       VarPyth.NewPythonTuple
+ 0001:0001772C       VarPyth.None
+ 0001:00017FEC       VarPyth.ParseParam
+ 0003:000000D0       VarPyth.PythonVariantType
+ 0001:00018D14       VarPyth.SequenceContains
+ 0001:00017F74       VarPyth.SetClearVarToEmptyParam
+ 0001:000187C4       VarPyth.SetObjectItem
+ 0001:00018BB0       VarPyth.SetSequenceSlice
+ 0001:00017834       VarPyth.SysModule
+ 0001:00019930       VarPyth.TPythonData.Compare
+ 0001:0001999C       VarPyth.TPythonData.Create
+ 0001:00019960       VarPyth.TPythonData.Create
+ 0001:000199E0       VarPyth.TPythonData.Destroy
+ 0001:00019A18       VarPyth.TPythonData.DoAdd
+ 0001:00019A5C       VarPyth.TPythonData.DoAnd
+ 0001:00019AA0       VarPyth.TPythonData.DoDivide
+ 0001:00019AE4       VarPyth.TPythonData.DoIntDivide
+ 0001:00019B28       VarPyth.TPythonData.DoModulus
+ 0001:00019B9C       VarPyth.TPythonData.DoMultiply
+ 0001:00019BE0       VarPyth.TPythonData.DoNegate
+ 0001:00019C1C       VarPyth.TPythonData.DoNot
+ 0001:00019C58       VarPyth.TPythonData.DoOr
+ 0001:00019C9C       VarPyth.TPythonData.DoShiftLeft
+ 0001:00019CE0       VarPyth.TPythonData.DoShiftRight
+ 0001:00019D24       VarPyth.TPythonData.DoSubtract
+ 0001:00019D68       VarPyth.TPythonData.DoXor
+ 0001:00019DAC       VarPyth.TPythonData.Equal
+ 0001:00019DE0       VarPyth.TPythonData.GetAsString
+ 0001:00019E08       VarPyth.TPythonData.GetAsVariant
+ 0001:00019E30       VarPyth.TPythonData.GetAsWideString
+ 0001:00019EA8       VarPyth.TPythonData.GreaterOrEqualThan
+ 0001:00019EC0       VarPyth.TPythonData.GreaterThan
+ 0001:00019ED8       VarPyth.TPythonData.IsNone
+ 0001:00019EF0       VarPyth.TPythonData.LessOrEqualThan
+ 0001:00019F08       VarPyth.TPythonData.LessThan
+ 0001:00019F20       VarPyth.TPythonData.SetPyObject
+ 0001:00017B1C       VarPyth.TPythonVariantType.BinaryOp
+ 0001:00017CD8       VarPyth.TPythonVariantType.Cast
+ 0001:00017D30       VarPyth.TPythonVariantType.CastTo
+ 0001:00017E44       VarPyth.TPythonVariantType.Clear
+ 0001:00017E54       VarPyth.TPythonVariantType.CompareOp
+ 0001:00017F24       VarPyth.TPythonVariantType.Copy
+ 0001:00017F8C       VarPyth.TPythonVariantType.DispInvoke
+ 0001:000182A0       VarPyth.TPythonVariantType.DoDispInvoke
+ 0001:000185A4       VarPyth.TPythonVariantType.DoFunction
+ 0001:00018628       VarPyth.TPythonVariantType.DoProcedure
+ 0001:00018E24       VarPyth.TPythonVariantType.EvalPython
+ 0001:000192BC       VarPyth.TPythonVariantType.GetInstance
+ 0001:000192C0       VarPyth.TPythonVariantType.GetProperty
+ 0001:00019518       VarPyth.TPythonVariantType.GetPropertyWithArg
+ 0001:000195FC       VarPyth.TPythonVariantType.IsClear
+ 0001:0001961C       VarPyth.TPythonVariantType.LeftPromotion
+ 0001:00019658       VarPyth.TPythonVariantType.PyhonVarDataCreate
+ 0001:000196E0       VarPyth.TPythonVariantType.PythonObjectToVarData
+ 0001:00019798       VarPyth.TPythonVariantType.RightPromotion
+ 0001:000197B8       VarPyth.TPythonVariantType.SetProperty
+ 0001:0001983C       VarPyth.TPythonVariantType.UnaryOp
+ 0001:00019874       VarPyth.TPythonVariantType.VarDataToPythonObject
+ 0001:00016F14       VarPyth.VarAsPython
+ 0001:0001746C       VarPyth.VarIsBool
+ 0001:0001749C       VarPyth.VarIsEnum
+ 0001:000174CC       VarPyth.VarIsInstanceOf
+ 0001:000175D8       VarPyth.VarIsNone
+ 0001:00016EFC       VarPyth.VarIsPython
+ 0001:0001731C       VarPyth.VarIsPythonCallable
+ 0001:0001722C       VarPyth.VarIsPythonClass
+ 0001:000173AC       VarPyth.VarIsPythonDate
+ 0001:0001737C       VarPyth.VarIsPythonDateTime
+ 0001:0001740C       VarPyth.VarIsPythonDateTimeDelta
+ 0001:000171FC       VarPyth.VarIsPythonDict
+ 0001:0001716C       VarPyth.VarIsPythonFloat
+ 0001:000172BC       VarPyth.VarIsPythonFunction
+ 0001:0001725C       VarPyth.VarIsPythonInstance
+ 0001:0001713C       VarPyth.VarIsPythonInteger
+ 0001:000171CC       VarPyth.VarIsPythonList
+ 0001:000170AC       VarPyth.VarIsPythonMapping
+ 0001:0001728C       VarPyth.VarIsPythonMethod
+ 0001:000172EC       VarPyth.VarIsPythonModule
+ 0001:000170DC       VarPyth.VarIsPythonNumber
+ 0001:0001707C       VarPyth.VarIsPythonSequence
+ 0001:0001710C       VarPyth.VarIsPythonString
+ 0001:000173DC       VarPyth.VarIsPythonTime
+ 0001:0001719C       VarPyth.VarIsPythonTuple
+ 0001:0001743C       VarPyth.VarIsPythonTZInfo
+ 0001:0001734C       VarPyth.VarIsPythonUnicode
+ 0001:00016F64       VarPyth.VarIsSame
+ 0001:00016FE8       VarPyth.VarIsSameType
+ 0001:00017524       VarPyth.VarIsSubclassOf
+ 0001:0001757C       VarPyth.VarIsSubtypeOf
+ 0001:00017604       VarPyth.VarIsTrue
+ 0002:00000140       VarPyth.VarPyth
+ 0001:00016EF0       VarPyth.VarPython
+ 0001:00016C54       VarPyth.VarPythonCreate
+ 0001:00016CFC       VarPyth.VarPythonCreate
+ 0001:00016C84       VarPyth.VarPythonCreate
+ 0001:00016E60       VarPyth.VarPythonEval
+ 0001:00017A80       VarPyth._type
+ 0004:0000000C       Windows..3
+ 0001:0000048C       Windows.AllocConsole
+ 0001:00000494       Windows.ExitProcess
+ 0001:000004F4       Windows.Finalization
+ 0001:0000049C       Windows.FreeConsole
+ 0001:000004A4       Windows.FreeLibrary
+ 0001:000004D4       Windows.GetActiveWindow
+ 0001:000004AC       Windows.GetCurrentThreadId
+ 0001:000004B4       Windows.GetLastError
+ 0001:000004BC       Windows.GetProcAddress
+ 0004:00000010       Windows.HtmlHelpModule
+ 0001:000004C4       Windows.LoadLibrary
+ 0001:000004DC       Windows.MessageBox
+ 0001:000004E4       Windows.PostMessage
+ 0001:000004EC       Windows.SendMessage
+ 0001:000004CC       Windows.SetConsoleTitle
+ 0002:00000008       Windows.Windows
+
+
+  Address             Publics by Value
+
+ 0001:000002C8       SysInit.FreeLibrary
+ 0001:000002D0       SysInit.LocalAlloc
+ 0001:000002D8       SysInit.LocalFree
+ 0001:000002E0       SysInit.TlsAlloc
+ 0001:000002E8       SysInit.TlsFree
+ 0001:000002F0       SysInit.TlsGetValue
+ 0001:000002F8       SysInit.TlsSetValue
+ 0001:00000300       SysInit.AllocTlsBuffer
+ 0001:0000030C       SysInit.GetTlsSize
+ 0001:00000314       SysInit.InitThreadTLS
+ 0001:00000358       SysInit.InitProcessTLS
+ 0001:00000384       SysInit.ExitThreadTLS
+ 0001:000003BC       SysInit.ExitProcessTLS
+ 0001:000003E0       SysInit.InitializeModule
+ 0001:000003EC       SysInit.UninitializeModule
+ 0001:00000410       SysInit.@InitPkg
+ 0001:00000474       SysInit.@PackageLoad
+ 0001:00000480       SysInit.@PackageUnload
+ 0001:0000048C       Windows.AllocConsole
+ 0001:00000494       Windows.ExitProcess
+ 0001:0000049C       Windows.FreeConsole
+ 0001:000004A4       Windows.FreeLibrary
+ 0001:000004AC       Windows.GetCurrentThreadId
+ 0001:000004B4       Windows.GetLastError
+ 0001:000004BC       Windows.GetProcAddress
+ 0001:000004C4       Windows.LoadLibrary
+ 0001:000004CC       Windows.SetConsoleTitle
+ 0001:000004D4       Windows.GetActiveWindow
+ 0001:000004DC       Windows.MessageBox
+ 0001:000004E4       Windows.PostMessage
+ 0001:000004EC       Windows.SendMessage
+ 0001:000004F4       Windows.Finalization
+ 0001:00000A4C       MethodCallBack.GetDDECallBack
+ 0001:00000A68       MethodCallBack.GetOfObjectCallBack
+ 0001:00000A80       MethodCallBack.GetCallBack
+ 0001:00000BA0       MethodCallBack.DeleteCallBack
+ 0001:00000BBC       MethodCallBack.FreeCallBacks
+ 0001:00000BFC       MethodCallBack.Finalization
+ 0001:00001030       PythonEngine..EDLLLoadError
+ 0001:000010B8       PythonEngine..EDLLImportError
+ 0001:00001158       PythonEngine..EPythonError
+ 0001:000011F8       PythonEngine..EPyExecError
+ 0001:00001280       PythonEngine..EPyException
+ 0001:00001308       PythonEngine..EPyStandardError
+ 0001:00001398       PythonEngine..EPyArithmeticError
+ 0001:0000142C       PythonEngine..EPyLookupError
+ 0001:000014B8       PythonEngine..EPyAssertionError
+ 0001:00001548       PythonEngine..EPyAttributeError
+ 0001:000015D8       PythonEngine..EPyEOFError
+ 0001:0000165C       PythonEngine..EPyFloatingPointError
+ 0001:000016F4       PythonEngine..EPyEnvironmentError
+ 0001:00001788       PythonEngine..EPyIOError
+ 0001:0000180C       PythonEngine..EPyOSError
+ 0001:00001890       PythonEngine..EPyImportError
+ 0001:0000191C       PythonEngine..EPyIndexError
+ 0001:000019A4       PythonEngine..EPyKeyError
+ 0001:00001A28       PythonEngine..EPyKeyboardInterrupt
+ 0001:00001AC0       PythonEngine..EPyMemoryError
+ 0001:00001B4C       PythonEngine..EPyNameError
+ 0001:00001BD4       PythonEngine..EPyOverflowError
+ 0001:00001C64       PythonEngine..EPyRuntimeError
+ 0001:00001CF0       PythonEngine..EPyNotImplementedError
+ 0001:00001D8C       PythonEngine..EPySyntaxError
+ 0001:00001E34       PythonEngine..EPyIndentationError
+ 0001:00001EC8       PythonEngine..EPyTabError
+ 0001:00001F4C       PythonEngine..EPySystemError
+ 0001:00001FD8       PythonEngine..EPySystemExit
+ 0001:00002060       PythonEngine..EPyTypeError
+ 0001:000020E8       PythonEngine..EPyUnboundLocalError
+ 0001:00002180       PythonEngine..EPyValueError
+ 0001:00002208       PythonEngine..EPyUnicodeError
+ 0001:00002294       PythonEngine..UnicodeEncodeError
+ 0001:00002328       PythonEngine..UnicodeDecodeError
+ 0001:000023BC       PythonEngine..UnicodeTranslateError
+ 0001:00002454       PythonEngine..EPyZeroDivisionError
+ 0001:000024EC       PythonEngine..EPyStopIteration
+ 0001:0000257C       PythonEngine..EPyWarning
+ 0001:00002600       PythonEngine..EPyUserWarning
+ 0001:0000268C       PythonEngine..EPyDeprecationWarning
+ 0001:00002724       PythonEngine..PendingDeprecationWarning
+ 0001:000027C4       PythonEngine..FutureWarning
+ 0001:0000284C       PythonEngine..EPySyntaxWarning
+ 0001:000028DC       PythonEngine..EPyOverflowWarning
+ 0001:00002970       PythonEngine..EPyRuntimeWarning
+ 0001:00002A00       PythonEngine..EPyReferenceError
+ 0001:00002A90       PythonEngine..EPyWindowsError
+ 0001:00002B98       PythonEngine..TPythonInputOutput
+ 0001:00002D38       PythonEngine..TDynamicDll
+ 0001:00002FE8       PythonEngine..TPythonInterface
+ 0001:00003234       PythonEngine..TTracebackItem
+ 0001:000032DC       PythonEngine..TPythonTraceback
+ 0001:0000336C       PythonEngine..TPythonEngine
+ 0001:000035E0       PythonEngine..TEngineClient
+ 0001:00003814       PythonEngine..TEventDef
+ 0001:00003934       PythonEngine..TEventDefs
+ 0001:000039E8       PythonEngine..TMethodsContainer
+ 0001:00003AD8       PythonEngine..TMembersContainer
+ 0001:00003BA8       PythonEngine..TGetSetContainer
+ 0001:00003CB4       PythonEngine..TParentClassError
+ 0001:00003DA8       PythonEngine..TError
+ 0001:00003EE8       PythonEngine..TErrors
+ 0001:00003F94       PythonEngine..TPythonModule
+ 0001:00004104       PythonEngine..TPyObject
+ 0001:000046BC       PythonEngine..TTypeServices
+ 0001:00004800       PythonEngine..TPythonType
+ 0001:00004AC8       PythonEngine..TPythonDelphiVar
+ 0001:00004CA8       PythonEngine..TPyVar
+ 0001:00004EA4       PythonEngine..TPythonThread
+ 0001:00004F38       PythonEngine.TPythonInputOutput.Create
+ 0001:00004FAC       PythonEngine.TPythonInputOutput.Destroy
+ 0001:00004FEC       PythonEngine.TPythonInputOutput.Lock
+ 0001:00004FF8       PythonEngine.TPythonInputOutput.Unlock
+ 0001:00005004       PythonEngine.DropLine
+ 0001:00005058       PythonEngine.TPythonInputOutput.Write
+ 0001:00005174       PythonEngine.TPythonInputOutput.WriteLine
+ 0001:000051D4       PythonEngine.TPythonInputOutput.AddWrite
+ 0001:00005204       PythonEngine.TPythonInputOutput.SendData
+ 0001:0000521C       PythonEngine.TPythonInputOutput.ReceiveData
+ 0001:00005240       PythonEngine.TPythonInputOutput.AddPendingWrite
+ 0001:00005244       PythonEngine.TPythonInputOutput.GetCurrentThreadSlotIdx
+ 0001:0000528C       PythonEngine.TPythonInputOutput.GetCurrentThreadLine
+ 0001:000052A8       PythonEngine.TPythonInputOutput.UpdateCurrentThreadLine
+ 0001:000052C4       PythonEngine.TDynamicDll.DoOpenDll
+ 0001:0000533C       PythonEngine.TDynamicDll.GetDllPath
+ 0001:0000539C       PythonEngine.TDynamicDll.OpenDll
+ 0001:000054A0       PythonEngine.TDynamicDll.Create
+ 0001:000054E8       PythonEngine.TDynamicDll.Destroy
+ 0001:0000551C       PythonEngine.TDynamicDll.Import
+ 0001:000055B4       PythonEngine.TDynamicDll.Loaded
+ 0001:000055D4       PythonEngine.TDynamicDll.IsHandleValid
+ 0001:000055DC       PythonEngine.TDynamicDll.LoadDll
+ 0001:000055E8       PythonEngine.TDynamicDll.UnloadDll
+ 0001:00005610       PythonEngine.TDynamicDll.BeforeLoad
+ 0001:00005624       PythonEngine.TDynamicDll.AfterLoad
+ 0001:00005638       PythonEngine.TDynamicDll.BeforeUnload
+ 0001:0000564C       PythonEngine.TDynamicDll.GetQuitMessage
+ 0001:000056AC       PythonEngine.TDynamicDll.Quit
+ 0001:00005720       PythonEngine.TDynamicDll.IsAPIVersionStored
+ 0001:00005728       PythonEngine.TDynamicDll.IsDllNameStored
+ 0001:00005730       PythonEngine.TDynamicDll.IsRegVersionStored
+ 0001:00005738       PythonEngine.TPythonInterface.Create
+ 0001:00005798       PythonEngine.TPythonInterface.AfterLoad
+ 0001:00005828       PythonEngine.TPythonInterface.GetQuitMessage
+ 0001:00005894       PythonEngine.TPythonInterface.GetInitialized
+ 0001:000058B4       PythonEngine.TPythonInterface.CheckPython
+ 0001:00005908       PythonEngine.TPythonInterface.GetUnicodeTypeSuffix
+ 0001:0000593C       PythonEngine.TPythonInterface.MapDll
+ 0001:0000A180       PythonEngine.TPythonInterface.Py_INCREF
+ 0001:0000A184       PythonEngine.TPythonInterface.Py_DECREF
+ 0001:0000A198       PythonEngine.TPythonInterface.Py_XINCREF
+ 0001:0000A1A4       PythonEngine.TPythonInterface.Py_XDECREF
+ 0001:0000A1B0       PythonEngine.TPythonInterface.Py_GetPlatform
+ 0001:0000A1C4       PythonEngine.TPythonInterface.Py_BuildValue
+ 0001:0000A214       PythonEngine.TPythonInterface.PyArg_Parse
+ 0001:0000A250       PythonEngine.TPythonInterface.PyArg_ParseTuple
+ 0001:0000A28C       PythonEngine.TPythonInterface.PyCode_Addr2Line
+ 0001:0000A2F8       PythonEngine.TPythonInterface.Py_GetBuildInfo
+ 0001:0000A320       PythonEngine.TPythonInterface.PyImport_ExecCodeModule
+ 0001:0000A4C8       PythonEngine.TPythonInterface.PyString_Check
+ 0001:0000A4D4       PythonEngine.TPythonInterface.PyString_CheckExact
+ 0001:0000A4EC       PythonEngine.TPythonInterface.PyFloat_Check
+ 0001:0000A4F8       PythonEngine.TPythonInterface.PyFloat_CheckExact
+ 0001:0000A510       PythonEngine.TPythonInterface.PyInt_Check
+ 0001:0000A51C       PythonEngine.TPythonInterface.PyInt_CheckExact
+ 0001:0000A534       PythonEngine.TPythonInterface.PyLong_Check
+ 0001:0000A540       PythonEngine.TPythonInterface.PyLong_CheckExact
+ 0001:0000A558       PythonEngine.TPythonInterface.PyTuple_Check
+ 0001:0000A564       PythonEngine.TPythonInterface.PyTuple_CheckExact
+ 0001:0000A57C       PythonEngine.TPythonInterface.PyInstance_Check
+ 0001:0000A594       PythonEngine.TPythonInterface.PyClass_Check
+ 0001:0000A5AC       PythonEngine.TPythonInterface.PyMethod_Check
+ 0001:0000A5C4       PythonEngine.TPythonInterface.PyList_Check
+ 0001:0000A5D0       PythonEngine.TPythonInterface.PyList_CheckExact
+ 0001:0000A5E8       PythonEngine.TPythonInterface.PyDict_Check
+ 0001:0000A5F4       PythonEngine.TPythonInterface.PyDict_CheckExact
+ 0001:0000A60C       PythonEngine.TPythonInterface.PyModule_Check
+ 0001:0000A618       PythonEngine.TPythonInterface.PyModule_CheckExact
+ 0001:0000A630       PythonEngine.TPythonInterface.PySlice_Check
+ 0001:0000A648       PythonEngine.TPythonInterface.PyFunction_Check
+ 0001:0000A668       PythonEngine.TPythonInterface.PyUnicode_Check
+ 0001:0000A674       PythonEngine.TPythonInterface.PyUnicode_CheckExact
+ 0001:0000A68C       PythonEngine.TPythonInterface.PyType_IS_GC
+ 0001:0000A69C       PythonEngine.TPythonInterface.PyObject_IS_GC
+ 0001:0000A6D4       PythonEngine.TPythonInterface.PyWeakref_Check
+ 0001:0000A704       PythonEngine.TPythonInterface.PyWeakref_CheckRef
+ 0001:0000A71C       PythonEngine.TPythonInterface.PyWeakref_CheckProxy
+ 0001:0000A73C       PythonEngine.TPythonInterface.PyBool_Check
+ 0001:0000A754       PythonEngine.TPythonInterface.PyBaseString_Check
+ 0001:0000A760       PythonEngine.TPythonInterface.PyEnum_Check
+ 0001:0000A778       PythonEngine.TPythonInterface.PyObject_TypeCheck
+ 0001:0000A7B4       PythonEngine.TPythonInterface.Py_InitModule
+ 0001:0000A7DC       PythonEngine.TPythonTraceback.GetItemCount
+ 0001:0000A7E4       PythonEngine.TPythonTraceback.GetItem
+ 0001:0000A7F8       PythonEngine.TPythonTraceback.Create
+ 0001:0000A844       PythonEngine.TPythonTraceback.Destroy
+ 0001:0000A878       PythonEngine.TPythonTraceback.Clear
+ 0001:0000A8AC       PythonEngine.TPythonTraceback.Refresh
+ 0001:0000ACE0       PythonEngine.TPythonEngine.Create
+ 0001:0000AE68       PythonEngine.TPythonEngine.Destroy
+ 0001:0000AEDC       PythonEngine.TPythonEngine.Finalize
+ 0001:0000B138       PythonEngine.TPythonEngine.Lock
+ 0001:0000B144       PythonEngine.TPythonEngine.Unlock
+ 0001:0000B150       PythonEngine.TPythonEngine.AfterLoad
+ 0001:0000B164       PythonEngine.TPythonEngine.BeforeLoad
+ 0001:0000B180       PythonEngine.TPythonEngine.DoOpenDll
+ 0001:0000B238       PythonEngine.SetFlag
+ 0001:0000B248       PythonEngine.TPythonEngine.AssignPyFlags
+ 0001:0000B334       PythonEngine.GetVal
+ 0001:0000B3C0       PythonEngine.GetTimeStructType
+ 0001:0000B46C       PythonEngine.GetDateTimeTypes
+ 0001:0000B694       PythonEngine.TPythonEngine.Initialize
+ 0001:0000B818       PythonEngine.TPythonEngine.SetInitScript
+ 0001:0000B828       PythonEngine.TPythonEngine.GetInterpreterState
+ 0001:0000B844       PythonEngine.TPythonEngine.GetThreadState
+ 0001:0000B858       PythonEngine.TPythonEngine.SetInitThreads
+ 0001:0000B884       PythonEngine.TPythonEngine.GetClientCount
+ 0001:0000B890       PythonEngine.TPythonEngine.GetClients
+ 0001:0000B8A8       PythonEngine.TPythonEngine.Notification
+ 0001:0000B918       PythonEngine.TPythonEngine.CheckRegistry
+ 0001:0000BA78       PythonEngine.TPythonEngine.SetProgramArgs
+ 0001:0000BB90       PythonEngine.TPythonEngine.InitWinConsole
+ 0001:0000BBB8       PythonEngine.TPythonEngine.SetUseWindowsConsole
+ 0001:0000BBCC       PythonEngine.TPythonEngine.SetGlobalVars
+ 0001:0000BC74       PythonEngine.TPythonEngine.SetLocalVars
+ 0001:0000BD1C       PythonEngine.TPythonEngine.SetPyFlags
+ 0001:0000BDA4       PythonEngine.TPythonEngine.IsType
+ 0001:0000BDAC       PythonEngine.TPythonEngine.GetAttrString
+ 0001:0000BDF0       PythonEngine.TPythonEngine.CleanString
+ 0001:0000BE78       PythonEngine.TPythonEngine.EvalPyFunction
+ 0001:0000BF8C       PythonEngine.TPythonEngine.EvalFunction
+ 0001:0000C014       PythonEngine.TPythonEngine.EvalFunctionNoArgs
+ 0001:0000C07C       PythonEngine.TPythonEngine.EvalStringAsStr
+ 0001:0000C098       PythonEngine.TPythonEngine.EvalStringAsStrUseDict
+ 0001:0000C104       PythonEngine.TPythonEngine.EvalString
+ 0001:0000C110       PythonEngine.TPythonEngine.ExecString
+ 0001:0000C154       PythonEngine.TPythonEngine.ExecStringUseDict
+ 0001:0000C1E8       PythonEngine.TPythonEngine.Run_CommandAsString
+ 0001:0000C22C       PythonEngine.TPythonEngine.Run_CommandAsObject
+ 0001:0000C3B8       PythonEngine.TPythonEngine.ExecStrings
+ 0001:0000C42C       PythonEngine.TPythonEngine.EvalStrings
+ 0001:0000C49C       PythonEngine.TPythonEngine.EvalStringsAsStr
+ 0001:0000C50C       PythonEngine.TPythonEngine.CheckEvalSyntax
+ 0001:0000C518       PythonEngine.TPythonEngine.CheckExecSyntax
+ 0001:0000C524       PythonEngine.TPythonEngine.CheckSyntax
+ 0001:0000C558       PythonEngine.Define
+ 0001:0000C604       PythonEngine.DefineSyntaxError
+ 0001:0000CA9C       PythonEngine.GetTypeAsString
+ 0001:0000CAE4       PythonEngine.TPythonEngine.RaiseError
+ 0001:0000D71C       PythonEngine.TPythonEngine.PyObjectAsString
+ 0001:0000D7FC       PythonEngine.TPythonEngine.DoRedirectIO
+ 0001:0000DB3C       PythonEngine.TPythonEngine.AddClient
+ 0001:0000DB48       PythonEngine.TPythonEngine.RemoveClient
+ 0001:0000DB80       PythonEngine.TPythonEngine.FindClient
+ 0001:0000DBDC       PythonEngine.TPythonEngine.TypeByName
+ 0001:0000DC8C       PythonEngine.TPythonEngine.ModuleByName
+ 0001:0000DD38       PythonEngine.TPythonEngine.MethodsByName
+ 0001:0000DDE8       PythonEngine.ArrayVarDim1
+ 0001:0000DED0       PythonEngine.ArrayVarDim2
+ 0001:0000E05C       PythonEngine.ArrayVarDim3
+ 0001:0000E284       PythonEngine.TPythonEngine.VariantAsPyObject
+ 0001:0000E904       PythonEngine.GetStructMember
+ 0001:0000E9E4       PythonEngine.ExtractDate
+ 0001:0000F008       PythonEngine.GetSequenceItem
+ 0001:0000F070       PythonEngine.TPythonEngine.PyObjectAsVariant
+ 0001:0000F2AC       PythonEngine.TPythonEngine.VarRecAsPyObject
+ 0001:0000F514       PythonEngine.TPythonEngine.MakePyTuple
+ 0001:0000F5B4       PythonEngine.TPythonEngine.MakePyList
+ 0001:0000F654       PythonEngine.TPythonEngine.ArrayToPyTuple
+ 0001:0000F714       PythonEngine.TPythonEngine.ArrayToPyList
+ 0001:0000F7D4       PythonEngine.VarRecAsString
+ 0001:0000F8A4       PythonEngine.TPythonEngine.ArrayToPyDict
+ 0001:0000FA38       PythonEngine.TPythonEngine.StringsToPyList
+ 0001:0000FB20       PythonEngine.TPythonEngine.StringsToPyTuple
+ 0001:0000FC08       PythonEngine.TPythonEngine.PyListToStrings
+ 0001:0000FCEC       PythonEngine.TPythonEngine.PyTupleToStrings
+ 0001:0000FDD4       PythonEngine.TPythonEngine.PyUnicode_AsWideString
+ 0001:0000FED8       PythonEngine.TPythonEngine.PyUnicode_FromWideString
+ 0001:0000FEFC       PythonEngine.TPythonEngine.ReturnNone
+ 0001:0000FF10       PythonEngine.TPythonEngine.FindModule
+ 0001:0000FF50       PythonEngine.TPythonEngine.FindFunction
+ 0001:0000FFF8       PythonEngine.GetBit
+ 0001:00010044       PythonEngine.TPythonEngine.SetToList
+ 0001:000100D8       PythonEngine.SetBit
+ 0001:00010120       PythonEngine.TPythonEngine.ListToSet
+ 0001:000101CC       PythonEngine.TPythonEngine.CheckError
+ 0001:000101F4       PythonEngine.TPythonEngine.GetMainModule
+ 0001:0001020C       PythonEngine.TPythonEngine.PyTimeStruct_Check
+ 0001:00010224       PythonEngine.TPythonEngine.PyDate_Check
+ 0001:00010230       PythonEngine.TPythonEngine.PyDate_CheckExact
+ 0001:00010248       PythonEngine.TPythonEngine.PyDateTime_Check
+ 0001:00010254       PythonEngine.TPythonEngine.PyDateTime_CheckExact
+ 0001:00010270       PythonEngine.TPythonEngine.PyTime_Check
+ 0001:0001027C       PythonEngine.TPythonEngine.PyTime_CheckExact
+ 0001:00010298       PythonEngine.TPythonEngine.PyDelta_Check
+ 0001:000102A4       PythonEngine.TPythonEngine.PyDelta_CheckExact
+ 0001:000102C0       PythonEngine.TPythonEngine.PyTZInfo_Check
+ 0001:000102CC       PythonEngine.TPythonEngine.PyTZInfo_CheckExact
+ 0001:000102E8       PythonEngine.TPythonEngine.PyDateTime_GET_YEAR
+ 0001:000102FC       PythonEngine.TPythonEngine.PyDateTime_GET_MONTH
+ 0001:00010304       PythonEngine.TPythonEngine.PyDateTime_GET_DAY
+ 0001:0001030C       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_HOUR
+ 0001:00010314       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_MINUTE
+ 0001:0001031C       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_SECOND
+ 0001:00010324       PythonEngine.TPythonEngine.PyDateTime_DATE_GET_MICROSECOND
+ 0001:00010344       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_HOUR
+ 0001:0001034C       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_MINUTE
+ 0001:00010354       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_SECOND
+ 0001:0001035C       PythonEngine.TPythonEngine.PyDateTime_TIME_GET_MICROSECOND
+ 0001:0001037C       PythonEngine.TEngineClient.SetEngine
+ 0001:000103A8       PythonEngine.TEngineClient.Create
+ 0001:00010444       PythonEngine.TEngineClient.Destroy
+ 0001:00010484       PythonEngine.TEngineClient.Loaded
+ 0001:000104A0       PythonEngine.TEngineClient.Notification
+ 0001:000104C8       PythonEngine.TEngineClient.Initialize
+ 0001:000104E8       PythonEngine.TEngineClient.Finalize
+ 0001:00010508       PythonEngine.TEngineClient.ClearEngine
+ 0001:00010510       PythonEngine.TEngineClient.CheckEngine
+ 0001:00010574       PythonEngine.TEventDef.Create
+ 0001:0001063C       PythonEngine.TEventDef.Destroy
+ 0001:0001066C       PythonEngine.TEventDef.GetDisplayName
+ 0001:00010680       PythonEngine.TEventDef.GetDocString
+ 0001:0001070C       PythonEngine.TEventDef.PythonEvent
+ 0001:0001074C       PythonEngine.TEventDef.Owner
+ 0001:00010760       PythonEngine.TEventDef.SetDisplayName
+ 0001:0001077C       PythonEngine.TEventDef.Assign
+ 0001:000107BC       PythonEngine.TEventDef.SetDocString
+ 0001:000107CC       PythonEngine.TEventDefs.Create
+ 0001:00010810       PythonEngine.TEventDefs.GetItems
+ 0001:00010824       PythonEngine.TEventDefs.SetItems
+ 0001:0001082C       PythonEngine.TEventDefs.GetOwner
+ 0001:00010830       PythonEngine.TEventDefs.Add
+ 0001:0001083C       PythonEngine.TEventDefs.RegisterEvents
+ 0001:000108D4       PythonEngine.TMethodsContainer.AllocMethods
+ 0001:00010988       PythonEngine.TMethodsContainer.FreeMethods
+ 0001:000109A8       PythonEngine.TMethodsContainer.ReallocMethods
+ 0001:000109DC       PythonEngine.TMethodsContainer.GetMethods
+ 0001:00010A64       PythonEngine.TMethodsContainer.StoreEventDefs
+ 0001:00010A84       PythonEngine.TMethodsContainer.Create
+ 0001:00010AD4       PythonEngine.TMethodsContainer.Destroy
+ 0001:00010B10       PythonEngine.TMethodsContainer.Initialize
+ 0001:00010B24       PythonEngine.TMethodsContainer.Finalize
+ 0001:00010B40       PythonEngine.TMethodsContainer.AddMethod
+ 0001:00010B84       PythonEngine.TMethodsContainer.AddDelphiMethod
+ 0001:00010BB8       PythonEngine.TMethodsContainer.AddMethodWithExtraArg
+ 0001:00010BF8       PythonEngine.TMethodsContainer.ClearMethods
+ 0001:00010C10       PythonEngine.TMembersContainer.GetMembersStartOffset
+ 0001:00010C14       PythonEngine.TMembersContainer.AddMember
+ 0001:00010DD8       PythonEngine.TMembersContainer.AllocMembers
+ 0001:00010E8C       PythonEngine.TMembersContainer.ClearMembers
+ 0001:00010EA8       PythonEngine.TMembersContainer.Create
+ 0001:00010EE4       PythonEngine.TMembersContainer.Destroy
+ 0001:00010F10       PythonEngine.TMembersContainer.Finalize
+ 0001:00010F2C       PythonEngine.TMembersContainer.FreeMembers
+ 0001:00010F4C       PythonEngine.TMembersContainer.GetMembers
+ 0001:00010FD0       PythonEngine.TMembersContainer.ReallocMembers
+ 0001:00011008       PythonEngine.TGetSetContainer.AddGetSet
+ 0001:0001105C       PythonEngine.TGetSetContainer.AllocGetSets
+ 0001:0001111C       PythonEngine.TGetSetContainer.ClearGetSets
+ 0001:00011140       PythonEngine.TGetSetContainer.Create
+ 0001:0001117C       PythonEngine.TGetSetContainer.Destroy
+ 0001:000111A8       PythonEngine.TGetSetContainer.Finalize
+ 0001:000111C4       PythonEngine.TGetSetContainer.FreeGetSets
+ 0001:000111F0       PythonEngine.TGetSetContainer.GetGetSet
+ 0001:0001127C       PythonEngine.TGetSetContainer.ReallocGetSets
+ 0001:000112C4       PythonEngine.TParentClassError.AssignTo
+ 0001:00011304       PythonEngine.TError.GetDisplayName
+ 0001:00011328       PythonEngine.CheckName
+ 0001:00011420       PythonEngine.UpdateDependencies
+ 0001:00011548       PythonEngine.TError.SetName
+ 0001:000115A0       PythonEngine.TError.SetText
+ 0001:000115C8       PythonEngine.TError.SetErrorType
+ 0001:000115F0       PythonEngine.TError.SetParentClass
+ 0001:00011608       PythonEngine.TError.Create
+ 0001:00011650       PythonEngine.TError.Destroy
+ 0001:00011680       PythonEngine.TError.Assign
+ 0001:000116C0       PythonEngine.FindParentClass
+ 0001:000118D0       PythonEngine.TError.BuildError
+ 0001:00011AC0       PythonEngine.TError.RaiseError
+ 0001:00011B00       PythonEngine.TError.RaiseErrorObj
+ 0001:00011D10       PythonEngine.TError.Owner
+ 0001:00011D30       PythonEngine.TErrors.GetError
+ 0001:00011D44       PythonEngine.TErrors.SetError
+ 0001:00011D4C       PythonEngine.TErrors.GetOwner
+ 0001:00011D50       PythonEngine.TErrors.Update
+ 0001:00011D58       PythonEngine.TErrors.Create
+ 0001:00011D9C       PythonEngine.TErrors.Add
+ 0001:00011DA8       PythonEngine.TErrors.Owner
+ 0001:00011DC8       PythonEngine.TPythonModule.GetClientCount
+ 0001:00011DD0       PythonEngine.TPythonModule.GetClients
+ 0001:00011DE4       PythonEngine.TPythonModule.SetErrors
+ 0001:00011DF4       PythonEngine.UpdateDependencies
+ 0001:00011EC8       PythonEngine.TPythonModule.SetModuleName
+ 0001:00011F04       PythonEngine.TPythonModule.Create
+ 0001:00011F6C       PythonEngine.TPythonModule.Destroy
+ 0001:00011FAC       PythonEngine.TPythonModule.SetDocString
+ 0001:00011FBC       PythonEngine.TPythonModule.DefineDocString
+ 0001:00012070       PythonEngine.TPythonModule.MakeModule
+ 0001:000120A8       PythonEngine.TPythonModule.Initialize
+ 0001:00012120       PythonEngine.TPythonModule.InitializeForNewInterpreter
+ 0001:00012190       PythonEngine.TPythonModule.AddClient
+ 0001:0001219C       PythonEngine.TPythonModule.ErrorByName
+ 0001:00012230       PythonEngine.TPythonModule.RaiseError
+ 0001:00012250       PythonEngine.TPythonModule.RaiseErrorFmt
+ 0001:000122CC       PythonEngine.TPythonModule.RaiseErrorObj
+ 0001:000122F4       PythonEngine.TPythonModule.BuildErrors
+ 0001:00012378       PythonEngine.TPythonModule.SetVar
+ 0001:00012490       PythonEngine.TPythonModule.GetVar
+ 0001:00012550       PythonEngine.TPythonModule.DeleteVar
+ 0001:0001266C       PythonEngine.TPythonModule.SetVarFromVariant
+ 0001:000126D8       PythonEngine.TPythonModule.GetVarAsVariant
+ 0001:00012744       PythonEngine.TPyObject.Create
+ 0001:0001279C       PythonEngine.TPyObject.CreateWith
+ 0001:000127DC       PythonEngine.TPyObject.Destroy
+ 0001:00012818       PythonEngine.TPyObject.NewInstance
+ 0001:00012844       PythonEngine.TPyObject.FreeInstance
+ 0001:00012860       PythonEngine.TPyObject.GetSelf
+ 0001:00012864       PythonEngine.TPyObject.IncRef
+ 0001:00012874       PythonEngine.TPyObject.Adjust
+ 0001:00012884       PythonEngine.TPyObject.GetModule
+ 0001:00012898       PythonEngine.TPyObject.Get_ob_refcnt
+ 0001:000128A8       PythonEngine.TPyObject.Get_ob_type
+ 0001:000128B8       PythonEngine.TPyObject.Set_ob_refcnt
+ 0001:000128CC       PythonEngine.TPyObject.Set_ob_type
+ 0001:000128E0       PythonEngine.TPyObject.Print
+ 0001:000128E4       PythonEngine.TPyObject.GetAttr
+ 0001:000129A8       PythonEngine.TPyObject.SetAttr
+ 0001:00012A50       PythonEngine.TPyObject.Repr
+ 0001:00012AEC       PythonEngine.TPyObject.Compare
+ 0001:00012AF0       PythonEngine.TPyObject.Hash
+ 0001:00012AF4       PythonEngine.TPyObject.Str
+ 0001:00012AFC       PythonEngine.TPyObject.GetAttrO
+ 0001:00012B1C       PythonEngine.TPyObject.SetAttrO
+ 0001:00012B44       PythonEngine.TPyObject.Call
+ 0001:00012B48       PythonEngine.TPyObject.Traverse
+ 0001:00012B4C       PythonEngine.TPyObject.Clear
+ 0001:00012B50       PythonEngine.TPyObject.RichCompare
+ 0001:00012B54       PythonEngine.TPyObject.Iter
+ 0001:00012B58       PythonEngine.TPyObject.IterNext
+ 0001:00012B5C       PythonEngine.TPyObject.Init
+ 0001:00012B60       PythonEngine.TPyObject.NbAdd
+ 0001:00012B64       PythonEngine.TPyObject.NbSubstract
+ 0001:00012B68       PythonEngine.TPyObject.NbMultiply
+ 0001:00012B6C       PythonEngine.TPyObject.NbDivide
+ 0001:00012B70       PythonEngine.TPyObject.NbFloorDivide
+ 0001:00012B74       PythonEngine.TPyObject.NbTrueDivide
+ 0001:00012B78       PythonEngine.TPyObject.NbRemainder
+ 0001:00012B7C       PythonEngine.TPyObject.NbDivmod
+ 0001:00012B80       PythonEngine.TPyObject.NbPower
+ 0001:00012B84       PythonEngine.TPyObject.NbNegative
+ 0001:00012B88       PythonEngine.TPyObject.NbPositive
+ 0001:00012B8C       PythonEngine.TPyObject.NbAbsolute
+ 0001:00012B90       PythonEngine.TPyObject.NbNonZero
+ 0001:00012B94       PythonEngine.TPyObject.NbInvert
+ 0001:00012B98       PythonEngine.TPyObject.NbLShift
+ 0001:00012B9C       PythonEngine.TPyObject.NbRShift
+ 0001:00012BA0       PythonEngine.TPyObject.NbAnd
+ 0001:00012BA4       PythonEngine.TPyObject.NbXor
+ 0001:00012BA8       PythonEngine.TPyObject.NbOr
+ 0001:00012BAC       PythonEngine.TPyObject.NbCoerce
+ 0001:00012BB0       PythonEngine.TPyObject.NbInt
+ 0001:00012BB4       PythonEngine.TPyObject.NbLong
+ 0001:00012BB8       PythonEngine.TPyObject.NbFloat
+ 0001:00012BBC       PythonEngine.TPyObject.NbOct
+ 0001:00012BC0       PythonEngine.TPyObject.NbHex
+ 0001:00012BC4       PythonEngine.TPyObject.NbInplaceAdd
+ 0001:00012BC8       PythonEngine.TPyObject.NbInplaceAnd
+ 0001:00012BCC       PythonEngine.TPyObject.NbInplaceDivide
+ 0001:00012BD0       PythonEngine.TPyObject.NbInplaceFloorDivide
+ 0001:00012BD4       PythonEngine.TPyObject.NbInplaceTrueDivide
+ 0001:00012BD8       PythonEngine.TPyObject.NbInplaceLshift
+ 0001:00012BDC       PythonEngine.TPyObject.NbInplaceMultiply
+ 0001:00012BE0       PythonEngine.TPyObject.NbInplaceOr
+ 0001:00012BE4       PythonEngine.TPyObject.NbInplacePower
+ 0001:00012BE8       PythonEngine.TPyObject.NbInplaceRemainder
+ 0001:00012BEC       PythonEngine.TPyObject.NbInplaceRshift
+ 0001:00012BF0       PythonEngine.TPyObject.NbInplaceSubtract
+ 0001:00012BF4       PythonEngine.TPyObject.NbInplaceXor
+ 0001:00012BF8       PythonEngine.TPyObject.SqLength
+ 0001:00012BFC       PythonEngine.TPyObject.SqConcat
+ 0001:00012C08       PythonEngine.TPyObject.SqRepeat
+ 0001:00012C14       PythonEngine.TPyObject.SqItem
+ 0001:00012C20       PythonEngine.TPyObject.SqSlice
+ 0001:00012C2C       PythonEngine.TPyObject.SqAssItem
+ 0001:00012C30       PythonEngine.TPyObject.SqAssSlice
+ 0001:00012C3C       PythonEngine.TPyObject.SqContains
+ 0001:00012C40       PythonEngine.TPyObject.SqInplaceConcat
+ 0001:00012C44       PythonEngine.TPyObject.SqInplaceRepeat
+ 0001:00012C48       PythonEngine.TPyObject.MpLength
+ 0001:00012C4C       PythonEngine.TPyObject.MpSubscript
+ 0001:00012C58       PythonEngine.TPyObject.MpAssSubscript
+ 0001:00012C5C       PythonEngine.TPyObject.RegisterMethods
+ 0001:00012C60       PythonEngine.TPyObject.RegisterMembers
+ 0001:00012C64       PythonEngine.TPyObject.RegisterGetSets
+ 0001:00012C68       PythonEngine.TTypeServices.Create
+ 0001:00012CAC       PythonEngine.TTypeServices.AssignTo
+ 0001:00012CF8       PythonEngine.PythonToDelphi
+ 0001:00012DB4       PythonEngine.PyObjectDestructor
+ 0001:00012E00       PythonEngine.TPythonType.Notification
+ 0001:00012E30       PythonEngine.TPythonType.SetPyObjectClass
+ 0001:00012E94       PythonEngine.TPythonType.SetModule
+ 0001:00012EC8       PythonEngine.TPythonType.SetServices
+ 0001:00012ED4       PythonEngine.TPythonType.SetTypeName
+ 0001:00012F00       PythonEngine.TPythonType.CreateMethod
+ 0001:00012F10       PythonEngine.TPythonType.InitServices
+ 0001:00013938       PythonEngine.TPythonType.SetDocString
+ 0001:00013948       PythonEngine.TPythonType.TypeFlagsAsInt
+ 0001:00013A0C       PythonEngine.TPythonType.Print
+ 0001:00013A28       PythonEngine.TPythonType.GetAttr
+ 0001:00013A40       PythonEngine.TPythonType.SetAttr
+ 0001:00013A5C       PythonEngine.TPythonType.Repr
+ 0001:00013A70       PythonEngine.TPythonType.Compare
+ 0001:00013A88       PythonEngine.TPythonType.Hash
+ 0001:00013A9C       PythonEngine.TPythonType.Str
+ 0001:00013AB0       PythonEngine.TPythonType.GetAttrO
+ 0001:00013AC8       PythonEngine.TPythonType.SetAttrO
+ 0001:00013AE4       PythonEngine.TPythonType.Call
+ 0001:00013B00       PythonEngine.TPythonType.Traverse
+ 0001:00013B1C       PythonEngine.TPythonType.Clear
+ 0001:00013B30       PythonEngine.TPythonType.RichCmp
+ 0001:00013BF8       PythonEngine.TPythonType.Iter
+ 0001:00013C0C       PythonEngine.TPythonType.IterNext
+ 0001:00013C20       PythonEngine.TPythonType.InitSubtype
+ 0001:00013C3C       PythonEngine.TPythonType.NewSubtypeInst
+ 0001:00013CA4       PythonEngine.TPythonType.AllocSubtypeInst
+ 0001:00013CC0       PythonEngine.FreeSubtypeInst
+ 0001:00013CD8       PythonEngine.TPythonType.NbAdd
+ 0001:00013CF0       PythonEngine.TPythonType.NbSubstract
+ 0001:00013D08       PythonEngine.TPythonType.NbMultiply
+ 0001:00013D20       PythonEngine.TPythonType.NbDivide
+ 0001:00013D38       PythonEngine.TPythonType.NbFloorDivide
+ 0001:00013D50       PythonEngine.TPythonType.NbTrueDivide
+ 0001:00013D68       PythonEngine.TPythonType.NbRemainder
+ 0001:00013D80       PythonEngine.TPythonType.NbDivmod
+ 0001:00013D98       PythonEngine.TPythonType.NbPower
+ 0001:00013DB4       PythonEngine.TPythonType.NbNegative
+ 0001:00013DC8       PythonEngine.TPythonType.NbPositive
+ 0001:00013DDC       PythonEngine.TPythonType.NbAbsolute
+ 0001:00013DF0       PythonEngine.TPythonType.NbNonZero
+ 0001:00013E04       PythonEngine.TPythonType.NbInvert
+ 0001:00013E18       PythonEngine.TPythonType.NbLShift
+ 0001:00013E30       PythonEngine.TPythonType.NbRShift
+ 0001:00013E48       PythonEngine.TPythonType.NbAnd
+ 0001:00013E60       PythonEngine.TPythonType.NbXor
+ 0001:00013E78       PythonEngine.TPythonType.NbOr
+ 0001:00013E90       PythonEngine.TPythonType.NbCoerce
+ 0001:00013EA8       PythonEngine.TPythonType.NbInt
+ 0001:00013EC0       PythonEngine.TPythonType.NbLong
+ 0001:00013ED8       PythonEngine.TPythonType.NbFloat
+ 0001:00013EF0       PythonEngine.TPythonType.NbOct
+ 0001:00013F08       PythonEngine.TPythonType.NbHex
+ 0001:00013F20       PythonEngine.TPythonType.NbInplaceAdd
+ 0001:00013F38       PythonEngine.TPythonType.NbInplaceAnd
+ 0001:00013F50       PythonEngine.TPythonType.NbInplaceDivide
+ 0001:00013F68       PythonEngine.TPythonType.NbInplaceFloorDivide
+ 0001:00013F80       PythonEngine.TPythonType.NbInplaceTrueDivide
+ 0001:00013F98       PythonEngine.TPythonType.NbInplaceLshift
+ 0001:00013FB0       PythonEngine.TPythonType.NbInplaceMultiply
+ 0001:00013FC8       PythonEngine.TPythonType.NbInplaceOr
+ 0001:00013FE0       PythonEngine.TPythonType.NbInplacePower
+ 0001:00014000       PythonEngine.TPythonType.NbInplaceRemainder
+ 0001:00014018       PythonEngine.TPythonType.NbInplaceRshift
+ 0001:00014030       PythonEngine.TPythonType.NbInplaceSubtract
+ 0001:00014048       PythonEngine.TPythonType.NbInplaceXor
+ 0001:00014060       PythonEngine.TPythonType.SqLength
+ 0001:00014078       PythonEngine.TPythonType.SqConcat
+ 0001:00014090       PythonEngine.TPythonType.SqRepeat
+ 0001:000140A8       PythonEngine.TPythonType.SqItem
+ 0001:000140C0       PythonEngine.TPythonType.SqSlice
+ 0001:000140E0       PythonEngine.TPythonType.SqAssItem
+ 0001:00014100       PythonEngine.TPythonType.SqAssSlice
+ 0001:00014124       PythonEngine.TPythonType.MpLength
+ 0001:0001413C       PythonEngine.TPythonType.MpSubscript
+ 0001:00014154       PythonEngine.TPythonType.MpAssSubscript
+ 0001:00014174       PythonEngine.TPythonType.SqContains
+ 0001:0001418C       PythonEngine.TPythonType.SqInplaceConcat
+ 0001:000141A4       PythonEngine.TPythonType.SqInplaceRepeat
+ 0001:000141BC       PythonEngine.TPythonType.Create
+ 0001:00014248       PythonEngine.TPythonType.Destroy
+ 0001:00014284       PythonEngine.TPythonType.GetTypePtr
+ 0001:0001428C       PythonEngine.TPythonType.Initialize
+ 0001:000142F8       PythonEngine.TPythonType.Finalize
+ 0001:0001431C       PythonEngine.TPythonType.CreateInstance
+ 0001:00014368       PythonEngine.TPythonType.CreateInstanceWith
+ 0001:000143B8       PythonEngine.TPythonType.AddTypeVar
+ 0001:00014620       PythonEngine.TPythonType.GetMembersStartOffset
+ 0001:00014628       PythonEngine.TPythonDelphiVar.CreateVarType
+ 0001:00014698       PythonEngine.TPythonDelphiVar.CreateVar
+ 0001:00014804       PythonEngine.TPythonDelphiVar.GetValue
+ 0001:00014860       PythonEngine.TPythonDelphiVar.SetValue
+ 0001:000148B8       PythonEngine.TPythonDelphiVar.GetValueAsPyObject
+ 0001:0001490C       PythonEngine.TPythonDelphiVar.SetValueFromPyObject
+ 0001:00014964       PythonEngine.TPythonDelphiVar.IsVariantOk
+ 0001:000149B4       PythonEngine.TPythonDelphiVar.GetValueAsString
+ 0001:00014A70       PythonEngine.CheckVarName
+ 0001:00014BA0       PythonEngine.TPythonDelphiVar.SetVarName
+ 0001:00014BD8       PythonEngine.AdjustName
+ 0001:00014CF4       PythonEngine.TPythonDelphiVar.Create
+ 0001:00014D90       PythonEngine.TPythonDelphiVar.Initialize
+ 0001:00014DB0       PythonEngine.TPythonDelphiVar.Finalize
+ 0001:00014DF4       PythonEngine.TPyVar.Create
+ 0001:00014E2C       PythonEngine.TPyVar.CreateWith
+ 0001:00014EA8       PythonEngine.TPyVar.Destroy
+ 0001:00014EE4       PythonEngine.TPyVar.GetAttr
+ 0001:00014F68       PythonEngine.TPyVar.SetAttr
+ 0001:00015000       PythonEngine.TPyVar.Repr
+ 0001:000150F4       PythonEngine.TPyVar.RegisterMethods
+ 0001:000150FC       PythonEngine.TPyVar.GetValue
+ 0001:000151C4       PythonEngine.TPyVar.GetValueAsVariant
+ 0001:00015294       PythonEngine.TPyVar.SetValue
+ 0001:00015368       PythonEngine.TPyVar.SetValueFromVariant
+ 0001:00015398       PythonEngine.TPythonThread.Execute
+ 0001:0001548C       PythonEngine.TPythonThread.Py_Begin_Allow_Threads
+ 0001:000154A4       PythonEngine.TPythonThread.Py_End_Allow_Threads
+ 0001:000154BC       PythonEngine.TPythonThread.Py_Begin_Block_Threads
+ 0001:000154C4       PythonEngine.TPythonThread.Py_Begin_Unblock_Threads
+ 0001:000154CC       PythonEngine.pyio_write
+ 0001:00015608       PythonEngine.pyio_read
+ 0001:000156B4       PythonEngine.pyio_SetDelayWrites
+ 0001:0001571C       PythonEngine.pyio_SetMaxLines
+ 0001:0001577C       PythonEngine.HandleType
+ 0001:0001580C       PythonEngine.FindType
+ 0001:00015888       PythonEngine.pyio_GetTypesStats
+ 0001:000159B0       PythonEngine.GetPythonEngine
+ 0001:00015A64       PythonEngine.PythonOK
+ 0001:00015A8C       PythonEngine.IsDelphiObject
+ 0001:00015AB4       PythonEngine.Register
+ 0001:00015B08       PythonEngine.PyType_HasFeature
+ 0001:00015B14       PythonEngine.TPythonEngine.ClearModuleDictionary
+ 0001:00015CB0       PythonEngine.Finalization
+ 0001:00015DB0       PythonGUIInputOutput..TPythonGUIInputOutput
+ 0001:00015EB0       PythonGUIInputOutput.TPythonGUIInputOutput.Notification
+ 0001:00015ED8       PythonGUIInputOutput.TPythonGUIInputOutput.pyGUIOutputWndProc
+ 0001:00015EE8       PythonGUIInputOutput.TPythonGUIInputOutput.SendData
+ 0001:00015EFC       PythonGUIInputOutput.TPythonGUIInputOutput.ReceiveData
+ 0001:00015F5C       PythonGUIInputOutput.TPythonGUIInputOutput.AddPendingWrite
+ 0001:00015F70       PythonGUIInputOutput.TPythonGUIInputOutput.WriteOutput
+ 0001:00015FD8       PythonGUIInputOutput.TPythonGUIInputOutput.Create
+ 0001:0001601C       PythonGUIInputOutput.TPythonGUIInputOutput.Destroy
+ 0001:0001604C       PythonGUIInputOutput.TPythonGUIInputOutput.DisplayString
+ 0001:000160A8       PythonGUIInputOutput.Register
+ 0001:000160D4       PythonGUIInputOutput.Finalization
+ 0001:00016190       PythonAtom..TPythonAtom
+ 0001:00016218       PythonAtom.GetAtom
+ 0001:00016238       PythonAtom.WideCharToShortString
+ 0001:00016260       PythonAtom.TPythonAtom.Create
+ 0001:000162A4       PythonAtom.TPythonAtom.Destroy
+ 0001:000162DC       PythonAtom.TPythonAtom.GetAsAtom
+ 0001:00016348       PythonAtom.TPythonAtom.GetIDsOfNames
+ 0001:00016454       PythonAtom.TPythonAtom.GetTypeInfo
+ 0001:00016460       PythonAtom.TPythonAtom.GetTypeInfoCount
+ 0001:0001646C       PythonAtom.IsBasicType
+ 0001:000164C4       PythonAtom.IsCallableType
+ 0001:000164F4       PythonAtom.TPythonAtom.Invoke
+ 0001:00016880       PythonAtom.TPythonAtom.PythonAddRef
+ 0001:00016898       PythonAtom.TPythonAtom.PythonRelease
+ 0001:000168B0       PythonAtom.TPythonAtom.SetPythonObject
+ 0001:000168CC       PythonAtom.TPythonAtom.AddRef
+ 0001:000168D4       PythonAtom.TPythonAtom.Release
+ 0001:000168DC       PythonAtom.Finalization
+ 0001:0001690C       AtomPythonEngine..TAtomPythonEngine
+ 0001:000169EC       AtomPythonEngine.TAtomPythonEngine.PyObjectAsVariant
+ 0001:00016A20       AtomPythonEngine.Register
+ 0001:00016A4C       AtomPythonEngine.Finalization
+ 0001:00016B14       VarPyth..TPythonVariantType
+ 0001:00016BCC       VarPyth..TPythonData
+ 0001:00016C54       VarPyth.VarPythonCreate
+ 0001:00016C84       VarPyth.VarPythonCreate
+ 0001:00016CFC       VarPyth.VarPythonCreate
+ 0001:00016E60       VarPyth.VarPythonEval
+ 0001:00016EC0       VarPyth.GetAtom
+ 0001:00016EF0       VarPyth.VarPython
+ 0001:00016EFC       VarPyth.VarIsPython
+ 0001:00016F14       VarPyth.VarAsPython
+ 0001:00016F48       VarPyth.ExtractPythonObjectFrom
+ 0001:00016F64       VarPyth.VarIsSame
+ 0001:00016FE8       VarPyth.VarIsSameType
+ 0001:0001707C       VarPyth.VarIsPythonSequence
+ 0001:000170AC       VarPyth.VarIsPythonMapping
+ 0001:000170DC       VarPyth.VarIsPythonNumber
+ 0001:0001710C       VarPyth.VarIsPythonString
+ 0001:0001713C       VarPyth.VarIsPythonInteger
+ 0001:0001716C       VarPyth.VarIsPythonFloat
+ 0001:0001719C       VarPyth.VarIsPythonTuple
+ 0001:000171CC       VarPyth.VarIsPythonList
+ 0001:000171FC       VarPyth.VarIsPythonDict
+ 0001:0001722C       VarPyth.VarIsPythonClass
+ 0001:0001725C       VarPyth.VarIsPythonInstance
+ 0001:0001728C       VarPyth.VarIsPythonMethod
+ 0001:000172BC       VarPyth.VarIsPythonFunction
+ 0001:000172EC       VarPyth.VarIsPythonModule
+ 0001:0001731C       VarPyth.VarIsPythonCallable
+ 0001:0001734C       VarPyth.VarIsPythonUnicode
+ 0001:0001737C       VarPyth.VarIsPythonDateTime
+ 0001:000173AC       VarPyth.VarIsPythonDate
+ 0001:000173DC       VarPyth.VarIsPythonTime
+ 0001:0001740C       VarPyth.VarIsPythonDateTimeDelta
+ 0001:0001743C       VarPyth.VarIsPythonTZInfo
+ 0001:0001746C       VarPyth.VarIsBool
+ 0001:0001749C       VarPyth.VarIsEnum
+ 0001:000174CC       VarPyth.VarIsInstanceOf
+ 0001:00017524       VarPyth.VarIsSubclassOf
+ 0001:0001757C       VarPyth.VarIsSubtypeOf
+ 0001:000175D8       VarPyth.VarIsNone
+ 0001:00017604       VarPyth.VarIsTrue
+ 0001:00017610       VarPyth.NewPythonList
+ 0001:00017670       VarPyth.NewPythonTuple
+ 0001:000176D0       VarPyth.NewPythonDict
+ 0001:0001772C       VarPyth.None
+ 0001:00017748       VarPyth.Ellipsis
+ 0001:00017764       VarPyth.MainModule
+ 0001:0001780C       VarPyth.BuiltinModule
+ 0001:00017834       VarPyth.SysModule
+ 0001:00017854       VarPyth.DatetimeModule
+ 0001:0001787C       VarPyth.Import
+ 0001:000179B8       VarPyth.len
+ 0001:00017A80       VarPyth._type
+ 0001:00017B1C       VarPyth.TPythonVariantType.BinaryOp
+ 0001:00017CD8       VarPyth.TPythonVariantType.Cast
+ 0001:00017D30       VarPyth.TPythonVariantType.CastTo
+ 0001:00017E44       VarPyth.TPythonVariantType.Clear
+ 0001:00017E54       VarPyth.TPythonVariantType.CompareOp
+ 0001:00017F24       VarPyth.TPythonVariantType.Copy
+ 0001:00017F74       VarPyth.SetClearVarToEmptyParam
+ 0001:00017F8C       VarPyth.TPythonVariantType.DispInvoke
+ 0001:00017FEC       VarPyth.ParseParam
+ 0001:000182A0       VarPyth.TPythonVariantType.DoDispInvoke
+ 0001:000185A4       VarPyth.TPythonVariantType.DoFunction
+ 0001:00018628       VarPyth.TPythonVariantType.DoProcedure
+ 0001:00018654       VarPyth.ArgAsPythonObject
+ 0001:000186F0       VarPyth.GetObjectItem
+ 0001:000187C4       VarPyth.SetObjectItem
+ 0001:000189B0       VarPyth.DeleteObjectItem
+ 0001:00018A8C       VarPyth.ExtractSliceIndexes
+ 0001:00018B58       VarPyth.GetSequenceSlice
+ 0001:00018BB0       VarPyth.SetSequenceSlice
+ 0001:00018CB8       VarPyth.DelSequenceSlice
+ 0001:00018D14       VarPyth.SequenceContains
+ 0001:00018DF4       VarPyth.GetObjectLength
+ 0001:00018E24       VarPyth.TPythonVariantType.EvalPython
+ 0001:000192BC       VarPyth.TPythonVariantType.GetInstance
+ 0001:000192C0       VarPyth.TPythonVariantType.GetProperty
+ 0001:00019518       VarPyth.TPythonVariantType.GetPropertyWithArg
+ 0001:000195FC       VarPyth.TPythonVariantType.IsClear
+ 0001:0001961C       VarPyth.TPythonVariantType.LeftPromotion
+ 0001:00019658       VarPyth.TPythonVariantType.PyhonVarDataCreate
+ 0001:00019688       VarPyth.IsBasicType
+ 0001:000196E0       VarPyth.TPythonVariantType.PythonObjectToVarData
+ 0001:00019798       VarPyth.TPythonVariantType.RightPromotion
+ 0001:000197B8       VarPyth.TPythonVariantType.SetProperty
+ 0001:0001983C       VarPyth.TPythonVariantType.UnaryOp
+ 0001:00019874       VarPyth.TPythonVariantType.VarDataToPythonObject
+ 0001:00019930       VarPyth.TPythonData.Compare
+ 0001:00019960       VarPyth.TPythonData.Create
+ 0001:0001999C       VarPyth.TPythonData.Create
+ 0001:000199E0       VarPyth.TPythonData.Destroy
+ 0001:00019A18       VarPyth.TPythonData.DoAdd
+ 0001:00019A5C       VarPyth.TPythonData.DoAnd
+ 0001:00019AA0       VarPyth.TPythonData.DoDivide
+ 0001:00019AE4       VarPyth.TPythonData.DoIntDivide
+ 0001:00019B28       VarPyth.TPythonData.DoModulus
+ 0001:00019B9C       VarPyth.TPythonData.DoMultiply
+ 0001:00019BE0       VarPyth.TPythonData.DoNegate
+ 0001:00019C1C       VarPyth.TPythonData.DoNot
+ 0001:00019C58       VarPyth.TPythonData.DoOr
+ 0001:00019C9C       VarPyth.TPythonData.DoShiftLeft
+ 0001:00019CE0       VarPyth.TPythonData.DoShiftRight
+ 0001:00019D24       VarPyth.TPythonData.DoSubtract
+ 0001:00019D68       VarPyth.TPythonData.DoXor
+ 0001:00019DAC       VarPyth.TPythonData.Equal
+ 0001:00019DE0       VarPyth.TPythonData.GetAsString
+ 0001:00019E08       VarPyth.TPythonData.GetAsVariant
+ 0001:00019E30       VarPyth.TPythonData.GetAsWideString
+ 0001:00019EA8       VarPyth.TPythonData.GreaterOrEqualThan
+ 0001:00019EC0       VarPyth.TPythonData.GreaterThan
+ 0001:00019ED8       VarPyth.TPythonData.IsNone
+ 0001:00019EF0       VarPyth.TPythonData.LessOrEqualThan
+ 0001:00019F08       VarPyth.TPythonData.LessThan
+ 0001:00019F20       VarPyth.TPythonData.SetPyObject
+ 0001:00019F4C       VarPyth.Finalization
+ 0001:0001A1B8       .Python_d7.@GetPackageInfoTable
+ 0001:0001A1C0       .Python_d7.@PackageLoad
+ 0001:0001A1CC       .Python_d7.@PackageUnload
+ 0002:00000008       Windows.Windows
+ 0002:00000044       MethodCallBack.MethodCallBack
+ 0002:00000070       PythonEngine.PythonEngine
+ 0002:00000120       PythonGUIInputOutput.PythonGUIInputOutput
+ 0002:00000130       PythonAtom.PythonAtom
+ 0002:00000138       AtomPythonEngine.AtomPythonEngine
+ 0002:00000140       VarPyth.VarPyth
+ 0002:0000015C       .Python_d7..Python_d7
+ 0003:00000000       SysInit.TlsIndex
+ 0003:00000004       SysInit.PtrToNil
+ 0003:00000008       SysInit.Module
+ 0003:00000020       SysInit.TlsProc
+ 0003:00000030       MethodCallBack.S1
+ 0003:00000040       MethodCallBack.C1
+ 0003:00000044       MethodCallBack.C2
+ 0003:00000048       MethodCallBack.C3
+ 0003:0000005C       PythonEngine.PYTHON_KNOWN_VERSIONS
+ 0003:000000B8       PythonEngine.tenthousand
+ 0003:000000C0       PythonEngine.GUID_NULL
+ 0003:000000D0       VarPyth.PythonVariantType
+ 0004:00000000       SysInit.ModuleIsLib
+ 0004:00000001       SysInit.ModuleIsPackage
+ 0004:00000004       SysInit.HInstance
+ 0004:00000008       SysInit.tlsBuffer
+ 0004:0000000C       Windows..3
+ 0004:00000010       Windows.HtmlHelpModule
+ 0004:00000014       MethodCallBack..1
+ 0004:00000018       MethodCallBack.CallBackList
+ 0004:0000001C       PythonEngine..77
+ 0004:00000020       PythonEngine.gPythonEngine
+ 0004:00000024       PythonEngine.gVarType
+ 0004:00000028       PythonGUIInputOutput..2
+ 0004:0000002C       PythonAtom..2
+ 0004:00000030       AtomPythonEngine..2
+ 0004:00000034       VarPyth..1
+ 0005:00000000       SysInit.TlsLast
+
+
+Line numbers for MethodCallBack(Sources\Core\MethodCallBack.pas) segment .text
+
+    95 0001:00000A4C    96 0001:00000A4F    97 0001:00000A61   101 0001:00000A68
+   102 0001:00000A6B   105 0001:00000A7A   148 0001:00000A80   149 0001:00000A91
+   150 0001:00000A97   151 0001:00000AA3   152 0001:00000AAF   153 0001:00000AB1
+   154 0001:00000AC2   155 0001:00000AC5   156 0001:00000AD4   157 0001:00000AD7
+   160 0001:00000AEB   161 0001:00000AF5   162 0001:00000B05   163 0001:00000B11
+   164 0001:00000B13   165 0001:00000B24   166 0001:00000B27   167 0001:00000B2D
+   168 0001:00000B3E   169 0001:00000B41   170 0001:00000B4B   171 0001:00000B4E
+   166 0001:00000B4F   172 0001:00000B54   173 0001:00000B65   174 0001:00000B66
+   175 0001:00000B75   176 0001:00000B78   177 0001:00000B87   178 0001:00000B8A
+   181 0001:00000B92   182 0001:00000B94   185 0001:00000BA0   186 0001:00000BA3
+   187 0001:00000BB2   188 0001:00000BB9   193 0001:00000BBC   195 0001:00000BC4
+   196 0001:00000BD1   197 0001:00000BDA   198 0001:00000BE3   195 0001:00000BE4
+   199 0001:00000BE7   200 0001:00000BEE   202 0001:00000BF5   207 0001:00000BFC
+   208 0001:00000C1A
+
+Line numbers for MethodCallBack(Sources\Core\MethodCallBack.pas) segment .itext
+
+   204 0002:00000044   205 0002:0000004D   206 0002:0000005E
+
+Line numbers for PythonEngine(Sources\Core\PythonEngine.pas) segment .text
+
+  3316 0001:00004F38  3317 0001:00004F4A  3318 0001:00004F53  3319 0001:00004F5A
+  3320 0001:00004F69  3321 0001:00004F6D  3322 0001:00004F74  3323 0001:00004F83
+  3324 0001:00004F92  3327 0001:00004FAC  3328 0001:00004FB7  3329 0001:00004FBF
+  3330 0001:00004FC7  3331 0001:00004FCF  3332 0001:00004FDB  3336 0001:00004FEC
+  3337 0001:00004FF4  3341 0001:00004FF8  3342 0001:00005000  3347 0001:00005004
+  3349 0001:00005007  3350 0001:00005013  3353 0001:00005029  3354 0001:0000503D
+  3355 0001:0000504B  3356 0001:00005056  3361 0001:00005058  3362 0001:0000507D
+  3363 0001:00005085  3364 0001:00005093  3365 0001:000050AC  3367 0001:000050BF
+  3368 0001:000050C7  3369 0001:000050CC  3370 0001:000050D5  3372 0001:000050DF
+  3373 0001:00005105  3374 0001:00005118  3376 0001:0000511F  3365 0001:00005120
+  3377 0001:00005123  3379 0001:00005138  3381 0001:00005148  3384 0001:00005174
+  3385 0001:0000518D  3386 0001:000051A6  3389 0001:000051D4  3390 0001:000051D7
+  3391 0001:000051DF  3392 0001:000051EC  3394 0001:000051F8  3395 0001:000051FF
+  3398 0001:00005204  3399 0001:00005205  3400 0001:0000520C  3401 0001:00005218
+  3404 0001:0000521C  3405 0001:00005222  3406 0001:00005229  3407 0001:00005230
+  3408 0001:0000523A  3412 0001:00005240  3418 0001:00005244  3419 0001:0000524A
+  3420 0001:00005251  3421 0001:00005263  3423 0001:00005271  3424 0001:00005273
+  3425 0001:00005275  3420 0001:00005276  3426 0001:00005279  3427 0001:00005285
+  3430 0001:0000528C  3431 0001:00005292  3432 0001:000052A5  3435 0001:000052A8
+  3436 0001:000052AB  3437 0001:000052BF  3446 0001:000052C4  3447 0001:000052DD
+  3449 0001:000052E8  3450 0001:000052F2  3452 0001:00005318  3455 0001:0000533C
+  3456 0001:00005355  3457 0001:0000535F  3460 0001:00005364  3466 0001:00005378
+  3471 0001:0000539C  3472 0001:000053BB  3474 0001:000053C2  3476 0001:000053C9
+  3478 0001:000053CE  3480 0001:000053D7  3482 0001:000053E2  3487 0001:0000540E
+  3489 0001:00005414  3495 0001:00005432  3496 0001:00005438  3498 0001:00005441
+  3499 0001:00005448  3502 0001:000054A0  3503 0001:000054B2  3504 0001:000054BB
+  3505 0001:000054BF  3506 0001:000054C3  3507 0001:000054C7  3508 0001:000054CB
+  3511 0001:000054E8  3512 0001:000054F3  3513 0001:000054F9  3514 0001:00005500
+  3515 0001:0000550C  3520 0001:0000551C  3521 0001:00005525  3522 0001:00005536
+  3523 0001:0000553A  3524 0001:00005566  3525 0001:0000556E  3526 0001:00005578
+  3528 0001:0000557F  3531 0001:000055B4  3532 0001:000055B7  3533 0001:000055BE
+  3534 0001:000055CA  3535 0001:000055D1  3540 0001:000055D4  3545 0001:000055DB
+  3549 0001:000055DC  3550 0001:000055E4  3553 0001:000055E8  3554 0001:000055EB
+  3555 0001:000055F6  3556 0001:000055FD  3557 0001:00005606  3559 0001:0000560B
+  3562 0001:00005610  3563 0001:00005611  3564 0001:00005618  3565 0001:00005622
+  3568 0001:00005624  3569 0001:00005625  3570 0001:0000562C  3571 0001:00005636
+  3574 0001:00005638  3575 0001:00005639  3576 0001:00005640  3577 0001:0000564A
+  3580 0001:0000564C  3581 0001:00005655  3582 0001:00005672  3585 0001:000056AC
+  3586 0001:000056C2  3588 0001:000056C8  3589 0001:000056F0  3596 0001:000056F7
+  3600 0001:00005720  3601 0001:00005726  3605 0001:00005728  3606 0001:0000572E
+  3610 0001:00005730  3611 0001:00005736  3620 0001:00005738  3621 0001:0000574A
+  3622 0001:00005753  3623 0001:00005761  3624 0001:00005769  3625 0001:00005777
+  3626 0001:0000577B  3629 0001:00005798  3630 0001:000057A2  3631 0001:000057AA
+  3632 0001:000057B8  3634 0001:000057DB  3635 0001:000057DD  3637 0001:000057E6
+  3642 0001:00005804  3645 0001:0000581A  3648 0001:00005828  3649 0001:00005831
+  3650 0001:0000584E  3653 0001:00005894  3654 0001:00005897  3655 0001:000058A0
+  3657 0001:000058AD  3658 0001:000058B1  3661 0001:000058B4  3662 0001:000058B7
+  3663 0001:000058C2  3664 0001:000058D8  3667 0001:00005908  3668 0001:0000590B
+  3669 0001:00005914  3671 0001:00005922  3672 0001:00005929  3675 0001:0000593C
+  3676 0001:00005960  3677 0001:00005976  3678 0001:0000598C  3679 0001:000059A2
+  3680 0001:000059B8  3681 0001:000059CE  3682 0001:000059E4  3683 0001:000059FA
+  3685 0001:00005A10  3688 0001:00005A26  3689 0001:00005A3C  3695 0001:00005A52
+  3696 0001:00005A68  3697 0001:00005A7E  3698 0001:00005A94  3700 0001:00005AAA
+  3703 0001:00005AC0  3705 0001:00005AD6  3706 0001:00005AEC  3707 0001:00005B02
+  3708 0001:00005B18  3709 0001:00005B2E  3710 0001:00005B44  3711 0001:00005B5A
+  3712 0001:00005B70  3713 0001:00005B86  3714 0001:00005B9C  3715 0001:00005BB2
+  3716 0001:00005BC8  3717 0001:00005BDE  3718 0001:00005BF4  3719 0001:00005C0A
+  3720 0001:00005C20  3721 0001:00005C36  3722 0001:00005C4C  3723 0001:00005C62
+  3724 0001:00005C78  3725 0001:00005C8E  3726 0001:00005CA4  3728 0001:00005CBA
+  3729 0001:00005CD0  3730 0001:00005CE6  3731 0001:00005CFC  3732 0001:00005D12
+  3733 0001:00005D28  3734 0001:00005D3E  3735 0001:00005D54  3736 0001:00005D6A
+  3738 0001:00005D80  3742 0001:00005D96  3743 0001:00005DAC  3744 0001:00005DC2
+  3745 0001:00005DD8  3746 0001:00005DEE  3749 0001:00005E04  3750 0001:00005E1A
+  3751 0001:00005E30  3754 0001:00005E46  3755 0001:00005E5C  3756 0001:00005E72
+  3757 0001:00005E88  3758 0001:00005E9E  3760 0001:00005EB4  3761 0001:00005ECA
+  3762 0001:00005EE0  3763 0001:00005EF6  3764 0001:00005F0C  3765 0001:00005F22
+  3766 0001:00005F38  3767 0001:00005F4E  3768 0001:00005F64  3769 0001:00005F7A
+  3770 0001:00005F90  3771 0001:00005FA6  3772 0001:00005FBC  3773 0001:00005FD2
+  3774 0001:00005FE8  3775 0001:00005FFE  3776 0001:00006014  3777 0001:0000602A
+  3778 0001:00006040  3779 0001:00006056  3780 0001:0000606C  3781 0001:00006082
+  3783 0001:00006098  3786 0001:000060AE  3787 0001:000060C4  3788 0001:000060DA
+  3789 0001:000060F0  3790 0001:00006106  3791 0001:0000611C  3792 0001:00006132
+  3793 0001:00006148  3794 0001:0000615E  3795 0001:00006174  3796 0001:0000618A
+  3797 0001:000061A0  3798 0001:000061B6  3799 0001:000061CC  3800 0001:000061E2
+  3803 0001:000061F8  3804 0001:0000620E  3805 0001:00006224  3816 0001:0000623A
+  3817 0001:00006250  3818 0001:00006266  3819 0001:0000627C  3820 0001:00006292
+  3821 0001:000062A8  3822 0001:000062BE  3823 0001:000062D4  3824 0001:000062EA
+  3825 0001:00006300  3826 0001:00006316  3827 0001:0000632C  3828 0001:00006342
+  3829 0001:00006358  3830 0001:0000636E  3831 0001:00006384  3832 0001:0000639A
+  3833 0001:000063B0  3834 0001:000063C6  3835 0001:000063DC  3836 0001:000063F2
+  3837 0001:00006408  3839 0001:0000641E  3841 0001:00006434  3842 0001:0000644A
+  3843 0001:00006460  3844 0001:00006476  3845 0001:0000648C  3846 0001:000064A2
+  3847 0001:000064B8  3848 0001:000064CE  3849 0001:000064E4  3850 0001:000064FA
+  3851 0001:00006510  3852 0001:00006526  3853 0001:0000653C  3854 0001:00006552
+  3855 0001:00006568  3856 0001:0000657E  3857 0001:00006594  3858 0001:000065AA
+  3859 0001:000065BD  3860 0001:000065D0  3861 0001:000065E3  3862 0001:000065F9
+  3863 0001:0000660F  3864 0001:00006625  3865 0001:0000663B  3866 0001:00006651
+  3867 0001:00006667  3868 0001:0000667D  3869 0001:00006693  3870 0001:000066A9
+  3871 0001:000066BF  3872 0001:000066D5  3874 0001:000066EB  3875 0001:00006701
+  3876 0001:00006717  3877 0001:0000672D  3878 0001:00006743  3879 0001:00006759
+  3881 0001:0000676F  3882 0001:00006785  3883 0001:0000679B  3884 0001:000067B1
+  3885 0001:000067C7  3886 0001:000067DD  3887 0001:000067F3  3888 0001:00006809
+  3889 0001:0000681F  3890 0001:00006835  3891 0001:0000684B  3892 0001:00006861
+  3893 0001:00006877  3894 0001:0000688D  3895 0001:000068A3  3896 0001:000068B9
+  3897 0001:000068CF  3898 0001:000068E5  3899 0001:000068FB  3900 0001:00006911
+  3901 0001:00006927  3902 0001:0000693D  3904 0001:00006953  3905 0001:00006969
+  3906 0001:0000697F  3907 0001:00006995  3908 0001:000069AB  3909 0001:000069C1
+  3910 0001:000069D7  3911 0001:000069ED  3912 0001:00006A03  3913 0001:00006A19
+  3914 0001:00006A2F  3915 0001:00006A45  3916 0001:00006A5B  3917 0001:00006A71
+  3918 0001:00006A87  3919 0001:00006A9D  3920 0001:00006AB3  3921 0001:00006AC9
+  3922 0001:00006ADF  3923 0001:00006AF5  3924 0001:00006B0B  3925 0001:00006B21
+  3927 0001:00006B37  3930 0001:00006B4D  3931 0001:00006B63  3933 0001:00006B79
+  3934 0001:00006B8F  3935 0001:00006BA5  3936 0001:00006BBB  3937 0001:00006BD1
+  3938 0001:00006BE7  3939 0001:00006BFD  3940 0001:00006C13  3941 0001:00006C29
+  3942 0001:00006C3F  3943 0001:00006C55  3944 0001:00006C6B  3945 0001:00006C81
+  3946 0001:00006C97  3947 0001:00006CAD  3948 0001:00006CC3  3949 0001:00006CD9
+  3950 0001:00006CEF  3952 0001:00006D05  3953 0001:00006D1B  3955 0001:00006D31
+  3956 0001:00006D47  3957 0001:00006D5D  3958 0001:00006D73  3959 0001:00006D89
+  3960 0001:00006D9F  3961 0001:00006DB5  3962 0001:00006DCB  3963 0001:00006DE1
+  3964 0001:00006DF7  3965 0001:00006E0D  3966 0001:00006E23  3967 0001:00006E39
+  3968 0001:00006E4F  3969 0001:00006E65  3970 0001:00006E7B  3971 0001:00006E91
+  3972 0001:00006EA7  3973 0001:00006EBD  3974 0001:00006ED3  3975 0001:00006EE9
+  3976 0001:00006EFF  3977 0001:00006F15  3978 0001:00006F2B  3979 0001:00006F41
+  3980 0001:00006F57  3981 0001:00006F6D  3982 0001:00006F83  3983 0001:00006F99
+  3984 0001:00006FAF  3985 0001:00006FC5  3987 0001:00006FDB  3988 0001:00006FF1
+  3989 0001:00007007  3990 0001:0000701D  3991 0001:00007033  3994 0001:00007049
+  3995 0001:0000705F  3998 0001:00007075  3999 0001:0000708B  4002 0001:000070A1
+  4003 0001:000070B7  4004 0001:000070CD  4005 0001:000070E3  4006 0001:000070F9
+  4007 0001:0000710F  4008 0001:00007125  4010 0001:0000713B  4011 0001:00007151
+  4012 0001:00007167  4013 0001:0000717D  4014 0001:00007193  4015 0001:000071A9
+  4016 0001:000071BF  4017 0001:000071D5  4018 0001:000071EB  4019 0001:00007201
+  4020 0001:00007217  4021 0001:0000722D  4022 0001:00007243  4023 0001:00007259
+  4025 0001:0000726F  4027 0001:00007285  4029 0001:0000729B  4031 0001:000072B1
+  4032 0001:000072C7  4033 0001:000072DD  4034 0001:000072F3  4035 0001:00007309
+  4036 0001:0000731F  4038 0001:00007335  4039 0001:0000734B  4041 0001:00007361
+  4043 0001:00007377  4044 0001:0000738D  4046 0001:000073A3  4047 0001:000073B9
+  4049 0001:000073CF  4050 0001:000073E5  4051 0001:000073FB  4052 0001:00007411
+  4053 0001:00007427  4055 0001:0000743D  4056 0001:00007453  4057 0001:00007469
+  4058 0001:0000747F  4061 0001:00007495  4062 0001:000074D1  4064 0001:0000750D
+  4068 0001:00007549  4069 0001:0000755F  4070 0001:00007575  4071 0001:0000758B
+  4074 0001:000075A1  4076 0001:000075B7  4078 0001:000075CD  4079 0001:000075E3
+  4080 0001:000075F9  4081 0001:0000760F  4082 0001:00007625  4083 0001:0000763B
+  4084 0001:00007651  4085 0001:00007667  4086 0001:0000767D  4087 0001:00007692
+  4088 0001:000076A5  4089 0001:000076BB  4090 0001:000076D1  4091 0001:000076E7
+  4092 0001:000076FD  4093 0001:00007713  4094 0001:00007729  4095 0001:0000773F
+  4096 0001:00007755  4097 0001:0000776B  4098 0001:00007781  4099 0001:00007797
+  4100 0001:000077AD  4106 0001:000077C3  4107 0001:000077D1  4108 0001:000077E7
+  4110 0001:0000780C  4115 0001:00007811  4116 0001:00007827  4119 0001:0000784A
+  4120 0001:00007855  4121 0001:00007860  4122 0001:0000786B  4123 0001:00007873
+  4124 0001:0000787E  4125 0001:00007889  4126 0001:00007894  4127 0001:0000789F
+  4128 0001:000078AA  4129 0001:000078B5  4130 0001:000078C0  4131 0001:000078CB
+  4132 0001:000078D6  4133 0001:000078E1  4134 0001:000078EC  4135 0001:000078F7
+  4136 0001:00007902  4139 0001:00007912  4140 0001:00007928  4141 0001:0000793E
+  4142 0001:00007954  4143 0001:00007969  4144 0001:0000797C  4145 0001:00007992
+  4146 0001:000079A8  4147 0001:000079BE  4148 0001:000079D4  4149 0001:000079EA
+  4150 0001:00007A00  4151 0001:00007A16  4152 0001:00007A2C  4153 0001:00007A42
+  4154 0001:00007A58  4155 0001:00007A6E  4156 0001:00007A84  4157 0001:00007A9A
+  4159 0001:00007AB0  4163 0001:0000A180  4164 0001:0000A182  4168 0001:0000A184
+  4169 0001:0000A186  4170 0001:0000A188  4171 0001:0000A18D  4174 0001:0000A195
+  4178 0001:0000A198  4179 0001:0000A1A1  4183 0001:0000A1A4  4184 0001:0000A1AD
+  4187 0001:0000A1B0  4188 0001:0000A1B3  4189 0001:0000A1B8  4195 0001:0000A1C4
+  4196 0001:0000A1CA  4197 0001:0000A1CB  4198 0001:0000A1CE  4199 0001:0000A1D1
+  4200 0001:0000A1D4  4201 0001:0000A1D8  4202 0001:0000A1DA  4203 0001:0000A1DE
+  4205 0001:0000A1E0  4206 0001:0000A1E2  4207 0001:0000A1E4  4208 0001:0000A1E5
+  4209 0001:0000A1EB  4211 0001:0000A1ED  4212 0001:0000A1EF  4214 0001:0000A1F1
+  4215 0001:0000A1F2  4216 0001:0000A1F5  4217 0001:0000A1F6  4218 0001:0000A1F9
+  4219 0001:0000A1FC  4221 0001:0000A1FD  4222 0001:0000A1FF  4223 0001:0000A200
+  4224 0001:0000A201  4225 0001:0000A203  4226 0001:0000A206  4227 0001:0000A209
+  4228 0001:0000A20A  4229 0001:0000A20D  4231 0001:0000A210  4237 0001:0000A214
+  4239 0001:0000A22C  4243 0001:0000A231  4244 0001:0000A234  4246 0001:0000A236
+  4247 0001:0000A239  4249 0001:0000A23B  4250 0001:0000A23E  4251 0001:0000A241
+  4253 0001:0000A243  4254 0001:0000A244  4255 0001:0000A245  4260 0001:0000A248
+  4264 0001:0000A250  4266 0001:0000A268  4270 0001:0000A26D  4271 0001:0000A270
+  4273 0001:0000A272  4274 0001:0000A275  4276 0001:0000A277  4277 0001:0000A27A
+  4278 0001:0000A27D  4280 0001:0000A27F  4281 0001:0000A280  4282 0001:0000A281
+  4287 0001:0000A284  4298 0001:0000A28C  4299 0001:0000A298  4301 0001:0000A29E
+  4302 0001:0000A2A9  4304 0001:0000A2AB  4305 0001:0000A2BF  4306 0001:0000A2CC
+  4307 0001:0000A2CF  4308 0001:0000A2D1  4311 0001:0000A2D5  4312 0001:0000A2D6
+  4313 0001:0000A2DC  4314 0001:0000A2DD  4316 0001:0000A2E2  4317 0001:0000A2E8
+  4309 0001:0000A2E9  4319 0001:0000A2EE  4320 0001:0000A2F0  4323 0001:0000A2F8
+  4324 0001:0000A2FE  4326 0001:0000A304  4327 0001:0000A307  4329 0001:0000A309
+  4330 0001:0000A30E  4335 0001:0000A320  4336 0001:0000A344  4337 0001:0000A34B
+  4338 0001:0000A35D  4340 0001:0000A361  4341 0001:0000A363  4343 0001:0000A368
+  4344 0001:0000A372  4346 0001:0000A385  4348 0001:0000A39F  4349 0001:0000A3A1
+  4353 0001:0000A3A6  4354 0001:0000A3C0  4355 0001:0000A3C6  4356 0001:0000A3D5
+  4358 0001:0000A3D9  4359 0001:0000A3DB  4361 0001:0000A3DD  4362 0001:0000A3E6
+  4363 0001:0000A3EE  4365 0001:0000A405  4366 0001:0000A43D  4367 0001:0000A43F
+  4369 0001:0000A441  4370 0001:0000A44A  4371 0001:0000A44C  4375 0001:0000A4C8
+  4376 0001:0000A4D3  4380 0001:0000A4D4  4381 0001:0000A4E8  4385 0001:0000A4EC
+  4386 0001:0000A4F7  4390 0001:0000A4F8  4391 0001:0000A50C  4395 0001:0000A510
+  4396 0001:0000A51B  4400 0001:0000A51C  4401 0001:0000A530  4405 0001:0000A534
+  4406 0001:0000A53F  4410 0001:0000A540  4411 0001:0000A554  4415 0001:0000A558
+  4416 0001:0000A563  4420 0001:0000A564  4421 0001:0000A578  4425 0001:0000A57C
+  4426 0001:0000A590  4430 0001:0000A594  4431 0001:0000A5A8  4435 0001:0000A5AC
+  4436 0001:0000A5C0  4440 0001:0000A5C4  4441 0001:0000A5CF  4445 0001:0000A5D0
+  4446 0001:0000A5E4  4450 0001:0000A5E8  4451 0001:0000A5F3  4455 0001:0000A5F4
+  4456 0001:0000A608  4460 0001:0000A60C  4461 0001:0000A617  4465 0001:0000A618
+  4466 0001:0000A62C  4470 0001:0000A630  4471 0001:0000A644  4475 0001:0000A648
+  4478 0001:0000A664  4483 0001:0000A668  4484 0001:0000A673  4488 0001:0000A674
+  4489 0001:0000A688  4495 0001:0000A68C  4496 0001:0000A698  4499 0001:0000A69C
+  4500 0001:0000A6A3  4502 0001:0000A6CE  4507 0001:0000A6D4  4508 0001:0000A6DA
+  4509 0001:0000A6FF  4513 0001:0000A704  4514 0001:0000A718  4518 0001:0000A71C
+  4521 0001:0000A738  4527 0001:0000A73C  4528 0001:0000A750  4532 0001:0000A754
+  4533 0001:0000A75F  4537 0001:0000A760  4538 0001:0000A774  4542 0001:0000A778
+  4543 0001:0000A781  4545 0001:0000A790  4546 0001:0000A79C  4548 0001:0000A7AE
+  4551 0001:0000A7B4  4552 0001:0000A7BD  4553 0001:0000A7C4  4554 0001:0000A7D7
+  4564 0001:0000A7DC  4565 0001:0000A7E2  4568 0001:0000A7E4  4569 0001:0000A7EA
+  4570 0001:0000A7F4  4573 0001:0000A7F8  4574 0001:0000A80A  4575 0001:0000A813
+  4576 0001:0000A81A  4577 0001:0000A829  4580 0001:0000A844  4581 0001:0000A84F
+  4582 0001:0000A856  4583 0001:0000A85E  4584 0001:0000A86A  4589 0001:0000A878
+  4590 0001:0000A87D  4591 0001:0000A88E  4590 0001:0000A89D  4592 0001:0000A8A0
+  4593 0001:0000A8A8  4617 0001:0000A8AC  4618 0001:0000A8D0  4619 0001:0000A8D8
+  4622 0001:0000A8E0  4623 0001:0000A8E9  4624 0001:0000A8FA  4625 0001:0000A90C
+  4626 0001:0000A91A  4627 0001:0000A92C  4628 0001:0000A92F  4629 0001:0000A939
+  4633 0001:0000A940  4634 0001:0000A943  4635 0001:0000A94D  4636 0001:0000A961
+  4631 0001:0000A969  4638 0001:0000A978  4640 0001:0000A982  4643 0001:0000A992
+  4644 0001:0000A9A0  4646 0001:0000A9AC  4647 0001:0000A9BB  4648 0001:0000A9C9
+  4649 0001:0000A9E1  4650 0001:0000A9E9  4651 0001:0000A9F7  4653 0001:0000AA20
+  4655 0001:0000AA33  4656 0001:0000AA4B  4657 0001:0000AA53  4658 0001:0000AA61
+  4660 0001:0000AA7D  4661 0001:0000AA95  4662 0001:0000AA9D  4663 0001:0000AAAB
+  4664 0001:0000AAC3  4665 0001:0000AACB  4666 0001:0000AAD9  4668 0001:0000AB02
+  4670 0001:0000AB15  4671 0001:0000AB2D  4672 0001:0000AB35  4673 0001:0000AB43
+  4675 0001:0000AB6C  4678 0001:0000AB8C  4682 0001:0000ABAC  4685 0001:0000ABCE
+  4686 0001:0000ABD6  4688 0001:0000ABE0  4690 0001:0000ABEE  4692 0001:0000ABFE
+  4694 0001:0000AC11  4695 0001:0000AC29  4641 0001:0000AC31  4697 0001:0000AC49
+  4699 0001:0000AC54  4715 0001:0000ACE0  4716 0001:0000ACFC  4717 0001:0000AD07
+  4718 0001:0000AD19  4719 0001:0000AD1D  4720 0001:0000AD2F  4721 0001:0000AD41
+  4722 0001:0000AD48  4723 0001:0000AD58  4724 0001:0000AD5F  4725 0001:0000AD66
+  4726 0001:0000AD78  4727 0001:0000AD7F  4728 0001:0000AD8D  4729 0001:0000AD94
+  4731 0001:0000AD9A  4732 0001:0000ADAC  4734 0001:0000ADD1  4731 0001:0000ADE8
+  4736 0001:0000ADED  4739 0001:0000AE68  4740 0001:0000AE73  4741 0001:0000AE7C
+  4742 0001:0000AE85  4743 0001:0000AE8C  4745 0001:0000AE93  4746 0001:0000AE9E
+  4747 0001:0000AEA9  4748 0001:0000AEB4  4749 0001:0000AEBF  4750 0001:0000AECB
+  4756 0001:0000AEDC  4760 0001:0000AEE6  4762 0001:0000AF07  4764 0001:0000AF11
+  4770 0001:0000AF1E  4771 0001:0000AF2A  4772 0001:0000AF3C  4774 0001:0000AF46
+  4775 0001:0000AF4C  4776 0001:0000AF51  4771 0001:0000AF52  4778 0001:0000AF55
+  4779 0001:0000AF6D  4780 0001:0000AF7B  4781 0001:0000AF82  4783 0001:0000AF98
+  4786 0001:0000AFA7  4787 0001:0000AFB1  4788 0001:0000AFB5  4789 0001:0000AFC7
+  4791 0001:0000AFD7  4792 0001:0000AFD9  4793 0001:0000AFDB  4788 0001:0000AFDC
+  4794 0001:0000AFDF  4796 0001:0000AFE3  4797 0001:0000AFF5  4796 0001:0000B005
+  4798 0001:0000B008  4801 0001:0000B016  4802 0001:0000B01D  4803 0001:0000B028
+  4804 0001:0000B033  4805 0001:0000B03E  4806 0001:0000B049  4807 0001:0000B054
+  4808 0001:0000B05F  4809 0001:0000B06A  4810 0001:0000B075  4814 0001:0000B138
+  4815 0001:0000B143  4819 0001:0000B144  4820 0001:0000B14F  4823 0001:0000B150
+  4824 0001:0000B153  4825 0001:0000B15A  4826 0001:0000B161  4829 0001:0000B164
+  4830 0001:0000B167  4831 0001:0000B170  4832 0001:0000B177  4833 0001:0000B17E
+  4838 0001:0000B180  4839 0001:0000B1A1  4840 0001:0000B1A7  4842 0001:0000B1B1
+  4843 0001:0000B1D6  4845 0001:0000B1E1  4846 0001:0000B1EB  4847 0001:0000B1F1
+  4848 0001:0000B1FC  4850 0001:0000B1FE  4852 0001:0000B204  4840 0001:0000B207
+  4853 0001:0000B20A  4854 0001:0000B214  4860 0001:0000B238  4861 0001:0000B23C
+  4863 0001:0000B243  4864 0001:0000B247  4866 0001:0000B248  4868 0001:0000B24B
+  4869 0001:0000B260  4870 0001:0000B275  4871 0001:0000B28A  4872 0001:0000B29F
+  4873 0001:0000B2B4  4874 0001:0000B2C9  4875 0001:0000B2DE  4877 0001:0000B2F3
+  4880 0001:0000B308  4881 0001:0000B31D  4883 0001:0000B332  4888 0001:0000B334
+  4889 0001:0000B354  4890 0001:0000B36F  4891 0001:0000B37F  4893 0001:0000B38D
+  4894 0001:0000B39A  4899 0001:0000B3C0  4900 0001:0000B3C4  4902 0001:0000B3D3
+  4903 0001:0000B3E8  4904 0001:0000B3F6  4905 0001:0000B3FC  4907 0001:0000B427
+  4911 0001:0000B43D  4912 0001:0000B44B  4917 0001:0000B46C  4918 0001:0000B470
+  4920 0001:0000B483  4921 0001:0000B498  4922 0001:0000B4A6  4924 0001:0000B4B0
+  4925 0001:0000B4CE  4926 0001:0000B4EC  4927 0001:0000B50A  4928 0001:0000B528
+  4929 0001:0000B546  4930 0001:0000B564  4933 0001:0000B58F  4938 0001:0000B5A5
+  4939 0001:0000B5B3  4940 0001:0000B5C1  4941 0001:0000B5CF  4942 0001:0000B5DD
+  4943 0001:0000B5EB  4944 0001:0000B5F9  4946 0001:0000B607  4950 0001:0000B694
+  4951 0001:0000B6A1  4952 0001:0000B6AA  4953 0001:0000B6C0  4954 0001:0000B6C7
+  4955 0001:0000B6CE  4957 0001:0000B6D9  4958 0001:0000B6E8  4960 0001:0000B6FF
+  4961 0001:0000B706  4962 0001:0000B70E  4963 0001:0000B714  4964 0001:0000B71D
+  4965 0001:0000B724  4966 0001:0000B72B  4967 0001:0000B732  4968 0001:0000B748
+  4969 0001:0000B750  4970 0001:0000B766  4971 0001:0000B76D  4972 0001:0000B77E
+  4973 0001:0000B787  4974 0001:0000B78D  4971 0001:0000B793  4975 0001:0000B796
+  4976 0001:0000B7A7  4977 0001:0000B7B6  4978 0001:0000B7C2  4979 0001:0000B7D2
+  4982 0001:0000B818  4983 0001:0000B81B  4984 0001:0000B826  4987 0001:0000B828
+  4988 0001:0000B82B  4989 0001:0000B834  4991 0001:0000B83F  4992 0001:0000B841
+  4996 0001:0000B844  4997 0001:0000B84D  4999 0001:0000B854  5000 0001:0000B856
+  5003 0001:0000B858  5004 0001:0000B85E  5006 0001:0000B866  5007 0001:0000B873
+  5008 0001:0000B879  5010 0001:0000B87F  5014 0001:0000B884  5015 0001:0000B88D
+  5018 0001:0000B890  5019 0001:0000B896  5020 0001:0000B8A3  5026 0001:0000B8A8
+  5027 0001:0000B8B4  5028 0001:0000B8C1  5030 0001:0000B8C7  5031 0001:0000B8CF
+  5034 0001:0000B8D9  5035 0001:0000B8EA  5037 0001:0000B8F7  5038 0001:0000B909
+  5039 0001:0000B90B  5034 0001:0000B90C  5042 0001:0000B90F  5050 0001:0000B918
+  5052 0001:0000B939  5053 0001:0000B947  5054 0001:0000B956  5056 0001:0000B964
+  5057 0001:0000B971  5058 0001:0000B98E  5060 0001:0000B99D  5062 0001:0000B9A7
+  5063 0001:0000B9AF  5064 0001:0000B9C0  5067 0001:0000B9C6  5068 0001:0000B9D3
+  5069 0001:0000B9E0  5074 0001:0000B9F5  5079 0001:0000BA14  5081 0001:0000BA19
+  5089 0001:0000BA78  5092 0001:0000BA9A  5093 0001:0000BAA9  5094 0001:0000BAB0
+  5095 0001:0000BABF  5097 0001:0000BACD  5098 0001:0000BAD6  5097 0001:0000BAEC
+  5100 0001:0000BAEF  5101 0001:0000BAF5  5102 0001:0000BB07  5101 0001:0000BB23
+  5104 0001:0000BB26  5106 0001:0000BB4C  5107 0001:0000BB54  5109 0001:0000BB64
+  5114 0001:0000BB90  5115 0001:0000BB95  5116 0001:0000BB9A  5118 0001:0000BBA4
+  5122 0001:0000BBB8  5123 0001:0000BBBE  5124 0001:0000BBC4  5125 0001:0000BBCB
+  5130 0001:0000BBCC  5131 0001:0000BBD2  5132 0001:0000BBDF  5133 0001:0000BBE3
+  5134 0001:0000BBF0  5137 0001:0000BBF8  5138 0001:0000BC00  5141 0001:0000BC18
+  5142 0001:0000BC20  5143 0001:0000BC2D  5148 0001:0000BC74  5149 0001:0000BC7A
+  5150 0001:0000BC87  5151 0001:0000BC8B  5152 0001:0000BC98  5155 0001:0000BCA0
+  5156 0001:0000BCA8  5159 0001:0000BCC0  5160 0001:0000BCC8  5161 0001:0000BCD5
+  5164 0001:0000BD1C  5165 0001:0000BD24  5167 0001:0000BD31  5168 0001:0000BD3C
+  5169 0001:0000BD52  5171 0001:0000BD5D  5175 0001:0000BDA4  5176 0001:0000BDAA
+  5181 0001:0000BDAC  5182 0001:0000BDB6  5183 0001:0000BDBD  5184 0001:0000BDBF
+  5185 0001:0000BDCC  5186 0001:0000BDD0  5187 0001:0000BDDA  5189 0001:0000BDE3
+  5190 0001:0000BDE9  5195 0001:0000BDF0  5196 0001:0000BDF6  5197 0001:0000BDFF
+  5199 0001:0000BE03  5200 0001:0000BE11  5202 0001:0000BE15  5203 0001:0000BE23
+  5200 0001:0000BE31  5205 0001:0000BE35  5206 0001:0000BE45  5207 0001:0000BE5B
+  5211 0001:0000BE78  5212 0001:0000BE8B  5213 0001:0000BE93  5214 0001:0000BEA1
+  5215 0001:0000BEA9  5216 0001:0000BEB7  5217 0001:0000BEC8  5218 0001:0000BED0
+  5220 0001:0000BED6  5221 0001:0000BEDF  5225 0001:0000BEE9  5226 0001:0000BEF7
+  5227 0001:0000BF05  5229 0001:0000BF12  5231 0001:0000BF2C  5234 0001:0000BF3F
+  5236 0001:0000BF57  5237 0001:0000BF60  5238 0001:0000BF6D  5240 0001:0000BF77
+  5242 0001:0000BF81  5246 0001:0000BF8C  5247 0001:0000BFAE  5248 0001:0000BFB6
+  5249 0001:0000BFC6  5250 0001:0000BFD4  5252 0001:0000BFF2  5254 0001:0000C005
+  5258 0001:0000C014  5259 0001:0000C023  5260 0001:0000C02B  5261 0001:0000C03A
+  5262 0001:0000C048  5264 0001:0000C063  5266 0001:0000C076  5269 0001:0000C07C
+  5270 0001:0000C085  5271 0001:0000C094  5276 0001:0000C098  5277 0001:0000C0A4
+  5278 0001:0000C0B2  5279 0001:0000C0BE  5280 0001:0000C0C7  5282 0001:0000C0E7
+  5284 0001:0000C0FB  5288 0001:0000C104  5289 0001:0000C10E  5292 0001:0000C110
+  5293 0001:0000C123  5294 0001:0000C131  5299 0001:0000C154  5300 0001:0000C171
+  5301 0001:0000C17F  5302 0001:0000C18B  5303 0001:0000C194  5305 0001:0000C1B2
+  5307 0001:0000C1C6  5312 0001:0000C1E8  5313 0001:0000C1F9  5314 0001:0000C200
+  5315 0001:0000C20E  5316 0001:0000C219  5317 0001:0000C222  5322 0001:0000C22C
+  5323 0001:0000C250  5324 0001:0000C258  5325 0001:0000C25D  5326 0001:0000C26B
+  5328 0001:0000C273  5329 0001:0000C27D  5330 0001:0000C281  5332 0001:0000C297
+  5333 0001:0000C2A4  5335 0001:0000C2A8  5337 0001:0000C2B5  5338 0001:0000C2C2
+  5340 0001:0000C2C6  5342 0001:0000C2D3  5343 0001:0000C2E1  5345 0001:0000C30C
+  5346 0001:0000C312  5347 0001:0000C31A  5349 0001:0000C332  5350 0001:0000C33B
+  5351 0001:0000C348  5353 0001:0000C352  5355 0001:0000C35C  5358 0001:0000C3B8
+  5359 0001:0000C3D3  5360 0001:0000C402  5363 0001:0000C42C  5364 0001:0000C447
+  5365 0001:0000C46F  5368 0001:0000C49C  5369 0001:0000C4BA  5370 0001:0000C4E1
+  5374 0001:0000C50C  5375 0001:0000C516  5379 0001:0000C518  5380 0001:0000C522
+  5385 0001:0000C524  5386 0001:0000C52D  5387 0001:0000C53F  5388 0001:0000C544
+  5389 0001:0000C548  5390 0001:0000C550  5395 0001:0000C558  5396 0001:0000C57A
+  5397 0001:0000C584  5398 0001:0000C58E  5399 0001:0000C592  5401 0001:0000C5C3
+  5403 0001:0000C5CD  5413 0001:0000C604  5414 0001:0000C640  5415 0001:0000C643
+  5416 0001:0000C64D  5417 0001:0000C658  5418 0001:0000C660  5419 0001:0000C668
+  5420 0001:0000C670  5421 0001:0000C675  5423 0001:0000C67A  5425 0001:0000C6A6
+  5426 0001:0000C6D0  5427 0001:0000C6E4  5429 0001:0000C710  5430 0001:0000C733
+  5431 0001:0000C756  5435 0001:0000C79B  5439 0001:0000C7CF  5440 0001:0000C7D5
+  5442 0001:0000C7EF  5443 0001:0000C7F3  5444 0001:0000C804  5445 0001:0000C81E
+  5446 0001:0000C82C  5448 0001:0000C839  5449 0001:0000C853  5450 0001:0000C868
+  5452 0001:0000C896  5453 0001:0000C8B0  5454 0001:0000C8C5  5456 0001:0000C8D6
+  5457 0001:0000C8F0  5458 0001:0000C905  5460 0001:0000C916  5461 0001:0000C930
+  5462 0001:0000C945  5465 0001:0000C95D  5469 0001:0000C967  5470 0001:0000C9B7
+  5471 0001:0000C9C1  5472 0001:0000C9CC  5473 0001:0000C9D7  5474 0001:0000C9DD
+  5475 0001:0000C9E3  5479 0001:0000C9F0  5480 0001:0000C9FA  5483 0001:0000CA9C
+  5484 0001:0000CAA5  5486 0001:0000CAB6  5488 0001:0000CAD0  5489 0001:0000CADF
+  5495 0001:0000CAE4  5496 0001:0000CB00  5498 0001:0000CB08  5499 0001:0000CB15
+  5500 0001:0000CB1E  5501 0001:0000CB2F  5502 0001:0000CB40  5504 0001:0000CB48
+  5505 0001:0000CB5F  5507 0001:0000CB6C  5508 0001:0000CB89  5510 0001:0000CBAC
+  5511 0001:0000CBC9  5513 0001:0000CBEC  5514 0001:0000CC09  5515 0001:0000CC2C
+  5516 0001:0000CC49  5519 0001:0000CC6C  5520 0001:0000CC89  5523 0001:0000CCAC
+  5524 0001:0000CCC9  5526 0001:0000CCEC  5527 0001:0000CD09  5528 0001:0000CD2C
+  5529 0001:0000CD49  5531 0001:0000CD6C  5532 0001:0000CD89  5534 0001:0000CDAC
+  5535 0001:0000CDC9  5537 0001:0000CDEC  5538 0001:0000CE09  5540 0001:0000CE2C
+  5541 0001:0000CE49  5543 0001:0000CE6C  5544 0001:0000CE89  5545 0001:0000CEAC
+  5546 0001:0000CEC9  5548 0001:0000CEEC  5549 0001:0000CF09  5550 0001:0000CF30
+  5551 0001:0000CF4D  5553 0001:0000CF74  5554 0001:0000CF91  5555 0001:0000CFB8
+  5556 0001:0000CFD5  5558 0001:0000CFF8  5559 0001:0000D015  5561 0001:0000D038
+  5562 0001:0000D055  5563 0001:0000D078  5564 0001:0000D095  5565 0001:0000D0B8
+  5566 0001:0000D0D5  5567 0001:0000D0F8  5568 0001:0000D115  5569 0001:0000D138
+  5570 0001:0000D155  5571 0001:0000D178  5572 0001:0000D195  5573 0001:0000D1B8
+  5574 0001:0000D1D5  5576 0001:0000D1F8  5577 0001:0000D215  5578 0001:0000D238
+  5579 0001:0000D255  5580 0001:0000D278  5581 0001:0000D295  5584 0001:0000D2B8
+  5585 0001:0000D2D5  5587 0001:0000D2F8  5588 0001:0000D315  5590 0001:0000D338
+  5591 0001:0000D355  5593 0001:0000D378  5594 0001:0000D395  5595 0001:0000D3B8
+  5596 0001:0000D3D5  5597 0001:0000D3F8  5598 0001:0000D415  5600 0001:0000D438
+  5601 0001:0000D455  5602 0001:0000D478  5603 0001:0000D495  5604 0001:0000D4B8
+  5605 0001:0000D4D5  5606 0001:0000D4F8  5607 0001:0000D515  5610 0001:0000D538
+  5611 0001:0000D555  5614 0001:0000D578  5615 0001:0000D595  5616 0001:0000D5B8
+  5617 0001:0000D5D5  5620 0001:0000D5F8  5621 0001:0000D615  5623 0001:0000D635
+  5624 0001:0000D652  5627 0001:0000D672  5630 0001:0000D692  5631 0001:0000D6A8
+  5638 0001:0000D71C  5639 0001:0000D73F  5640 0001:0000D746  5641 0001:0000D74E
+  5644 0001:0000D756  5645 0001:0000D760  5647 0001:0000D771  5648 0001:0000D77C
+  5649 0001:0000D78F  5650 0001:0000D797  5651 0001:0000D7AA  5650 0001:0000D7C8
+  5653 0001:0000D7CD  5654 0001:0000D7D6  5670 0001:0000D7FC  5671 0001:0000D800
+  5673 0001:0000D80A  5674 0001:0000D811  5677 0001:0000D81E  5678 0001:0000D835
+  5680 0001:0000D844  5681 0001:0000D84D  5682 0001:0000D859  5683 0001:0000D86F
+  5684 0001:0000D885  5685 0001:0000D89B  5686 0001:0000D8B1  5689 0001:0000D8C7
+  5690 0001:0000D8D8  5691 0001:0000D8DE  5693 0001:0000D8E3  5694 0001:0000D8EF
+  5695 0001:0000D8F6  5699 0001:0000DB3C  5700 0001:0000DB47  5703 0001:0000DB48
+  5707 0001:0000DB4B  5708 0001:0000DB51  5709 0001:0000DB5E  5710 0001:0000DB74
+  5711 0001:0000DB7B  5716 0001:0000DB80  5717 0001:0000DB8C  5718 0001:0000DB92
+  5719 0001:0000DBA3  5720 0001:0000DBAE  5722 0001:0000DBBB  5723 0001:0000DBC8
+  5724 0001:0000DBCA  5718 0001:0000DBCB  5725 0001:0000DBCE  5730 0001:0000DBDC
+  5731 0001:0000DBE8  5732 0001:0000DBF9  5733 0001:0000DC11  5734 0001:0000DC1C
+  5736 0001:0000DC2C  5737 0001:0000DC33  5738 0001:0000DC35  5731 0001:0000DC36
+  5739 0001:0000DC39  5740 0001:0000DC62  5745 0001:0000DC8C  5746 0001:0000DC98
+  5747 0001:0000DCA9  5748 0001:0000DCC1  5749 0001:0000DCCC  5751 0001:0000DCD9
+  5752 0001:0000DCDC  5753 0001:0000DCDE  5746 0001:0000DCDF  5754 0001:0000DCE2
+  5755 0001:0000DD0B  5760 0001:0000DD38  5761 0001:0000DD44  5762 0001:0000DD55
+  5763 0001:0000DD6D  5764 0001:0000DD78  5766 0001:0000DD85  5767 0001:0000DD88
+  5768 0001:0000DD8A  5761 0001:0000DD8B  5769 0001:0000DD8E  5770 0001:0000DDB7
+  5777 0001:0000DDE8  5778 0001:0000DE03  5779 0001:0000DE39  5780 0001:0000DE3B
+  5782 0001:0000DE67  5783 0001:0000DEA3  5784 0001:0000DEA4  5780 0001:0000DEA7
+  5785 0001:0000DEAA  5791 0001:0000DED0  5792 0001:0000DEF4  5793 0001:0000DF2A
+  5794 0001:0000DF2F  5796 0001:0000DF60  5797 0001:0000DF96  5798 0001:0000DFB1
+  5799 0001:0000DFB3  5801 0001:0000DFDF  5802 0001:0000E01F  5803 0001:0000E020
+  5799 0001:0000E023  5804 0001:0000E026  5805 0001:0000E029  5794 0001:0000E02C
+  5806 0001:0000E035  5812 0001:0000E05C  5813 0001:0000E080  5814 0001:0000E0B6
+  5815 0001:0000E0BB  5817 0001:0000E0EC  5818 0001:0000E122  5819 0001:0000E13D
+  5820 0001:0000E142  5822 0001:0000E173  5823 0001:0000E1A9  5824 0001:0000E1C4
+  5825 0001:0000E1C6  5827 0001:0000E1F2  5828 0001:0000E236  5829 0001:0000E237
+  5825 0001:0000E23A  5830 0001:0000E23D  5831 0001:0000E240  5820 0001:0000E243
+  5832 0001:0000E24C  5833 0001:0000E24F  5815 0001:0000E252  5834 0001:0000E25B
+  5848 0001:0000E284  5849 0001:0000E2AA  5850 0001:0000E2B2  5852 0001:0000E305
+  5853 0001:0000E311  5855 0001:0000E31F  5856 0001:0000E32B  5865 0001:0000E33B
+  5867 0001:0000E356  5871 0001:0000E374  5874 0001:0000E397  5875 0001:0000E3A3
+  5876 0001:0000E3B7  5877 0001:0000E3CF  5879 0001:0000E3E1  5880 0001:0000E3FF
+  5881 0001:0000E42E  5882 0001:0000E431  5884 0001:0000E4B1  5886 0001:0000E4B9
+  5887 0001:0000E4C5  5888 0001:0000E4DB  5889 0001:0000E56E  5890 0001:0000E57C
+  5891 0001:0000E599  5893 0001:0000E5AE  5897 0001:0000E5C1  5901 0001:0000E5DC
+  5902 0001:0000E5F9  5904 0001:0000E603  5908 0001:0000E60E  5909 0001:0000E619
+  5914 0001:0000E634  5915 0001:0000E63F  5918 0001:0000E65A  5920 0001:0000E667
+  5921 0001:0000E67A  5922 0001:0000E689  5923 0001:0000E698  5925 0001:0000E6A7
+  5928 0001:0000E6C2  5930 0001:0000E6DA  5933 0001:0000E6EA  5935 0001:0000E6F8
+  5940 0001:0000E703  5942 0001:0000E710  5944 0001:0000E72E  5945 0001:0000E751
+  5946 0001:0000E754  5949 0001:0000E761  5952 0001:0000E77B  5955 0001:0000E78B
+  5964 0001:0000E904  5965 0001:0000E910  5966 0001:0000E92D  5967 0001:0000E93B
+  5968 0001:0000E94F  5970 0001:0000E964  5971 0001:0000E987  5972 0001:0000E997
+  5979 0001:0000E9E4  5980 0001:0000E9F0  5981 0001:0000E9F4  5983 0001:0000EA0D
+  5984 0001:0000EA21  5985 0001:0000EA35  5986 0001:0000EA49  5987 0001:0000EA5F
+  5988 0001:0000EA75  5992 0001:0000EA8B  5993 0001:0000EAB8  5995 0001:0000EAC1
+  5997 0001:0000EADA  5998 0001:0000EAED  5999 0001:0000EB00  6000 0001:0000EB13
+  6001 0001:0000EB28  6002 0001:0000EB3D  6003 0001:0000EB52  6004 0001:0000EB6F
+  6005 0001:0000EB9F  6007 0001:0000EBA8  6009 0001:0000EBBD  6010 0001:0000EBD0
+  6011 0001:0000EBE3  6012 0001:0000EBF6  6013 0001:0000EC09  6015 0001:0000EC12
+  6017 0001:0000EC2B  6018 0001:0000EC40  6019 0001:0000EC55  6020 0001:0000EC6A
+  6021 0001:0000EC87  6022 0001:0000ECA5  6024 0001:0000ECAE  6026 0001:0000ECC3
+  6027 0001:0000ECC9  6028 0001:0000ECF8  6030 0001:0000ED01  6032 0001:0000ED37
+  6033 0001:0000ED39  6034 0001:0000ED65  6032 0001:0000ED66  6035 0001:0000ED6B
+  6036 0001:0000ED93  6037 0001:0000EDBB  6038 0001:0000EDE3  6039 0001:0000EE0D
+  6040 0001:0000EE37  6041 0001:0000EE61  6042 0001:0000EE8A  6043 0001:0000EEB3
+  6044 0001:0000EED9  6053 0001:0000EF38  6054 0001:0000EF46  6055 0001:0000EF55
+  6056 0001:0000EF6F  6057 0001:0000EF7A  6059 0001:0000EF8D  6061 0001:0000EF92
+  6066 0001:0000F008  6067 0001:0000F012  6068 0001:0000F026  6069 0001:0000F034
+  6071 0001:0000F052  6073 0001:0000F068  6077 0001:0000F070  6078 0001:0000F09D
+  6079 0001:0000F0AC  6081 0001:0000F0CA  6082 0001:0000F0D9  6084 0001:0000F0F5
+  6085 0001:0000F104  6086 0001:0000F11E  6087 0001:0000F12D  6089 0001:0000F14A
+  6090 0001:0000F159  6093 0001:0000F176  6094 0001:0000F185  6096 0001:0000F1A3
+  6100 0001:0000F1B4  6102 0001:0000F1C9  6104 0001:0000F1D9  6107 0001:0000F1DD
+  6109 0001:0000F1F9  6112 0001:0000F206  6113 0001:0000F221  6114 0001:0000F239
+  6113 0001:0000F259  6118 0001:0000F25E  6119 0001:0000F267  6123 0001:0000F270
+  6124 0001:0000F277  6129 0001:0000F2AC  6130 0001:0000F2E9  6131 0001:0000F341
+  6132 0001:0000F353  6133 0001:0000F366  6134 0001:0000F38F  6135 0001:0000F3AB
+  6136 0001:0000F3D9  6137 0001:0000F3EB  6138 0001:0000F3FD  6139 0001:0000F41F
+  6140 0001:0000F42F  6142 0001:0000F434  6145 0001:0000F449  6146 0001:0000F469
+  6147 0001:0000F488  6150 0001:0000F496  6152 0001:0000F4AC  6160 0001:0000F514
+  6161 0001:0000F522  6162 0001:0000F531  6163 0001:0000F538  6164 0001:0000F54E
+  6166 0001:0000F55A  6167 0001:0000F563  6168 0001:0000F575  6164 0001:0000F579
+  6169 0001:0000F57C  6177 0001:0000F5B4  6178 0001:0000F5C2  6179 0001:0000F5D1
+  6180 0001:0000F5D8  6181 0001:0000F5EE  6183 0001:0000F5FA  6184 0001:0000F603
+  6185 0001:0000F615  6181 0001:0000F619  6186 0001:0000F61C  6191 0001:0000F654
+  6192 0001:0000F676  6193 0001:0000F684  6194 0001:0000F68A  6195 0001:0000F6A0
+  6196 0001:0000F6B1  6195 0001:0000F6D2  6197 0001:0000F6D5  6202 0001:0000F714
+  6203 0001:0000F736  6204 0001:0000F744  6205 0001:0000F74A  6206 0001:0000F760
+  6207 0001:0000F771  6206 0001:0000F792  6208 0001:0000F795  6214 0001:0000F7D4
+  6215 0001:0000F7E6  6216 0001:0000F823  6217 0001:0000F830  6218 0001:0000F83C
+  6219 0001:0000F848  6220 0001:0000F854  6222 0001:0000F860  6224 0001:0000F876
+  6230 0001:0000F8A4  6231 0001:0000F8DA  6232 0001:0000F8EE  6233 0001:0000F904
+  6234 0001:0000F910  6235 0001:0000F916  6236 0001:0000F92C  6237 0001:0000F92E
+  6238 0001:0000F93C  6240 0001:0000F941  6241 0001:0000F94C  6242 0001:0000F95A
+  6243 0001:0000F974  6244 0001:0000F97E  6238 0001:0000F981  6247 0001:0000F995
+  6249 0001:0000F9A5  6254 0001:0000FA38  6255 0001:0000FA59  6256 0001:0000FA6C
+  6257 0001:0000FA72  6258 0001:0000FA88  6259 0001:0000FA9B  6258 0001:0000FAC8
+  6260 0001:0000FACD  6265 0001:0000FB20  6266 0001:0000FB41  6267 0001:0000FB54
+  6268 0001:0000FB5A  6269 0001:0000FB70  6270 0001:0000FB83  6269 0001:0000FBB0
+  6271 0001:0000FBB5  6276 0001:0000FC08  6277 0001:0000FC2B  6278 0001:0000FC39
+  6279 0001:0000FC4F  6280 0001:0000FC57  6281 0001:0000FC71  6280 0001:0000FC9C
+  6282 0001:0000FC9F  6287 0001:0000FCEC  6288 0001:0000FD0F  6289 0001:0000FD1D
+  6290 0001:0000FD33  6291 0001:0000FD3B  6292 0001:0000FD55  6291 0001:0000FD80
+  6293 0001:0000FD83  6302 0001:0000FDD4  6303 0001:0000FDDE  6305 0001:0000FDEB
+  6306 0001:0000FDF5  6318 0001:0000FDF9  6319 0001:0000FE02  6320 0001:0000FE1A
+  6324 0001:0000FE32  6327 0001:0000FE3B  6328 0001:0000FE51  6335 0001:0000FED8
+  6341 0001:0000FEDE  6343 0001:0000FEF7  6347 0001:0000FEFC  6348 0001:0000FEFD
+  6349 0001:0000FF03  6350 0001:0000FF0A  6355 0001:0000FF10  6356 0001:0000FF17
+  6357 0001:0000FF1F  6358 0001:0000FF33  6359 0001:0000FF44  6361 0001:0000FF48
+  6362 0001:0000FF4A  6367 0001:0000FF50  6368 0001:0000FF7E  6369 0001:0000FF8A
+  6371 0001:0000FF92  6372 0001:0000FFA7  6373 0001:0000FFAB  6377 0001:0000FFB8
+  6378 0001:0000FFC1  6381 0001:0000FFC5  6382 0001:0000FFC7  6385 0001:0000FFCD
+  6392 0001:0000FFF8  6393 0001:0000FFFB  6395 0001:0001000B  6396 0001:0001000D
+  6398 0001:0001000F  6399 0001:00010015  6400 0001:00010023  6401 0001:00010041
+  6405 0001:00010044  6406 0001:00010056  6407 0001:00010058  6408 0001:00010069
+  6409 0001:00010076  6407 0001:00010078  6410 0001:0001007B  6411 0001:00010089
+  6412 0001:0001008B  6413 0001:0001009C  6415 0001:000100A9  6416 0001:000100C6
+  6417 0001:000100C7  6412 0001:000100C8  6418 0001:000100CB  6425 0001:000100D8
+  6426 0001:000100DB  6428 0001:000100EB  6429 0001:000100F1  6430 0001:000100FF
+  6431 0001:0001011C  6435 0001:00010120  6436 0001:0001014A  6437 0001:00010157
+  6438 0001:00010171  6437 0001:000101A0  6439 0001:000101A3  6442 0001:000101CC
+  6443 0001:000101CF  6445 0001:000101D9  6446 0001:000101DF  6447 0001:000101EA
+  6449 0001:000101F1  6452 0001:000101F4  6453 0001:000101F7  6454 0001:0001020A
+  6458 0001:0001020C  6459 0001:00010220  6463 0001:00010224  6464 0001:0001022F
+  6468 0001:00010230  6469 0001:00010244  6473 0001:00010248  6474 0001:00010253
+  6478 0001:00010254  6479 0001:0001026D  6483 0001:00010270  6484 0001:0001027B
+  6488 0001:0001027C  6489 0001:00010295  6493 0001:00010298  6494 0001:000102A3
+  6498 0001:000102A4  6499 0001:000102BD  6503 0001:000102C0  6504 0001:000102CB
+  6508 0001:000102CC  6509 0001:000102E5  6513 0001:000102E8  6515 0001:000102F9
+  6519 0001:000102FC  6520 0001:00010300  6524 0001:00010304  6525 0001:00010308
+  6529 0001:0001030C  6530 0001:00010310  6534 0001:00010314  6535 0001:00010318
+  6539 0001:0001031C  6540 0001:00010320  6543 0001:00010324  6544 0001:00010325
+  6547 0001:0001033F  6551 0001:00010344  6552 0001:00010348  6556 0001:0001034C
+  6557 0001:00010350  6561 0001:00010354  6562 0001:00010358  6565 0001:0001035C
+  6566 0001:0001035D  6569 0001:00010377  6579 0001:0001037C  6580 0001:00010382
+  6582 0001:00010389  6583 0001:0001038D  6584 0001:00010394  6585 0001:00010399
+  6586 0001:0001039D  6588 0001:000103A4  6593 0001:000103A8  6594 0001:000103C5
+  6595 0001:000103D1  6597 0001:000103DE  6598 0001:000103EF  6600 0001:00010407
+  6601 0001:0001041A  6602 0001:0001041C  6596 0001:0001041D  6603 0001:00010420
+  6606 0001:00010444  6607 0001:0001044F  6608 0001:00010458  6609 0001:0001045F
+  6610 0001:00010467  6611 0001:00010473  6614 0001:00010484  6615 0001:00010487
+  6616 0001:0001048E  6617 0001:00010495  6618 0001:0001049D  6621 0001:000104A0
+  6622 0001:000104A9  6623 0001:000104B4  6624 0001:000104B9  6625 0001:000104BE
+  6626 0001:000104C3  6629 0001:000104C8  6630 0001:000104CB  6632 0001:000104D1
+  6633 0001:000104D8  6634 0001:000104E0  6635 0001:000104E4  6638 0001:000104E8
+  6639 0001:000104EB  6641 0001:000104F1  6642 0001:000104F8  6643 0001:00010500
+  6644 0001:00010504  6648 0001:00010508  6649 0001:0001050D  6652 0001:00010510
+  6653 0001:00010516  6654 0001:0001051C  6655 0001:00010540  6668 0001:00010574
+  6669 0001:000105A2  6670 0001:000105AD  6671 0001:000105BC  6672 0001:000105E8
+  6675 0001:0001063C  6676 0001:00010647  6677 0001:0001064F  6678 0001:0001065B
+  6681 0001:0001066C  6682 0001:00010672  6683 0001:0001067C  6686 0001:00010680
+  6687 0001:0001069B  6688 0001:000106AA  6689 0001:000106DA  6690 0001:000106E4
+  6693 0001:0001070C  6694 0001:00010714  6695 0001:00010723  6697 0001:0001072A
+  6698 0001:00010731  6700 0001:00010744  6703 0001:0001074C  6704 0001:0001074F
+  6705 0001:0001075D  6708 0001:00010760  6709 0001:00010766  6710 0001:00010770
+  6711 0001:00010779  6714 0001:0001077C  6715 0001:00010783  6717 0001:00010794
+  6718 0001:000107A0  6721 0001:000107AC  6722 0001:000107B5  6725 0001:000107BC
+  6726 0001:000107BF  6727 0001:000107C7  6733 0001:000107CC  6734 0001:000107E1
+  6735 0001:000107F0  6736 0001:000107F3  6739 0001:00010810  6740 0001:00010816
+  6741 0001:0001081F  6745 0001:00010824  6746 0001:00010829  6750 0001:0001082C
+  6751 0001:0001082F  6754 0001:00010830  6755 0001:00010833  6756 0001:0001083A
+  6761 0001:0001083C  6762 0001:0001085A  6763 0001:00010870  6764 0001:0001087C
+  6762 0001:000108AB  6765 0001:000108AE  6771 0001:000108D4  6772 0001:000108D7
+  6773 0001:000108F1  6774 0001:000108F8  6775 0001:000108FD  6776 0001:0001090C
+  6779 0001:00010988  6780 0001:0001098B  6782 0001:00010992  6783 0001:00010997
+  6785 0001:0001099C  6786 0001:000109A1  6787 0001:000109A6  6792 0001:000109A8
+  6793 0001:000109AB  6794 0001:000109AF  6795 0001:000109C0  6796 0001:000109CC
+  6797 0001:000109D8  6800 0001:000109DC  6801 0001:000109E8  6802 0001:000109F1
+  6803 0001:00010A2A  6804 0001:00010A34  6807 0001:00010A64  6808 0001:00010A68
+  6809 0001:00010A81  6812 0001:00010A84  6813 0001:00010A96  6814 0001:00010A9F
+  6815 0001:00010AA6  6816 0001:00010AB7  6819 0001:00010AD4  6820 0001:00010ADF
+  6821 0001:00010AE7  6822 0001:00010AEC  6823 0001:00010AF3  6824 0001:00010AFF
+  6827 0001:00010B10  6828 0001:00010B13  6829 0001:00010B1A  6830 0001:00010B22
+  6833 0001:00010B24  6834 0001:00010B27  6835 0001:00010B2D  6836 0001:00010B34
+  6837 0001:00010B3B  6842 0001:00010B40  6843 0001:00010B4C  6844 0001:00010B54
+  6845 0001:00010B5B  6846 0001:00010B65  6847 0001:00010B67  6848 0001:00010B6A
+  6849 0001:00010B71  6850 0001:00010B77  6851 0001:00010B7A  6857 0001:00010B84
+  6858 0001:00010B90  6861 0001:00010BAE  6869 0001:00010BB8  6870 0001:00010BC4
+  6871 0001:00010BCA  6873 0001:00010BCD  6876 0001:00010BEE  6881 0001:00010BF8
+  6882 0001:00010BFD  6883 0001:00010C0D  6890 0001:00010C10  6891 0001:00010C12
+  6896 0001:00010C14  6897 0001:00010C22  6898 0001:00010C2A  6899 0001:00010C31
+  6901 0001:00010C3D  6902 0001:00010C3F  6903 0001:00010C8F  6904 0001:00010C99
+  6905 0001:00010CA5  6906 0001:00010CB1  6907 0001:00010CBA  6908 0001:00010CC3
+  6909 0001:00010CCC  6910 0001:00010CD5  6911 0001:00010CDE  6912 0001:00010CE7
+  6913 0001:00010CF0  6914 0001:00010CF9  6915 0001:00010D02  6916 0001:00010D0B
+  6917 0001:00010D14  6919 0001:00010D1D  6921 0001:00010D33  6922 0001:00010D40
+  6923 0001:00010D54  6924 0001:00010D5B  6925 0001:00010D64  6926 0001:00010D6D
+  6928 0001:00010D76  6930 0001:00010D8C  6932 0001:00010D92  6933 0001:00010D95
+  6936 0001:00010DD8  6937 0001:00010DDB  6938 0001:00010DE2  6939 0001:00010DFC
+  6940 0001:00010E0F  6944 0001:00010E8C  6945 0001:00010E91  6946 0001:00010EA5
+  6949 0001:00010EA8  6950 0001:00010EBA  6951 0001:00010EC3  6952 0001:00010ECA
+  6955 0001:00010EE4  6956 0001:00010EEF  6957 0001:00010EF6  6958 0001:00010F02
+  6961 0001:00010F10  6962 0001:00010F13  6963 0001:00010F19  6964 0001:00010F20
+  6965 0001:00010F27  6968 0001:00010F2C  6969 0001:00010F2F  6971 0001:00010F36
+  6972 0001:00010F3B  6974 0001:00010F40  6975 0001:00010F45  6976 0001:00010F4A
+  6979 0001:00010F4C  6980 0001:00010F58  6981 0001:00010F61  6982 0001:00010F9A
+  6983 0001:00010FA3  6988 0001:00010FD0  6989 0001:00010FD3  6990 0001:00010FD7
+  6991 0001:00010FEC  6992 0001:00010FF9  6993 0001:00011005  7003 0001:00011008
+  7004 0001:00011014  7005 0001:00011022  7006 0001:00011029  7008 0001:00011036
+  7009 0001:00011038  7010 0001:0001103B  7011 0001:00011041  7012 0001:00011047
+  7014 0001:0001104D  7015 0001:00011053  7018 0001:0001105C  7019 0001:0001105F
+  7020 0001:00011069  7021 0001:00011086  7022 0001:0001109F  7026 0001:0001111C
+  7027 0001:00011124  7028 0001:0001113E  7031 0001:00011140  7032 0001:00011152
+  7033 0001:0001115B  7034 0001:00011162  7037 0001:0001117C  7038 0001:00011187
+  7039 0001:0001118E  7040 0001:0001119A  7043 0001:000111A8  7044 0001:000111AB
+  7045 0001:000111B1  7046 0001:000111B8  7047 0001:000111BF  7050 0001:000111C4
+  7051 0001:000111C7  7053 0001:000111D1  7054 0001:000111D6  7056 0001:000111DE
+  7057 0001:000111E6  7058 0001:000111EE  7061 0001:000111F0  7062 0001:000111FC
+  7063 0001:00011208  7064 0001:00011241  7065 0001:0001124D  7070 0001:0001127C
+  7071 0001:0001127F  7072 0001:00011286  7073 0001:000112A1  7074 0001:000112B4
+  7075 0001:000112C0  7088 0001:000112C4  7089 0001:000112CB  7092 0001:000112DC
+  7093 0001:000112E9  7095 0001:000112F4  7096 0001:000112FD  7102 0001:00011304
+  7103 0001:0001130A  7104 0001:00011314  7105 0001:00011322  7113 0001:00011328
+  7114 0001:00011331  7116 0001:00011347  7118 0001:0001135A  7119 0001:00011373
+  7120 0001:00011384  7121 0001:00011390  7122 0001:000113A3  7123 0001:000113D9
+  7119 0001:000113DA  7125 0001:000113DD  7131 0001:00011420  7132 0001:00011429
+  7134 0001:00011439  7135 0001:0001144F  7137 0001:00011467  7139 0001:00011471
+  7140 0001:00011486  7142 0001:0001148C  7143 0001:000114A8  7144 0001:000114C2
+  7146 0001:000114D0  7147 0001:000114EA  7148 0001:000114FA  7150 0001:00011520
+  7146 0001:00011531  7151 0001:00011534  7142 0001:00011537  7154 0001:00011540
+  7156 0001:00011548  7157 0001:00011554  7159 0001:0001156A  7160 0001:00011571
+  7161 0001:0001157A  7162 0001:00011581  7163 0001:0001158F  7165 0001:00011599
+  7168 0001:000115A0  7169 0001:000115A6  7171 0001:000115B2  7172 0001:000115BC
+  7174 0001:000115C5  7177 0001:000115C8  7178 0001:000115CB  7180 0001:000115D0
+  7181 0001:000115D5  7182 0001:000115D9  7183 0001:000115E4  7185 0001:000115ED
+  7188 0001:000115F0  7189 0001:000115F3  7190 0001:000115FB  7191 0001:00011604
+  7194 0001:00011608  7195 0001:0001161A  7196 0001:00011623  7197 0001:00011627
+  7198 0001:00011636  7201 0001:00011650  7202 0001:0001165B  7203 0001:00011663
+  7204 0001:0001166F  7207 0001:00011680  7208 0001:00011687  7210 0001:00011698
+  7211 0001:000116A4  7212 0001:000116AE  7214 0001:000116B0  7215 0001:000116B9
+  7222 0001:000116C0  7223 0001:000116C8  7224 0001:000116DD  7226 0001:000116F0
+  7228 0001:000116FF  7230 0001:0001171A  7231 0001:00011727  7232 0001:0001172B
+  7233 0001:00011757  7234 0001:00011761  7235 0001:0001177F  7236 0001:00011783
+  7237 0001:000117C2  7238 0001:000117CF  7240 0001:0001180B  7244 0001:000118D0
+  7245 0001:000118F1  7247 0001:000118FE  7248 0001:00011907  7249 0001:00011920
+  7250 0001:00011946  7251 0001:0001194F  7252 0001:0001195D  7253 0001:0001196F
+  7255 0001:0001197F  7256 0001:0001198A  7257 0001:000119A5  7259 0001:000119A9
+  7260 0001:000119B5  7262 0001:000119C0  7263 0001:000119C2  7267 0001:00011A0A
+  7268 0001:00011A13  7269 0001:00011A3C  7272 0001:00011AC0  7273 0001:00011AC7
+  7274 0001:00011AD8  7275 0001:00011AE7  7276 0001:00011AFC  7282 0001:00011B00
+  7283 0001:00011B0E  7284 0001:00011B1F  7287 0001:00011B2E  7289 0001:00011B3F
+  7290 0001:00011B4C  7291 0001:00011B53  7292 0001:00011B69  7293 0001:00011B7D
+  7294 0001:00011B88  7295 0001:00011B8C  7296 0001:00011BB5  7297 0001:00011BC2
+  7298 0001:00011BD8  7299 0001:00011BDC  7300 0001:00011BEA  7301 0001:00011BF1
+  7302 0001:00011C05  7303 0001:00011C19  7304 0001:00011C24  7307 0001:00011C34
+  7308 0001:00011C42  7311 0001:00011D10  7312 0001:00011D14  7313 0001:00011D2A
+  7319 0001:00011D30  7320 0001:00011D36  7321 0001:00011D3F  7325 0001:00011D44
+  7326 0001:00011D49  7330 0001:00011D4C  7331 0001:00011D4F  7335 0001:00011D50
+  7336 0001:00011D55  7339 0001:00011D58  7340 0001:00011D6D  7341 0001:00011D7C
+  7342 0001:00011D7F  7345 0001:00011D9C  7346 0001:00011D9F  7347 0001:00011DA6
+  7350 0001:00011DA8  7351 0001:00011DAC  7352 0001:00011DC2  7359 0001:00011DC8
+  7360 0001:00011DCE  7363 0001:00011DD0  7364 0001:00011DD6  7365 0001:00011DE0
+  7368 0001:00011DE4  7369 0001:00011DE7  7370 0001:00011DEF  7377 0001:00011DF4
+  7378 0001:00011DFD  7380 0001:00011E0E  7382 0001:00011E1E  7383 0001:00011E24
+  7384 0001:00011E40  7385 0001:00011E5A  7386 0001:00011E68  7387 0001:00011E7D
+  7388 0001:00011E8C  7389 0001:00011EA2  7386 0001:00011EB4  7389 0001:00011EB7
+  7383 0001:00011EBA  7390 0001:00011EBF  7392 0001:00011EC8  7393 0001:00011ED4
+  7395 0001:00011EEA  7396 0001:00011EF1  7398 0001:00011EFF  7401 0001:00011F04
+  7402 0001:00011F16  7403 0001:00011F1F  7404 0001:00011F2E  7405 0001:00011F3F
+  7406 0001:00011F51  7409 0001:00011F6C  7410 0001:00011F77  7411 0001:00011F82
+  7412 0001:00011F8A  7413 0001:00011F92  7414 0001:00011F9E  7418 0001:00011FAC
+  7419 0001:00011FAF  7420 0001:00011FBA  7425 0001:00011FBC  7426 0001:00011FD8
+  7428 0001:00011FDB  7430 0001:00011FEF  7431 0001:0001201C  7432 0001:0001202F
+  7433 0001:00012038  7436 0001:0001203F  7439 0001:00012070  7440 0001:00012074
+  7441 0001:0001207B  7443 0001:00012081  7445 0001:00012084  7446 0001:0001209B
+  7448 0001:000120A2  7453 0001:000120A8  7454 0001:000120AD  7455 0001:000120B4
+  7456 0001:000120B9  7457 0001:000120C0  7458 0001:000120D1  7459 0001:000120E9
+  7460 0001:000120F2  7457 0001:000120F8  7461 0001:000120FB  7462 0001:00012102
+  7463 0001:0001210C  7464 0001:0001211A  7470 0001:00012120  7471 0001:00012129
+  7472 0001:00012133  7473 0001:0001213C  7474 0001:00012144  7475 0001:0001214B
+  7476 0001:00012159  7478 0001:0001216E  7479 0001:00012178  7481 0001:00012189
+  7485 0001:00012190  7486 0001:00012198  7491 0001:0001219C  7492 0001:000121A7
+  7493 0001:000121B9  7495 0001:000121D1  7496 0001:000121DB  7497 0001:000121DD
+  7492 0001:000121DE  7498 0001:000121E1  7499 0001:00012202  7502 0001:00012230
+  7503 0001:00012239  7504 0001:00012249  7507 0001:00012250  7508 0001:00012283
+  7509 0001:000122A0  7512 0001:000122CC  7513 0001:000122D8  7514 0001:000122EB
+  7520 0001:000122F4  7521 0001:000122FD  7522 0001:00012304  7524 0001:0001230B
+  7525 0001:0001231D  7527 0001:00012323  7528 0001:00012335  7530 0001:00012341
+  7531 0001:0001234B  7532 0001:0001236A  7527 0001:0001236B  7534 0001:0001236E
+  7540 0001:00012378  7541 0001:00012385  7543 0001:00012392  7544 0001:000123AC
+  7547 0001:000123DB  7548 0001:00012408  7554 0001:00012490  7555 0001:0001249A
+  7557 0001:000124A7  7558 0001:000124BE  7561 0001:000124C9  7562 0001:000124F6
+  7567 0001:00012550  7568 0001:0001255B  7569 0001:00012568  7571 0001:0001256A
+  7572 0001:00012577  7573 0001:0001259F  7576 0001:000125B3  7577 0001:000125E5
+  7582 0001:0001266C  7583 0001:0001267B  7584 0001:00012682  7586 0001:00012688
+  7587 0001:00012695  7588 0001:000126A3  7590 0001:000126BC  7593 0001:000126CF
+  7598 0001:000126D8  7599 0001:000126E7  7600 0001:000126EE  7602 0001:000126F4
+  7603 0001:00012700  7604 0001:0001270E  7606 0001:00012728  7609 0001:0001273B
+  7622 0001:00012744  7623 0001:00012759  7624 0001:00012762  7626 0001:00012766
+  7627 0001:00012772  7630 0001:00012775  7631 0001:0001277B  7634 0001:00012781
+  7637 0001:0001279C  7638 0001:000127B3  7639 0001:000127BB  7642 0001:000127DC
+  7643 0001:000127E7  7645 0001:000127EE  7646 0001:000127F4  7648 0001:000127FD
+  7649 0001:00012809  7654 0001:00012818  7655 0001:0001281B  7656 0001:0001282A
+  7657 0001:00012832  7658 0001:00012837  7659 0001:00012841  7662 0001:00012844
+  7663 0001:00012847  7664 0001:0001284E  7665 0001:00012854  7666 0001:0001285E
+  7671 0001:00012860  7672 0001:00012863  7675 0001:00012864  7676 0001:00012867
+  7677 0001:00012870  7682 0001:00012874  7683 0001:00012875  7684 0001:00012877
+  7685 0001:00012880  7689 0001:00012884  7690 0001:0001288B  7692 0001:00012892
+  7693 0001:00012894  7696 0001:00012898  7697 0001:0001289B  7698 0001:000128A4
+  7701 0001:000128A8  7702 0001:000128AB  7703 0001:000128B5  7706 0001:000128B8
+  7707 0001:000128BE  7708 0001:000128C7  7711 0001:000128CC  7712 0001:000128D2
+  7713 0001:000128DC  7721 0001:000128E0  7722 0001:000128E3  7725 0001:000128E4
+  7726 0001:00012904  7729 0001:0001290B  7730 0001:00012926  7731 0001:0001292A
+  7733 0001:0001295F  7736 0001:000129A8  7737 0001:000129C5  7739 0001:000129CC
+  7740 0001:000129D3  7742 0001:00012A08  7745 0001:00012A50  7746 0001:00012A6D
+  7747 0001:00012A74  7748 0001:00012AB3  7752 0001:00012AEC  7753 0001:00012AEE
+  7758 0001:00012AF0  7762 0001:00012AF4  7763 0001:00012AF9  7766 0001:00012AFC
+  7768 0001:00012B02  7772 0001:00012B19  7775 0001:00012B1C  7777 0001:00012B25
+  7781 0001:00012B3D  7785 0001:00012B44  7786 0001:00012B46  7791 0001:00012B48
+  7792 0001:00012B4A  7797 0001:00012B4C  7798 0001:00012B4E  7802 0001:00012B50
+  7803 0001:00012B52  7807 0001:00012B54  7808 0001:00012B56  7812 0001:00012B58
+  7813 0001:00012B5A  7818 0001:00012B5C  7819 0001:00012B5E  7824 0001:00012B60
+  7825 0001:00012B62  7829 0001:00012B64  7830 0001:00012B66  7834 0001:00012B68
+  7835 0001:00012B6A  7839 0001:00012B6C  7840 0001:00012B6E  7844 0001:00012B70
+  7845 0001:00012B72  7849 0001:00012B74  7850 0001:00012B76  7854 0001:00012B78
+  7855 0001:00012B7A  7859 0001:00012B7C  7860 0001:00012B7E  7864 0001:00012B80
+  7865 0001:00012B82  7869 0001:00012B84  7870 0001:00012B86  7874 0001:00012B88
+  7875 0001:00012B8A  7879 0001:00012B8C  7880 0001:00012B8E  7884 0001:00012B90
+  7885 0001:00012B93  7889 0001:00012B94  7890 0001:00012B96  7894 0001:00012B98
+  7895 0001:00012B9A  7899 0001:00012B9C  7900 0001:00012B9E  7904 0001:00012BA0
+  7905 0001:00012BA2  7909 0001:00012BA4  7910 0001:00012BA6  7914 0001:00012BA8
+  7915 0001:00012BAA  7919 0001:00012BAC  7920 0001:00012BAE  7924 0001:00012BB0
+  7925 0001:00012BB2  7929 0001:00012BB4  7930 0001:00012BB6  7934 0001:00012BB8
+  7935 0001:00012BBA  7939 0001:00012BBC  7940 0001:00012BBE  7944 0001:00012BC0
+  7945 0001:00012BC2  7949 0001:00012BC4  7950 0001:00012BC6  7954 0001:00012BC8
+  7955 0001:00012BCA  7959 0001:00012BCC  7960 0001:00012BCE  7964 0001:00012BD0
+  7965 0001:00012BD2  7969 0001:00012BD4  7970 0001:00012BD6  7974 0001:00012BD8
+  7975 0001:00012BDA  7979 0001:00012BDC  7980 0001:00012BDE  7984 0001:00012BE0
+  7985 0001:00012BE2  7989 0001:00012BE4  7990 0001:00012BE6  7994 0001:00012BE8
+  7995 0001:00012BEA  7999 0001:00012BEC  8000 0001:00012BEE  8004 0001:00012BF0
+  8005 0001:00012BF2  8009 0001:00012BF4  8010 0001:00012BF6  8015 0001:00012BF8
+  8016 0001:00012BFA  8020 0001:00012BFC  8021 0001:00012C06  8025 0001:00012C08
+  8026 0001:00012C12  8030 0001:00012C14  8031 0001:00012C1E  8035 0001:00012C20
+  8036 0001:00012C2A  8040 0001:00012C2C  8041 0001:00012C2F  8044 0001:00012C30
+  8045 0001:00012C33  8046 0001:00012C36  8050 0001:00012C3C  8051 0001:00012C3F
+  8055 0001:00012C40  8056 0001:00012C42  8060 0001:00012C44  8061 0001:00012C46
+  8066 0001:00012C48  8067 0001:00012C4A  8071 0001:00012C4C  8072 0001:00012C56
+  8076 0001:00012C58  8077 0001:00012C5B  8083 0001:00012C5C  8087 0001:00012C60
+  8091 0001:00012C64  8097 0001:00012C68  8098 0001:00012C7A  8099 0001:00012C83
+  8100 0001:00012C8E  8103 0001:00012CAC  8104 0001:00012CB2  8107 0001:00012CC3
+  8108 0001:00012CCD  8109 0001:00012CD3  8110 0001:00012CDB  8111 0001:00012CE2
+  8113 0001:00012CEA  8114 0001:00012CF3  8120 0001:00012CF8  8121 0001:00012D14
+  8122 0001:00012D1F  8124 0001:00012D24  8125 0001:00012D59  8133 0001:00012DB4
+  8134 0001:00012DBD  8136 0001:00012DC6  8138 0001:00012DCA  8139 0001:00012DD3
+  8141 0001:00012DDA  8142 0001:00012DF0  8144 0001:00012DFB  8148 0001:00012E00
+  8149 0001:00012E09  8150 0001:00012E14  8151 0001:00012E19  8152 0001:00012E21
+  8153 0001:00012E29  8156 0001:00012E30  8157 0001:00012E36  8159 0001:00012E40
+  8161 0001:00012E44  8163 0001:00012E4B  8164 0001:00012E52  8167 0001:00012E59
+  8168 0001:00012E5F  8170 0001:00012E63  8171 0001:00012E73  8172 0001:00012E7D
+  8173 0001:00012E87  8176 0001:00012E91  8180 0001:00012E94  8182 0001:00012E9C
+  8183 0001:00012EA2  8184 0001:00012EA6  8185 0001:00012EB2  8186 0001:00012EB8
+  8188 0001:00012EBF  8190 0001:00012EC5  8194 0001:00012EC8  8195 0001:00012ED3
+  8198 0001:00012ED4  8199 0001:00012EDA  8201 0001:00012EED  8203 0001:00012EFA
+  8206 0001:00012F00  8207 0001:00012F06  8208 0001:00012F0E  8211 0001:00012F10
+  8212 0001:00012F2A  8215 0001:00012F30  8217 0001:00012F3F  8219 0001:00012F6D
+  8222 0001:00012F7B  8223 0001:00012F83  8224 0001:00012F8F  8225 0001:00012FA5
+  8226 0001:00012FB1  8227 0001:00012FC7  8228 0001:00012FD3  8229 0001:00012FE9
+  8230 0001:00012FF5  8231 0001:0001300B  8232 0001:00013017  8233 0001:0001302D
+  8234 0001:00013039  8235 0001:0001304F  8236 0001:0001305B  8237 0001:00013071
+  8238 0001:0001307D  8239 0001:00013093  8240 0001:0001309F  8242 0001:000130B5
+  8243 0001:000130C1  8244 0001:000130D7  8245 0001:000130E3  8248 0001:000130F9
+  8249 0001:00013105  8252 0001:0001311B  8253 0001:00013127  8254 0001:0001313D
+  8255 0001:00013149  8256 0001:0001315F  8258 0001:00013168  8259 0001:00013181
+  8260 0001:0001319A  8261 0001:000131B3  8262 0001:000131BD  8263 0001:000131C3
+  8264 0001:000131C9  8269 0001:000131D2  8270 0001:000131E3  8271 0001:000131EC
+  8273 0001:000131F2  8274 0001:000131FE  8275 0001:00013213  8276 0001:0001321F
+  8277 0001:00013235  8278 0001:00013241  8279 0001:00013257  8280 0001:00013263
+  8282 0001:00013279  8283 0001:00013285  8284 0001:0001329E  8285 0001:000132AA
+  8287 0001:000132C3  8288 0001:000132CF  8289 0001:000132E5  8290 0001:000132F1
+  8291 0001:00013307  8292 0001:00013313  8293 0001:00013329  8294 0001:00013335
+  8295 0001:0001334B  8296 0001:00013357  8297 0001:0001336D  8298 0001:00013379
+  8299 0001:0001338F  8300 0001:0001339B  8301 0001:000133B1  8302 0001:000133BD
+  8303 0001:000133D3  8304 0001:000133DF  8305 0001:000133F5  8306 0001:00013401
+  8307 0001:00013417  8308 0001:00013423  8309 0001:00013439  8310 0001:00013445
+  8311 0001:0001345B  8312 0001:00013467  8313 0001:0001347D  8314 0001:00013489
+  8315 0001:0001349F  8316 0001:000134AB  8317 0001:000134C1  8318 0001:000134CD
+  8319 0001:000134E3  8320 0001:000134EF  8321 0001:00013505  8322 0001:00013511
+  8323 0001:00013527  8324 0001:00013533  8326 0001:00013549  8327 0001:00013555
+  8328 0001:0001356B  8329 0001:00013577  8330 0001:0001358D  8331 0001:00013599
+  8332 0001:000135AF  8333 0001:000135BB  8335 0001:000135D1  8336 0001:000135DD
+  8337 0001:000135F6  8338 0001:00013602  8340 0001:0001361B  8341 0001:00013627
+  8342 0001:0001363D  8343 0001:00013649  8344 0001:0001365F  8345 0001:0001366B
+  8346 0001:00013681  8347 0001:0001368D  8348 0001:000136A3  8349 0001:000136AF
+  8350 0001:000136C5  8351 0001:000136D1  8352 0001:000136EA  8353 0001:000136F6
+  8358 0001:0001370F  8359 0001:00013722  8361 0001:0001372B  8363 0001:00013731
+  8364 0001:0001373D  8365 0001:00013752  8366 0001:0001375E  8367 0001:00013774
+  8368 0001:00013780  8369 0001:00013796  8370 0001:000137A2  8371 0001:000137B8
+  8372 0001:000137C4  8373 0001:000137DA  8374 0001:000137E6  8375 0001:000137FC
+  8376 0001:00013808  8378 0001:0001381E  8379 0001:0001382A  8380 0001:00013840
+  8381 0001:0001384C  8382 0001:00013862  8383 0001:0001386E  8388 0001:00013884
+  8389 0001:00013896  8391 0001:0001389F  8393 0001:000138A5  8394 0001:000138B1
+  8395 0001:000138C6  8396 0001:000138D2  8397 0001:000138E8  8398 0001:000138F4
+  8401 0001:0001390A  8404 0001:00013938  8405 0001:0001393B  8406 0001:00013946
+  8410 0001:00013948  8411 0001:0001394A  8412 0001:00013953  8413 0001:00013956
+  8414 0001:0001395F  8415 0001:00013962  8416 0001:0001396B  8417 0001:0001396E
+  8418 0001:00013977  8419 0001:0001397A  8420 0001:00013983  8421 0001:00013986
+  8422 0001:0001398F  8423 0001:00013992  8424 0001:0001399B  8426 0001:0001399E
+  8427 0001:000139A7  8428 0001:000139AD  8429 0001:000139B6  8430 0001:000139BC
+  8431 0001:000139C5  8432 0001:000139CB  8433 0001:000139D4  8434 0001:000139DA
+  8435 0001:000139E3  8436 0001:000139E9  8437 0001:000139F2  8438 0001:000139F8
+  8439 0001:00013A01  8441 0001:00013A07  8452 0001:00013A0C  8453 0001:00013A10
+  8454 0001:00013A23  8457 0001:00013A28  8458 0001:00013A2B  8459 0001:00013A3B
+  8462 0001:00013A40  8463 0001:00013A44  8464 0001:00013A57  8467 0001:00013A5C
+  8468 0001:00013A5F  8469 0001:00013A6C  8472 0001:00013A70  8473 0001:00013A73
+  8474 0001:00013A83  8477 0001:00013A88  8478 0001:00013A8B  8479 0001:00013A98
+  8482 0001:00013A9C  8483 0001:00013A9F  8484 0001:00013AAC  8487 0001:00013AB0
+  8488 0001:00013AB3  8489 0001:00013AC3  8492 0001:00013AC8  8493 0001:00013ACC
+  8494 0001:00013ADF  8497 0001:00013AE4  8498 0001:00013AE8  8499 0001:00013AFB
+  8503 0001:00013B00  8504 0001:00013B04  8505 0001:00013B17  8509 0001:00013B1C
+  8510 0001:00013B1F  8511 0001:00013B2C  8514 0001:00013B30  8515 0001:00013B37
+  8516 0001:00013B4F  8517 0001:00013B68  8518 0001:00013B7A  8521 0001:00013BF8
+  8522 0001:00013BFB  8523 0001:00013C08  8526 0001:00013C0C  8527 0001:00013C0F
+  8528 0001:00013C1C  8531 0001:00013C20  8532 0001:00013C24  8533 0001:00013C37
+  8540 0001:00013C3C  8542 0001:00013C49  8543 0001:00013C58  8544 0001:00013C62
+  8545 0001:00013C6F  8546 0001:00013C78  8547 0001:00013C86  8548 0001:00013C8A
+  8552 0001:00013C9A  8555 0001:00013CA4  8557 0001:00013CAA  8561 0001:00013CBE
+  8564 0001:00013CC0  8566 0001:00013CC3  8568 0001:00013CD3  8574 0001:00013CD8
+  8575 0001:00013CDB  8576 0001:00013CEB  8579 0001:00013CF0  8580 0001:00013CF3
+  8581 0001:00013D03  8584 0001:00013D08  8585 0001:00013D0B  8586 0001:00013D1B
+  8589 0001:00013D20  8590 0001:00013D23  8591 0001:00013D33  8594 0001:00013D38
+  8595 0001:00013D3B  8596 0001:00013D4B  8599 0001:00013D50  8600 0001:00013D53
+  8601 0001:00013D63  8604 0001:00013D68  8605 0001:00013D6B  8606 0001:00013D7B
+  8609 0001:00013D80  8610 0001:00013D83  8611 0001:00013D93  8614 0001:00013D98
+  8615 0001:00013D9C  8616 0001:00013DAF  8619 0001:00013DB4  8620 0001:00013DB7
+  8621 0001:00013DC4  8624 0001:00013DC8  8625 0001:00013DCB  8626 0001:00013DD8
+  8629 0001:00013DDC  8630 0001:00013DDF  8631 0001:00013DEC  8634 0001:00013DF0
+  8635 0001:00013DF3  8636 0001:00013E00  8639 0001:00013E04  8640 0001:00013E07
+  8641 0001:00013E14  8644 0001:00013E18  8645 0001:00013E1B  8646 0001:00013E2E
+  8649 0001:00013E30  8650 0001:00013E33  8651 0001:00013E46  8654 0001:00013E48
+  8655 0001:00013E4B  8656 0001:00013E5E  8659 0001:00013E60  8660 0001:00013E63
+  8661 0001:00013E76  8664 0001:00013E78  8665 0001:00013E7B  8666 0001:00013E8E
+  8669 0001:00013E90  8670 0001:00013E93  8671 0001:00013EA6  8674 0001:00013EA8
+  8675 0001:00013EAB  8676 0001:00013EBB  8679 0001:00013EC0  8680 0001:00013EC3
+  8681 0001:00013ED3  8684 0001:00013ED8  8685 0001:00013EDB  8686 0001:00013EEB
+  8689 0001:00013EF0  8690 0001:00013EF3  8691 0001:00013F03  8694 0001:00013F08
+  8695 0001:00013F0B  8696 0001:00013F1B  8699 0001:00013F20  8700 0001:00013F23
+  8701 0001:00013F36  8704 0001:00013F38  8705 0001:00013F3B  8706 0001:00013F4E
+  8709 0001:00013F50  8710 0001:00013F53  8711 0001:00013F66  8714 0001:00013F68
+  8715 0001:00013F6B  8716 0001:00013F7E  8719 0001:00013F80  8720 0001:00013F83
+  8721 0001:00013F96  8724 0001:00013F98  8725 0001:00013F9B  8726 0001:00013FAE
+  8729 0001:00013FB0  8730 0001:00013FB3  8731 0001:00013FC6  8734 0001:00013FC8
+  8735 0001:00013FCB  8736 0001:00013FDE  8739 0001:00013FE0  8740 0001:00013FE4
+  8741 0001:00013FFA  8744 0001:00014000  8745 0001:00014003  8746 0001:00014016
+  8749 0001:00014018  8750 0001:0001401B  8751 0001:0001402E  8754 0001:00014030
+  8755 0001:00014033  8756 0001:00014046  8759 0001:00014048  8760 0001:0001404B
+  8761 0001:0001405E  8766 0001:00014060  8767 0001:00014063  8768 0001:00014073
+  8771 0001:00014078  8772 0001:0001407B  8773 0001:0001408E  8776 0001:00014090
+  8777 0001:00014093  8778 0001:000140A6  8781 0001:000140A8  8782 0001:000140AB
+  8783 0001:000140BE  8786 0001:000140C0  8787 0001:000140C4  8788 0001:000140DA
+  8791 0001:000140E0  8792 0001:000140E4  8793 0001:000140FA  8796 0001:00014100
+  8797 0001:00014104  8798 0001:0001411E  8804 0001:00014124  8805 0001:00014127
+  8806 0001:00014137  8809 0001:0001413C  8810 0001:0001413F  8811 0001:00014152
+  8814 0001:00014154  8815 0001:00014158  8816 0001:0001416E  8819 0001:00014174
+  8820 0001:00014177  8821 0001:0001418A  8824 0001:0001418C  8825 0001:0001418F
+  8826 0001:000141A2  8829 0001:000141A4  8830 0001:000141A7  8831 0001:000141BA
+  8836 0001:000141BC  8837 0001:000141CE  8838 0001:000141D7  8839 0001:000141E7
+  8840 0001:000141F9  8841 0001:0001420B  8842 0001:00014219  8845 0001:00014248
+  8846 0001:00014253  8847 0001:0001425E  8848 0001:00014269  8849 0001:00014275
+  8853 0001:00014284  8854 0001:00014289  8857 0001:0001428C  8858 0001:00014290
+  8859 0001:00014297  8861 0001:000142A0  8862 0001:000142A9  8863 0001:000142AF
+  8865 0001:000142BD  8868 0001:000142C7  8870 0001:000142D1  8871 0001:000142D7
+  8873 0001:000142E0  8875 0001:000142E7  8876 0001:000142EE  8877 0001:000142F5
+  8880 0001:000142F8  8881 0001:000142FB  8882 0001:00014309  8883 0001:00014311
+  8884 0001:00014318  8889 0001:0001431C  8890 0001:00014321  8891 0001:00014328
+  8893 0001:0001432B  8894 0001:00014339  8895 0001:00014346  8897 0001:00014350
+  8898 0001:00014357  8901 0001:0001435B  8903 0001:00014362  8908 0001:00014368
+  8909 0001:0001436F  8910 0001:00014376  8912 0001:00014379  8913 0001:00014389
+  8914 0001:00014396  8916 0001:000143A0  8917 0001:000143A7  8920 0001:000143AB
+  8922 0001:000143B2  8928 0001:000143B8  8929 0001:000143D6  8930 0001:000143DD
+  8931 0001:000143FA  8932 0001:0001441A  8933 0001:00014431  8934 0001:0001445F
+  8936 0001:00014468  8937 0001:00014472  8938 0001:00014483  8939 0001:0001449B
+  8940 0001:000144A5  8941 0001:000144B6  8943 0001:000144D1  8944 0001:000144EE
+  8946 0001:000144F1  8947 0001:00014504  8948 0001:0001451C  8949 0001:0001453A
+  8951 0001:00014557  8955 0001:00014620  8956 0001:00014625  8967 0001:00014628
+  8968 0001:0001462B  8970 0001:00014634  8973 0001:00014648  8974 0001:00014657
+  8975 0001:00014664  8976 0001:00014674  8979 0001:0001467E  8985 0001:00014698
+  8986 0001:000146A0  8988 0001:000146AA  8989 0001:000146C7  8992 0001:000146CA
+  8993 0001:000146D7  8994 0001:000146DE  8995 0001:000146E6  8997 0001:000146E9
+  8998 0001:000146F9  8999 0001:000146FD  9000 0001:00014721  9001 0001:0001472B
+  9003 0001:00014742  9006 0001:00014804  9007 0001:0001480B  9008 0001:00014812
+  9009 0001:0001481B  9011 0001:00014826  9012 0001:0001483C  9015 0001:00014860
+  9016 0001:00014867  9017 0001:0001486E  9018 0001:00014875  9020 0001:0001487E
+  9021 0001:00014894  9025 0001:000148B8  9026 0001:000148BC  9027 0001:000148C3
+  9028 0001:000148CA  9030 0001:000148D2  9031 0001:000148E8  9034 0001:0001490C
+  9035 0001:00014913  9036 0001:0001491A  9037 0001:00014921  9039 0001:0001492A
+  9040 0001:00014940  9045 0001:00014964  9046 0001:00014967  9047 0001:00014975
+  9057 0001:000149AF  9063 0001:000149B4  9064 0001:000149D3  9065 0001:000149DE
+  9066 0001:000149ED  9069 0001:000149F9  9070 0001:00014A01  9071 0001:00014A0C
+  9072 0001:00014A1A  9074 0001:00014A37  9077 0001:00014A4D  9084 0001:00014A70
+  9085 0001:00014A79  9086 0001:00014A89  9087 0001:00014AB0  9088 0001:00014ACC
+  9089 0001:00014AEB  9090 0001:00014AFD  9091 0001:00014B20  9087 0001:00014B54
+  9092 0001:00014B5B  9094 0001:00014BA0  9095 0001:00014BAC  9097 0001:00014BBC
+  9098 0001:00014BC3  9100 0001:00014BD1  9108 0001:00014BD8  9109 0001:00014BF3
+  9110 0001:00014C00  9111 0001:00014C07  9114 0001:00014C10  9115 0001:00014C14
+  9116 0001:00014C29  9117 0001:00014C45  9118 0001:00014C54  9121 0001:00014C93
+  9122 0001:00014C96  9123 0001:00014C9A  9124 0001:00014C9C  9115 0001:00014C9D
+  9112 0001:00014CA0  9126 0001:00014CAA  9127 0001:00014CC9  9129 0001:00014CF4
+  9130 0001:00014D0F  9131 0001:00014D1C  9132 0001:00014D2C  9133 0001:00014D3C
+  9134 0001:00014D45  9135 0001:00014D4C  9138 0001:00014D90  9139 0001:00014D93
+  9141 0001:00014D99  9142 0001:00014DA0  9143 0001:00014DA7  9144 0001:00014DAE
+  9147 0001:00014DB0  9148 0001:00014DB4  9149 0001:00014DBB  9151 0001:00014DC4
+  9152 0001:00014DCB  9154 0001:00014DD2  9155 0001:00014DD7  9157 0001:00014DDE
+  9158 0001:00014DE1  9159 0001:00014DE9  9160 0001:00014DEE  9164 0001:00014DF4
+  9165 0001:00014E06  9166 0001:00014E0F  9174 0001:00014E2C  9175 0001:00014E49
+  9176 0001:00014E53  9178 0001:00014E5A  9181 0001:00014E77  9184 0001:00014EA8
+  9185 0001:00014EB3  9187 0001:00014EB8  9189 0001:00014EBF  9190 0001:00014EC4
+  9193 0001:00014EC9  9194 0001:00014ED5  9199 0001:00014EE4  9200 0001:00014EFD
+  9202 0001:00014F02  9203 0001:00014F1D  9205 0001:00014F28  9207 0001:00014F33
+  9210 0001:00014F68  9211 0001:00014F8B  9212 0001:00014F8D  9214 0001:00014F92
+  9215 0001:00014FAD  9217 0001:00014FB9  9219 0001:00014FC7  9224 0001:00015000
+  9225 0001:0001501F  9227 0001:00015027  9228 0001:00015031  9229 0001:0001503F
+  9231 0001:000150A0  9234 0001:000150B3  9241 0001:000150F4  9246 0001:000150F9
+  9255 0001:000150FC  9256 0001:00015119  9257 0001:0001511E  9259 0001:00015126
+  9262 0001:00015136  9264 0001:0001514B  9267 0001:00015158  9268 0001:00015165
+  9270 0001:00015175  9272 0001:0001517C  9273 0001:0001517F  9275 0001:0001518A
+  9276 0001:00015190  9278 0001:0001519B  9283 0001:000151C4  9284 0001:000151E5
+  9286 0001:000151ED  9287 0001:000151F7  9288 0001:00015205  9289 0001:00015213
+  9291 0001:00015230  9294 0001:0001525B  9297 0001:0001526E  9300 0001:00015294
+  9301 0001:000152B4  9303 0001:000152BB  9306 0001:000152CB  9308 0001:000152E0
+  9311 0001:000152EF  9313 0001:0001530B  9314 0001:00015315  9315 0001:0001531B
+  9316 0001:00015324  9318 0001:00015334  9320 0001:00015344  9325 0001:00015368
+  9326 0001:0001536F  9328 0001:00015376  9329 0001:00015381  9330 0001:0001538A
+  9332 0001:00015393  9343 0001:00015398  9344 0001:0001539D  9345 0001:000153A4
+  9347 0001:000153AB  9349 0001:000153AF  9350 0001:000153B3  9351 0001:000153C3
+  9353 0001:000153C7  9354 0001:000153CF  9355 0001:000153D6  9356 0001:000153E1
+  9357 0001:000153EC  9359 0001:000153F9  9362 0001:00015411  9363 0001:00015415
+  9364 0001:0001541B  9365 0001:00015426  9367 0001:0001542A  9368 0001:00015431
+  9369 0001:0001543C  9371 0001:00015444  9374 0001:0001545A  9378 0001:0001548C
+  9379 0001:00015490  9380 0001:00015497  9381 0001:000154A0  9384 0001:000154A4
+  9385 0001:000154A7  9386 0001:000154AC  9387 0001:000154B7  9391 0001:000154BC
+  9392 0001:000154C1  9396 0001:000154C4  9397 0001:000154C9  9413 0001:000154CC
+  9415 0001:000154F0  9416 0001:000154FF  9418 0001:00015506  9420 0001:00015541
+  9421 0001:0001554D  9424 0001:0001554F  9426 0001:00015556  9428 0001:00015566
+  9429 0001:00015574  9431 0001:00015597  9432 0001:000155B7  9436 0001:000155C2
+  9437 0001:000155C8  9440 0001:000155CA  9445 0001:00015608  9446 0001:0001561F
+  9448 0001:00015626  9450 0001:0001562F  9451 0001:00015637  9452 0001:00015644
+  9453 0001:0001564E  9454 0001:00015658  9457 0001:0001566C  9459 0001:00015675
+  9464 0001:000156B4  9465 0001:000156BB  9467 0001:000156C2  9469 0001:000156E4
+  9470 0001:000156EE  9471 0001:000156F8  9474 0001:00015701  9476 0001:00015703
+  9481 0001:0001571C  9482 0001:00015723  9484 0001:0001572A  9486 0001:0001574C
+  9487 0001:00015756  9488 0001:0001575C  9491 0001:00015765  9493 0001:00015767
+  9504 0001:0001577C  9505 0001:00015781  9507 0001:00015788  9508 0001:00015793
+  9509 0001:000157B3  9510 0001:000157CE  9511 0001:000157E9  9513 0001:00015804
+  9518 0001:0001580C  9519 0001:00015818  9520 0001:0001581D  9521 0001:00015824
+  9522 0001:00015835  9523 0001:0001584D  9524 0001:00015859  9526 0001:0001586C
+  9527 0001:00015878  9528 0001:0001587A  9521 0001:0001587B  9529 0001:0001587E
+  9536 0001:00015888  9537 0001:000158A4  9539 0001:000158AB  9540 0001:000158B7
+  9541 0001:000158C6  9543 0001:000158DF  9544 0001:000158F9  9545 0001:00015901
+  9547 0001:00015905  9548 0001:0001590D  9549 0001:0001591E  9552 0001:00015928
+  9541 0001:00015929  9553 0001:0001592E  9554 0001:0001593F  9556 0001:00015957
+  9557 0001:00015968  9558 0001:00015979  9559 0001:00015983  9553 0001:00015984
+  9561 0001:00015987  9575 0001:000159B0  9576 0001:000159B9  9577 0001:000159CF
+  9578 0001:000159DA  9579 0001:000159E8  9580 0001:000159FE  9581 0001:00015A03
+  9585 0001:00015A64  9587 0001:00015A8B  9593 0001:00015A8C  9597 0001:00015A8E
+  9599 0001:00015A92  9600 0001:00015A95  9602 0001:00015A99  9604 0001:00015AA3
+  9605 0001:00015AA5  9608 0001:00015AA7  9600 0001:00015AAD  9614 0001:00015AB1
+  9617 0001:00015AB4  9618 0001:00015AB7  9620 0001:00015AF4  9626 0001:00015B08
+  9627 0001:00015B10  9638 0001:00015B14  9639 0001:00015B32  9641 0001:00015B39
+  9644 0001:00015B41  9646 0001:00015B4C  9648 0001:00015B59  9650 0001:00015B61
+  9652 0001:00015B6F  9654 0001:00015B82  9655 0001:00015B95  9657 0001:00015BA1
+  9663 0001:00015BFB  9664 0001:00015C09  9652 0001:00015C0C  9666 0001:00015C13
+  9668 0001:00015C1D
+
+Line numbers for PythonEngine(Sources\Core\PythonEngine.pas) segment .itext
+
+  9671 0002:00000070
+
+Line numbers for PythonGUIInputOutput(Sources\Core\PythonGUIInputOutput.pas) segment .text
+
+   101 0001:00015EB0   102 0001:00015EB9   103 0001:00015EC4   104 0001:00015EC9
+   105 0001:00015ECE   106 0001:00015ED3   112 0001:00015ED8   113 0001:00015EE2
+   115 0001:00015EE7   120 0001:00015EE8   121 0001:00015EEF   123 0001:00015EF5
+   124 0001:00015EFA   128 0001:00015EFC   129 0001:00015F02   130 0001:00015F09
+   132 0001:00015F15   133 0001:00015F26   139 0001:00015F5C   141 0001:00015F6E
+   147 0001:00015F70   148 0001:00015F87   150 0001:00015F93   151 0001:00015FA0
+   152 0001:00015FAA   153 0001:00015FB4   159 0001:00015FD8   160 0001:00015FEA
+   166 0001:00015FF3   171 0001:00016001   175 0001:0001601C   179 0001:00016027
+   184 0001:0001602F   185 0001:0001603B   191 0001:0001604C   192 0001:00016053
+   194 0001:0001605A   195 0001:0001606A   196 0001:0001607A   198 0001:0001608A
+   202 0001:000160A1   206 0001:000160A8   207 0001:000160A9   208 0001:000160BF
+
+Line numbers for PythonGUIInputOutput(Sources\Core\PythonGUIInputOutput.pas) segment .itext
+
+   210 0002:00000120
+
+Line numbers for PythonAtom(Sources\Core\PythonAtom.pas) segment .text
+
+   165 0001:00016218   166 0001:0001621E   167 0001:00016233   173 0001:00016238
+   174 0001:00016239   176 0001:0001623B   177 0001:0001623F   178 0001:00016244
+   179 0001:0001624D   180 0001:0001624E   181 0001:00016251   182 0001:00016259
+   183 0001:0001625D   200 0001:00016260   201 0001:00016275   202 0001:0001627E
+   204 0001:00016286   207 0001:000162A4   209 0001:000162AF   210 0001:000162C0
+   211 0001:000162CC   214 0001:000162DC   216 0001:000162F5   217 0001:00016315
+   229 0001:00016348   230 0001:0001636A   231 0001:0001636D   232 0001:00016370
+   233 0001:00016382   237 0001:00016390   240 0001:000163A1   241 0001:000163A7
+   243 0001:000163AB   246 0001:000163BC   247 0001:000163C2   251 0001:000163C6
+   254 0001:000163E7   258 0001:000163EE   259 0001:000163FB   260 0001:000163FD
+   263 0001:000163FF   266 0001:00016454   268 0001:00016457   269 0001:0001645C
+   272 0001:00016460   274 0001:00016463   275 0001:00016468   281 0001:0001646C
+   282 0001:00016470   283 0001:00016477   288 0001:000164BF   291 0001:000164C4
+   292 0001:000164C8   293 0001:000164CF   295 0001:000164F0   308 0001:000164F4
+   309 0001:0001651E   311 0001:00016526   320 0001:0001652B   321 0001:0001652E
+   322 0001:0001653E   323 0001:00016544   325 0001:00016558   327 0001:0001656A
+   330 0001:0001656F   331 0001:0001657C   332 0001:00016586   336 0001:00016596
+   339 0001:0001659F   340 0001:000165A9   344 0001:000165C3   345 0001:000165DA
+   346 0001:000165E8   347 0001:000165F9   348 0001:00016607   349 0001:0001660C
+   351 0001:00016615   352 0001:0001661F   353 0001:0001662C   354 0001:00016641
+   355 0001:00016642   349 0001:00016643   358 0001:00016646   360 0001:00016652
+   361 0001:00016669   365 0001:00016673   366 0001:00016679   367 0001:00016684
+   370 0001:0001668C   371 0001:00016697   373 0001:000166B5   374 0001:000166B8
+   377 0001:000166DB   380 0001:000166EE   381 0001:000166FC   383 0001:00016710
+   386 0001:0001671C   390 0001:00016737   394 0001:00016766   397 0001:00016786
+   402 0001:00016799   405 0001:000167A0   406 0001:000167A3   407 0001:000167B0
+   408 0001:000167BE   410 0001:000167E3   415 0001:000167F6   419 0001:000167FD
+   422 0001:00016880   423 0001:00016883   424 0001:00016896   427 0001:00016898
+   428 0001:0001689B   429 0001:000168AE   432 0001:000168B0   433 0001:000168B6
+   434 0001:000168BD   435 0001:000168C0   436 0001:000168C7   440 0001:000168CC
+   441 0001:000168D2   445 0001:000168D4   446 0001:000168DA
+
+Line numbers for PythonAtom(Sources\Core\PythonAtom.pas) segment .itext
+
+   448 0002:00000130
+
+Line numbers for AtomPythonEngine(Sources\Core\AtomPythonEngine.pas) segment .text
+
+    62 0001:000169EC    63 0001:000169F5    64 0001:00016A00    65 0001:00016A13
+    66 0001:00016A1C    71 0001:00016A20    72 0001:00016A21    73 0001:00016A37
+
+Line numbers for AtomPythonEngine(Sources\Core\AtomPythonEngine.pas) segment .itext
+
+    75 0002:00000138
+
+Line numbers for VarPyth(Sources\Core\VarPyth.pas) segment .text
+
+   241 0001:00016C54   242 0001:00016C5A   243 0001:00016C61   245 0001:00016C65
+   246 0001:00016C6D   248 0001:00016C7E   253 0001:00016C84   254 0001:00016C90
+   255 0001:00016C9B   257 0001:00016CA6   259 0001:00016CAE   260 0001:00016CBB
+   261 0001:00016CC9   263 0001:00016CE0   266 0001:00016CF3   272 0001:00016CFC
+   273 0001:00016D1F   275 0001:00016D27   276 0001:00016D2D   278 0001:00016D43
+   279 0001:00016D57   280 0001:00016D5D   281 0001:00016D7E   282 0001:00016D8C
+   284 0001:00016D9D   286 0001:00016DAE   287 0001:00016DB8   290 0001:00016DC4
+   291 0001:00016DD1   292 0001:00016DD7   294 0001:00016DEE   295 0001:00016E03
+   282 0001:00016E09   296 0001:00016E0C   298 0001:00016E24   301 0001:00016E37
+   306 0001:00016E60   307 0001:00016E6C   309 0001:00016E74   310 0001:00016E81
+   311 0001:00016E8F   313 0001:00016EA6   316 0001:00016EB9   320 0001:00016EC0
+   321 0001:00016EC6   322 0001:00016ECD   324 0001:00016ED1   325 0001:00016ED9
+   327 0001:00016EEC   331 0001:00016EF0   332 0001:00016EF9   335 0001:00016EFC
+   336 0001:00016EFF   337 0001:00016F12   340 0001:00016F14   341 0001:00016F1A
+   342 0001:00016F25   344 0001:00016F39   345 0001:00016F42   349 0001:00016F48
+   350 0001:00016F4B   351 0001:00016F56   353 0001:00016F5E   354 0001:00016F60
+   357 0001:00016F64   358 0001:00016F9D   359 0001:00016FB4   364 0001:00016FE8
+   365 0001:00017021   366 0001:0001702B   367 0001:00017033   368 0001:0001704B
+   373 0001:0001707C   374 0001:0001707F   376 0001:000170A8   379 0001:000170AC
+   380 0001:000170AF   382 0001:000170D8   385 0001:000170DC   386 0001:000170DF
+   388 0001:00017108   391 0001:0001710C   392 0001:0001710F   394 0001:00017137
+   397 0001:0001713C   398 0001:0001713F   400 0001:00017167   403 0001:0001716C
+   404 0001:0001716F   406 0001:00017197   409 0001:0001719C   410 0001:0001719F
+   412 0001:000171C7   415 0001:000171CC   416 0001:000171CF   418 0001:000171F7
+   421 0001:000171FC   422 0001:000171FF   424 0001:00017227   427 0001:0001722C
+   428 0001:0001722F   430 0001:00017257   433 0001:0001725C   434 0001:0001725F
+   436 0001:00017287   439 0001:0001728C   440 0001:0001728F   442 0001:000172B7
+   445 0001:000172BC   446 0001:000172BF   448 0001:000172E7   451 0001:000172EC
+   452 0001:000172EF   454 0001:00017317   457 0001:0001731C   458 0001:0001731F
+   460 0001:00017348   464 0001:0001734C   465 0001:0001734F   467 0001:00017377
+   471 0001:0001737C   472 0001:0001737F   474 0001:000173A7   477 0001:000173AC
+   478 0001:000173AF   480 0001:000173D7   483 0001:000173DC   484 0001:000173DF
+   486 0001:00017407   489 0001:0001740C   490 0001:0001740F   492 0001:00017437
+   495 0001:0001743C   496 0001:0001743F   498 0001:00017467   502 0001:0001746C
+   503 0001:0001746F   505 0001:00017497   508 0001:0001749C   509 0001:0001749F
+   511 0001:000174C7   515 0001:000174CC   517 0001:000174D4   519 0001:000174DB
+   522 0001:00017514   527 0001:0001751B   530 0001:00017524   532 0001:0001752C
+   534 0001:00017533   537 0001:0001756C   542 0001:00017573   545 0001:0001757C
+   547 0001:00017584   549 0001:0001758B   552 0001:000175C7   557 0001:000175CE
+   560 0001:000175D8   561 0001:000175DB   563 0001:00017602   566 0001:00017604
+   567 0001:00017607   568 0001:0001760E   573 0001:00017610   574 0001:0001761C
+   576 0001:00017624   577 0001:00017632   578 0001:00017640   580 0001:00017657
+   583 0001:0001766A   588 0001:00017670   589 0001:0001767C   591 0001:00017684
+   592 0001:00017692   593 0001:000176A0   595 0001:000176B7   598 0001:000176CA
+   603 0001:000176D0   604 0001:000176D9   606 0001:000176E1   607 0001:000176ED
+   608 0001:000176FB   610 0001:00017712   613 0001:00017725   616 0001:0001772C
+   617 0001:00017730   618 0001:00017737   619 0001:00017744   622 0001:00017748
+   623 0001:0001774C   624 0001:00017753   625 0001:00017760   630 0001:00017764
+   631 0001:00017768   632 0001:00017774   633 0001:0001778C   634 0001:00017795
+   637 0001:0001780C   638 0001:0001780F   639 0001:0001781B   642 0001:00017834
+   643 0001:00017837   644 0001:00017843   647 0001:00017854   648 0001:00017857
+   649 0001:00017863   655 0001:0001787C   656 0001:00017888   658 0001:00017890
+   659 0001:000178A5   660 0001:000178B3   661 0001:000178C4   663 0001:000178D9
+   665 0001:000178EC   666 0001:00017906   667 0001:00017914   669 0001:0001792C
+   672 0001:0001793F   676 0001:000179B8   677 0001:000179EA   678 0001:000179F6
+   680 0001:00017A17   681 0001:00017A38   684 0001:00017A80   685 0001:00017AAF
+   686 0001:00017ABB   688 0001:00017ACF   689 0001:00017AF0   696 0001:00017B1C
+   697 0001:00017B44   698 0001:00017B54   700 0001:00017B60   702 0001:00017B68
+   704 0001:00017BA2   707 0001:00017BAC   708 0001:00017BB5   710 0001:00017BF4
+   712 0001:00017C04   714 0001:00017C14   716 0001:00017C21   718 0001:00017C2E
+   720 0001:00017C3B   722 0001:00017C48   724 0001:00017C55   726 0001:00017C62
+   728 0001:00017C6F   730 0001:00017C7C   732 0001:00017C89   735 0001:00017C90
+   738 0001:00017C97   739 0001:00017C9C   745 0001:00017CD8   746 0001:00017CE2
+   747 0001:00017CEE   748 0001:00017CFC   750 0001:00017D15   752 0001:00017D2A
+   758 0001:00017D30   759 0001:00017D5C   760 0001:00017D69   762 0001:00017D79
+   765 0001:00017D93   767 0001:00017DAD   769 0001:00017DB9   770 0001:00017DC1
+   774 0001:00017DE5   775 0001:00017DF0   779 0001:00017E00   780 0001:00017E0D
+   784 0001:00017E44   785 0001:00017E49   786 0001:00017E51   790 0001:00017E54
+   791 0001:00017E5E   792 0001:00017E62   793 0001:00017E7B   795 0001:00017EA9
+   797 0001:00017EB9   799 0001:00017ECB   801 0001:00017EDB   803 0001:00017EEB
+   805 0001:00017EFB   807 0001:00017F0B   810 0001:00017F12   811 0001:00017F17
+   815 0001:00017F24   816 0001:00017F30   817 0001:00017F43   820 0001:00017F50
+   822 0001:00017F5F   824 0001:00017F6C   827 0001:00017F74   829 0001:00017F77
+   830 0001:00017F7E   831 0001:00017F83   836 0001:00017F8A   842 0001:00017F8C
+   843 0001:00017F93   844 0001:00017FA2   879 0001:00017FEC   880 0001:00018008
+   881 0001:0001801B   884 0001:00018023   885 0001:00018028   888 0001:0001803F
+   890 0001:00018048   891 0001:00018057   894 0001:0001805B   895 0001:00018082
+   896 0001:0001808D   897 0001:0001809D   902 0001:000180AB   903 0001:000180D0
+   904 0001:000180D5   905 0001:000180E5   907 0001:000180F6   911 0001:00018101
+   913 0001:00018105   916 0001:00018119   917 0001:00018135   918 0001:00018148
+   922 0001:0001815F   923 0001:00018168   925 0001:00018175   928 0001:00018184
+   929 0001:000181A7   930 0001:000181AC   931 0001:000181BC   933 0001:000181CD
+   937 0001:000181D8   938 0001:000181EE   942 0001:000181F7   943 0001:00018205
+   946 0001:00018222   950 0001:00018236   951 0001:00018248   952 0001:0001825B
+   955 0001:00018264   958 0001:0001826F   959 0001:00018276   965 0001:000182A0
+   974 0001:000182D0   975 0001:000182DA   978 0001:000182EC   979 0001:000182F2
+   980 0001:0001830C   981 0001:00018311   982 0001:0001832B   983 0001:00018336
+   982 0001:00018340   986 0001:00018343   989 0001:00018362   991 0001:00018368
+   995 0001:00018382   996 0001:0001838D  1001 0001:0001839B  1004 0001:000183A3
+  1005 0001:000183BD  1007 0001:000183D2  1013 0001:000183E5  1015 0001:000183EB
+  1017 0001:00018424  1021 0001:00018431  1022 0001:0001844F  1028 0001:0001845C
+  1029 0001:00018462  1030 0001:0001846A  1032 0001:00018470  1033 0001:0001848A
+  1035 0001:00018497  1037 0001:0001849D  1038 0001:000184B7  1041 0001:000184C1
+  1045 0001:000184E4  1048 0001:00018506  1050 0001:00018510  1054 0001:00018518
+  1055 0001:0001851B  1057 0001:0001851F  1058 0001:00018520  1059 0001:00018526
+  1060 0001:0001852C  1055 0001:0001854C  1062 0001:00018550  1069 0001:000185A4
+  1071 0001:000185B3  1072 0001:000185C6  1073 0001:000185D4  1075 0001:000185DC
+  1077 0001:000185E2  1079 0001:00018603  1081 0001:00018618  1087 0001:00018628
+  1088 0001:0001862D  1089 0001:00018638  1090 0001:0001863D  1091 0001:00018649
+  1097 0001:00018654  1098 0001:00018671  1100 0001:0001868B  1101 0001:0001868F
+  1102 0001:000186CA  1107 0001:000186F0  1108 0001:0001870C  1109 0001:0001871A
+  1111 0001:00018722  1112 0001:0001872B  1113 0001:00018731  1114 0001:00018752
+  1115 0001:00018760  1116 0001:00018774  1118 0001:00018789  1121 0001:0001879C
+  1127 0001:000187C4  1128 0001:000187E9  1129 0001:000187EE  1131 0001:000187F6
+  1132 0001:000187FF  1133 0001:0001880F  1134 0001:00018815  1135 0001:00018836
+  1136 0001:00018844  1137 0001:00018854  1138 0001:0001885A  1139 0001:0001887B
+  1140 0001:00018889  1141 0001:000188AA  1142 0001:000188B8  1144 0001:000188D6
+  1145 0001:000188E4  1146 0001:000188F3  1148 0001:00018911  1150 0001:00018936
+  1152 0001:00018949  1153 0001:00018951  1155 0001:0001896F  1158 0001:00018982
+  1163 0001:000189B0  1164 0001:000189CC  1165 0001:000189DA  1167 0001:000189E2
+  1168 0001:000189EB  1169 0001:000189F1  1170 0001:00018A12  1171 0001:00018A20
+  1172 0001:00018A31  1173 0001:00018A39  1175 0001:00018A51  1178 0001:00018A64
+  1181 0001:00018A8C  1182 0001:00018AB7  1184 0001:00018ABE  1185 0001:00018AD4
+  1187 0001:00018ADD  1188 0001:00018AE9  1189 0001:00018AFF  1191 0001:00018B11
+  1192 0001:00018B1D  1194 0001:00018B24  1199 0001:00018B58  1200 0001:00018B68
+  1202 0001:00018B6F  1203 0001:00018B75  1204 0001:00018B89  1205 0001:00018B9D
+  1207 0001:00018BA4  1214 0001:00018BB0  1215 0001:00018BD2  1217 0001:00018BDA
+  1218 0001:00018BE3  1219 0001:00018BF6  1220 0001:00018C07  1221 0001:00018C0D
+  1222 0001:00018C2E  1223 0001:00018C3C  1224 0001:00018C57  1225 0001:00018C5F
+  1227 0001:00018C7A  1230 0001:00018C8D  1235 0001:00018CB8  1236 0001:00018CC8
+  1238 0001:00018CCF  1239 0001:00018CD5  1240 0001:00018CE9  1241 0001:00018CFD
+  1242 0001:00018D04  1244 0001:00018D0C  1250 0001:00018D14  1251 0001:00018D30
+  1252 0001:00018D3E  1254 0001:00018D46  1255 0001:00018D4F  1256 0001:00018D55
+  1257 0001:00018D76  1259 0001:00018D84  1264 0001:00018D97  1265 0001:00018D9F
+  1267 0001:00018DBA  1270 0001:00018DCD  1273 0001:00018DF4  1274 0001:00018DF8
+  1276 0001:00018DFF  1277 0001:00018E05  1278 0001:00018E17  1280 0001:00018E1E
+  1289 0001:00018E24  1290 0001:00018E47  1291 0001:00018E4C  1294 0001:00018E54
+  1297 0001:00018E5A  1298 0001:00018E73  1299 0001:00018E81  1301 0001:00018E8F
+  1316 0001:00018EA0  1317 0001:00018EBC  1318 0001:00018ED2  1319 0001:00018EF0
+  1320 0001:00018F0C  1321 0001:00018F28  1322 0001:00018F3E  1323 0001:00018F5C
+  1324 0001:00018F76  1325 0001:00018F94  1326 0001:00018FB4  1327 0001:00018FD2
+  1328 0001:00018FE9  1329 0001:00019005  1330 0001:00019018  1331 0001:00019029
+  1335 0001:00019040  1338 0001:00019050  1339 0001:00019056  1341 0001:00019060
+  1343 0001:0001906A  1349 0001:00019080  1350 0001:0001909C  1352 0001:000190A0
+  1353 0001:000190AA  1354 0001:000190B8  1355 0001:000190C6  1356 0001:000190D0
+  1355 0001:000190EC  1359 0001:000190EF  1360 0001:00019106  1362 0001:0001911B
+  1368 0001:0001912E  1371 0001:0001913D  1374 0001:00019161  1375 0001:00019171
+  1377 0001:0001917F  1378 0001:00019196  1380 0001:000191AB  1385 0001:000191BE
+  1387 0001:000191EC  1390 0001:000191FF  1394 0001:000192BC  1395 0001:000192BF
+  1404 0001:000192C0  1405 0001:000192D3  1407 0001:000192DB  1409 0001:000192FC
+  1412 0001:00019313  1415 0001:00019323  1419 0001:00019357  1421 0001:00019360
+  1422 0001:00019376  1424 0001:0001937E  1427 0001:00019391  1430 0001:000193A5
+  1432 0001:000193AE  1438 0001:000193CA  1441 0001:000193F5  1443 0001:00019413
+  1444 0001:00019422  1446 0001:00019430  1447 0001:00019446  1449 0001:00019457
+  1450 0001:00019462  1453 0001:00019472  1457 0001:00019485  1458 0001:0001948D
+  1459 0001:00019495  1460 0001:0001949B  1461 0001:000194A9  1463 0001:000194CF
+  1466 0001:000194E2  1472 0001:00019518  1473 0001:00019532  1475 0001:0001953A
+  1476 0001:0001953C  1477 0001:0001955B  1478 0001:00019563  1486 0001:00019569
+  1488 0001:0001957B  1489 0001:00019596  1492 0001:0001959E  1493 0001:000195A4
+  1494 0001:000195AA  1495 0001:000195B8  1497 0001:000195D9  1500 0001:000195EC
+  1503 0001:000195FC  1504 0001:00019600  1506 0001:00019619  1510 0001:0001961C
+  1512 0001:0001962D  1513 0001:00019640  1515 0001:00019647  1517 0001:0001964E
+  1518 0001:00019650  1523 0001:00019658  1524 0001:0001965E  1525 0001:00019665
+  1527 0001:00019669  1528 0001:00019671  1530 0001:00019682  1537 0001:00019688
+  1538 0001:0001968C  1539 0001:00019693  1544 0001:000196DB  1546 0001:000196E0
+  1547 0001:00019708  1548 0001:00019719  1550 0001:00019725  1552 0001:00019734
+  1554 0001:0001973E  1559 0001:0001975A  1561 0001:00019766  1563 0001:0001976F
+  1567 0001:00019798  1572 0001:0001979B  1574 0001:000197A1  1575 0001:000197AB
+  1578 0001:000197AF  1579 0001:000197B1  1585 0001:000197B8  1586 0001:000197C7
+  1588 0001:000197CF  1589 0001:000197DC  1590 0001:000197EA  1591 0001:00019809
+  1593 0001:0001981E  1596 0001:00019831  1597 0001:00019833  1601 0001:0001983C
+  1602 0001:0001983D  1603 0001:00019846  1605 0001:00019850  1607 0001:0001985A
+  1609 0001:00019864  1612 0001:0001986B  1613 0001:00019870  1618 0001:00019874
+  1619 0001:00019888  1621 0001:0001988A  1623 0001:00019894  1624 0001:0001989A
+  1626 0001:000198A8  1629 0001:000198C4  1630 0001:000198C7  1632 0001:000198D0
+  1633 0001:000198D6  1636 0001:000198E4  1637 0001:000198F2  1638 0001:00019900
+  1639 0001:00019905  1641 0001:00019911  1642 0001:00019915  1643 0001:00019924
+  1649 0001:00019930  1650 0001:00019937  1652 0001:0001993E  1653 0001:00019951
+  1655 0001:00019958  1658 0001:00019960  1659 0001:00019972  1660 0001:0001997B
+  1661 0001:0001997F  1664 0001:0001999C  1665 0001:000199B1  1666 0001:000199BA
+  1667 0001:000199C1  1670 0001:000199E0  1671 0001:000199EB  1672 0001:000199F4
+  1673 0001:000199FD  1674 0001:00019A09  1679 0001:00019A18  1680 0001:00019A1F
+  1682 0001:00019A26  1683 0001:00019A39  1684 0001:00019A40  1686 0001:00019A44
+  1687 0001:00019A4D  1690 0001:00019A56  1695 0001:00019A5C  1696 0001:00019A63
+  1698 0001:00019A6A  1699 0001:00019A7D  1700 0001:00019A84  1702 0001:00019A88
+  1703 0001:00019A91  1706 0001:00019A9A  1711 0001:00019AA0  1712 0001:00019AA7
+  1715 0001:00019AAE  1719 0001:00019AC1  1720 0001:00019AC8  1722 0001:00019ACC
+  1723 0001:00019AD5  1726 0001:00019ADE  1734 0001:00019AE4  1735 0001:00019AEB
+  1738 0001:00019AF2  1747 0001:00019B05  1748 0001:00019B0C  1750 0001:00019B10
+  1751 0001:00019B19  1754 0001:00019B22  1759 0001:00019B28  1760 0001:00019B30
+  1762 0001:00019B37  1763 0001:00019B4A  1764 0001:00019B51  1767 0001:00019B6E
+  1768 0001:00019B7C  1769 0001:00019B85  1770 0001:00019B8E  1773 0001:00019B97
+  1778 0001:00019B9C  1779 0001:00019BA3  1781 0001:00019BAA  1782 0001:00019BBD
+  1783 0001:00019BC4  1785 0001:00019BC8  1786 0001:00019BD1  1789 0001:00019BDA
+  1794 0001:00019BE0  1795 0001:00019BE5  1797 0001:00019BEC  1798 0001:00019BF9
+  1799 0001:00019C00  1801 0001:00019C04  1802 0001:00019C0D  1805 0001:00019C16
+  1810 0001:00019C1C  1811 0001:00019C21  1813 0001:00019C28  1814 0001:00019C35
+  1815 0001:00019C3C  1817 0001:00019C40  1818 0001:00019C49  1821 0001:00019C52
+  1826 0001:00019C58  1827 0001:00019C5F  1829 0001:00019C66  1830 0001:00019C79
+  1831 0001:00019C80  1833 0001:00019C84  1834 0001:00019C8D  1837 0001:00019C96
+  1842 0001:00019C9C  1843 0001:00019CA3  1845 0001:00019CAA  1846 0001:00019CBD
+  1847 0001:00019CC4  1849 0001:00019CC8  1850 0001:00019CD1  1853 0001:00019CDA
+  1858 0001:00019CE0  1859 0001:00019CE7  1861 0001:00019CEE  1862 0001:00019D01
+  1863 0001:00019D08  1865 0001:00019D0C  1866 0001:00019D15  1869 0001:00019D1E
+  1874 0001:00019D24  1875 0001:00019D2B  1877 0001:00019D32  1878 0001:00019D45
+  1879 0001:00019D4C  1881 0001:00019D50  1882 0001:00019D59  1885 0001:00019D62
+  1890 0001:00019D68  1891 0001:00019D6F  1893 0001:00019D76  1894 0001:00019D89
+  1895 0001:00019D90  1897 0001:00019D94  1898 0001:00019D9D  1901 0001:00019DA6
+  1904 0001:00019DAC  1905 0001:00019DB4  1907 0001:00019DBB  1908 0001:00019DD1
+  1910 0001:00019DD8  1913 0001:00019DE0  1914 0001:00019DE6  1915 0001:00019DEC
+  1917 0001:00019DFE  1918 0001:00019E05  1921 0001:00019E08  1922 0001:00019E0E
+  1923 0001:00019E14  1925 0001:00019E26  1926 0001:00019E2D  1929 0001:00019E30
+  1931 0001:00019E49  1932 0001:00019E60  1935 0001:00019E71  1936 0001:00019E85
+  1939 0001:00019EA8  1940 0001:00019EAE  1941 0001:00019EBC  1944 0001:00019EC0
+  1945 0001:00019EC6  1946 0001:00019ED4  1949 0001:00019ED8  1950 0001:00019EDB
+  1951 0001:00019EEC  1954 0001:00019EF0  1955 0001:00019EF6  1956 0001:00019F04
+  1959 0001:00019F08  1960 0001:00019F0E  1961 0001:00019F1C  1964 0001:00019F20
+  1965 0001:00019F27  1967 0001:00019F2E  1968 0001:00019F38  1969 0001:00019F3D
+  1971 0001:00019F46  1976 0001:00019F4C  1977 0001:00019F6F
+
+Line numbers for VarPyth(Sources\Core\VarPyth.pas) segment .itext
+
+  1973 0002:00000140  1974 0002:00000149  1975 0002:0000015A
+
+Line numbers for .Python_d7(Python_d7.dpk) segment .itext
+
+    43 0002:0000015C
+
+Bound resource files
+
+Python_d7.res
+Sources\Core\PythonEngine.dcr
+Python_d7.drf
+
+
+Program entry point at 0002:0000015C

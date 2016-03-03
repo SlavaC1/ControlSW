@@ -1,0 +1,27 @@
+HKCR
+{
+	VideoCameraAutomation.VideoCameraComW.1 = s 'VideoCameraComWrapper Class'
+	{
+		CLSID = s '{999F1681-6DE1-4249-8334-52184982A842}'
+	}
+	VideoCameraAutomation.VideoCameraComWra = s 'VideoCameraComWrapper Class'
+	{
+		CLSID = s '{999F1681-6DE1-4249-8334-52184982A842}'
+		CurVer = s 'VideoCameraAutomation.VideoCameraComW.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {999F1681-6DE1-4249-8334-52184982A842} = s 'VideoCameraComWrapper Class'
+		{
+			ProgID = s 'VideoCameraAutomation.VideoCameraComW.1'
+			VersionIndependentProgID = s 'VideoCameraAutomation.VideoCameraComWra'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{8C0F7857-3DB5-49A9-A4D7-0DE16C5A8061}'
+		}
+	}
+}

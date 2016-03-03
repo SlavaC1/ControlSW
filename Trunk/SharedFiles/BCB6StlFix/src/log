@@ -1,0 +1,3 @@
+	cl.exe /Zm800 /nologo /W3 /GR /GX /FI "vc_warning_disable.h" /D "WIN32" /D "_WINDOWS" /I "..\\stlport" /D "__SGI_STL_OWN_IOSTREAMS" /D "_MBCS" /D__STL_NO_FORCE_INSTANTIATE /D "_LIB" /FD /O2 /MT /D "NDEBUG" /Fo"obj\\VC5\\Release\\" /Fd"obj\\VC5\\Release\\"  /YXstlport_prefix.h /Fpobj\\VC5\\Release\stlport.pch /c .\iostream.cpp
+iostream.cpp
+..\\stlport\stl/_streambuf.h(181) : error C2065: '__res' : undeclared identifier

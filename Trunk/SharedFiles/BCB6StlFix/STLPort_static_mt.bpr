@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="..\$(ORIG_STLP_REL_DLL)\STLPort_static_mt.lib"/>
+    <OBJFILES value="..\%ORIG_STLP_REL_OBJ%\complex.obj ..\%ORIG_STLP_REL_OBJ%\complex_exp.obj 
+      ..\%ORIG_STLP_REL_OBJ%\complex_io.obj 
+      ..\%ORIG_STLP_REL_OBJ%\complex_trig.obj 
+      ..\%ORIG_STLP_REL_OBJ%\dll_main.obj ..\%ORIG_STLP_REL_OBJ%\ios.obj 
+      ..\%ORIG_STLP_REL_OBJ%\streambuf.obj 
+      ..\%ORIG_STLP_REL_OBJ%\stdio_streambuf.obj 
+      ..\%ORIG_STLP_REL_OBJ%\iostream.obj ..\%ORIG_STLP_REL_OBJ%\istream.obj 
+      ..\%ORIG_STLP_REL_OBJ%\ostream.obj ..\%ORIG_STLP_REL_OBJ%\fstream.obj 
+      ..\%ORIG_STLP_REL_OBJ%\strstream.obj ..\%ORIG_STLP_REL_OBJ%\sstream.obj 
+      ..\%ORIG_STLP_REL_OBJ%\codecvt.obj ..\%ORIG_STLP_REL_OBJ%\collate.obj 
+      ..\%ORIG_STLP_REL_OBJ%\ctype.obj ..\%ORIG_STLP_REL_OBJ%\messages.obj 
+      ..\%ORIG_STLP_REL_OBJ%\monetary.obj ..\%ORIG_STLP_REL_OBJ%\num_get.obj 
+      ..\%ORIG_STLP_REL_OBJ%\num_get_float.obj 
+      ..\%ORIG_STLP_REL_OBJ%\num_put.obj ..\%ORIG_STLP_REL_OBJ%\num_put_float.obj 
+      ..\%ORIG_STLP_REL_OBJ%\numpunct.obj ..\%ORIG_STLP_REL_OBJ%\time_facets.obj 
+      ..\%ORIG_STLP_REL_OBJ%\locale.obj 
+      ..\%ORIG_STLP_REL_OBJ%\locale_catalog.obj ..\%ORIG_STLP_REL_OBJ%\facets_byname.obj 
+      ..\%ORIG_STLP_REL_OBJ%\locale_impl.obj ..\%ORIG_STLP_REL_OBJ%\c_locale.obj 
+      ..\%ORIG_STLP_REL_OBJ%\c_locale_stub.obj 
+      ..\%ORIG_STLP_REL_OBJ%\complex_io_w.obj 
+      ..\%ORIG_STLP_REL_OBJ%\string_w.obj ..\%ORIG_STLP_REL_OBJ%\_alloc.obj"/>
+    <RESFILES value=""/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;src;stlport\stl"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <LINKER value="TLib"/>
+    <USERDEFINES value="_DEBUG;_LIB;_WIN32;_STLP_NO_FORCE_INSTANTIATE;_STLP_DEBUG"/>
+    <SYSDEFINES value=""/>
+    <MAINSOURCE value="STLPort_static_mt.bpf"/>
+    <INCLUDEPATH value="stlport\stl;src;stlport;$(BCB)\include;$(STLPORT_INC)"/>
+    <LIBPATH value="stlport\stl;src;STLPort\src;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <LISTFILE value=""/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-Isrc -I$(BCB)\include -I$(STLPORT_INC) -src_suffix cpp -D_DEBUG -D_LIB 
+      -D_WIN32 -D_STLP_NO_FORCE_INSTANTIATE -D_STLP_DEBUG -boa"/>
+    <CFLAG1 value="-Od -P -Vx -Ve -xp -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-N2..\$(ORIG_STLP_REL_OBJ) -N0..\$(ORIG_STLP_REL_OBJ) -$YD -$W -$O- -$A8 
+      -v -JPHNE -M"/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="/P128"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLLIB value=""/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="STLPort_static_mt.bpf" FORMNAME="" UNITNAME="STLPort_static_mt" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\complex.cpp" FORMNAME="" UNITNAME="complex.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\complex_exp.cpp" FORMNAME="" UNITNAME="complex_exp.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\complex_io.cpp" FORMNAME="" UNITNAME="complex_io.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\complex_trig.cpp" FORMNAME="" UNITNAME="complex_trig.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\dll_main.cpp" FORMNAME="" UNITNAME="dll_main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\ios.cpp" FORMNAME="" UNITNAME="ios.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\streambuf.cpp" FORMNAME="" UNITNAME="streambuf.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\stdio_streambuf.cpp" FORMNAME="" UNITNAME="stdio_streambuf.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\iostream.cpp" FORMNAME="" UNITNAME="iostream.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\istream.cpp" FORMNAME="" UNITNAME="istream.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\ostream.cpp" FORMNAME="" UNITNAME="ostream.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\fstream.cpp" FORMNAME="" UNITNAME="fstream.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\strstream.cpp" FORMNAME="" UNITNAME="strstream.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\sstream.cpp" FORMNAME="" UNITNAME="sstream" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\codecvt.cpp" FORMNAME="" UNITNAME="codecvt.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\collate.cpp" FORMNAME="" UNITNAME="collate.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\ctype.cpp" FORMNAME="" UNITNAME="ctype.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\messages.cpp" FORMNAME="" UNITNAME="messages.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\monetary.cpp" FORMNAME="" UNITNAME="monetary.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\num_get.cpp" FORMNAME="" UNITNAME="num_get.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\num_get_float.cpp" FORMNAME="" UNITNAME="num_get_float.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\num_put.cpp" FORMNAME="" UNITNAME="num_put.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\num_put_float.cpp" FORMNAME="" UNITNAME="num_put_float.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\numpunct.cpp" FORMNAME="" UNITNAME="numpunct.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\time_facets.cpp" FORMNAME="" UNITNAME="time_facets.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\locale.cpp" FORMNAME="" UNITNAME="locale.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\locale_catalog.cpp" FORMNAME="" UNITNAME="locale_catalog.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\facets_byname.cpp" FORMNAME="" UNITNAME="facets_byname.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\locale_impl.cpp" FORMNAME="" UNITNAME="locale_impl.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\c_locale.c" FORMNAME="" UNITNAME="c_locale" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\c_locale_stub.cpp" FORMNAME="" UNITNAME="c_locale_stub.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\complex_io_w.cpp" FORMNAME="" UNITNAME="complex_io_w.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="src\string_w.cpp" FORMNAME="" UNITNAME="string_w.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="stlport\stl\_alloc.c" FORMNAME="" UNITNAME="_alloc" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=5
+Item0=stlport\stl;src;stlport;$(BCB)\include;$(STLPORT_INC)
+Item1=src;stlport;$(BCB)\include;$(STLPORT_INC)
+Item2=src;$(BCB)\include;$(STLPORT_INC)
+Item3=src;STLPort\src;$(BCB)\include
+Item4=src;STLPort\src;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=2
+Item0=stlport\stl;src;STLPort\src;$(BCB)\lib\obj;$(BCB)\lib
+Item1=src;STLPort\src;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=5
+Item0=_DEBUG;_LIB;_WIN32;_STLP_NO_FORCE_INSTANTIATE;_STLP_DEBUG
+Item1=_DEBUG;_LIB;_WIN32;_STLP_NO_FORCE_INSTANTIATE;_STLP_DEBUG;__STL_HAS_NO_NAMESPACES
+Item2=_DEBUG;_LIB;_WIN32;_STLP_NO_FORCE_INSTANTIATE;_USE_OLD_RW_STL;_STLP_DEBUG
+Item3=_DEBUG;_LIB;_WIN32;_STLP_NO_FORCE_INSTANTIATE
+Item4=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=2
+Item0=..\$(ORIG_STLP_REL_OBJ)
+Item1=..\$(STLP_REL_OBJ)
+
+[HistoryLists\hlFinalOutputDir]
+Count=3
+Item0=..\$(ORIG_STLP_REL_DLL)\
+Item1=..\$(STLP_REL_DLL)\
+Item2=..\$(STLP_REL_DLL)
+
+[HistoryLists\hlTlibPageSize]
+Count=3
+Item0=0x0080
+Item1=128
+Item2=0x0010
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+  </IDEOPTIONS>
+</PROJECT>

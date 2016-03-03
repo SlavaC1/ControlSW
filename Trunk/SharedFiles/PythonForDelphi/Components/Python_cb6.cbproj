@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{d67407c9-bfa5-4ea4-9864-29f791195f2b}</ProjectGuid>
+    <ProjectType>CppPackage</ProjectType>
+    <MainSource>Python_cb6.cpp</MainSource>
+    <Config Condition="'$(Config)'==''">Release Build</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug Build' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release Build' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+    <OutputExt>bpl</OutputExt>
+    <Defines>VER150;WIN32</Defines>
+    <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
+    <DynamicRTL>true</DynamicRTL>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <ILINK_GenerateLibFile>true</ILINK_GenerateLibFile>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+    <ILINK_AppType>Windows</ILINK_AppType>
+    <ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
+    <DCC_DebugInformation>false</DCC_DebugInformation>
+    <ILINK_ObjectSearchPath>Sources\Core</ILINK_ObjectSearchPath>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <UsePackages>true</UsePackages>
+    <BCC_ZeroLengthEmptyMemberFuncs>true</BCC_ZeroLengthEmptyMemberFuncs>
+    <DCC_MakeModifiedUnits>true</DCC_MakeModifiedUnits>
+    <FinalOutputDir>.</FinalOutputDir>
+    <TASM_AdditionalSwitches> /w2</TASM_AdditionalSwitches>
+    <PackageImports>rtl.bpi;vcl.bpi;bcbie.bpi</PackageImports>
+    <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
+    <ILINK_Description>Components for Python</ILINK_Description>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <ILINK_WinAppType>Package</ILINK_WinAppType>
+    <BRCC_UserSuppliedOptions> -ISources\Core;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
+    <IncludePath>Sources\Core</IncludePath>
+    <BCC_PCHCache>true</BCC_PCHCache>
+    <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
+    <ILINK_BpiLibOutputDir>.</ILINK_BpiLibOutputDir>
+    <BCC_IncludePath>Sources\Core;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BCC_IncludePath>
+    <TASM_IncludePath>Sources\Core;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <AllPackageLibs>rtl.lib;vcl.lib;bcbsmp.lib;vcldb.lib;dbrtl.lib;adortl.lib;bdertl.lib;vcldbx.lib;dsnap.lib;dsnap.lib;dsnapcon.lib;teeui.lib;teedb.lib;tee.lib;ibxpress.lib;xmlrtl.lib;inet.lib;inetdbbde.lib;inetdb.lib;inetdbxpress.lib;dbexpress.lib;bcbie.lib;soaprtl.lib;dbxcds.lib;indycore.lib;indysystem.lib;bcboffice2k.lib;Objet.lib</AllPackageLibs>
+    <BRCC_IncludePath>Sources\Core;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_IncludePath>
+    <DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
+    <ILINK_LibraryPath>$(BDS)\Projects\Lib;Sources\Core;$(BDS)\lib\obj;$(BDS)\lib</ILINK_LibraryPath>
+    <BCC_Defines>NO_STRICT;_VIS_NOLIB</BCC_Defines>
+    <BRCC_Defines>_RTLDLL;NO_STRICT;_VIS_NOLIB;USEPACKAGES</BRCC_Defines>
+    <TASM_Defines>_RTLDLL;NO_STRICT;_VIS_NOLIB;USEPACKAGES</TASM_Defines>
+    <Multithreaded>true</Multithreaded>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_Optimize>false</DCC_Optimize>
+    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <DCC_DebugInformation>true</DCC_DebugInformation>
+    <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>Full</TASM_Debugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <BCC_OutputDir>Release_Build</BCC_OutputDir>
+    <BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
+    <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
+    <IntermediateOutputDir>Release_Build</IntermediateOutputDir>
+    <BCC_StackFrames>false</BCC_StackFrames>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <DCC_ObjOutput>Release_Build</DCC_ObjOutput>
+    <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>None</TASM_Debugging>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppPackage</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject> <CPlusPlusBuilder.Personality>   <VersionInfo>
+      <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+      <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+      <VersionInfo Name="MajorVer">1</VersionInfo>
+      <VersionInfo Name="MinorVer">0</VersionInfo>
+      <VersionInfo Name="Release">0</VersionInfo>
+      <VersionInfo Name="Build">0</VersionInfo>
+      <VersionInfo Name="Debug">False</VersionInfo>
+      <VersionInfo Name="PreRelease">False</VersionInfo>
+      <VersionInfo Name="Special">False</VersionInfo>
+      <VersionInfo Name="Private">False</VersionInfo>
+      <VersionInfo Name="DLL">False</VersionInfo>
+      <VersionInfo Name="Locale">1036</VersionInfo>
+      <VersionInfo Name="CodePage">1252</VersionInfo>
+    </VersionInfo>
+    <VersionInfoKeys>
+      <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+      <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+      <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+      <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+      <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+      <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+      <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+      <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+      <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+      <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+    </VersionInfoKeys>
+    <HistoryLists_hlIncludePath>
+      <HistoryLists_hlIncludePath Name="Count">2</HistoryLists_hlIncludePath>
+      <HistoryLists_hlIncludePath Name="Item0">Sources\Core</HistoryLists_hlIncludePath>
+      <HistoryLists_hlIncludePath Name="Item1">Sources\Core;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+    </HistoryLists_hlIncludePath>
+    <HistoryLists_hlLibraryPath>
+      <HistoryLists_hlLibraryPath Name="Count">2</HistoryLists_hlLibraryPath>
+      <HistoryLists_hlLibraryPath Name="Item0">Sources\Core;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+      <HistoryLists_hlLibraryPath Name="Item1">..\..\borland\cbuilder4\lib\release;Sources\Core;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+    </HistoryLists_hlLibraryPath>
+    <HistoryLists_hlDebugSourcePath>
+      <HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath>
+      <HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath>
+    </HistoryLists_hlDebugSourcePath>
+    <HistoryLists_hIBPIOutputDir>
+      <HistoryLists_hIBPIOutputDir Name="Count">1</HistoryLists_hIBPIOutputDir>
+      <HistoryLists_hIBPIOutputDir Name="Item0">.</HistoryLists_hIBPIOutputDir>
+    </HistoryLists_hIBPIOutputDir>
+    <Debugging>
+      <Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging>
+    </Debugging>
+    <Parameters>
+      <Parameters Name="RunParams"></Parameters>
+      <Parameters Name="Launcher"></Parameters>
+      <Parameters Name="UseLauncher">False</Parameters>
+      <Parameters Name="DebugCWD"></Parameters>
+      <Parameters Name="HostApplication"></Parameters>
+      <Parameters Name="RemoteHost"></Parameters>
+      <Parameters Name="RemotePath"></Parameters>
+      <Parameters Name="RemoteLauncher"></Parameters>
+      <Parameters Name="RemoteCWD"></Parameters>
+      <Parameters Name="RemoteDebug">False</Parameters>
+      <Parameters Name="RemoteParams"></Parameters>
+      <Parameters Name="UseRemoteLauncher">False</Parameters>
+      <Parameters Name="Debug Symbols Search Path"></Parameters>
+      <Parameters Name="LoadAllSymbols">True</Parameters>
+      <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+    </Parameters>
+    <Compiler>
+      <Compiler Name="ShowInfoMsgs">0</Compiler>
+      <Compiler Name="LinkDebugVcl">0</Compiler>
+      <Compiler Name="LinkCGLIB">0</Compiler>
+    </Compiler>
+    <Linker>
+      <Linker Name="LibPrefix"></Linker>
+      <Linker Name="LibSuffix"></Linker>
+      <Linker Name="LibVersion"></Linker>
+    </Linker>
+    <ProjectProperties>
+      <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+      <ProjectProperties Name="ManagePaths">True</ProjectProperties>
+      <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+    </ProjectProperties>
+    <Source>
+      <Source Name="MainSource">Python_cb6.cpp</Source>
+    </Source>
+    <HistoryLists_hlFinalOutputDir>
+      <HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir>
+      <HistoryLists_hlFinalOutputDir Name="Item0">.</HistoryLists_hlFinalOutputDir>
+    </HistoryLists_hlFinalOutputDir>
+    <HistoryLists_hlILINK_LibraryPath>
+      <HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath>
+      <HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\Projects\Lib;Sources\Core;$(BDS)\lib\obj;$(BDS)\lib</HistoryLists_hlILINK_LibraryPath>
+    </HistoryLists_hlILINK_LibraryPath>
+    <HistoryLists_hlDefines>
+      <HistoryLists_hlDefines Name="Count">1</HistoryLists_hlDefines>
+      <HistoryLists_hlDefines Name="Item0">VER150;WIN32</HistoryLists_hlDefines>
+    </HistoryLists_hlDefines>
+    <HistoryLists_hlILINK_BpiLibOutputDir>
+      <HistoryLists_hlILINK_BpiLibOutputDir Name="Count">1</HistoryLists_hlILINK_BpiLibOutputDir>
+      <HistoryLists_hlILINK_BpiLibOutputDir Name="Item0">.</HistoryLists_hlILINK_BpiLibOutputDir>
+    </HistoryLists_hlILINK_BpiLibOutputDir>
+    <HistoryLists_hlDCC_CodePage>
+      <HistoryLists_hlDCC_CodePage Name="Count">1</HistoryLists_hlDCC_CodePage>
+      <HistoryLists_hlDCC_CodePage Name="Item0">0</HistoryLists_hlDCC_CodePage>
+    </HistoryLists_hlDCC_CodePage>
+    <HistoryLists_hlDCC_IncludePath>
+      <HistoryLists_hlDCC_IncludePath Name="Count">1</HistoryLists_hlDCC_IncludePath>
+      <HistoryLists_hlDCC_IncludePath Name="Item0">.\;$(BDS)\lib;$(BDS)\lib\obj</HistoryLists_hlDCC_IncludePath>
+    </HistoryLists_hlDCC_IncludePath>
+    <HistoryLists_hlDCC_ObjOutput>
+      <HistoryLists_hlDCC_ObjOutput Name="Count">1</HistoryLists_hlDCC_ObjOutput>
+      <HistoryLists_hlDCC_ObjOutput Name="Item0">Release_Build</HistoryLists_hlDCC_ObjOutput>
+    </HistoryLists_hlDCC_ObjOutput>
+    <HistoryLists_hlILINK_BaseAddress>
+      <HistoryLists_hlILINK_BaseAddress Name="Count">1</HistoryLists_hlILINK_BaseAddress>
+      <HistoryLists_hlILINK_BaseAddress Name="Item0">0x00400000</HistoryLists_hlILINK_BaseAddress>
+    </HistoryLists_hlILINK_BaseAddress>
+    <HistoryLists_hlILINK_HeapCommitSize>
+      <HistoryLists_hlILINK_HeapCommitSize Name="Count">1</HistoryLists_hlILINK_HeapCommitSize>
+      <HistoryLists_hlILINK_HeapCommitSize Name="Item0">0x00001000</HistoryLists_hlILINK_HeapCommitSize>
+    </HistoryLists_hlILINK_HeapCommitSize>
+    <HistoryLists_hlILINK_HeapReserveSize>
+      <HistoryLists_hlILINK_HeapReserveSize Name="Count">1</HistoryLists_hlILINK_HeapReserveSize>
+      <HistoryLists_hlILINK_HeapReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_HeapReserveSize>
+    </HistoryLists_hlILINK_HeapReserveSize>
+    <HistoryLists_hlILINK_StackCommitSize>
+      <HistoryLists_hlILINK_StackCommitSize Name="Count">1</HistoryLists_hlILINK_StackCommitSize>
+      <HistoryLists_hlILINK_StackCommitSize Name="Item0">0x00002000</HistoryLists_hlILINK_StackCommitSize>
+    </HistoryLists_hlILINK_StackCommitSize>
+    <HistoryLists_hlILINK_StackReserveSize>
+      <HistoryLists_hlILINK_StackReserveSize Name="Count">1</HistoryLists_hlILINK_StackReserveSize>
+      <HistoryLists_hlILINK_StackReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_StackReserveSize>
+    </HistoryLists_hlILINK_StackReserveSize>
+    <HistoryLists_hlILINK_MaxErrors>
+      <HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors>
+      <HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors>
+    </HistoryLists_hlILINK_MaxErrors>
+    <HistoryLists_hlILINK_FileAlignment>
+      <HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment>
+      <HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment>
+    </HistoryLists_hlILINK_FileAlignment>
+    <HistoryLists_hlILINK_ObjectAlignment>
+      <HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment>
+      <HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment>
+    </HistoryLists_hlILINK_ObjectAlignment>
+    <HistoryLists_hlBCC_IncludePath>
+      <HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath>
+      <HistoryLists_hlBCC_IncludePath Name="Item0">Sources\Core;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</HistoryLists_hlBCC_IncludePath>
+    </HistoryLists_hlBCC_IncludePath>
+    <HistoryLists_hlBCC_Defines>
+      <HistoryLists_hlBCC_Defines Name="Count">1</HistoryLists_hlBCC_Defines>
+      <HistoryLists_hlBCC_Defines Name="Item0">NDEBUG;NO_STRICT;_VIS_NOLIB</HistoryLists_hlBCC_Defines>
+    </HistoryLists_hlBCC_Defines>
+    <HistoryLists_hlBCC_OutputDir>
+      <HistoryLists_hlBCC_OutputDir Name="Count">1</HistoryLists_hlBCC_OutputDir>
+      <HistoryLists_hlBCC_OutputDir Name="Item0">Release_Build</HistoryLists_hlBCC_OutputDir>
+    </HistoryLists_hlBCC_OutputDir>
+    <HistoryLists_hlBCC_MaxIdentifierLength>
+      <HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength>
+      <HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength>
+    </HistoryLists_hlBCC_MaxIdentifierLength>
+  </CPlusPlusBuilder.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <PackageImport Include="bcbie.bpi">
+      <BuildOrder>0</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="rtl.bpi">
+      <BuildOrder>1</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="vcl.bpi">
+      <BuildOrder>2</BuildOrder>
+    </PackageImport>
+    <CppCompile Include="Python_cb6.cpp">
+      <BuildOrder>3</BuildOrder>
+    </CppCompile>
+    <DelphiCompile Include="Sources\Core\MethodCallBack.pas">
+      <BuildOrder>7</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Sources\Core\PythonEngine.pas">
+      <BuildOrder>5</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Sources\Core\PythonGUIInputOutput.pas">
+      <BuildOrder>4</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Sources\Core\VarPyth.pas">
+      <BuildOrder>8</BuildOrder>
+    </DelphiCompile>
+    <None Include="Sources\Core\PythonEngine.dcr">
+      <BuildOrder>6</BuildOrder>
+    </None>
+    <BuildConfiguration Include="Debug Build">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release Build">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>
