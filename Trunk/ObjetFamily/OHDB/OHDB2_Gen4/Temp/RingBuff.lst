@@ -1,0 +1,399 @@
+C51 COMPILER V9.52.0.0   RINGBUFF                                                          04/28/2015 17:26:00 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE RINGBUFF
+OBJECT MODULE PLACED IN .\Temp\RingBuff.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\SharedModules\RingBuffer\RingBuff.C LARGE OPTIMIZE(0,SPEED) BROWSE INCDI
+                    -R(..\SharedModules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProto
+                    -col,Timer\,Potentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\Sha
+                    -redModules\Roller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,B
+                    -umper\) DEFINE(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\RingBuff.lst) TABS(2) OBJECT(.\Temp\RingBuff.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Ring Buffer {RingBuff.C}
+   3           *   PURPOSE        : Communication ring buffer procedures
+   4           *   DATE CREATED   : 02/Sep/2001
+   5           *   PROGRAMMER     : Juval Izhaki
+   6           *   Description    : This package handles the SIUB_SW RBUF sequence.
+   7           *                    The package provides the following:
+   8           *                    - Ring buffers initialization
+   9           *                - Create RING buffer
+  10           *                  - Insert element to RING buffer
+  11           *                  - Remove element to RING buffer
+  12           *   Include        : RingBuff.h
+  13           *===========================================================================*/
+  14           
+  15          #ifdef C8051F206_CPU
+                #include "c8051F200.h"
+              #elif defined(C8051F005_CPU)
+                #include "c8051F000.h"
+              #elif defined(C8051F023_CPU)
+                #include "c8051F020.h"
+              #elif defined(C8051F123_CPU)
+  22            #include "c8051F120.h"
+  23          #endif
+  24          
+  25          #include "Define.h"
+  26          #include "RingBuff.h"
+  27          #ifdef OCB_SIMULATOR
+              #include "EdenProtocol.h"
+              #else
+  30          #include "EdenProtocolOHDB.h"
+  31          #endif
+  32           
+  33           #define  _RBUF_
+  34           bit      CharInSBuff;
+  35          
+  36          /*===========================================================================
+  37           *   FILENAME       : Ring Buffer {RingBuff.C}
+  38           *   PURPOSE        : Communication ring buffer procedures
+  39           *   DATE CREATED   : 02/Sep/2001
+  40           *   PROGRAMMER     : Juval Izhaki
+  41           *   Procedure Name : RBUF_GetElementCount()
+  42           *   Description    : Returns Element count.
+  43           *   Input          : RBUF_RingBuffer RingBuffer
+  44           *   Return         : element count
+  45           *===========================================================================*/
+  46            unsigned char RingBuffGetElementCount (RBUF_RingBuffer  *RingBuffer)
+  47            {
+  48   1          return (RingBuffer->ElementCount);
+  49   1        }
+  50          
+  51          /*===========================================================================
+C51 COMPILER V9.52.0.0   RINGBUFF                                                          04/28/2015 17:26:00 PAGE 2   
+
+  52           *   FILENAME       : Ring Buffer {RingBuff.C}
+  53           *   PURPOSE        : Communication ring buffer procedures
+  54           *   DATE CREATED   : 02/Sep/2001
+  55           *   PROGRAMMER     : Juval Izhaki
+  56           *   Procedure Name : RBUF_Init()
+  57           *   Description    : Initialize ring buffer according to data elements +
+  58           *                  header: Length, Head, Tail, Data [no of elements].
+  59           *                Initialize Size of buffer, Head and tail index.
+  60           *                Return pointer to alloctaed ring buffer.
+  61           *   Input          : unsinged short Element Size
+  62           *                    - The length of one element in the ring buffer.
+  63           *                unsinged short NumberOfElements
+  64           *                    - Number of elements in the ring buffer.
+  65           *
+  66           *===========================================================================*/
+  67          void  RingBuffInit(RBUF_RingBuffer *RingBuffer)
+  68          {
+  69   1        // Initialize the ring buffer
+  70   1        RingBuffer->MaxHeadIndex     = NUMBER_OF_ELEMENTS -1;
+  71   1        RingBuffer->HeadIndex        = 0x0;
+  72   1        RingBuffer->TailIndex        = 0x0;
+  73   1        RingBuffer->ElementCount     = 0x0;
+  74   1        RingBuffer->DecodeState      = E_MSG_Header;
+  75   1        RingBuffer->RcvCharIndex     = 0x0;
+  76   1        RingBuffer->CheckSum         = 0x0;
+  77   1        RingBuffer->CheckSumErrors   = 0x0;
+  78   1      }//End RBUF_Init
+  79          /*===========================================================================
+  80           *   FILENAME       : Ring Buffer {RingBuff.C}
+  81           *   PURPOSE        : Communication ring buffer procedures
+  82           *   DATE CREATED   : 02/Sep/2001
+  83           *   PROGRAMMER     : Juval Izhaki
+  84           *   Procedure Name : RBUF_Flush()
+  85           *   Description    : Resets the ring buffer, frees the allocated areas and zeroes the Head and
+  86           *                  Tail variables.
+  87           *                  Returns error code.
+  88           *   Input          : RBUF_RingBuffer RingBuffer
+  89           *   Return         : RBUF_ErrorType  *ErrorCode
+  90           *===========================================================================
+  91          void RingBuffFlush (RBUF_RingBuffer *RingBuffer)
+  92          {
+  93          // Zero the Head and Tail of the ring buffer
+  94            RingBuffer->HeadIndex = 0;
+  95            RingBuffer->TailIndex = 0;
+  96            RingBuffer->ElementCount = 0;
+  97          }
+  98          /*===========================================================================
+  99           *   FILENAME       : Ring Buffer {RingBuff.C}
+ 100           *   PURPOSE        : Communication ring buffer procedures
+ 101           *   DATE CREATED   : 02/Sep/2001
+ 102           *   PROGRAMMER     : Juval Izhaki
+ 103           *   Procedure Name : RBUF_Insert()
+ 104           *   Description    : Verifies free space in the ring buffer,
+ 105           *              Allocates memory for the input Element,
+ 106           *              Updates the Head variable and copies the input Element
+ 107           *              to the allocated element area.
+ 108           *              Returns error code.
+ 109           *   Input          : RBUF_RingBuffer RingBuffer
+ 110           *              unsigned char     *Element
+ 111           *   Return         : RBUF_ErrorType  *ErrorCode
+ 112           *===========================================================================*/
+ 113          unsigned char RingBuffInsert(RBUF_RingBuffer  *RingBuffer) using 2
+C51 COMPILER V9.52.0.0   RINGBUFF                                                          04/28/2015 17:26:00 PAGE 3   
+
+ 114          {
+ 115   1        
+ 116   1        if(RingBuffer->HeadIndex == RingBuffer->TailIndex)  
+ 117   1        {
+ 118   2          if(RingBuffer->ElementCount != 0)
+ 119   2            return(E_RBUF_RING_BUFFER_EMPTY);
+ 120   2        }
+ 121   1      
+ 122   1        // Insert the element data
+ 123   1      #if (defined C8051F023_CPU || defined C8051F123_CPU)
+ 124   1        RingBuffer->RxBuf[RingBuffer->HeadIndex]= SBUF0;
+ 125   1      #else
+                RingBuffer->RxBuf[RingBuffer->HeadIndex]= SBUF;
+              #endif
+ 128   1      
+ 129   1        // Check and increment the element count 
+ 130   1        if(RingBuffer->HeadIndex < RingBuffer->MaxHeadIndex)
+ 131   1        {
+ 132   2          (RingBuffer->HeadIndex)++;             // Increment the element counter 
+ 133   2        }
+ 134   1        else
+ 135   1        { 
+ 136   2          RingBuffer->HeadIndex = 0;          // If Pass over the tail reset HeadIndex
+ 137   2        }
+ 138   1      
+ 139   1        (RingBuffer->ElementCount)++;
+ 140   1      
+ 141   1        return(E_RBUF_RING_BUFFER_OK);
+ 142   1      }//End
+ 143          
+ 144          
+ 145          /*===========================================================================
+ 146           *   FILENAME       : Ring Buffer {RingBuff.C}
+ 147           *   PURPOSE        : Communication ring buffer procedures
+ 148           *   DATE CREATED   : 30/Sep/2001
+ 149           *   PROGRAMMER     : Juval Izhaki
+ 150           *   Procedure Name : RingBuffRemove()
+ 151           *   Description    : This Function return the index of the Active message 
+ 152           *                  Buffer 
+ 153           *   Input          : pointer to alloctaed Message ring buffer.
+ 154           *   Company        : OBJET Geometries INC 
+ 155           *===========================================================================*/
+ 156          unsigned char  RingBuffRemove(RBUF_RingBuffer *RingBuffer,unsigned char *Element)
+ 157          {
+ 158   1        bit IntSataus ; 
+ 159   1        
+ 160   1        if(RingBuffer->ElementCount == 0)
+ 161   1        {
+ 162   2          return (E_RBUF_RING_BUFFER_EMPTY);
+ 163   2        } 
+ 164   1        else
+ 165   1        {
+ 166   2      #if (defined C8051F023_CPU || defined C8051F123_CPU)
+ 167   2        IntSataus = ES0;  
+ 168   2        ES0 = DISABLE;
+ 169   2      #else
+                IntSataus = ES;  
+                ES = DISABLE;
+              #endif
+ 173   2      
+ 174   2          *Element  =  RingBuffer->RxBuf[RingBuffer->TailIndex];
+ 175   2      
+C51 COMPILER V9.52.0.0   RINGBUFF                                                          04/28/2015 17:26:00 PAGE 4   
+
+ 176   2          // Update Tail and message count
+ 177   2          if(RingBuffer->TailIndex < RingBuffer->MaxHeadIndex)
+ 178   2             (RingBuffer->TailIndex)++;
+ 179   2          else
+ 180   2            RingBuffer->TailIndex = 0;
+ 181   2      
+ 182   2          (RingBuffer->ElementCount)--;
+ 183   2      #if (defined C8051F023_CPU || defined C8051F123_CPU)
+ 184   2        ES0 = IntSataus;
+ 185   2      #else
+                ES = IntSataus;
+              #endif
+ 188   2        }
+ 189   1        
+ 190   1        return (E_RBUF_RING_BUFFER_OK);
+ 191   1      }//End
+ 192          
+ 193          
+ 194          
+ 195          /*===========================================================================
+ 196           *   FILENAME       : Ring Buffer {RingBuff.C}
+ 197           *   PURPOSE        : Communication ring buffer procedures
+ 198           *   DATE CREATED   : 23/Sep/2001
+ 199           *   PROGRAMMER     : Juval Izhaki
+ 200           *   Procedure Name : MsgBuffInit()
+ 201           *   Description    : Initialize massege buffer according to data elements +
+ 202           *   Input          : None 
+ 203           *===========================================================================
+ 204          void MsgBuffInit ( RBUF_MessageBuffer *MsgBuffer)
+ 205          {
+ 206            // Initialize the Massege buffer
+ 207             MsgBuffer->MsgBuffIndex         = CLEAR;                             //* Index to the Msg buffer 
+ 208             MsgBuffer->MsgBuffInUse         = CLEAR;                             //* Number of char inseted into th
+             -e Msg Buffer  
+ 209             MsgBuffer->MsgBufReadyToUse     = CLEAR;                             //* Number of char extructed from 
+             -the Msg Buffer  
+ 210          
+ 211            //MsgBuffer->MsgBufIndex = MSG_BUF_1_SELECT;      //* Indecate first buffer 
+ 212          }//End MsgBuffInit
+ 213          
+ 214          
+ 215          /*===========================================================================
+ 216           *   FILENAME       : Ring Buffer {RingBuff.C}
+ 217           *   PURPOSE        : Communication ring buffer procedures
+ 218           *   DATE CREATED   : 30/Sep/2001
+ 219           *   PROGRAMMER     : Juval Izhaki
+ 220           *   Procedure Name : MsgRingBuffInit()
+ 221           *   Description    : Initialize the message ring buffer according to data elements +
+ 222           *                  header: Length, Head, Tail, Data [no of elements].
+ 223           *                Initialize Size of buffer, Head and tail index.
+ 224           *   Input          : pointer to alloctaed Message ring buffer.
+ 225           *   Company        : OBJET Geometries INC 
+ 226           *===========================================================================*/
+ 227          void  MsgRingBuffInit(RBUF_MsgRingBuffer *MsgRingBuffer)
+ 228          {
+ 229   1        // Initialize the ring buffer
+ 230   1        MsgRingBuffer->Size = NUMBER_OF_BUFFERS;
+ 231   1        MsgRingBuffer->HeadIndex = 0;
+ 232   1        MsgRingBuffer->TailIndex = 0;
+ 233   1        MsgRingBuffer->ElementCount = 0;
+ 234   1        MsgRingBuffer->MsgCharIndex = 0;
+ 235   1      
+C51 COMPILER V9.52.0.0   RINGBUFF                                                          04/28/2015 17:26:00 PAGE 5   
+
+ 236   1      }//End MsgRingBuffInit
+ 237          
+ 238          
+ 239          
+ 240          /****************************************************************************
+ 241           *
+ 242           *  NAME        : GetAvailableMsgHandle
+ 243           *
+ 244           *  DESCRIPTION : Get a handle to a free message buffer 
+ 245           ****************************************************************************/
+ 246          int GetAvailableMsgHandle(RBUF_MsgRingBuffer *MsgRingBuffer)
+ 247          {
+ 248   1      // check if there are no available message buffers
+ 249   1      // -----------------------------------------------
+ 250   1        if (MsgRingBuffer->ElementCount == MsgRingBuffer->Size)
+ 251   1          return -1;
+ 252   1      
+ 253   1        return MsgRingBuffer->HeadIndex;
+ 254   1      }
+ 255          
+ 256          
+ 257          /****************************************************************************
+ 258           *
+ 259           *  NAME        : GetMsgPtrByHandle
+ 260           *
+ 261           *  DESCRIPTION : Get a pointer to a message buffer by a handle 
+ 262           ****************************************************************************/
+ 263          BYTE* GetMsgPtrByHandle(RBUF_MsgRingBuffer *MsgRingBuffer, int Handle)
+ 264          {
+ 265   1      // check the validity of the handle
+ 266   1      // --------------------------------
+ 267   1        if ((Handle > (MsgRingBuffer->Size - 1)) || (Handle < 0))
+ 268   1          return NULL;
+ 269   1        
+ 270   1        return MsgRingBuffer->MsgBuf[Handle];
+ 271   1      
+ 272   1      }
+ 273          
+ 274          /****************************************************************************
+ 275           *
+ 276           *  NAME        : MarkMsgAsReady
+ 277           *
+ 278           *  DESCRIPTION : Mark message as ready after all the message bytes have recieved
+ 279           *                Move the poniter to the available message to the next buffer
+ 280           ****************************************************************************/
+ 281          void MarkMsgAsReady(RBUF_MsgRingBuffer *MsgRingBuffer)
+ 282          {
+ 283   1      // increment the head index to the next buffer
+ 284   1      // ------------------------------------------- 
+ 285   1        if(++(MsgRingBuffer->HeadIndex) == MsgRingBuffer->Size)
+ 286   1          MsgRingBuffer->HeadIndex = 0;             
+ 287   1      
+ 288   1        MsgRingBuffer->MsgCharIndex = 0;
+ 289   1      
+ 290   1      // increment the number of ready messages
+ 291   1      // -------------------------------------- 
+ 292   1        MsgRingBuffer->ElementCount++;
+ 293   1      }
+ 294          
+ 295          
+ 296          /****************************************************************************
+ 297           *
+C51 COMPILER V9.52.0.0   RINGBUFF                                                          04/28/2015 17:26:00 PAGE 6   
+
+ 298           *  NAME        : GetReadyMsgsNumber
+ 299           *
+ 300           *  DESCRIPTION : Get the number of ready messages  
+ 301           ****************************************************************************/
+ 302          int GetReadyMsgsNumber(RBUF_MsgRingBuffer *MsgRingBuffer)
+ 303          {
+ 304   1        return MsgRingBuffer->ElementCount;
+ 305   1      }
+ 306          
+ 307          
+ 308          /****************************************************************************
+ 309           *
+ 310           *  NAME        : GetReadyMsgHandle
+ 311           *
+ 312           *  DESCRIPTION : Get a handle to the ready message 
+ 313           ****************************************************************************/
+ 314          int GetReadyMsgHandle(RBUF_MsgRingBuffer *MsgRingBuffer)
+ 315          {
+ 316   1        if (MsgRingBuffer->ElementCount == 0)
+ 317   1          return -1;
+ 318   1      
+ 319   1        return MsgRingBuffer->TailIndex;
+ 320   1      }
+ 321          
+ 322          /****************************************************************************
+ 323           *
+ 324           *  NAME        : RemoveMsg
+ 325           *
+ 326           *  DESCRIPTION : Remove a message when it is no longer needed 
+ 327           ****************************************************************************/
+ 328          void RemoveMsg(RBUF_MsgRingBuffer *MsgRingBuffer)
+ 329          {
+ 330   1        if (MsgRingBuffer->ElementCount == 0)
+ 331   1          return;
+ 332   1      
+ 333   1      // increment the tail index to the next buffer
+ 334   1      // ------------------------------------------- 
+ 335   1        if(++(MsgRingBuffer->TailIndex) == MsgRingBuffer->Size)
+ 336   1          MsgRingBuffer->TailIndex = 0;             
+ 337   1      
+ 338   1      // decrement the number of ready messages
+ 339   1      // -------------------------------------- 
+ 340   1        (MsgRingBuffer->ElementCount)--;  
+ 341   1      }
+ 342          
+ 343          
+ 344          /****************************************************************************
+ 345           *
+ 346           *  NAME        : InsertByte
+ 347           *
+ 348           *  DESCRIPTION : push a byte to a message buffer 
+ 349           ****************************************************************************/
+ 350          void InsertByte(RBUF_MsgRingBuffer *MsgRingBuffer, int Handle, BYTE Data)
+ 351          {
+ 352   1        if (MsgRingBuffer->MsgCharIndex >= SIZE_OF_DECODE_MASSEGE)
+ 353   1          return;
+ 354   1      
+ 355   1        MsgRingBuffer->MsgBuf[Handle][MsgRingBuffer->MsgCharIndex] = Data;
+ 356   1        (MsgRingBuffer->MsgCharIndex)++;
+ 357   1      
+ 358   1      }
+
+C51 COMPILER V9.52.0.0   RINGBUFF                                                          04/28/2015 17:26:00 PAGE 7   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1528    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     44    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

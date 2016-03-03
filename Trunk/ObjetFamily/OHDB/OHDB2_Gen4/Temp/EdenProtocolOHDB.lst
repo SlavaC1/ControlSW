@@ -1,0 +1,540 @@
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE EDENPROTOCOLOHDB
+OBJECT MODULE PLACED IN .\Temp\EdenProtocolOHDB.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\SharedModules\EdenProtocol\EdenProtocolOHDB.c LARGE OPTIMIZE(0,SPEED) BR
+                    -OWSE INCDIR(..\SharedModules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules
+                    -\EdenProtocol,Timer\,Potentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Schedu
+                    -ler,..\SharedModules\Roller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Com
+                    -parator\,Bumper\) DEFINE(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\EdenProtocolOHDB.lst) TABS(2) OBJECT(.\Temp\Eden
+                    -ProtocolOHDB.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Eden protocol {EdenProtocol.c}  
+   3           *   PURPOSE        : Eden serial communication protocol  
+   4           *   DATE CREATED   : 11/Nov/2001
+   5           *   PROGRAMMER     : Nir Saadon 
+   6           *   PROCEDURES     : 
+   7           *===========================================================================*/
+   8          //#pragma ROM(COMPACT)
+   9          #include "EdenProtocolOHDB.h"
+  10          #include "RingBuff.h"
+  11          #include "Uartdrv.h"
+  12          #include "MiniScheduler.h"
+  13          #include "Watchdog.h"
+  14          
+  15          
+  16          // Constants
+  17          // =========
+  18          #define EDEN_PROTOCOL_MAX_MSG_LENGTH  60
+  19          #define EDEN_PROTOCOL_BUFFER_SIZE   (EDEN_PROTOCOL_MAX_MSG_LENGTH + 3)*2+6+1 // (msg length + src,dst,trans
+             -action)*2+headrer+checksum 
+  20          #define MSG_SYNC_1  0x55
+  21          #define MSG_SYNC_2  0x33
+  22          #define MSG_FILLER 0xaa
+  23          #define MSG_LENGTH_FILLER 0x00
+  24          
+  25          #define MSG_SYNC_1_INDEX          0
+  26          #define MSG_SYNC_2_INDEX          1
+  27          #define MSG_LENGTH_LSB_INDEX      2
+  28          #define MSG_LENGTH_FILLER_1_INDEX 3
+  29          #define MSG_LENGTH_MSB_INDEX      4
+  30          #define MSG_LENGTH_FILLER_2_INDEX 5
+  31          #define SOURCE_ID_INDEX           6
+  32          #define EDEN_HEADER_SIZE          6
+  33          #define MIN_TRASACTION_ID         151
+  34          
+  35          #define OHDB_SOURCE_ID    4
+  36          
+  37          
+  38          
+  39          #define  C_1stHeaderByte        0x55
+  40          #define  C_2ndHeaderByte        0x33
+  41          #define  C_FillerByte           0xaa
+  42          #define  C_LenFillerByte        0x00
+  43          #define  C_LenghtBytes_Size     0x04     // four Length bytes  
+  44          #define  C_HeaderSize           0x06     // two Sync bytes (0X55, 0x33) and four Length bytes 
+  45          #define  C_ChkSumSize           0x01
+  46          #define  C_SourceDestTrans      0x06
+  47          
+  48          
+  49          
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 2   
+
+  50          
+  51          // Type definitions
+  52          // ================
+  53          
+  54            
+  55           
+  56          // Local routines
+  57          // ==============
+  58          
+  59          
+  60          // Module variables
+  61          // ================
+  62            
+  63            
+  64            BYTE xdata EdenProtocolTransactionId;
+  65            RBUF_RingBuffer xdata *RcvRingBufferPtr;
+  66            RBUF_MsgRingBuffer xdata MsgRingBuff;
+  67            BYTE xdata EdenProtocolBuffer[EDEN_PROTOCOL_BUFFER_SIZE];
+  68          
+  69          // Extern variables
+  70          // ================
+  71            
+  72          
+  73          
+  74          
+  75          // Exported routines
+  76          // =================
+  77          
+  78          
+  79          /****************************************************************************
+  80           *
+  81           *  NAME        : EdenProtocolInit
+  82           *
+  83           *  DESCRIPTION : Initialization of the eden protocol                                        
+  84           *
+  85           ****************************************************************************/
+  86          void EdenProtocolInit()
+  87          {
+  88   1        EdenProtocolTransactionId = MIN_TRASACTION_ID;
+  89   1        RcvRingBufferPtr  = UartGetReceiveBuffer();
+  90   1        RingBuffInit(RcvRingBufferPtr);
+  91   1      }
+  92          
+  93          
+  94          
+  95          /****************************************************************************
+  96           *
+  97           *  NAME        : EdenProtocolSend
+  98           *
+  99           *  INPUT       : Data buffer, data length, transaction id, reply/solicited message
+ 100           *
+ 101           *  OUTPUT      : EDEN_PROTOCOL_STATUS.
+ 102           *
+ 103           *  DESCRIPTION : build a message (header + footer) and send it by the UART.                              
+             -          
+ 104           *
+ 105           ****************************************************************************/
+ 106          EDEN_PROTOCOL_STATUS OHDBEdenProtocolSend(BYTE *Data, WORD DataLength, BYTE DestId ,BYTE Transaction, BOOL
+             - Reply)
+ 107          {
+ 108   1        BYTE xdata BufIndex, i, CheckSum = 0, TransactionId;
+ 109   1      
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 3   
+
+ 110   1        if (Reply)
+ 111   1          TransactionId = Transaction;
+ 112   1        else
+ 113   1          TransactionId = EdenProtocolTransactionId;
+ 114   1        
+ 115   1      // check if message length > 30
+ 116   1      // ----------------------------
+ 117   1        if (DataLength > EDEN_PROTOCOL_MAX_MSG_LENGTH)
+ 118   1          return EDEN_PROTOCOL_MSG_TOO_LONG;
+ 119   1      
+ 120   1      // build the msg header
+ 121   1      // --------------------
+ 122   1        EdenProtocolBuffer[MSG_SYNC_1_INDEX] = MSG_SYNC_1;
+ 123   1        EdenProtocolBuffer[MSG_SYNC_2_INDEX] = MSG_SYNC_2;
+ 124   1        
+ 125   1      // insert the source id, destination id and transaction id to the buffer
+ 126   1      // add filler un case one of them equals to the header byte (0x55)
+ 127   1      // ---------------------------------------------------------------
+ 128   1        BufIndex = SOURCE_ID_INDEX;
+ 129   1        EdenProtocolBuffer[BufIndex++] = OHDB_SOURCE_ID;
+ 130   1        if (OHDB_SOURCE_ID == MSG_SYNC_1)
+ 131   1          EdenProtocolBuffer[BufIndex++] = MSG_FILLER;
+ 132   1        EdenProtocolBuffer[BufIndex++] = DestId;
+ 133   1        if (DestId == MSG_SYNC_1)
+ 134   1          EdenProtocolBuffer[BufIndex++] = MSG_FILLER;
+ 135   1        EdenProtocolBuffer[BufIndex++] = TransactionId; 
+ 136   1        if (TransactionId == MSG_SYNC_1)
+ 137   1          EdenProtocolBuffer[BufIndex++] = MSG_FILLER;
+ 138   1        
+ 139   1      
+ 140   1        if (!Reply)
+ 141   1        {
+ 142   2          if (++EdenProtocolTransactionId == 0)
+ 143   2            EdenProtocolTransactionId = MIN_TRASACTION_ID;
+ 144   2        }
+ 145   1      
+ 146   1      // check if there are header bytes (0x55) in the msg and add filler for every
+ 147   1      // header byte found
+ 148   1      // -----------------
+ 149   1        for (i = 0;i < DataLength ; i++)
+ 150   1        {
+ 151   2          EdenProtocolBuffer[BufIndex++] = Data[i];
+ 152   2          if (Data[i] == MSG_SYNC_1)
+ 153   2            EdenProtocolBuffer[BufIndex++] = MSG_FILLER;
+ 154   2          
+ 155   2        }
+ 156   1        
+ 157   1      // insert the length to the msg after adding all the fillers
+ 158   1      // ---------------------------------------------------------
+ 159   1        EdenProtocolBuffer[MSG_LENGTH_LSB_INDEX] = (BufIndex - EDEN_HEADER_SIZE) & LSB_MASK;
+ 160   1        EdenProtocolBuffer[MSG_LENGTH_FILLER_1_INDEX] = MSG_LENGTH_FILLER;
+ 161   1        EdenProtocolBuffer[MSG_LENGTH_MSB_INDEX] = ((BufIndex - EDEN_HEADER_SIZE) & MSB_MASK) >> 8;
+ 162   1        EdenProtocolBuffer[MSG_LENGTH_FILLER_2_INDEX] = MSG_LENGTH_FILLER;
+ 163   1      
+ 164   1      // calculate the check sum and add it to the msg
+ 165   1      // ---------------------------------------------
+ 166   1        for(i = SOURCE_ID_INDEX; i < BufIndex; i++)
+ 167   1          CheckSum += EdenProtocolBuffer[i];
+ 168   1      
+ 169   1        EdenProtocolBuffer[BufIndex++] = CheckSum;
+ 170   1      
+ 171   1        
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 4   
+
+ 172   1      // send the msg through the uart
+ 173   1      // -----------------------------
+ 174   1        if (UartSend(EdenProtocolBuffer, BufIndex) != UART_NO_ERROR)
+ 175   1          return EDEN_PROTOCOL_SEND_FAILED;
+ 176   1      
+ 177   1        return EDEN_PROTOCOL_NO_ERROR;
+ 178   1      
+ 179   1      }
+ 180          
+ 181          
+ 182          /****************************************************************************
+ 183           *
+ 184           *  NAME        : EdenProtocolDecodeTask
+ 185           *
+ 186           *  DESCRIPTION : This task checks if a new byte has arrived and decodes it.                              
+             -          
+ 187           *
+ 188           ****************************************************************************/
+ 189          void EdenProtocolDecodeTask(BYTE Arg)
+ 190          {
+ 191   1        BYTE xdata Data;
+ 192   1      
+ 193   1        if(RingBuffRemove(RcvRingBufferPtr,&Data)== E_RBUF_RING_BUFFER_OK)
+ 194   1        {
+ 195   2          OHDBEdenProtocolDecode(Data); 
+ 196   2        }
+ 197   1      
+ 198   1        SchedulerLeaveTask(Arg);
+ 199   1        
+ 200   1      }
+ 201          
+ 202          
+ 203          /****************************************************************************
+ 204           *
+ 205           *  NAME        : EdenProtocolDecode
+ 206           *
+ 207           *  INPUT       : Data byte
+ 208           *
+ 209           *  OUTPUT      : None.
+ 210           *
+ 211           *  DESCRIPTION : Decode a byte from a message.                                        
+ 212           *
+ 213           ****************************************************************************/
+ 214          void OHDBEdenProtocolDecode(BYTE RData)
+ 215          {
+ 216   1        int xdata MsgHandle;
+ 217   1        BYTE xdata *Message;
+ 218   1      
+ 219   1        MsgHandle = GetAvailableMsgHandle(&MsgRingBuff);
+ 220   1        if (MsgHandle == -1)
+ 221   1          return;
+ 222   1        
+ 223   1        Message = GetMsgPtrByHandle(&MsgRingBuff, MsgHandle);
+ 224   1        if (Message == NULL)
+ 225   1          return;
+ 226   1      
+ 227   1        switch (RcvRingBufferPtr->DecodeState)
+ 228   1        {
+ 229   2          case E_MSG_Header:
+ 230   2          // When Bytes is the first header byte
+ 231   2          // -----------------------------------
+ 232   2            if (RData == C_1stHeaderByte)
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 5   
+
+ 233   2              RcvRingBufferPtr->DecodeState = E_MSG_InHeader;
+ 234   2            break;
+ 235   2      
+ 236   2          case E_MSG_InHeader:
+ 237   2          // When Bytes is the second header byte move to detect the length
+ 238   2          // --------------------------------------------------------------
+ 239   2            if (RData== C_2ndHeaderByte)
+ 240   2              RcvRingBufferPtr->DecodeState = E_MSG_LengthLow;
+ 241   2          //When any other case go back to search header
+ 242   2          // -------------------------------------------
+ 243   2            else
+ 244   2              RcvRingBufferPtr->DecodeState = E_MSG_Header;
+ 245   2            break;
+ 246   2      
+ 247   2          case E_MSG_LengthLow:
+ 248   2            RcvRingBufferPtr->MassegeLen        =    RData;
+ 249   2            RcvRingBufferPtr->PreviosByteIsSync =    (RData == C_1stHeaderByte);
+ 250   2            RcvRingBufferPtr->DecodeState       =    E_MSG_LengthFiller;
+ 251   2            RcvRingBufferPtr->NextState         =    E_MSG_LengthHigh;
+ 252   2            break;
+ 253   2      
+ 254   2          case E_MSG_LengthFiller:
+ 255   2            if (RData== C_LenFillerByte)
+ 256   2              RcvRingBufferPtr->DecodeState = RcvRingBufferPtr->NextState;
+ 257   2            else
+ 258   2            {
+ 259   3              if(RcvRingBufferPtr->PreviosByteIsSync)
+ 260   3              { 
+ 261   4                if(RData == C_2ndHeaderByte)
+ 262   4                  RcvRingBufferPtr->DecodeState = E_MSG_LengthLow;
+ 263   4                else
+ 264   4                  RcvRingBufferPtr->DecodeState = E_MSG_Header;                 
+ 265   4              }
+ 266   3              else
+ 267   3              {    
+ 268   4                //Error state : reset state
+ 269   4                RcvRingBufferPtr->DecodeState = E_MSG_Header;
+ 270   4                RcvRingBufferPtr->PreviosByteIsSync = CLEAR; 
+ 271   4              }
+ 272   3             }
+ 273   2             break;
+ 274   2      
+ 275   2          case E_MSG_LengthHigh  :
+ 276   2            // Keep flag in case this byte is A sync byte 
+ 277   2            // ------------------------------------------
+ 278   2            RcvRingBufferPtr->PreviosByteIsSync =    (RData == C_1stHeaderByte);  
+ 279   2      
+ 280   2            // Save high nibble of length
+ 281   2            // --------------------------
+ 282   2            RcvRingBufferPtr->MassegeLen = RcvRingBufferPtr->MassegeLen | ((RData) << 8);
+ 283   2      
+ 284   2            // Verify the length validity
+ 285   2            // --------------------------
+ 286   2            if (RcvRingBufferPtr->MassegeLen > 0 && RcvRingBufferPtr->MassegeLen <= EDEN_PROTOCOL_MAX_MSG_LENGTH
+             -)
+ 287   2            {
+ 288   3              // Reset the buffer index
+ 289   3              // ----------------------
+ 290   3              RcvRingBufferPtr->BytesRcv = 0;
+ 291   3              RcvRingBufferPtr->DataBytesOnly = 0;
+ 292   3      
+ 293   3              //Reset the CheckSum byte
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 6   
+
+ 294   3              // ----------------------
+ 295   3              RcvRingBufferPtr->CheckSum = 0;
+ 296   3              
+ 297   3              RcvRingBufferPtr->NextState = E_MSG_SourceId;
+ 298   3              RcvRingBufferPtr->DecodeState     = E_MSG_LengthFiller;
+ 299   3            }
+ 300   2            else
+ 301   2            {
+ 302   3              if(RData == C_1stHeaderByte)
+ 303   3                RcvRingBufferPtr->DecodeState = E_MSG_InHeader;  
+ 304   3              else
+ 305   3                // Wait for HEADER again
+ 306   3                // ---------------------
+ 307   3                RcvRingBufferPtr->DecodeState  = E_MSG_Header;
+ 308   3            }
+ 309   2            break;
+ 310   2      
+ 311   2          case E_MSG_SourceId:
+ 312   2            //When Byte is the SYNC HEADER byte
+ 313   2            if (RData== C_1stHeaderByte)
+ 314   2            {
+ 315   3              RcvRingBufferPtr->DecodeState     = E_MSG_Filler;
+ 316   3              RcvRingBufferPtr->NextState = E_MSG_DestinationId;
+ 317   3            }
+ 318   2            else
+ 319   2              RcvRingBufferPtr->DecodeState  = E_MSG_DestinationId;
+ 320   2      
+ 321   2            RcvRingBufferPtr->BytesRcv++;
+ 322   2            RcvRingBufferPtr->DataBytesOnly++;
+ 323   2      
+ 324   2            //Calculate CheckSum
+ 325   2            RcvRingBufferPtr->CheckSum = RcvRingBufferPtr->CheckSum + RData;
+ 326   2      
+ 327   2            // insert the source id to the msg buffer 
+ 328   2            InsertByte(&MsgRingBuff,MsgHandle,RData);
+ 329   2            break;
+ 330   2      
+ 331   2          case E_MSG_DestinationId:
+ 332   2            // When Byte is the SYNC HEADER byte
+ 333   2            // ---------------------------------
+ 334   2            if (RData== C_1stHeaderByte)
+ 335   2            {
+ 336   3              RcvRingBufferPtr->DecodeState     = E_MSG_Filler;
+ 337   3              RcvRingBufferPtr->NextState = E_MSG_TransactionId;
+ 338   3            }
+ 339   2            else
+ 340   2              RcvRingBufferPtr->DecodeState     = E_MSG_TransactionId;
+ 341   2              
+ 342   2            RcvRingBufferPtr->BytesRcv++;
+ 343   2            RcvRingBufferPtr->DataBytesOnly++;
+ 344   2      
+ 345   2            // Calculate CheckSum
+ 346   2            // ------------------
+ 347   2            RcvRingBufferPtr->CheckSum = RcvRingBufferPtr->CheckSum+RData;
+ 348   2      
+ 349   2            // insert the destination id to the msg buffer 
+ 350   2            // -------------------------------------------
+ 351   2            InsertByte(&MsgRingBuff,MsgHandle,RData);
+ 352   2            break;
+ 353   2      
+ 354   2          case E_MSG_TransactionId:
+ 355   2            // When Byte is the SYNC HEADER byte
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 7   
+
+ 356   2            // ---------------------------------
+ 357   2            if (RData== C_1stHeaderByte)
+ 358   2            {
+ 359   3              RcvRingBufferPtr->DecodeState     = E_MSG_Filler;
+ 360   3              RcvRingBufferPtr->NextState = E_MSG_Data;
+ 361   3            }
+ 362   2            else
+ 363   2              RcvRingBufferPtr->DecodeState    = E_MSG_Data;
+ 364   2              
+ 365   2            RcvRingBufferPtr->BytesRcv++;
+ 366   2            RcvRingBufferPtr->DataBytesOnly++;
+ 367   2      
+ 368   2            // Calculate CheckSum
+ 369   2            // ------------------
+ 370   2            RcvRingBufferPtr->CheckSum =RcvRingBufferPtr->CheckSum + RData;
+ 371   2      
+ 372   2            // insert the transaction id to the msg buffer 
+ 373   2            // -------------------------------------------
+ 374   2            InsertByte(&MsgRingBuff,MsgHandle,RData);
+ 375   2            break;
+ 376   2      
+ 377   2         case E_MSG_Data:
+ 378   2          // When Byte is the SYNC HEADER byte
+ 379   2          // ---------------------------------
+ 380   2          if (RData== C_1stHeaderByte)
+ 381   2          {
+ 382   3            RcvRingBufferPtr->DecodeState     = E_MSG_Filler;
+ 383   3            RcvRingBufferPtr->NextState = E_MSG_Data;
+ 384   3          }
+ 385   2      
+ 386   2          InsertByte(&MsgRingBuff,MsgHandle,RData);
+ 387   2      
+ 388   2          // Calculate CheckSum
+ 389   2          // ------------------
+ 390   2          RcvRingBufferPtr->CheckSum =RcvRingBufferPtr->CheckSum + RData;
+ 391   2      
+ 392   2          // Advance counters
+ 393   2          // ----------------
+ 394   2          RcvRingBufferPtr->DataBytesOnly++;
+ 395   2          RcvRingBufferPtr->BytesRcv++;
+ 396   2      
+ 397   2          // When all bytes received EXCEPT CheckSum byte
+ 398   2          // --------------------------------------------
+ 399   2          if (RcvRingBufferPtr->BytesRcv >= RcvRingBufferPtr->MassegeLen)
+ 400   2          {
+ 401   3            // Move to CheckSum State
+ 402   3            // ----------------------
+ 403   3            RcvRingBufferPtr->DecodeState = E_MSG_CheckSum;
+ 404   3          }
+ 405   2          break;
+ 406   2      
+ 407   2        case E_MSG_CheckSum:
+ 408   2          // When Checksum is correct
+ 409   2          // ------------------------
+ 410   2          if ((RcvRingBufferPtr->CheckSum & 0xff) != RData)
+ 411   2            RcvRingBufferPtr->CheckSumErrors++;
+ 412   2          else
+ 413   2          {
+ 414   3            // If checksum is ok then inc to the next buffer 
+ 415   3            // ---------------------------------------------
+ 416   3            MarkMsgAsReady(&MsgRingBuff);
+ 417   3      
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 8   
+
+ 418   3            // We don't ResetCommunicationTimeout() here, but in the MessageDecode(), to make sure
+ 419   3            // We Reset only on messages accepted from EDEN Application, and not on messages accepted from OCB.
+ 420   3            // ResetCommunicationTimeout();
+ 421   3          }
+ 422   2          //And wait for HEADER again
+ 423   2          RcvRingBufferPtr->DecodeState  = E_MSG_Header;
+ 424   2          break;
+ 425   2      
+ 426   2             /*  to be used in the decode function 
+ 427   2                   if (Message_Buffer.MsgBufFlage < MAX_MSG_BUF_SELECT)     
+ 428   2                       Message_Buffer.MsgBufIndex++                 
+ 429   2                   else 
+ 430   2                       Message_Buffer.MsgBufFlage = 0;
+ 431   2            */
+ 432   2        case E_MSG_Filler:
+ 433   2          // When the byte is the filler byte
+ 434   2          // --------------------------------
+ 435   2          if (RData == C_FillerByte)
+ 436   2          {
+ 437   3            if (RcvRingBufferPtr->BytesRcv + 1 >= RcvRingBufferPtr->MassegeLen)
+ 438   3              RcvRingBufferPtr->DecodeState = E_MSG_CheckSum;
+ 439   3            else
+ 440   3              RcvRingBufferPtr->DecodeState = RcvRingBufferPtr->NextState;
+ 441   3      
+ 442   3            // When in DATA state count the filler byte also
+ 443   3            // ---------------------------------------------  
+ 444   3            if ((RcvRingBufferPtr->NextState == E_MSG_Data) ||
+ 445   3                (RcvRingBufferPtr->NextState == E_MSG_DestinationId ) ||
+ 446   3                 (RcvRingBufferPtr->NextState == E_MSG_TransactionId ))
+ 447   3            {
+ 448   4              // Advance counter
+ 449   4              // ---------------
+ 450   4              RcvRingBufferPtr->BytesRcv++;
+ 451   4        
+ 452   4              //Calculate CheckSum
+ 453   4              RcvRingBufferPtr->CheckSum = RcvRingBufferPtr->CheckSum + RData;
+ 454   4             }
+ 455   3          }
+ 456   2          else
+ 457   2          {
+ 458   3            // When the byte is the second Sync byte (0x33) then
+ 459   3            // maybe it is a sync header, moving to detect source
+ 460   3            //--------------------------------------------------
+ 461   3            if (RData == C_2ndHeaderByte)
+ 462   3              RcvRingBufferPtr->DecodeState = E_MSG_LengthLow;
+ 463   3            else
+ 464   3              // When any other case Filler error - try to Resync
+ 465   3              // ------------------------------------------------
+ 466   3              RcvRingBufferPtr->DecodeState = E_MSG_Header;
+ 467   3          } 
+ 468   2          RcvRingBufferPtr->RcvCharIndex++;        
+ 469   2          break;
+ 470   2        }
+ 471   1      }
+ 472          
+ 473          
+ 474          
+ 475          /****************************************************************************
+ 476           *
+ 477           *  NAME        : EdenProtocolGetMsgBuff
+ 478           *
+ 479           *  INPUT       : None.
+C51 COMPILER V9.52.0.0   EDENPROTOCOLOHDB                                                  04/28/2015 17:26:02 PAGE 9   
+
+ 480           *
+ 481           *  OUTPUT      : EdenProtocolGetMsgBuff.
+ 482           *
+ 483           *  DESCRIPTION : Returns a pointer to the message buffer.                                        
+ 484           *
+ 485           ****************************************************************************/
+ 486          RBUF_MsgRingBuffer *OHDBEdenProtocolGetMsgBuff(void)
+ 487          {
+ 488   1        return &MsgRingBuff; 
+ 489   1      }
+ 490          
+*** WARNING C294 IN LINE 131 OF ..\SharedModules\EdenProtocol\EdenProtocolOHDB.c: unreachable code
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   3020    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    341    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

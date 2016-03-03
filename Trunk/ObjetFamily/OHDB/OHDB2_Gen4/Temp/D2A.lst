@@ -1,0 +1,126 @@
+C51 COMPILER V9.52.0.0   D2A                                                               04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE D2A
+OBJECT MODULE PLACED IN .\Temp\D2A.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE D2A\D2A.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysDef,SPI
+                    -\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiometer\,Hea
+                    -terControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Potentiomet
+                    -er\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F123_CPU)
+                    - DEBUG OBJECTEXTEND PRINT(.\Temp\D2A.lst) TABS(2) OBJECT(.\Temp\D2A.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : D/A  {D2A.C}  
+   3           *   PURPOSE        : D/A driver module  
+   4           *   DATE CREATED   : 28/07/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          #include "D2A.h"
+   8          #include "c8051F120.h"
+   9          
+  10          /****************************************************************************
+  11           *
+  12           *  NAME        : D2A0_Init
+  13           *
+  14           *  DESCRIPTION : Initialization of the D/A (0) driver
+  15           *
+  16           ****************************************************************************/
+  17          void D2A0_Init()
+  18          {
+  19   1        SFRPAGE = DAC0_PAGE;
+  20   1      
+  21   1        // Set the data format
+  22   1        DAC0CN &= 0xF8;
+  23   1        
+  24   1        // Set the D2A to 'On Demand' mode
+  25   1        DAC0CN &= 0xE7;
+  26   1      
+  27   1        // Enable the D2A converter
+  28   1        DAC0CN |= 0x80;
+  29   1      
+  30   1        SFRPAGE = LEGACY_PAGE;
+  31   1      }
+  32          
+  33          
+  34          /****************************************************************************
+  35           *
+  36           *  NAME        : D2A0_Write
+  37           *
+  38           *  DESCRIPTION : Set the output of the D2A (0)
+  39           *
+  40           ****************************************************************************/
+  41          void D2A0_Write(WORD NewValue)
+  42          {
+  43   1        SFRPAGE = DAC0_PAGE;
+  44   1      
+  45   1        // First, writing the lower byte to DAC0L 
+  46   1        DAC0L = NewValue & LSB_MASK;
+  47   1        
+  48   1        // Followed by a write to DAC0H that intiate the conversion
+  49   1        DAC0H = (NewValue & MSB_MASK) >> 8;
+  50   1      
+  51   1        SFRPAGE = LEGACY_PAGE;
+C51 COMPILER V9.52.0.0   D2A                                                               04/28/2015 17:26:02 PAGE 2   
+
+  52   1      }
+  53          
+  54          /****************************************************************************
+  55           *
+  56           *  NAME        : D2A1_Init
+  57           *
+  58           *  DESCRIPTION : Initialization of the D/A (1) driver 
+  59           *
+  60           ****************************************************************************/
+  61          void D2A1_Init()
+  62          {
+  63   1        SFRPAGE = DAC1_PAGE;
+  64   1      
+  65   1        // Set the data format
+  66   1        DAC1CN &= 0xF8;
+  67   1        
+  68   1        // Set the D2A to 'On Demand' mode
+  69   1        DAC1CN &= 0xE7;
+  70   1        
+  71   1        // Enable the D2A converter
+  72   1        DAC1CN |= 0x80;
+  73   1      
+  74   1        SFRPAGE = LEGACY_PAGE;
+  75   1      }
+  76          
+  77          
+  78          /****************************************************************************
+  79           *
+  80           *  NAME        : D2A1_Write
+  81           *
+  82           *  DESCRIPTION : Set the output of the D2A (1)
+  83           *
+  84           ****************************************************************************/
+  85          void D2A1_Write(WORD NewValue)
+  86          {
+  87   1        SFRPAGE = DAC1_PAGE;
+  88   1      
+  89   1        // First, writing the lower byte to DAC1L 
+  90   1        DAC1L = NewValue & LSB_MASK;
+  91   1        
+  92   1        // Followed by a write to DAC1H that intiate the conversion
+  93   1        DAC1H = (NewValue & MSB_MASK) >> 8;
+  94   1      
+  95   1        SFRPAGE = LEGACY_PAGE;
+  96   1      }
+  97          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    120    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      4    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

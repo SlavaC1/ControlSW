@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="vista_x64 checked|Win32">
+      <Configuration>vista_x64 checked</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vista_x64 free|Win32">
+      <Configuration>vista_x64 free</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="win7_x64 checked|Win32">
+      <Configuration>win7_x64 checked</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="win7_x64 free|Win32">
+      <Configuration>win7_x64 free</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64 checked|Win32">
+      <Configuration>x64 checked</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64 checked|x64">
+      <Configuration>x64 checked</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64 free|Win32">
+      <Configuration>x64 free</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="x64 free|x64">
+      <Configuration>x64 free</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vista_x64 checked|x64">
+      <Configuration>vista_x64 checked</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vista_x64 free|x64">
+      <Configuration>vista_x64 free</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="win7_x64 checked|x64">
+      <Configuration>win7_x64 checked</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="win7_x64 free|x64">
+      <Configuration>win7_x64 free</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C21C9453-F33E-4E0C-B282-580FE59D0A4D}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='x64 free|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vista_x64 checked|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vista_x64 free|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='win7_x64 checked|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='win7_x64 free|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='x64 free|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='vista_x64 checked|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='vista_x64 free|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='win7_x64 checked|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='win7_x64 free|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">.\objchk_amd64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">.\objchk_amd64\</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">cd ..\.. &amp;&amp; ddk_make.bat x64 checked</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">cd ..\.. &amp;&amp; ddk_make.bat x64 checked /a</NMakeReBuildCommandLine>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">KP_EDEN.exe</NMakeOutput>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='x64 free|x64'">.\objfre_amd64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='x64 free|x64'">.\objfre_amd64\</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='x64 free|x64'">cd ..\.. &amp;&amp; ddk_make.bat x64 free</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='x64 free|x64'">cd ..\.. &amp;&amp; ddk_make.bat x64 free /a</NMakeReBuildCommandLine>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='x64 free|x64'">KP_EDEN.exe</NMakeOutput>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='vista_x64 checked|x64'">.\objchk_vista64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vista_x64 checked|x64'">.\objchk_vista64\</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='vista_x64 checked|x64'">cd ..\.. &amp;&amp; ddk_make.bat vista_x64 checked</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='vista_x64 checked|x64'">cd ..\.. &amp;&amp; ddk_make.bat vista_x64 checked /a</NMakeReBuildCommandLine>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='vista_x64 checked|x64'">KP_EDEN.exe</NMakeOutput>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='vista_x64 free|x64'">.\objfre_vista64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vista_x64 free|x64'">.\objfre_vista64\</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='vista_x64 free|x64'">cd ..\.. &amp;&amp; ddk_make.bat vista_x64 free</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='vista_x64 free|x64'">cd ..\.. &amp;&amp; ddk_make.bat vista_x64 free /a</NMakeReBuildCommandLine>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='vista_x64 free|x64'">KP_EDEN.exe</NMakeOutput>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='win7_x64 checked|x64'">.\objchk_win764\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='win7_x64 checked|x64'">.\objchk_win764\</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='win7_x64 checked|x64'">cd ..\.. &amp;&amp; ddk_make.bat win7_x64 checked</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='win7_x64 checked|x64'">cd ..\.. &amp;&amp; ddk_make.bat win7_x64 checked /a</NMakeReBuildCommandLine>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='win7_x64 checked|x64'">KP_EDEN.exe</NMakeOutput>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='win7_x64 free|x64'">.\objfre_win764\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='win7_x64 free|x64'">.\objfre_win764\</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='win7_x64 free|x64'">cd ..\.. &amp;&amp; ddk_make.bat win7_x64 free</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='win7_x64 free|x64'">cd ..\.. &amp;&amp; ddk_make.bat win7_x64 free /a</NMakeReBuildCommandLine>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='win7_x64 free|x64'">KP_EDEN.exe</NMakeOutput>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">C:\WinDriver\include;$(IncludePath)</IncludePath>
+    <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">KERNEL_64BIT;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">$(LibraryPath)</LibraryPath>
+    <SourcePath Condition="'$(Configuration)|$(Platform)'=='x64 checked|x64'">$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\kp_eden.c" />
+    <ClCompile Include="..\..\..\eden_lib.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

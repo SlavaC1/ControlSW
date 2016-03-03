@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{13bde098-ccaf-404e-96e3-43196f5a494b}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" />
+    <Projects Include="ObjetTesterOHDB2.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="QLibProject">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="" />
+  </Target>
+  <Target Name="QLibProject:Clean">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="QLibProject:Make">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="ObjetTesterOHDB2">
+    <MSBuild Projects="ObjetTesterOHDB2.cbproj" Targets="" />
+  </Target>
+  <Target Name="ObjetTesterOHDB2:Clean">
+    <MSBuild Projects="ObjetTesterOHDB2.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="ObjetTesterOHDB2:Make">
+    <MSBuild Projects="ObjetTesterOHDB2.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="QLibProject;ObjetTesterOHDB2" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="QLibProject:Clean;ObjetTesterOHDB2:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="QLibProject:Make;ObjetTesterOHDB2:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

@@ -1,0 +1,10 @@
+Head Replacement History file - Restrictions of use:
+ Copyright © by Objet Geometries Ltd. All rights reserved. No part of this file may be used or reproduced in any form or by
+ any means, nor stored in a database or retrieval system, nor shared with others without prior permission in writing from
+ Objet Geometries Ltd. Known to be trademarks or service marks have been appropriately capitalized.
+ Use of a term in this file should not beregarded as affecting the validity of any trademark or service mark.
+ All other product names and services identified throughout this file are trademarks or registered trademarks of their
+ respective companies.
+ ----------------------------------------------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,5 @@
+RunScript1=ModesManager.EnterMode("High Speed Mode", "HighSpeedModes")
+RunScript2=ModesManager.EnterMode("~Trns commands", "GeneralModes")
+RunScript3=ModesManager.EnterMode("~PerMachine_HM", "HighMixModes")
+RunScript4=MachineManager.Load4LocalPrintJob("CalibrationFiles\\Adjustment Files\\DJ - 500 Adjustment (Model)_DM3_H4.bmp","CalibrationFiles\\Adjustment Files\\DJ - 500 Adjustment (Support)_DM3_H1.bmp","CalibrationFiles\\Adjustment Files\\DJ - 500 Adjustment (Model)_DM3_H3.bmp","CalibrationFiles\\Adjustment Files\\DJ - 500 Adjustment (Support)_DM3_H2.bmp",600,"HS",1)
+RunScript5=BackEndInterface.SetMachineActionsDate("Transparency HS")

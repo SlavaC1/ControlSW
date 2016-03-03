@@ -1,0 +1,9 @@
+HeatersTemperatureArray={'base': (1520,1520,1410,1410,1410,1410,1410,1410,780,780,780,780,780), 'upDelta': (200, 200, 200, 200, 200, 200, 200, 200, 150, 150, 150, 150, 150), 'downDelta': (200, 200, 200, 200, 200, 200, 200, 200, 150, 150, 150, 150, 150), 'str': 0}
+LayerHeightDPI_um={'base': 27, 'upDelta': 0, 'downDelta': 3, 'str': 0}
+LayerHeightDPI_umSecondary={'base': 27, 'upDelta': 0, 'downDelta': 3, 'str': 0}
+PotentiometerValues={'base': (210, 210, 210, 210, 210, 210, 210, 210), 'upDelta': (45, 45, 45, 45, 45, 45, 45, 45), 'downDelta': (195, 195, 195, 195, 195, 195, 195, 195), 'str': 0}
+PotentiometerValuesSecondary={'base': (210, 210, 210, 210, 210, 210, 210, 210), 'upDelta': (45, 45, 45, 45, 45, 45, 45, 45), 'downDelta': (195, 195, 195, 195, 195, 195, 195, 195), 'str': 0}
+RequestedHeadVoltagesModel={'base': (24, 24, 24, 24, 24, 24, 24, 24), 'upDelta': (6, 6, 6, 6, 6, 6, 6, 6), 'downDelta': (9, 9, 9, 9, 9, 9, 9, 9), 'str': 0} 
+RequestedHeadVoltagesSupport={'base': (19, 19, 19, 19, 19, 19, 19, 19), 'upDelta': (11, 11, 11, 11, 11, 11, 11, 11), 'downDelta': (4, 4, 4, 4, 4, 4, 4, 4), 'str': 0} 
+RequestedHeadVoltagesSupportSecondary={'base': (19, 19, 19, 19, 19, 19, 19, 19), 'upDelta': (11, 11, 11, 11, 11, 11, 11, 11), 'downDelta': (4, 4, 4, 4, 4, 4, 4, 4), 'str': 0}
+UVLampPSValueArray={'base': (1495, 1495), 'upDelta': (2350, 2350), 'downDelta': (0, 0), 'str': 0}

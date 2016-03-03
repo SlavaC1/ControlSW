@@ -1,0 +1,207 @@
+C51 COMPILER V9.52.0.0   SPIEXTA2D                                                         04/28/2015 17:26:03 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE SPIEXTA2D
+OBJECT MODULE PLACED IN .\Temp\SpiExtA2D.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A2D\SpiExtA2D.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysD
+                    -ef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiomete
+                    -r\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Poten
+                    -tiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F12
+                    -3_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\SpiExtA2D.lst) TABS(2) OBJECT(.\Temp\SpiExtA2D.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : SPI External A2D {SpiExtA2D.h}  
+   3           *   PURPOSE        : Gets the A/D values from the external A2D LTC1863 unit by SPI
+   4           *                    This unit has 8 analog inputs, but currently we use only 4 for
+   5           *                    upper thermistors
+   6           *   DATE CREATED   : 19/2/2014
+   7           *   PROGRAMMER     : Slava Chuhovich 
+   8           *===========================================================================*/
+   9           
+  10          #include "SpiExtA2D.h"
+  11          #include "spidrv.h"
+  12          #include "MiniScheduler.h"
+  13          #include <string.h> // memset
+  14          
+  15          #define EXT_A2D_TASK_DELAY_TIME 100
+  16          #define EXT_A2D_BASIC_CMD       0x84 // Basic control command: SD = 1 (MSB), OS, S1, S0 - for channel addr
+             -ess configuration, COM = 0, UNI = 1, SLP = 0 (7 bit)
+  17          
+  18          BYTE xdata  ExtA2DTransactionStatus;
+  19          BYTE xdata  SelectedChannel;
+  20          BYTE xdata  RxBufferNumber;
+  21          
+  22          // This buffer holds the values for all channels
+  23          static WORD xdata ExtA2DSamplesBuffer[NUM_OF_EXT_A2D_CHANNELS];
+  24          
+  25          // A buffer to receive data. We use a double buffer
+  26          BYTE xdata ExtA2DRxBuffer[2][EXT_A2D_BUFFER_SIZE];
+  27          
+  28          // This order is according to LTC1863 unit data sheet
+  29          BYTE xdata ExtA2DChannels[NUM_OF_EXT_A2D_CHANNELS] = 
+  30          {
+  31            EXT_A2D_CH0, 
+  32            EXT_A2D_CH2, 
+  33              EXT_A2D_CH4, 
+  34            EXT_A2D_CH6, 
+  35            EXT_A2D_CH1, 
+  36            EXT_A2D_CH3, 
+  37            EXT_A2D_CH5, 
+  38            EXT_A2D_CH7
+  39          };
+  40          
+  41          // To mark if the transaction was successfully performed 
+  42          void SpiExtA2D_CallBack(BYTE Status);
+  43          
+  44          SPI_EXT_A2D_STATUS SpiExtA2D_SendRequest();
+  45          SPI_EXT_A2D_STATUS SpiExtA2D_GetValues();
+  46          BYTE*              SpiExtA2D_GetFreeBuffer();
+  47          
+  48          
+  49          void SpiExtA2D_Init()
+  50          {
+C51 COMPILER V9.52.0.0   SPIEXTA2D                                                         04/28/2015 17:26:03 PAGE 2   
+
+  51   1        SelectedChannel         = 0;
+  52   1        RxBufferNumber          = 0;
+  53   1        ExtA2DTransactionStatus = EXT_A2D_NO_ERROR;
+  54   1        
+  55   1        memset(ExtA2DSamplesBuffer, 0, NUM_OF_EXT_A2D_CHANNELS * sizeof(WORD));
+  56   1      }
+  57          
+  58          void SpiExtA2D_Task(BYTE Arg)
+  59          {
+  60   1        enum
+  61   1        {
+  62   1          SEND_A2D_REQUEST,
+  63   1          WAIT_FOR_RESULTS    
+  64   1        };
+  65   1        
+  66   1        switch(Arg)
+  67   1        {
+  68   2          case SEND_A2D_REQUEST:
+  69   2          {
+  70   3            if(SpiExtA2D_SendRequest() == EXT_A2D_NO_ERROR)
+  71   3                  SchedulerLeaveTask(WAIT_FOR_RESULTS);
+  72   3            else
+  73   3              SchedulerLeaveTask(SEND_A2D_REQUEST); 
+  74   3          }
+  75   2          break;
+  76   2          
+  77   2          case WAIT_FOR_RESULTS:
+  78   2          {
+  79   3            if(SpiExtA2D_GetValues() != EXT_A2D_BUSY)
+  80   3              { 
+  81   4              SchedulerLeaveTask(SEND_A2D_REQUEST);
+  82   4              SchedulerTaskSleep(-1, EXT_A2D_TASK_DELAY_TIME);
+  83   4            }
+  84   3            else
+  85   3            {
+  86   4              SchedulerLeaveTask(WAIT_FOR_RESULTS); 
+  87   4            }
+  88   3          }
+  89   2          break;
+  90   2          
+  91   2          default:
+  92   2            break;  
+  93   2        }
+  94   1      }
+  95          
+  96          // Sends the command to request the A2D values by SPI
+  97          SPI_EXT_A2D_STATUS SpiExtA2D_SendRequest()
+  98          {
+  99   1        BYTE xdata *Message;
+ 100   1      
+ 101   1        // Try to lock the SPI device
+ 102   1        if(SpiLock() == SPI_BUSY)
+ 103   1          return EXT_A2D_SEND_FAILED;
+ 104   1      
+ 105   1        // Set the device status to busy
+ 106   1        ExtA2DTransactionStatus = EXT_A2D_BUSY;
+ 107   1      
+ 108   1        // Prepare the message to be send using the spi
+ 109   1        Message = SpiGetTxBuffer();
+ 110   1        Message[EXT_A2D_CMD_INDEX]  = EXT_A2D_BASIC_CMD | (ExtA2DChannels[SelectedChannel] << 4);  // The actual 
+             -address is bits 4, 5, 6 
+ 111   1        Message[EXT_A2D_DATA_INDEX] = 0x00;                                                        // To receive 
+C51 COMPILER V9.52.0.0   SPIEXTA2D                                                         04/28/2015 17:26:03 PAGE 3   
+
+             -the data here  
+ 112   1        
+ 113   1        // Select the device (CS)
+ 114   1        SpiSelectSlave(A2D_EXT_SLAVE_ID, CHIP_SELECT);
+ 115   1      
+ 116   1        // Send the message using the spi
+ 117   1        SpiSend(EXT_A2D_BUFFER_SIZE, SpiExtA2D_GetFreeBuffer(), SpiExtA2D_CallBack);
+ 118   1             
+ 119   1        return EXT_A2D_NO_ERROR;
+ 120   1      }
+ 121          
+ 122          SPI_EXT_A2D_STATUS SpiExtA2D_GetValues()
+ 123          {
+ 124   1        WORD idata InputData;
+ 125   1        BYTE idata PrevChannel;
+ 126   1        
+ 127   1        // If the SPI operation is not done yet
+ 128   1        if(ExtA2DTransactionStatus == EXT_A2D_BUSY) 
+ 129   1          return EXT_A2D_BUSY; 
+ 130   1      
+ 131   1        // Deselect the device (CS)
+ 132   1        SpiSelectSlave(A2D_EXT_SLAVE_ID, CHIP_DESELECT);  
+ 133   1      
+ 134   1        // Copy the read data for the selected channel
+ 135   1        InputData  = ExtA2DRxBuffer[RxBufferNumber][0];
+ 136   1        InputData  = InputData << 8;
+ 137   1        InputData |= ExtA2DRxBuffer[RxBufferNumber][1];
+ 138   1        
+ 139   1        // We get the values for the previous channel. 
+ 140   1        PrevChannel = (SelectedChannel == 0) ? (NUM_OF_EXT_A2D_CHANNELS - 1) : (SelectedChannel - 1);
+ 141   1        
+ 142   1        // Normalizing to 12bit A2D
+ 143   1        ExtA2DSamplesBuffer[PrevChannel] = InputData >> 4; 
+ 144   1      
+ 145   1        // Increment the counter for the next channel
+ 146   1        SelectedChannel = ++SelectedChannel % NUM_OF_EXT_A2D_CHANNELS;    
+ 147   1      
+ 148   1        // Unlock the spi since the operation is done
+ 149   1        SpiUnLock();
+ 150   1      
+ 151   1        return ExtA2DTransactionStatus;
+ 152   1      }
+ 153          
+ 154          void SpiExtA2D_CallBack(BYTE Status) using 3
+ 155          {
+ 156   1        if(Status == SPI_NO_ERROR)
+ 157   1          ExtA2DTransactionStatus = EXT_A2D_SEND_SUCCESS;
+ 158   1        else
+ 159   1          ExtA2DTransactionStatus = EXT_A2D_SEND_FAILED;
+ 160   1      }
+ 161          
+ 162          BYTE* SpiExtA2D_GetFreeBuffer()
+ 163          {
+ 164   1        RxBufferNumber = 1 - RxBufferNumber;
+ 165   1        return ExtA2DRxBuffer[RxBufferNumber];    
+ 166   1      }
+ 167          
+ 168          WORD SpiExtA2D_GetReading(BYTE ChannelIndex)
+ 169          {
+ 170   1        return ExtA2DSamplesBuffer[ChannelIndex];
+ 171   1      }
+
+C51 COMPILER V9.52.0.0   SPIEXTA2D                                                         04/28/2015 17:26:03 PAGE 4   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    537    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     36    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =      3    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

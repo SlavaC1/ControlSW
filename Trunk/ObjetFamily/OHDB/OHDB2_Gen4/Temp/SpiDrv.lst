@@ -1,0 +1,330 @@
+C51 COMPILER V9.52.0.0   SPIDRV                                                            04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE SPIDRV
+OBJECT MODULE PLACED IN .\Temp\SpiDrv.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE SPI\SpiDrv.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysDef,
+                    -SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiometer\,
+                    -HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Potentio
+                    -meter\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F123_C
+                    -PU) DEBUG OBJECTEXTEND PRINT(.\Temp\SpiDrv.lst) TABS(2) OBJECT(.\Temp\SpiDrv.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : SPI DRIVER {SPIDRV.C}  
+   3           *   PURPOSE        : Serial Peripheral Interface driver  
+   4           *   DATE CREATED   : 15/7/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          #include "SpiDrv.h"
+   8          
+   9          
+  10          // Constants
+  11          // =========
+  12          
+  13          const BYTE SelectSlaveArray[NUM_OF_SPI_SLAVES] = 
+  14          {
+  15            SPI_SELECT_E2PROM_1,
+  16            SPI_SELECT_E2PROM_2,
+  17            SPI_SELECT_E2PROM_3,
+  18            SPI_SELECT_E2PROM_4,
+  19            SPI_SELECT_E2PROM_5,
+  20            SPI_SELECT_E2PROM_6,
+  21            SPI_SELECT_E2PROM_7,
+  22            SPI_SELECT_E2PROM_8,
+  23            SPI_SELECT_POTENTIOMETER_1,
+  24            SPI_SELECT_POTENTIOMETER_2,
+  25            SPI_SELECT_POTENTIOMETER_3,
+  26            SPI_SELECT_POTENTIOMETER_4,
+  27            SPI_SELECT_POTENTIOMETER_5,
+  28            SPI_SELECT_POTENTIOMETER_6,
+  29            SPI_SELECT_POTENTIOMETER_7,
+  30            SPI_SELECT_POTENTIOMETER_8,
+  31            SPI_SELECT_ON_BOARD_E2PROM,
+  32            SPI_SELECT_A2D_PROCESSOR, 
+  33            SPI_SELECT_XILINX,
+  34            SPI_SELECT_A2D_EXT
+  35          };
+  36          
+  37          #define SPI_MAX_MSG_LEN 100
+  38          
+  39          // pointer to the Tx buffer 
+  40          BYTE xdata SpiTxBuffer[SPI_MAX_MSG_LEN];
+  41          
+  42          // pointer to the Rx buffer
+  43          BYTE xdata *SpiRxBuffer;
+  44          
+  45          // Number of bytes to transmit/receive
+  46          BYTE xdata SpiDataLen;
+  47          
+  48          // currnet index in the Tx buffer
+  49          BYTE xdata SpiIndex;
+  50          
+  51          // Is the spi in use
+C51 COMPILER V9.52.0.0   SPIDRV                                                            04/28/2015 17:26:01 PAGE 2   
+
+  52          bit SpiInUse;
+  53          
+  54          // Is the current session is with the A2D processor
+  55          bit CommWithA2D;
+  56          
+  57          // pointer to the call back function
+  58          TCallback EndSpiTransactionCallBack;
+  59          
+  60          // delay before setting the NSS to low
+  61          BYTE xdata Delay;           
+  62          
+  63          
+  64          /****************************************************************************
+  65           *
+  66           *  NAME        : SpiInit
+  67           *
+  68           *  DESCRIPTION : Initialize the SPI driver                                        
+  69           *
+  70           ****************************************************************************/
+  71          void SpiInit(void)
+  72          {
+  73   1        SpiInUse    = FALSE;
+  74   1        CommWithA2D = FALSE;
+  75   1      
+  76   1          SFRPAGE = SPI0_PAGE;
+  77   1          SPI0CFG = 0x40;
+  78   1          SPI0CN  = 0x09;
+  79   1          SPI0CKR = 0xFF; // Configure the spi clock to 21600 Hz
+  80   1      
+  81   1        // Configure P2.3 P2.4 P2.5 P2.6 P2.7 (address lines) as push pull. For SPI chip selects.
+  82   1        P2MDOUT |= 0xF8;  
+  83   1        
+  84   1        // Configure P3.0 P3.1 (address lines) as push pull. For SPI_WR 
+  85   1        P3MDOUT |= 0x03;
+  86   1      
+  87   1        // set the SPI priority level to high 
+  88   1        EIP1 |= 0x01;
+  89   1        
+  90   1        // Enable SPI interrupt 
+  91   1          EIE1 |= ENABLE_SPI_INTERRUPT;   
+  92   1      }
+  93          
+  94          
+  95          /****************************************************************************
+  96           *
+  97           *  NAME        : SpiSend
+  98           *
+  99           *  DESCRIPTION : Send a buffer using the SPI                                        
+ 100           *
+ 101           ****************************************************************************/
+ 102           SPI_STATUS SpiSend(unsigned int DataLength ,BYTE *DataIn, TCallback EndTransactionCallBack) 
+ 103           {
+ 104   1          SFRPAGE = SPI0_PAGE;
+ 105   1      
+ 106   1        // disable spi interrupts
+ 107   1        // ----------------------
+ 108   1        EIE1 &= ~ENABLE_SPI_INTERRUPT;
+ 109   1      
+ 110   1        // copy the function arguments to the module variables for use in the ISR
+ 111   1        // ----------------------------------------------------------------------   
+ 112   1        SpiRxBuffer = DataIn;
+ 113   1        SpiDataLen = DataLength;
+C51 COMPILER V9.52.0.0   SPIDRV                                                            04/28/2015 17:26:01 PAGE 3   
+
+ 114   1        EndSpiTransactionCallBack = EndTransactionCallBack;
+ 115   1      
+ 116   1        SpiIndex = 0;
+ 117   1      
+ 118   1        // put the first byte in the spi data register to initiate the interrupt
+ 119   1        // ---------------------------------------------------------------------
+ 120   1        SPI0DAT = SpiTxBuffer[SpiIndex++];
+ 121   1      
+ 122   1        // Enable SPI interrupt
+ 123   1        // --------------------            
+ 124   1          EIE1 |= ENABLE_SPI_INTERRUPT;
+ 125   1      
+ 126   1        return SPI_NO_ERROR;
+ 127   1       }//End of SpiInit()
+ 128          
+ 129          
+ 130          /****************************************************************************
+ 131           *
+ 132           *  NAME        : SpiIsr
+ 133           *
+ 134           *  DESCRIPTION : SPI interrupt service routine                                        
+ 135           *
+ 136           ****************************************************************************/
+ 137          void SpiIsr()interrupt 6 using 3
+ 138          {
+ 139   1        if (SPIF)
+ 140   1        {
+ 141   2          // clear the interrupt flag   
+ 142   2          SPIF = 0;
+ 143   2        
+ 144   2          if(CommWithA2D)
+ 145   2          {
+ 146   3            // at the end of a data transfer set the NSS to high            
+ 147   3            P2 = (P2 & SPI_SELECT_NONE) | SPI_SELECT_NONE;      
+ 148   3          } 
+ 149   2          
+ 150   2          // insert the recieved data to the Rx buffer  
+ 151   2          SpiRxBuffer[SpiIndex-1] = SPI0DAT;    
+ 152   2          
+ 153   2          if (SpiIndex < SpiDataLen)
+ 154   2          {
+ 155   3            if(CommWithA2D)
+ 156   3            {
+ 157   4              // delay before setting the NSS to low        
+ 158   4              for (Delay = 0; Delay < 20; Delay++)
+ 159   4                ;
+ 160   4      
+ 161   4              // set the NSS to low               
+ 162   4                P2 = (P2 & SPI_SELECT_NONE) | SPI_SELECT_A2D_PROCESSOR;       
+ 163   4            }
+ 164   3            
+ 165   3              SPI0DAT = SpiTxBuffer[SpiIndex++];
+ 166   3            return;
+ 167   3          }
+ 168   2          else
+ 169   2          {
+ 170   3            if (SpiIndex == SpiDataLen)
+ 171   3            {
+ 172   4              EndSpiTransactionCallBack(SPI_NO_ERROR);
+ 173   4              return;
+ 174   4            }   
+ 175   3          } 
+C51 COMPILER V9.52.0.0   SPIDRV                                                            04/28/2015 17:26:01 PAGE 4   
+
+ 176   2        }
+ 177   1      
+ 178   1        if(WCOL)  // write collision
+ 179   1        { 
+ 180   2          WCOL = 0;
+ 181   2          EndSpiTransactionCallBack(SPI_WRITE_COLLISION);
+ 182   2          return;
+ 183   2        }
+ 184   1      
+ 185   1        if(MODF)  // mode fault
+ 186   1        {
+ 187   2          MODF = 0;
+ 188   2          EndSpiTransactionCallBack(SPI_MODE_FAULT);
+ 189   2          return;
+ 190   2        }
+ 191   1      
+ 192   1        if(RXOVRN)  // receive overrun
+ 193   1        {
+ 194   2          RXOVRN = 0;
+ 195   2          EndSpiTransactionCallBack(SPI_RECIEVE_OVERRUN);
+ 196   2          return;
+ 197   2        }
+ 198   1      }  // End of  SpiIsr
+ 199          
+ 200          /****************************************************************************
+ 201           *
+ 202           *  NAME        : SpiLock
+ 203           *
+ 204           *  INPUT       : NONE.
+ 205           *
+ 206           *  OUTPUT      : SPI_STATUS.
+ 207           *
+ 208           *  DESCRIPTION : try to get a lock on the SPI device.                                        
+ 209           *
+ 210           ****************************************************************************/
+ 211          SPI_STATUS SpiLock()
+ 212          {
+ 213   1        // check if SPI is free 
+ 214   1        if (SpiInUse)
+ 215   1          return SPI_BUSY;
+ 216   1      
+ 217   1        // lock the spi
+ 218   1        SpiInUse = TRUE;
+ 219   1      
+ 220   1        return SPI_NO_ERROR;  
+ 221   1      }
+ 222          
+ 223          
+ 224           
+ 225          /****************************************************************************
+ 226           *
+ 227           *  NAME        : SpiUnLock
+ 228           *
+ 229           *  INPUT       : NONE.
+ 230           *
+ 231           *  OUTPUT      : NONE.
+ 232           *
+ 233           *  DESCRIPTION : unlock the SPI device.                                        
+ 234           *
+ 235           ****************************************************************************/
+ 236          void SpiUnLock()
+ 237          {
+C51 COMPILER V9.52.0.0   SPIDRV                                                            04/28/2015 17:26:01 PAGE 5   
+
+ 238   1        SpiInUse = FALSE;
+ 239   1      }
+ 240          
+ 241          
+ 242          /****************************************************************************
+ 243           *
+ 244           *  NAME        : SpiSelectSlave
+ 245           *
+ 246           *  INPUT       : Slave Id, Select/Deselect.
+ 247           *
+ 248           *  OUTPUT      : NONE.
+ 249           *
+ 250           *  DESCRIPTION : select/deselect a slave device.                                        
+ 251           *
+ 252           ****************************************************************************/
+ 253          void SpiSelectSlave(BYTE SlaveID, BYTE Select)
+ 254          {
+ 255   1        // Modify only the bits 3, 4, 5, 6, 7 of P2
+ 256   1        if (Select == CHIP_SELECT)
+ 257   1        {   
+ 258   2          P2 = (P2 & SPI_SELECT_NONE) | SelectSlaveArray[SlaveID];    
+ 259   2        }
+ 260   1        else
+ 261   1        { 
+ 262   2          P2 = (P2 & SPI_SELECT_NONE) | SPI_SELECT_NONE;
+ 263   2        }
+ 264   1      }
+ 265          
+ 266          
+ 267          /****************************************************************************
+ 268           *
+ 269           *  NAME        : SpiGetTxBuffer
+ 270           *
+ 271           *  DESCRIPTION : Returns a pointer to the spi transmit buffer.                                        
+ 272           *
+ 273           ****************************************************************************/
+ 274          BYTE* SpiGetTxBuffer()
+ 275          {
+ 276   1        return SpiTxBuffer;
+ 277   1      }
+ 278          
+ 279          
+ 280          /****************************************************************************
+ 281           *
+ 282           *  NAME        : SpiSetCommWithA2D
+ 283           *
+ 284           *  DESCRIPTION : Used for setteing the current session as a session with the 
+ 285           *                A2D processor.                                       
+ 286           *
+ 287           ****************************************************************************/
+ 288          void SpiSetCommWithA2D(BOOL State)
+ 289          {
+ 290   1        CommWithA2D = State;
+ 291   1      }
+ 292          
+ 293          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    523    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    139    ----
+C51 COMPILER V9.52.0.0   SPIDRV                                                            04/28/2015 17:26:01 PAGE 6   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

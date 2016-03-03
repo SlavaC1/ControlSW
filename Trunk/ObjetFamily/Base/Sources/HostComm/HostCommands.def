@@ -1,0 +1,23 @@
+DEFINE_COMMAND(CMD_DUMMY,          0)     /* for internal needs */
+DEFINE_COMMAND(CMD_STATUS,         0x41)  /* Query   - System Status */
+DEFINE_COMMAND(CMD_SLICE,          0x43)  /* Data    - Slice data */
+DEFINE_COMMAND(CMD_STOP,           0x44)  /* Command - Stop (and clear) printing */
+DEFINE_COMMAND(CMD_PAUSE,          0x45)  /* Command - Pause printing */
+DEFINE_COMMAND(CMD_CLEAR,          0x47)  /* IGNORED */
+DEFINE_COMMAND(CMD_RESUME,         0x48)  /* Command - Resume paused printing */
+DEFINE_COMMAND(CMD_NEW_MODEL,      0x49)  /* Command - Init New Model with info */
+DEFINE_COMMAND(CMD_GET_VERSIONS,   0x4E)  /* Command - Init New Model with info */
+DEFINE_COMMAND(CMD_PRINTER_DATA,   0x4F)
+DEFINE_COMMAND(CMD_END_MODEL,      0x50)  /* Command - Last Slice has been sent */
+DEFINE_COMMAND(CMD_CONTINUE_MODEL, 0x51)  /* Command - Init half printed Model with info */
+DEFINE_COMMAND(CMD_EOL,            0x52)  /* Command - Inform the host of End of Liquid */
+DEFINE_COMMAND(CMD_CONFIG_FILE,    0x53)  /* Command - Send config file to the host */
+DEFINE_COMMAND(CMD_RR_REQUEST,     0x54)  /* Request for Resin Replacement from Host */
+DEFINE_COMMAND(CMD_ONLINE,         0x55)  /* Command - Inform Host of online state.
+                                             If during CMD_NEW_MODEL application is online - this message will be sent immediate
+                                             Otherwise - with the online state change */
+DEFINE_COMMAND(CMD_RESIN_DATA,     0x56)
+DEFINE_COMMAND(CMD_BUILD_STATUS,   0x57)
+DEFINE_COMMAND(CMD_LICENSED_INFO,  0x58)  /* Send lisenced modes and materials from LicenseManager module */
+DEFINE_COMMAND(CMD_FLEXIBLE_PARAMETERS,  0x59) /*Receive parameters from host, send back a response*/  
+

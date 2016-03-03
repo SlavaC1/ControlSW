@@ -1,0 +1,6 @@
+AmbientControlByPass={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+BumperCalibrationPermissiveArray[]={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+HeadAmbientTemperatureHighLimit={'base': 405, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+MaterialsWeightFactorArray[]={'base': 1.06, 'upDelta': 0.0, 'downDelta': 0.0, 'str': 0}
+UVSingleLampEnabledArray={'base': (1, 1), 'upDelta': (0, 0), 'downDelta': (0, 0), 'str': 0}
+RollerVelocity={'base': 600, 'upDelta': 0, 'downDelta': 0, 'str': 0}

@@ -1,0 +1,457 @@
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE SPI_A2D
+OBJECT MODULE PLACED IN .\Temp\Spi_A2D.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A2D\Spi_A2D.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysDef
+                    -,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiometer\
+                    -,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Potenti
+                    -ometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F123_
+                    -CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\Spi_A2D.lst) TABS(2) OBJECT(.\Temp\Spi_A2D.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : SPI A2D {Spi_A2D.c}  
+   3           *   PURPOSE        : Gets the A/D values from the A2D processor by the SPI 
+   4           *   DATE CREATED   : 29/4/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          #include <string.h>
+   8          #include "Define.h"
+   9          #include "Spi_A2D.h"
+  10          #include "spidrv.h"
+  11          #include "MiniScheduler.h"
+  12          
+  13          // Local declerations
+  14          // ==================
+  15          
+  16          // Constants
+  17          // =========
+  18          #define A2D_GET_VALUES_INST_INDEX       0
+  19          #define A2D_GET_VALUES_INST_LENGTH      49 // ??? should be: (2 * NO_OF_ANALOG_INPUTS) + 1
+  20          #define A2D_GET_SW_VERSION_INST_LENGTH  3 // Command, SW Ver Low Byte, SW Ver High Byte
+  21          #define A2D_BUFFERS_NUM             2
+  22          #define SPI_GET_A2D_READINGS_CMD    0x33
+  23          #define SPI_GET_A2D_SW_VERSION_CMD      0x34
+  24          #define A2D_TASK_DELAY_TIME       190
+  25          #define A2D_GET_SW_VERSION_RETRIES      5 
+  26          
+  27          
+  28          
+  29          // Local variables
+  30          // ===============
+  31          
+  32          // buffers for the samples recieved by the spi. The size is the number of 
+  33          // analog input * 2 (the samples are words) + 1 for the first byte sent - the command
+  34            BYTE xdata A2DRxBuffer[A2D_BUFFERS_NUM][A2D_GET_VALUES_INST_LENGTH];
+  35              
+  36          // Command + SW Ver Low Byte + SW Ver High Byte 
+  37            BYTE xdata A2DRxBufferSW_Version[A2D_GET_SW_VERSION_INST_LENGTH];  
+  38          
+  39          // the samples buffer (= A2DRxBuffer without the first byte)
+  40            WORD xdata *A2DSamplesBuffer;
+  41          
+  42          // the SW Version buffer (= A2DRxBufferSW_Version) without the first byte
+  43            BYTE xdata A2D_SW_VersionBuffer[2];
+  44          
+  45            BYTE xdata A2DTransactionStatus;
+  46            
+  47            BYTE xdata RxBufferNum;
+  48          
+  49              BOOL xdata DataIsValid;
+  50          
+  51              BYTE xdata GetVersionRetries;
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 2   
+
+  52          
+  53          // Local routines
+  54          // ==============
+  55            void SpiA2D_CallBack(BYTE Status);
+  56          
+  57            BYTE* SpiA2D_GetFreeBuffer();
+  58          
+  59            SPI_A2D_STATUS SpiA2D_GetSwVersionBySpi();
+  60          
+  61          
+  62          /****************************************************************************
+  63           *
+  64           *  NAME        : SpiA2D_Init
+  65           *
+  66           *  DESCRIPTION : Initialization of the modoule
+  67           *
+  68           ****************************************************************************/
+  69          void SpiA2D_Init (void)
+  70          {
+  71   1      // zero the Rx Buffers:
+  72   1        memset(A2DRxBuffer,           0, A2D_BUFFERS_NUM * A2D_GET_VALUES_INST_LENGTH);
+  73   1        memset(A2DRxBufferSW_Version, 0, A2D_GET_SW_VERSION_INST_LENGTH);
+  74   1        memset(A2D_SW_VersionBuffer,  0, 2);  
+  75   1      
+  76   1      // the pointer to the samples buffer points to the second byte of the 
+  77   1      // Rx buffer (the first byte is junk received after sending the command)
+  78   1        A2DSamplesBuffer = (WORD*)(A2DRxBuffer[0] + 1);
+  79   1      
+  80   1        RxBufferNum = 0;
+  81   1      
+  82   1          GetVersionRetries = 0;
+  83   1      
+  84   1        SFRPAGE = SPI0_PAGE; 
+  85   1      
+  86   1      // Route vref to a port pin (for use of the A2D CPU)
+  87   1        REF0CN |= 0x01;
+  88   1        
+  89   1        DataIsValid = FALSE;
+  90   1      
+  91   1        // A2D SW Ver. is updated only once - here:
+  92   1        // SpiA2D_GetSwVersionBySpi();    
+  93   1      }
+  94          /****************************************************************************
+  95           *
+  96           *  NAME        : SpiA2D_Task
+  97           *
+  98           *  DESCRIPTION : The A2D task for getting the current A2D reading from the 
+  99           *                A2D processor
+ 100           *
+ 101           ****************************************************************************/
+ 102          void SpiA2D_Task(BYTE Arg)
+ 103          {
+ 104   1        enum
+ 105   1        {
+ 106   1          SEND_GET_SW_VERSION_CMD,
+ 107   1          WAIT_FOR_SW_VERSION_READINGS,
+ 108   1          SEND_A2D_CMD,
+ 109   1          WAIT_FOR_READINGS
+ 110   1        };
+ 111   1        
+ 112   1        switch (Arg)
+ 113   1        {
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 3   
+
+ 114   2          case SEND_A2D_CMD:    
+ 115   2            if (SpiA2D_GetValuesBySpi() == A2D_NO_ERROR)
+ 116   2                  SchedulerLeaveTask(WAIT_FOR_READINGS);
+ 117   2            else
+ 118   2              SchedulerLeaveTask(SEND_A2D_CMD);
+ 119   2            break;
+ 120   2      
+ 121   2          case WAIT_FOR_READINGS:
+ 122   2            if (SpiA2D_GetValuesCMDStatus() != A2D_BUSY)
+ 123   2              { 
+ 124   3              if(TRUE == AreRetriesNeeded_GetSwVer())
+ 125   3                SchedulerLeaveTask(SEND_GET_SW_VERSION_CMD);
+ 126   3              else
+ 127   3                SchedulerLeaveTask(SEND_A2D_CMD);
+ 128   3              
+ 129   3              SchedulerTaskSleep(-1, A2D_TASK_DELAY_TIME);
+ 130   3            }
+ 131   2            else
+ 132   2              SchedulerLeaveTask(WAIT_FOR_READINGS);
+ 133   2            break;
+ 134   2      
+ 135   2          case SEND_GET_SW_VERSION_CMD: 
+ 136   2            if (SpiA2D_GetSwVersionBySpi() == A2D_NO_ERROR)
+ 137   2                  SchedulerLeaveTask(WAIT_FOR_SW_VERSION_READINGS);
+ 138   2            else
+ 139   2              SchedulerLeaveTask(SEND_GET_SW_VERSION_CMD);
+ 140   2            break;
+ 141   2      
+ 142   2          case WAIT_FOR_SW_VERSION_READINGS:
+ 143   2            if (SpiA2D_GetVersionCMDStatus() != A2D_BUSY)
+ 144   2              { 
+ 145   3              SchedulerLeaveTask(SEND_A2D_CMD);       
+ 146   3              SchedulerTaskSleep(-1, A2D_TASK_DELAY_TIME);
+ 147   3            }
+ 148   2            else
+ 149   2              SchedulerLeaveTask(WAIT_FOR_SW_VERSION_READINGS);
+ 150   2            break;
+ 151   2      
+ 152   2           default:
+ 153   2              SchedulerLeaveTask(SEND_A2D_CMD);
+ 154   2            break;
+ 155   2      
+ 156   2         }
+ 157   1         return;
+ 158   1      }
+ 159          
+ 160          
+ 161          /****************************************************************************
+ 162           *
+ 163           *  NAME        : SpiA2D_GetValuesBySpi
+ 164           *
+ 165           *  DESCRIPTION : Sends "Get A2D values" to the A2D processor and recives the readings
+ 166           *
+ 167           ****************************************************************************/
+ 168          SPI_A2D_STATUS SpiA2D_GetValuesBySpi()
+ 169          {
+ 170   1        BYTE xdata *Message, i;
+ 171   1      
+ 172   1      // try to lock the SPI device
+ 173   1      // --------------------------
+ 174   1        if (SpiLock() == SPI_BUSY)
+ 175   1          return A2D_SEND_FAILED;
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 4   
+
+ 176   1      
+ 177   1      // set the device status to busy
+ 178   1      // -----------------------------
+ 179   1        A2DTransactionStatus = A2D_BUSY;
+ 180   1      
+ 181   1      // prepare the message to be send using the spi
+ 182   1      // --------------------------------------------
+ 183   1        Message = SpiGetTxBuffer();
+ 184   1        Message[A2D_GET_VALUES_INST_INDEX] = SPI_GET_A2D_READINGS_CMD;
+ 185   1        for (i = 1; i <= NO_OF_ANALOG_INPUTS*2; i++)
+ 186   1          Message[i] = 0;
+ 187   1      
+ 188   1        SpiSetCommWithA2D(TRUE);
+ 189   1      
+ 190   1      // select the device (CS)
+ 191   1      // ----------------------
+ 192   1        SpiSelectSlave(A2D_PROCESSOR_SLAVE_ID,CHIP_SELECT);
+ 193   1      
+ 194   1      // send the message using the spi
+ 195   1      // ------------------------------
+ 196   1        SpiSend(A2D_GET_VALUES_INST_LENGTH ,SpiA2D_GetFreeBuffer(), SpiA2D_CallBack);
+ 197   1             
+ 198   1        return A2D_NO_ERROR;
+ 199   1      } 
+ 200          
+ 201          /****************************************************************************
+ 202           *
+ 203           *  NAME        : SpiA2D_GetSwVersionBySpi
+ 204           *
+ 205           *  DESCRIPTION : Sends "Get SW Version" to the A2D processor and recives Version two-byte value.
+ 206           *
+ 207           ****************************************************************************/
+ 208          SPI_A2D_STATUS SpiA2D_GetSwVersionBySpi()
+ 209          {
+ 210   1        BYTE xdata *Message;
+ 211   1      
+ 212   1      // try to lock the SPI device
+ 213   1      // --------------------------
+ 214   1        if (SpiLock() == SPI_BUSY)
+ 215   1          return A2D_SEND_FAILED;
+ 216   1      
+ 217   1      // set the device status to busy
+ 218   1      // -----------------------------
+ 219   1        A2DTransactionStatus = A2D_BUSY;
+ 220   1      
+ 221   1      // prepare the message to be send using the spi
+ 222   1      // --------------------------------------------
+ 223   1        Message = SpiGetTxBuffer(); // get the pointer to the transmit buffer used by the Spi_Driver.
+ 224   1      
+ 225   1        Message[A2D_GET_VALUES_INST_INDEX] = SPI_GET_A2D_SW_VERSION_CMD;
+ 226   1      
+ 227   1        // 0xFF is for debugging. change to zero.
+ 228   1        Message[1] = 0; //0xFF; // Sending 1st zero - for receiving Low SW Version BYTE.
+ 229   1        Message[2] = 0; //0xFF; // Sending 2nd zero - for receiving High SW Version BYTE.
+ 230   1      
+ 231   1        SpiSetCommWithA2D(TRUE);
+ 232   1      
+ 233   1      // select the device (CS)
+ 234   1      // ----------------------
+ 235   1        SpiSelectSlave(A2D_PROCESSOR_SLAVE_ID,CHIP_SELECT);
+ 236   1      
+ 237   1      // send the message using the spi
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 5   
+
+ 238   1      // ------------------------------
+ 239   1        SpiSend(A2D_GET_SW_VERSION_INST_LENGTH, A2DRxBufferSW_Version, SpiA2D_CallBack);
+ 240   1             
+ 241   1        return A2D_NO_ERROR;
+ 242   1      } 
+ 243          
+ 244          
+ 245          /****************************************************************************
+ 246           *
+ 247           *  NAME        : SpiA2D_CallBack
+ 248           *
+ 249           *  DESCRIPTION : Called from the spi ISR, updates the transaction status.                                
+             -        
+ 250           *
+ 251           ****************************************************************************/
+ 252          void SpiA2D_CallBack(BYTE Status) using 3
+ 253          {
+ 254   1        if (Status == SPI_NO_ERROR)
+ 255   1          A2DTransactionStatus = A2D_SEND_SUCCESS;
+ 256   1        else
+ 257   1          A2DTransactionStatus = A2D_SEND_FAILED;
+ 258   1      }
+ 259          
+ 260          
+ 261          /****************************************************************************
+ 262           *
+ 263           *  NAME        : SpiA2D_GetValuesCMDStatus
+ 264           *
+ 265           *  DESCRIPTION : Return the status of the last "Get A2D values" command
+ 266           *                Call it after A2DGetValuesBySpi                                        
+ 267           *
+ 268           ****************************************************************************/
+ 269          SPI_A2D_STATUS SpiA2D_GetValuesCMDStatus()
+ 270          {
+ 271   1      // if the spi operation is not done yet
+ 272   1      // ------------------------------------
+ 273   1        if (A2DTransactionStatus == A2D_BUSY) 
+ 274   1          return A2D_BUSY; 
+ 275   1      
+ 276   1      // deselect the device (CS)
+ 277   1      // ------------------------
+ 278   1        SpiSelectSlave(A2D_PROCESSOR_SLAVE_ID,CHIP_DESELECT);
+ 279   1      
+ 280   1        SpiSetCommWithA2D(FALSE);
+ 281   1      
+ 282   1        A2DSamplesBuffer = (WORD*)(A2DRxBuffer[RxBufferNum] + 1);
+ 283   1      
+ 284   1          DataIsValid = TRUE;
+ 285   1      
+ 286   1      // unlock the spi since the operation is done
+ 287   1      // ------------------------------------------
+ 288   1        SpiUnLock();
+ 289   1      
+ 290   1        return A2DTransactionStatus;
+ 291   1      
+ 292   1      }
+ 293          
+ 294          SPI_A2D_STATUS SpiA2D_GetVersionCMDStatus()
+ 295          {
+ 296   1        if (A2DTransactionStatus == A2D_BUSY) 
+ 297   1          return A2D_BUSY;
+ 298   1      
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 6   
+
+ 299   1        SpiSelectSlave(A2D_PROCESSOR_SLAVE_ID,CHIP_DESELECT);
+ 300   1      
+ 301   1        SpiSetCommWithA2D(FALSE);
+ 302   1      
+ 303   1        A2D_SW_VersionBuffer[0] = A2DRxBufferSW_Version[1];
+ 304   1        A2D_SW_VersionBuffer[1] = A2DRxBufferSW_Version[2];
+ 305   1      
+ 306   1          DataIsValid = TRUE;
+ 307   1      
+ 308   1        SpiUnLock();
+ 309   1      
+ 310   1        return A2DTransactionStatus;
+ 311   1      }
+ 312          
+ 313          /****************************************************************************
+ 314           *
+ 315           *  NAME        : SpiA2D_GetReading
+ 316           *
+ 317           *  INPUT       : Analog input number
+ 318           *
+ 319           *  OUTPUT      : Digital reading.
+ 320           *
+ 321           *  DESCRIPTION : Return The last digital reading for this analog input.
+ 322           *
+ 323           ****************************************************************************/
+ 324          WORD SpiA2D_GetReading(BYTE AnalogInNum)
+ 325          {
+ 326   1        WORD RetVal;
+ 327   1        
+ 328   1        EIE1 &= ~ENABLE_SPI_INTERRUPT;
+ 329   1      
+ 330   1        RetVal = A2DSamplesBuffer[AnalogInNum];
+ 331   1        
+ 332   1        // Enable SPI interrupt
+ 333   1        // --------------------            
+ 334   1          EIE1 |= ENABLE_SPI_INTERRUPT;
+ 335   1      
+ 336   1        return RetVal;
+ 337   1      }
+ 338          
+ 339          
+ 340          /****************************************************************************
+ 341           *
+ 342           *  NAME        : SpiA2D_GetBlockReadings
+ 343           *
+ 344           *  INPUT       : Analog input range (first, last), Buffer for the readings
+ 345           *
+ 346           *  OUTPUT      : Digital reading.
+ 347           *
+ 348           *  DESCRIPTION : Return The last digital reading for this analog input.
+ 349           *
+ 350           ****************************************************************************/
+ 351          void SpiA2D_GetBlockReadings(BYTE FirstAnalogIn, LastAnalogIn, WORD *Buffer)
+ 352          {
+ 353   1      
+ 354   1        EIE1 &= ~ENABLE_SPI_INTERRUPT;
+ 355   1      
+ 356   1      // get the readings
+ 357   1      // ----------------
+ 358   1        memcpy(Buffer,&(A2DSamplesBuffer[FirstAnalogIn]), (LastAnalogIn-FirstAnalogIn+1)*sizeof(WORD));
+ 359   1      
+ 360   1      // Enable SPI interrupt
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 7   
+
+ 361   1      // --------------------            
+ 362   1        EIE1 |= ENABLE_SPI_INTERRUPT;
+ 363   1      
+ 364   1        return;
+ 365   1      }
+ 366          
+ 367          void SpiA2D_GetSW_Version(BYTE* ExternalVer, BYTE* InternalVer)
+ 368          {
+ 369   1        EIE1 &= ~ENABLE_SPI_INTERRUPT;
+ 370   1      
+ 371   1        *ExternalVer = A2D_SW_VersionBuffer[0];
+ 372   1        *InternalVer = A2D_SW_VersionBuffer[1];
+ 373   1        
+ 374   1        EIE1 |= ENABLE_SPI_INTERRUPT;
+ 375   1      }
+ 376          
+ 377          
+ 378          /****************************************************************************
+ 379           *
+ 380           *  NAME        : SpiA2D_GetFreeBuffer
+ 381           *
+ 382           *  DESCRIPTION : Returns a free buffer for receiving A2D values
+ 383           *
+ 384           ****************************************************************************/
+ 385          BYTE* SpiA2D_GetFreeBuffer()
+ 386          {
+ 387   1        RxBufferNum = 1 - RxBufferNum;
+ 388   1        return A2DRxBuffer[RxBufferNum];    
+ 389   1      }
+ 390          
+ 391          BOOL SpiA2D_IsDataValid()
+ 392          {
+ 393   1        return DataIsValid;
+ 394   1      }
+ 395          
+ 396          BOOL AreRetriesNeeded_GetSwVer()
+ 397          {
+ 398   1        BYTE ExternalVer, InternalVer;
+ 399   1        
+ 400   1        ExternalVer = 0;
+ 401   1        InternalVer = 0;
+ 402   1        
+ 403   1        SpiA2D_GetSW_Version(&ExternalVer, &InternalVer);
+ 404   1        
+ 405   1        if(0 == ExternalVer || GetVersionRetries > A2D_GET_SW_VERSION_RETRIES)
+ 406   1        {
+ 407   2          GetVersionRetries++;
+ 408   2          return TRUE; 
+ 409   2        }
+ 410   1        
+ 411   1        return FALSE;
+ 412   1      }
+ 413          
+ 414          
+ 415          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1065    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    133    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.52.0.0   SPI_A2D                                                           04/28/2015 17:26:01 PAGE 8   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

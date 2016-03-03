@@ -1,0 +1,4 @@
+AmbientControlByPass=1
+BumperCalibrationPermissiveArray[]=0
+HeadAmbientTemperatureHighLimit=395
+MaterialsWeightFactorArray[]=1.06

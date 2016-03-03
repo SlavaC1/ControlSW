@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{8f7c9760-4c36-4875-8e5d-ee331b94c502}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" />
+    <Projects Include="ParamsExportAndImport.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="QLibProject">
+    <MSBuild Projects="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="" />
+  </Target>
+  <Target Name="QLibProject:Clean">
+    <MSBuild Projects="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="QLibProject:Make">
+    <MSBuild Projects="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="ParamsExportAndImport">
+    <MSBuild Projects="ParamsExportAndImport.cbproj" Targets="" />
+  </Target>
+  <Target Name="ParamsExportAndImport:Clean">
+    <MSBuild Projects="ParamsExportAndImport.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="ParamsExportAndImport:Make">
+    <MSBuild Projects="ParamsExportAndImport.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="QLibProject;ParamsExportAndImport" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="QLibProject:Clean;ParamsExportAndImport:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="QLibProject:Make;ParamsExportAndImport:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

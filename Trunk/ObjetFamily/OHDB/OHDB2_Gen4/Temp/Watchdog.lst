@@ -1,0 +1,238 @@
+C51 COMPILER V9.52.0.0   WATCHDOG                                                          04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE WATCHDOG
+OBJECT MODULE PLACED IN .\Temp\Watchdog.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Watchdog\Watchdog.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\
+                    -SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentio
+                    -meter\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,P
+                    -otentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C805
+                    -1F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\Watchdog.lst) TABS(2) OBJECT(.\Temp\Watchdog.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Watchdog {Watchdog.c}  
+   3           *   PURPOSE        : Xilinx watchdog
+   4           *   DATE CREATED   : 7/Oct/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          
+   8          #include "Watchdog.h"
+   9          #include "XilinxInterface.h"
+  10          #include "HeaterControl.h"
+  11          #include "Roller.h"
+  12          
+  13          
+  14          #define XILINX_WATCH_DOG_ADDRESS     0x06
+  15          #define WATCHDOG_TASK_DELAY_TIME     500
+  16          
+  17          #define COMMUNICATION_LOSS_TIMEOUT   (60 * 1000) // ms
+  18          
+  19          
+  20          TTaskHandle xdata XilinxWatchDogTaskHandle;
+  21          TTaskHandle xdata CommunicationLossTaskHandle;
+  22          TTaskHandle xdata SetRollerOffTaskHandle;
+  23          BOOL xdata CommLossTaskEnabled;
+  24          
+  25          
+  26          // This task runs only if a communication loss has occurred.
+  27          // It turns off the head heaters and suspends it self
+  28          void CommunicationLossTask(BYTE Arg);
+  29          void SetRollerOffTask(BYTE Arg);
+  30          
+  31          
+  32          /****************************************************************************
+  33           *
+  34           *  NAME        : XilinxWatchDogInit 
+  35           *
+  36           *  DESCRIPTION : Initialization of the xilinx watchdog task
+  37           *
+  38           ****************************************************************************/
+  39          void XilinxWatchdogInit()
+  40          {
+  41   1        XilinxWatchDogTaskHandle = SchedulerInstallTask(XilinxWatchDogTask);
+  42   1      }
+  43          
+  44          /****************************************************************************
+  45           *
+  46           *  NAME        : XilinxWatchDogTask 
+  47           *
+  48           *  DESCRIPTION : This task writes to the xilinx to a certain address every
+  49           *                'WATCHDOG_TASK_DELAY_TIME' ms, this address is used as a watchdog. 
+  50           *                If this address will not be written the heaters and the SPI will
+  51           *                be disabled by the xilinx
+C51 COMPILER V9.52.0.0   WATCHDOG                                                          04/28/2015 17:26:02 PAGE 2   
+
+  52           *
+  53           ****************************************************************************/
+  54          void XilinxWatchDogTask(BYTE Arg)
+  55          {
+  56   1        enum{
+  57   1        CLEAR_WATCHDOG,
+  58   1        WAIT_FOR_CLEAR_OP_DONE
+  59   1        };
+  60   1      
+  61   1        switch(Arg)
+  62   1        {
+  63   2          case CLEAR_WATCHDOG:
+  64   2          {
+  65   3            TXilinxMessage Msg;
+  66   3            Msg.Address = XILINX_WATCH_DOG_ADDRESS;
+  67   3            Msg.Data = 0;
+  68   3            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+  69   3              SchedulerLeaveTask(WAIT_FOR_CLEAR_OP_DONE);
+  70   3            else
+  71   3              SchedulerLeaveTask(CLEAR_WATCHDOG);
+  72   3            break;
+  73   3          }
+  74   2      
+  75   2          case WAIT_FOR_CLEAR_OP_DONE:
+  76   2          if (XilinxGetWriteActionStatus() != XILINX_BUSY)
+  77   2          {
+  78   3            SchedulerLeaveTask(CLEAR_WATCHDOG);
+  79   3            SchedulerTaskSleep(-1, WATCHDOG_TASK_DELAY_TIME);
+  80   3          }
+  81   2          else
+  82   2            SchedulerLeaveTask(WAIT_FOR_CLEAR_OP_DONE);
+  83   2            break;
+  84   2        }
+  85   1      
+  86   1      }
+  87          
+  88          
+  89          /****************************************************************************
+  90           *
+  91           *  NAME        : GetXilinxWatchdogTaskHandle 
+  92           *
+  93           *  DESCRIPTION : Returns the handle of the 'XilinxWatchDogTask'
+  94           *
+  95           ****************************************************************************/
+  96          TTaskHandle GetXilinxWatchdogTaskHandle()
+  97          {
+  98   1        return XilinxWatchDogTaskHandle;
+  99   1      }
+ 100          
+ 101          
+ 102          /****************************************************************************
+ 103           *
+ 104           *  NAME        : CommunicationLossTaskInit 
+ 105           *
+ 106           *  DESCRIPTION : Initialization of the communication loss task
+ 107           *
+ 108           ****************************************************************************/
+ 109          void CommunicationLossTaskInit()
+ 110          {
+ 111   1        CommunicationLossTaskHandle = SchedulerInstallTask(CommunicationLossTask);
+ 112   1        SetRollerOffTaskHandle      = SchedulerInstallTask(SetRollerOffTask);
+ 113   1        CommLossTaskEnabled = TRUE;
+C51 COMPILER V9.52.0.0   WATCHDOG                                                          04/28/2015 17:26:02 PAGE 3   
+
+ 114   1      }
+ 115          
+ 116          /****************************************************************************
+ 117           *
+ 118           *  NAME        : ResetCommunicationTimeout 
+ 119           *
+ 120           *  DESCRIPTION : Reset the communication timeout timer
+ 121           *
+ 122           ****************************************************************************/
+ 123          void ResetCommunicationTimeout()
+ 124          {
+ 125   1        if (CommLossTaskEnabled)
+ 126   1          SchedulerTaskSleep(CommunicationLossTaskHandle, COMMUNICATION_LOSS_TIMEOUT);
+ 127   1      }
+ 128          
+ 129          
+ 130          /****************************************************************************
+ 131           *
+ 132           *  NAME        : CommunicationLossTask 
+ 133           *
+ 134           *  DESCRIPTION : This task runs only if a communication loss has occurred.
+ 135           *                It turns off the head heaters and suspends it self
+ 136           *               
+ 137           ****************************************************************************/
+ 138          void CommunicationLossTask(BYTE Arg)
+ 139          {
+ 140   1        // Turn OFF Heaters directly through it's actuators: (Necessary in case it was turned ON by actuator)
+ 141   1        HeaterTurnAllHeadHeaterOff();
+ 142   1      
+ 143   1        // Also, Turn OFF all heaters through Task:
+ 144   1        HeaterControlSetOnOff(FALSE);
+ 145   1      
+ 146   1        // SetRollerOffTask() turns roller OFF, and suspends.
+ 147   1        SchedulerResumeTask(SetRollerOffTaskHandle,0);
+ 148   1      
+ 149   1        SchedulerSuspendTask(-1);
+ 150   1        
+ 151   1        if(Arg){} // To make compiler happy
+ 152   1      }
+ 153          
+ 154          
+ 155          /****************************************************************************
+ 156           *
+ 157           *  NAME        : EnableDisableCommLossTask
+ 158           *
+ 159           *  DESCRIPTION : Enable / diasble the communication loss task
+ 160           *               
+ 161           ****************************************************************************/
+ 162          void EnableDisableCommLossTask(BOOL Enable)
+ 163          {
+ 164   1        if (Enable)
+ 165   1        {
+ 166   2          CommLossTaskEnabled = TRUE;
+ 167   2          SchedulerTaskSleep(CommunicationLossTaskHandle, COMMUNICATION_LOSS_TIMEOUT);
+ 168   2        }
+ 169   1        else
+ 170   1        {
+ 171   2          CommLossTaskEnabled = FALSE;
+ 172   2          SchedulerSuspendTask(CommunicationLossTaskHandle);
+ 173   2        }
+ 174   1      }
+ 175          
+C51 COMPILER V9.52.0.0   WATCHDOG                                                          04/28/2015 17:26:02 PAGE 4   
+
+ 176          void SetRollerOffTask(BYTE Arg)
+ 177          {
+ 178   1        enum{
+ 179   1        SET_ROLLER_OFF,
+ 180   1        WAIT_FOR_OFF_OP_DONE
+ 181   1        };
+ 182   1      
+ 183   1        switch (Arg)
+ 184   1        {
+ 185   2          case SET_ROLLER_OFF:
+ 186   2            if (Roller_SetOnOff(FALSE) == ROLLER_NO_ERROR)
+ 187   2              SchedulerLeaveTask(WAIT_FOR_OFF_OP_DONE);
+ 188   2            else
+ 189   2              SchedulerLeaveTask(SET_ROLLER_OFF);
+ 190   2            break;
+ 191   2      
+ 192   2          case WAIT_FOR_OFF_OP_DONE:
+ 193   2            if (Roller_IsSetOperationDone() == ROLLER_NO_ERROR)
+ 194   2              SchedulerSuspendTask(-1);
+ 195   2            else
+ 196   2              SchedulerLeaveTask(WAIT_FOR_OFF_OP_DONE);
+ 197   2            break;
+ 198   2      
+ 199   2           default:
+ 200   2             SchedulerLeaveTask(SET_ROLLER_OFF);
+ 201   2             break;
+ 202   2         }
+ 203   1         return;
+ 204   1      }
+ 205          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    311    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     11    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

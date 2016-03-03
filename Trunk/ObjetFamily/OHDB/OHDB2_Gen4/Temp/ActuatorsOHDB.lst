@@ -1,0 +1,207 @@
+C51 COMPILER V9.52.0.0   ACTUATORSOHDB                                                     04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE ACTUATORSOHDB
+OBJECT MODULE PLACED IN .\Temp\ActuatorsOHDB.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Actuators\ActuatorsOHDB.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedMo
+                    -dules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Po
+                    -tentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Ro
+                    -ller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFIN
+                    -E(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\ActuatorsOHDB.lst) TABS(2) OBJECT(.\Temp\ActuatorsOHDB.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Actuators {Actuators.c}  
+   3           *   PURPOSE        : Interface to some general actuators 
+   4           *   DATE CREATED   : 21/Nov/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          
+   8          #include "ActuatorsOHDB.h"
+   9          #include "XilinxInterface.h"
+  10          #include "MiniScheduler.h"
+  11          
+  12          #ifdef OCB_SIMULATOR
+                #include "c8051F120.h"
+                #include "..\ExtMemAddSim\ExtMemAddSim.h"
+                #include "..\EXTMemSim\EXTMem.h"
+              #else 
+  17            #include "c8051F120.h"  
+  18          #endif
+  19          
+  20          // Cooling fans FPGA registers
+  21          #define WR_FANS    0x90 // Fans on/off operation
+  22          #define WR_MAT_SPD 0x92 // Material cooling fans speed control. Value (in hex) determine the "on" time in 
+             -percent from 1 msec period (100% = 0x255). 
+  23          
+  24          // Fans activation mask
+  25          #define FAN_UV_R  0x01
+  26          #define FAN_UV_L  0x02
+  27          #define FAN_MAT_R 0x100
+  28          #define FAN_MAT_L 0x200
+  29          #define FAN_MAT_M 0x400
+  30          
+  31          #define ALL_UV_FANS        (FAN_UV_R  + FAN_UV_L)
+  32          #define BOTH_MATERIAL_FANS (FAN_MAT_R + FAN_MAT_L)
+  33          
+  34          WORD xdata FansActivationTaskData;
+  35          BYTE xdata CoolingFansSpeed;
+  36          
+  37          TTaskHandle xdata FansActivationTaskHandle;
+  38          
+  39          
+  40          /****************************************************************************
+  41           *
+  42           *  NAME        : InitMaterialCoolingFans 
+  43           *
+  44           *  DESCRIPTION :                                            
+  45           *
+  46           ****************************************************************************/
+  47          void InitCoolingFans()
+  48          {
+  49   1      #ifdef OCB_SIMULATOR
+                BYTE xdata Item;
+C51 COMPILER V9.52.0.0   ACTUATORSOHDB                                                     04/28/2015 17:26:02 PAGE 2   
+
+              #endif
+  52   1        
+  53   1        FansActivationTaskData = 0;
+  54   1        CoolingFansSpeed       = 0xFF; // Max speed
+  55   1        
+  56   1        // UV fans and middle fan are unaffected
+  57   1        FansActivationTaskData |= ALL_UV_FANS;
+  58   1        FansActivationTaskData |= FAN_MAT_M;  
+  59   1      
+  60   1      #ifdef OCB_SIMULATOR
+                EXTMem_Read(P1_ADD_OHDB, &Item );
+                //dataItemRes = dataItemRes & 0xEF ;
+                EXTMem_Write(P1_ADD_OHDB,  Item & 0xEF);
+              #endif
+  65   1      
+  66   1        FansActivationTaskHandle = SchedulerInstallTask(FansActivationTask);            
+  67   1      }
+  68          
+  69          /****************************************************************************
+  70           *
+  71           *  NAME        : TurnMaterialCoolingFansOnOff 
+  72           *
+  73           *  DESCRIPTION : Set on/off the material cooling fans control                                           
+  74           *
+  75           ****************************************************************************/
+  76          void SetMaterialCoolingFansOnOff(BOOL OnOff, BYTE OnPeriod)
+  77          {
+  78   1      #ifdef OCB_SIMULATOR
+                BYTE xdata Item;
+              #endif
+  81   1        
+  82   1        if (OnPeriod == 0)
+  83   1          OnPeriod = 0xFF;
+  84   1        else
+  85   1          CoolingFansSpeed = (BYTE)(0xFF * (float)OnPeriod / 100);  
+  86   1        
+  87   1        if (OnOff)
+  88   1        {
+  89   2      #ifdef OCB_SIMULATOR
+                  EXTMem_Read(P1_ADD_OHDB,&Item );
+                  EXTMem_Write(P1_ADD_OHDB, Item & 0xEF );
+              #endif
+  93   2      
+  94   2          // Turn material cooling fans ON        
+  95   2          FansActivationTaskData |= BOTH_MATERIAL_FANS;   
+  96   2        }
+  97   1        else
+  98   1        {
+  99   2      #ifdef OCB_SIMULATOR
+                  EXTMem_Read(P1_ADD_OHDB,&Item );
+                  EXTMem_Write(P1_ADD_OHDB, Item | 0x10);
+              #endif                
+ 103   2            
+ 104   2          // Turn material cooling fans OFF
+ 105   2          FansActivationTaskData &= ~BOTH_MATERIAL_FANS;        
+ 106   2        }
+ 107   1      
+ 108   1        SchedulerResumeTask(FansActivationTaskHandle, 0);
+ 109   1      }
+ 110          
+ 111          void FansActivationTask(BYTE Arg)
+ 112          {
+C51 COMPILER V9.52.0.0   ACTUATORSOHDB                                                     04/28/2015 17:26:02 PAGE 3   
+
+ 113   1        enum
+ 114   1        {
+ 115   1          SEND_ACTIVATION,
+ 116   1          WAIT_FOR_ACTIVATION_OP_DONE,
+ 117   1          SET_FANS_SPEED,
+ 118   1          WAIT_FOR_SET_SPEED_OP_DONE    
+ 119   1        };
+ 120   1      
+ 121   1        TXilinxMessage Msg;
+ 122   1      
+ 123   1        switch(Arg)
+ 124   1        {
+ 125   2          case SEND_ACTIVATION:
+ 126   2          {     
+ 127   3            Msg.Address = WR_FANS;
+ 128   3            Msg.Data    = FansActivationTaskData;
+ 129   3            
+ 130   3            if(XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 131   3                SchedulerLeaveTask(WAIT_FOR_ACTIVATION_OP_DONE);
+ 132   3            else
+ 133   3              SchedulerLeaveTask(SEND_ACTIVATION);
+ 134   3          }
+ 135   2          break;
+ 136   2          
+ 137   2          case WAIT_FOR_ACTIVATION_OP_DONE:
+ 138   2          {
+ 139   3            if (XilinxGetWriteActionStatus() != XILINX_BUSY)          
+ 140   3                SchedulerLeaveTask(SET_FANS_SPEED);     
+ 141   3            else
+ 142   3                SchedulerLeaveTask(WAIT_FOR_ACTIVATION_OP_DONE);
+ 143   3          }
+ 144   2          break;
+ 145   2          
+ 146   2          case SET_FANS_SPEED:
+ 147   2          {     
+ 148   3            Msg.Address = WR_MAT_SPD;
+ 149   3            Msg.Data    = CoolingFansSpeed;
+ 150   3            
+ 151   3            if(XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 152   3                SchedulerLeaveTask(WAIT_FOR_SET_SPEED_OP_DONE);
+ 153   3            else
+ 154   3              SchedulerLeaveTask(SET_FANS_SPEED);
+ 155   3          }
+ 156   2          break;
+ 157   2          
+ 158   2          case WAIT_FOR_SET_SPEED_OP_DONE:
+ 159   2          {
+ 160   3            if (XilinxGetWriteActionStatus() != XILINX_BUSY)
+ 161   3            {     
+ 162   4                SchedulerLeaveTask(SEND_ACTIVATION);
+ 163   4              SchedulerSuspendTask(-1);     
+ 164   4            }
+ 165   3            else
+ 166   3                SchedulerLeaveTask(WAIT_FOR_SET_SPEED_OP_DONE);
+ 167   3          }
+ 168   2          break;        
+ 169   2          
+ 170   2          default:      
+ 171   2            break;
+ 172   2        }
+ 173   1      }
+
+C51 COMPILER V9.52.0.0   ACTUATORSOHDB                                                     04/28/2015 17:26:02 PAGE 4   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    349    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     10    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

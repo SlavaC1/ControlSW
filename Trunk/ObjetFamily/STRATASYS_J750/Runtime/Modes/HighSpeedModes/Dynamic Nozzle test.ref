@@ -1,0 +1,4 @@
+HSW_PrintingAllowedForMode={'base': (1,1,1,1), 'upDelta': (0, 0, 0, 0), 'downDelta': (0, 0, 0, 0), 'str': 0}
+RunScript1={'base': 'ModesManager.EnterMode("High Speed Mode", "HighSpeedModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript2={'base': 'ModesManager.EnterMode("~WT commands", "GeneralModes")','upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript3={'base': 'MachineManager.Load4LocalPrintJob("CalibrationFiles\\\\Adjustment Files\\\\WT_DM3_M1_0.5.bmp","CalibrationFiles\\\\Adjustment Files\\\\WT_DM3_S_0.5.bmp","CalibrationFiles\\\\Adjustment Files\\\\WT_DM3_M2_0.5.bmp","CalibrationFiles\\\\Adjustment Files\\\\WT_DM3_M3_0.5.bmp",600,"HS",300)', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}

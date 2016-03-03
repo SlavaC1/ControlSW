@@ -1,0 +1,13 @@
+;This help file was created with HelpScribble 7.7.4
+;Licensed to: Objet Geometries
+
+:BASE CygnalLoader.hlp
+:TITLE Software Loader
+1 Introduction=Scribble10
+1 Before You Upload=Scribble20
+1 Connections for Uploading CPU Software to the OHDB=Scribble30
+1 Connections for Uploading A2D Software to the OHDB=Scribble40
+1 Connections for Uploading CPU Software to the OCB=Scribble50
+1 Connections for Uploading A2D Software to the OCB=Scribble60
+1 Uploading the Software=Scribble70
+1 Checking if the Upload Succeeded=Scribble80

@@ -1,0 +1,304 @@
+C51 COMPILER V9.52.0.0   BUMPER                                                            04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE BUMPER
+OBJECT MODULE PLACED IN .\Temp\Bumper.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Bumper\Bumper.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysD
+                    -ef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiomete
+                    -r\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Poten
+                    -tiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F12
+                    -3_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\Bumper.lst) TABS(2) OBJECT(.\Temp\Bumper.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Bumper  {Bumper.C}  
+   3           *   PURPOSE        : Bumper impact handler module  
+   4           *   DATE CREATED   : 17/08/2003
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          #ifdef OCB_SIMULATOR
+                #include "c8051F120.h"
+              #else
+  10            #include "c8051F120.h" // Keep it here for consistency with OCB_SIMULATOR define
+  11          #endif
+  12          
+  13          #include "Bumper.h"
+  14          #include "MiniScheduler.h"
+  15          #include "D2A.h"
+  16          #include "Comparator.h"
+  17          #include "MsgDecodeOHDB.h"
+  18          
+  19          #ifdef OCB_SIMULATOR
+                #include "EdenProtocol.h"
+              #else
+  22            #include "EdenProtocolOHDB.h"
+  23          #endif
+  24          
+  25          
+  26          TTaskHandle xdata ImpactDetectionTaskHandle;
+  27          BYTE xdata Bumper0Impact;
+  28          BYTE xdata Bumper1Impact;
+  29          WORD xdata BumperResetTime;
+  30          BYTE xdata SetImpactCount;
+  31          BYTE xdata Bumper0CurrImpactCount;
+  32          BYTE xdata Bumper1CurrImpactCount;
+  33          
+  34          
+  35          // This task check if an impact occurred, sends a notification 
+  36          // in case of an impact and sleeps for 'Reset Time'
+  37          void Bumper_ImpactDetectionTask(BYTE Arg);
+  38          
+  39          // Disable the bumper interrupt
+  40          void DisableBumperInterrupt();
+  41          
+  42          // Enable the bumper interrupt
+  43          void EnableBumperInterrupt();
+  44          
+  45          
+  46          /****************************************************************************
+  47           *
+  48           *  NAME        : Bumper_Init
+  49           *
+  50           *  DESCRIPTION : Initialization of the bumper 
+  51           *
+C51 COMPILER V9.52.0.0   BUMPER                                                            04/28/2015 17:26:02 PAGE 2   
+
+  52           ****************************************************************************/
+  53          void Bumper_init()
+  54          {
+  55   1        // Initialize D2A 0 and 1 
+  56   1        D2A0_Init();
+  57   1        D2A1_Init();
+  58   1      
+  59   1        // Initialize compartors 0 and 1
+  60   1        Comparator0_Init();
+  61   1          Comparator1_Init();
+  62   1      
+  63   1        // Set external interrupt 0 as edge triggered
+  64   1          IT0 = 1;
+  65   1      
+  66   1        // Set external interrupt 1 as edge triggered
+  67   1          IT1 = 1;  
+  68   1      
+  69   1          ImpactDetectionTaskHandle = SchedulerInstallTask(Bumper_ImpactDetectionTask);
+  70   1        
+  71   1        Bumper0Impact = FALSE;
+  72   1          Bumper1Impact = FALSE;
+  73   1        BumperResetTime = 0;
+  74   1        SetImpactCount = 1;
+  75   1        Bumper0CurrImpactCount = 0;
+  76   1        Bumper1CurrImpactCount = 0;
+  77   1      }
+  78          
+  79          
+  80          /****************************************************************************
+  81           *
+  82           *  NAME        : Bumper_SetParameters
+  83           *
+  84           *  DESCRIPTION : Set the bumper parameters (sensitivity, reset time, impact count) 
+  85           *
+  86           ****************************************************************************/
+  87          void Bumper_SetParameters(WORD Sensitivity, WORD ResetTime, BYTE ImpactCount)
+  88          {
+  89   1          // Write the sensitivity to the D2A
+  90   1          D2A0_Write(Sensitivity);
+  91   1        D2A1_Write(Sensitivity);
+  92   1      
+  93   1        BumperResetTime = ResetTime;
+  94   1        SetImpactCount = ImpactCount;
+  95   1      }
+  96          
+  97          
+  98          /****************************************************************************
+  99           *
+ 100           *  NAME        : Bumper_SetOnOff
+ 101           *
+ 102           *  DESCRIPTION : Set the bumper impact detection mechanism on/off 
+ 103           *
+ 104           ****************************************************************************/
+ 105          void Bumper_SetOnOff(BOOL OnOff)
+ 106          {
+ 107   1        if (OnOff)
+ 108   1        {
+ 109   2          Bumper0Impact = FALSE;
+ 110   2          Bumper1Impact = FALSE;
+ 111   2          Bumper0CurrImpactCount = 0;
+ 112   2          Bumper1CurrImpactCount = 0;
+ 113   2          
+C51 COMPILER V9.52.0.0   BUMPER                                                            04/28/2015 17:26:02 PAGE 3   
+
+ 114   2          IE0 = 0;
+ 115   2          IE1 = 0;
+ 116   2      
+ 117   2          EnableBumperInterrupt();
+ 118   2          
+ 119   2          // Resume the impact detection task
+ 120   2          SchedulerResumeTask(ImpactDetectionTaskHandle,0);
+ 121   2        }
+ 122   1        else
+ 123   1        {
+ 124   2          DisableBumperInterrupt();
+ 125   2          
+ 126   2          // Suspend the impact detection task
+ 127   2          SchedulerSuspendTask(ImpactDetectionTaskHandle);
+ 128   2        }
+ 129   1      }
+ 130          
+ 131          /****************************************************************************
+ 132           *
+ 133           *  NAME        : Bumper_ImpactDetectionTask
+ 134           *
+ 135           *  DESCRIPTION : This task check if an impact occurred, sends a notification 
+ 136           *                in case of an impact and sleeps for 'Reset Time'
+ 137           *
+ 138           ****************************************************************************/
+ 139          void Bumper_ImpactDetectionTask(BYTE Arg)
+ 140          {
+ 141   1        enum
+ 142   1        {
+ 143   1          DETECT_IMPACT,
+ 144   1          SEND_NOTIFICATION
+ 145   1        };
+ 146   1      
+ 147   1          BOOL SendBumperImpactNotifiaction;
+ 148   1      
+ 149   1        switch (Arg)
+ 150   1        {
+ 151   2            case DETECT_IMPACT:
+ 152   2              SendBumperImpactNotifiaction = FALSE;
+ 153   2            DisableBumperInterrupt();
+ 154   2            if(Bumper0Impact || Bumper1Impact)
+ 155   2            {
+ 156   3              if(Bumper0Impact)
+ 157   3              {
+ 158   4                Bumper0Impact = FALSE;
+ 159   4                if (Bumper0CurrImpactCount >= SetImpactCount)
+ 160   4                {
+ 161   5                  Bumper0CurrImpactCount = 0;
+ 162   5                  SendBumperImpactNotifiaction = TRUE;
+ 163   5                }
+ 164   4              }
+ 165   3              if (Bumper1Impact)
+ 166   3              {
+ 167   4                Bumper1Impact = FALSE;
+ 168   4                if (Bumper1CurrImpactCount >= SetImpactCount)
+ 169   4                {
+ 170   5                  Bumper1CurrImpactCount = 0;
+ 171   5                  SendBumperImpactNotifiaction = TRUE;          
+ 172   5                }
+ 173   4              }
+ 174   3            }
+ 175   2                EnableBumperInterrupt();
+C51 COMPILER V9.52.0.0   BUMPER                                                            04/28/2015 17:26:02 PAGE 4   
+
+ 176   2            if (SendBumperImpactNotifiaction)
+ 177   2            {
+ 178   3                    SchedulerLeaveTask(SEND_NOTIFICATION);
+ 179   3      
+ 180   3              // Fall to the next state
+ 181   3              }
+ 182   2            else
+ 183   2            {
+ 184   3              SchedulerLeaveTask(DETECT_IMPACT);
+ 185   3              break;
+ 186   3            }
+ 187   2      
+ 188   2          case SEND_NOTIFICATION:
+ 189   2          {
+ 190   3            TBumperImpactDetectedMsg xdata Msg;
+ 191   3            
+ 192   3            Msg.MsgId = BUMPER_IMPACT_DETECTED;
+ 193   3            if (OHDBEdenProtocolSend((BYTE*)&Msg,sizeof(TBumperImpactDetectedMsg),EDEN_DEST_ID,0,FALSE) == EDEN_PRO
+             -TOCOL_NO_ERROR)
+ 194   3            {
+ 195   4              SchedulerLeaveTask(DETECT_IMPACT);
+ 196   4              SchedulerTaskSleep(-1, BumperResetTime);
+ 197   4            }
+ 198   3            else
+ 199   3              SchedulerLeaveTask(SEND_NOTIFICATION);
+ 200   3            
+ 201   3            break;
+ 202   3          }
+ 203   2      
+ 204   2          default:
+ 205   2            SchedulerLeaveTask(DETECT_IMPACT);
+ 206   2            break;
+ 207   2        }
+ 208   1      }
+ 209          
+ 210          
+ 211          /****************************************************************************
+ 212           *
+ 213           *  NAME        : Bumper0Isr
+ 214           *
+ 215           *  DESCRIPTION : Bumper0 (external interrupt 0) ISR
+ 216           *
+ 217           ****************************************************************************/
+ 218          #ifdef OCB_SIMULATOR
+              void Bumper0Isr() interrupt 25 using 3    //originally interrupt 0(collision with OcbMain.c - void ExInterr
+             -upt_0_ISR())
+              #else
+ 221          void Bumper0Isr() interrupt 0 using 3
+ 222          #endif
+ 223          {
+ 224   1        Bumper0Impact = TRUE;
+ 225   1        Bumper0CurrImpactCount++;
+ 226   1      }
+ 227          
+ 228          
+ 229          /****************************************************************************
+ 230           *
+ 231           *  NAME        : Bumper1Isr
+ 232           *
+ 233           *  DESCRIPTION : Bumper1 (external interrupt 0) ISR
+ 234           *
+ 235           ****************************************************************************/
+C51 COMPILER V9.52.0.0   BUMPER                                                            04/28/2015 17:26:02 PAGE 5   
+
+ 236          #ifdef OCB_SIMULATOR
+              void Bumper1Isr() interrupt 26 using 3 //originally interrupt 2
+              #else
+ 239          void Bumper1Isr() interrupt 2 using 3
+ 240          #endif
+ 241          {
+ 242   1        Bumper1Impact = TRUE;
+ 243   1        Bumper1CurrImpactCount++;
+ 244   1      }
+ 245          
+ 246          // Disable the bumper interrupt
+ 247          void DisableBumperInterrupt()
+ 248          {
+ 249   1        // Disable external interrupt 0
+ 250   1        EX0 = 0;
+ 251   1        
+ 252   1        // Disable external interrupt 1
+ 253   1        //  EX1 = 0;
+ 254   1      
+ 255   1      }
+ 256          
+ 257          
+ 258          // Enable the bumper interrupt
+ 259          void EnableBumperInterrupt()
+ 260          {
+ 261   1        // Enable external interrupt 0
+ 262   1        EX0 = 1;
+ 263   1        
+ 264   1        // Enable external interrupt 1
+ 265   1        //EX1 = 1;
+ 266   1      }
+ 267          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    473    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     17    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,77 @@
+/*--------------------------------------------------------------*\                                                                                                                                                                                                               
+ * Install the new version after the previous one was removed
+ \*--------------------------------------------------------------*/
+
+// #include "ifx.h"
+
+function InstallAfterRemove()
+    
+    STRING svComponentSource, svComponent, svFileGroup, svFile;
+   	NUMBER  nResult, nvError, iMainStart;
+    BOOL bInstallDemo;
+    
+   	begin  
+   	
+// 	Check if the operating system is proper for the driver installation
+// 	or should be used as a demo version.
+// 	-------------------------------------------------------------------      
+	bInstallDemo = CheckOSVersion();
+	SetDemoInstall(bInstallDemo);
+   	          
+//  Activate Setup Screen and title
+//  -------------------------------   	          
+   	Enable( FULLWINDOWMODE );
+    Enable( INDVFILESTATUS );
+    SetTitle(@TITLE_MAIN , 24, WHITE );
+    SetTitle(IFX_SETUP_TITLE , 0, BACKGROUNDCAPTION ); // Caption bar text.
+    Enable( BACKGROUND );
+    Delay( 1 );
+        
+//  Set Setup Type Set for the installation
+//  ---------------------------------------        
+    FeatureSetupTypeSet(MEDIA, "Typical");  
+    
+
+Dlg_SdStartCopy:    
+                            
+//  Reset the percentage complete indicator
+//  ---------------------------------------
+    SetStatusWindow(0, ""); 
+    
+//  Enables the display of the standard Setup Status dialog
+//  -------------------------------------------------------    
+    Enable(STATUSEX);   
+                        
+//  Specify that the progress indicator of the status bar should be linked
+//  to file transfer operations. and the maximum value is 100
+//  -----------------------------------------------------------------------                        
+    StatusUpdate(ON, 100);
+
+//  Create app information, uninstallation, and App Paths registry keys.
+//  --------------------------------------------------------------------
+    CreateInstallationInfo ( ); 
+//  InstallationInfo( IFX_COMPANY_NAME, IFX_PRODUCT_NAME ,IFX_PRODUCT_VERSION, IFX_PRODUCT_KEY );
+//  RegDBSetItem 
+    iMainStart = MaintenanceStart();
+    if (iMainStart < 0) then
+        MessageBox( @ERROR_UNINSTSETUP, WARNING );
+    	endif;
+    
+  
+    nResult = FeatureTransferData(MEDIA);
+    if(nResult < 0) then
+		MessageBox ("Error Component Select", INFORMATION);
+        FeatureError(svComponentSource, svComponent, svFileGroup, svFile, nvError);
+
+        SprintfBox(INFORMATION, "ComponentTransferData Error Information",
+               "ComponentTransferData had the following error:\n\n" +
+               "Media Name: %s\nComponent: %s\nFile Group: %s\n" +
+               "File: %s\nError Number: %ld",
+               svComponentSource, svComponent, svFileGroup, svFile, nvError);
+    	endif; 
+
+
+  	OnFirstUIAfter();
+    return bInstallDemo;
+	end;
+

@@ -1,0 +1,1 @@
+ prototype RemoveDesktopIcon(BYREF STRING);

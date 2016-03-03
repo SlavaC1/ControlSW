@@ -1,0 +1,122 @@
+C51 COMPILER V9.52.0.0   BYTEORDER                                                         04/28/2015 17:26:00 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE BYTEORDER
+OBJECT MODULE PLACED IN .\Temp\ByteOrder.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\SharedModules\Utilities\ByteOrder.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDI
+                    -R(..\SharedModules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProto
+                    -col,Timer\,Potentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\Sha
+                    -redModules\Roller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,B
+                    -umper\) DEFINE(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\ByteOrder.lst) TABS(2) OBJECT(.\Temp\ByteOrder.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Byte Order {ByteOrder.c}  
+   3           *   PURPOSE        : Byte order manipulation routines  
+   4           *   DATE CREATED   : 6/Dec/2001
+   5           *   PROGRAMMER     : Nir Saadon 
+   6           *   PROCEDURES     : 
+   7           *===========================================================================*/
+   8          
+   9          
+  10          
+  11          #include "Define.h"
+  12          #include "ByteOrder.h"
+  13          
+  14          
+  15          // Swap a short integer
+  16          // --------------------
+  17          void SwapUnsignedShort(PUSHORT S)
+  18          {
+  19   1        PBYTE cp = (PBYTE)S;
+  20   1        BYTE t;
+  21   1      
+  22   1        t = cp[1]; cp[1] = cp[0]; cp[0] = t;
+  23   1      }
+  24          
+  25          // Another version of SwapShort with a signed short as a parameter
+  26          // ---------------------------------------------------------------
+  27          void SwapShort(PSHORT S)
+  28          {
+  29   1        SwapUnsignedShort((PUSHORT)S);
+  30   1      }
+  31          
+  32          // Swap a long integer
+  33          // -------------------
+  34          void SwapUnsignedLong(PULONG L)
+  35          {
+  36   1        PBYTE cp = (PBYTE)L;
+  37   1        BYTE t;
+  38   1      
+  39   1        t = cp[3]; cp[3] = cp[0]; cp[0] = t;
+  40   1        t = cp[2]; cp[2] = cp[1]; cp[1] = t;
+  41   1      }
+  42          
+  43          // Another version of SwapLong with a signed long as a parameter
+  44          // -------------------------------------------------------------
+  45          void SwapLong(PLONG L)
+  46          {
+  47   1        SwapUnsignedLong((PULONG)L);
+  48   1      }
+  49          
+  50          // Swap an array of short numbers
+  51          // ------------------------------
+C51 COMPILER V9.52.0.0   BYTEORDER                                                         04/28/2015 17:26:00 PAGE 2   
+
+  52          void SwapUnsignedShortArray(PUSHORT Src,PUSHORT Dst,int ElementsNum)
+  53          {
+  54   1        PBYTE cp;
+  55   1        BYTE t;
+  56   1      
+  57   1        while(ElementsNum--) {
+  58   2          Dst[ElementsNum] = Src[ElementsNum];
+  59   2          cp = (PBYTE)&Dst[ElementsNum];
+  60   2          t = cp[1]; cp[1] = cp[0]; cp[0] = t;
+  61   2        }
+  62   1      }
+  63          
+  64          // Another version of SwapShort with a signed short array as a parameter
+  65          // ---------------------------------------------------------------------
+  66          void SwapShortArray(PSHORT Src,PSHORT Dst,int ElementsNum)
+  67          {
+  68   1        SwapUnsignedShortArray((PUSHORT)Src,(PUSHORT)Dst,ElementsNum);
+  69   1      }
+  70          
+  71          // Swap an array of long numbers
+  72          // -----------------------------
+  73          void SwapUnsignedLongArray(PULONG Src,PULONG Dst,int ElementsNum)
+  74          {
+  75   1        PBYTE cp;
+  76   1        BYTE t;
+  77   1      
+  78   1        while(ElementsNum--) {
+  79   2          Dst[ElementsNum] = Src[ElementsNum];
+  80   2          cp = (PBYTE)&Dst[ElementsNum];
+  81   2          t = cp[3]; cp[3] = cp[0]; cp[0] = t;
+  82   2          t = cp[2]; cp[2] = cp[1]; cp[1] = t;
+  83   2        }
+  84   1      }
+  85          
+  86          // Another version of SwapLongArray with a signed long array as a parameter
+  87          // ------------------------------------------------------------------------
+  88          void SwapLongArray(PLONG Src,PLONG Dst,int ElementsNum)
+  89          {
+  90   1        SwapUnsignedLongArray((PULONG)Src,(PULONG)Dst,ElementsNum);
+  91   1      }
+  92          
+  93          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1112    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     60    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

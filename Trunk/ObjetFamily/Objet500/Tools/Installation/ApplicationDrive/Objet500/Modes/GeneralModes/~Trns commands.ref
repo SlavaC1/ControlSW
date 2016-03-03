@@ -1,0 +1,12 @@
+DefaultModeAfterPrint={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+DoPurgeBeforePrint={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+ModeChangeOnPrintStart={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+PrintingOperationMode={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+RollerBypass={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+RunScript1={'base': 'MachineManager.OffsetZStart(0.14)', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+ScatterEnabled={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+UseMaterialCoolingFans={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+UVLampPostIgnitionTime={'base': 5, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+YInterlaceNoOfPixels={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+Z_MoveToStartNewLayer_um={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+AtLeastDelayTimeBetweenLayers={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}

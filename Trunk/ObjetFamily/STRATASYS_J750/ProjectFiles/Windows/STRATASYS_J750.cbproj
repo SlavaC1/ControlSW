@@ -1,0 +1,1171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{a822fe7d-805e-4c14-ab67-eaa18d884eba}</ProjectGuid>
+    <ProjectType>CppVCLApplication</ProjectType>
+    <MainSource>STRATASYS_J750.cpp</MainSource>
+    <Config Condition="'$(Config)'==''">Debug Build</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug Build' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release Build' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Emulation' or '$(Cfg_3)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <Cfg_3>true</Cfg_3>
+    <CfgParent>Cfg_2</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <BCC_ExceptionLocationInfo>true</BCC_ExceptionLocationInfo>
+    <DCC_Optimize>false</DCC_Optimize>
+    <OutputExt>exe</OutputExt>
+    <BCC_wamb>true</BCC_wamb>
+    <ILINK_IntermediateOutputPath>..\..\Temp_Debug</ILINK_IntermediateOutputPath>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <BCC_wexc>true</BCC_wexc>
+    <BCC_wprc>true</BCC_wprc>
+    <BCC_OutputDir>..\..\Temp_Debug\</BCC_OutputDir>
+    <BCC_wnod>true</BCC_wnod>
+    <DynamicRTL>true</DynamicRTL>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <BCC_InstructionSet>6</BCC_InstructionSet>
+    <BCC_wdef>true</BCC_wdef>
+    <BCC_wbbf>true</BCC_wbbf>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <BRCC_OutputDir>..\..\Temp_Debug\</BRCC_OutputDir>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+    <ILINK_AppType>Windows</ILINK_AppType>
+    <BCC_wnak>true</BCC_wnak>
+    <ILINK_ObjectSearchPath>..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg;..\..\..\Base\Sources\RFID\FELibOO;..\..\..\Base\Sources\RFID\Reader;..\..\..\Base\Sources\SignalTower;..\..\..\Base\Sources\AirFlow;..\..\..\Base\Sources\SafetySystem;..\..\..\Base\Sources\Fans;..\..\..\..\SharedFiles\TinyXML2;..\..\..\..\SharedFiles\CppToDelphiException;..\..\..\Base\Sources\StipulatorData;..\..\..\Base\Sources\PFF</ILINK_ObjectSearchPath>
+    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <ILINK_wdup>false</ILINK_wdup>
+    <BCC_wstl>true</BCC_wstl>
+    <BCC_winl>true</BCC_winl>
+    <DCC_MakeModifiedUnits>true</DCC_MakeModifiedUnits>
+    <BCC_wasm>true</BCC_wasm>
+    <FinalOutputDir>..\..\Runtime\</FinalOutputDir>
+    <BCC_wpin>true</BCC_wpin>
+    <BCC_wcln>true</BCC_wcln>
+    <TASM_AdditionalSwitches> /w2 ..\..\Temp_Debug\</TASM_AdditionalSwitches>
+    <PackageImports>rtl.bpi;vcl.bpi;vclx.bpi;bcbsmp.bpi;bdertl.bpi;vcldb.bpi</PackageImports>
+    <BCC_wimp>true</BCC_wimp>
+    <BCC_wamp>true</BCC_wamp>
+    <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
+    <PackageLibs>Objet.lib;bcbie.lib;dbrtl.lib;Objet.lib;bcbie.lib;dbrtl.lib;vcldb.lib;Python_d7.lib;Objet.lib;bcbie.lib;dbrtl.lib;vcldb.lib;Objet.lib;bcbie.lib;dbrtl.lib;vcldb.lib;Python_d7.lib;VclSmp.lib;xmlrtl.lib;vclactnband.lib</PackageLibs>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <ILINK_ImageFlags>LARGEADDRESSAWARE</ILINK_ImageFlags>
+    <BCC_wstu>true</BCC_wstu>
+    <IncludePath>..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg;..\..\..\Base\Sources\RFID\FELibOO;..\..\..\Base\Sources\RFID\Reader;..\..\..\Base\Sources\SignalTower;..\..\..\Base\Sources\AirFlow;..\..\..\Base\Sources\SafetySystem;..\..\..\Base\Sources\Fans;..\..\..\..\SharedFiles\TinyXML2;..\..\..\..\SharedFiles\CppToDelphiException;..\..\..\Base\Sources\StipulatorData;..\..\..\Base\Sources\PFF</IncludePath>
+    <DCC_DcuOutput>..\..\Temp_Debug\</DCC_DcuOutput>
+    <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
+    <BCC_IncludePath>..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\Base\Binaries;..\..\..\..\SharedFiles\HASP\Include;$(BDS)\include\dinkumware;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg</BCC_IncludePath>
+    <TASM_IncludePath>..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries;..\..\..\..\SharedFiles\HASP\Include;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <AllPackageLibs>Objet.lib;bcbie.lib;dbrtl.lib;vcldb.lib;Objet.lib;bcbie.lib;dbrtl.lib;vcldb.lib;Python_d7.lib;Objet.lib;bcbie.lib;dbrtl.lib;vcldb.lib;rtl.lib;vcl.lib;bcbsmp.lib;vclx.lib;Objet.lib;bcbie.lib;dbrtl.lib;vcldb.lib;Python_d7.lib;VclSmp.lib;bdertl.lib;xmlrtl.lib;vclactnband.lib</AllPackageLibs>
+    <BRCC_IncludePath>..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries;..\..\..\..\SharedFiles\HASP\Include;$(BDS)\include\dinkumware</BRCC_IncludePath>
+    <DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
+    <ILINK_LibraryPath>..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BDS)\lib\obj;$(BDS)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\SharedFiles\PythonForDelphi\Components;..\..\Binaries\Images;..\..\..\Base\Binaries;$(BDS)\lib\psdk;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg;..\..\..\Base\Sources\RFID\FELibOO;..\..\..\Base\Sources\RFID\Reader;..\..\..\Base\Sources\SignalTower;..\..\..\Base\Sources\AirFlow;..\..\..\Base\Sources\SafetySystem;..\..\..\Base\Sources\Fans;..\..\..\..\SharedFiles\TinyXML2;..\..\..\..\SharedFiles\CppToDelphiException;..\..\..\Base\Sources\StipulatorData;..\..\..\Base\Sources\PFF</ILINK_LibraryPath>
+    <BCC_Defines>NO_STRICT;_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;OBJET_MACHINE;OBJET_500;KERNEL_64BIT;OBJET_MACHINE_KESHET</BCC_Defines>
+    <DCC_ObjOutput>..\..\Temp_Debug\</DCC_ObjOutput>
+    <BRCC_Defines>_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;_DEBUG;OBJET_MACHINE;OBJET_500;OBJET_MACHINE_KESHET</BRCC_Defines>
+    <TASM_Defines>_MT WIN32 I386 USE_KERNEL_PLUGIN OS_WINDOWS MOTOR_MCB VISUAL_PARAMETER_MANAGER _DEBUG OBJET_MACHINE OBJET_500</TASM_Defines>
+    <Multithreaded>true</Multithreaded>
+    <TASM_Debugging>Full</TASM_Debugging>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <BCC_wamb>true</BCC_wamb>
+    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+    <BCC_wprc>true</BCC_wprc>
+    <BCC_wexc>true</BCC_wexc>
+    <BCC_wnod>true</BCC_wnod>
+    <BCC_wdef>true</BCC_wdef>
+    <BCC_wbbf>true</BCC_wbbf>
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    <BCC_winl>true</BCC_winl>
+    <BCC_wstl>true</BCC_wstl>
+    <DCC_HppOutput>..\..\Temp_Debug\</DCC_HppOutput>
+    <BCC_wasm>true</BCC_wasm>
+    <BCC_wcln>true</BCC_wcln>
+    <BCC_wpin>true</BCC_wpin>
+    <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
+    <BCC_wamp>true</BCC_wamp>
+    <BCC_wimp>true</BCC_wimp>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <DCC_Optimize>true</DCC_Optimize>
+    <ILINK_IntermediateOutputPath>..\..\Temp_Release</ILINK_IntermediateOutputPath>
+    <BCC_OutputDir>..\..\Temp_Release\</BCC_OutputDir>
+    <DynamicRTL>false</DynamicRTL>
+    <BRCC_OutputDir>..\..\Temp_Release\</BRCC_OutputDir>
+    <BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
+    <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
+    <DCC_DebugInformation>false</DCC_DebugInformation>
+    <UsePackages>false</UsePackages>
+    <BCC_PCHWithExternalTypeFiles>false</BCC_PCHWithExternalTypeFiles>
+    <DCC_HppOutput>..\..\Temp_Release\</DCC_HppOutput>
+    <BCC_SmartPCHCache>false</BCC_SmartPCHCache>
+    <IntermediateOutputDir>Release_Build</IntermediateOutputDir>
+    <BCC_StackFrames>false</BCC_StackFrames>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <DCC_ObjOutput>..\..\Temp_Release\</DCC_ObjOutput>
+    <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>None</TASM_Debugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_3)'!=''">
+    <BCC_OutputDir>..\..\Temp_Emulation\</BCC_OutputDir>
+    <BRCC_OutputDir>..\..\Temp_Emulation\</BRCC_OutputDir>
+    <DCC_HppOutput>..\..\Temp_Emulation\</DCC_HppOutput>
+    <IntermediateOutputDir>Emulation_Build</IntermediateOutputDir>
+    <BCC_Defines>EMULATION_ONLY;$(BCC_Defines)</BCC_Defines>
+    <DCC_ObjOutput>..\..\Temp_Emulation\</DCC_ObjOutput>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">58</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1033</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName">Objet Geometries LTD</VersionInfoKeys><VersionInfoKeys Name="FileDescription">Objet control program</VersionInfoKeys><VersionInfoKeys Name="FileVersion">58.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName">STRATASYS_J750</VersionInfoKeys><VersionInfoKeys Name="ProductVersion"></VersionInfoKeys></VersionInfoKeys><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">30</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg;..\..\..\Base\Sources\RFID\FELibOO;..\..\..\Base\Sources\RFID\Reader;..\..\..\Base\Sources\SignalTower;..\..\..\Base\Sources\AirFlow;..\..\..\Base\Sources\SafetySystem</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg;..\..\..\Base\Sources\RFID\FELibOO;..\..\..\Base\Sources\RFID\Reader</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item2">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item3">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item4">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item5">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item6">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item7">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item8">..\..\..\Base\Sources\Power;..\..\..\Base\Sources\Container;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\Sources\RPC;..\..\Binaries\Images;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\ErrorHandler;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Application;..\..\..\Base\Sources\PeripheralDevices;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\Base\Sources\Actuator;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Tester;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\PrintJob;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\BIT;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\Wizards;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Binaries;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\Parameters;..\..\..\Base\FrontEnd\Windows;..\..\..\Base\Sources\MachineManager</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item9">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries;..\..\..\..\SharedFiles\HASP\Include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item10">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item11">..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item12">..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item13">..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintCon</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item14">..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\S</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item15">..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintCon</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item16">..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintCon</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item17">..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintContr</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item18">..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\S</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item19">..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\S</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item20">..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\.</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item21">C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item22">..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Ba</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item23">..\..\..\Base\Sources\BIT\Windows;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item24">C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item25">..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\.</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item26">C:\DevTools\Borland\CBuilder6\Projects;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHand</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item27">..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\.</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item28">..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHand</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item29">C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\B</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Count">30</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item0">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\SharedFiles\PythonForDelphi\Components</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item1">..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\SharedFiles\PythonForDelphi\Components</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item2">..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\SharedFiles\PythonForDelphi\Components</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item3">..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Fr</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item4">..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\S</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item5">..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\Fr</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item6">..\..\..\Base\Sources\RFID;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\.</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item7">C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item8">..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sourc</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item9">..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item10">..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\S</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item11">..\..\..\Base\Sources\BIT;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item12">C:\DevTools\Borland\CBuilder6\Projects;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item13">..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sour</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item14">..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sour</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item15">..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item16">C:\DevTools\Borland\CBuilder6\Projects;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item17">..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item18">..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sourc</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item19">..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sour</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item20">..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item21">..\..\..\Base\Sources\Vacuum;..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item22">..\..\..\..\SharedFiles\Utils\PKWARE;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item23">..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Cotai</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item24">..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Cotainers;..\..\..\Base\Sources\Door;</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item25">..\..\..\Base\Sources\MaintenanceCounters;C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\EOL;..\..\..\Base\Sources\Door;..\..\</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item26">C:\;..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\EOL;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item27">..\..\..\..\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\EOL;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\Er</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item28">c:\projects\sharedfiles\components\;C:\DevTools\Borland\CBuilder5\Projects\;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\EOL;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\E</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item29">c:\projects\sharedfiles\components;C:\DevTools\Borland\CBuilder5\Projects;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BCB)\lib\obj;$(BCB)\Projects\Lib;$(BCB)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\..\SharedFiles\Utils\BPECompression;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\BackEndInterface;..\..\..\Base\FrontEnd\Windows\LocalJobDialog;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadStatus;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\OHDBComm;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\EOL;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\Err</HistoryLists_hlLibraryPath></HistoryLists_hlLibraryPath><HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Count">4</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item0">C:\SVN\Trunk\SharedFiles\QLib\</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item1">D:\Projects\SharedFiles\QLib\</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item2">c:\dev</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item3"></HistoryLists_hlDebugSourcePath></HistoryLists_hlDebugSourcePath><HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Count">27</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item0">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;_DEBUG;OBJET_MACHINE;OBJET_500</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item1">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;_DEBUG;OBJET_MACHINE;OBJET_500;DONT_USING_RFID</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item2">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;_DEBUG;OBJET_MACHINE</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item3">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item4">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;CONNEX_500;VISUAL_PARAMETER_MANAGER;CONNEX_MACHINE;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item5">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;CONNEX_500;VISUAL_PARAMETER_MANAGER;CONNEX_MACHINE</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item6">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;EDEN_3RESIN_500_V;VISUAL_PARAMETER_MANAGER;EDEN_3RESIN_MACHINE;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item7">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;EDEN_3RESIN_500_V;VISUAL_PARAMETER_MANAGER;EDEN_3RESIN_MACHINE</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item8">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;_DEBUG;EDEN_3RESIN_500_V;VISUAL_PARAMETER_MANAGER;EDEN_3RESIN_MACHINE</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item9">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;_DEBUG;EDEN_3RESIN_500_V;VISUAL_PARAMETER_MANAGER</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item10">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;_DEBUG;EDEN_3RESIN_500_V;OS_WINDOWS;VISUAL_PARAMETER_MANAGER</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item11">MOTOR_MCB;_DEBUG;EDEN_3RESIN_500_V;OS_WINDOWS;VISUAL_PARAMETER_MANAGER</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item12">MOTOR_MCB;_DEBUG;EDEN_500;OS_WINDOWS;VISUAL_PARAMETER_MANAGER</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item13">OS_WINDOWS;MOTOR_MCB;_DEBUG;EDEN_500</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item14">EDEN_450;OS_WINDOWS;MOTOR_MCB;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item15">EDEN_260;OS_WINDOWS;MOTOR_MCB;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item16">EDEN_450;OS_WINDOWS;MOTOR_MCB</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item17">EDEN_450;OS_WINDOWS;MOTOR_MCB;_DEBUG;KKKKKKKKK</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item18">EDEN_450;OS_WINDOWS;MOTOR_MCB;_DEBUG;SHUAL</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item19">OS_WINDOWS;MOTOR_MCB;_DEBUG;EDEN_450</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item20">OS_WINDOWS;MOTOR_MCB;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item21">OS_WINDOWS;MOTOR_MCB</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item22">OS_WINDOWS;_MOTOR_MCB;MOTOR_MCB;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item23">OS_WINDOWS;_MOTOR_MCB;MOTOR_MCB</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item24">OS_WINDOWS;_MOTOR_MCB;_DEBUG;MOTOR_MCB</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item25">OS_WINDOWS;_MOTOR_MCB;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item26">OS_WINDOWS;_MOTOR_MCB</HistoryLists_hlConditionals></HistoryLists_hlConditionals><HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Count">4</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item0">..\..\Temp_Debug</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item1">..\..\Temp_Release</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item2">..\..\Debug_Temp</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item3">..\..\Temp</HistoryLists_hlIntOutputDir></HistoryLists_hlIntOutputDir><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">2</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">..\..\Runtime\</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item1">..\..\Runtime</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir><Debugging><Debugging Name="DebugSourceDirs">C:\SVN\Trunk\SharedFiles\QLib\</Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost">objet-c2</Parameters><Parameters Name="RemotePath">\\objet-c2\C\STRATASYS_J750\STRATASYS_J750.exe</Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Compiler><Compiler Name="ShowInfoMsgs">0</Compiler><Compiler Name="LinkDebugVcl">0</Compiler><Compiler Name="LinkCGLIB">0</Compiler></Compiler><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><Source><Source Name="MainSource">STRATASYS_J750.cpp</Source></Source><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BDS)\lib\obj;$(BDS)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\SharedFiles\PythonForDelphi\Components;..\..\Binaries\Images;..\..\..\Base\Binaries;$(BDS)\lib\psdk;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg;..\..\..\Base\Sources\RFID\FELibOO;..\..\..\Base\Sources\RFID\Reader;..\..\..\Base\Sources\SignalTower;..\..\..\Base\Sources\AirFlow;..\..\..\Base\Sources\SafetySystem</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item1">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\sharedfiles\xpthememanager\source;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\RFID;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\..\SharedFiles\Utils;$(BDS)\lib\obj;$(BDS)\lib;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\General;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\SharedFiles\PythonForDelphi\Components;..\..\Binaries\Images;..\..\..\Base\Binaries;$(BDS)\lib\psdk;..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build;..\..\..\..\SharedFiles\QLib\Utils;..\..\..\Base\Sources\HtmlUtils;..\..\..\Base\Sources\Scale</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlBRCC_IncludePath><HistoryLists_hlBRCC_IncludePath Name="Count">1</HistoryLists_hlBRCC_IncludePath><HistoryLists_hlBRCC_IncludePath Name="Item0">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries;..\..\..\..\SharedFiles\HASP\Include;$(BDS)\include\dinkumware</HistoryLists_hlBRCC_IncludePath></HistoryLists_hlBRCC_IncludePath><HistoryLists_hlBRCC_Defines><HistoryLists_hlBRCC_Defines Name="Count">1</HistoryLists_hlBRCC_Defines><HistoryLists_hlBRCC_Defines Name="Item0">_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;_DEBUG;OBJET_MACHINE;OBJET_500</HistoryLists_hlBRCC_Defines></HistoryLists_hlBRCC_Defines><HistoryLists_hlBRCC_OutputDir><HistoryLists_hlBRCC_OutputDir Name="Count">1</HistoryLists_hlBRCC_OutputDir><HistoryLists_hlBRCC_OutputDir Name="Item0">..\..\Temp_Emulation\</HistoryLists_hlBRCC_OutputDir></HistoryLists_hlBRCC_OutputDir><HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength></HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item0">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\Base\Binaries;..\..\..\..\SharedFiles\HASP\Include;$(BDS)\include\dinkumware;..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg</HistoryLists_hlBCC_IncludePath></HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Count">1</HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Item0">EMULATION_ONLY;NDEBUG;NO_STRICT;_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;OBJET_MACHINE;OBJET_500;KERNEL_64BIT</HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Item1">NO_STRICT;_MT;WIN32;I386;USE_KERNEL_PLUGIN;OS_WINDOWS;MOTOR_MCB;VISUAL_PARAMETER_MANAGER;OBJET_MACHINE;OBJET_500;KERNEL_64BIT</HistoryLists_hlBCC_Defines></HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Count">1</HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Item0">..\..\Temp_Emulation\</HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Item1">..\..\Temp_Debug\</HistoryLists_hlBCC_OutputDir></HistoryLists_hlBCC_OutputDir><HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors></HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment></HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment></HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_BaseAddress Name="Count">1</HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_BaseAddress Name="Item0">0x00400000</HistoryLists_hlILINK_BaseAddress></HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapCommitSize Name="Count">1</HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapCommitSize Name="Item0">0x00001000</HistoryLists_hlILINK_HeapCommitSize></HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_HeapReserveSize Name="Count">1</HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_HeapReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_HeapReserveSize></HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackCommitSize Name="Count">1</HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackCommitSize Name="Item0">0x00002000</HistoryLists_hlILINK_StackCommitSize></HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_StackReserveSize Name="Count">1</HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_StackReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_StackReserveSize></HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlILINK_IntermediateOutputPath Name="Count">1</HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlILINK_IntermediateOutputPath Name="Item0">..\..\Temp_Release</HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlILINK_IntermediateOutputPath Name="Item1">..\..\Temp_Debug</HistoryLists_hlILINK_IntermediateOutputPath></HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlDCC_IncludePath><HistoryLists_hlDCC_IncludePath Name="Count">1</HistoryLists_hlDCC_IncludePath><HistoryLists_hlDCC_IncludePath Name="Item0">.\;$(BDS)\lib;$(BDS)\lib\obj</HistoryLists_hlDCC_IncludePath></HistoryLists_hlDCC_IncludePath><HistoryLists_hlDCC_ObjOutput><HistoryLists_hlDCC_ObjOutput Name="Count">1</HistoryLists_hlDCC_ObjOutput><HistoryLists_hlDCC_ObjOutput Name="Item0">..\..\Temp_Emulation\</HistoryLists_hlDCC_ObjOutput></HistoryLists_hlDCC_ObjOutput><HistoryLists_hlDCC_CodePage><HistoryLists_hlDCC_CodePage Name="Count">1</HistoryLists_hlDCC_CodePage><HistoryLists_hlDCC_CodePage Name="Item0">0</HistoryLists_hlDCC_CodePage></HistoryLists_hlDCC_CodePage><HistoryLists_hlTASM_IncludePath><HistoryLists_hlTASM_IncludePath Name="Count">1</HistoryLists_hlTASM_IncludePath><HistoryLists_hlTASM_IncludePath Name="Item0">..\..\..\..\SharedFiles\HASP;..\..\..\..\SharedFiles\QTP\Delphi;..\..\..\..\SharedFiles\XPThemeManager\CBuilder;..\..\..\Base\Sources\PowerFail;..\..\..\Base\Sources\EdenPCI\WD_lib\include;..\..\..\Base\FrontEnd\Windows\BIT;..\..\..\Base\Sources\BIT\Windows;..\..\..\Base\Sources\BIT;..\..\..\..\SharedFiles\QLib\QPython\Windows;..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows;..\..\..\Base\FrontEnd\Windows\MCBDiag;..\..\..\Base\Sources\ModesManager;..\..\..\Base\Sources\Wizards;..\..\..\..\SharedFiles\AutoWizard;..\..\..\Base\Sources\Vacuum;..\..\..\Base\Sources\Container;..\..\..\Base\Sources\MaintenanceCounters;..\..\..\..\sharedfiles\components;..\..\..\Base\FrontEnd\Windows\LCDFrontEnd;..\..\..\Base\Sources\MotorsControl;..\..\..\Base\Sources\PeripheralDevices;..\..\..\Base\Sources\Heaters;..\..\..\Base\Sources\Actuator;..\..\..\Base\FrontEnd\Windows\GeneralDialogs;..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg;..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg;..\..\..\..\SharedFiles\QLib\ParamsDialog;..\..\..\Base\Sources\HostComm;..\..\..\Base\Sources\PrintControl;..\..\..\Base\Sources\RPC;..\..\..\Base\Sources\HeadFilling;..\..\..\Base\Sources\Roller;..\..\..\Base\Sources\Door;..\..\..\Base\Sources\Purge;..\..\..\Base\Sources\ErrorHandler;..\..\..\Base\Sources\Power;..\..\..\Base\Sources\EdenPCI;..\..\..\Base\Sources\Tester;..\..\..\Base\Sources\UVLamps;..\..\..\Base\Sources\Sequencer;..\..\..\Base\Sources\SliceProcessing;..\..\..\Base\Sources\PrintJob;..\..\..\Base\Sources\MachineManager;..\..\..\Base\Sources\Parameters;..\..\..\Base\Sources\EdenSerialProtocol;..\..\..\Base\Sources\Application;..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows;..\..\..\Base\FrontEnd\Windows;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\SharedFiles\QLib;..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\Base\Sources\General;..\..\..\..\SharedFiles\Utils;..\..\..\Base\FrontEnd;..\..\..\Base\Sources\EdenPCI\windows\Kernel_Plug_In;..\..\Binaries\Images;..\..\..\..\SharedFiles\PythonForDelphi\Components\Sources\Core;..\..\..\Base\Sources\RFID;..\..\..\..\SharedFiles\XPThemeManager\Source;..\..\..\Base\Binaries;..\..\..\..\SharedFiles\HASP\Include;$(BDS)\include\dinkumware</HistoryLists_hlTASM_IncludePath></HistoryLists_hlTASM_IncludePath><HistoryLists_hlTASM_Defines><HistoryLists_hlTASM_Defines Name="Count">1</HistoryLists_hlTASM_Defines><HistoryLists_hlTASM_Defines Name="Item0">_MT WIN32 I386 USE_KERNEL_PLUGIN OS_WINDOWS MOTOR_MCB VISUAL_PARAMETER_MANAGER _DEBUG OBJET_MACHINE OBJET_500</HistoryLists_hlTASM_Defines></HistoryLists_hlTASM_Defines><HistoryLists_hlTASM_HashTableCapacity><HistoryLists_hlTASM_HashTableCapacity Name="Count">1</HistoryLists_hlTASM_HashTableCapacity><HistoryLists_hlTASM_HashTableCapacity Name="Item0">8192</HistoryLists_hlTASM_HashTableCapacity></HistoryLists_hlTASM_HashTableCapacity><HistoryLists_hlTASM_MaxSymbolLength><HistoryLists_hlTASM_MaxSymbolLength Name="Count">1</HistoryLists_hlTASM_MaxSymbolLength><HistoryLists_hlTASM_MaxSymbolLength Name="Item0">12</HistoryLists_hlTASM_MaxSymbolLength></HistoryLists_hlTASM_MaxSymbolLength><HistoryLists_hlTASM_Passes><HistoryLists_hlTASM_Passes Name="Count">1</HistoryLists_hlTASM_Passes><HistoryLists_hlTASM_Passes Name="Item0">1</HistoryLists_hlTASM_Passes></HistoryLists_hlTASM_Passes><HistoryLists_hlTASM_VersionId><HistoryLists_hlTASM_VersionId Name="Count">1</HistoryLists_hlTASM_VersionId><HistoryLists_hlTASM_VersionId Name="Item0">0</HistoryLists_hlTASM_VersionId></HistoryLists_hlTASM_VersionId><Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+    </Excluded_Packages><HistoryLists_hlILINK_ImageFlags><HistoryLists_hlILINK_ImageFlags Name="Count">1</HistoryLists_hlILINK_ImageFlags><HistoryLists_hlILINK_ImageFlags Name="Item0">LARGEADDRESSAWARE</HistoryLists_hlILINK_ImageFlags></HistoryLists_hlILINK_ImageFlags><HistoryLists_hlDCC_HppOutput><HistoryLists_hlDCC_HppOutput Name="Count">1</HistoryLists_hlDCC_HppOutput><HistoryLists_hlDCC_HppOutput Name="Item0">..\..\Temp_Emulation\</HistoryLists_hlDCC_HppOutput></HistoryLists_hlDCC_HppOutput></CPlusPlusBuilder.Personality><ModelSupport>False</ModelSupport></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <CppCompile Include="..\..\..\..\SharedFiles\AutoWizard\AutoWizard.cpp">
+      <BuildOrder>217</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\AutoWizard\AutoWizardDlg.cpp">
+      <Form>WizardForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\AutoWizard\AutoWizardDlg.h</DependentOn>
+      <BuildOrder>216</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\AutoWizard\ProgressReporting.cpp">
+      <DependentOn>..\..\..\..\SharedFiles\AutoWizard\ProgressReporting.h</DependentOn>
+      <BuildOrder>220</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows\PythonAutoWizard.cpp">
+      <BuildOrder>218</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\AutoWizard\PythonWizard\Windows\PythonWizardPages.cpp">
+      <BuildOrder>219</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\AutoWizard\TimeElapsingFrame.cpp">
+      <Form>TimeElapsing</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\..\SharedFiles\AutoWizard\TimeElapsingFrame.h</DependentOn>
+      <BuildOrder>221</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\AutoWizard\WizardViewer.cpp">
+      <Form>WizardViewerFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\..\SharedFiles\AutoWizard\WizardViewer.h</DependentOn>
+      <BuildOrder>215</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\HASP\Hasp.cpp">
+      <DependentOn>..\..\..\..\SharedFiles\HASP\Hasp.h</DependentOn>
+      <BuildOrder>223</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\HASP\HaspPlugInfoDlg.cpp">
+      <Form>HaspPlugInformationDlg</Form>
+      <DependentOn>..\..\..\..\SharedFiles\HASP\HaspPlugInfoDlg.h</DependentOn>
+      <BuildOrder>224</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\HASP\LicenseManager.cpp">
+      <DependentOn>..\..\..\..\SharedFiles\HASP\LicenseManager.h</DependentOn>
+      <BuildOrder>225</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows\MiniDebugger.cpp">
+      <Form>MiniDebuggerForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows\MiniDebugger.h</DependentOn>
+      <BuildOrder>200</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.cpp">
+      <Form>QMonitorForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.h</DependentOn>
+      <BuildOrder>208</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\Monitor\Windows\QWinMonitor.cpp">
+      <BuildOrder>209</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\ParamsDialog\ArrayParamsEditorDlg.cpp">
+      <Form>ArrayParamsEditorForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\ParamsDialog\ArrayParamsEditorDlg.h</DependentOn>
+      <BuildOrder>202</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\ParamsDialog\ParamsDialog.cpp">
+      <Form>ParamsForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\ParamsDialog\ParamsDialog.h</DependentOn>
+      <BuildOrder>201</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\ParamsDialog\ParamsLevelExposure.cpp">
+      <Form>ParametersExposureLevelForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\ParamsDialog\ParamsLevelExposure.h</DependentOn>
+      <BuildOrder>203</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\BreakpointPropertiesDlg.cpp">
+      <Form>BreakpointPropertiesForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\QPython\Windows\BreakpointPropertiesDlg.h</DependentOn>
+      <BuildOrder>207</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\PythonBreakpointDlg.cpp">
+      <Form>PythonBreakpointForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\QPython\Windows\PythonBreakpointDlg.h</DependentOn>
+      <BuildOrder>206</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\PythonConsole.cpp">
+      <Form>PythonConsoleForm</Form>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\QPython\Windows\PythonConsole.h</DependentOn>
+      <BuildOrder>204</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\QPythonIntegrator.cpp">
+      <Form>QPythonIntegratorDM</Form>
+      <DesignClass>TDataModule</DesignClass>
+      <DependentOn>..\..\..\..\SharedFiles\QLib\QPython\Windows\QPythonIntegrator.h</DependentOn>
+      <BuildOrder>205</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\TinyXML2\tinyxml2.cpp">
+      <BuildOrder>229</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\Utils\BPECompress.cpp">
+      <BuildOrder>212</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\Utils\pkware.cpp">
+      <BuildOrder>213</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\..\SharedFiles\Utils\ZipEng.cpp">
+      <BuildOrder>214</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\BackEndLocalInterface.cpp">
+      <BuildOrder>76</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\RemoteFrontEndInterface.cpp">
+      <BuildOrder>75</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\ActuatorsControlDlg.cpp">
+      <Form>ActuatorsControlForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\ActuatorsControlDlg.h</DependentOn>
+      <BuildOrder>60</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\BIT\BITExtResultsDlg.cpp">
+      <Form>BITExtendedResultsForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\BIT\BITExtResultsDlg.h</DependentOn>
+      <BuildOrder>69</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\BIT\BITProgressDlg.cpp">
+      <Form>BITProgressForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\BIT\BITProgressDlg.h</DependentOn>
+      <BuildOrder>68</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\BIT\BITViewerDlg.cpp">
+      <Form>BITViewerForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\BIT\BITViewerDlg.h</DependentOn>
+      <BuildOrder>67</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\BIT\PrepareForBitDlg.cpp">
+      <Form>PrepareBitDlg</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\BIT\PrepareForBitDlg.h</DependentOn>
+      <BuildOrder>70</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\EdenGeneralDeviceFrame.cpp">
+      <Form>GeneralDeviceFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\EdenGeneralDeviceFrame.h</DependentOn>
+      <BuildOrder>55</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\EdenHeadsFrame.cpp">
+      <Form>HeadsFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\EdenHeadsFrame.h</DependentOn>
+      <BuildOrder>56</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\EdenMainUIFrame.cpp">
+      <Form>MainUIFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\EdenMainUIFrame.h</DependentOn>
+      <BuildOrder>4</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\FansSpeedDlg.cpp">
+      <Form>FansSpeedDlg</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\FansSpeedDlg.h</DependentOn>
+      <BuildOrder>74</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\FrontEndParams.cpp">
+      <BuildOrder>6</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDevicesDlg.cpp">
+      <Form>GeneralDevicesForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDevicesDlg.h</DependentOn>
+      <BuildOrder>57</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\About.cpp">
+      <Form>AboutBox</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\About.h</DependentOn>
+      <BuildOrder>9</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\AgreementPageFrame.cpp">
+      <Form>AgreementFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\AgreementPageFrame.h</DependentOn>
+      <BuildOrder>33</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CalibrationDlg.cpp">
+      <Form>CalibrationForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CalibrationDlg.h</DependentOn>
+      <BuildOrder>11</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CartridgeErrorDlg.cpp">
+      <Form>CartridgeErrorForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CartridgeErrorDlg.h</DependentOn>
+      <BuildOrder>13</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ChooseSilentMRWMode.cpp">
+      <Form>ChooseSilentMRWModeDLG</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ChooseSilentMRWMode.h</DependentOn>
+      <BuildOrder>31</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomLoadCellWellcomeFrame.cpp">
+      <Form>LoadCellWellcomeFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomLoadCellWellcomeFrame.h</DependentOn>
+      <BuildOrder>42</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinMainSelectWizardFrame.cpp">
+      <Form>ResinMainSelectionFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinMainSelectWizardFrame.h</DependentOn>
+      <BuildOrder>44</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinSelectAdvancedFrame.cpp">
+      <Form>ResinSelectionAdvancedSettingsFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinSelectAdvancedFrame.h</DependentOn>
+      <BuildOrder>45</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinSelectSummaryFrame.cpp">
+      <Form>ResinSelectionSummaryFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinSelectSummaryFrame.h</DependentOn>
+      <BuildOrder>46</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomRollerTiltWizardFrame.cpp">
+      <Form>RollerTiltWizardFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomRollerTiltWizardFrame.h</DependentOn>
+      <BuildOrder>52</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomTrayPointsWizardFrame.cpp">
+      <Form>TrayPointsWizardFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomTrayPointsWizardFrame.h</DependentOn>
+      <BuildOrder>14</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomWiperCalibrationFrame.cpp">
+      <Form>CustomWiperCalibrationFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomWiperCalibrationFrame.h</DependentOn>
+      <BuildOrder>40</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomZStartWizardFrame.cpp">
+      <Form>CustomZStartWizardFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomZStartWizardFrame.h</DependentOn>
+      <BuildOrder>53</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\DoorDlg.cpp">
+      <Form>DoorCloseDlg</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\DoorDlg.h</DependentOn>
+      <BuildOrder>18</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HeadsButtonsEntryFrame.cpp">
+      <Form>UserValuesEntryFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HeadsButtonsEntryFrame.h</DependentOn>
+      <BuildOrder>32</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HeadsCheckBoxesFrame.cpp">
+      <Form>HeadsCheckBoxFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HeadsCheckBoxesFrame.h</DependentOn>
+      <BuildOrder>26</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HelpDlg.cpp">
+      <Form>ShowHelpForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HelpDlg.h</DependentOn>
+      <BuildOrder>20</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ImageViewDlg.cpp">
+      <Form>ImageViewForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ImageViewDlg.h</DependentOn>
+      <BuildOrder>10</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\KeyboardMapDlg.cpp">
+      <Form>KeyboardMapForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\KeyboardMapDlg.h</DependentOn>
+      <BuildOrder>22</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\LoadCellCalibration.cpp">
+      <Form>LoadCellCalibrationCheckBoxFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\LoadCellCalibration.h</DependentOn>
+      <BuildOrder>27</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\LocalJobDlg.cpp">
+      <Form>LocalJobForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\LocalJobDlg.h</DependentOn>
+      <BuildOrder>15</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaintenanceWarningForm.cpp">
+      <Form>MaintenanceUserWarningForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaintenanceWarningForm.h</DependentOn>
+      <BuildOrder>21</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaterialReplacementDoneFrame.cpp">
+      <Form>MaterialReplacementDoneFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaterialReplacementDoneFrame.h</DependentOn>
+      <BuildOrder>49</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaterialWarningForm.cpp">
+      <Form>MaterialWarningForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaterialWarningForm.h</DependentOn>
+      <BuildOrder>28</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MissingNozzlesFrame.cpp">
+      <Form>MissingNozzlesScaleBasedFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MissingNozzlesFrame.h</DependentOn>
+      <BuildOrder>43</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MultiGridForm.cpp">
+      <Form>MultiGridForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MultiGridForm.h</DependentOn>
+      <BuildOrder>34</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ParamsExportDlg.cpp">
+      <Form>ParamsExportForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ParamsExportDlg.h</DependentOn>
+      <BuildOrder>12</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\PFFDlg.cpp">
+      <Form>PFFJobForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\PFFDlg.h</DependentOn>
+      <BuildOrder>48</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\RollerWizardYMovementFrame.cpp">
+      <Form>RollerWizardYMoveFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\RollerWizardYMovementFrame.h</DependentOn>
+      <BuildOrder>16</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ServiceKeyDlg.cpp">
+      <Form>ServiceKey</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ServiceKeyDlg.h</DependentOn>
+      <BuildOrder>51</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\StableValueFrame.cpp">
+      <Form>StableValueFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\StableValueFrame.h</DependentOn>
+      <BuildOrder>25</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TankIdentificationNotice.cpp">
+      <Form>TankIDNotice</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TankIdentificationNotice.h</DependentOn>
+      <BuildOrder>30</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TanksSummaryFrame.cpp">
+      <Form>TanksSummaryFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TanksSummaryFrame.h</DependentOn>
+      <BuildOrder>47</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TAxisFrame.cpp">
+      <Form>AxisTFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TAxisFrame.h</DependentOn>
+      <BuildOrder>38</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TrayDlg.cpp">
+      <Form>TrayInsertDlg</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TrayDlg.h</DependentOn>
+      <BuildOrder>41</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UpDownAxisFrame.cpp">
+      <Form>UpDownAxisFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UpDownAxisFrame.h</DependentOn>
+      <BuildOrder>35</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UserValuesEntryWizardFrame.cpp">
+      <Form>UserValuesEntryPageFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UserValuesEntryWizardFrame.h</DependentOn>
+      <BuildOrder>17</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsCalibrationFrame.cpp">
+      <Form>UVLampsCalibrationWizardFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsCalibrationFrame.h</DependentOn>
+      <BuildOrder>50</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsResultsFrame.cpp">
+      <Form>UVLampResultsFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsResultsFrame.h</DependentOn>
+      <BuildOrder>54</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsStatusFrame.cpp">
+      <Form>UVLampStatusFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsStatusFrame.h</DependentOn>
+      <BuildOrder>23</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\VacuumStatusFrame.cpp">
+      <Form>VacuumStatusFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\VacuumStatusFrame.h</DependentOn>
+      <BuildOrder>24</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\WeightsStatusFrame.cpp">
+      <Form>WeightsStatusFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\WeightsStatusFrame.h</DependentOn>
+      <BuildOrder>29</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\XOffsetChooseBestPrintFrame.cpp">
+      <Form>XOffsetChooseBestPrintFram</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\XOffsetChooseBestPrintFrame.h</DependentOn>
+      <BuildOrder>19</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\XYAxisFrame.cpp">
+      <Form>XYAxisFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\XYAxisFrame.h</DependentOn>
+      <BuildOrder>39</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\YAxisFrame.cpp">
+      <Form>YAxisFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\YAxisFrame.h</DependentOn>
+      <BuildOrder>36</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ZAxisFrame.cpp">
+      <Form>ZAxisFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ZAxisFrame.h</DependentOn>
+      <BuildOrder>37</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\HeadsControlDlg.cpp">
+      <Form>HeadsControlForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\HeadsControlDlg.h</DependentOn>
+      <BuildOrder>58</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\LCDBaseScreen.cpp">
+      <Form>LCDBaseFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\LCDBaseScreen.h</DependentOn>
+      <BuildOrder>61</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MainMenuScreen.cpp">
+      <Form>MainMenuFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MainMenuScreen.h</DependentOn>
+      <BuildOrder>63</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MainStatusScreen.cpp">
+      <Form>MainStatusFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MainStatusScreen.h</DependentOn>
+      <BuildOrder>62</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MaintenanceStatusScreen.cpp">
+      <Form>MaintenanceStatusFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MaintenanceStatusScreen.h</DependentOn>
+      <BuildOrder>64</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg\LotusLowLevel.cpp">
+      <Form>LotusLowLevelForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg\LotusLowLevel.h</DependentOn>
+      <BuildOrder>73</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\MaintenanceCountersDlg.cpp">
+      <Form>MaintenanceCountersForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\MaintenanceCountersDlg.h</DependentOn>
+      <BuildOrder>65</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\MainUnit.cpp">
+      <Form>MainForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\MainUnit.h</DependentOn>
+      <BuildOrder>2</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\MCBDiag\MCBDiagDlg.cpp">
+      <Form>MCBDiagForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\MCBDiag\MCBDiagDlg.h</DependentOn>
+      <BuildOrder>66</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\MotorsControlDlg.cpp">
+      <Form>MotorsControlForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\MotorsControlDlg.h</DependentOn>
+      <BuildOrder>59</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\OcbOhdbControlDlg.cpp">
+      <Form>OcbOhdbControlForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\OcbOhdbControlDlg.h</DependentOn>
+      <BuildOrder>72</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg\OHDBOptionsDlg.cpp">
+      <Form>OHDBOptionsForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg\OHDBOptionsDlg.h</DependentOn>
+      <BuildOrder>8</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg\PCIOptionsDlg.cpp">
+      <Form>PCIOptionsForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg\PCIOptionsDlg.h</DependentOn>
+      <BuildOrder>7</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\SplashScreen.cpp">
+      <Form>SplashScreenForm</Form>
+      <DependentOn>..\..\..\Base\FrontEnd\Windows\SplashScreen.h</DependentOn>
+      <BuildOrder>71</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\WinFrontEnd.cpp">
+      <BuildOrder>5</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\FrontEnd\Windows\WinFrontEndInterface.cpp">
+      <BuildOrder>3</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Actuator\Actuator.cpp">
+      <BuildOrder>140</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Actuator\SensorStabilizer.cpp">
+      <BuildOrder>141</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\AirFlow\EvacuationAirFlow.cpp">
+      <BuildOrder>190</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\AirFlow\FixedSizeQueue.cpp">
+      <DependentOn>..\..\..\Base\Sources\AirFlow\FixedSizeQueue.h</DependentOn>
+      <BuildOrder>191</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Application\Q2RTApplication.cpp">
+      <BuildOrder>91</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Application\Q2RTWizard.cpp">
+      <BuildOrder>92</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\BIT\AppBIT.cpp">
+      <BuildOrder>167</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\BIT\BITManager.cpp">
+      <BuildOrder>165</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\BIT\HTML_BITReport.cpp">
+      <BuildOrder>170</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\BIT\TestGroup.cpp">
+      <BuildOrder>166</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\BIT\Windows\PythonAppBIT.cpp">
+      <BuildOrder>169</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\BIT\Windows\PythonTestGroup.cpp">
+      <BuildOrder>168</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Container\AddRemoveRFIDCounter.cpp">
+      <DependentOn>..\..\..\Base\Sources\Container\AddRemoveRFIDCounter.h</DependentOn>
+      <BuildOrder>145</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Container\Container.cpp">
+      <BuildOrder>144</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Door\Door.cpp">
+      <BuildOrder>131</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\EdenPCI\EdenPCI.c">
+      <BuildOrder>117</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\EdenPCI\EdenPCISys.cpp">
+      <BuildOrder>119</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\EdenPCI\FIFOPci.cpp">
+      <BuildOrder>118</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\EdenPCI\plx_defs.c">
+      <BuildOrder>121</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\EdenPCI\plx_lib.c">
+      <BuildOrder>120</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\EdenSerialProtocol\EdenProtocolClient.cpp">
+      <BuildOrder>80</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\EdenSerialProtocol\EdenProtocolEngine.cpp">
+      <BuildOrder>81</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\ErrorHandler\ErrorHandler.cpp">
+      <BuildOrder>125</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Fans\Fans.cpp">
+      <DependentOn>..\..\..\Base\Sources\Fans\Fans.h</DependentOn>
+      <BuildOrder>193</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\General\BlocksAllocator.cpp">
+      <BuildOrder>113</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\General\BMPFile.cpp">
+      <BuildOrder>111</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\General\CFlexibleParameters.cpp">
+      <DependentOn>..\..\..\Base\Sources\General\CFlexibleParameters.h</DependentOn>
+      <BuildOrder>115</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\General\GlobalDefs.cpp">
+      <BuildOrder>114</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\General\HistoryFile.cpp">
+      <DependentOn>..\..\..\Base\Sources\General\HistoryFile.h</DependentOn>
+      <BuildOrder>116</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\General\Q2RTErrors.cpp">
+      <BuildOrder>112</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HeadFilling\HeadFilling.cpp">
+      <BuildOrder>133</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Heaters\AmbientTemperature.cpp">
+      <BuildOrder>79</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Heaters\HeadHeaters.cpp">
+      <BuildOrder>77</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Heaters\TrayHeater.cpp">
+      <BuildOrder>78</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HostComm\ConfigBackupFile.cpp">
+      <BuildOrder>139</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HostComm\HostComm.cpp">
+      <BuildOrder>138</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HtmlUtils\CActionsHistoryTable.cpp">
+      <DependentOn>..\..\..\Base\Sources\HtmlUtils\CActionsHistoryTable.h</DependentOn>
+      <BuildOrder>183</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HtmlUtils\CBatchNumberTable.cpp">
+      <DependentOn>..\..\..\Base\Sources\HtmlUtils\CBatchNumberTable.h</DependentOn>
+      <BuildOrder>184</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HtmlUtils\CHTML_ActionsHistoryReport.cpp">
+      <DependentOn>..\..\..\Base\Sources\HtmlUtils\CHTML_ActionsHistoryReport.h</DependentOn>
+      <BuildOrder>185</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HtmlUtils\CHTML_BatchNoReport.cpp">
+      <BuildOrder>186</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\HtmlUtils\CHTML_ReportFile.cpp">
+      <DependentOn>..\..\..\Base\Sources\HtmlUtils\CHTML_ReportFile.h</DependentOn>
+      <BuildOrder>182</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\MachineManager\MachineManager.cpp">
+      <BuildOrder>93</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\MaintenanceCounters\MaintenanceCounters.cpp">
+      <BuildOrder>142</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\MaintenanceCounters\MaintenanceCountersFile.cpp">
+      <BuildOrder>143</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\ModesManager\ModesManager.cpp">
+      <BuildOrder>164</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\MotorsControl\MCBProtocolClient.cpp">
+      <BuildOrder>127</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\MotorsControl\Motor.cpp">
+      <BuildOrder>128</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\MotorsControl\MotorMcb.cpp">
+      <BuildOrder>130</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\MotorsControl\MotorSequences.cpp">
+      <BuildOrder>129</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Parameters\AppParams.cpp">
+      <BuildOrder>86</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Parameters\AppParams2.cpp">
+      <BuildOrder>88</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Parameters\configuration.cpp">
+      <BuildOrder>87</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Parameters\CSaveTransaction.cpp">
+      <DependentOn>..\..\..\Base\Sources\Parameters\CSaveTransaction.h</DependentOn>
+      <BuildOrder>90</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Parameters\TempAppParams.cpp">
+      <BuildOrder>89</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PeripheralDevices\HeadStatus.cpp">
+      <BuildOrder>84</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PeripheralDevices\OCBProtocolClient.cpp">
+      <BuildOrder>82</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PeripheralDevices\OCBStatus.cpp">
+      <BuildOrder>85</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PeripheralDevices\OHDProtocolClient.cpp">
+      <BuildOrder>83</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PFF\PFFPrintJob.cpp">
+      <DependentOn>..\..\..\Base\Sources\PFF\PFFPrintJob.h</DependentOn>
+      <BuildOrder>195</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PFF\PFFSliceQueue.cpp">
+      <DependentOn>..\..\..\Base\Sources\PFF\PFFSliceQueue.h</DependentOn>
+      <BuildOrder>196</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PowerFail\PowerFailHandler.cpp">
+      <BuildOrder>181</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Power\Power.cpp">
+      <BuildOrder>123</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PrintControl\PrintControl.cpp">
+      <BuildOrder>137</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PrintJob\FilePrintJob.cpp">
+      <BuildOrder>95</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PrintJob\HostPrintJob.cpp">
+      <BuildOrder>96</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\PrintJob\PrintJob.cpp">
+      <BuildOrder>94</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Purge\Purge.cpp">
+      <BuildOrder>126</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RFID\ContainerTag.cpp">
+      <BuildOrder>172</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RFID\FELibOO\Hitag.cpp">
+      <BuildOrder>174</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RFID\FELibOO\SerialPort.cpp">
+      <BuildOrder>173</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RFID\Reader\Logic.cpp">
+      <BuildOrder>178</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RFID\Reader\ReaderDsp.cpp">
+      <BuildOrder>179</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RFID\Reader\Tag.cpp">
+      <BuildOrder>177</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RFID\rfid.cpp">
+      <BuildOrder>171</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Roller\Roller.cpp">
+      <BuildOrder>132</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RPC\PascalString.cpp">
+      <BuildOrder>136</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RPC\RPCClient.cpp">
+      <BuildOrder>134</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\RPC\RPCServer.cpp">
+      <BuildOrder>135</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SafetySystem\SafetySystem.cpp">
+      <BuildOrder>192</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Scale\BaseScaleInterface.cpp">
+      <BuildOrder>188</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Scale\Scale.cpp">
+      <BuildOrder>187</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Sequencer\AlternateSequencer.cpp">
+      <BuildOrder>109</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Sequencer\FourHeadsSequencer.cpp">
+      <BuildOrder>107</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Sequencer\MachineSequencer.cpp">
+      <BuildOrder>104</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Sequencer\NozzlesTestSequencer.cpp">
+      <BuildOrder>108</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Sequencer\TestPatternSequence.cpp">
+      <BuildOrder>106</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Sequencer\UnidirectionPrinting.cpp">
+      <BuildOrder>105</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SignalTower\SignalTower.cpp">
+      <DependentOn>..\..\..\Base\Sources\SignalTower\SignalTower.h</DependentOn>
+      <BuildOrder>189</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SliceProcessing\Layer.cpp">
+      <BuildOrder>102</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SliceProcessing\LayerProcess.cpp">
+      <BuildOrder>98</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SliceProcessing\RandomScatter.cpp">
+      <BuildOrder>101</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SliceProcessing\ScatterGenerator.cpp">
+      <BuildOrder>99</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SliceProcessing\SequentialScatter.cpp">
+      <BuildOrder>100</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SliceProcessing\Slice.cpp">
+      <BuildOrder>97</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\SliceProcessing\TestPatternLayer.cpp">
+      <BuildOrder>103</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\StipulatorData\StipulatorData.cpp">
+      <BuildOrder>194</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Tester\Tester.cpp">
+      <BuildOrder>124</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\UVLamps\UvLamps.cpp">
+      <BuildOrder>110</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Vacuum\HeadVacuum.cpp">
+      <BuildOrder>146</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\BumperCalibrationWizard.cpp">
+      <BuildOrder>147</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\FactoryShutDownWizard.cpp">
+      <BuildOrder>163</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\HeadServiceWizard.cpp">
+      <BuildOrder>157</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\HSWMissingNozzlesPage.cpp">
+      <Form>Form1</Form>
+      <DependentOn>..\..\..\Base\Sources\Wizards\HSWMissingNozzlesPage.h</DependentOn>
+      <BuildOrder>160</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\PrintingPointsPositionsWizard.cpp">
+      <BuildOrder>153</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\Q2RTSHRWizardBase.cpp">
+      <BuildOrder>158</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\QuickSHRWizard.cpp">
+      <BuildOrder>148</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\ResinFlowUtils.cpp">
+      <DependentOn>..\..\..\Base\Sources\Wizards\ResinFlowUtils.h</DependentOn>
+      <BuildOrder>156</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\ResinReplacementPipeline.cpp">
+      <BuildOrder>162</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\ResinReplacementWizard.cpp">
+      <BuildOrder>161</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\ShutdownWizard.cpp">
+      <BuildOrder>155</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\SinglePointWeightCalibrationWizard.cpp">
+      <BuildOrder>152</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\UVCalibrartionWizard.cpp">
+      <BuildOrder>150</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\UVReplacementWizard.cpp">
+      <BuildOrder>154</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\VacuumCalibrartionWizard.cpp">
+      <BuildOrder>151</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\WiperCalibrationWizard.cpp">
+      <BuildOrder>159</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\..\..\Base\Sources\Wizards\XOffsetWizard.cpp">
+      <BuildOrder>149</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="STRATASYS_J750.cpp">
+      <BuildOrder>0</BuildOrder>
+    </CppCompile>
+    <ResFiles Include="STRATASYS_J750.res">
+      <BuildOrder>1</BuildOrder>
+    </ResFiles>
+    <LibFiles Include="..\..\..\..\SharedFiles\HASP\Lib\Lib73\libhasp_cpp_windows_bcc.lib">
+      <BuildOrder>226</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="..\..\..\..\SharedFiles\HASP\Lib\Lib73\libhasp_windows_bcc_92199.lib">
+      <BuildOrder>227</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="..\..\..\..\SharedFiles\PythonForDelphi\Components\Release_Build\Python_d7.lib">
+      <BuildOrder>228</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.lib">
+      <BuildOrder>199</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="..\..\..\..\SharedFiles\Utils\PKWARE\IMPBORL.LIB">
+      <BuildOrder>211</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="..\..\..\Base\Sources\EdenPCI\WD_lib\lib\wd_utils_borland.lib">
+      <BuildOrder>122</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="..\..\..\Base\Tools\Sentinel\AOC\LibraryProject\Windows\Release\msvcr120r.lib">
+      <BuildOrder>198</BuildOrder>
+    </LibFiles>
+    <None Include="..\..\..\..\SharedFiles\Utils\LinearInterpolator.h">
+      <BuildOrder>210</BuildOrder>
+    </None>
+    <None Include="..\..\..\Base\Sources\RFID\FELibOO\CmdCodes.h">
+      <BuildOrder>175</BuildOrder>
+    </None>
+    <None Include="..\..\..\Base\Sources\RFID\FELibOO\ErrorCodes.h">
+      <BuildOrder>176</BuildOrder>
+    </None>
+    <None Include="..\..\..\Base\Sources\RFID\Reader\ReaderDfn.h">
+      <BuildOrder>180</BuildOrder>
+    </None>
+    <ResourceCompile Include="..\..\..\Base\Binaries\FEResources.rc">
+      <BuildOrder>197</BuildOrder>
+    </ResourceCompile>
+    <ResourceCompile Include="..\..\Binaries\Images\FEResources500.rc">
+      <BuildOrder>231</BuildOrder>
+    </ResourceCompile>
+    <ResourceCompile Include="Version.rc">
+      <BuildOrder>232</BuildOrder>
+    </ResourceCompile>
+    <DelphiCompile Include="..\..\..\..\SharedFiles\CppToDelphiException\SystemCppException.pas">
+      <BuildOrder>230</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\..\..\..\SharedFiles\QTP\Delphi\MicDelphiAgent.pas">
+      <BuildOrder>222</BuildOrder>
+    </DelphiCompile>
+    <FormResources Include="..\..\..\..\SharedFiles\AutoWizard\AutoWizardDlg.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\AutoWizard\TimeElapsingFrame.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\AutoWizard\WizardViewer.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\HASP\HaspPlugInfoDlg.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\MiniDebugger\Windows\MiniDebugger.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\ParamsDialog\ArrayParamsEditorDlg.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\ParamsDialog\ParamsDialog.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\ParamsDialog\ParamsLevelExposure.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\BreakpointPropertiesDlg.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\PythonBreakpointDlg.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\PythonConsole.dfm" />
+    <FormResources Include="..\..\..\..\SharedFiles\QLib\QPython\Windows\QPythonIntegrator.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\ActuatorsControlDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\BIT\BITExtResultsDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\BIT\BITProgressDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\BIT\BITViewerDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\BIT\PrepareForBitDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\EdenGeneralDeviceFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\EdenHeadsFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\EdenMainUIFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\FansSpeedDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDevicesDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\About.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\AgreementPageFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CalibrationDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CartridgeErrorDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ChooseSilentMRWMode.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomLoadCellWellcomeFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinMainSelectWizardFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinSelectAdvancedFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomResinSelectSummaryFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomRollerTiltWizardFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomTrayPointsWizardFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomWiperCalibrationFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\CustomZStartWizardFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\DoorDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HeadsButtonsEntryFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HeadsCheckBoxesFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\HelpDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ImageViewDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\KeyboardMapDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\LoadCellCalibration.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\LocalJobDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaintenanceWarningForm.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaterialReplacementDoneFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MaterialWarningForm.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MissingNozzlesFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\MultiGridForm.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ParamsExportDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\PFFDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\RollerWizardYMovementFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ServiceKeyDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\StableValueFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TankIdentificationNotice.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TanksSummaryFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TAxisFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\TrayDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UpDownAxisFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UserValuesEntryWizardFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsCalibrationFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsResultsFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\UVLampsStatusFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\VacuumStatusFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\WeightsStatusFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\XOffsetChooseBestPrintFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\XYAxisFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\YAxisFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\GeneralDialogs\ZAxisFrame.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\HeadsControlDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\LCDBaseScreen.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MainMenuScreen.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MainStatusScreen.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\LCDFrontEnd\MaintenanceStatusScreen.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\LotusLowLevelDlg\LotusLowLevel.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\MaintenanceCountersDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\MainUnit.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\MCBDiag\MCBDiagDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\MotorsControlDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\OcbOhdbControlDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\OHDBOptionsDlg\OHDBOptionsDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\PCIOptionsDlg\PCIOptionsDlg.dfm" />
+    <FormResources Include="..\..\..\Base\FrontEnd\Windows\SplashScreen.dfm" />
+    <FormResources Include="..\..\..\Base\Sources\Wizards\HSWMissingNozzlesPage.dfm" />
+    <BuildConfiguration Include="Debug Build">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Emulation">
+      <Key>Cfg_3</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release Build">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>

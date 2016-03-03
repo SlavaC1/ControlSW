@@ -1,0 +1,1726 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            
+//  IIIIIII SSSSSS                                                            
+//    II    SS                          InstallShield (R)                     
+//    II    SSSSSS      (c) 1996-2000, InstallShield Software Corporation     
+//    II        SS      (c) 1990-1996, InstallShield Corporation              
+//  IIIIIII SSSSSS                     All Rights Reserved.                   
+//                                                                            
+//                                                                            
+//  This code is generated as a starting setup template.  You should   
+//  modify it to provide all necessary steps for your setup.
+//                                                                            
+//                                                                            
+//    File Name:  Setup.rul                                                   
+//                                                                            
+//  Description:  InstallShield script                                        
+//                                                                            
+//     Comments:  This template script performs a basic setup. With minor           
+//                modifications, this template can be adapted to create       
+//                new, customized setups.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+// Include header files
+    
+#include "ifx.h" //DO NOT REMOVE
+#include "NTServicePack.h"
+#include "CheckOSVersion.h"
+#include "MaintOptions.h"
+prototype SetDemoInstall(BYVAL BOOL);
+
+#include "NTServicePack.rul"
+#include "MaintOptions.rul"
+#include "ComponentEvents.rul"
+#include "CheckOSVersion.rul" 
+
+prototype PostInstallBatchCommands();
+prototype deletePrevInstDIr();
+prototype ObjetReboot();
+prototype ObjetInstDrivers(); 
+prototype deleteAfterInstall();
+
+
+//#define TEST
+    
+////////////////////// string defines ////////////////////////////
+
+//////////////////// installation declarations ///////////////////
+
+// ----- DLL function prototypes -----
+
+
+// your DLL function prototypes
+
+
+// ---- script function prototypes -----
+
+
+// your script function prototypes
+
+// your global variables
+
+    NUMBER	nSetupType;
+    BOOL	bInstallDemo;
+    BOOL	bInstallAfterRemove;
+    BOOL	bSpecialUpdateVesrion;
+    BOOL    UpgradeExecuted;
+
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           
+//  FUNCTION:   OnFirstUIBefore                                            
+//                                                                           
+//  EVENT:      FirstUIBefore event is sent when installation is run for the first
+//              time on given machine. In the handler installation usually displays
+//              UI allowing end user to specify installation parameters. After this
+//              function returns, ComponentTransferData is called to perform file
+//              transfer.
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function OnFirstUIBefore()
+    NUMBER  nResult,nSetupType;
+	STRING	szOpt1;
+	STRING  szOpt2;
+    STRING  svSetupType;
+    STRING  szTitle, szMsg, szResult, szInfo, szFormat;
+    STRING  szLicenseFile, szQuestion; 
+    STRING  szName;
+    STRING  szCompany;
+    STRING  szFile;
+    STRING  szTargetPath;
+    STRING  szfolder;
+    STRING  szComponents, szTargetdir; 
+    STRING  szFeatures;
+    STRING  szTempString;  
+    STRING  svPath; 
+    STRING  svVersionNumber;
+    NUMBER  nLevel;
+    NUMBER  nSize;
+    LIST    list; 
+    NUMBER  nvSize;
+    NUMBER  nStartPos;
+    BOOL    bLicenseAccepted; 
+    STRING  szBackupDir;
+    STRING	szAppPath;
+    STRING  svResult;
+    STRING	szProgram;
+    STRING  szCmdLine;
+     
+     
+    string  szVer, szUpgradePath, szUpgradeFileName, sVer, sBackupDir, sArchivepath ;   
+    number  nvVer, nvUpgradeVersion, nVer, nReturn ;
+    LIST    listInfo; 
+    
+begin	
+
+    // TO DO: if you want to enable background, window title, and caption bar title                                                                     
+    // SetTitle( @TITLE_MAIN, 24, WHITE );                                        
+    // SetTitle( @TITLE_CAPTIONBAR, 0, BACKGROUNDCAPTION ); 	                   
+    // Enable( FULLWINDOWMODE );						   
+    // Enable( BACKGROUND );							  
+    // SetColor(BACKGROUND,RGB (0, 128, 128));					   
+                                           
+    
+    UpgradeExecuted = NO;
+    TARGETDIR = "C:\\";	
+    SHELL_OBJECT_FOLDER = @FOLDER_NAME;
+    bInstallDemo = NO;  
+    bSpecialUpdateVesrion = NO;
+    
+    
+    
+    
+    
+// 	Check if the operating system is proper for the driver installation
+// 	or should be used as a demo version.
+// 	-------------------------------------------------------------------      
+	bInstallDemo = CheckOSVersion();
+
+//  Check if the previous version is 58.0.0.25
+//  ------------------------------------------ 
+    szTitle = "Version 85.0.0.0 update";
+    
+//  Save the current values of installation source and target directories
+//  ---------------------------------------------------------------------
+	VarSave(SRCTARGETDIR);   
+	
+	TARGETDIR = TARGETDIR^@FOLDER_NAME;
+
+//  Find the existing PJ750.exe file version 
+/*
+//  --------------------------------------------
+	szFile = "STRATASYS_J750.exe"; 
+    nResult = VerFindFileVersion(szFile, svPath, svVersionNumber); 
+
+    if (nResult = FILE_NOT_FOUND) then 
+        szMsg = "Unable to locate %s. Doing a regular install."; 
+        SprintfBox (INFORMATION, szTitle, szMsg, szFile); 
+
+    elseif (nResult = FILE_NO_VERSION) then 
+        szMsg = "%s version number not found. Aborting, call Objet service"; 
+        SprintfBox (INFORMATION, szTitle, szMsg, szFile); 
+        abort; 
+
+    elseif (nResult < 0) then 
+        MessageBox ("VerFindFileVersion failed. Aborting, call Objet service", SEVERE); 
+        abort;
+    endif;  
+    
+    if (svVersionNumber = "85.0.0.0") then
+        MessageBox ("Upgrading Version 85.0.0.0", INFORMATION); 
+        bSpecialUpdateVesrion = YES;
+    	TARGETDIR = "C:\\";	
+		szAppPath = TARGETDIR^@FOLDER_NAME;
+
+//  	Save Configs and modes directories for upgrade of version 25
+//  	------------------------------------------------------------
+    	szBackupDir = szAppPath^"\\Upgrade25to31";  
+    	  
+#ifdef TEST
+		MessageBox(szBackupDir, INFORMATION); 
+#endif
+
+//  	Save the current values of installation source and target directories
+//  	---------------------------------------------------------------------
+		VarSave(SRCTARGETDIR); 
+
+		SRCDIR = SRCDIR^"\\UncompressedBackup\\ParametersUpdate";
+		TARGETDIR = szBackupDir;
+ 	
+//  	Copy the Update directory to the Upgrade25to31 directory
+//  	--------------------------------------------------------  
+#ifdef TEST
+		MessageBox(SRCDIR, INFORMATION); 
+		MessageBox(TARGETDIR, INFORMATION); 
+#endif
+    	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+    	if (nResult < 0) then 
+        	MessageBox ("XCopy of ParametersUpdate directory from install media failed", SEVERE);
+    	endif;
+
+//  	Copy the configs directory
+//  	--------------------------
+    	SRCDIR = szAppPath^"\\Configs";	
+		TARGETDIR = szBackupDir^"\\Configs";
+    	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+	    if (nResult < 0) then 
+ 	       MessageBox ("Configs directory Copy failed", SEVERE);
+  		endif;
+  
+//  	Copy the Modes directory
+//  	--------------------------
+    	SRCDIR = szAppPath^"\\Modes";	
+		TARGETDIR = szBackupDir^"\\Modes";
+    	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+    	if (nResult < 0) then
+        	MessageBox ("Modes directory copy failed", SEVERE);
+    	endif;
+
+//  	Copy the UV history file
+//  	------------------------
+    	SRCDIR = szAppPath^"\\ServiceTools\\UV Lamps";	
+		TARGETDIR = szBackupDir^"\\ServiceTools\\UV Lamps";
+    	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+    	if (nResult < 0) then
+        	MessageBox ("UV History File copy failed", SEVERE);
+    	endif;
+                          
+//  	Check if the repair file exists and run it
+//  	------------------------------------------
+    	if (FindFile(szBackupDir,"UpdateParams.bat",svResult) < 0) then
+    		MessageBox("Could not find UpdateParams.bat file to run.", SEVERE);
+    		goto EndUpdate;
+    	endif;
+
+//  	Launch the UpdateParams.bat application and wait for completion
+//		-----------------------------------------------------------
+    	if (LaunchAppAndWait (szBackupDir^"\\UpdateParams.bat","",WAIT) < 0) then
+        	MessageBox ("Unable to launch UpdateParams.bat file.",SEVERE);
+    	endif;
+    	
+//		Uninstall Previous installation
+//		------------------------------- 
+		szProgram = "C:\\Program Files\\InstallShield Installation Information\\{965185C0-7C6D-471E-9862-80BEB9C2512E}\\Setup.exe";
+		szCmdLine = "-runfromtemp -l0x0009 -removeonly";
+		if (LaunchAppAndWait(szProgram,szCmdLine,WAIT) < 0) then
+			MessageBox ("Unable to uninstall Version  58.0.0.25", SEVERE);
+		endif;
+    endif;
+   */
+EndUpdate:
+	
+//  Restore original source and target directories
+//  ----------------------------------------------
+    VarRestore(SRCTARGETDIR);    
+
+
+// Beginning of UI Sequence
+Dlg_Start:
+    nResult = 0;
+
+Dlg_SdWelcome:
+    szTitle = "";
+    szMsg = "";
+    //{{IS_SCRIPT_TAG(Dlg_SdWelcome)
+    nResult = SdWelcome( szTitle, szMsg );
+    //}}IS_SCRIPT_TAG(Dlg_SdWelcome)
+    if (nResult = BACK) goto Dlg_Start;
+
+Dlg_SdLicense2:
+    szTitle = "";
+    szOpt1 = "";
+    szOpt2 = "";
+    //{{IS_SCRIPT_TAG(License_File_Path)
+    szLicenseFile = SUPPORTDIR ^ "License.txt";
+    //}}IS_SCRIPT_TAG(License_File_Path)
+    //{{IS_SCRIPT_TAG(Dlg_SdLicense2)
+    nResult = SdLicense2Rtf( szTitle, szOpt1, szOpt2, szLicenseFile, bLicenseAccepted );
+    //}}IS_SCRIPT_TAG(Dlg_SdLicense2)
+    if (nResult = BACK) then
+        goto Dlg_SdWelcome;
+    else
+        bLicenseAccepted = TRUE;
+    endif;
+	
+//  setup default status
+//  --------------------
+    SetStatusWindow(0, "");
+    Enable(STATUSEX);
+    StatusUpdate(ON, 100);
+
+//  The next line jumps over the custom selection dialogs
+//  -----------------------------------------------------
+//    goto Dlg_SdStartCopy2;
+
+//UPGRADE mechanism from E500V to C500  //
+    //------------------------------------ //
+    if (@UPGRADEBYPASS == "0" )then 
+     
+        szUpgradePath     = TARGETDIR ^ @UPGRADEDIRNAME;
+        szUpgradeFileName = @UPGRADEMACHINENAME;  
+        
+
+    	
+    	if (ExistsDir ( szUpgradePath ) == 0)then //exist 
+    		
+    		if (FindFile ( szUpgradePath, szUpgradeFileName, svResult ) == 0 )then //exist
+    			
+    			VerGetFileVersion ( szUpgradePath ^ szUpgradeFileName , sVer );//get exe version
+    			
+    			
+    			//if ( nVer >= nvUpgradeVersion )then 
+    			nReturn = VerCompare( sVer, @UPGRADEVERSION , VERSION);
+    			if (nReturn == 2 || nReturn == 0 ) then
+	   				nReturn = AskYesNo ( @UPGRADEMSGVEROK , YES ); 
+    				if (nReturn = NO)then 
+    				    abort;
+    				else 
+    				    
+    					// 1. run Bojena's utility(transfer ~perMachines..) 
+    					
+         				// 2. backup files that are defined to transfer to C500 
+         			    Disable(CANCELBUTTON);   					
+         				sBackupDir = szUpgradePath ^ @UPGRADEBACKUPDIR; 
+         				CreateDir ( sBackupDir );
+         				CreateDir ( sBackupDir ^ "Modes");
+         				CreateDir ( sBackupDir ^ "Configs");
+         				 
+         				//XCopyFile ( szUpgradePath ^ "Modes" ^ "DefaultModes" ^"~PerMachineDefault.cfg" , sBackupDir ^ "Modes" ^ "DefaultModes\\", COMP_NORMAL | INCLUDE_SUBDIR ); 
+         				//XCopyFile ( szUpgradePath ^ "Modes" ^ "HighQualityModes" ^"~PerMachine_HQ.cfg" , sBackupDir ^ "Modes" ^ "HighQualityModes\\", COMP_NORMAL | INCLUDE_SUBDIR ); 
+         				//XCopyFile ( szUpgradePath ^ "Modes" ^ "HighSpeedModes" ^"~PerMachine_HS.cfg" , sBackupDir ^ "Modes" ^ "HighSpeedModes\\" , COMP_NORMAL | INCLUDE_SUBDIR );
+         				
+         				//XCopyFile ( szUpgradePath ^ "Configs" ^ "Q2rt.cfg" , sBackupDir ^ "Configs\\" , COMP_NORMAL | INCLUDE_SUBDIR );
+         				XCopyFile ( szUpgradePath ^ "Configs" ^ "SensorVacuum.txt" , sBackupDir ^ "Configs\\" , COMP_NORMAL | INCLUDE_SUBDIR );
+         				XCopyFile ( szUpgradePath ^ "Configs" ^ "Tray.txt" , sBackupDir ^ "Configs\\" , COMP_NORMAL | INCLUDE_SUBDIR );
+         				XCopyFile ( szUpgradePath ^ "Configs" ^ "follow - up log.txt" , sBackupDir ^ "Configs\\" , COMP_NORMAL | INCLUDE_SUBDIR );
+         				
+         				Disable(LOGGING); //for not unInstalling this directory during UnInstallation process
+         				// 3. backup(copy) the whole directory into a hidden dir 
+         				sArchivepath = PROGRAMFILES ^ @UPGRADECOPYFILE ;  
+         				CreateDir ( sArchivepath );
+         				XCopyFile ( szUpgradePath ^ "*.*" , sArchivepath ^ "*.*",  COMP_NORMAL | INCLUDE_SUBDIR);
+    					
+    					Enable(LOGGING);
+    					// 4. run the un-install
+    					LaunchAppAndWait (@UPGRADESOURCEDIR^"setup.exe","",WAIT) ;
+    					// 5. FLAG that transfer from E500 to C500 started is marked. 
+    					UpgradeExecuted = YES;
+    				endif;
+    			else //version is smaller then supported - message to upgrade and abort; 
+    			    MessageBox( @UPGRADEMSGVERNOTOK, INFORMATION);
+    				abort;
+    				
+    			endif;
+    			
+    		endif;//FindFile  
+    		
+    	endif;//ExistsDir
+    			 
+    endif; //UPGRADEBYPASS
+    
+    return 0;
+
+
+// Left from the old setup script file 
+	
+Dlg_SdShowInfoList:
+   szFile = SUPPORTDIR ^ "infolist.txt";
+   list = ListCreate( STRINGLIST );
+    ListReadFromFile( list, szFile );
+    szTitle  = "";
+    szMsg    = "";
+    nResult  = SdShowInfoList( szTitle, szMsg, list );	
+    ListDestroy( list );
+    if (nResult = BACK) goto Dlg_SdLicense2; 
+    
+    
+Dlg_SdRegisterUser:
+    szMsg = "";
+    szTitle = "";
+    //{{IS_SCRIPT_TAG(Dlg_SdRegisterUser)	
+    nResult = SdRegisterUser( szTitle, szMsg, szName, szCompany );
+    //}}IS_SCRIPT_TAG(Dlg_SdRegisterUser)
+    if (nResult = BACK) goto Dlg_SdLicense2;
+
+Dlg_SetupType2:   
+    szTitle    = "Setup Type Selection";
+    szMsg      = "Please Select a Setup Type";
+    nResult = CUSTOM;
+	nSetupType = TYPICAL;
+    //{{IS_SCRIPT_TAG(Dlg_SetupType2)	
+    nResult = SetupType2( szTitle, szMsg, "", nSetupType, 0 );
+    //}}IS_SCRIPT_TAG(Dlg_SetupType2)
+    if (nResult = BACK) then
+        goto Dlg_SdRegisterUser;
+    else
+        nSetupType = nResult;
+        if (nSetupType != CUSTOM) then
+            szTargetPath = TARGETDIR;
+            nSize = 0;
+            FeatureCompareSizeRequired( MEDIA, szTargetPath, nSize );
+            if (nSize != 0) then      
+                MessageBox( szSdStr_NotEnoughSpace, WARNING );
+                goto Dlg_SetupType2;
+            endif;
+        endif;   
+    endif;
+
+Dlg_SdAskDestPath2:
+    if ((nResult = BACK) && (nSetupType != CUSTOM)) goto Dlg_SetupType2;
+	szTitle = "Select a destination drive for the application \n Only the drive name will be used";
+    szMsg = "";
+	szTargetPath = TARGETDIR + @FOLDER_NAME;//"Objet500";
+    if (nSetupType = CUSTOM) then
+    //{{IS_SCRIPT_TAG(Dlg_SdAskDestPath2)	
+	  nResult = SdAskDestPath2( szTitle, szMsg, szTargetPath );
+    //}}IS_SCRIPT_TAG(Dlg_SdAskDestPath2)
+      nStartPos = StrFind(szTargetPath,"\\");
+      szTempString = ""; 
+	  CopyBytes (szTempString, 0, szTargetPath, 0, nStartPos + 1);
+	  TARGETDIR = szTempString;
+      endif;
+    if (nResult = BACK) goto Dlg_SetupType2;
+
+
+Dlg_SdFeatureTree: 
+    if ((nResult = BACK) && (nSetupType != CUSTOM)) goto Dlg_SetupType2;
+    szTitle = "";
+    szMsg = "";
+    szFeatures = "";
+    nLevel = 2;
+    if (nSetupType = CUSTOM) then
+        //{{IS_SCRIPT_TAG(Dlg_SdFeatureTree)	
+        nResult = SdFeatureTree( szTitle, szMsg, TARGETDIR, szFeatures, nLevel );
+        //}}IS_SCRIPT_TAG(Dlg_SdFeatureTree)
+        if (nResult = BACK) goto Dlg_SdAskDestPath2;  
+    endif;
+
+	
+Dlg_SQLServer:
+    nResult = OnSQLServerInitialize( nResult );
+    if( nResult = BACK ) goto Dlg_SdFeatureTree;
+
+Dlg_ObjDialogs:
+    nResult = ShowObjWizardPages( nResult );
+    if (nResult = BACK) goto Dlg_SQLServer;
+    
+Dlg_SdStartCopy2:
+    szTitle = "";
+    szMsg = "";
+    //{{IS_SCRIPT_TAG(Dlg_SdStartCopy2)	
+    nResult = SdStartCopy2( szTitle, szMsg );	
+    //}}IS_SCRIPT_TAG(Dlg_SdStartCopy2)
+    
+//  This is the original line     
+//    if (nResult = BACK) goto Dlg_ObjDialogs;
+    if (nResult = BACK) goto Dlg_Start;
+    // Added in 11.0 - Set appropriate StatusEx static text.
+    SetStatusExStaticText( SdLoadString( IDS_IFX_STATUSEX_STATICTEXT_FIRSTUI ) );
+ 
+    return 0;
+    
+
+end;
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//  FUNCTION:   OnMoving
+//
+//  EVENT:      Moving event is sent when file transfer is started as a result of
+//              ComponentTransferData call, before any file transfer operations 
+//              are performed.
+//
+///////////////////////////////////////////////////////////////////////////////
+function OnMoving()
+    STRING szAppPath;
+begin
+    // Set LOGO Compliance Application Path 
+    // TO DO : if your application .exe is in a subfolder of TARGETDIR then add subfolder 
+    szAppPath = TARGETDIR;
+    RegDBSetItem(REGDB_APPPATH, szAppPath);
+//    RegDBSetItem(REGDB_APPPATH_DEFAULT, szAppPath ^ @IFX_PRODUCT_KEY);
+end;
+ 
+ 
+///////////////////////////////////////////////////////////////////////////////
+//
+//  FUNCTION:   OnEnd
+//
+//  EVENT:      End event is the last event. It is not sent if the installation
+//              has been aborted. In this case Abort event is sent
+//
+///////////////////////////////////////////////////////////////////////////////
+function OnEnd()
+
+	STRING szTitle, szMsg1, szMsg2, HaspDriverDir;
+   	NUMBER nOption, nReserved;
+	STRING szJungoRegistrationFile;
+	STRING szCmdLine, szLocation;
+	#define JungoTools_PATH @FOLDER_NAME ^ "JUNGO\\"
+	
+	begin  
+	
+	
+		//installs hasp Driver and Jungo Driver:
+		ObjetInstDrivers();        
+		ObjetReboot(); 
+    	            
+
+    	
+    end; 
+//---------------------------------------------------------------------------
+// deleteAfterInstall
+//
+// called from ObjetReboot() 
+
+// used for deleting files/directories that are not needed after 
+// the installation proccess is finished
+//
+//---------------------------------------------------------------------------
+function deleteAfterInstall()
+	
+	string sDir;
+	
+	begin
+	
+	 	 sDir = TARGETDIR^@FOLDER_NAME ^"ServiceTools"^"ParametersExportAndImport"^"ParamsExportAndImport_Prev.exe" ;
+    	 DeleteFile ( sDir ); 
+    	 
+         sDir =  TARGETDIR^@FOLDER_NAME ^ "Jungo" ^"RemoveEdenJungo"  ;
+         DeleteDir ( sDir , ALLCONTENTS ); 
+         
+      	 //sDir = TARGETDIR^@FOLDER_NAME ^"Help";
+     	 //DeleteDir( sDir, ALLCONTENTS ); 
+     
+	end;  
+	  
+//---------------------------------------------------------------------------
+// ObjetInstDrivers
+//
+// called from OnEnd 
+
+// used for Installing hasp driver and Jungo Driver on machines that run the
+// installation for the first time..
+// the function calls batch file named: OnFirstInstall.bat
+// this batch installs hasp and Jungo Driver 
+//
+//---------------------------------------------------------------------------    
+function ObjetInstDrivers() 
+    STRING  szLocation, szEdenDir ;
+  
+	begin 
+	
+	    if (UpgradeExecuted ) then         //remove previously installed Jungo - 
+      		szEdenDir = TARGETDIR^@FOLDER_NAME^ "Jungo" ^ "RemoveEdenJungo";
+     		if (LaunchAppAndWait (szEdenDir ^ "UnRegisterJungo.bat ","",WAIT) < 0) then
+          		MessageBox ("Unable to launch UnRegisterJungo.bat for eden file.",SEVERE);
+      		endif;
+      	endif;
+      	
+		szLocation = TARGETDIR^@FOLDER_NAME ;  		
+    	if (!MAINTENANCE) then 
+     		 if (nSetupType != MODIFY) then
+	    		if (nSetupType != REMOVEALL) then
+	      			if (bInstallDemo != YES) then
+          				if (LaunchAppAndWait(szLocation ^ "OnFirstInstall.bat" ,szLocation,WAIT) < 0) then
+            				MessageBox ("Unable to launch OnFirstInstall.bat file.",SEVERE);
+    					endif;
+         			 endif; 
+        		endif;
+      		endif;
+    	endif;                     
+	end;	
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//	FUNCTION: OnFirstUIAfter
+//
+//
+///////////////////////////////////////////////////////////////////////////////
+function OnFirstUIAfter()
+
+STRING szAppPath, svResult, szAppName; 
+STRING	szBackupDir; 
+STRING	szUpgradeDir, szEdenDir;
+NUMBER	nResult;
+
+string sPathToUpdater, sDefs, sFrom, sTo, sArchivepath, szCmdLine ; 
+string sPathToMCUpdater;
+
+    begin   
+    
+    if (bSpecialUpdateVesrion = YES) then 
+
+    	TARGETDIR = "C:\\";	
+		szAppPath = TARGETDIR^@FOLDER_NAME; 
+		szBackupDir = szAppPath^"\\Backup";
+
+//  	Save Configs and modes directories for upgrade of version 25
+//  	------------------------------------------------------------
+    	szUpgradeDir = szAppPath^"\\Upgrade25to31";    
+#ifdef TEST
+		MessageBox(szBackupDir, INFORMATION); 
+#endif
+
+//  	Save the current values of installation source and target directories
+//  	---------------------------------------------------------------------
+		VarSave(SRCTARGETDIR); 
+
+//  	Copy the configs directory
+//  	--------------------------
+		SRCDIR = szUpgradeDir^"\\Configs";
+    	TARGETDIR = szBackupDir^"\\Configs";	
+    	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+	    if (nResult < 0) then 
+ 	       	MessageBox ("XCopyFile failed", SEVERE);
+  			endif;
+  
+//  	Copy the Modes directory
+//  	--------------------------
+		SRCDIR = szUpgradeDir^"\\Modes";
+    	TARGETDIR = szBackupDir^"\\Modes";	
+    	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+    	if (nResult < 0) then
+        	MessageBox ("XCopyFile failed", SEVERE);
+    		endif;
+
+//  	Copy the UV history file
+//  	------------------------
+    	SRCDIR = szUpgradeDir^"\\ServiceTools\\UV Lamps";	
+		TARGETDIR = szBackupDir^"\\ServiceTools\\UV Lamps";
+    	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+    	if (nResult < 0) then
+        	MessageBox ("UV History File copy failed", SEVERE);
+    	endif;
+              
+//  	Restore source and target directories
+//  	-------------------------------------
+    	VarRestore(SRCTARGETDIR);    
+              
+              
+//		Activate the PostInstall.bat file to copy per machine parameters
+//		----------------------------------------------------------------    
+        PostInstallBatchCommands(); 
+        
+    	endif;
+
+//  Check if the new installation exists
+//  ------------------------------------
+	szAppPath = TARGETDIR^@FOLDER_NAME;
+	szAppName = @MAIN_APPLICATION_NAME;
+
+ //	MessageBox(szAppPath, INFORMATION);
+ //       MessageBox(szAppName, INFORMATION);
+    if (FindFile(szAppPath,szAppName,svResult) < 0) then
+    	MessageBox("Could not find application.", SEVERE);
+    	abort;
+    	endif;
+    
+//  Save the current values of installation source and target directories
+//  ---------------------------------------------------------------------
+	VarSave(SRCTARGETDIR); 
+
+//  Disable logging operations in the uninstall log file
+//  ----------------------------------------------------	
+	Disable(LOGGING);
+//Run NPostInstall.bat in demo mode only	                       
+    if (bInstallDemo = YES) then    	  
+  //  Check if a NPostInstall command file exists and run it
+  //  ----------------------------------------------------
+      if (FindFile(szAppPath,"NPostInstall.bat",svResult) < 0) then
+    	  MessageBox("Could not find the NPostInstall file to run.", SEVERE);
+    	  abort;
+      endif;
+
+  //  Launch the NPostInstall file and wait for completion
+  //	-----------------------------------------------------
+      if (LaunchAppAndWait (szAppPath^"\\NPostInstall.bat",szAppPath,WAIT) < 0) then
+          MessageBox ("Unable to launch NPostInstall file.",SEVERE);
+      endif;
+    endif;
+//  Enable logging
+//  --------------
+    Enable(LOGGING);
+    
+//  Restore original source and target directories
+//  ----------------------------------------------
+    VarRestore(SRCTARGETDIR);    
+ 
+    
+//  finish upgrade from E500V to C500:  //
+//  ----------------------------------  //
+    if (UpgradeExecuted ) then 
+         
+                            
+      XCopyFile ( TARGETDIR ^ @UPGRADEDIRNAME ^ @UPGRADEBACKUPDIR^ "*.*"  , szAppPath ^ "*.*", COMP_NORMAL | INCLUDE_SUBDIR );                      
+      
+   // Bojena's utility execute to transform parameters from E500V to C500 //
+   // --------------------------------------------------------------------// 
+   
+      sPathToUpdater = @UPGRADESOURCEDIR ^ @UPGRADEUPDATERDIR^"Updater.exe" ;   
+      sArchivepath = PROGRAMFILES ^ @UPGRADECOPYFILE ;
+      
+      sPathToMCUpdater = @UPGRADESOURCEDIR ^ @UPGRADEMCUPDATERDIR ^ "MC_Updater.exe" ;
+      
+      //for q2rt transfer:
+     /* sFrom = '"' + sArchivepath ^ "Configs" ^ "Q2rt.cfg" + '"' ;
+      sTo =   szAppPath ^ "Configs" ^ "Q2rt.cfg" ; 
+      sDefs ="Defs.cfg" ;
+      szCmdLine = sFrom+" "+sTo+" "+sDefs+" Y";
+      LaunchAppAndWait(sPathToUpdater,szCmdLine, WAIT); 
+       */
+      sFrom = '"' + sArchivepath ^ "Modes" ^ "DefaultModes" ^"~PerMachineDefault.cfg" + '"' ;
+      sTo =   szAppPath ^ "Modes" ^ "DefaultModes" ^"~PerMachineDefault.cfg" ;
+      sDefs ="DefsDefault.cfg" ; 
+      szCmdLine = sFrom+" "+sTo+" "+sDefs+" Y";
+      LaunchAppAndWait(sPathToUpdater,szCmdLine , WAIT);
+      
+      sFrom = '"' + sArchivepath ^ "Modes" ^ "HighSpeedModes" ^"~PerMachine_HS.cfg" + '"' ;
+      sTo =   szAppPath ^ "Modes" ^ "HighSpeedModes" ^"~PerMachine_HS.cfg" ;
+      sDefs ="Defs_HS.cfg" ; 
+      szCmdLine = sFrom+" "+sTo+" "+sDefs;
+      LaunchAppAndWait(sPathToUpdater,szCmdLine, WAIT);
+      
+      sFrom = '"' + sArchivepath ^ "Modes" ^ "HighQualityModes" ^"~PerMachine_HQ.cfg" + '"' ;
+      sTo =   szAppPath ^ "Modes" ^ "HighQualityModes" ^"~PerMachine_HQ.cfg" ;
+      sDefs ="Defs_HQ.cfg" ;
+      szCmdLine = sFrom+" "+sTo+" "+sDefs;
+      LaunchAppAndWait(sPathToUpdater,szCmdLine , WAIT);
+      
+      sFrom = '"' + sArchivepath ^ "Modes" ^ "HighQualityModes" ^"~PerMachine_HQ.cfg" + '"' ;
+      sTo =   szAppPath ^ "Modes" ^ "DigitalMaterialsModes" ^ "~PerMachine_DM.cfg" ;
+      sDefs ="Defs_DM1.cfg" ;
+      szCmdLine = sFrom+" "+sTo+" "+sDefs;
+      LaunchAppAndWait(sPathToUpdater,szCmdLine , WAIT);
+      
+      sFrom = '"' + sArchivepath ^ "Modes" ^ "HighSpeedModes" ^"~PerMachine_HS.cfg" + '"' ;
+      sTo =   szAppPath ^ "Modes" ^ "DigitalMaterialsModes" ^ "~PerMachine_DM.cfg" ;
+      sDefs ="Defs_DM2.cfg" ;
+      szCmdLine = sFrom+" "+sTo+" "+sDefs;
+      LaunchAppAndWait(sPathToUpdater,szCmdLine , WAIT);
+                                    
+                                    
+      /* for Maintanence Counters */
+      sFrom = '"' + sArchivepath ^ "Configs"^ "Maintenance.dat" + '"' ;
+      sTo =   szAppPath ^ "Configs" ^ "Maintenance.dat"  ;
+      sDefs ="Defs.cfg" ;
+      szCmdLine = sFrom+" "+sTo+" "+sDefs;
+      LaunchAppAndWait(sPathToMCUpdater,szCmdLine , WAIT);
+     
+     
+      //Delete previous machine directory:
+      nResult = DeleteDir( TARGETDIR ^ @UPGRADEDIRNAME , ALLCONTENTS ); 
+    	
+    endif; //UpgradeExecuted
+    
+    end;
+ 
+ 
+  ///////////////////////////////////////////////////////////////////////////////
+//
+//	FUNCTION: SetDemoInstall
+//
+//	 PURPOSE: This is a set function for the bDemoInstall variable
+//
+///////////////////////////////////////////////////////////////////////////////
+function SetDemoInstall(InstallDemo)
+		                               
+	begin 
+    bInstallDemo = InstallDemo;
+    end;
+ 
+//////////////////////////////////////////////////////////////////////////////
+//  FUNCTION:	OnMD5Error
+//
+//  EVENT:      MD5 event is sent when the file requested doesn't match the file
+//              in the InstallShield CAB file.
+//
+//  ARGUMENTS:  File - full path of the file
+//
+//  RETURN:     ERR_IGNORE - engine should ignore the file and continue file transfer
+//              ERR_RETRY  - the file is now available in location pointed to by Path
+//              ERR_ABORT  - file transfer should be aborted
+//
+///////////////////////////////////////////////////////////////////////////////
+function OnMD5Error(File)
+STRING szErrMsg, szCaption;
+NUMBER nRet;
+begin
+	// Reason: CRC Error - File doesn't match the file in the CAB
+	// Usually occurs with "Data As Files"
+	// return ERR_IGNORE, ERR_RETRY or ERR_ABORT
+	
+	szErrMsg = SdLoadString(IFX_ONMD5ERROR);
+	szCaption = SdLoadString(IFX_ONMD5_CAPTION);
+
+DISPLAY_ERROR:    
+    nRet = SprintfBox(MB_ABORTRETRYIGNORE, szCaption, szErrMsg, File);
+
+    if(nRet = IDABORT)then
+        Do(EXIT);
+        goto DISPLAY_ERROR:
+    endif;
+
+    return nRet;
+    
+return ERR_IGNORE;    
+end;
+ 
+//////////////////////////////////////////////////////////////////////////////
+//
+//  FUNCTION:   OnAppSearch
+//
+//  EVENT:      AppSearch event is used as an entry point to implement code to 
+//              search for previous versions of the current application. This
+//		        event is sent only for a first time installation.
+//
+///////////////////////////////////////////////////////////////////////////////
+function OnAppSearch()
+begin
+end;  
+
+
+
+
+//---------------------------------------------------------------------------
+// OnUpdateUIBefore
+//
+// Update UI Sequence - Before Move Data
+//
+// The OnUpdateUIBefore event is called when the setup is running in update
+// mode. By default this event displays UI that allows the end user to
+// update the application to the current version.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnUpdateUIBefore()
+	string szTitle, szMsg, szIgnore, szVersionInstalled, szVersionSupported, szVersionUpdate,szCmdLine;
+	number nVersionInstalled;
+	number nIgnore, nId, nMediaFlags;
+	number nResult; 
+	STRING svDir, svResult, szCaption, szFormat, svPrevVers;
+    STRING szAppPath, szBackupDir, szDeleteDir,szQ2rtFile,szFileName;  
+    string szDelMaterials,szDelSupportMaterials, szDelUncompressedBackup;
+
+begin
+    //  check if wizard not finished properly
+//  -------------------------------------
+// ---
+ 
+ 	szQ2rtFile = TARGETDIR^@FOLDER_NAME ^"Configs";
+ 	szFileName   = "Q2rt.cfg";
+ 
+//  Determine the update media type.	
+//  --------------------------------
+	MediaGetData( MEDIA, MEDIA_FIELD_MEDIA_FLAGS, nMediaFlags, szIgnore );
+
+//  Compare Versions
+//  ----------------
+	nResult = VerProductCompareVersions();
+
+//  Make sure that valid data was returned by VerProductCompareVersions
+//  -------------------------------------------------------------------
+	if( nResult < ISERR_SUCCESS ) then
+		szMsg = SdLoadString( IDS_IFX_ERROR_UPDATE_VERSION_COMPARE_FAILURE );
+		MessageBox( szMsg, SEVERE );
+		abort;
+	endif;
+
+//  Make sure that the product is installed.
+//  ----------------------------------------
+	if( nResult = VERSION_COMPARE_RESULT_NOT_INSTALLED ) then
+	
+//      Note: This result should occur only for differential media, since OnFirstUIBefore
+//      will be called by default for non-differential media in this case.
+//      ---------------------------------------------------------------------------------
+		szMsg = SdLoadString( IDS_IFX_ERROR_UPDATE_PRODUCT_NOT_INSTALLED );
+		SdSubstituteProductInfo( szMsg );
+		MessageBox( szMsg, SEVERE );
+		abort;
+	endif;	
+
+//  Check whether the update is older than the currently installed version.
+//  -----------------------------------------------------------------------
+	if( nResult = VERSION_COMPARE_RESULT_OLDER ) then
+		szMsg = SdLoadString( IDS_IFX_ERROR_UPDATE_NOT_APPROPRIATE );
+		SdSubstituteProductInfo( szMsg );
+		MessageBox( szMsg, SEVERE );
+		abort;
+	endif;
+
+//  Verify that this update is appropriate for the version of the application that is installed.
+//  --------------------------------------------------------------------------------------------
+	if( nResult = VERSION_COMPARE_RESULT_NEWER_NOT_SUPPORTED ) then
+		szMsg = SdLoadString( IDS_IFX_ERROR_UPDATE_NOT_SUPPORTED );
+		SdSubstituteProductInfo( szMsg );
+		MessageBox( szMsg, SEVERE );
+		abort;
+	endif;
+
+//  Check whether the update is needed.
+//  -----------------------------------
+	if( nResult = VERSION_COMPARE_RESULT_SAME ) then
+	
+//      Note: This result should occur only for differential media, since the setup
+//      will display OnMaintUIBefore or OnFirstUIBefore by default if the versions match
+//      for full setup media.
+//      ---------------------------------------------------------------------------------
+		szMsg = SdLoadString( IDS_IFX_WARNING_UPDATE_NOT_NEEDED );
+		SdSubstituteProductInfo( szMsg );
+		if( MessageBox( szMsg, MB_ICONEXCLAMATION | MB_YESNO ) != IDYES ) then
+			abort;
+		endif;
+	endif;           
+
+  
+Update_ObjetUpdateCode:  
+
+	VarSave(SRCTARGETDIR); 
+
+    szAppPath = TARGETDIR^@FOLDER_NAME;
+
+//  Save Configs and modes directories
+//  ----------------------------------
+    szBackupDir = szAppPath^"\\Backup";    
+#ifdef TEST
+	MessageBox(szBackupDir, INFORMATION); 
+#endif
+                                
+	SRCDIR = SRCDIR^"\\UncompressedBackup";
+	TARGETDIR = szBackupDir;    
+    if (FindFile(szBackupDir,"*.*",svResult) < 0) then
+    	goto Update_CopyBackupFiles;
+    	
+    else
+
+//      Delete the previous backup directory
+//      ------------------------------------
+    	DeleteDir ( TARGETDIR, ALLCONTENTS );  
+    endif;  
+    
+Update_CopyBackupFiles:     
+//  Copy the PreUninstall.bat file to the backup directory
+//  ------------------------------------------------------  
+#ifdef TEST
+	MessageBox(SRCDIR, INFORMATION); 
+	MessageBox(TARGETDIR, INFORMATION); 
+#endif
+
+    nResult = XCopyFile("PreUninstall.bat","",INCLUDE_SUBDIR|COMP_NORMAL);
+    if (nResult < 0) then 
+        MessageBox ("XCopyFile PreUninstall.bat failed", SEVERE);
+    endif;
+	
+//  Copy the configs directory
+//  --------------------------
+    SRCDIR = szAppPath^"\\Configs";	
+	TARGETDIR = szBackupDir^"\\Configs";
+    nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+    if (nResult < 0) then 
+        MessageBox ("XCopyFile failed", SEVERE);
+    endif;
+  
+//  Copy the Modes directory
+//  --------------------------
+    SRCDIR = szAppPath^"\\Modes";	
+	TARGETDIR = szBackupDir^"\\Modes";
+    nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+    if (nResult < 0) then
+        MessageBox ("XCopyFile failed", SEVERE);
+    endif;  
+
+//  Copy the UV history file
+//  ------------------------
+    SRCDIR = szAppPath^"\\ServiceTools\\UV Lamps";	
+	TARGETDIR = szBackupDir^"\\ServiceTools\\UV Lamps";
+   	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+   	if (nResult < 0) then
+       	MessageBox ("UV History File copy failed", SEVERE);
+   	endif;     
+   	
+//  Copy the RecentActions.htm file
+//  ------------------------
+    SRCDIR = szAppPath^"\\ServiceTools\\Recent Maintenance Actions Performed";	
+	TARGETDIR = szBackupDir^"\\ServiceTools\\Recent Maintenance Actions Performed";
+   	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+   	if (nResult < 0) then
+       	MessageBox ("RecentActions File copy failed", SEVERE);
+   	endif;
+	
+//  Copy the "Single Head Replacement Wizard" history file
+//  ------------------------
+    SRCDIR = szAppPath^"\\ServiceTools\\SHR";	
+	TARGETDIR = szBackupDir^"\\ServiceTools\\SHR";
+   	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+   	if (nResult < 0) then
+       	MessageBox ("Single Head Replacement Wizard history file copy failed", SEVERE);
+   	endif;
+          
+//  Copy the "Head Optimization Wizard" history file
+//  ------------------------
+    SRCDIR = szAppPath^"\\ServiceTools\\Head Optimization Wizard";	
+	TARGETDIR = szBackupDir^"\\ServiceTools\\Head Optimization Wizard";
+   	nResult = XCopyFile("*.*","",INCLUDE_SUBDIR|COMP_NORMAL);
+   	if (nResult < 0) then
+       	MessageBox ("Head Optimization Wizard history file copy failed", SEVERE);
+   	endif;
+                          
+//  Check if a preinstall command file exists and run it
+//  ----------------------------------------------------
+    if (FindFile(szBackupDir,"PreUninstall.bat",svResult) < 0) then
+    	MessageBox("Could not find Pre Uninstall file to run.", SEVERE);
+    	goto Update_RemoveFiles;
+    endif;
+
+    //send with "0" - indicates demo or upgrade mode       
+    szCmdLine = szAppPath + " 0";   
+//  Launch the registration application and wait for completion
+//	-----------------------------------------------------------
+    if (LaunchAppAndWait (szBackupDir^"\\PreUninstall.bat",szCmdLine,WAIT) < 0) then
+        MessageBox ("Unable to launch Pre Uninstall file.",SEVERE);
+    endif;
+	
+    szAppPath = TARGETDIR^@FOLDER_NAME;
+
+//  Delete the old configs dir
+//  --------------------------
+    szDeleteDir = szAppPath^"\\configs" ;
+    DeleteDir ( szDeleteDir , ALLCONTENTS );
+    
+//  Delete the old help dir
+//  -----------------------    
+    szDeleteDir = szAppPath^"\\help" ;
+    DeleteDir ( szDeleteDir , ALLCONTENTS ); 
+    
+//  Restore original source and target directories
+//  ----------------------------------------------
+    VarRestore(SRCTARGETDIR);    
+                            
+Update_RemoveFiles:
+   
+                            
+//  Automatically select newly added features, do this before UI sequence in case so that
+//  if a feature dialog is added, it reflects newly selected features.
+//  -------------------------------------------------------------------------------------
+	FeatureSelectNew( MEDIA, TRUE );
+
+//  TODO: Enable this line if you want the update to automatically uninstall
+//  any features that are not contained in the media but are listed in the 
+//  log file.
+//  ------------------------------------------------------------------------
+	FeatureRemoveAllInLogOnly();
+//	FeatureRemoveAllInMediaAndLog(); will not update but only remove
+
+//  Ensure update service state is set as FeatureSelectNew can select the update
+//  service files if ISUS is added during an update.
+//  ----------------------------------------------------------------------------
+    UpdateServiceOnEnabledStateChange();
+
+//  Initialize SQL
+//  --------------
+//  OnSQLServerInitializeMaint();
+                           
+                 
+                           
+// Beginning of UI Sequence
+Dlg_Start:
+//      Check if didn't finish wizard
+//      -----------------------------         
+        IsWithInWizard(szQ2rtFile,szFileName); 
+          
+        
+// 	Check if the operating system is proper for the driver installation
+// 	or should be used as a demo version.
+// 	-------------------------------------------------------------------      
+	bInstallDemo = CheckOSVersion();
+	SetDemoInstall(bInstallDemo);
+
+Dlg_SdWelcome:
+	szTitle = "";
+    szMsg = SdLoadString( IDS_IFX_SDWELCOMMESSAGE_UPDATE_WELCOME );
+    nResult = SdWelcome( szTitle, szMsg );
+    if (nResult = BACK) goto Dlg_Start;
+
+//      Delete shortcut machine from previous version
+//      -------------------------------------
+        DelShortcut();
+Dlg_ObjDialogs:
+    nResult = ShowObjWizardPages( nResult );
+    if (nResult = BACK) goto Dlg_SdWelcome; 
+
+	if( nMediaFlags & MEDIA_FLAG_FORMAT_DIFFERENTIAL ) then
+		// Differential installs patch media.
+		FeaturePatch();
+	else
+		// Update reinstalls (updates) all features in media.
+		FeatureReinstall();
+	endif;
+
+    // Added in 11.0 - Set appropriate StatusEx static text.
+    szMsg = SdLoadString( IDS_IFX_STATUSEX_STATICTEXT_UPDATEUI );
+	SdSubstituteProductInfo( szMsg );
+    SetStatusExStaticText( szMsg ); 
+    
+    //delete previously installed files/directories: 
+    deletePrevInstDIr();
+    //delete  2 old dir:
+    szAppPath = TARGETDIR^@FOLDER_NAME; 
+    szDelMaterials        = szAppPath^"\\Modes"^"\\Materials" ; 
+    szDelSupportMaterials = szAppPath^"\\Modes"^"\\SupportMaterials" ;
+    szDelUncompressedBackup =  szAppPath^"UncompressedBackup"  ;
+    DeleteDir ( szDelMaterials , ALLCONTENTS );
+    DeleteDir ( szDelSupportMaterials , ALLCONTENTS );
+    DeleteDir ( szDelUncompressedBackup , ALLCONTENTS );   
+    
+end;  
+
+//---------------------------------------------------------------------------
+// OnUpdateUIAfter
+//
+// Update Mode UI Sequence - After Move Data
+//
+// The OnUpdateUIAfter event called by OnShowUI after the file transfer
+// of the setup when the setup is running in update mode. By default
+// this event displays UI that informs the end user that the maintenance setup
+// has been completed successfully.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnUpdateUIAfter()
+    string	szTitle, szMsg1, szMsg2, szOpt1, szOpt2,szAppPath,svResult;
+    BOOL	bOpt1, bOpt2; 
+    string sDir;
+begin
+
+    ShowObjWizardPages(NEXT);
+    
+	szTitle = SdLoadString(IDS_IFX_SDFINISH_UPDATE_TITLE);    
+    szMsg1  = SdLoadString(IDS_IFX_SDFINISH_UPDATE_MSG1);
+	szMsg2 = "";    
+    szOpt1 = "";
+    szOpt2 = "";
+	bOpt1   = FALSE;
+    bOpt2   = FALSE;    
+    
+ //   PostInstallBatchCommands();  
+    
+     /*for upgrade version*/
+    /*delete files and directories that not in use for this version */ 
+   // deletePrevInstDIr(); 
+    
+  /*  
+    if ( BATCH_INSTALL ) then
+    	SdFinishReboot ( szTitle , szMsg1 , SYS_BOOTMACHINE , szMsg2 , 0 );
+    else 
+      	SdFinish ( szTitle , szMsg1 , szMsg2 , szOpt1 , szOpt2 , bOpt1 , bOpt2 );
+    endif;  
+    */
+end; 
+
+
+//---------------------------------------------------------------------------
+// deletePrevInstDIr
+//
+// delete files and directoris from previus installation on 
+
+// that are not in use on the new installation
+//
+//---------------------------------------------------------------------------  
+function deletePrevInstDIr()      
+	string  sDir;
+begin                             
+    
+    
+    
+	sDir = TARGETDIR^@FOLDER_NAME ^"Help"^"Impact_Bumper_Help_files" ;
+    DeleteDir( sDir, ALLCONTENTS ); 
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Help"^"Movies" ;
+    DeleteDir( sDir, ALLCONTENTS ); 
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Help"^"Optimization Wizard" ;
+    DeleteDir( sDir, ALLCONTENTS );
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Help"^"Tip of The Day" ;
+    DeleteDir( sDir, ALLCONTENTS );  
+    sDir = TARGETDIR^@FOLDER_NAME ^"Help"^"UV Adjustment Wizard" ;
+    DeleteDir( sDir, ALLCONTENTS ); 
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Help"^"Impact_Bumper_Help.htm";
+    DeleteFile ( sDir );  
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Help";
+    DeleteDir( sDir, ALLCONTENTS ); 
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"CalibrationFiles";
+    DeleteDir( sDir, ALLCONTENTS ); 
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Scripts" ;
+    DeleteDir( sDir, ALLCONTENTS );
+     
+    sDir = TARGETDIR^@FOLDER_NAME ^"ServiceTools";
+    DeleteDir( sDir, ALLCONTENTS );
+          
+    sDir = TARGETDIR^@FOLDER_NAME ^"Modes"^"GeneralModes"^"~DigitalMaterialMix.cfg" ;
+    DeleteFile ( sDir );
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Modes"^"GeneralModes"^"~SingleMaterialMix.cfg" ;
+    DeleteFile ( sDir );
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Modes"^"Materials"^"DigitalMaterialsModes";
+    DeleteDir( sDir, ALLCONTENTS ); 
+    
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Wizards";
+    DeleteDir( sDir, ALLCONTENTS );  
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Modes"^"HighMixModes";
+    DeleteDir( sDir, ALLCONTENTS );  
+    
+    sDir = TARGETDIR^@FOLDER_NAME ^"Modes"^"Materials-DigitalMaterialsModes" ;
+    DeleteDir( sDir, ALLCONTENTS ); 
+
+                                              
+    
+end;
+//---------------------------------------------------------------------------
+// OnSetUpdateMode
+//
+// OnSetUpdateMode is called directly by the framework to set the UPDATEMODE
+// InstallShield system variable appropriately to control which UI events
+// are called by OnShowUI.
+//
+// Note: This event is called for all setups.
+//---------------------------------------------------------------------------
+function OnSetUpdateMode()
+	number	nIgnore, nMediaFlags, nInstalledVersion, nUpdateVersion, nResult;
+	number  nMaintOption;
+	string	szCmdLine, szVersion, szIgnore, szMsg; 
+	
+	
+	string sPathToUpdater, sDefs, sArchivepath,sFrom,sTo,szAppPath;
+begin
+
+//      Check if exe or emulation is running before starting to upgrade - if yes, abort.
+//      --------------------------------------------------------------------------------        
+        if (IsProcesRunning(@MAIN_APPLICATION_NAME) || IsProcesRunning(@EMULATION_APP_NAME)
+        || IsProcesRunning(@UPGRADEMACHINEEMULNAME)|| IsProcesRunning(@UPGRADEMACHINENAME)) then
+        	MessageBox("The software installation cannot proceed. Objet applications are still open.", WARNING);
+        	abort;
+        endif;
+        
+         
+	UPDATEMODE = FALSE; // Non-update mode by default.
+    UpgradeExecuted = FALSE; //Init for new setup.
+	// Added 11.5 - Don't set UPDATEMODE when running from Add/Remove
+	if( ADDREMOVE ) then
+		return ISERR_SUCCESS;
+	endif;
+
+	// Added 11.5 - Don't set UPDATEMODE when REMOVEONLY is specified
+	if( REMOVEONLY ) then
+		return ISERR_SUCCESS;
+	endif;
+
+	// Get the media flags.
+	MediaGetData( MEDIA, MEDIA_FIELD_MEDIA_FLAGS, nMediaFlags, szIgnore );
+
+	if( ! ( nMediaFlags & MEDIA_FLAG_UPDATEMODE_SUPPORTED ) ) then
+		return ISERR_SUCCESS; // Update mode not supported by the setup.
+	endif;
+
+	// TODO: If you are updating an application that was installed by a previous
+	// version of InstallShield, IFX_INSTALLED_VERSION will be empty, and
+	// VERSION_COMPARE_RESULT_NOT_INSTALLED will be returned by
+	// VerProductCompareVersions. Change the value of IFX_INSTALLED_VERSION (and
+	// IFX_INSTALLED_DISPLAY_VERSION) here based on application specific version
+	// information determined by the setup. Only do this if IFX_INSTALLED_VERSION
+	// is empty.
+	//if ( !StrLengthChars( IFX_INSTALLED_VERSION ) && MAINTENANCE ) then
+	//	IFX_INSTALLED_VERSION = "X.XX.XXX";
+	//	IFX_INSTALLED_DISPLAY_VERSION = IFX_INSTALLED_VERSION;
+	//endif;
+
+#ifdef TEST
+    MessageBox("On Set Update Mode",SEVERE);
+    szMsg = IFX_INSTALLED_VERSION;
+    MessageBox(szMsg,SEVERE);
+    szMsg = IFX_PRODUCT_VERSION;
+    MessageBox(szMsg,SEVERE);
+#endif           
+	// Verify that the installed version is valid.
+	if( !StrLengthChars( IFX_INSTALLED_VERSION ) && MAINTENANCE ) then
+		// If this error occurs, IFX_INSTALLED_VERSION needs to be set manually.
+		szMsg = SdLoadString( IDS_IFX_ERROR_UPDATE_NO_INSTALLED_VERSION );
+		MessageBox( szMsg, SEVERE );
+		abort;
+	endif;
+
+	// Verify that the product version is valid.
+	if( !StrLengthChars( IFX_PRODUCT_VERSION ) ) then
+		// If this error occures, IFX_PRODUCT_VERSION was not initialized correctly.
+		szMsg = SdLoadString( IDS_IFX_ERROR_UPDATE_NO_PRODUCT_VERSION );
+		MessageBox( szMsg, SEVERE );
+		abort;
+	endif;
+
+	// Do the version comparison.
+	nResult = VerProductCompareVersions();
+
+	// Make sure that valid data was returned by VerProductCompareVersions
+	if( nResult < ISERR_SUCCESS ) then
+		szMsg = SdLoadString( IDS_IFX_ERROR_UPDATE_VERSION_COMPARE_FAILURE );
+		MessageBox( szMsg, SEVERE );
+		abort;
+	endif;
+    
+//  In case the versions are the same ask the user if he wants to 
+//  upgrade anyway    
+//  ------------------------------------------------------------- 
+    if (nResult = VERSION_COMPARE_RESULT_SAME) then
+    	nMaintOption = DisplayMaintenanceOptions();
+		if (nMaintOption = 101) then 
+#ifdef TEST		 
+             MessageBox ("Upgrade selected.", INFORMATION);
+#endif             
+             UPDATEMODE = ( nMediaFlags & MEDIA_FLAG_FORMAT_DIFFERENTIAL || ( MAINTENANCE && ( nResult = VERSION_COMPARE_RESULT_SAME ) ) );
+	    endif;
+    else
+    
+//      Set update mode if this is a differential media or the product is already installed and the versions do not match.
+//      ------------------------------------------------------------------------------------------------------------------
+	    UPDATEMODE = ( nMediaFlags & MEDIA_FLAG_FORMAT_DIFFERENTIAL || ( MAINTENANCE && ( nResult != VERSION_COMPARE_RESULT_SAME ) ) );
+    endif; 
+end;
+
+
+//---------------------------------------------------------------------------
+// OnMaintUIBefore
+//
+// Maintenance UI Sequence - Before Move Data
+//
+// The OnMaintUIBefore event is called by OnShowUI when the setup is
+// running in maintenance mode. By default this event displays UI that
+// allows the end user to add or remove features, repair currently
+// installed features or uninstall the application.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnMaintUIBefore()
+    number	nResult, nType, nMediaFlags;
+    string	szTitle, szMsg, szIgnore, szAppPath,szCmdLine,svResult;
+begin
+	
+	// nType defaults to MODIFY.
+	nType = MODIFY;
+
+    //Initialize SQL
+    OnSQLServerInitializeMaint();
+
+// Beginning of UI Sequence
+Dlg_Start:
+
+//  The template text was modified here to allow only the remove option
+//  -------------------------------------------------------------------
+
+//  Hide the initial progress dialog as otherwise the user can
+//  click on it, and hide the MessageBox.
+//  ----------------------------------------------------------
+    Disable( DIALOGCACHE );
+
+//  In RemoveOnly mode, set to remove.
+//  ----------------------------------
+    nType = REMOVEALL;
+
+//  Show Uninstall Confirmation Dialog
+//  ----------------------------------
+    if ( nType = REMOVEALL ) then
+		nResult = MessageBox( SdLoadString( IFX_MAINTUI_MSG ), MB_YESNO );
+		if (nResult != IDYES ) then
+            abort;
+		endif;
+	endif;
+
+Dlg_SdFeatureTree:
+	if ( nType = MODIFY ) then
+		szTitle = "";
+		szMsg = SdLoadString( SD_STR_COMPONENT_MAINT_MSG );
+		nResult = SdFeatureTree( szTitle, szMsg, TARGETDIR, "", -1 );
+		if ( nResult = BACK ) goto Dlg_Start;
+    endif;
+
+Dlg_ObjDialogs:
+    nResult = ShowObjWizardPages( nResult );
+    if ( ( nResult = BACK ) && ( nType != MODIFY ) ) goto Dlg_Start;
+    if ( ( nResult = BACK ) && ( nType = MODIFY ) ) goto Dlg_SdFeatureTree;
+
+	switch(nType)
+
+        case REMOVEALL:
+	      szAppPath = TARGETDIR^@FOLDER_NAME;
+		//  Save Configs and modes directories
+		//  ----------------------------------
+		//  Check if a preinstall command file exists and run it
+		//  ----------------------------------------------------
+    		if (FindFile(szAppPath,"PreUninstall.bat",svResult) < 0) then
+    			MessageBox("Could not find Pre Uninstall file to run.", SEVERE);    		  
+    		endif;
+ 		bInstallDemo = !SYSINFO.bIsWow64;
+            	if (bInstallDemo = YES) then
+    	      	  szCmdLine = szAppPath + " 0";   
+            	else
+        	  szCmdLine = szAppPath + " 1";   
+            	endif;    
+			//  Launch the registration application and wait for completion
+			//	-----------------------------------------------------------
+    		if (LaunchAppAndWait (szAppPath^"\\PreUninstall.bat",szCmdLine,WAIT) < 0) then
+        		MessageBox ("Unable to launch Pre Uninstall file.",SEVERE);
+    		endif;
+						
+			// Ensure that all previously installed features are removed
+			// for media that supports updating.
+			MediaGetData( MEDIA, MEDIA_FIELD_MEDIA_FLAGS, nMediaFlags, szIgnore );
+			
+			if( nMediaFlags & MEDIA_FLAG_UPDATEMODE_SUPPORTED ) then
+				FeatureRemoveAllInMediaAndLog();
+			else
+				FeatureRemoveAllInMedia();
+			endif;
+
+            // Added in 11.0 - Set appropriate StatusEx static text.
+            SetStatusExStaticText( SdLoadString( IDS_IFX_STATUSEX_STATICTEXT_MAINTUI_REMOVEALL ) );
+
+        case REPAIR:
+				
+			// Changed for DevStudio 9, Disk1 files are now always updated when installed
+			// so when running from ADDREMOVE we need to prevent these files from being
+			// updated since this will result in files being updated that are locked by the setup.
+			// Updating these files when running from ADDREMOVE should not be needed since updates
+			// are not run directly from Add/Remove.
+            if( ADDREMOVE ) then
+                // Reinstall all previously installed features, except
+                // disk1 features.
+                FeatureUpdate( "" );
+            else
+                // Reinstall all previously installed features.
+                FeatureReinstall();
+            endif;
+
+            // Added in 11.0 - Set appropriate StatusEx static text.
+            SetStatusExStaticText( SdLoadString( IDS_IFX_STATUSEX_STATICTEXT_MAINTUI_REPAIR ) );
+
+        case MODIFY:
+            
+            // Added in 11.0 - Set appropriate StatusEx static text.
+            SetStatusExStaticText( SdLoadString( IDS_IFX_STATUSEX_STATICTEXT_MAINTUI_MODIFY ) );
+
+    endswitch;
+ 
+end;
+
+function PostInstallBatchCommands()
+
+	STRING	szAppPath;  
+	STRING	szCmdLine;
+	STRING	svResult;
+
+	begin
+	
+//  Check if the new installation exists
+//  ------------------------------------
+	szAppPath = TARGETDIR^@FOLDER_NAME;
+
+//	MessageBox(szAppPath, INFORMATION);
+ //       MessageBox(@MAIN_APPLICATION_NAME, INFORMATION);
+    if (FindFile(szAppPath,@MAIN_APPLICATION_NAME,svResult) < 0) then
+      MessageBox("Could not find application.", SEVERE);
+      abort;
+    endif;
+    
+//  Save the current values of installation source and target directories
+//  ---------------------------------------------------------------------
+	VarSave(SRCTARGETDIR); 
+
+//  Disable logging operations in the uninstall log file
+//  ----------------------------------------------------	
+	Disable(LOGGING);                       
+
+//  Check if a postinstall command file exists and run it
+//  ----------------------------------------------------
+    if (FindFile(szAppPath,"PostInstall.bat",svResult) < 0) then
+      MessageBox("Could not find the PostInstall file to run.", SEVERE);
+      abort;
+    endif;
+
+//  Launch the PostInstall file and wait for completion
+//	-----------------------------------------------------    
+    if (bInstallDemo = NO) then
+    	szCmdLine = szAppPath + " 0";   
+    else
+        szCmdLine = szAppPath + " 1";   
+    endif;    
+    
+    //if (LaunchAppAndWait (szAppPath^"\\PostInstall.bat",szAppPath,WAIT) < 0) then
+    if (LaunchAppAndWait (szAppPath^"\\PostInstall.bat",szCmdLine,WAIT) < 0) then
+      MessageBox ("Unable to launch Post Install file.",SEVERE);
+    endif;
+  
+//  Enable logging
+//  --------------
+    Enable(LOGGING);
+    
+//  Restore original source and target directories
+//  ----------------------------------------------
+    VarRestore(SRCTARGETDIR);    
+
+	end;
+//---------------------------------------------------------------------------
+// OnMoveData
+//
+// The OnMoveData event is called by OnShowUI to initiate the file
+// transfer of the setup.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnMoveData()
+number	nResult, nMediaFlags; 
+string szFeature ; 
+begin
+
+	// Don't install the DISK1COMPONENT if MAINT_OPTION_NONE was specified.
+	if( MAINT_OPTION = MAINT_OPTION_NONE ) then
+		FeatureSelectItem( MEDIA, DISK1COMPONENT, FALSE );
+	endif;
+
+    // Updated in 11.5, disable the cancel button during file transfer unless
+	// this is non-maintenance mode or repair mode.
+    if( MAINTENANCE && ( !REINSTALLMODE || UPDATEMODE ) ) then
+        Disable( CANCELBUTTON );
+    endif;
+
+    // Show Status
+	// Note: Start status window at 1 in case CreateInstallationInfo call
+	// is lengthy.
+	SetStatusWindow( 1, "" );
+	Enable( STATUSEX );
+	StatusUpdate( ON, 100 );
+
+	// Create the uninstall infomation (after displaying the progress dialog)
+	// Don't create uninstall information if MAINT_OPTION_NONE was specified.
+	if( MAINT_OPTION != MAINT_OPTION_NONE ) then
+		CreateInstallationInfo();
+	//transfer modes: 
+	if (UPDATEMODE)then 
+	//szFromDir = SRCDIR ^@TITLE_MAIN^"Modes"^"*.*" ;
+    //szDir = TARGETDIR ^@TITLE_MAIN + "\\" ; 
+    //XCopyFile ( szFromDir  , szDir, COMP_NORMAL | INCLUDE_SUBDIR );
+    	szFeature = "Modes"  ;
+    	nResult = FeatureSelectItem ( MEDIA, szFeature,TRUE); 
+	endif;
+    endif;
+	// Move Data
+	nResult = FeatureTransferData( MEDIA );
+	
+    // Moved in 11.0, Check for failure before creating uninstall key.
+    // Handle move data error and abort if error occured.
+	if( nResult < ISERR_SUCCESS ) then
+		OnComponentError();
+		abort;
+	endif;	    
+
+	// Update service registration (should be done BEFORE calling FeatureSaveTarget)
+	if( !REMOVEALLMODE && ENABLED_ISERVICES & SERVICE_ISUPDATE ) then
+		
+		// Register the product using the settings specified in the Ide.
+		// TODO: If you want to register the product with other settings
+        // call UpdateServiceRegisterProduct etc. instead.
+		UpdateServiceRegisterProductEx( TRUE );
+		
+		// TODO: Enable this if you want to create an update check shortcut.
+		//UpdateServiceCreateShortcut( "", "", "" );
+
+	endif;
+
+	// Create uninstall key, if DISK1COMPONENT was installed.
+	if( IFX_DISK1INSTALLED ) then
+
+		// Store text-subs for maintenance mode later, only do this when
+		// disk 1 is installed. Note that any text-subs that are updated after
+        // this call will not be remembered during maintenance mode.
+		FeatureSaveTarget("");
+
+		// Write uninstall information.
+		MaintenanceStart();
+
+		// Customize Uninstall Information
+		OnCustomizeUninstInfo();
+
+	endif;
+
+    // Disable Status
+	Disable( STATUSEX );
+
+end;
+//---------------------------------------------------------------------------
+// OnCanceling
+//
+// The OnCanceling event is sent when the installation is cancelled, 
+// usually as result of end user clicking Cancel button of a dialog or
+// pressing Esc key. Calling Do(EXIT) will also trigger this event.
+//---------------------------------------------------------------------------
+function OnCanceling()
+    STRING szTitle, szMsg1, szMsg2, szOpt1, szOpt2;
+    NUMBER bvOpt1, bvOpt2;
+begin 
+	Enable(NEXTBUTTON);
+    if (IDYES = SprintfBox(MB_YESNO|MB_ICONEXCLAMATION|MB_DEFBUTTON2, SdLoadString(SD_STR_ONCANCELING_TITLE), SdLoadString(SD_STR_ONCANCELING_CONFIRM_MSG))) then
+        //Close the current dialog.
+        EndCurrentDialog();
+        //Display Finish dialog.
+        szTitle = "";    
+        szMsg1 = SdLoadString( SD_STR_ONCANCELING_FINISH_MSG1 );
+        szMsg2 = SdLoadString( SD_STR_ONCANCELING_FINISH_MSG2 );    
+        szOpt1 = "";
+        szOpt2 = "";
+        bvOpt1   = FALSE;
+        bvOpt2   = FALSE;
+        SdFinish ( szTitle, szMsg1, szMsg2 , szOpt1, szOpt2, bvOpt1, bvOpt2 );                       
+        
+        abort;
+    endif;
+end;
+//---------------------------------------------------------------------------
+// OnMaintUIAfter
+//
+// The OnMaintUIAfter event called by OnShowUI after the file transfer
+// of the setup when the setup is running in maintenance mode. By default
+// this event displays UI that informs the end user that the maintenance setup
+// has been completed successfully.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnMaintUIAfter()
+    STRING szTitle, szMsg1, szMsg2, szOpt1, szOpt2;
+    NUMBER bvOpt1, bvOpt2;
+begin
+
+    ShowObjWizardPages(NEXT);
+    //deletePrevInstDIr();
+    // Added - Version 9.5 - Use appropriate strings for complete
+    // uninstall.
+    if( REMOVEALLMODE ) then
+        szTitle = SdLoadString(IFX_SDFINISH_REMOVE_TITLE);
+        szMsg1 = SdLoadString(IFX_SDFINISH_REMOVE_MSG1);
+    else
+        szTitle = SdLoadString(IFX_SDFINISH_MAINT_TITLE);    
+        szMsg1  = SdLoadString(IFX_SDFINISH_MAINT_MSG1);
+    endif;
+
+	szMsg2 = "";    
+    szOpt1 = "";
+    szOpt2 = "";
+	bvOpt1   = FALSE;
+    bvOpt2   = FALSE;   
+     
+   /*
+    if ( BATCH_INSTALL ) then
+    	SdFinishReboot ( szTitle , szMsg1 , SYS_BOOTMACHINE , szMsg2 , 0 );
+    else    
+       	SdFinish ( szTitle , szMsg1 , szMsg2 , szOpt1 , szOpt2 , bvOpt1 , bvOpt2 );   
+    endif;  
+    */
+    end; 
+        
+//---------------------------------------------------------------------------
+// ObjetReboot
+//
+// 
+//---------------------------------------------------------------------------
+    function ObjetReboot() 
+	string  szTitle, szMsg1, szMsg2, szOpt1, szOpt2;
+	number  bOpt1, bOpt2, nOption, nReserved ;
+    begin 
+    	//maint mode(not un_install)
+        if( MAINTENANCE && (REINSTALLMODE || UPDATEMODE)) then 
+        	szTitle = SdLoadString(IDS_IFX_SDFINISH_UPDATE_TITLE);    
+    		szMsg1  = SdLoadString(IDS_IFX_SDFINISH_UPDATE_MSG1);
+			szMsg2 = "";    
+    		szOpt1 = "";
+    		szOpt2 = "";
+			bOpt1   = FALSE;
+   		    bOpt2   = FALSE;    
+    		PostInstallBatchCommands(); 
+    		//deleteAfterInstall();
+    		SdFinishReboot ( szTitle , szMsg1 , SYS_BOOTMACHINE , szMsg2 , 0 );
+       endif; 
+      
+       if (MAINTENANCE && !REINSTALLMODE && !UPDATEMODE) then  
+       
+       	SdFinishReboot( SdLoadString(IFX_SDFINISH_REMOVE_TITLE), SdLoadString(IFX_SDFINISH_REMOVE_MSG2), SYS_BOOTMACHINE, "", 0 );	
+       
+       endif; 
+       
+       if ( !MAINTENANCE )then   
+      		SdProductName ("STRATASYS_J750");
+   			szTitle   = "Installation Complete";
+    		szMsg1    = "Reboot the computer";
+   			nOption   = 0;
+   			szMsg2    = "Click Finish to exit %P setup.";
+   			nReserved = 0;
+            deleteAfterInstall();
+            
+  			if (SdFinishReboot (szTitle, szMsg1, SYS_BOOTMACHINE, szMsg2, 0) < 0) then
+       			MessageBox ("Reboot failed.", SEVERE);
+    		endif;	
+       endif;
+   
+    end;

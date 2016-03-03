@@ -1,0 +1,9 @@
+EnableSuperPurge={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+HCW_EnableAlertMsgs={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+HCW_TimeoutBetweenAlertMsgs={'base': 33, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+SuperPurge_NumOfPurges={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+SuperPurge_NumOfWipes={'base': 20, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+TimeBetweenPurgesInSec={'base': 900, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+TimeBetweenSuperPurgesInMinutes={'base': 900, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+WipesAfterPurge={'base': 5, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+

@@ -1,0 +1,163 @@
+C51 COMPILER V9.52.0.0   POTENTIOMETEROHDB                                                 04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE POTENTIOMETEROHDB
+OBJECT MODULE PLACED IN .\Temp\PotentiometerOHDB.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Potentiometer\PotentiometerOHDB.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\
+                    -SharedModules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,T
+                    -imer\,Potentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedMo
+                    -dules\Roller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper
+                    -\) DEFINE(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\PotentiometerOHDB.lst) TABS(2) OBJECT(.\Temp\PotentiometerOHDB.
+                    -obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Potentiometer Interface {Potentiometer.c}  
+   3           *   PURPOSE        : Interface to the Potentiometer device  
+   4           *   DATE CREATED   : 18/7/2002
+   5           *   PROGRAMMER     : Nir Saadon 
+   6           *===========================================================================*/
+   7          
+   8          #include "PotentiometerOHDB.h"
+   9          #include "spidrv.h"
+  10          
+  11          #define OHDB_POTENMTR_0_ADDR    0x00
+  12          #define OHDB_POTENMTR_1_ADDR    0x01
+  13          #define OHDB_POTENMTR_BUFFER_LENGTH 3
+  14            
+  15          enum OHDB_POTENMTR_MESSAGE 
+  16          {
+  17            OHDB_POTENMTR_ADDR_INDEX = 0,
+  18            OHDB_POTENMTR_DATA_INDEX,
+  19            OHDB_POTENMTR_INST_LENGTH
+  20          };
+  21          
+  22          BYTE xdata OHDBPotenmtrTransactionStatus;
+  23          BYTE xdata OHDBPotenmtrDataIn[OHDB_POTENMTR_BUFFER_LENGTH];
+  24          
+  25          // Different address for each half of Gen4 head
+  26          BYTE xdata OHDBPotenmtrAddress[] = {OHDB_POTENMTR_0_ADDR, OHDB_POTENMTR_1_ADDR};
+  27          
+  28          
+  29          /****************************************************************************
+  30           *
+  31           *  NAME        : PotenmtrInit
+  32           *
+  33           *  INPUT       : NONE
+  34           *
+  35           *  OUTPUT      : NONE.
+  36           *
+  37           *  DESCRIPTION : Initialization of the poteniometer interface.                                       
+  38           *
+  39           ****************************************************************************/
+  40          void OHDBPotenmtrInit()
+  41          {
+  42   1        OHDBPotenmtrTransactionStatus = OHDB_POTENMTR_SEND_FAILED;
+  43   1      }
+  44          
+  45          
+  46          /****************************************************************************
+  47           *
+  48           *  NAME        : PotenmtrWriteValue
+  49           *
+  50           *
+C51 COMPILER V9.52.0.0   POTENTIOMETEROHDB                                                 04/28/2015 17:26:02 PAGE 2   
+
+  51           *  DESCRIPTION : Write a new value to one of the potentiometer devices.                                  
+             -     
+  52           *
+  53           ****************************************************************************/
+  54          OHDB_POTENMTR_STATUS OHDBPotenmtrWriteValue(BYTE DeviceNum, BYTE Value)
+  55          {
+  56   1        BYTE xdata *Message;
+  57   1      
+  58   1        // Try to lock the SPI device
+  59   1        if (SpiLock() == SPI_BUSY)
+  60   1          return OHDB_POTENMTR_SEND_FAILED;
+  61   1      
+  62   1        // Set the device status to busy
+  63   1        OHDBPotenmtrTransactionStatus = OHDB_POTENMTR_BUSY;
+  64   1       
+  65   1        // Select the device (CS)
+  66   1        SpiSelectSlave(POTENTIOMETER_BASE_SLAVE_ID + DeviceNum, CHIP_SELECT);
+  67   1      
+  68   1        // Prepare the message to be send using the spi
+  69   1        Message                           = SpiGetTxBuffer();
+  70   1        Message[OHDB_POTENMTR_ADDR_INDEX] = OHDBPotenmtrAddress[DeviceNum % 2];
+  71   1        Message[OHDB_POTENMTR_DATA_INDEX] = Value;
+  72   1      
+  73   1        // Send the message using the spi
+  74   1        SpiSend(OHDB_POTENMTR_INST_LENGTH ,OHDBPotenmtrDataIn, OHDBPotenmtrCallBack);
+  75   1             
+  76   1        return OHDB_POTENMTR_NO_ERROR;    
+  77   1      }
+  78          
+  79          
+  80          /****************************************************************************
+  81           *
+  82           *  NAME        : OHDBPotenmtrCallBack
+  83           *
+  84           *  INPUT       : The operation status.
+  85           *
+  86           *  OUTPUT      : None.
+  87           *
+  88           *  DESCRIPTION : Callback function for the SPI ISR.                                       
+  89           *
+  90           ****************************************************************************/
+  91          void OHDBPotenmtrCallBack(BYTE Status) using 3
+  92          {
+  93   1        if (Status == SPI_NO_ERROR)
+  94   1            OHDBPotenmtrTransactionStatus = OHDB_POTENMTR_SEND_SUCCESS;
+  95   1        else
+  96   1          OHDBPotenmtrTransactionStatus = OHDB_POTENMTR_SEND_FAILED;
+  97   1      }
+  98          
+  99          
+ 100          /****************************************************************************
+ 101           *
+ 102           *  NAME        : PotenmtrGetWriteStatus
+ 103           *
+ 104           *  INPUT       : None.
+ 105           *
+ 106           *  OUTPUT      : None.
+ 107           *
+ 108           *  DESCRIPTION : Returns the status of the last write operation.
+ 109           *                (also deselect the potentiometer device and unlocks the SPI)                                    
+             -  
+ 110           *
+C51 COMPILER V9.52.0.0   POTENTIOMETEROHDB                                                 04/28/2015 17:26:02 PAGE 3   
+
+ 111           ****************************************************************************/
+ 112          OHDB_POTENMTR_STATUS OHDBPotenmtrGetWriteStatus(BYTE DeviceNum)
+ 113          {
+ 114   1      // if the spi operation is not done yet
+ 115   1      // ------------------------------------
+ 116   1        if (OHDBPotenmtrTransactionStatus == OHDB_POTENMTR_BUSY)  
+ 117   1          return OHDB_POTENMTR_BUSY; 
+ 118   1      
+ 119   1      // deselect the device (CS)
+ 120   1      // ------------------------
+ 121   1        SpiSelectSlave(POTENTIOMETER_BASE_SLAVE_ID + DeviceNum, CHIP_DESELECT);
+ 122   1      
+ 123   1      
+ 124   1      // unlock the spi since the operation is done
+ 125   1      // ------------------------------------------
+ 126   1        SpiUnLock();
+ 127   1      
+ 128   1        return OHDBPotenmtrTransactionStatus;
+ 129   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    237    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     12    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

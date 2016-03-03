@@ -1,0 +1,18 @@
+var xmlAliasData = "";
+xmlAliasData += '<?xml version=\"1.0\" encoding=\"utf-8\"?>';
+xmlAliasData += '<CatapultAliasFile>';
+xmlAliasData += '    <Map Name=\"FIRST_AID_FOR_WORKING_WI\" Link=\"2_Topics_Safety/safety_First_Aid_for_Working_wi.htm\" ResolvedId=\"1010\" />';
+xmlAliasData += '    <Map Name=\"KEEPING_THE_PRINTER_IN_I\" Link=\"6_Topics_Printer/Keeping_the_Printer_in_I.htm\" ResolvedId=\"1030\" />';
+xmlAliasData += '    <Map Name=\"LOADING_MODEL_AND_SUPPOR\" Link=\"6_Topics_Printer/Loading_Model_and_Suppor.htm\" ResolvedId=\"1034\" />';
+xmlAliasData += '    <Map Name=\"POST_PRINTING_TREATMENT_\" Link=\"7_Topics_Handling/Post_Printing_Treatment_.htm\" ResolvedId=\"1052\" />';
+xmlAliasData += '    <Map Name=\"PRINTER_INTERFACE_SCREEN\" Link=\"6_Topics_Printer/Printer_Interface_Screen.htm\" ResolvedId=\"1060\" />';
+xmlAliasData += '    <Map Name=\"REMOVING_MODELS_AFTER_PR\" Link=\"7_Topics_Handling/Removing_Models_After_Pr.htm\" ResolvedId=\"1068\" />';
+xmlAliasData += '    <Map Name=\"REMOVING_THE_SUPPORT_MAT\" Link=\"7_Topics_Handling/Removing_the_Support_Mat.htm\" ResolvedId=\"1070\" />';
+xmlAliasData += '    <Map Name=\"RESUMING_PRODUCTION_AFTE\" Link=\"6_Topics_Printer/Resuming_Production_Afte.htm\" ResolvedId=\"1072\" />';
+xmlAliasData += '    <Map Name=\"SAFETY_FEATURES\" Link=\"2_Topics_Safety/Safety_Features.htm\" ResolvedId=\"1076\" />';
+xmlAliasData += '    <Map Name=\"STARTING_THE_CONNEX__OBJ\" Link=\"6_Topics_Printer/printer_Starting_the_printer.htm\" ResolvedId=\"1084\" />';
+xmlAliasData += '    <Map Name=\"STORING_MODELS\" Link=\"7_Topics_Handling/Storing_Models.htm\" ResolvedId=\"1086\" />';
+xmlAliasData += '    <Map Name=\"SYMBOLS_AND_WARNING_LABE\" Link=\"2_Topics_Safety/Symbols_and_Warning_Labe.htm\" ResolvedId=\"1088\" />';
+xmlAliasData += '    <Map Name=\"WASTE_DISPOSAL_\" Link=\"2_Topics_Safety/safety_waste_disposal_.htm\" ResolvedId=\"1100\" />';
+xmlAliasData += '</CatapultAliasFile>';
+MadCap.Utilities.Xhr._FilePathToXmlStringMap.Add('Alias', xmlAliasData);

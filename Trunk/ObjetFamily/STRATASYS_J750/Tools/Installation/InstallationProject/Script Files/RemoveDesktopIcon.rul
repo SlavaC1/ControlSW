@@ -1,0 +1,39 @@
+/*--------------------------------------------------------------*\ 
+ * This script deletes the 'Eden 3.2' icon from the Desktop
+\*--------------------------------------------------------------*/
+
+//#include "ifx.h"
+
+function RemoveDesktopIcon(svIconName) 
+
+   NUMBER  nResult,nvIconIndex,nvMinimizeFlag; 
+   STRING  svErrorMessage, svCmdLine, svWrkDir,svIconPath, svShortCutKey;
+   
+   begin    
+  
+// Check if the Icon exists on the desktop
+// ---------------------------------------   
+   nResult = QueryProgItem (FOLDER_DESKTOP, svIconName, svCmdLine, svWrkDir,
+                            svIconPath, nvIconIndex, svShortCutKey,
+                            nvMinimizeFlag);
+                                          
+   if (nResult = IS_ITEM) then                                       
+  
+//    Display the folder.
+//    -------------------
+//    ShowProgramFolder(FOLDER_DESKTOP, SW_SHOW);
+//    Delay(3);
+
+//    Delete the Previous program Icon.
+//    ---------------------------------
+      nResult = DeleteFolderIcon (FOLDER_DESKTOP, svIconName); 
+      if nResult < 0 then
+         svErrorMessage = FormatMessage ( nResult );
+         SprintfBox ( WARNING, "", 
+               "Delete Icon failed!\n\nError code: %ld\nMessage text: %s", 
+               nResult, svErrorMessage );
+         endif;
+      endif;
+   nResult = 0;
+   return nResult;
+   end;

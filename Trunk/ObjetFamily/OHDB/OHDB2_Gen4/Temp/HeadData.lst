@@ -1,0 +1,503 @@
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE HEADDATA
+OBJECT MODULE PLACED IN .\Temp\HeadData.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE HeadData\HeadData.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\
+                    -SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentio
+                    -meter\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,P
+                    -otentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C805
+                    -1F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\HeadData.lst) TABS(2) OBJECT(.\Temp\HeadData.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2          *   FILENAME       : Head Data {HeadData.c}  
+   3          *   PURPOSE        : 
+   4          *   DATE CREATED   : 21/Aug/2002
+   5          *   PROGRAMMER     : Nir Sade 
+   6          *===========================================================================*/
+   7          
+   8          #include "HeadData.h"
+   9          #include "E2PROMInterface.h"
+  10          #include "Utils.h"
+  11          #ifdef OCB_SIMULATOR
+              #include "EdenProtocol.h"
+              #else
+  14          #include "EdenProtocolOHDB.h"
+  15          #endif
+  16          #include "MsgDecodeOHDB.h"
+  17          #include <string.h>
+  18          #include "TimerDrv.h"
+  19          
+  20          
+  21          #define BASE_ADDRESS                            0x00
+  22          #define SERIAL_NUMBER_ADR                       BASE_ADDRESS
+  23          #define MODEL_POTEN_VALUES_ADR                  BASE_ADDRESS+4
+  24          #define SUPPORT_POTEN_VALUES_ADR                BASE_ADDRESS+19
+  25          #define TEMPERATURE_COMPENSATION_ADDR           BASE_ADDRESS+34
+  26          #define DISTANCE_FROM_REFERENCE_ADDR            BASE_ADDRESS+36
+  27          #define CHECK_SUM_ADDR                          BASE_ADDRESS+40
+  28          
+  29          
+  30          #define BACKUP_BASE_ADDRESS                     0x100
+  31          #define BACKUP_SERIAL_NUMBER_ADR                BACKUP_BASE_ADDRESS
+  32          #define BACKUP_MODEL_POTEN_VALUES_ADR           BACKUP_BASE_ADDRESS+4
+  33          #define BACKUP_SUPPORT_POTEN_VALUES_ADR         BACKUP_BASE_ADDRESS+19
+  34          #define BACKUP_TEMPERATURE_COMPENSATION_ADDR    BACKUP_BASE_ADDRESS+34
+  35          #define BACKUP_DISTANCE_FROM_REFERENCE_ADDR     BACKUP_BASE_ADDRESS+36
+  36          #define BACKUP_CHECK_SUM_ADDR                   BACKUP_BASE_ADDRESS+40
+  37          
+  38          
+  39          
+  40          #define ALL_HEADS_DATA_ARE_VALID                0xFF
+  41          #define MAX_NUM_OF_LAYER_THICKNESS_VALUES       15
+  42          #define DATA_AREA_ERROR                         0x01
+  43          #define BACKUP_DATA_AREA_ERROR                  0x02
+  44          
+  45          typedef struct
+  46          {
+  47            WORD A2DValueFor60C;
+  48            WORD A2DValueFor80C;
+  49            float Model10KHzLineGain;
+  50            float Model10KHzLineOffset;
+  51            float Model20KHzLineGain;
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 2   
+
+  52            float Model20KHzLineOffset;
+  53            float Support10KHzLineGain;
+  54            float Support10KHzLineOffset;
+  55            float Support20KHzLineGain;
+  56            float Support20KHzLineOffset;
+  57            float XOffset;
+  58            unsigned long ProductionDate;
+  59            char SerialNumber[9];
+  60            WORD CheckSum;
+  61          }THeadData; 
+  62          
+  63          typedef struct
+  64          {
+  65            BYTE DestId;
+  66            BYTE TransactionId;
+  67            BYTE HeadNum;
+  68            THeadData HeadData;
+  69          }TSetHeadDataTaskParams;
+  70          
+  71          THeadData xdata HeadsData[NUM_OF_HEADS];
+  72          TSetHeadDataTaskParams SetHeadDataTaskParams;
+  73          BYTE xdata SIZE_OF_HEAD_DATA;
+  74          BYTE xdata SIZE_OF_HEAD_DATA_WITHOUT_CS;
+  75          BOOL xdata SecondWrite;
+  76          BOOL xdata BackupSecondWrite;
+  77          TTaskHandle xdata SetHeadDataTaskHandle;
+  78          BYTE xdata SetHeadDataError;
+  79          BYTE xdata DataLength;
+  80          
+  81          // Every bit is the valid bit of an head data
+  82          BYTE xdata HeadsValidData;
+  83          
+  84          
+  85          
+  86          /****************************************************************************
+  87          *
+  88          *  NAME        : HeadData_Init 
+  89          *
+  90          *  DESCRIPTION : Initilaization of the 'HeadData' module
+  91          *
+  92          ****************************************************************************/
+  93          void HeadData_Init()
+  94          { 
+  95   1        SIZE_OF_HEAD_DATA            = sizeof(THeadData);
+  96   1        SIZE_OF_HEAD_DATA_WITHOUT_CS = SIZE_OF_HEAD_DATA - sizeof(WORD);
+  97   1        SetHeadDataTaskHandle        = SchedulerInstallTask(HeadData_SetHeadDataTask);
+  98   1        
+  99   1        HeadsValidData = 0;
+ 100   1      }
+ 101          
+ 102          
+ 103          /****************************************************************************
+ 104          *
+ 105          *  NAME        : HeadData_ReadDataFromAllE2PROMs 
+ 106          *
+ 107          *  DESCRIPTION : Read the head data from all the heads, check if the data is valid,
+ 108          *                if not do the same for the backup data                                         
+ 109          *
+ 110          ****************************************************************************/
+ 111          void HeadData_ReadDataFromAllE2PROMs()
+ 112          {
+ 113   1        BYTE xdata i, Length, CurrLength;
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 3   
+
+ 114   1        WORD Address;
+ 115   1        BYTE xdata *Data;
+ 116   1        WORD CheckSum;  
+ 117   1      
+ 118   1        TimerDelay(10);
+ 119   1      
+ 120   1        for(i = 0; i < NUM_OF_HEADS; i++)
+ 121   1        {
+ 122   2          // Read the head data
+ 123   2          while(E2PROMReadBlock(i, BASE_ADDRESS, SIZE_OF_HEAD_DATA) != E2PROM_NO_ERROR);
+ 124   2          while(E2PROMGetReceivedData(i, (BYTE *)&HeadsData[i], SIZE_OF_HEAD_DATA) == E2PROM_BUSY);
+ 125   2          
+ 126   2          CheckSum = Utils_CalculateCheckSum((BYTE *)&HeadsData[i], SIZE_OF_HEAD_DATA_WITHOUT_CS);
+ 127   2      
+ 128   2          if(CheckSum != HeadsData[i].CheckSum || CheckSum == 0)
+ 129   2          {
+ 130   3            // Read the backup head data
+ 131   3            while(E2PROMReadBlock(i, BACKUP_BASE_ADDRESS, SIZE_OF_HEAD_DATA) != E2PROM_NO_ERROR);
+ 132   3            while(E2PROMGetReceivedData(i, (BYTE *)&HeadsData[i], SIZE_OF_HEAD_DATA) == E2PROM_BUSY);
+ 133   3            
+ 134   3            CheckSum = Utils_CalculateCheckSum((BYTE *)&HeadsData[i], SIZE_OF_HEAD_DATA_WITHOUT_CS); 
+ 135   3            if (CheckSum == HeadsData[i].CheckSum && CheckSum != 0)
+ 136   3            {
+ 137   4              // Write the backup data to the non-backup area  
+ 138   4              Length  = SIZE_OF_HEAD_DATA;
+ 139   4              Address = BASE_ADDRESS;
+ 140   4              Data    = (BYTE *)&HeadsData[i];
+ 141   4              
+ 142   4              while(Length > 0)
+ 143   4              {
+ 144   5                while(E2PROMWriteEnable(i) != E2PROM_NO_ERROR);
+ 145   5                while(E2PROMGetWriteStatus(SetHeadDataTaskParams.HeadNum) == E2PROM_BUSY);
+ 146   5                
+ 147   5                CurrLength = E2PR0M_PAGE_SIZE - (Address % E2PR0M_PAGE_SIZE); 
+ 148   5                
+ 149   5                while(E2PROMWriteBlock(i, Address, Data, CurrLength)!= E2PROM_NO_ERROR);
+ 150   5                while(E2PROMGetWriteStatus(SetHeadDataTaskParams.HeadNum) == E2PROM_BUSY);
+ 151   5                
+ 152   5                Length  -= CurrLength;
+ 153   5                Address += CurrLength;
+ 154   5                Data    += CurrLength;
+ 155   5              }
+ 156   4              
+ 157   4              // Mark that this head has valid data
+ 158   4              HeadsValidData |= (1 << i);
+ 159   4            }
+ 160   3          }
+ 161   2          else
+ 162   2          {
+ 163   3            // Mark that this head has valid data
+ 164   3            HeadsValidData |= (1 << i);
+ 165   3          } 
+ 166   2        }
+ 167   1        
+ 168   1        if (HeadsValidData != ALL_HEADS_DATA_ARE_VALID)
+ 169   1        {
+ 170   2          // Send notification to Eden
+ 171   2          THeadsDataNotValidMsg Msg;
+ 172   2          Msg.MsgId          = HEADS_DATA_NOT_VALID_MSG;
+ 173   2          Msg.HeadsValidData = HeadsValidData; 
+ 174   2          OHDBEdenProtocolSend((BYTE*)&Msg,sizeof(THeadsDataNotValidMsg),EDEN_DEST_ID,0,FALSE);
+ 175   2        }
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 4   
+
+ 176   1      }
+ 177          
+ 178          
+ 179          /****************************************************************************
+ 180          *
+ 181          *  NAME        : HeadData_GetHeadData 
+ 182          *
+ 183          *  DESCRIPTION : Returns the head data of a specific head                                            
+ 184          *
+ 185          ****************************************************************************/
+ 186          BOOL HeadData_GetHeadData(int HeadNum, BYTE* Data)
+ 187          {
+ 188   1        // Copy the head data for this head without the check sum 
+ 189   1        memcpy(Data, &HeadsData[HeadNum], SIZE_OF_HEAD_DATA/*SIZE_OF_HEAD_DATA_WITHOUT_CS*/);
+ 190   1        
+ 191   1        return (HeadsValidData & (1 << HeadNum));
+ 192   1      } 
+ 193          
+ 194          
+ 195          /****************************************************************************
+ 196          *
+ 197          *  NAME        : HeadData_SetHeadDataTaskParams 
+ 198          *
+ 199          *  DESCRIPTION : Set the parameters for the 'SetHeadDataTask'                                           
+ 200          *
+ 201          ****************************************************************************/
+ 202          void HeadData_SetHeadDataTaskParams(BYTE DestId, BYTE TransactionId, BYTE HeadNum, BYTE* HeadData)
+ 203          {
+ 204   1        SetHeadDataTaskParams.DestId        = DestId;
+ 205   1        SetHeadDataTaskParams.TransactionId = TransactionId;
+ 206   1        SetHeadDataTaskParams.HeadNum       = HeadNum;
+ 207   1        memcpy(&SetHeadDataTaskParams.HeadData, HeadData, SIZE_OF_HEAD_DATA_WITHOUT_CS);
+ 208   1        
+ 209   1        // Calculate the checksum
+ 210   1        SetHeadDataTaskParams.HeadData.CheckSum = Utils_CalculateCheckSum(HeadData, SIZE_OF_HEAD_DATA_WITHOUT_CS)
+             -;
+ 211   1        
+ 212   1        SecondWrite       = FALSE;
+ 213   1        BackupSecondWrite = FALSE;
+ 214   1        SetHeadDataError  = 0;
+ 215   1        DataLength        = SIZE_OF_HEAD_DATA;
+ 216   1      }
+ 217          
+ 218          
+ 219          /****************************************************************************
+ 220          *
+ 221          *  NAME        : HeadData_SetHeadDataTask 
+ 222          *
+ 223          *  DESCRIPTION : This task writes the data received to a specific head (also 
+ 224          *                to the backup data area) and performs verification                                       
+             -   
+ 225          *
+ 226          ****************************************************************************/
+ 227          void HeadData_SetHeadDataTask(BYTE State)
+ 228          {
+ 229   1        enum
+ 230   1        {
+ 231   1          WRITE_ENABLE,
+ 232   1          WAIT_FOR_ENABLE_OP_DONE,
+ 233   1          WRITE_BLOCK,
+ 234   1          WAIT_FOR_WRITE_OP_DONE,
+ 235   1          VERIFY,
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 5   
+
+ 236   1          WAIT_FOR_VERIFY_OP_DONE,
+ 237   1          VERIFY_BACKUP,
+ 238   1          WAIT_FOR_VERIFY_BACKUP_DONE,
+ 239   1          SEND_ACK,
+ 240   1          SEND_WRITE_ERROR_NOTIFICATION
+ 241   1        };
+ 242   1      
+ 243   1        BYTE xdata CurrLength;
+ 244   1        static WORD xdata Address = BASE_ADDRESS;
+ 245   1        static BYTE xdata *Data = &SetHeadDataTaskParams.HeadData;
+ 246   1        THeadData xdata VerifyData;
+ 247   1      
+ 248   1        switch(State)
+ 249   1        {
+ 250   2          case WRITE_ENABLE:
+ 251   2          {
+ 252   3            if(E2PROMWriteEnable(SetHeadDataTaskParams.HeadNum) == E2PROM_NO_ERROR)
+ 253   3              SchedulerLeaveTask(WAIT_FOR_ENABLE_OP_DONE);
+ 254   3            else
+ 255   3              SchedulerLeaveTask(WRITE_ENABLE);
+ 256   3          }
+ 257   2          break;
+ 258   2      
+ 259   2          case WAIT_FOR_ENABLE_OP_DONE:
+ 260   2          {
+ 261   3            if (E2PROMGetWriteStatus(SetHeadDataTaskParams.HeadNum) != E2PROM_BUSY)
+ 262   3              SchedulerLeaveTask(WRITE_BLOCK);
+ 263   3            else
+ 264   3              SchedulerLeaveTask(WAIT_FOR_ENABLE_OP_DONE);
+ 265   3          }
+ 266   2          break;
+ 267   2      
+ 268   2          case WRITE_BLOCK:
+ 269   2          {
+ 270   3            if (DataLength > E2PR0M_PAGE_SIZE)
+ 271   3              CurrLength = E2PR0M_PAGE_SIZE - (Address % E2PR0M_PAGE_SIZE);
+ 272   3            else
+ 273   3              CurrLength = DataLength;
+ 274   3      
+ 275   3            // Write the data to the head E2PROM
+ 276   3            if(E2PROMWriteBlock(SetHeadDataTaskParams.HeadNum, Address, Data, CurrLength)== E2PROM_NO_ERROR)
+ 277   3              SchedulerLeaveTask(WAIT_FOR_WRITE_OP_DONE);
+ 278   3            else
+ 279   3              SchedulerLeaveTask(WRITE_BLOCK);
+ 280   3          }     
+ 281   2          break;
+ 282   2      
+ 283   2          case WAIT_FOR_WRITE_OP_DONE:
+ 284   2          {
+ 285   3            if (E2PROMGetWriteStatus(SetHeadDataTaskParams.HeadNum) != E2PROM_BUSY)
+ 286   3            {       
+ 287   4              TimerDelay(10);
+ 288   4              
+ 289   4              Address    += CurrLength;
+ 290   4              DataLength -= CurrLength; 
+ 291   4              Data       += CurrLength;
+ 292   4              
+ 293   4              if (DataLength > 0)
+ 294   4              {
+ 295   5                SchedulerLeaveTask(WRITE_ENABLE);
+ 296   5              }
+ 297   4              else
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 6   
+
+ 298   4              {
+ 299   5                // If we just finished writing the data, write it also to the backup area
+ 300   5                if (Address - SIZE_OF_HEAD_DATA == BASE_ADDRESS)
+ 301   5                {
+ 302   6                  Address = BACKUP_BASE_ADDRESS;
+ 303   6                  SchedulerLeaveTask(WRITE_ENABLE);
+ 304   6                }
+ 305   5                else
+ 306   5                {
+ 307   6                  Address = BASE_ADDRESS;
+ 308   6                  SchedulerLeaveTask(VERIFY);
+ 309   6                }
+ 310   5      
+ 311   5                DataLength = SIZE_OF_HEAD_DATA;
+ 312   5                Data = (BYTE*)&SetHeadDataTaskParams.HeadData;
+ 313   5              }
+ 314   4            }
+ 315   3            else
+ 316   3              SchedulerLeaveTask(WAIT_FOR_WRITE_OP_DONE);
+ 317   3          }
+ 318   2          break;
+ 319   2      
+ 320   2          case VERIFY:
+ 321   2          {
+ 322   3            if (E2PROMReadBlock(SetHeadDataTaskParams.HeadNum, BASE_ADDRESS, SIZE_OF_HEAD_DATA) == E2PROM_NO_ERROR)
+ 323   3              SchedulerLeaveTask(WAIT_FOR_VERIFY_OP_DONE); 
+ 324   3            else
+ 325   3              SchedulerLeaveTask(VERIFY);
+ 326   3          }
+ 327   2          break;
+ 328   2      
+ 329   2          case WAIT_FOR_VERIFY_OP_DONE:
+ 330   2          {
+ 331   3            if(E2PROMGetReceivedData(SetHeadDataTaskParams.HeadNum, (BYTE *)&VerifyData, SIZE_OF_HEAD_DATA) != E2PR
+             -OM_BUSY)
+ 332   3            {       
+ 333   4              if(Utils_CalculateCheckSum((BYTE *)&VerifyData, SIZE_OF_HEAD_DATA_WITHOUT_CS) == VerifyData.CheckSum)
+ 334   4              {
+ 335   5                SchedulerLeaveTask(VERIFY_BACKUP);
+ 336   5              }
+ 337   4              else
+ 338   4              {
+ 339   5                if(SecondWrite)
+ 340   5                {
+ 341   6                  SetHeadDataError |= DATA_AREA_ERROR;
+ 342   6                  SchedulerLeaveTask(VERIFY_BACKUP);
+ 343   6                }
+ 344   5                else
+ 345   5                {
+ 346   6                  SecondWrite = TRUE;
+ 347   6                  SchedulerLeaveTask(WRITE_ENABLE);
+ 348   6                }
+ 349   5              }
+ 350   4            }
+ 351   3            else
+ 352   3              SchedulerLeaveTask(WAIT_FOR_VERIFY_OP_DONE);
+ 353   3          }
+ 354   2          break;
+ 355   2      
+ 356   2          case VERIFY_BACKUP:
+ 357   2          {
+ 358   3            if (E2PROMReadBlock(SetHeadDataTaskParams.HeadNum, BACKUP_BASE_ADDRESS, SIZE_OF_HEAD_DATA) == E2PROM_NO
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 7   
+
+             -_ERROR)
+ 359   3              SchedulerLeaveTask(WAIT_FOR_VERIFY_BACKUP_DONE); 
+ 360   3            else
+ 361   3              SchedulerLeaveTask(VERIFY_BACKUP);
+ 362   3          }
+ 363   2          break;
+ 364   2      
+ 365   2          case WAIT_FOR_VERIFY_BACKUP_DONE:
+ 366   2          {
+ 367   3            if(E2PROMGetReceivedData(SetHeadDataTaskParams.HeadNum, (BYTE *)&VerifyData, SIZE_OF_HEAD_DATA) != E2PR
+             -OM_BUSY)
+ 368   3            {  
+ 369   4              if(Utils_CalculateCheckSum((BYTE*)&VerifyData, SIZE_OF_HEAD_DATA_WITHOUT_CS) == VerifyData.CheckSum)
+ 370   4              {
+ 371   5                // Copy the data to the heads data array
+ 372   5                memcpy(&HeadsData[SetHeadDataTaskParams.HeadNum],&SetHeadDataTaskParams.HeadData, SIZE_OF_HEAD_DATA);
+ 373   5                HeadsData[SetHeadDataTaskParams.HeadNum].CheckSum = VerifyData.CheckSum;
+ 374   5                
+ 375   5                SchedulerLeaveTask(SEND_ACK);
+ 376   5              }
+ 377   4              else
+ 378   4              {
+ 379   5                if (BackupSecondWrite)
+ 380   5                {
+ 381   6                  SetHeadDataError |= BACKUP_DATA_AREA_ERROR;
+ 382   6                  SchedulerLeaveTask(SEND_ACK);
+ 383   6                }
+ 384   5                else
+ 385   5                {
+ 386   6                  Address = BACKUP_BASE_ADDRESS;
+ 387   6                  BackupSecondWrite = TRUE;
+ 388   6                  SchedulerLeaveTask(WRITE_ENABLE);  
+ 389   6                }
+ 390   5              }
+ 391   4            }
+ 392   3            else
+ 393   3              SchedulerLeaveTask(WAIT_FOR_VERIFY_BACKUP_DONE);
+ 394   3          }
+ 395   2          break;
+ 396   2      
+ 397   2          case SEND_ACK:
+ 398   2          {
+ 399   3            TOHDBAckMsg xdata Msg;
+ 400   3            
+ 401   3            Msg.MsgId          = ACK_MSG;
+ 402   3            Msg.RespondedMsgId = SET_HEAD_DATA_MSG;
+ 403   3            Msg.AckStatus      = ACK_SUCCESS;
+ 404   3            
+ 405   3            if(OHDBEdenProtocolSend((BYTE*)&Msg,sizeof(TOHDBAckMsg),SetHeadDataTaskParams.DestId, SetHeadDataTaskPa
+             -rams.TransactionId,TRUE) == EDEN_PROTOCOL_NO_ERROR)
+ 406   3            {
+ 407   4              if(SetHeadDataError == 0)
+ 408   4              {
+ 409   5                SchedulerLeaveTask(WRITE_ENABLE);
+ 410   5                SchedulerSuspendTask(-1);
+ 411   5              }
+ 412   4              else
+ 413   4                SchedulerLeaveTask(SEND_WRITE_ERROR_NOTIFICATION);
+ 414   4            }
+ 415   3            else
+ 416   3              SchedulerLeaveTask(SEND_ACK);     
+ 417   3          }
+C51 COMPILER V9.52.0.0   HEADDATA                                                          04/28/2015 17:26:01 PAGE 8   
+
+ 418   2          break;
+ 419   2      
+ 420   2          case SEND_WRITE_ERROR_NOTIFICATION:
+ 421   2          {
+ 422   3            THeadsDataWriteErrorMsg xdata Msg;
+ 423   3      
+ 424   3            Msg.MsgId          = HEADS_DATA_WRITE_ERROR_MSG;
+ 425   3            Msg.HeadNum        = SetHeadDataTaskParams.HeadNum;
+ 426   3            Msg.HeadsDataError = SetHeadDataError;
+ 427   3            
+ 428   3            if(OHDBEdenProtocolSend((BYTE*)&Msg,sizeof(THeadsDataWriteErrorMsg),EDEN_DEST_ID,0,FALSE) == EDEN_PROTO
+             -COL_NO_ERROR)
+ 429   3            {
+ 430   4              SchedulerLeaveTask(WRITE_ENABLE);
+ 431   4              SchedulerSuspendTask(-1);
+ 432   4            }
+ 433   3            else
+ 434   3              SchedulerLeaveTask(SEND_WRITE_ERROR_NOTIFICATION);      
+ 435   3          }
+ 436   2          break;
+ 437   2      
+ 438   2          default:
+ 439   2            SchedulerLeaveTask(WRITE_ENABLE);
+ 440   2            break;    
+ 441   2        }       
+ 442   1      }
+ 443          
+ 444          
+ 445          /****************************************************************************
+ 446          *
+ 447          *  NAME        : HeadData_GetHeadDataTaskHandle 
+ 448          *
+ 449          *  DESCRIPTION : Returns the handle of the 'SetHeadDataTask' 
+ 450          *
+ 451          ****************************************************************************/
+ 452          TTaskHandle HeadData_GetHeadDataTaskHandle()
+ 453          {
+ 454   1        return SetHeadDataTaskHandle; 
+ 455   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1962    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    592    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

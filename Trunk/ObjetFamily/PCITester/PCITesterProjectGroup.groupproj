@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{901a2284-79ca-4245-83e3-52564bcc353f}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" />
+    <Projects Include="PCITester.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="QLibProject">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="" />
+  </Target>
+  <Target Name="QLibProject:Clean">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="QLibProject:Make">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="PCITester">
+    <MSBuild Projects="PCITester.cbproj" Targets="" />
+  </Target>
+  <Target Name="PCITester:Clean">
+    <MSBuild Projects="PCITester.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="PCITester:Make">
+    <MSBuild Projects="PCITester.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="QLibProject;PCITester" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="QLibProject:Clean;PCITester:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="QLibProject:Make;PCITester:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

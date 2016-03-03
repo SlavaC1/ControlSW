@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="RPCUnitTest.exe"/>
+    <OBJFILES value="RPCUnitTest.obj MainUnit.obj 
+      ..\..\EdenSerialProtocol\EdenProtocolEngine.obj 
+      ..\..\EdenSerialProtocol\EdenProtocolClient.obj ..\RPCServer.obj 
+      ..\RPCClient.obj ..\PascalString.obj"/>
+    <RESFILES value="RPCUnitTest.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) MainUnit.dfm"/>
+    <LIBFILES value="..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.lib"/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="Vcl50.lib"/>
+    <PACKAGES value="Vcl50.bpi Vclx50.bpi bcbsmp50.bpi"/>
+    <PATHCPP value=".;..\..\EdenSerialProtocol;.."/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="tlink32"/>
+    <USERDEFINES value="_DEBUG;OS_WINDOWS"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="RPCUnitTest.cpp"/>
+    <INCLUDEPATH value="..\;..;..\RPC;..\..\EdenSerialProtocol;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\General"/>
+    <LIBPATH value="..\;..;..\RPC;..\..\EdenSerialProtocol;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows"/>
+    <WARNINGS value="-w-par"/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-vGc -vGt -vGd -Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k 
+      -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="cg32.lib $(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=7
+Item0=..\;..;..\RPC;..\..\EdenSerialProtocol;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\General
+Item1=..\;..\RPC;..\..\EdenSerialProtocol;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\General
+Item2=..\..\EdenSerialProtocol;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers;C:\Projects\Quadra2\Q2RT\Sources\General
+Item3=..\..\EdenSerialProtocol;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers
+Item4=$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers
+Item5=$(BCB)\include;$(BCB)\include\vcl;C:\Projects\SharedFiles\QLib;C:\Projects\SharedFiles\QLib\OSWrappers
+Item6=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=7
+Item0=..\;..;..\RPC;..\..\EdenSerialProtocol;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;C:\Projects\SharedFiles\QLib\Monitor\Windows
+Item1=..\;..;..\RPC;..\..\EdenSerialProtocol;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\Monitor\VxWorks
+Item2=..\;..\RPC;..\..\EdenSerialProtocol;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\Monitor\VxWorks
+Item3=..\..\EdenSerialProtocol;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\Monitor\VxWorks
+Item4=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\Monitor\VxWorks
+Item5=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;C:\Projects\SharedFiles\QLib\Monitor\VxWorks
+Item6=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG;OS_WINDOWS
+Item1=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

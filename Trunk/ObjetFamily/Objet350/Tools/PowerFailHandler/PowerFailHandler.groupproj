@@ -1,0 +1,34 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{13c3ff53-72b7-4931-9b51-6ee262a8fea5}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="PowerFailHandler.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="PowerFailHandler">
+    <MSBuild Projects="PowerFailHandler.cbproj" Targets="" />
+  </Target>
+  <Target Name="PowerFailHandler:Clean">
+    <MSBuild Projects="PowerFailHandler.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="PowerFailHandler:Make">
+    <MSBuild Projects="PowerFailHandler.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="PowerFailHandler" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="PowerFailHandler:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="PowerFailHandler:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

@@ -1,0 +1,67 @@
+
+
+Customer Support -- Service Notes
+
+Use this text file to record configuration notes, parameters, special settings or any information that may be useful for engineers who service the printer in the future.
+
+You can access this file in C:\STRATASYS_J750\ServiceTools\Service Notepad 
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+Date:
+Customer Support Engineer:
+Details:
+
+
+=======================================================
+
+

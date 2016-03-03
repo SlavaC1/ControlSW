@@ -1,0 +1,2 @@
+AtLeastDelayTimeBetweenLayers={'base': 80, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+TimeBetweenPurgesInSec={'base': 900, 'upDelta': 0, 'downDelta': 0, 'str': 0}

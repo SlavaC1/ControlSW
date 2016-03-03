@@ -1,0 +1,265 @@
+C51 COMPILER V9.52.0.0   ROLLER                                                            04/28/2015 17:26:00 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE ROLLER
+OBJECT MODULE PLACED IN .\Temp\Roller.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\SharedModules\Roller\Roller.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\S
+                    -haredModules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Ti
+                    -mer\,Potentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedMod
+                    -ules\Roller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\
+                    -) DEFINE(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\Roller.lst) TABS(2) OBJECT(.\Temp\Roller.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Roller {Roller.c}  
+   3           *   PURPOSE        : Interface to the roller device  
+   4           *   DATE CREATED   : 8/Jan/2002
+   5           *   PROGRAMMER     : Nir Saadon 
+   6           *   PROCEDURES     : 
+   7           *===========================================================================*/
+   8          #include "Roller.h"
+   9          #include "XilinxInterface.h"
+  10          
+  11          
+  12          // Constants
+  13          // =========
+  14          #define ROLLER_SET_ON_OFF_ADDRESS   0x09    
+  15          #define ROLLER_SET_SPEED_ADDRESS    0x0A
+  16          #define ROLLER_GET_SPEED_ADDRESS    0x41
+  17          
+  18          #define ENABLE_ROLLER_DRV           0x02
+  19          #define DISABLE_AND_SET_OFF_ROLLER  0x00
+  20          #define ENABLE_AND_SET_ON_ROLLER    0x03
+  21          
+  22          // Type definitions
+  23          // ================
+  24          
+  25            
+  26           
+  27          // Local routines
+  28          // ==============
+  29          
+  30          
+  31          // Module variables
+  32          // ================
+  33          bit RollerIsOn;
+  34          bit RollerIsEnabled;
+  35          
+  36          /****************************************************************************
+  37           *
+  38           *  NAME        : Roller_Init 
+  39           *
+  40           *
+  41           *  DESCRIPTION : Initailization of the roller module                                        
+  42           *
+  43           ****************************************************************************/
+  44          void Roller_Init()
+  45          { 
+  46   1        RollerIsOn = FALSE;
+  47   1        RollerIsEnabled = FALSE;
+  48   1      
+  49   1      }
+  50          
+  51          
+C51 COMPILER V9.52.0.0   ROLLER                                                            04/28/2015 17:26:00 PAGE 2   
+
+  52          /****************************************************************************
+  53           *
+  54           *  NAME        : Roller_EnableDriver 
+  55           *
+  56           *
+  57           *  DESCRIPTION : Enable/disable the roller hardware driver.                                        
+  58           *
+  59           ****************************************************************************/
+  60          ROLLER_STATUS Roller_EnableDriver(BOOL Enable)
+  61          {
+  62   1        TXilinxMessage xdata EnableMsg;
+  63   1      
+  64   1      // build the msg to be sent to the xilinx
+  65   1      // --------------------------------------
+  66   1        EnableMsg.Address = ROLLER_SET_ON_OFF_ADDRESS;
+  67   1        if (Enable)
+  68   1        {
+  69   2          EnableMsg.Data = ENABLE_ROLLER_DRV;
+  70   2          RollerIsEnabled = TRUE;
+  71   2        }
+  72   1        else
+  73   1        {
+  74   2          EnableMsg.Data = DISABLE_AND_SET_OFF_ROLLER;
+  75   2          RollerIsEnabled = FALSE;
+  76   2          RollerIsOn = FALSE;
+  77   2        }
+  78   1        
+  79   1      // send the mesage to the xilinx 
+  80   1      // ------------------------------
+  81   1        if (XilinxWrite(&EnableMsg) == XILINX_SEND_FAILED)
+  82   1          return ROLLER_OP_FAIL;
+  83   1       
+  84   1        return ROLLER_NO_ERROR;
+  85   1        
+  86   1      }
+  87          
+  88          
+  89          /****************************************************************************
+  90           *
+  91           *  NAME        : Roller_SetOnOff 
+  92           *
+  93           *
+  94           *  DESCRIPTION : Set the roller on or off.                                        
+  95           *
+  96           ****************************************************************************/
+  97          ROLLER_STATUS Roller_SetOnOff(BOOL On)
+  98          {
+  99   1        TXilinxMessage xdata SetOnOffMsg;
+ 100   1      
+ 101   1      // build the msg to be sent to the xilinx
+ 102   1      // --------------------------------------
+ 103   1        SetOnOffMsg.Address = ROLLER_SET_ON_OFF_ADDRESS;
+ 104   1        if (On)
+ 105   1        {
+ 106   2          SetOnOffMsg.Data = ENABLE_AND_SET_ON_ROLLER;
+ 107   2          if (RollerIsEnabled)
+ 108   2            RollerIsOn = TRUE;
+ 109   2        }
+ 110   1        else
+ 111   1        {
+ 112   2          SetOnOffMsg.Data = DISABLE_AND_SET_OFF_ROLLER;
+ 113   2          RollerIsOn = FALSE;
+C51 COMPILER V9.52.0.0   ROLLER                                                            04/28/2015 17:26:00 PAGE 3   
+
+ 114   2          RollerIsEnabled = FALSE;
+ 115   2        }
+ 116   1        
+ 117   1      // send the mesage to the xilinx 
+ 118   1      // ------------------------------
+ 119   1        if (XilinxWrite(&SetOnOffMsg) == XILINX_SEND_FAILED)
+ 120   1          return ROLLER_OP_FAIL;
+ 121   1       
+ 122   1        return ROLLER_NO_ERROR;
+ 123   1        
+ 124   1      }
+ 125          
+ 126          
+ 127          /****************************************************************************
+ 128           *
+ 129           *  NAME        : Roller_SetSpeed 
+ 130           *
+ 131           *
+ 132           *  DESCRIPTION : Set the speed of the roller.                                        
+ 133           *
+ 134           ****************************************************************************/
+ 135          ROLLER_STATUS Roller_SetSpeed(WORD Speed)
+ 136          {
+ 137   1        TXilinxMessage xdata SetSpeedMsg;
+ 138   1      
+ 139   1      // build the msg to be sent to the xilinx
+ 140   1      // --------------------------------------
+ 141   1        SetSpeedMsg.Address = ROLLER_SET_SPEED_ADDRESS;
+ 142   1        SetSpeedMsg.Data = Speed;
+ 143   1        
+ 144   1      // send the mesage to the xilinx 
+ 145   1      // ------------------------------
+ 146   1        if (XilinxWrite(&SetSpeedMsg) == XILINX_SEND_FAILED)
+ 147   1          return ROLLER_OP_FAIL;
+ 148   1       
+ 149   1        return ROLLER_NO_ERROR;
+ 150   1      
+ 151   1      }
+ 152          
+ 153          
+ 154          /****************************************************************************
+ 155           *
+ 156           *  NAME        : Roller_SetOnOff 
+ 157           *
+ 158           *
+ 159           *  DESCRIPTION : Is the roller on or off?                                        
+ 160           *
+ 161           ****************************************************************************/
+ 162          BOOL Roller_IsOn()
+ 163          {
+ 164   1        return RollerIsOn;
+ 165   1      }
+ 166          
+ 167          
+ 168          /****************************************************************************
+ 169           *
+ 170           *  NAME        : Roller_SetOnOff 
+ 171           *
+ 172           *
+ 173           *  DESCRIPTION : Get the roller speed                                        
+ 174           *
+ 175           ****************************************************************************/
+C51 COMPILER V9.52.0.0   ROLLER                                                            04/28/2015 17:26:00 PAGE 4   
+
+ 176          ROLLER_STATUS Roller_GetSpeed()
+ 177          {
+ 178   1        if (XilinxRead(ROLLER_GET_SPEED_ADDRESS) == XILINX_NO_ERROR)
+ 179   1          return ROLLER_NO_ERROR;
+ 180   1       
+ 181   1        return ROLLER_OP_FAIL;
+ 182   1      
+ 183   1      }
+ 184          
+ 185          
+ 186          /****************************************************************************
+ 187           *
+ 188           *  NAME        : Roller_IsSetOperationDone 
+ 189           *
+ 190           *
+ 191           *  DESCRIPTION : Is the 'SetOnOff' or the 'SetSpeed' operation done?                                     
+             -   
+ 192           *
+ 193           ****************************************************************************/
+ 194          ROLLER_STATUS Roller_IsSetOperationDone()
+ 195          {
+ 196   1      // check if the write to the xilinx command is done
+ 197   1      // -------------------------------------------------
+ 198   1      
+ 199   1        if (XilinxGetWriteActionStatus() != XILINX_BUSY)
+ 200   1          return ROLLER_NO_ERROR;
+ 201   1        
+ 202   1        return ROLLER_OP_NOT_DONE;
+ 203   1      
+ 204   1      }
+ 205          
+ 206          
+ 207          /****************************************************************************
+ 208           *
+ 209           *  NAME        : Roller_IsGetOperationDone 
+ 210           *
+ 211           *
+ 212           *  DESCRIPTION : Is the 'IsOn' or the 'GetSpeed' operation done?                                        
+ 213           *
+ 214           ****************************************************************************/
+ 215          ROLLER_STATUS Roller_IsGetOperationDone(WORD *Data)
+ 216          {
+ 217   1        WORD XilinxData;
+ 218   1        if (XilinxGetReceivedData((BYTE*)&XilinxData) != XILINX_BUSY)
+ 219   1        {
+ 220   2          // only the lower 8 bit of the roller speed are meaningful
+ 221   2          *Data = LSB_MASK & XilinxData;
+ 222   2          return ROLLER_NO_ERROR;
+ 223   2        }
+ 224   1      
+ 225   1        return ROLLER_OP_NOT_DONE;
+ 226   1      
+ 227   1      }
+ 228          
+ 229          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    275    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     18    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.52.0.0   ROLLER                                                            04/28/2015 17:26:00 PAGE 5   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

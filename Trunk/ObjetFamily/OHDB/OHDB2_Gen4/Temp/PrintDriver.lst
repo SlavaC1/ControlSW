@@ -1,0 +1,980 @@
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE PRINTDRIVER
+OBJECT MODULE PLACED IN .\Temp\PrintDriver.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE PrintDriver\PrintDriver.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedMo
+                    -dules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Po
+                    -tentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Ro
+                    -ller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFIN
+                    -E(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\PrintDriver.lst) TABS(2) OBJECT(.\Temp\PrintDriver.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Print Driver {PrintDriver.c}  
+   3           *   PURPOSE        : Configuration and control function for the printing mechanism  
+   4           *   DATE CREATED   : 10/Jan/2002
+   5           *   PROGRAMMER     : Nir Saadon 
+   6           *===========================================================================*/
+   7          #include "PrintDriver.h"
+   8          #include "XilinxInterface.h"
+   9          
+  10          #include "MsgDecodeOHDB.h"
+  11          #ifdef OCB_SIMULATOR
+              #include "..\..\..\OHDB\OHDB2_Gen4\Potentiometer\PotentiometerOHDB.h"
+              #include "EdenProtocol.h"
+              #else
+  15          #include "PotentiometerOHDB.h"
+  16          #include "EdenProtocolOHDB.h"
+  17          #endif
+  18          #include "MiniScheduler.h"
+  19          
+  20          #define ENABLE_PRINTING_COMMAND   0x01
+  21          #define DISABLE_PRINTING_COMMAND  0x00
+  22          
+  23          #define FIRE_ALL_IDLE             0
+  24          #define FIRE_ALL_ACTIVE           1
+  25          
+  26          #define DISABLE_BUMPER_PEG        0x03
+  27          
+  28          // Type definitions
+  29          // ================
+  30          typedef struct 
+  31          {
+  32            WORD FireAllFrequency;
+  33            WORD FireAllTime;
+  34            WORD Head;
+  35            WORD NumOfFires;
+  36            BYTE DestId;
+  37            BYTE TransactionId;
+  38          }TFireAllTaskParams;
+  39          
+  40          
+  41          TFireAllTaskParams xdata FireAllTaskParams;
+  42          BYTE FireAllCounter;
+  43          BYTE FireAllStatus;
+  44          
+  45          
+  46          /****************************************************************************
+  47           *
+  48           *  NAME        : PrintDrv_Init 
+  49           *
+  50           *  DESCRIPTION : Init the xilinx registers and state machine.
+  51           *                This function need to be executed once at power up.
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 2   
+
+  52           *                Note: this function is not written as a task and therefore
+  53           *                will block the cpu until it is done.                                       
+  54           *
+  55           ****************************************************************************/
+  56          void PrintDrv_Init()
+  57          {
+  58   1        TXilinxMessage xdata Msg;
+  59   1      
+  60   1        FireAllTaskParams.FireAllTime = 0;
+  61   1        FireAllCounter                = 0;
+  62   1        FireAllStatus                 = FIRE_ALL_IDLE;
+  63   1      
+  64   1        while(PrintDrv_ResetDriver()       != PRINT_DRV_NO_ERROR); 
+  65   1        while(PrintDrv_IsSetOperationDone()!= PRINT_DRV_NO_ERROR);  
+  66   1      
+  67   1        Msg.Address = FPGA_REG_DIAG;
+  68   1        Msg.Data    = 0;  
+  69   1        while(XilinxWrite(&Msg)            != XILINX_NO_ERROR);
+  70   1        while(XilinxGetWriteActionStatus() != XILINX_SEND_SUCCESS);
+  71   1      
+  72   1        Msg.Address = FPGA_REG_SPARE_COMM_DIRECTION;
+  73   1        Msg.Data    = 0;  
+  74   1        while(XilinxWrite(&Msg)            != XILINX_NO_ERROR);
+  75   1        while(XilinxGetWriteActionStatus() != XILINX_SEND_SUCCESS); 
+  76   1        
+  77   1        Msg.Address = FPGA_REG_DATA_SOURCE;
+  78   1        Msg.Data    = 0; // Data PCI as data source 
+  79   1        while(XilinxWrite(&Msg)            != XILINX_NO_ERROR);
+  80   1        while(XilinxGetWriteActionStatus() != XILINX_SEND_SUCCESS);
+  81   1      }
+  82          
+  83          /****************************************************************************
+  84           *
+  85           *  NAME        : PrintDrv_ResetDriver 
+  86           *
+  87           *  DESCRIPTION : Reset the print driver                                        
+  88           *
+  89           ****************************************************************************/
+  90          PRINT_DRV_STATUS PrintDrv_ResetDriver()
+  91          {
+  92   1        TXilinxMessage xdata ResetMsg;
+  93   1      
+  94   1          // Build the msg to be sent to the xilinx
+  95   1        ResetMsg.Address = FPGA_REG_RESET_ALL;
+  96   1        ResetMsg.Data    = 1; 
+  97   1        
+  98   1        // Send the mesage to the xilinx 
+  99   1        if (XilinxWrite(&ResetMsg) == XILINX_SEND_FAILED)
+ 100   1          return PRINT_DRV_OP_FAIL;
+ 101   1       
+ 102   1        return PRINT_DRV_NO_ERROR;
+ 103   1      }
+ 104          
+ 105          /****************************************************************************
+ 106           *
+ 107           *  NAME        : PrintDrv_ResetStateMachine 
+ 108           *
+ 109           *  DESCRIPTION : Reset the print driver state machine                                        
+ 110           *
+ 111           ****************************************************************************/
+ 112          PRINT_DRV_STATUS PrintDrv_ResetStateMachine()
+ 113          {
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 3   
+
+ 114   1        TXilinxMessage xdata ResetStateMsg;
+ 115   1      
+ 116   1        // Build the msg to be sent to the xilinx
+ 117   1        ResetStateMsg.Address = FPGA_REG_RESET_STATE_MACHINE;
+ 118   1        ResetStateMsg.Data    = 1;  
+ 119   1        
+ 120   1        // Send the mesage to the xilinx 
+ 121   1        if(XilinxWrite(&ResetStateMsg) == XILINX_SEND_FAILED)
+ 122   1          return PRINT_DRV_OP_FAIL;
+ 123   1       
+ 124   1        return PRINT_DRV_NO_ERROR;
+ 125   1      }
+ 126          
+ 127          /****************************************************************************
+ 128           *
+ 129           *  NAME        : PrintDrv_SetStartPeg 
+ 130           *
+ 131           *  DESCRIPTION : Set the 'start peg' register value                                        
+ 132           *
+ 133           ****************************************************************************/
+ 134          PRINT_DRV_STATUS PrintDrv_SetStartPeg(WORD StartPeg)
+ 135          { 
+ 136   1        TXilinxMessage xdata StartPegMsg;
+ 137   1      
+ 138   1        // Build the msg to be sent to the xilinx
+ 139   1        StartPegMsg.Address = FPGA_REG_START_PEG;
+ 140   1        StartPegMsg.Data    = StartPeg; 
+ 141   1        
+ 142   1        // Send the mesage to the xilinx 
+ 143   1        if(XilinxWrite(&StartPegMsg) == XILINX_SEND_FAILED)
+ 144   1          return PRINT_DRV_OP_FAIL;
+ 145   1       
+ 146   1        return PRINT_DRV_NO_ERROR;
+ 147   1      }
+ 148          
+ 149          
+ 150          PRINT_DRV_STATUS PrintDrv_WriteToRegister(BYTE Address, WORD Data)
+ 151          { 
+ 152   1        TXilinxMessage xdata Msg;
+ 153   1      
+ 154   1        // Build the msg to be sent to the xilinx
+ 155   1        Msg.Address = Address;
+ 156   1        Msg.Data    = Data; 
+ 157   1        
+ 158   1        // Send the mesage to the xilinx 
+ 159   1        if(XilinxWrite(&Msg) == XILINX_SEND_FAILED)
+ 160   1          return PRINT_DRV_OP_FAIL;
+ 161   1       
+ 162   1        return PRINT_DRV_NO_ERROR;
+ 163   1      }
+ 164          
+ 165          /****************************************************************************
+ 166           *
+ 167           *  NAME        : PrintDrv_SetEndPeg 
+ 168           *
+ 169           *  DESCRIPTION : Set the 'end peg' register value                                        
+ 170           *
+ 171           ****************************************************************************/
+ 172          PRINT_DRV_STATUS PrintDrv_SetEndPeg(WORD EndPeg)
+ 173          { 
+ 174   1        TXilinxMessage xdata EndPegMsg;
+ 175   1      
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 4   
+
+ 176   1        // Build the msg to be sent to the xilinx
+ 177   1        EndPegMsg.Address = FPGA_REG_END_PEG;
+ 178   1        EndPegMsg.Data = EndPeg;  
+ 179   1        
+ 180   1        // Send the mesage to the xilinx 
+ 181   1        if(XilinxWrite(&EndPegMsg) == XILINX_SEND_FAILED)
+ 182   1          return PRINT_DRV_OP_FAIL;
+ 183   1       
+ 184   1        return PRINT_DRV_NO_ERROR;
+ 185   1      }
+ 186          
+ 187          
+ 188          /****************************************************************************
+ 189           *
+ 190           *  NAME        : PrintDrv_SetNumOfFires 
+ 191           *
+ 192           *  DESCRIPTION : Set the 'number of fires' register value                                        
+ 193           *
+ 194           ****************************************************************************/
+ 195          PRINT_DRV_STATUS PrintDrv_SetNumOfFires(WORD NumOfFires)
+ 196          { 
+ 197   1        TXilinxMessage xdata NumOfFiresMsg;
+ 198   1      
+ 199   1        // Build the msg to be sent to the xilinx
+ 200   1      
+ 201   1        NumOfFiresMsg.Address = FPGA_REG_NUMBER_OF_FIRES;
+ 202   1        NumOfFiresMsg.Data    = NumOfFires;
+ 203   1        
+ 204   1        // Send the mesage to the xilinx 
+ 205   1        if(XilinxWrite(&NumOfFiresMsg) == XILINX_SEND_FAILED)
+ 206   1          return PRINT_DRV_OP_FAIL;
+ 207   1       
+ 208   1        return PRINT_DRV_NO_ERROR;
+ 209   1      }
+ 210          
+ 211          
+ 212          /****************************************************************************
+ 213           *
+ 214           *  NAME        : PrintDrv_GetHeadPosition 
+ 215           *
+ 216           *  DESCRIPTION : Get the printing head actual position                                        
+ 217           *
+ 218           ****************************************************************************/
+ 219          PRINT_DRV_STATUS PrintDrv_GetHeadPosition()
+ 220          {
+ 221   1        if(XilinxRead(FPGA_REG_ACTUAL_POSITION) == XILINX_NO_ERROR)
+ 222   1          return PRINT_DRV_NO_ERROR;
+ 223   1       
+ 224   1        return PRINT_DRV_OP_FAIL;
+ 225   1      }
+ 226          
+ 227          
+ 228          /****************************************************************************
+ 229           *
+ 230           *  NAME        : PrintDrv_EnablePrintingCircuitry 
+ 231           *
+ 232           *  DESCRIPTION : Enable the printing driver (Go command)                                        
+ 233           *
+ 234           ****************************************************************************/
+ 235          PRINT_DRV_STATUS PrintDrv_EnablePrintingCircuitry()
+ 236          {
+ 237   1        TXilinxMessage xdata EnablePrintingMsg;
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 5   
+
+ 238   1      
+ 239   1        // Build the msg to be sent to the xilinx
+ 240   1        EnablePrintingMsg.Address = FPGA_REG_GO;
+ 241   1        EnablePrintingMsg.Data    = ENABLE_PRINTING_COMMAND;
+ 242   1        
+ 243   1        // Send the mesage to the xilinx 
+ 244   1        if(XilinxWrite(&EnablePrintingMsg) == XILINX_SEND_FAILED)
+ 245   1          return PRINT_DRV_OP_FAIL;
+ 246   1       
+ 247   1        return PRINT_DRV_NO_ERROR;
+ 248   1      }
+ 249          
+ 250          
+ 251          /****************************************************************************
+ 252           *
+ 253           *  NAME        : PrintDrv_DisblePrintingCircuitry 
+ 254           *
+ 255           *  DESCRIPTION : Disble the printing driver                                         
+ 256           *
+ 257           ****************************************************************************/
+ 258          PRINT_DRV_STATUS PrintDrv_DisblePrintingCircuitry()
+ 259          {
+ 260   1        TXilinxMessage xdata DisablePrintingMsg;
+ 261   1      
+ 262   1        // Build the msg to be sent to the xilinx
+ 263   1        DisablePrintingMsg.Address = FPGA_REG_GO;
+ 264   1        DisablePrintingMsg.Data    = DISABLE_PRINTING_COMMAND;
+ 265   1        
+ 266   1        // Send the mesage to the xilinx 
+ 267   1        if (XilinxWrite(&DisablePrintingMsg) == XILINX_SEND_FAILED)
+ 268   1          return PRINT_DRV_OP_FAIL;
+ 269   1       
+ 270   1        return PRINT_DRV_NO_ERROR;
+ 271   1      }
+ 272          
+ 273          
+ 274          /****************************************************************************
+ 275           *
+ 276           *  NAME        : PrintDrv_SetResulotion 
+ 277           *
+ 278           *  DESCRIPTION : Set the printing resulotion                                         
+ 279           *
+ 280           ****************************************************************************/
+ 281          PRINT_DRV_STATUS PrintDrv_SetResulotion(BYTE Resulotion)
+ 282          {
+ 283   1        TXilinxMessage xdata SetResulotionMsg;
+ 284   1      
+ 285   1        // Build the msg to be sent to the xilinx
+ 286   1        SetResulotionMsg.Address = FPGA_REG_CONFIG;
+ 287   1        SetResulotionMsg.Data    = Resulotion;
+ 288   1        
+ 289   1        // Send the mesage to the xilinx 
+ 290   1        if (XilinxWrite(&SetResulotionMsg) == XILINX_SEND_FAILED)
+ 291   1          return PRINT_DRV_OP_FAIL;
+ 292   1       
+ 293   1        return PRINT_DRV_NO_ERROR;
+ 294   1      }
+ 295          
+ 296          /****************************************************************************
+ 297           *
+ 298           *  NAME        : PrintDrv_SetDiagnostics 
+ 299           *
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 6   
+
+ 300           *  DESCRIPTION : Set the diagnostics register               
+ 301           *
+ 302           ****************************************************************************/
+ 303          PRINT_DRV_STATUS PrintDrv_SetDiagnostics(WORD RegValue)
+ 304          {
+ 305   1        TXilinxMessage xdata Msg;
+ 306   1      
+ 307   1        // Build the msg to be sent to the xilinx
+ 308   1        Msg.Address = FPGA_REG_DIAG;
+ 309   1        Msg.Data    = RegValue;
+ 310   1        
+ 311   1        // Send the mesage to the xilinx 
+ 312   1        if (XilinxWrite(&Msg) == XILINX_SEND_FAILED)
+ 313   1          return PRINT_DRV_OP_FAIL;
+ 314   1       
+ 315   1        return PRINT_DRV_NO_ERROR;
+ 316   1      }
+ 317          
+ 318          
+ 319          /****************************************************************************
+ 320           *
+ 321           *  NAME        : PrintDrv_SetCommDirection
+ 322           *
+ 323           *  DESCRIPTION : Set the communication direction register 
+ 324           *
+ 325           ****************************************************************************/
+ 326          PRINT_DRV_STATUS PrintDrv_SetCommDirection(BYTE Direction)
+ 327          {
+ 328   1        TXilinxMessage xdata Msg;
+ 329   1      
+ 330   1        // build the msg to be sent to the xilinx
+ 331   1        Msg.Address = FPGA_REG_SPARE_COMM_DIRECTION;
+ 332   1        Msg.Data    = Direction;
+ 333   1        
+ 334   1        // send the mesage to the xilinx 
+ 335   1        if (XilinxWrite(&Msg) == XILINX_SEND_FAILED)
+ 336   1          return PRINT_DRV_OP_FAIL;
+ 337   1       
+ 338   1        return PRINT_DRV_NO_ERROR;
+ 339   1      }
+ 340          
+ 341          /****************************************************************************
+ 342           *
+ 343           *  NAME        : PrintDrv_SetBumperEndPeg 
+ 344           *
+ 345           *  DESCRIPTION : Set the bumper end peg                                         
+ 346           *
+ 347           ****************************************************************************/
+ 348          PRINT_DRV_STATUS PrintDrv_SetBumperEndPeg(WORD EndPeg)
+ 349          {
+ 350   1        TXilinxMessage xdata EndPegMsg;
+ 351   1      
+ 352   1        // build the msg to be sent to the xilinx
+ 353   1        EndPegMsg.Address = FPGA_REG_BUMPER_END_PEG;
+ 354   1        EndPegMsg.Data    = EndPeg; 
+ 355   1        
+ 356   1        // send the mesage to the xilinx 
+ 357   1        if (XilinxWrite(&EndPegMsg) == XILINX_SEND_FAILED)
+ 358   1          return PRINT_DRV_OP_FAIL;
+ 359   1       
+ 360   1        return PRINT_DRV_NO_ERROR;
+ 361   1      }
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 7   
+
+ 362          
+ 363          
+ 364          /****************************************************************************
+ 365           *
+ 366           *  NAME        : PrintDrv_SetBumperStartPeg 
+ 367           *
+ 368           *  DESCRIPTION : Set the bumper start peg                                         
+ 369           *
+ 370           ****************************************************************************/
+ 371          PRINT_DRV_STATUS PrintDrv_SetBumperStartPeg(WORD StartPeg)
+ 372          {
+ 373   1        TXilinxMessage xdata StartPegMsg;
+ 374   1      
+ 375   1        // build the msg to be sent to the xilinx
+ 376   1        StartPegMsg.Address = FPGA_REG_BUMPER_START_PEG;
+ 377   1        StartPegMsg.Data    = StartPeg; 
+ 378   1        
+ 379   1        // send the mesage to the xilinx 
+ 380   1        if (XilinxWrite(&StartPegMsg) == XILINX_SEND_FAILED)
+ 381   1          return PRINT_DRV_OP_FAIL;
+ 382   1       
+ 383   1        return PRINT_DRV_NO_ERROR;
+ 384   1      }
+ 385          
+ 386          
+ 387          /****************************************************************************
+ 388           *
+ 389           *  NAME        : PrintDrv_GetBumperImpact 
+ 390           *
+ 391           *  DESCRIPTION : Get the bumper impact status                                         
+ 392           *
+ 393           ****************************************************************************/
+ 394          PRINT_DRV_STATUS PrintDrv_GetBumperImpact()
+ 395          {
+ 396   1        return PRINT_DRV_NO_ERROR;
+ 397   1      }
+ 398          
+ 399          /****************************************************************************
+ 400           *
+ 401           *  NAME        : PrintDrv_IsSetOperationDone 
+ 402           *
+ 403           *  DESCRIPTION : Is the 'Set' operation done (for all the 'set' operations)?                             
+             -            
+ 404           *
+ 405           ****************************************************************************/
+ 406          PRINT_DRV_STATUS PrintDrv_IsSetOperationDone()
+ 407          {
+ 408   1        XILINX_STATUS Status;
+ 409   1      
+ 410   1        // check if the write to the xilinx command is done
+ 411   1        Status = XilinxGetWriteActionStatus();
+ 412   1        if (Status != XILINX_BUSY)
+ 413   1        {
+ 414   2          if (Status == XILINX_SEND_SUCCESS)
+ 415   2            return PRINT_DRV_NO_ERROR;
+ 416   2      
+ 417   2          return PRINT_DRV_OP_FAIL;
+ 418   2        }
+ 419   1        
+ 420   1        return PRINT_DRV_OP_NOT_DONE;
+ 421   1      }
+ 422          
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 8   
+
+ 423          
+ 424          /****************************************************************************
+ 425           *
+ 426           *  NAME        : PrintDrv_IsGetOperationDone 
+ 427           *
+ 428           *  DESCRIPTION : Is the 'Get'operation done?                                         
+ 429           *
+ 430           ****************************************************************************/
+ 431          PRINT_DRV_STATUS PrintDrv_IsGetOperationDone(WORD *Data)
+ 432          {
+ 433   1        WORD XilinxData;
+ 434   1        if (XilinxGetReceivedData((BYTE*)&XilinxData) != XILINX_BUSY)
+ 435   1        {
+ 436   2          // only the lower 8 bit of the roller speed are meaningful
+ 437   2          *Data = LSB_MASK & XilinxData;
+ 438   2          return PRINT_DRV_NO_ERROR;
+ 439   2        }
+ 440   1      
+ 441   1        return PRINT_DRV_OP_NOT_DONE;
+ 442   1      }
+ 443          
+ 444          
+ 445          /****************************************************************************
+ 446           *
+ 447           *  NAME        : PrintDrv_SetFireAllParams 
+ 448           *
+ 449           *  DESCRIPTION : Set the parameters for the fire all task                                         
+ 450           *
+ 451           ****************************************************************************/
+ 452          void PrintDrv_SetFireAllParams(WORD Frequency, WORD Time, WORD Head, WORD NumOfFires, BYTE DestId, BYTE Tr
+             -ansactionId)
+ 453          {
+ 454   1        FireAllTaskParams.FireAllFrequency = Frequency;
+ 455   1        FireAllTaskParams.FireAllTime      = Time;
+ 456   1          FireAllTaskParams.Head             = Head;
+ 457   1        FireAllTaskParams.NumOfFires       = NumOfFires;
+ 458   1        FireAllTaskParams.DestId           = DestId;
+ 459   1        FireAllTaskParams.TransactionId    = TransactionId;
+ 460   1      }
+ 461          
+ 462          /****************************************************************************
+ 463           *
+ 464           *  NAME        : PrintDrv_FireAllTask 
+ 465           *
+ 466           *  DESCRIPTION : This task performs the fire all operation. first it sends ACK
+ 467           *                to EDEN, then it set all the XILINIX registers required for the 
+ 468           *                fire all operation, then it waits for the fire all time, sets
+ 469           *                the xilinx reghisters for terminating the fire all and send 
+ 470           *                notification to EDEN
+ 471           ****************************************************************************/
+ 472          void PrintDrv_FireAllTask(BYTE Arg)
+ 473          {
+ 474   1        enum
+ 475   1        {
+ 476   1          SEND_ACK,
+ 477   1          RESET_STATE_MACHINE,
+ 478   1          WAIT_FOR_STATE_MACHINE_DONE,
+ 479   1          NO_GO_1,
+ 480   1          WAIT_FOR_NO_GO_1_DONE,
+ 481   1          SELECT_DATA_SOURCE,
+ 482   1          WAIT_FOR_DATA_SOURCE_SELECTION_DONE,
+ 483   1          RESET_DIAGNOSTICS_1,
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 9   
+
+ 484   1          WAIT_FOR_RESET_DIAG_1_DONE,
+ 485   1          SET_FREQUENCY,
+ 486   1          WAIT_FOR_FREQUENCY_DONE,
+ 487   1          SET_HEAD,
+ 488   1          WAIT_FOR_HEAD_DONE,
+ 489   1          SET_NUM_OF_FIRES_LOW,
+ 490   1          WAIT_FOR_NUM_OF_FIRES_LOW_DONE,
+ 491   1          SET_NUM_OF_FIRES_HIGH,
+ 492   1          WAIT_FOR_NUM_OF_FIRES_HIGH_DONE,
+ 493   1          SET_DIAGNOSTICS,
+ 494   1          WAIT_FOR_SET_DIAG_DONE,
+ 495   1          GO,
+ 496   1          WAIT_FOR_GO_OP_DONE,
+ 497   1          NO_GO_2,
+ 498   1          WAIT_FOR_NO_GO_2_DONE,
+ 499   1          RESET_DIAGNOSTICS_2,
+ 500   1          WAIT_FOR_RESET_DIAG_2_DONE,
+ 501   1          READ_DIAGNOSTICS,
+ 502   1          WAIT_FOR_READ_DIAG_DONE,    
+ 503   1          RESET_DATA_SOURCE,
+ 504   1          WAIT_FOR_RESET_DATA_SOURCE_DONE,
+ 505   1          SEND_NOTIFICATION
+ 506   1        };
+ 507   1      
+ 508   1        PRINT_DRV_STATUS Status;
+ 509   1        XILINX_STATUS XilinxStatus;
+ 510   1        TXilinxMessage xdata Msg;
+ 511   1        WORD xdata XilinxData;
+ 512   1      
+ 513   1      
+ 514   1        switch (Arg)
+ 515   1        {
+ 516   2          case SEND_ACK:
+ 517   2          { 
+ 518   3            TOHDBAckMsg xdata Msg;
+ 519   3      
+ 520   3            Msg.MsgId          = ACK_MSG;
+ 521   3            Msg.RespondedMsgId = FIRE_ALL_MSG;
+ 522   3            Msg.AckStatus      = ACK_SUCCESS;
+ 523   3            
+ 524   3            if(OHDBEdenProtocolSend((BYTE*)&Msg,sizeof(TOHDBAckMsg),FireAllTaskParams.DestId, FireAllTaskParams.Tra
+             -nsactionId,TRUE) == EDEN_PROTOCOL_NO_ERROR)
+ 525   3            {
+ 526   4              FireAllStatus = FIRE_ALL_ACTIVE;
+ 527   4              SchedulerLeaveTask(RESET_STATE_MACHINE);
+ 528   4            }
+ 529   3            else
+ 530   3              SchedulerLeaveTask(SEND_ACK);
+ 531   3            break;
+ 532   3          }
+ 533   2        
+ 534   2          case RESET_STATE_MACHINE:
+ 535   2            if (PrintDrv_ResetStateMachine() == PRINT_DRV_NO_ERROR)
+ 536   2              SchedulerLeaveTask(WAIT_FOR_STATE_MACHINE_DONE);
+ 537   2            else
+ 538   2              SchedulerLeaveTask(RESET_STATE_MACHINE);
+ 539   2            break;
+ 540   2      
+ 541   2          case WAIT_FOR_STATE_MACHINE_DONE:
+ 542   2            Status = PrintDrv_IsSetOperationDone();
+ 543   2            if (Status != PRINT_DRV_OP_NOT_DONE)
+ 544   2            { 
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 10  
+
+ 545   3              if (Status == PRINT_DRV_NO_ERROR)
+ 546   3                SchedulerLeaveTask(NO_GO_1);
+ 547   3              else
+ 548   3                SchedulerLeaveTask(RESET_STATE_MACHINE);
+ 549   3            }
+ 550   2            else
+ 551   2              SchedulerLeaveTask(WAIT_FOR_STATE_MACHINE_DONE);
+ 552   2            break;
+ 553   2      
+ 554   2          case NO_GO_1:
+ 555   2            if (PrintDrv_DisblePrintingCircuitry() == PRINT_DRV_NO_ERROR)
+ 556   2              SchedulerLeaveTask(WAIT_FOR_NO_GO_1_DONE);
+ 557   2            else
+ 558   2              SchedulerLeaveTask(NO_GO_1);
+ 559   2            break;
+ 560   2      
+ 561   2          case WAIT_FOR_NO_GO_1_DONE:
+ 562   2            Status = PrintDrv_IsSetOperationDone();
+ 563   2            if (Status != PRINT_DRV_OP_NOT_DONE)
+ 564   2            { 
+ 565   3              if (Status == PRINT_DRV_NO_ERROR) 
+ 566   3                SchedulerLeaveTask(SELECT_DATA_SOURCE);
+ 567   3              else
+ 568   3                SchedulerLeaveTask(NO_GO_1);
+ 569   3            }
+ 570   2            else
+ 571   2              SchedulerLeaveTask(WAIT_FOR_NO_GO_1_DONE);
+ 572   2            break;
+ 573   2            
+ 574   2          case SELECT_DATA_SOURCE:
+ 575   2            Msg.Address = FPGA_REG_DATA_SOURCE;
+ 576   2            Msg.Data    = 1; // RS232 as data source
+ 577   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 578   2              SchedulerLeaveTask(WAIT_FOR_DATA_SOURCE_SELECTION_DONE);
+ 579   2            else
+ 580   2              SchedulerLeaveTask(SELECT_DATA_SOURCE);
+ 581   2            break;
+ 582   2      
+ 583   2          case WAIT_FOR_DATA_SOURCE_SELECTION_DONE:
+ 584   2            Status = PrintDrv_IsSetOperationDone();
+ 585   2            if (Status != PRINT_DRV_OP_NOT_DONE)
+ 586   2            { 
+ 587   3              if (Status == PRINT_DRV_NO_ERROR) 
+ 588   3                SchedulerLeaveTask(RESET_DIAGNOSTICS_1);
+ 589   3              else
+ 590   3                SchedulerLeaveTask(SELECT_DATA_SOURCE);
+ 591   3            }
+ 592   2            else
+ 593   2              SchedulerLeaveTask(WAIT_FOR_DATA_SOURCE_SELECTION_DONE);
+ 594   2            break;
+ 595   2      
+ 596   2          case RESET_DIAGNOSTICS_1:
+ 597   2            Msg.Address = FPGA_REG_DIAG;
+ 598   2            Msg.Data = 0;
+ 599   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 600   2              SchedulerLeaveTask(WAIT_FOR_RESET_DIAG_1_DONE);
+ 601   2            else
+ 602   2              SchedulerLeaveTask(RESET_DIAGNOSTICS_1);
+ 603   2            break;
+ 604   2        
+ 605   2          case WAIT_FOR_RESET_DIAG_1_DONE:
+ 606   2            if (XilinxGetWriteActionStatus() == XILINX_SEND_SUCCESS)
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 11  
+
+ 607   2              SchedulerLeaveTask(SET_NUM_OF_FIRES_LOW);
+ 608   2            else
+ 609   2              SchedulerLeaveTask(WAIT_FOR_RESET_DIAG_1_DONE); 
+ 610   2            break;
+ 611   2      
+ 612   2          case SET_FREQUENCY:
+ 613   2            Msg.Address = FPGA_REG_SIM_FIRE_FREQ;
+ 614   2            Msg.Data = 33333333 / (16L * (FireAllTaskParams.FireAllFrequency));
+ 615   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 616   2              SchedulerLeaveTask(WAIT_FOR_FREQUENCY_DONE);
+ 617   2            else
+ 618   2              SchedulerLeaveTask(SET_FREQUENCY);
+ 619   2            break;
+ 620   2        
+ 621   2          case WAIT_FOR_FREQUENCY_DONE:
+ 622   2            if (XilinxGetWriteActionStatus() == XILINX_SEND_SUCCESS)
+ 623   2              SchedulerLeaveTask(SET_HEAD);
+ 624   2            else
+ 625   2              SchedulerLeaveTask(WAIT_FOR_FREQUENCY_DONE);
+ 626   2            break;
+ 627   2            
+ 628   2           case SET_HEAD:
+ 629   2            Msg.Address = FPGA_REG_WR_HEAD_ON;
+ 630   2            Msg.Data    = FireAllTaskParams.Head;
+ 631   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 632   2              SchedulerLeaveTask(WAIT_FOR_HEAD_DONE);
+ 633   2            else
+ 634   2              SchedulerLeaveTask(SET_HEAD);
+ 635   2            break;
+ 636   2        
+ 637   2          case WAIT_FOR_HEAD_DONE:
+ 638   2            if (XilinxGetWriteActionStatus() == XILINX_SEND_SUCCESS)
+ 639   2              SchedulerLeaveTask(SET_DIAGNOSTICS);
+ 640   2            else
+ 641   2              SchedulerLeaveTask(WAIT_FOR_HEAD_DONE);
+ 642   2            break;
+ 643   2            
+ 644   2          case SET_NUM_OF_FIRES_LOW:    
+ 645   2            Msg.Address = FPGA_REG_FIRES_ON_L;
+ 646   2            Msg.Data    = FireAllTaskParams.NumOfFires;
+ 647   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 648   2              SchedulerLeaveTask(WAIT_FOR_NUM_OF_FIRES_LOW_DONE);
+ 649   2            else
+ 650   2              SchedulerLeaveTask(SET_NUM_OF_FIRES_LOW);
+ 651   2            break;
+ 652   2        
+ 653   2          case WAIT_FOR_NUM_OF_FIRES_LOW_DONE:
+ 654   2            if (XilinxGetWriteActionStatus() == XILINX_SEND_SUCCESS)
+ 655   2              SchedulerLeaveTask(SET_NUM_OF_FIRES_HIGH);
+ 656   2            else
+ 657   2              SchedulerLeaveTask(WAIT_FOR_NUM_OF_FIRES_LOW_DONE);
+ 658   2            break;
+ 659   2            
+ 660   2          case SET_NUM_OF_FIRES_HIGH:     
+ 661   2            Msg.Address = FPGA_REG_FIRES_ON_H;
+ 662   2            Msg.Data    = 0;
+ 663   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 664   2              SchedulerLeaveTask(WAIT_FOR_NUM_OF_FIRES_HIGH_DONE);
+ 665   2            else
+ 666   2              SchedulerLeaveTask(SET_NUM_OF_FIRES_HIGH);
+ 667   2            break;
+ 668   2        
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 12  
+
+ 669   2          case WAIT_FOR_NUM_OF_FIRES_HIGH_DONE:
+ 670   2            if (XilinxGetWriteActionStatus() == XILINX_SEND_SUCCESS)
+ 671   2              SchedulerLeaveTask(SET_FREQUENCY);
+ 672   2            else
+ 673   2              SchedulerLeaveTask(WAIT_FOR_NUM_OF_FIRES_HIGH_DONE);
+ 674   2            break;
+ 675   2      
+ 676   2          case SET_DIAGNOSTICS:
+ 677   2            Msg.Address = FPGA_REG_DIAG;
+ 678   2            Msg.Data = 0x33B;
+ 679   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 680   2              SchedulerLeaveTask(WAIT_FOR_SET_DIAG_DONE);
+ 681   2            else
+ 682   2              SchedulerLeaveTask(SET_DIAGNOSTICS);
+ 683   2            break;
+ 684   2        
+ 685   2          case WAIT_FOR_SET_DIAG_DONE:
+ 686   2            if (XilinxGetWriteActionStatus() == XILINX_SEND_SUCCESS)
+ 687   2              SchedulerLeaveTask(GO);
+ 688   2            else
+ 689   2              SchedulerLeaveTask(WAIT_FOR_SET_DIAG_DONE); 
+ 690   2            break;
+ 691   2      
+ 692   2          case GO:
+ 693   2            if (PrintDrv_EnablePrintingCircuitry() == PRINT_DRV_NO_ERROR)
+ 694   2              SchedulerLeaveTask(WAIT_FOR_GO_OP_DONE);
+ 695   2            else
+ 696   2              SchedulerLeaveTask(GO);
+ 697   2            break;
+ 698   2      
+ 699   2          case WAIT_FOR_GO_OP_DONE:
+ 700   2            Status = PrintDrv_IsSetOperationDone();
+ 701   2            if (Status != PRINT_DRV_OP_NOT_DONE)
+ 702   2            { 
+ 703   3              if (Status == PRINT_DRV_NO_ERROR) 
+ 704   3              {
+ 705   4                SchedulerLeaveTask(NO_GO_2);
+ 706   4                SchedulerTaskSleep(-1, FireAllTaskParams.FireAllTime);
+ 707   4              }
+ 708   3              else
+ 709   3                SchedulerLeaveTask(GO);
+ 710   3            }
+ 711   2            else
+ 712   2              SchedulerLeaveTask(WAIT_FOR_GO_OP_DONE);
+ 713   2            break;
+ 714   2      
+ 715   2          case NO_GO_2:
+ 716   2            if (PrintDrv_DisblePrintingCircuitry() == PRINT_DRV_NO_ERROR)
+ 717   2              SchedulerLeaveTask(WAIT_FOR_NO_GO_2_DONE);
+ 718   2            else
+ 719   2              SchedulerLeaveTask(NO_GO_2);
+ 720   2            break;
+ 721   2      
+ 722   2          case WAIT_FOR_NO_GO_2_DONE:
+ 723   2            Status = PrintDrv_IsSetOperationDone();
+ 724   2            if (Status != PRINT_DRV_OP_NOT_DONE)
+ 725   2            { 
+ 726   3              if (Status == PRINT_DRV_NO_ERROR) 
+ 727   3                SchedulerLeaveTask(RESET_DIAGNOSTICS_2);
+ 728   3              else
+ 729   3                SchedulerLeaveTask(NO_GO_2);
+ 730   3            }
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 13  
+
+ 731   2            else
+ 732   2              SchedulerLeaveTask(WAIT_FOR_NO_GO_2_DONE);
+ 733   2            break;
+ 734   2      
+ 735   2          case RESET_DIAGNOSTICS_2:
+ 736   2            Msg.Address = FPGA_REG_DIAG;
+ 737   2            Msg.Data = 0;
+ 738   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 739   2              SchedulerLeaveTask(WAIT_FOR_RESET_DIAG_2_DONE);
+ 740   2            else
+ 741   2              SchedulerLeaveTask(RESET_DIAGNOSTICS_2);
+ 742   2            break;
+ 743   2      
+ 744   2          case WAIT_FOR_RESET_DIAG_2_DONE:
+ 745   2            XilinxStatus = XilinxGetWriteActionStatus();
+ 746   2            if (XilinxStatus != XILINX_BUSY)
+ 747   2            {
+ 748   3             
+ 749   3              if (XilinxStatus == XILINX_SEND_SUCCESS)
+ 750   3                SchedulerLeaveTask(READ_DIAGNOSTICS);
+ 751   3              else
+ 752   3                SchedulerLeaveTask(RESET_DIAGNOSTICS_2);
+ 753   3            }
+ 754   2            else
+ 755   2              SchedulerLeaveTask(WAIT_FOR_RESET_DIAG_2_DONE); 
+ 756   2            break;
+ 757   2      
+ 758   2          case READ_DIAGNOSTICS:
+ 759   2            if (XilinxRead(FPGA_REG_DIAG) == XILINX_NO_ERROR)
+ 760   2              SchedulerLeaveTask(WAIT_FOR_READ_DIAG_DONE);
+ 761   2            else
+ 762   2              SchedulerLeaveTask(READ_DIAGNOSTICS);   
+ 763   2            break;
+ 764   2      
+ 765   2          case WAIT_FOR_READ_DIAG_DONE:
+ 766   2            XilinxStatus = XilinxGetReceivedData((BYTE*)&XilinxData);
+ 767   2            if (XilinxStatus  != XILINX_BUSY)
+ 768   2            { 
+ 769   3              if (XilinxStatus == XILINX_SEND_SUCCESS)
+ 770   3              {
+ 771   4                // check if the content of the diagnostics register is 0
+ 772   4                if (XilinxData == 0)
+ 773   4                  SchedulerLeaveTask(RESET_DATA_SOURCE);
+ 774   4                else
+ 775   4                {
+ 776   5                  SchedulerLeaveTask(RESET_DIAGNOSTICS_2);
+ 777   5                }
+ 778   4              }
+ 779   3              else
+ 780   3                SchedulerLeaveTask(READ_DIAGNOSTICS);
+ 781   3            }
+ 782   2            else
+ 783   2              SchedulerLeaveTask(WAIT_FOR_READ_DIAG_DONE);
+ 784   2            break;
+ 785   2          
+ 786   2          case RESET_DATA_SOURCE:
+ 787   2            Msg.Address = FPGA_REG_DATA_SOURCE;
+ 788   2            Msg.Data    = 0; // DataPCI as data source
+ 789   2            if (XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 790   2              SchedulerLeaveTask(WAIT_FOR_RESET_DATA_SOURCE_DONE);
+ 791   2            else
+ 792   2              SchedulerLeaveTask(RESET_DATA_SOURCE);
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 14  
+
+ 793   2            break;
+ 794   2      
+ 795   2          case WAIT_FOR_RESET_DATA_SOURCE_DONE:
+ 796   2            Status = PrintDrv_IsSetOperationDone();
+ 797   2            if (Status != PRINT_DRV_OP_NOT_DONE)
+ 798   2            { 
+ 799   3              if (Status == PRINT_DRV_NO_ERROR) 
+ 800   3                SchedulerLeaveTask(SEND_NOTIFICATION);
+ 801   3              else
+ 802   3                SchedulerLeaveTask(RESET_DATA_SOURCE);
+ 803   3            }
+ 804   2            else
+ 805   2              SchedulerLeaveTask(WAIT_FOR_RESET_DATA_SOURCE_DONE);
+ 806   2            break;
+ 807   2      
+ 808   2          case SEND_NOTIFICATION:
+ 809   2          {
+ 810   3            TFireAllDoneMsg Notification;
+ 811   3            Notification.MsgId   = FIRE_ALL_DONE_MSG;
+ 812   3            Notification.Counter = FireAllCounter;
+ 813   3            
+ 814   3            if (OHDBEdenProtocolSend((BYTE*)&Notification, sizeof(TFireAllDoneMsg), FireAllTaskParams.DestId, 0,FAL
+             -SE) == EDEN_PROTOCOL_NO_ERROR)
+ 815   3            {
+ 816   4              FireAllStatus = FIRE_ALL_IDLE;
+ 817   4              SchedulerLeaveTask(SEND_ACK);
+ 818   4              SchedulerSuspendTask(-1);
+ 819   4            }
+ 820   3            else
+ 821   3              SchedulerLeaveTask(SEND_NOTIFICATION);
+ 822   3            break;
+ 823   3      
+ 824   3          }
+ 825   2      
+ 826   2          default:
+ 827   2            SchedulerLeaveTask(SEND_ACK);
+ 828   2            break;
+ 829   2      
+ 830   2        }
+ 831   1        return;
+ 832   1      }
+ 833          
+ 834          
+ 835          /****************************************************************************
+ 836           *
+ 837           *  NAME        : PrintDrv_GetFireAllStatus 
+ 838           *
+ 839           *  DESCRIPTION : Returns the current status of the fire all task
+ 840           *
+ 841           ****************************************************************************/
+ 842          BYTE PrintDrv_GetFireAllStatus()
+ 843          {
+ 844   1        return FireAllStatus;
+ 845   1      }
+ 846          
+ 847          
+ 848          /****************************************************************************
+ 849           *
+ 850           *  NAME        : PrintDrv_GetFireAllCounter 
+ 851           *
+ 852           *  DESCRIPTION : Returns the current counter of the fire all task
+ 853           *
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 15  
+
+ 854           ****************************************************************************/
+ 855          BYTE PrintDrv_GetFireAllCounter()
+ 856          {
+ 857   1        return FireAllCounter;
+ 858   1      }
+ 859          
+ 860          /****************************************************************************
+ 861           *
+ 862           *  NAME        : PrintDrv_SetHeadVoltage 
+ 863           *
+ 864           *  DESCRIPTION : Set the voltage of a printing head by setting its potentiometer value                   
+             -                      
+ 865           *
+ 866           ****************************************************************************/
+ 867          PRINT_DRV_STATUS PrintDrv_SetHeadVoltage(BYTE HeadNum, BYTE PotentiometerValue)
+ 868          {
+ 869   1        if (OHDBPotenmtrWriteValue(HeadNum, PotentiometerValue) == OHDB_POTENMTR_NO_ERROR)
+ 870   1          return PRINT_DRV_NO_ERROR;
+ 871   1        
+ 872   1        return PRINT_DRV_OP_FAIL;
+ 873   1      }
+ 874          
+ 875          
+ 876          /****************************************************************************
+ 877           *
+ 878           *  NAME        : PrintDrv_IsSetVoltageDone 
+ 879           *
+ 880           *  DESCRIPTION : Is the 'Set head voltage' action done?                                          
+ 881           *
+ 882           ****************************************************************************/
+ 883          PRINT_DRV_STATUS PrintDrv_IsSetVoltageDone(BYTE HeadNum)
+ 884          {
+ 885   1        OHDB_POTENMTR_STATUS Status;
+ 886   1      
+ 887   1        // check if the write to the potentiometer is done
+ 888   1        Status = OHDBPotenmtrGetWriteStatus(HeadNum);
+ 889   1        if (Status != OHDB_POTENMTR_BUSY)
+ 890   1        {
+ 891   2          if (Status == OHDB_POTENMTR_SEND_SUCCESS)
+ 892   2            return PRINT_DRV_NO_ERROR;
+ 893   2      
+ 894   2          return PRINT_DRV_OP_FAIL;
+ 895   2        }
+ 896   1        
+ 897   1        return PRINT_DRV_OP_NOT_DONE;
+ 898   1      }
+ 899          
+ 900          // Enable\disable the bumper PEG mechanism
+ 901          PRINT_DRV_STATUS PrintDrv_EnableDisableBumperPeg(BOOL Enable)
+ 902          {
+ 903   1        TXilinxMessage xdata BumperPegMsg;
+ 904   1      
+ 905   1        // build the msg to be sent to the xilinx
+ 906   1        BumperPegMsg.Address = FPGA_REG_BUMPER_PEG_ENABLE;
+ 907   1        if (Enable)
+ 908   1          BumperPegMsg.Data = 0;
+ 909   1        else
+ 910   1          BumperPegMsg.Data = DISABLE_BUMPER_PEG;
+ 911   1        
+ 912   1        // send the mesage to the xilinx 
+ 913   1        if (XilinxWrite(&BumperPegMsg) == XILINX_SEND_FAILED)
+ 914   1          return PRINT_DRV_OP_FAIL;
+C51 COMPILER V9.52.0.0   PRINTDRIVER                                                       04/28/2015 17:26:01 PAGE 16  
+
+ 915   1       
+ 916   1        return PRINT_DRV_NO_ERROR;
+ 917   1      }
+ 918          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2338    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    106    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

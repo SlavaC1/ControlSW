@@ -1,0 +1,136 @@
+//===========================================================================
+//
+//           File: NTServicePack.rul                                           	
+//                                                                    	
+//    Description: This function will retrieve the installed service pack 
+//                 level on Windows NT 3.5 and 4 and Windows 2000
+//
+//  Last revision: 2000-11-10
+//
+//     Copyright: (c) 2000 by Dipl.-Ing. Stefan Krueger <skrueger@installsite.org>
+//                You have the non-exclusive royalty-free right to use this code
+//                in your setup prgram. You are not allowed to sell, publish or
+//                redistribute this code in any form except as compiled part of
+//                your setup program.
+//
+//===========================================================================
+
+prototype BOOL KERNEL32.GetVersionExA( POINTER );
+
+// Declare a structure to hold the information retrieved by GetVersionExA.
+typedef OSVERSIONINFO
+  begin
+    LONG lOSVersionInfoSize;
+    LONG lMajorVersion;
+    LONG lMinorVersion;
+    LONG lBuildNumber;
+    LONG lPlatformId;
+    STRING szCSDVersion [ 128 ];
+  end;
+#define SIZEOF_OSVERSIONINFO  148
+
+typedef OSVERSIONINFOEX
+  begin
+    LONG lOSVersionInfoSize;
+    LONG lMajorVersion;
+    LONG lMinorVersion;
+    LONG lBuildNumber;
+    LONG lPlatformId;
+    STRING szCSDVersion [ 128 ];
+    LONG lServicePack;
+    LONG lMisc;
+  end;
+#define SIZEOF_OSVERSIONINFOEX  156
+
+
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           //
+// Function: GetNTServicePack                                                //
+//                                                                           //
+//  Purpose: Retrieves version of installed NT and it's service pack                  //
+//                                                                           //
+//  Results: nvNTVersion
+//           svServicePack = the complete string                             //
+//           nvSPMajor     = major number of installed service pack          //
+//           nvSPMinor     = minor number of installed service pack          //
+//  Returns:  0 = success                                                    //
+//           -1 = operating system is not Windows NT                         //
+//                                                                           //
+//  Samples: Windows NT 4.0 without service pack                             //
+//             nvNTVersion =
+//             svServicePack = ""                                            //
+//             nvSPMajor = 0                                                 //
+//             nvSPMinor = 0                                                 //
+//           Windows NT 4.0 with service pack 3                              //
+//             nvNTVersion =
+//             svServicePack = "Service Pack 3"                              //
+//             nvSPMajor = 3                                                 //
+//             nvSPMinor = 0                                                 //
+//                                                                           //
+///////////////////////////////////////////////////////////////////////////////
+function GetNTServicePack(lMajorVersion,lMinorVersion,svServicePack, nvSPMajor, nvSPMinor)
+  STRING svResult;
+  NUMBER nvResult, nvType, nvSize, nvServicePack;
+  OSVERSIONINFO Version;
+  OSVERSIONINFO POINTER pVersion;
+  OSVERSIONINFOEX VersionEx;
+  OSVERSIONINFOEX POINTER pVersionEx;
+
+begin
+
+  lMajorVersion = 0;
+  lMinorVersion = 0;
+  svServicePack = "";
+  nvSPMajor = 0;
+  nvSPMinor = 0;
+
+  GetSystemInfo(OS, nvResult, svResult);
+
+  if (nvResult != IS_WINDOWSNT) then
+    return -1;
+  endif;
+
+  GetSystemInfo(WINMAJOR, nvResult, svResult);
+  
+  if ( nvResult < 5 ) then
+
+	  // Windows NT 3.5 or 4.0
+	  
+	  // Get string value from WinAPI call
+	  pVersion = &Version;
+	  pVersion->lOSVersionInfoSize = SIZEOF_OSVERSIONINFO;
+	  GetVersionExA( pVersion );
+	  lMajorVersion = pVersionEx->lMajorVersion;
+	  lMinorVersion = pVersionEx->lMinorVersion;
+
+	  svServicePack = pVersion->szCSDVersion;
+	
+	  // Read numerical value from registry
+	  RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	  RegDBGetKeyValueEx("System\\CurrentControlSet\\Control\\Windows", 
+	                     "CSDVersion", nvType, svResult, nvSize);
+	  StrToNum(nvServicePack, svResult);
+	  
+	  nvSPMajor = nvServicePack / 256;  // high byte
+	  nvSPMinor = nvServicePack & 0xFF; // low byte
+
+	else
+		
+		// Windows 2000 or above
+		
+	  pVersionEx = &VersionEx;
+	  pVersionEx->lOSVersionInfoSize = SIZEOF_OSVERSIONINFOEX;
+	  GetVersionExA( pVersionEx );
+	  svServicePack = pVersionEx->szCSDVersion;
+	  nvServicePack = pVersionEx->lServicePack;
+	  lMajorVersion = pVersionEx->lMajorVersion;
+	  lMinorVersion = pVersionEx->lMinorVersion;
+		
+	  nvSPMajor = nvServicePack & 0xFFFF; // low word
+	  nvSPMinor = nvServicePack / 65536;  // high word
+	endif;
+
+  return 0;
+
+end;
+

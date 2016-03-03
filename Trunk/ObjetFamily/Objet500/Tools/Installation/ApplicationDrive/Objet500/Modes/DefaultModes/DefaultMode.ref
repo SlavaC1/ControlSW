@@ -1,0 +1,1 @@
+RunScript1={'base': 'ModesManager.EnterMode("~PerMachineDefault", "DefaultModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}

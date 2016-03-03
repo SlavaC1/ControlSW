@@ -1,0 +1,422 @@
+C51 COMPILER V9.52.0.0   TIMERDRV                                                          04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE TIMERDRV
+OBJECT MODULE PLACED IN .\Temp\TimerDrv.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Timer\TimerDrv.C LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\Sys
+                    -Def,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiomet
+                    -er\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Pote
+                    -ntiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F1
+                    -23_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\TimerDrv.lst) TABS(2) OBJECT(.\Temp\TimerDrv.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : TIMER DRIVER {TimerDrv.C}  
+   3           *   PURPOSE        : Software time handler(timer's ,sysclock ,delay's ...) 
+   4           *   DATE CREATED   : 11/07/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7           
+   8          #include "c8051F120.h"
+   9          #define TL2 TMR2L
+  10          #define TH2 TMR2H 
+  11          #define T4CON TMR4CN
+  12          
+  13          #include "Define.h"
+  14          #include "TimerDrv.h"
+  15          #include "ActuatorsOHDB.h"
+  16          
+  17          // Constants
+  18          // =========
+  19          
+  20          #define COUNT_10_MS   0xffff - 0x2400
+  21          #define SYSCLK               11059200    // Oscillator Frequency 
+  22          #define BAUDRATE               9600    // Baudrate init value 
+  23          
+  24          
+  25          // Local variables
+  26          // ===============
+  27          WORD xdata TimerCounter;  
+  28          static  xdata TIMER_struct  TimerStructure;
+  29          
+  30          // Local routines
+  31          // ==============
+  32          WORD DiffTime(WORD t1,WORD t2);
+  33          
+  34            
+  35          
+  36          /****************************************************************************
+  37           *
+  38           *  NAME        : Timer_2_Init
+  39           *
+  40           *
+  41           *  DESCRIPTION : Initialization of timer 2.                                        
+  42           *
+  43           ****************************************************************************/
+  44          void Timer_2_Init(void)
+  45           {
+  46   1        SFRPAGE = TMR2_PAGE;
+  47   1      
+  48   1      // stop the timer
+  49   1      // --------------
+  50   1        TR2 = 0;
+  51   1      
+C51 COMPILER V9.52.0.0   TIMERDRV                                                          04/28/2015 17:26:01 PAGE 2   
+
+  52   1      // set as timer
+  53   1      // ------------
+  54   1        CT2 = 0;
+  55   1      
+  56   1      // set auto reload mode
+  57   1      // --------------------
+  58   1        TMR2CN &= 0xFE;
+  59   1      
+  60   1      // set the value of RCAP2 for a period of 10ms
+  61   1      // -------------------------------------------
+  62   1        RCAP2L = COUNT_10_MS & LSB_MASK; 
+  63   1        RCAP2H = (COUNT_10_MS & MSB_MASK) >> 8;
+  64   1      
+  65   1      // select the clock supplied to timer 2 as the system clock divided by 12
+  66   1      // ---------------------------------------------------------------------- 
+  67   1        TMR2CF &= 0xE7; 
+  68   1      
+  69   1      // set Timer2 to reload immediately
+  70   1      // --------------------------------
+  71   1        TL2 = 0xff;                   
+  72   1        TH2 = 0xff;
+  73   1      
+  74   1      // disable timer 2 interrupt
+  75   1      // -------------------------
+  76   1        ET2 = 0;
+  77   1      
+  78   1      // start timer 2
+  79   1      // -------------
+  80   1        TR2 = 1;
+  81   1       }
+  82          
+  83          
+  84          /****************************************************************************
+  85           *
+  86           *  NAME        : Timer_0_Init
+  87           *
+  88           *
+  89           *  DESCRIPTION : Initialization of timer 0.                                        
+  90           *
+  91           ****************************************************************************/
+  92          void Timer_0_Init()
+  93          {
+  94   1        SFRPAGE = TIMER01_PAGE;
+  95   1      
+  96   1      // disable timer 0
+  97   1      // ---------------
+  98   1        TR0 = 0;
+  99   1      
+ 100   1      // reset the timer counter
+ 101   1      // -----------------------
+ 102   1        TimerCounter = 0;
+ 103   1      
+ 104   1      // select timer 0 as a 16 bit timer (mode 1) generated by the system clock
+ 105   1      // -----------------------------------------------------------------------
+ 106   1          TMOD |= 0x01;
+ 107   1       
+ 108   1      // load the timer registers fot a period of 10ms
+ 109   1      // ---------------------------------------------
+ 110   1        TL0 = COUNT_10_MS & LSB_MASK;
+ 111   1        TH0 = (COUNT_10_MS & MSB_MASK) >> 8;
+ 112   1      
+ 113   1      // select the clock supplied to timer  as the system clock divided by 12
+C51 COMPILER V9.52.0.0   TIMERDRV                                                          04/28/2015 17:26:01 PAGE 3   
+
+ 114   1      // ----------------------------------------------------------------------
+ 115   1        CKCON &= 0xF4;  // Reset bits SCA0 and SCA1 -> System clock divide by 12.
+ 116   1                        // Reset bit T0M -> Use the prescaled clock.  
+ 117   1      
+ 118   1      // enable timer 0 interrupt
+ 119   1      // -------------------------
+ 120   1        ET0 = 1;
+ 121   1        
+ 122   1      // enable timer 0
+ 123   1      // --------------
+ 124   1        TR0 = 1;
+ 125   1      }
+ 126          
+ 127          
+ 128          /****************************************************************************
+ 129           *
+ 130           *  NAME        : Timer_0_ISR
+ 131           *
+ 132           *
+ 133           *  DESCRIPTION : Interrput service routine of timer 0.                                        
+ 134           *
+ 135           ****************************************************************************/
+ 136          void Timer_0_ISR (void) interrupt 1
+ 137          {
+ 138   1      // clear timer 0 overflow flag
+ 139   1      // ---------------------------
+ 140   1        TF0 = 0;
+ 141   1      
+ 142   1      // increment the timer counter
+ 143   1      // ---------------------------
+ 144   1        TimerCounter++;
+ 145   1      
+ 146   1      // load the timer registers fot a period of 10ms
+ 147   1      // -------------------------
+ 148   1        TL0 = COUNT_10_MS & LSB_MASK;
+ 149   1        TH0 = (COUNT_10_MS & MSB_MASK) >> 8;
+ 150   1      }
+ 151          
+ 152          /****************************************************************************
+ 153           *
+ 154           *  NAME        : Timer_1_Init - Implementation for F120 CPU
+ 155           *
+ 156           *
+ 157           *  DESCRIPTION : Initialization of timer 1 as a baud rate generator for UART 1                           
+             -            
+ 158           *
+ 159           ****************************************************************************/
+ 160          
+ 161          void Timer_1_Init()
+ 162          {
+ 163   1        SFRPAGE = TIMER01_PAGE;
+ 164   1      
+ 165   1      // TMOD: timer 1, mode 2, 8-bit auto-reload
+ 166   1        TMOD  |= 0x20;                                 
+ 167   1        TMOD  &= 0xEF;
+ 168   1      
+ 169   1          TH1        = 0xD0; // Set Timer1 reload value for baudrate
+ 170   1          CKCON     &= 0xEF; // Reset bit T1M: Timer 1 uses the clock defined by the prescale bits, SCA1–SCA0, a
+             -s time base.
+ 171   1        CKCON     &= 0xF4; // Reset bits SCA0 and SCA1 -> SYSCLK divide by 12.
+ 172   1        TR1        = SET;  // TR1:  timer 1 run
+ 173   1        TCON      |= 0x40; // Set timer 1 ON
+C51 COMPILER V9.52.0.0   TIMERDRV                                                          04/28/2015 17:26:01 PAGE 4   
+
+ 174   1      }
+ 175          
+ 176          /****************************************************************************
+ 177           *
+ 178           *  NAME        : Timer_4_Init - Implementation for F120 CPU
+ 179           *
+ 180           *
+ 181           *  DESCRIPTION : Initialization of timer 4 as a baud rate generator for UART 0                           
+             -            
+ 182           *
+ 183           ****************************************************************************/
+ 184          
+ 185          void Timer_4_Init()
+ 186          {
+ 187   1        SFRPAGE = TMR4_PAGE;
+ 188   1        
+ 189   1        // Disable timer 4
+ 190   1        TMR4CN &= 0xFB;
+ 191   1        
+ 192   1        // Timer4 uses SYSCLK as time base. // Note: Equivalent to the F020's   CKCON |= 0x40;   // Timer4 uses SY
+             -SCLK as time base 
+ 193   1        TMR4CF = 0x08;    
+ 194   1        
+ 195   1        // Select timer 4 to be incremented by the system clock
+ 196   1        TMR4CN &= 0xFD; // Note: see complimentary configutation of register TMR4CF 
+ 197   1        
+ 198   1        // Note: In the F120, setting timer 4 as a a baud rate generator for UART0 is done via the SSTA0 register
+             -, implemented in the UART0 initialization function.
+ 199   1        // Disable timer 4 interrupt
+ 200   1        EIE2 &= 0xFB;
+ 201   1        
+ 202   1        // Load the timer register for 9600 bps baud rate
+ 203   1        RCAP4H = 0xFF;
+ 204   1        RCAP4L = 0xB8;
+ 205   1        
+ 206   1        // Enable timer 4
+ 207   1        TMR4CN |= 0x04;
+ 208   1      }
+ 209          
+ 210          /****************************************************************************
+ 211           *
+ 212           *  NAME        : Timer_0_ISR
+ 213           *
+ 214           *
+ 215           *  DESCRIPTION : Interrput service routine of timer 0.                                        
+ 216           *
+ 217           ****************************************************************************/
+ 218          void Timer_4_ISR (void) interrupt 16 using 1
+ 219          {
+ 220   1      }
+ 221          
+ 222          
+ 223          /****************************************************************************
+ 224           *
+ 225           *  NAME        : SysClkInit
+ 226           *
+ 227           *
+ 228           *  DESCRIPTION : System external clock source initialization.                                        
+ 229           *
+ 230           ****************************************************************************/
+ 231          void SysClkInit(void)
+ 232          {
+C51 COMPILER V9.52.0.0   TIMERDRV                                                          04/28/2015 17:26:01 PAGE 5   
+
+ 233   1         int xdata Delay;        // delay counter
+ 234   1      
+ 235   1         SFRPAGE = CONFIG_PAGE;  // Switch to CONFIG_PAGE page, for regs: CLKSEL, OSCXCN, OSCICN, P1MDOUT and XB
+             -R
+ 236   1      
+ 237   1         OSCXCN = 0x67;                          // start external oscillator with
+ 238   1                                                 // 18.432MHz crystal
+ 239   1      
+ 240   1      
+ 241   1         for (Delay=0; Delay < 256; Delay++);    // XTLVLD blanking interval (>1ms)  
+ 242   1         CLKSEL |= 0x01;               // Select the external clock;
+ 243   1         OSCICN &= ~0x80;                        // select external oscillator as SYSCLK
+ 244   1                                                 // source and enable missing clock detector
+ 245   1      
+ 246   1      // Set P2.2 as push - pull
+ 247   1      // -----------------------
+ 248   1         P2MDOUT |= 0x04;
+ 249   1      
+ 250   1         SFRPAGE = LEGACY_PAGE;
+ 251   1      }
+ 252          
+ 253          
+ 254          /****************************************************************************
+ 255           *
+ 256           *  NAME        : TimerDelay
+ 257           *
+ 258           *
+ 259           *  DESCRIPTION :                                         
+ 260           *
+ 261           ****************************************************************************/
+ 262          void TimerDelay(WORD Delay)
+ 263          {     
+ 264   1      
+ 265   1        xdata TIMER_struct  DelayTimer;      
+ 266   1        TimerSetTimeout(&DelayTimer ,Delay);
+ 267   1        while (TimerHasTimeoutExpired(&DelayTimer) != TRUE) 
+ 268   1          {
+ 269   2          } 
+ 270   1      
+ 271   1        return;
+ 272   1      }
+ 273          
+ 274          /****************************************************************************
+ 275           *
+ 276           *  NAME        : TimerDelay
+ 277           *
+ 278           *
+ 279           *  DESCRIPTION : Set timer time out                                        
+ 280           *
+ 281           ****************************************************************************/
+ 282          void TimerSetTimeout(TIMER_struct* Timer,WORD Timeout)
+ 283          {
+ 284   1        
+ 285   1      // save start time(counter) and timeout time
+ 286   1      // -----------------------------------------
+ 287   1        Timer->StartTime = Timer0GetTimerCounter();
+ 288   1      
+ 289   1        Timer->Timeout = Timeout;
+ 290   1        
+ 291   1        return;
+ 292   1      }
+ 293          
+C51 COMPILER V9.52.0.0   TIMERDRV                                                          04/28/2015 17:26:01 PAGE 6   
+
+ 294          /****************************************************************************
+ 295           *
+ 296           *  NAME        : TimerTimeoutExpired
+ 297           *
+ 298           *
+ 299           *  DESCRIPTION :                                         
+ 300           *
+ 301           ****************************************************************************/
+ 302          BOOL TimerHasTimeoutExpired(TIMER_struct* Timer )
+ 303          {
+ 304   1        WORD  xdata CurrentTime;
+ 305   1      
+ 306   1      // get the current time
+ 307   1      // --------------------
+ 308   1        CurrentTime = Timer0GetTimerCounter();
+ 309   1      
+ 310   1      // check if the timeout has passed
+ 311   1      // -------------------------------
+ 312   1        if(DiffTime(Timer->StartTime,CurrentTime) < Timer->Timeout)
+ 313   1          return  FALSE;
+ 314   1      
+ 315   1        return  TRUE;
+ 316   1        
+ 317   1      }
+ 318          
+ 319          /****************************************************************************
+ 320           *
+ 321           *  NAME        : GetTimerStructPtr
+ 322           *
+ 323           *
+ 324           *  DESCRIPTION : This function return a Ptr to the timer structure                                       
+             - 
+ 325           *
+ 326           ****************************************************************************/
+ 327          TIMER_struct *GetTimerStructPtr(void)
+ 328          {
+ 329   1        return &TimerStructure;
+ 330   1      }
+ 331          
+ 332          
+ 333          
+ 334          /****************************************************************************
+ 335           *
+ 336           *  NAME        : Timer0GetTimerCounter
+ 337           *
+ 338           *
+ 339           *  DESCRIPTION : Returns timer 0 counter                                  
+ 340           *
+ 341           ****************************************************************************/
+ 342          WORD Timer0GetTimerCounter()
+ 343          {
+ 344   1        WORD RetVal;
+ 345   1      
+ 346   1      // disable timer 0 interrupt
+ 347   1      // -------------------------
+ 348   1        ET0 = 0;
+ 349   1      
+ 350   1        RetVal = TimerCounter;
+ 351   1      
+ 352   1      // enable timer 0 interrupt
+ 353   1      // -------------------------
+ 354   1        ET0 = 1;
+C51 COMPILER V9.52.0.0   TIMERDRV                                                          04/28/2015 17:26:01 PAGE 7   
+
+ 355   1      
+ 356   1        return RetVal;
+ 357   1      
+ 358   1      }
+ 359          
+ 360          
+ 361          /****************************************************************************
+ 362           *
+ 363           *  NAME        : DiffTime
+ 364           *
+ 365           *
+ 366           *  DESCRIPTION : Returns the difference between t2 to t1 
+ 367           *                (taking wrap-around in a account)                                  
+ 368           *
+ 369           ****************************************************************************/
+ 370          WORD DiffTime(WORD t1,WORD t2)
+ 371          {
+ 372   1        if(t2 > t1)
+ 373   1          return (t2 - t1);
+ 374   1      
+ 375   1        return ((0xffff - t1) + t2 + 1);
+ 376   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    529    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     30    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

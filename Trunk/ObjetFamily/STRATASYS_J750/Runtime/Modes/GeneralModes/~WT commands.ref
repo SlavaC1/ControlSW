@@ -1,0 +1,16 @@
+AtLeastDelayTimeBetweenLayers={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+DefaultModeAfterPrint={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+LayerHeightDPI_um={'base': 27, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+ModeChangeOnPrintStart={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+NozzlesTestdpiThickness_um={'base': 27, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+NozzlesTestYCloneDistance_pixel={'base': 2, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+NozzlesTestYOffset={'base': 2, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+NozzleTest={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+NozzleTestDIP_thickness={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+PrintingOperationMode={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+RollerBypass={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+ScatterEnabled={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+YInterlaceNoOfPixels={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+YScanDirection={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+YSecondaryInterlaceNoOfPixels={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+Z_MoveToStartNewLayer_um={'base': 100, 'upDelta': 0, 'downDelta': 0, 'str': 0}

@@ -1,0 +1,55 @@
+C51 COMPILER V9.52.0.0   UTILS                                                             04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE UTILS
+OBJECT MODULE PLACED IN .\Temp\Utils.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Utils\Utils.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysDef
+                    -,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiometer\
+                    -,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Potenti
+                    -ometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F123_
+                    -CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\Utils.lst) TABS(2) OBJECT(.\Temp\Utils.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Utils {Utils.c}  
+   3           *   PURPOSE        : Some useful utilities 
+   4           *   DATE CREATED   : 21/Aug/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          
+   8          #include "Utils.h"
+   9          
+  10          
+  11          
+  12          /****************************************************************************
+  13           *
+  14           *  NAME        : Utils_CalculateCheckSum 
+  15           *
+  16           *  DESCRIPTION : Calculates a word check sum of a data buffer                                           
+  17           *
+  18           ****************************************************************************/
+  19          WORD Utils_CalculateCheckSum(BYTE *Data, BYTE Length)
+  20          {
+  21   1        BYTE xdata i;
+  22   1        WORD xdata CheckSum = 0;
+  23   1      
+  24   1        for (i = 0; i < Length; i++)
+  25   1          CheckSum += Data[i];
+  26   1       
+  27   1        return CheckSum;
+  28   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    100    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      7    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

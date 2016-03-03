@@ -1,0 +1,220 @@
+C51 COMPILER V9.52.0.0   OHDBMAIN                                                          04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE OHDBMAIN
+OBJECT MODULE PLACED IN .\Temp\OhdbMain.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main\OhdbMain.C LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysD
+                    -ef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiomete
+                    -r\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Poten
+                    -tiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F12
+                    -3_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\OhdbMain.lst) TABS(2) OBJECT(.\Temp\OhdbMain.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : OhdbMain {OhdbMain.C}  
+   3           *   PURPOSE        : Hold's All Analog to digital conversation routine  
+   4           *   DATE CREATED   : 1/Oct/2001
+   5           *   PROGRAMMER     : Juval Izhaki 
+   6           *   PROCEDURES     : Main 
+   7           *   Procedure Name : Main(),
+   8           *   Description    : This file hold's the main function  
+   9           *===========================================================================*/
+  10          
+  11          #include "c8051F120.h"
+  12          
+  13          #include <string.h>
+  14          #include "Define.h"
+  15          #include "RingBuff.h"
+  16          #include "Spi_A2D.h"
+  17          #include "A2D.h"
+  18          #include "TimerDrv.h"
+  19          #include "SpiDrv.h"
+  20          #include "XilinxInterface.h"
+  21          #include "PotentiometerOHDB.h"
+  22          #include "E2PROMInterface.h"
+  23          #include "UartDrv.h"
+  24          #include "EdenProtocolOHDB.h"
+  25          #include "HeaterControl.h"
+  26          #include "MsgDecodeOHDB.h"
+  27          #include "MiniScheduler.h"
+  28          #include "ByteOrder.h"
+  29          #include "Roller.h"
+  30          #include "PrintDriver.h"
+  31          #include "HeadData.h"
+  32          #include "Watchdog.h"
+  33          #include "ActuatorsOHDB.h"
+  34          #include "Watchdog.h"
+  35          #include "Bumper.h"
+  36          #include "HeadsVoltageReader.h"
+  37          #include "SpiExtA2D.h"
+  38          
+  39          #define POWER_ON_RESET_FLAG_MASK 0x02
+  40          
+  41          void SendWakeUpNotification();
+  42          void XBR_Init();
+  43          
+  44          void main (void)
+  45          {
+  46   1        TTaskHandle xdata A2DTaskHandle, HeaterStatusTaskHandle, HeaterControlTaskHandle, ExtA2DTaskHandle;
+  47   1        TTaskHandle xdata EdenProtocolTaskHandle, OHDBMessageDecodeTaskHandle;
+  48   1      
+  49   1        WDTCN = 0xde;               // disable watchdog timer
+  50   1          WDTCN = 0xad;
+  51   1      
+C51 COMPILER V9.52.0.0   OHDBMAIN                                                          04/28/2015 17:26:01 PAGE 2   
+
+  52   1        XBR_Init(); // Initialize cross bars 
+  53   1      
+  54   1          SysClkInit();
+  55   1        Uart0Init();
+  56   1        Timer_0_Init();
+  57   1      
+  58   1        SchedulerInit();
+  59   1      
+  60   1        InitCoolingFans(); // Material and UV
+  61   1        XilinxWatchdogInit();
+  62   1        SpiA2D_Init();
+  63   1        SpiExtA2D_Init();
+  64   1        A2D_Init();
+  65   1        SpiInit();
+  66   1        E2PROMInit();
+  67   1        XilinxInit();
+  68   1        OHDBPotenmtrInit();
+  69   1        Roller_Init();
+  70   1        Bumper_Init();
+  71   1        CommunicationLossTaskInit();
+  72   1        EdenProtocolInit();
+  73   1        MessageDecodeInitOHDB();
+  74   1        HeadData_Init();
+  75   1        HeadsVoltageReaderInit();
+  76   1       
+  77   1        EA |= ENABLE;
+  78   1        
+  79   1          HeaterControlInit();
+  80   1        PrintDrv_Init();
+  81   1        SendWakeUpNotification();
+  82   1          HeadData_ReadDataFromAllE2PROMs();
+  83   1      
+  84   1        A2DTaskHandle               = SchedulerInstallTask(SpiA2D_Task);
+  85   1        ExtA2DTaskHandle            = SchedulerInstallTask(SpiExtA2D_Task); 
+  86   1        EdenProtocolTaskHandle      = SchedulerInstallTask(EdenProtocolDecodeTask);
+  87   1        OHDBMessageDecodeTaskHandle = SchedulerInstallTask(OHDBMessageDecodeTask);
+  88   1        HeaterStatusTaskHandle      = SchedulerInstallTask(HeaterStatusTask);
+  89   1        HeaterControlTaskHandle     = SchedulerInstallTask(HeaterControlTask);
+  90   1      
+  91   1        HeaterSetTasksHandles(HeaterStatusTaskHandle, HeaterControlTaskHandle);
+  92   1      
+  93   1        SchedulerResumeTask(GetXilinxWatchdogTaskHandle(),0);
+  94   1        SchedulerResumeTask(A2DTaskHandle,0);
+  95   1        SchedulerResumeTask(ExtA2DTaskHandle,0);
+  96   1        SchedulerResumeTask(HeaterStatusTaskHandle,0); 
+  97   1        SchedulerResumeTask(EdenProtocolTaskHandle,0);
+  98   1        SchedulerResumeTask(OHDBMessageDecodeTaskHandle,0);
+  99   1          
+ 100   1       
+ 101   1          while(1)
+ 102   1          { 
+ 103   2            SchedulerRun(); 
+ 104   2          } 
+ 105   1      }
+ 106          
+ 107          
+ 108          
+ 109          
+ 110          /****************************************************************************
+ 111           *
+ 112           *  NAME        : SendWakeUpNotification
+ 113           *
+C51 COMPILER V9.52.0.0   OHDBMAIN                                                          04/28/2015 17:26:01 PAGE 3   
+
+ 114           *  DESCRIPTION : Send a wake up notification msg after reset with the 
+ 115           *                wake up reason
+ 116           ****************************************************************************/
+ 117          void SendWakeUpNotification()
+ 118          {
+ 119   1        TWakeUpNotificationMsg Msg;
+ 120   1      
+ 121   1        Msg.MsgId = WAKEUP_NOTIFCATION_MSG;
+ 122   1      
+ 123   1        // Get the wake up reason
+ 124   1        // ----------------------
+ 125   1        Msg.WakeUpReason = ((RSTSRC & POWER_ON_RESET_FLAG_MASK)? 0 : 1);
+ 126   1        
+ 127   1        OHDBEdenProtocolSend((BYTE*)&Msg,sizeof(TOHDBAckMsg),EDEN_DEST_ID,0,FALSE);
+ 128   1      }
+ 129          
+ 130          // Initialize the cross bars
+ 131          void XBR_Init()
+ 132          {
+ 133   1        SFRPAGE = CONFIG_PAGE;
+ 134   1        
+ 135   1        // Bit2 of XBR0 enabled. Enable UART0. TX routed to P0.0 and RX routed to P0.1
+ 136   1        XBR0 |= 0x04;
+ 137   1      
+ 138   1        // Bit1 of XBR0 enabled. Enable SPI. SCK - P0.2, MISO - P0.3, MOSI - P0.4, NSS - P0.5 (not in use)  
+ 139   1        XBR0 |= 0x02; 
+ 140   1        
+ 141   1        P1MDIN  = 0x00; // P1 is configured in Analog Input mode
+ 142   1        P1MDOUT = 0x00; // Open-Drain output mode
+ 143   1        P1      = 0xFF; // All bits logic high
+ 144   1        
+ 145   1        // Bit7 of XBR0 enabled. Enable CP0 on P0.6
+ 146   1          XBR0 |= 0x80;
+ 147   1        
+ 148   1        // Bit0 of XBR1 enabled. Enable CP1 on P0.7
+ 149   1        XBR1 |= 0x01; 
+ 150   1        
+ 151   1        // Bit2 of XBR1 enabled. Enable INT0 on P2.0
+ 152   1        XBR1 |= 0x04;
+ 153   1      
+ 154   1        // Bit4 of XBR1 enabled. Enable INT1 on P2.1
+ 155   1        XBR1 |= 0x10; 
+ 156   1        
+ 157   1        // Bit7 of XBR1 enable. Enable SYSCK on P2.2
+ 158   1        XBR1 |= 0x80;  
+ 159   1      
+ 160   1        // Enable the crossbar
+ 161   1        XBR2 |= 0x40;
+ 162   1        
+ 163   1        SFRPAGE = LEGACY_PAGE;  
+ 164   1      }
+ 165          
+ 166          
+ 167          void dummy_int_3() interrupt 3 using 1
+ 168          {
+ 169   1      }
+ 170           
+ 171          void dummy_int_5() interrupt 5 using 1
+ 172          {
+ 173   1      }
+ 174           
+ 175          void dummy_int_7() interrupt 7 using 1
+C51 COMPILER V9.52.0.0   OHDBMAIN                                                          04/28/2015 17:26:01 PAGE 4   
+
+ 176          {
+ 177   1      }
+ 178          
+ 179          void dummy_int_8() interrupt 8 using 1
+ 180          {
+ 181   1      }
+ 182          
+ 183          void dummy_int_9() interrupt 9 using 1
+ 184          {
+ 185   1      }
+ 186          
+ 187          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    341    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      8    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

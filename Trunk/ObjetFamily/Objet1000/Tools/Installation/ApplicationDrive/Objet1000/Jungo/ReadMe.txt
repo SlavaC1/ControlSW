@@ -1,0 +1,2 @@
+To perform the Data PCI (Jungo) driver installation, add correct KP_EDENP.sys file to this directory, to 
+match the target OS (WinXP or W2K). The files are located in 'Kernel_Plug_In\Kerplug\msdev' in 'objfre_win2k\i386' or in 'objfre_winxp\i386' directorys.

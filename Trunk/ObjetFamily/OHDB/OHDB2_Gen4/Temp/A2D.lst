@@ -1,0 +1,310 @@
+C51 COMPILER V9.52.0.0   A2D                                                               04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE A2D
+OBJECT MODULE PLACED IN .\Temp\A2D.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A2D\A2D.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\SharedModules\SysDef,SPI
+                    -\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\,Potentiometer\,Hea
+                    -terControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules\Roller,Potentiomet
+                    -er\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DEFINE(C8051F123_CPU)
+                    - DEBUG OBJECTEXTEND PRINT(.\Temp\A2D.lst) TABS(2) OBJECT(.\Temp\A2D.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : A/D  {A2D.C}  
+   3           *   PURPOSE        : A/D driver module  
+   4           *   DATE CREATED   : 11/07/2002
+   5           *   PROGRAMMER     : Nir Sade 
+   6           *===========================================================================*/
+   7          #include <string.h>
+   8          #include "Define.h"
+   9          #include "A2D.h"
+  10          #include "TimerDrv.h"
+  11          
+  12          
+  13          
+  14          // Constants
+  15          // =========
+  16          
+  17          // Wee read all odd inputs, switch with FPGA mux, and read all even inputs and temp sensor
+  18          // The conversion back is done in a HeadsVoltageReader. See implementation in HeadsVoltageReaderTask
+  19          static const BYTE A2D0SelectAnalogInputArray[NO_OF_CPU_ANALOG_INPUTS] = 
+  20          {
+  21            SELECT_CPU_AD0_ANALOG_IN1,      
+  22            SELECT_CPU_AD0_ANALOG_IN3,      
+  23            SELECT_CPU_AD0_ANALOG_IN5,      
+  24            SELECT_CPU_AD0_ANALOG_IN7,      
+  25            SELECT_CPU_AD0_ANALOG_IN2,      
+  26            SELECT_CPU_AD0_ANALOG_IN4,      
+  27            SELECT_CPU_AD0_ANALOG_IN6,      
+  28            SELECT_CPU_AD0_ANALOG_IN8,      
+  29            SELECT_CPU_AD0_TEMP_SENSOR            
+  30          };
+  31          
+  32          static const BYTE A2D2SelectAnalogInputArray[NO_OF_P1_ANALOG_INPUTS] = 
+  33          {
+  34            SELECT_CPU_AD2_ANALOG_IN1,      
+  35            SELECT_CPU_AD2_ANALOG_IN2,      
+  36            SELECT_CPU_AD2_ANALOG_IN3,      
+  37            SELECT_CPU_AD2_ANALOG_IN4,      
+  38            SELECT_CPU_AD2_ANALOG_IN5,      
+  39            SELECT_CPU_AD2_ANALOG_IN6,      
+  40            SELECT_CPU_AD2_ANALOG_IN7,      
+  41            SELECT_CPU_AD2_ANALOG_IN8 
+  42          };           
+  43          
+  44          // Local variables
+  45          // ===============
+  46          static BYTE xdata A2D0CurrentAnalogPin;
+  47          static WORD xdata A2D0SamplesBuffer[NO_OF_CPU_ANALOG_INPUTS];
+  48          
+  49          static BYTE xdata A2D2CurrentAnalogPin;
+  50          static BYTE xdata A2D2SamplesBuffer[NO_OF_P1_ANALOG_INPUTS];
+  51          
+C51 COMPILER V9.52.0.0   A2D                                                               04/28/2015 17:26:01 PAGE 2   
+
+  52          bit A2D0BufferReady;
+  53          
+  54          void A2D_Init()
+  55          {
+  56   1        // Use timer 2 overflow for initiating an A2D2 sample
+  57   1        Timer_2_Init();
+  58   1        
+  59   1        A2D0_Init();
+  60   1        A2D2_Init();  
+  61   1      }
+  62          
+  63          
+  64          /****************************************************************************
+  65           *
+  66           *  NAME        : A2D0_Init
+  67           *
+  68           *  DESCRIPTION : 
+  69           *
+  70           ****************************************************************************/
+  71          void A2D0_Init (void)
+  72          {
+  73   1        SFRPAGE = ADC0_PAGE;
+  74   1      
+  75   1        // Define all the analog inputs as singled-ended inputs
+  76   1        AMX0CF = 0;
+  77   1      
+  78   1        // Define the conversion clock period and the intenal amplifier gain
+  79   1        // SAR conversion clock = 8 system clocks, gain = 1
+  80   1          ADC0CF = 0x18;  
+  81   1      
+  82   1        // Define the first input to be sampled and select it
+  83   1        A2D0CurrentAnalogPin = CPU_ANALOG_IN_1;
+  84   1        AMX0SL               = SELECT_CPU_AD0_ANALOG_IN1;
+  85   1       
+  86   1        // Select internal refernce, enables the bias for the ADC, enable the temperature sensor
+  87   1        REF0CN = 0x07;
+  88   1      
+  89   1        // Zero the samples buffer
+  90   1        memset(A2D0SamplesBuffer, 0, NO_OF_CPU_ANALOG_INPUTS * sizeof(WORD));
+  91   1      
+  92   1        // Conversion initiated on every write of '1' to AD0BUSY
+  93   1        ADC0CN = 0x00;  
+  94   1      
+  95   1        // Enable the A2D converter
+  96   1        ADC0CN |= A2D_ENABLE;
+  97   1        EIE2   |= A2D0_INT_ENABLE;
+  98   1      
+  99   1        // Enable interrputs
+ 100   1        EA |= ENABLE;
+ 101   1      
+ 102   1        A2D0BufferReady = FALSE;
+ 103   1      
+ 104   1        SFRPAGE = LEGACY_PAGE;
+ 105   1      }
+ 106          
+ 107          
+ 108          void A2D2_Init()
+ 109          {
+ 110   1        SFRPAGE = ADC2_PAGE;
+ 111   1      
+ 112   1        // Define all the analog inputs as singled-ended inputs
+ 113   1        AMX2CF = 0x00;
+C51 COMPILER V9.52.0.0   A2D                                                               04/28/2015 17:26:01 PAGE 3   
+
+ 114   1      
+ 115   1        // Define the conversion clock period and the intenal amplifier gain
+ 116   1          ADC2CF = 0xF9; 
+ 117   1      
+ 118   1        // Define the first input to be sampled and select it
+ 119   1        A2D2CurrentAnalogPin = CPU_ANALOG_IN_1;
+ 120   1        AMX2SL               = SELECT_CPU_AD2_ANALOG_IN1;
+ 121   1      
+ 122   1        // Zero the samples buffer
+ 123   1        memset(A2D2SamplesBuffer, 0, NO_OF_P1_ANALOG_INPUTS * sizeof(BYTE));
+ 124   1      
+ 125   1        // Select the A2D for timer 2 overflow work mode
+ 126   1        ADC2CN = 0x06;  
+ 127   1      
+ 128   1        // Enable the A2D converter
+ 129   1        ADC2CN |= A2D_ENABLE;
+ 130   1        EIE2   |= A2D2_INT_ENABLE;
+ 131   1      
+ 132   1        // Enable interrputs
+ 133   1        EA |= ENABLE;
+ 134   1      
+ 135   1        SFRPAGE = LEGACY_PAGE;
+ 136   1      }
+ 137          
+ 138          
+ 139          /****************************************************************************
+ 140           *
+ 141           *  NAME        : A2D0_Isr
+ 142           *
+ 143           *  DESCRIPTION : Interrupt service routine for the A2D0
+ 144           *
+ 145           ****************************************************************************/
+ 146          void A2D0_Isr() interrupt 15 using 1
+ 147          {
+ 148   1        // Disable the ADC interrupt
+ 149   1        EIE2 &= A2D0_INT_DISABLE;
+ 150   1      
+ 151   1        // Clear the ADC conversion complete flag
+ 152   1        AD0INT = 0; 
+ 153   1      
+ 154   1        // Read the ADC value into the samples buffer
+ 155   1        A2D0SamplesBuffer[A2D0CurrentAnalogPin]  = ADC0H;
+ 156   1        A2D0SamplesBuffer[A2D0CurrentAnalogPin]  = A2D0SamplesBuffer[A2D0CurrentAnalogPin] << 8;
+ 157   1        A2D0SamplesBuffer[A2D0CurrentAnalogPin] |= ADC0L; 
+ 158   1          
+ 159   1        // Enable the ADC interrupt
+ 160   1        EIE2 |= A2D0_INT_ENABLE;
+ 161   1        
+ 162   1        A2D0BufferReady = TRUE;
+ 163   1      }
+ 164          
+ 165          /****************************************************************************
+ 166           *
+ 167           *  NAME        : A2D2_Isr
+ 168           *
+ 169           *  DESCRIPTION : Interrupt service routine for the A2D2
+ 170           *
+ 171           ****************************************************************************/
+ 172          void A2D2_Isr() interrupt 18 using 1
+ 173          {
+ 174   1        // Disable the ADC interrupt  
+ 175   1        EIE2 &= A2D2_INT_DISABLE;   
+C51 COMPILER V9.52.0.0   A2D                                                               04/28/2015 17:26:01 PAGE 4   
+
+ 176   1      
+ 177   1        // Clear the ADC conversion complete flag
+ 178   1        AD2INT = 0;
+ 179   1      
+ 180   1        // Read the ADC value into the samples buffer
+ 181   1        A2D2SamplesBuffer[A2D2CurrentAnalogPin] = ADC2; 
+ 182   1      
+ 183   1        // Select the next analog input for the next conversion
+ 184   1        A2D2_SelectNextInput();
+ 185   1      
+ 186   1        // Enable the ADC interrupt
+ 187   1        EIE2 |= A2D2_INT_ENABLE;  
+ 188   1      }
+ 189          
+ 190          /****************************************************************************
+ 191           *
+ 192           *  NAME        : A2D_GetReading
+ 193           *
+ 194           *  INPUT       : Analog input number
+ 195           *
+ 196           *  OUTPUT      : Digital reading.
+ 197           *
+ 198           *  DESCRIPTION : Return The last digital reading for this analog input.
+ 199           *
+ 200           ****************************************************************************/
+ 201          WORD A2D0_GetReading(BYTE AnalogInNum)
+ 202          {
+ 203   1        WORD RetVal;
+ 204   1        
+ 205   1        // Disable the ADC interrupt
+ 206   1        EIE2 &= A2D0_INT_DISABLE;
+ 207   1      
+ 208   1        // Get the reading
+ 209   1        RetVal = A2D0SamplesBuffer[AnalogInNum];
+ 210   1      
+ 211   1        // Enable the ADC interrupt
+ 212   1        EIE2 |= A2D0_INT_ENABLE;
+ 213   1      
+ 214   1        return RetVal;
+ 215   1      }
+ 216          
+ 217          WORD A2D2_GetReading(BYTE AnalogInNum)
+ 218          {
+ 219   1        WORD RetVal;
+ 220   1      
+ 221   1        EIE2 &= A2D2_INT_DISABLE;
+ 222   1      
+ 223   1        RetVal = A2D2SamplesBuffer[AnalogInNum];
+ 224   1      
+ 225   1        EIE2 |= A2D2_INT_ENABLE;
+ 226   1      
+ 227   1        // Shifting left 4 bits to normalize readings to 12 bits A2D at application level
+ 228   1        return (RetVal << 4);
+ 229   1      }
+ 230          
+ 231          /****************************************************************************
+ 232           *
+ 233           *  NAME        : A2D_SelectNextInput
+ 234           *
+ 235           *  INPUT       : None.
+ 236           *
+ 237           *  OUTPUT      : None.
+C51 COMPILER V9.52.0.0   A2D                                                               04/28/2015 17:26:01 PAGE 5   
+
+ 238           *
+ 239           *  DESCRIPTION : Select the next analog input to be sampled 
+ 240           *
+ 241           ****************************************************************************/
+ 242          void A2D0_SelectNextInput() 
+ 243          {
+ 244   1        // Increment the current analog input variable  
+ 245   1        if (++A2D0CurrentAnalogPin == NO_OF_CPU_ANALOG_INPUTS)
+ 246   1          A2D0CurrentAnalogPin = 0; 
+ 247   1      
+ 248   1        // Selct the this analog input by writing to the MUX register
+ 249   1        AMX0SL = A2D0SelectAnalogInputArray[A2D0CurrentAnalogPin];
+ 250   1      }
+ 251          
+ 252          void A2D2_SelectNextInput() using 1
+ 253          {
+ 254   1        // Increment the current analog input variable
+ 255   1        if (++A2D2CurrentAnalogPin == NO_OF_P1_ANALOG_INPUTS)
+ 256   1          A2D2CurrentAnalogPin = 0; 
+ 257   1      
+ 258   1        // Selct the this analog input by writing to the MUX register
+ 259   1        AMX2SL = A2D2SelectAnalogInputArray[A2D2CurrentAnalogPin];
+ 260   1      }
+ 261          
+ 262          bit IsA2D0BufferReady()
+ 263          {
+ 264   1        return A2D0BufferReady;
+ 265   1      }
+ 266          
+ 267          void SetA2D0BufferReadiness(bit Status)
+ 268          {
+ 269   1        A2D0BufferReady = Status;
+ 270   1      }
+ 271          
+ 272          BYTE GetA2D0SelectedInput()
+ 273          {
+ 274   1        return A2D0CurrentAnalogPin;
+ 275   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    506    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     51    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

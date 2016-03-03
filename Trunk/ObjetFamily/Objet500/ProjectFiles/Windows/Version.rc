@@ -1,0 +1,29 @@
+1 VERSIONINFO
+ FILEVERSION 85,1,0,9999
+ PRODUCTVERSION 85,1,0,9999
+ FILEFLAGSMASK 0x0000L
+ FILEOS 0x00000004L
+ FILETYPE 0x00000001L
+ FILESUBTYPE 0x0L
+BEGIN
+   BLOCK "StringFileInfo"
+   BEGIN
+      BLOCK "040904E4"
+      BEGIN
+         VALUE "ProductName", "Objet500\0"
+         VALUE "CompanyName", "Stratasys LTD\0"
+         VALUE "FileDescription", "Objet machine control program\0"
+         VALUE "ProductVersion", "85.1.0.9999\0"
+         VALUE "FileVersion", "85.1.0.9999\0"
+         VALUE "LegalCopyright", "\0"
+		 VALUE "SVN_URL", "/ControlSW/<path>\0"
+		 VALUE "SVN_Revision", "<num>\0"
+         VALUE "Comments", "\0"
+		 END
+   END
+   BLOCK "VarFileInfo"
+   BEGIN
+      VALUE "Translation", 0x0409L, 1252
+   END
+END
+

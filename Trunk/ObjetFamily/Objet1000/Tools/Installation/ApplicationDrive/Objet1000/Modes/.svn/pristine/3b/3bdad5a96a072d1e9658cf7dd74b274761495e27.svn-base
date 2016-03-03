@@ -1,0 +1,3 @@
+HeadAmbientTemperatureHighLimit={'base': 395, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+AmbientControlByPass={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+BumperCalibrationPermissiveArray[]={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}

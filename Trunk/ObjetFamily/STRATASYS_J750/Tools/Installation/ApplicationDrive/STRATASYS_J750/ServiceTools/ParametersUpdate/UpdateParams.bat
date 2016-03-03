@@ -1,0 +1,3 @@
+@echo Rearranging parameters...
+@ParamsUpdate C:\Connex500\Upgrade25to31
+@If not %ErrorLevel% == 0 pause

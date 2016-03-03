@@ -1,0 +1,867 @@
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE HEATERCONTROL
+OBJECT MODULE PLACED IN .\Temp\HeaterControl.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE HeaterControl\HeaterControl.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\Shar
+                    -edModules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer
+                    -\,Potentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModule
+                    -s\Roller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) D
+                    -EFINE(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\HeaterControl.lst) TABS(2) OBJECT(.\Temp\HeaterControl.obj)
+
+line level    source
+
+   1          /*===========================================================================
+   2          *   FILENAME       : Heater control unit {HeaterControl.c}  
+   3          *   PURPOSE        : Heater control unit  
+   4          *   DATE CREATED   : 4/Nov/2001
+   5          *   PROGRAMMER     : Nir Saadon 
+   6          *   PROCEDURES     : 
+   7          *===========================================================================*/
+   8          #include <string.h>
+   9          #include <math.h>
+  10          #include "Define.h"
+  11          #include "HeaterControl.h"
+  12          #include "XilinxInterface.h"
+  13          #include "MiniScheduler.h"
+  14          #include "MsgDecodeOHDB.h"
+  15          #include "ByteOrder.h"
+  16          #include "TimerDrv.h"
+  17          
+  18          #ifdef OCB_SIMULATOR
+                #include "EdenProtocol.h"
+                #include "..\ExtMemAddSim\ExtMemAddSim.h"
+                #include "..\EXTMemSim\EXTMem.h"
+              #else
+  23            #include "EdenProtocolOHDB.h" 
+  24          #endif
+  25          
+  26          
+  27          // Constants
+  28          // =========
+  29          
+  30          #ifdef OCB_SIMULATOR
+                #define HEAD_HEATERS_MASK           0x00FF
+                #define BLOCK_HEATERS_MASK          0x0F00
+                #define PREHEATER_MASK              0x1000
+                #define BLOCK_AND_PREHEATER_MASK    BLOCK_HEATERS_MASK + PREHEATER_MASK
+              #endif 
+  36          #define SHORT_CIRCUIT_A2D_TEMPERATURE   100
+  37          #define NUM_OF_READINGS         4
+  38          #define NUM_OF_READINGS_BEFORE_ERRORS   40
+  39          #define NORMAL_DIF_BETWEEN_READINGS   4096 //TODO
+  40          #define NORMAL_DIF_FROM_REQUESTED_TEMP  150 // TODO
+  41          #define OPEN_CIRCUIT_TEMPERATURE    4050
+  42          #define INIT_AVERAGE_VALUE              0
+  43          #define INIT_SUM_VALUE                  0
+  44          #define HEATER_CONTROL_TASK_DELAY_TIME  170
+  45          
+  46          
+  47          // state machine constants
+  48          // -----------------------
+  49          #define CHECK_HEATER_STATUS     0
+  50          #define CHECK_HEATERS_TEMPERATURES  1
+  51          #define WAKE_UP           2
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 2   
+
+  52          
+  53          // FPGA register for heaters activation
+  54          #define WR_HTRS 0x60
+  55          
+  56          const float xdata DEFAULT_HEATING_RATE  = 6;  // A2D per sec
+  57          const float xdata A2D_VALUE_FOR_ONE_DEG = 30; // A2D per 1 degrees Celsius
+  58          
+  59          // Type definitions
+  60          // ================
+  61          typedef struct 
+  62          {
+  63            WORD Sum;
+  64            WORD Average;
+  65            WORD RequestedTemp;   
+  66            WORD CurrentSetPoint;
+  67            TIMER_struct Timer;
+  68          } THeadTemp;
+  69          
+  70          // Local routines
+  71          // ==============
+  72          void TemepartureErrNotifcationTask(BYTE Arg);
+  73          
+  74          void HeatersActivationTask(BYTE Arg);
+  75          
+  76          // Get the current reading of the head and perimeter temperatures
+  77          // and calculate a kind of "moving average"
+  78          // ----------------------------------------
+  79          void HeaterCalculateCurrentTempeatures();
+  80          
+  81          WORD GetNormalizedBlockHeatersAverage();
+  82          WORD ConvertBlockReadingsToHeadReadings(WORD BlockReadings);
+  83          BOOL ArePerimeterHeatersReachedSetPoint();
+  84          
+  85          #ifdef OCB_SIMULATOR
+              WORD transHeaterNumToAdd(BYTE HeaterNum);
+              #endif
+  88          
+  89          // Module variables
+  90          // ================
+  91          THeadTemp xdata HeatersTemp   [NUM_OF_HEATERS];
+  92          WORD xdata StandbyTemperatures[NUM_OF_HEATERS];
+  93          WORD xdata ErrorTemperatures  [NUM_OF_HEATERS];
+  94          BOOL xdata HeaterControlStatus;
+  95          BOOL xdata HeaterControlStatusChanged;
+  96          BYTE xdata NumOfTemperaturesReadings;
+  97          BYTE xdata NumOfReadingsBeforeErrors;
+  98          
+  99          TTaskHandle xdata TemepartureErrTaskHandle;
+ 100          TTaskHandle xdata HeatersActivationTaskHandle;
+ 101          
+ 102          WORD xdata HeatersActivationTaskData;
+ 103          
+ 104          // Every bit in this word is the state of a head/perimeter heater 
+ 105          // (bit 0 to 11, bit 0 is head heater 1, bit 11 is perimeter heater 4, bit 12 is the external liquid)
+ 106          // --------------------------------------------------------------------------------------------------
+ 107          WORD xdata HeatersOnOff;
+ 108          
+ 109          // Handles to the module tasks
+ 110          // --------------------------
+ 111          TTaskHandle StatusTaskHandle;
+ 112          TTaskHandle ControlTaskHandle;
+ 113          
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 3   
+
+ 114          // The high and low thresholds for deciding if the temperature is OK 
+ 115          WORD xdata HeatersHighThreshold;
+ 116          WORD xdata HeatersLowThreshold;
+ 117          WORD xdata BlockHeatersHighThreshold;
+ 118          WORD xdata BlockHeatersLowThreshold;
+ 119          
+ 120          int xdata HeatingRateTimeCheckDelta;
+ 121          BYTE xdata bKeepHeatingEvenOpenOrShortCircuit ; // False = stop the heating when one of the heads/blocks i
+             -s short circuit or open circuit
+ 122          
+ 123          // Exported routines
+ 124          // =================
+ 125          
+ 126          
+ 127          /****************************************************************************
+ 128          *
+ 129          *  NAME        : HeaterControlInit
+ 130          *
+ 131          *  INPUT       : NONE
+ 132          *
+ 133          *  OUTPUT      : NONE.
+ 134          *
+ 135          *  DESCRIPTION : Initializing the heater control unit.                                       
+ 136          *
+ 137          ****************************************************************************/
+ 138          void HeaterControlInit()
+ 139          { 
+ 140   1        BYTE xdata i;
+ 141   1        
+ 142   1        HeaterControlStatus        = FALSE;
+ 143   1        HeaterControlStatusChanged = FALSE;
+ 144   1        HeatersOnOff               = 0; 
+ 145   1        HeatersHighThreshold       = NORMAL_DIF_FROM_REQUESTED_TEMP;
+ 146   1        HeatersLowThreshold        = NORMAL_DIF_FROM_REQUESTED_TEMP;
+ 147   1        BlockHeatersHighThreshold  = NORMAL_DIF_FROM_REQUESTED_TEMP;
+ 148   1        BlockHeatersLowThreshold   = NORMAL_DIF_FROM_REQUESTED_TEMP;
+ 149   1        NumOfTemperaturesReadings  = 0;
+ 150   1        NumOfReadingsBeforeErrors  = 0;
+ 151   1        HeatersActivationTaskData  = 0;
+ 152   1        HeatingRateTimeCheckDelta  = (A2D_VALUE_FOR_ONE_DEG / DEFAULT_HEATING_RATE) * 1000; 
+ 153   1        
+ 154   1        // Initialize the head and perimeter heaters arrays 
+ 155   1        for(i = 0; i < NUM_OF_HEATERS; i++)
+ 156   1        {  
+ 157   2          HeatersTemp[i].Average         = INIT_AVERAGE_VALUE;
+ 158   2          HeatersTemp[i].Sum             = INIT_SUM_VALUE; 
+ 159   2          HeatersTemp[i].RequestedTemp   = 0;     
+ 160   2          HeatersTemp[i].CurrentSetPoint = 0;     
+ 161   2        }
+ 162   1        
+ 163   1        memset(StandbyTemperatures, 0, sizeof(WORD) * NUM_OF_HEATERS);
+ 164   1        
+ 165   1        TemepartureErrTaskHandle    = SchedulerInstallTask(TemepartureErrNotifcationTask);
+ 166   1        HeatersActivationTaskHandle = SchedulerInstallTask(HeatersActivationTask);
+ 167   1      
+ 168   1        // Turn all head heaters off  
+ 169   1        HeaterTurnAllHeadHeaterOff();
+ 170   1        bKeepHeatingEvenOpenOrShortCircuit = 0;    // False = stop the heating when one of the heads/blocks is sh
+             -ort circuit or open circuit
+ 171   1      }
+ 172          
+ 173          
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 4   
+
+ 174          /****************************************************************************
+ 175          *
+ 176          *  NAME        : HeaterControlSetOnOff
+ 177          *
+ 178          *  INPUT       : On/Off.
+ 179          *
+ 180          *  OUTPUT      : None.
+ 181          *
+ 182          *  DESCRIPTION : Set the heater control to on/off.
+ 183          *
+ 184          ****************************************************************************/
+ 185          void HeaterControlSetOnOff(BOOL OnOff)
+ 186          { 
+ 187   1        HeaterControlStatus        = OnOff;  
+ 188   1        HeaterControlStatusChanged = TRUE;
+ 189   1        HeatersOnOff               = 0;
+ 190   1      }
+ 191          
+ 192          /****************************************************************************
+ 193          *
+ 194          *  NAME        : HeaterSetTemperature
+ 195          *
+ 196          *  INPUT       : NONE
+ 197          *
+ 198          *  OUTPUT      : NONE.
+ 199          *
+ 200          *  DESCRIPTION : Set a heater control requested temperature.
+ 201          *
+ 202          ****************************************************************************/
+ 203          void HeaterSetTemperature(BYTE HeaterNum, WORD Temperature)
+ 204          {
+ 205   1      #ifdef OCB_SIMULATOR  //for writing requested temperature to external address
+                WORD Add;
+              #endif
+ 208   1      
+ 209   1        HeatersTemp[HeaterNum].RequestedTemp = Temperature;
+ 210   1      
+ 211   1      #ifdef OCB_SIMULATOR  //for writing requested temperature to external address
+                Add = transHeaterNumToAdd(HeaterNum);
+                EXTMem_WriteAnalog12(Add, Temperature);
+              #endif
+ 215   1      }
+ 216          
+ 217          
+ 218          /****************************************************************************
+ 219          *
+ 220          *  NAME        : HeaterSetTemperatures
+ 221          *
+ 222          *  DESCRIPTION : Set heater control requested temperatures for the 
+ 223          *               requested heaters.
+ 224          *
+ 225          ****************************************************************************/
+ 226          void HeaterSetTemperatures(BYTE FirstHeaterNum, BYTE LastHeaterNum, WORD *Temperatures, WORD LowThreshold,
+             - WORD HighThreshold,WORD BlockLowThreshold, WORD BlockHighThreshold, WORD HeatingRate, BYTE KeepHeatingEvenOpenOrShortCi
+             -rcuit)
+ 227          {
+ 228   1        BYTE HeaterNum,i;
+ 229   1      #ifdef OCB_SIMULATOR  //for writing requested temperature to external address
+                WORD Add;
+              #endif
+ 232   1      
+ 233   1        for (HeaterNum = FirstHeaterNum, i = 0; HeaterNum < LastHeaterNum; HeaterNum++,i++)
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 5   
+
+ 234   1        {
+ 235   2          HeatersTemp[HeaterNum].RequestedTemp = Temperatures[i]; 
+ 236   2          
+ 237   2      #ifdef OCB_SIMULATOR  //for writing requested temperature to external address
+                  Add = transHeaterNumToAdd(HeaterNum);
+                  EXTMem_WriteAnalog12(Add, Temperatures[i]);
+              #endif
+ 241   2        }
+ 242   1      
+ 243   1        HeatersLowThreshold                = LowThreshold;
+ 244   1        HeatersHighThreshold               = HighThreshold;
+ 245   1        BlockHeatersLowThreshold           = BlockLowThreshold;
+ 246   1        BlockHeatersHighThreshold          = BlockHighThreshold;
+ 247   1        HeatingRate                        = (HeatingRate < 1) ? 1 : HeatingRate; // Avoid division by zero and n
+             -egative time   
+ 248   1        HeatingRateTimeCheckDelta          = (A2D_VALUE_FOR_ONE_DEG / (float)HeatingRate) * 1000;
+ 249   1        bKeepHeatingEvenOpenOrShortCircuit = KeepHeatingEvenOpenOrShortCircuit;
+ 250   1      }
+ 251          
+ 252          /****************************************************************************
+ 253          *
+ 254          *  NAME        : HeaterGetCurrentTemperatures
+ 255          *
+ 256          *  DESCRIPTION : Get the current temperatures.
+ 257          *
+ 258          ****************************************************************************/
+ 259          void HeaterGetCurrentTemperatures(WORD *Temperatures)
+ 260          {
+ 261   1        BYTE HeaterNum;
+ 262   1      
+ 263   1        HeaterCalculateCurrentTempeatures();
+ 264   1      
+ 265   1        for(HeaterNum = 0; HeaterNum < NUM_OF_HEATERS; HeaterNum++) 
+ 266   1          Temperatures[HeaterNum] = HeatersTemp[HeaterNum].Average; 
+ 267   1      }
+ 268          
+ 269          /****************************************************************************
+ 270          *
+ 271          *  NAME        : HeaterSetStandbyTemperatures
+ 272          *
+ 273          *  DESCRIPTION : Set heater control requested standby temperatures for the 
+ 274          *               requested heaters.
+ 275          *
+ 276          ****************************************************************************/
+ 277          void HeaterSetStandbyTemperatures(BYTE FirstHeaterNum, BYTE LastHeaterNum, WORD *Temperatures)
+ 278          {
+ 279   1        BYTE HeaterNum,i;
+ 280   1      
+ 281   1        for(HeaterNum = FirstHeaterNum, i = 0; HeaterNum < LastHeaterNum; HeaterNum++, i++)
+ 282   1          StandbyTemperatures[HeaterNum] = Temperatures[i]; 
+ 283   1      }
+ 284          
+ 285          /****************************************************************************
+ 286          *
+ 287          *  NAME        : HeaterGetStandbyTemperatures
+ 288          *
+ 289          *  DESCRIPTION : Get the standby temperatures
+ 290          *
+ 291          ****************************************************************************/
+ 292          void HeaterGetStandbyTemperatures(WORD *Temperatures)
+ 293          {
+ 294   1        memcpy(Temperatures, StandbyTemperatures, sizeof(WORD)*(NUM_OF_HEATERS));
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 6   
+
+ 295   1      }
+ 296          
+ 297          /****************************************************************************
+ 298          *
+ 299          *  NAME        : HeaterSetTasksHandles
+ 300          *
+ 301          *  DESCRIPTION : Set the handles to the modul tasks
+ 302          *             
+ 303          ****************************************************************************/
+ 304          void HeaterSetTasksHandles(TTaskHandle StatusTask, TTaskHandle HeadsControlTask)
+ 305          {
+ 306   1        StatusTaskHandle  = StatusTask;
+ 307   1        ControlTaskHandle = HeadsControlTask;
+ 308   1      }
+ 309          
+ 310          
+ 311          /****************************************************************************
+ 312          *
+ 313          *  NAME        : HeaterStatusTask
+ 314          *
+ 315          *  DESCRIPTION : This task checks if the status of the heater control has 
+ 316          *        changed to false, and if so turn off all the heaters 
+ 317          *             
+ 318          ****************************************************************************/
+ 319          void HeaterStatusTask(BYTE Arg)
+ 320          { 
+ 321   1        BYTE xdata i;
+ 322   1        
+ 323   1        switch(Arg)
+ 324   1        {
+ 325   2              case CHECK_HEATER_STATUS:
+ 326   2          {
+ 327   3            if(TRUE == HeaterControlStatusChanged) // Turning ON or OFF
+ 328   3            {
+ 329   4              HeaterControlStatusChanged = FALSE;
+ 330   4              
+ 331   4              if(TRUE == HeaterControlStatus) // Turning ON (first time)
+ 332   4              {
+ 333   5                // Calculate the current heads and perimeter temps      
+ 334   5                HeaterCalculateCurrentTempeatures();
+ 335   5                
+ 336   5                // Initialize the current set point values
+ 337   5                for(i = 0; i < NUM_OF_HEAD_HEATERS; i++)
+ 338   5                {
+ 339   6                  HeatersTemp[i].CurrentSetPoint = HeatersTemp[i].Average;
+ 340   6                  TimerSetTimeout(&HeatersTemp[i].Timer, TIMER0_MS_TO_TICKS(0));
+ 341   6                }
+ 342   5                
+ 343   5                SchedulerSuspendTask(-1);                                           // Suspends this task           
+ 344   5                SchedulerResumeTask(ControlTaskHandle, CHECK_HEATERS_TEMPERATURES); // Resume the next task
+ 345   5              }
+ 346   4              else // Turning OFF
+ 347   4              {         
+ 348   5                HeaterTurnAllHeadHeaterOff();         
+ 349   5                SchedulerLeaveTask(CHECK_HEATER_STATUS);
+ 350   5              }
+ 351   4            }
+ 352   3            else // Steady state
+ 353   3            {
+ 354   4              if(TRUE == HeaterControlStatus) // Already ON
+ 355   4              {
+ 356   5                // Calculate the current heads and perimeter temps      
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 7   
+
+ 357   5                HeaterCalculateCurrentTempeatures();          
+ 358   5                
+ 359   5                SchedulerSuspendTask(-1);                                           // Suspends this task           
+ 360   5                SchedulerResumeTask(ControlTaskHandle, CHECK_HEATERS_TEMPERATURES); // Resume the next task
+ 361   5              }
+ 362   4              else // Already OFF
+ 363   4              {
+ 364   5                SchedulerLeaveTask(CHECK_HEATER_STATUS);
+ 365   5              }
+ 366   4            }     
+ 367   3          }
+ 368   2          break;    
+ 369   2      
+ 370   2          default:
+ 371   2            SchedulerLeaveTask(CHECK_HEATER_STATUS);
+ 372   2            break;
+ 373   2        }
+ 374   1      }
+ 375          
+ 376          
+ 377          /****************************************************************************
+ 378          *
+ 379          *  NAME        : HeaterHeadsControlTask
+ 380          *
+ 381          *  DESCRIPTION : This task controls the heating of the heads and the 
+ 382          *        perimeter heaters according to their recent temperatures
+ 383          ****************************************************************************/
+ 384          void HeaterControlTask(BYTE Arg)
+ 385          {
+ 386   1        BYTE xdata i;
+ 387   1        WORD xdata BlockHeatersAverage, CurrentSet;
+ 388   1      
+ 389   1        switch(Arg)
+ 390   1        {
+ 391   2          case CHECK_HEATERS_TEMPERATURES:
+ 392   2          {         
+ 393   3            // Calculate the average temperature of block perimeter heaters. The value is converted to head A2D uni
+             -ts
+ 394   3            BlockHeatersAverage = GetNormalizedBlockHeatersAverage();           
+ 395   3              
+ 396   3            for(i = 0; i < NUM_OF_HEATERS; i++)
+ 397   3            {       
+ 398   4              // Maintain steady heating rate for the heads 
+ 399   4              if(i < NUM_OF_HEAD_HEATERS)    // Only the heads
+ 400   4              {
+ 401   5                if((HeatersTemp[i].Average > HeatersTemp[i].RequestedTemp)  && // Check that we're not passed the ori
+             -ginal set point
+ 402   5                   (TimerHasTimeoutExpired(&HeatersTemp[i].Timer) == TRUE))    // Check if time delta is passed          
+             -   
+ 403   5                {                 
+ 404   6                  // Setting the timer for the next time
+ 405   6                  TimerSetTimeout(&HeatersTemp[i].Timer, TIMER0_MS_TO_TICKS(HeatingRateTimeCheckDelta));                        
+ 406   6                  
+ 407   6                  CurrentSet                     = HeatersTemp[i].CurrentSetPoint - A2D_VALUE_FOR_ONE_DEG;            
+ 408   6                  HeatersTemp[i].CurrentSetPoint = (CurrentSet > HeatersTemp[i].RequestedTemp) ? CurrentSet : HeatersT
+             -emp[i].RequestedTemp; 
+ 409   6                }
+ 410   5              }         
+ 411   4              
+ 412   4              // Check if the temperature is lower than the requested temperature and in the normal range (check for
+             - open circuit)
+ 413   4              if((HeatersTemp[i].RequestedTemp != 0) && (HeatersTemp[i].Average < OPEN_CIRCUIT_TEMPERATURE))
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 8   
+
+ 414   4              {
+ 415   5                if(i < NUM_OF_HEAD_HEATERS) 
+ 416   5                { 
+ 417   6                  if((HeatersTemp[i].CurrentSetPoint < HeatersTemp[i].Average) && (HeatersTemp[i].RequestedTemp < Heat
+             -ersTemp[i].Average)) // For the heads
+ 418   6                    HeaterSetHeaterState(i, TRUE);
+ 419   6                  else
+ 420   6                    HeaterSetHeaterState(i, FALSE); 
+ 421   6                }
+ 422   5                else 
+ 423   5                {
+ 424   6                  if(HeatersTemp[i].RequestedTemp < HeatersTemp[i].Average) // For the block and the pre-heater
+ 425   6                    HeaterSetHeaterState(i, TRUE);
+ 426   6                  else
+ 427   6                    HeaterSetHeaterState(i, FALSE);   
+ 428   6                }
+ 429   5              }         
+ 430   4              else
+ 431   4              {         
+ 432   5                HeaterSetHeaterState(i, FALSE); 
+ 433   5              }
+ 434   4              
+ 435   4              // Relevant for head heaters only
+ 436   4              // If we in a warming-up stage and the head temperature is above average block temperature turn the he
+             -ating OFF              
+ 437   4              if((i < NUM_OF_HEAD_HEATERS) && (ArePerimeterHeatersReachedSetPoint() == FALSE) && (HeatersTemp[i].Ave
+             -rage < BlockHeatersAverage))
+ 438   4                HeaterSetHeaterState(i, FALSE);       
+ 439   4              
+ 440   4              // If at least one of the thermistors is malfunctioning, turn all the heating OFF   
+ 441   4              if((HeatersTemp[i].Average > OPEN_CIRCUIT_TEMPERATURE)      || // Open circuit
+ 442   4                 (HeatersTemp[i].Average < SHORT_CIRCUIT_A2D_TEMPERATURE))   // Short circuit.
+ 443   4              {
+ 444   5                          if( bKeepHeatingEvenOpenOrShortCircuit && (i < NUM_OF_HEAD_HEATERS)) //bKeepHeatingEve
+             -nOpenOrShortCircuit = Head heaters mask to enable "head optimization wizard"                                            
+             -                                                                                                        mMaskNeeded is t
+             -rue only for Head optimizaton wizard
+ 445   5                {
+ 446   6                  HeaterSetHeaterState(i,FALSE);   // if one of the head is short / open Circuit, we keep heating (exce
+             -pt the short/open head)
+ 447   6                }
+ 448   5                else
+ 449   5                {
+ 450   6                  HeatersOnOff = 0;         
+ 451   6                  break;
+ 452   6                }
+ 453   5              }
+ 454   4            }   
+ 455   3      
+ 456   3            TurnHeatersOnOff();   
+ 457   3            
+ 458   3            SchedulerLeaveTask(WAKE_UP);
+ 459   3            SchedulerTaskSleep(-1, HEATER_CONTROL_TASK_DELAY_TIME);
+ 460   3          }
+ 461   2          break;
+ 462   2      
+ 463   2          case WAKE_UP:   
+ 464   2          {     
+ 465   3            SchedulerSuspendTask(-1);                                   // Suspends this task       
+ 466   3            SchedulerResumeTask(StatusTaskHandle, CHECK_HEATER_STATUS); // Resume the next task
+ 467   3            break;
+ 468   3          }
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 9   
+
+ 469   2          
+ 470   2          default:
+ 471   2            SchedulerLeaveTask(CHECK_HEATERS_TEMPERATURES);
+ 472   2            break;
+ 473   2        }
+ 474   1      }
+ 475          
+ 476          
+ 477          
+ 478          /****************************************************************************
+ 479          *
+ 480          *  NAME        : HeaterCalculateCurrentTempeatures
+ 481          *
+ 482          *  INPUT       : NONE
+ 483          *
+ 484          *  OUTPUT      : NONE.
+ 485          *
+ 486          *  DESCRIPTION : Get the current reading of the head and perimeter temperatures
+ 487          *               and calculate a kind of "moving average"
+ 488          *
+ 489          ****************************************************************************/
+ 490          void HeaterCalculateCurrentTempeatures()
+ 491          {
+ 492   1        WORD xdata Tempratures[NUM_OF_HEATERS];  
+ 493   1        BYTE xdata i;
+ 494   1        BOOL xdata TemperatureError = FALSE, IgnoreAverage = FALSE, IgnoreErrors = FALSE; 
+ 495   1        
+ 496   1        // Get the head temp and the perimeter temp 
+ 497   1        if(! SpiA2D_IsDataValid())
+ 498   1          return;
+ 499   1      
+ 500   1        // Temperatures can't be read in a block, because the actual analogue inputs could be not in sequence
+ 501   1        Tempratures[MODEL_HEAD_1_HEATER]   = SpiA2D_GetReading(HEAD_1_TEMP);
+ 502   1        Tempratures[MODEL_HEAD_2_HEATER]   = SpiA2D_GetReading(HEAD_2_TEMP);
+ 503   1        Tempratures[MODEL_HEAD_3_HEATER]   = SpiA2D_GetReading(HEAD_3_TEMP);
+ 504   1        Tempratures[MODEL_HEAD_4_HEATER]   = SpiA2D_GetReading(HEAD_4_TEMP);
+ 505   1        Tempratures[SUPPORT_HEAD_1_HEATER] = SpiA2D_GetReading(HEAD_5_TEMP);
+ 506   1        Tempratures[SUPPORT_HEAD_2_HEATER] = SpiA2D_GetReading(HEAD_6_TEMP);
+ 507   1        Tempratures[SUPPORT_HEAD_3_HEATER] = SpiA2D_GetReading(HEAD_7_TEMP);
+ 508   1        Tempratures[SUPPORT_HEAD_4_HEATER] = SpiA2D_GetReading(HEAD_8_TEMP);
+ 509   1        
+ 510   1        Tempratures[BLOCK_FRONT_LEFT_HEATER]  = SpiA2D_GetReading(HEAD_BLOCK_1_TEMP);
+ 511   1        Tempratures[BLOCK_FRONT_RIGHT_HEATER] = SpiA2D_GetReading(HEAD_BLOCK_2_TEMP);
+ 512   1        Tempratures[BLOCK_REAR_LEFT_HEATER]   = SpiA2D_GetReading(HEAD_BLOCK_3_TEMP);
+ 513   1        Tempratures[BLOCK_REAR_RIGHT_HEATER]  = SpiA2D_GetReading(HEAD_BLOCK_4_TEMP);
+ 514   1        
+ 515   1        Tempratures[EXTERNAL_LIQUID_HEATER] = SpiA2D_GetReading(EXTERNAL_LIQUID_TEMP);
+ 516   1      
+ 517   1        // Calculate a kind of "moving average" by subtracting the average and adding the last reading  
+ 518   1        if(NumOfTemperaturesReadings < NUM_OF_READINGS)
+ 519   1        {
+ 520   2          NumOfTemperaturesReadings++;
+ 521   2          IgnoreAverage = TRUE;
+ 522   2        }
+ 523   1      
+ 524   1        if(NumOfReadingsBeforeErrors < NUM_OF_READINGS_BEFORE_ERRORS)
+ 525   1        {
+ 526   2          NumOfReadingsBeforeErrors++;
+ 527   2          IgnoreErrors = TRUE;
+ 528   2        }
+ 529   1      
+ 530   1        for(i = 0; i < NUM_OF_HEATERS; i++)
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 10  
+
+ 531   1        {
+ 532   2          // check if the reading is "normal"
+ 533   2          // -------------------------------
+ 534   2          if(! (abs(Tempratures[i] - HeatersTemp[i].Average) > NORMAL_DIF_BETWEEN_READINGS)) 
+ 535   2          {
+ 536   3            if(! IgnoreAverage)
+ 537   3              HeatersTemp[i].Sum -= HeatersTemp[i].Average;
+ 538   3      
+ 539   3            HeatersTemp[i].Sum     += Tempratures[i];
+ 540   3            HeatersTemp[i].Average  = HeatersTemp[i].Sum / NumOfTemperaturesReadings;
+ 541   3          }
+ 542   2      
+ 543   2          if((abs(Tempratures[i] - HeatersTemp[i].Average) > 100) && ! IgnoreErrors)
+ 544   2            TemperatureError = TRUE;    
+ 545   2        }
+ 546   1      
+ 547   1        if( TemperatureError )
+ 548   1        {
+ 549   2          if(SchedulerGetTaskState(TemepartureErrTaskHandle) != TASK_SUSPENDED)
+ 550   2            return;
+ 551   2      
+ 552   2          memcpy(ErrorTemperatures, Tempratures, (NUM_OF_HEATERS) * sizeof(WORD));
+ 553   2          SchedulerResumeTask(TemepartureErrTaskHandle,0);
+ 554   2        }
+ 555   1      }
+ 556          
+ 557          /****************************************************************************
+ 558          *
+ 559          *  NAME        : HeaterSetHeaterState
+ 560          *
+ 561          *  DESCRIPTION : Set the state of an heater to on or off. (This function
+ 562          *                does not turn the heater on/off it only set a bit in the 
+ 563          *                heaters status word)
+ 564          *
+ 565          ****************************************************************************/
+ 566          void HeaterSetHeaterState(BYTE HeaterNum,BOOL On)
+ 567          {
+ 568   1        WORD xdata ShiftByte = 1;
+ 569   1      
+ 570   1        if(On)
+ 571   1          HeatersOnOff |=  (ShiftByte << HeaterNum);
+ 572   1        else
+ 573   1          HeatersOnOff &= ~(ShiftByte << HeaterNum);
+ 574   1      }
+ 575          
+ 576          
+ 577          /****************************************************************************
+ 578          *
+ 579          *  NAME        : TurnHeatersOnOff
+ 580          *
+ 581          *  DESCRIPTION : Turn the heaters on or off according to their representation
+ 582          *                 in the heaters status word
+ 583          ****************************************************************************/
+ 584          void TurnHeatersOnOff()
+ 585          {
+ 586   1      #ifdef OCB_SIMULATOR
+                BYTE xdata Item;
+                EXTMem_Write(P3_ADD_OHDB, (HeatersOnOff & HEAD_HEATERS_MASK));
+                EXTMem_Read(P2_ADD_OHDB,&Item );
+                EXTMem_Write(P2_ADD_OHDB, (Item & 0x0F) | ((HeatersOnOff & BLOCK_AND_PREHEATER_MASK) >> 4));
+              #else
+ 592   1      
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 11  
+
+ 593   1        HeatersActivationTaskData = HeatersOnOff;
+ 594   1        SchedulerResumeTask(HeatersActivationTaskHandle, 0);
+ 595   1      
+ 596   1      #endif    
+ 597   1      }
+ 598          
+ 599          
+ 600          /****************************************************************************
+ 601          *
+ 602          *  NAME        : HeaterTurnAllHeadHeaterOff
+ 603          *
+ 604          *  DESCRIPTION : Turn all head and perimeter heaters off
+ 605          *
+ 606          ****************************************************************************/
+ 607          void HeaterTurnAllHeadHeaterOff()
+ 608          {
+ 609   1      #ifdef OCB_SIMULATOR
+                BYTE xdata Item;
+                EXTMem_Write(P3_ADD_OHDB, 0);
+                EXTMem_Read(P2_ADD_OHDB,&Item );
+                EXTMem_Write(P2_ADD_OHDB, Item & 0x0f);
+              #else
+ 615   1      
+ 616   1        HeatersActivationTaskData = 0;  
+ 617   1        SchedulerResumeTask(HeatersActivationTaskHandle, 0);  
+ 618   1        
+ 619   1      #endif
+ 620   1      }
+ 621          
+ 622          
+ 623          /****************************************************************************
+ 624          *
+ 625          *  NAME        : HeaterIsTempraturesOK
+ 626          *
+ 627          *  DESCRIPTION : Returns true if the temperatures of all the heaters 
+ 628          *               are as requested 
+ 629          ****************************************************************************/
+ 630          BOOL HeaterIsTempraturesOK(BYTE* HeadNum, WORD* Temperature, TTemperatureErrDescription* ErrDescription)
+ 631          {
+ 632   1        BYTE xdata i;
+ 633   1        WORD xdata HighThreshold;
+ 634   1        WORD xdata LowThreshold;
+ 635   1        HeaterCalculateCurrentTempeatures();
+ 636   1      
+ 637   1        for(i = 0; i < NUM_OF_HEATERS; i++)
+ 638   1        {
+ 639   2          if(i < NUM_OF_HEAD_HEATERS)
+ 640   2          {
+ 641   3            HighThreshold = HeatersHighThreshold;
+ 642   3            LowThreshold  = HeatersLowThreshold;
+ 643   3          }
+ 644   2          else
+ 645   2          {
+ 646   3            HighThreshold = BlockHeatersHighThreshold;
+ 647   3            LowThreshold  = BlockHeatersLowThreshold;
+ 648   3              }
+ 649   2          
+ 650   2          // Check if the temperature is lower or higher than the requested temperature
+ 651   2          if((HeatersTemp[i].Average < (HeatersTemp[i].RequestedTemp - HighThreshold)) || (HeatersTemp[i].Average 
+             -> (HeatersTemp[i].RequestedTemp + LowThreshold)))
+ 652   2          {
+ 653   3            *HeadNum        = i;
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 12  
+
+ 654   3            *Temperature    = HeatersTemp[i].Average;
+ 655   3            *ErrDescription = (HeatersTemp[i].Average < (HeatersTemp[i].RequestedTemp - HighThreshold)) ? TEMPERATU
+             -RE_TOO_HIGH : TEMPERATURE_TOO_LOW;
+ 656   3            return FALSE;
+ 657   3          }
+ 658   2        }
+ 659   1      
+ 660   1        // if all the temperatures are in the normal range
+ 661   1        return TRUE;
+ 662   1      }
+ 663          
+ 664          
+ 665          void TemepartureErrNotifcationTask(BYTE Arg)
+ 666          {
+ 667   1        THeadsTemperatureErrorMsg Msg;
+ 668   1      
+ 669   1        Msg.MsgId = HEADS_TEMPERATURE_ERROR_MSG;
+ 670   1        memcpy(&Msg.Temperatures, ErrorTemperatures, (NUM_OF_HEATERS) * sizeof(WORD));
+ 671   1        SwapUnsignedShortArray((WORD*) Msg.Temperatures,(WORD*) Msg.Temperatures,NUM_OF_HEATERS);
+ 672   1        
+ 673   1        if(OHDBEdenProtocolSend((BYTE*)&Msg, sizeof(THeadsTemperatureErrorMsg), EDEN_DEST_ID, 0, FALSE) == EDEN_P
+             -ROTOCOL_NO_ERROR)
+ 674   1          SchedulerSuspendTask(-1);
+ 675   1        else
+ 676   1          SchedulerLeaveTask(Arg);
+ 677   1      }
+ 678          
+ 679          void HeatersActivationTask(BYTE Arg)
+ 680          {
+ 681   1        enum
+ 682   1        {
+ 683   1          SEND_ACTIVATION,
+ 684   1          WAIT_FOR_OP_DONE    
+ 685   1        };
+ 686   1      
+ 687   1        TXilinxMessage Msg;
+ 688   1      
+ 689   1        switch(Arg)
+ 690   1        {
+ 691   2          case SEND_ACTIVATION:
+ 692   2          {     
+ 693   3            Msg.Address = WR_HTRS;
+ 694   3            Msg.Data    = HeatersActivationTaskData;
+ 695   3            
+ 696   3            if(XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 697   3            {       
+ 698   4              SchedulerLeaveTask(WAIT_FOR_OP_DONE);
+ 699   4            }
+ 700   3            else
+ 701   3            {
+ 702   4              SchedulerLeaveTask(SEND_ACTIVATION);
+ 703   4            }
+ 704   3          }
+ 705   2          break;
+ 706   2          
+ 707   2          case WAIT_FOR_OP_DONE:
+ 708   2          {
+ 709   3            if (XilinxGetWriteActionStatus() != XILINX_BUSY)
+ 710   3            {       
+ 711   4              SchedulerLeaveTask(SEND_ACTIVATION);
+ 712   4              SchedulerSuspendTask(-1);     
+ 713   4            }
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 13  
+
+ 714   3            else
+ 715   3            {
+ 716   4              SchedulerLeaveTask(WAIT_FOR_OP_DONE);
+ 717   4            }
+ 718   3          }
+ 719   2          break;    
+ 720   2          
+ 721   2          default:      
+ 722   2            break;
+ 723   2        }
+ 724   1      }
+ 725          
+ 726          WORD GetNormalizedBlockHeatersAverage()
+ 727          {
+ 728   1        BYTE xdata i;
+ 729   1        BYTE xdata count = 2; 
+ 730   1        WORD xdata BlockHeatersAverage = HeatersTemp[BLOCK_FRONT_LEFT_HEATER].Average;
+ 731   1        
+ 732   1        for(i = BLOCK_FRONT_LEFT_HEATER + 1; i < EXTERNAL_LIQUID_HEATER; i++, count++)    
+ 733   1          BlockHeatersAverage = (BlockHeatersAverage * ((count - 1) / count)) + (HeatersTemp[i].Average / count); 
+ 734   1      
+ 735   1        return ConvertBlockReadingsToHeadReadings(BlockHeatersAverage);
+ 736   1      }
+ 737          
+ 738          // Because of a different type of thermistors for heads and for block, we need to normalize their AD readi
+             -ngs
+ 739          WORD ConvertBlockReadingsToHeadReadings(WORD BlockReadings)
+ 740          {
+ 741   1        WORD  xdata HeadReadings; 
+ 742   1        float xdata BlockTemp;
+ 743   1        
+ 744   1        HeadReadings = BlockTemp = 0; 
+ 745   1        
+ 746   1        BlockTemp    = 119.94 * pow(2.7183, (-8 * pow(10, -4) * BlockReadings));
+ 747   1        HeadReadings = 0.0042 * pow(BlockTemp, 3) - 0.488 * pow(BlockTemp, 2) - 27.256 * BlockTemp + 4163.7;  
+ 748   1        
+ 749   1        return HeadReadings;
+ 750   1      }
+ 751          
+ 752          BOOL ArePerimeterHeatersReachedSetPoint()
+ 753          {
+ 754   1        BYTE xdata i;
+ 755   1        BOOL xdata ret = TRUE;
+ 756   1        
+ 757   1        for(i = BLOCK_FRONT_LEFT_HEATER; i < EXTERNAL_LIQUID_HEATER; i++)
+ 758   1        {
+ 759   2          if(HeatersTemp[i].Average > (HeatersTemp[i].RequestedTemp + BlockHeatersLowThreshold))
+ 760   2          {
+ 761   3            ret = FALSE;
+ 762   3            break;
+ 763   3          }   
+ 764   2        }
+ 765   1        
+ 766   1        return ret;
+ 767   1      }
+ 768          
+ 769          
+ 770          #ifdef OCB_SIMULATOR
+              WORD transHeaterNumToAdd(BYTE HeaterNum)
+              {
+                WORD add = 0;
+                switch (HeaterNum) 
+C51 COMPILER V9.52.0.0   HEATERCONTROL                                                     04/28/2015 17:26:01 PAGE 14  
+
+                {
+                  case 0:   add = HEATER_1_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 1:   add = HEATER_2_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 2:   add = HEATER_3_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 3:   add = HEATER_4_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 4:   add = HEATER_5_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 5:   add = HEATER_6_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 6:   add = HEATER_7_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 7:   add = HEATER_8_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 8:   add = HEATER_9_REQ_DUMMY_ADD_OHDB  ; break;
+                  case 9:   add = HEATER_10_REQ_DUMMY_ADD_OHDB ; break;
+                  case 10:  add = HEATER_11_REQ_DUMMY_ADD_OHDB ; break;
+                  case 11:  add = HEATER_12_REQ_DUMMY_ADD_OHDB ; break;
+                  case 12:  add = HEATER_13_REQ_DUMMY_ADD_OHDB ; break;
+                }
+              
+                return add;
+              }
+              #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   4203    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    380    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

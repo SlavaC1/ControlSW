@@ -1,0 +1,2 @@
+Do not restart the computer, when ACS setup is finished.
+Restarting the system will abort the setup

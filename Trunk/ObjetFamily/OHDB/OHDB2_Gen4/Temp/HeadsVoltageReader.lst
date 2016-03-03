@@ -1,0 +1,175 @@
+C51 COMPILER V9.52.0.0   HEADSVOLTAGEREADER                                                04/28/2015 17:26:02 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE HEADSVOLTAGEREADER
+OBJECT MODULE PLACED IN .\Temp\HeadsVoltageReader.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Sensors\HeadsVoltageReader.c LARGE OPTIMIZE(0,SPEED) BROWSE INCDIR(..\Share
+                    -dModules\SysDef,SPI\,..\SharedModules\RingBuffer,UART\,A2D\,..\SharedModules\Xilinx,..\SharedModules\EdenProtocol,Timer\
+                    -,Potentiometer\,HeaterControl\,E2PROM\,MsgDecode\,..\SharedModules\Utilities,..\SharedModules\Scheduler,..\SharedModules
+                    -\Roller,Potentiometer\,PrintDriver\,Sensors\,HeadData\,Utils\,Watchdog\,Version\,Actuators\,D2A\,Comparator\,Bumper\) DE
+                    -FINE(C8051F123_CPU) DEBUG OBJECTEXTEND PRINT(.\Temp\HeadsVoltageReader.lst) TABS(2) OBJECT(.\Temp\HeadsVoltageReader.obj
+                    -)
+
+line level    source
+
+   1          /*===========================================================================
+   2           *   FILENAME       : Heads voltage reader {HeadsVoltageReader.c}  
+   3           *   PURPOSE        : Voltage A2D reader for Gen4 heads. Because of a hardware limitation, 
+   4           *                    we need to switch between heads during reading, by sending a command 
+   5           *                    to FPGA via SPI using MUX.   
+   6           *   DATE CREATED   : 12/12/2013
+   7           *   PROGRAMMER     : Slava Chuhovich 
+   8           *   PROCEDURES     : 
+   9           *===========================================================================*/
+  10          
+  11          #include "HeadsVoltageReader.h"
+  12          #include "A2D.h"
+  13          #include "XilinxInterface.h"
+  14          #include "MiniScheduler.h"
+  15          #include <string.h>
+  16          
+  17          // Mapping of the sensors inputs to the analog inputs
+  18          // --------------------------------------------------
+  19          #define HEAD_1_VOLTAGE_SENSOR   CPU_ANALOG_IN_1
+  20          #define HEAD_2_VOLTAGE_SENSOR   CPU_ANALOG_IN_2
+  21          #define HEAD_3_VOLTAGE_SENSOR   CPU_ANALOG_IN_3
+  22          #define HEAD_4_VOLTAGE_SENSOR   CPU_ANALOG_IN_4 
+  23          #define HEAD_5_VOLTAGE_SENSOR   CPU_ANALOG_IN_5
+  24          #define HEAD_6_VOLTAGE_SENSOR   CPU_ANALOG_IN_6
+  25          #define HEAD_7_VOLTAGE_SENSOR   CPU_ANALOG_IN_7
+  26          #define HEAD_8_VOLTAGE_SENSOR   CPU_ANALOG_IN_8
+  27          
+  28          
+  29          #define WR_VPP_MUX 0x1E
+  30          
+  31          bit SwitchData = TRUE;
+  32          
+  33          TTaskHandle xdata HeadsVoltageReaderTaskHandle;
+  34          
+  35          static WORD xdata ReaderA2D0SamplesBuffer[NO_OF_CPU_ANALOG_INPUTS];
+  36          
+  37          BYTE xdata OrderedIndex[NO_OF_CPU_ANALOG_INPUTS] = {0,2,4,6,1,3,5,7,8};
+  38          
+  39          void HeadsVoltageReaderInit()
+  40          {
+  41   1        memset(ReaderA2D0SamplesBuffer, 0, NO_OF_CPU_ANALOG_INPUTS * sizeof(WORD));
+  42   1        
+  43   1        HeadsVoltageReaderTaskHandle = SchedulerInstallTask(HeadsVoltageReaderTask);
+  44   1        SchedulerResumeTask(HeadsVoltageReaderTaskHandle, 0); 
+  45   1      }
+  46          
+  47          void HeadsVoltageReaderTask(BYTE Arg)
+  48          {
+  49   1        BYTE data SelectedInput;
+  50   1        
+C51 COMPILER V9.52.0.0   HEADSVOLTAGEREADER                                                04/28/2015 17:26:02 PAGE 2   
+
+  51   1        enum
+  52   1        {
+  53   1          START_A2D_CONVERSION,
+  54   1          GET_CONVERSION_RESULTS,
+  55   1          SEND_SWITCH_COMMAND_TO_FPGA_MUX,
+  56   1          WAIT_FOR_OP_DONE    
+  57   1        };
+  58   1      
+  59   1        TXilinxMessage Msg;
+  60   1      
+  61   1        switch(Arg)
+  62   1        {
+  63   2          case START_A2D_CONVERSION:
+  64   2          {
+  65   3            SetA2D0BufferReadiness(FALSE);
+  66   3            
+  67   3            // Start the A2D conversion process
+  68   3            AD0BUSY = 1;
+  69   3            
+  70   3            SchedulerLeaveTask(GET_CONVERSION_RESULTS);
+  71   3          }
+  72   2          break;
+  73   2      
+  74   2          case GET_CONVERSION_RESULTS:
+  75   2          {
+  76   3            if(IsA2D0BufferReady() == TRUE)
+  77   3            {
+  78   4              SelectedInput = GetA2D0SelectedInput();
+  79   4              
+  80   4              // We read all even heads in a row and all odd heads in a row
+  81   4              // and converting back to the correct order for the read buffer (H1, H2, H3, H4, ...)
+  82   4              ReaderA2D0SamplesBuffer[OrderedIndex[SelectedInput]] = A2D0_GetReading(SelectedInput);        
+  83   4      
+  84   4              // Select the next analog input for the next conversion
+  85   4              A2D0_SelectNextInput();
+  86   4              
+  87   4              if(SelectedInput == 3 || SelectedInput == NO_OF_CPU_ANALOG_INPUTS - 1)  
+  88   4                SchedulerLeaveTask(SEND_SWITCH_COMMAND_TO_FPGA_MUX);
+  89   4              else
+  90   4                SchedulerLeaveTask(START_A2D_CONVERSION);               
+  91   4            }
+  92   3            else
+  93   3            {
+  94   4              SchedulerLeaveTask(GET_CONVERSION_RESULTS);       
+  95   4            }       
+  96   3          }
+  97   2          break;
+  98   2          
+  99   2          case SEND_SWITCH_COMMAND_TO_FPGA_MUX:
+ 100   2          {     
+ 101   3            Msg.Address = WR_VPP_MUX;
+ 102   3            Msg.Data    = SwitchData;
+ 103   3            
+ 104   3            if(XilinxWrite(&Msg) == XILINX_NO_ERROR)
+ 105   3              SchedulerLeaveTask(WAIT_FOR_OP_DONE);
+ 106   3            else
+ 107   3              SchedulerLeaveTask(SEND_SWITCH_COMMAND_TO_FPGA_MUX);
+ 108   3          }
+ 109   2          break;
+ 110   2          
+ 111   2          case WAIT_FOR_OP_DONE:
+ 112   2          {
+C51 COMPILER V9.52.0.0   HEADSVOLTAGEREADER                                                04/28/2015 17:26:02 PAGE 3   
+
+ 113   3            if(XilinxGetWriteActionStatus() != XILINX_BUSY)
+ 114   3            {       
+ 115   4              SwitchData = (SwitchData == TRUE) ? FALSE : TRUE;         
+ 116   4              
+ 117   4              SchedulerLeaveTask(START_A2D_CONVERSION);     
+ 118   4            }
+ 119   3            else
+ 120   3              SchedulerLeaveTask(WAIT_FOR_OP_DONE);
+ 121   3          }
+ 122   2          break;    
+ 123   2          
+ 124   2          default:      
+ 125   2            break;
+ 126   2        }
+ 127   1      }
+ 128          
+ 129          WORD A2D0Reader_GetReading(BYTE AnalogInNum)
+ 130          { 
+ 131   1        return ReaderA2D0SamplesBuffer[AnalogInNum];  
+ 132   1      }
+ 133          
+ 134          void A2D0Reader_GetBlockReadings(BYTE FirstAnalogIn, BYTE LastAnalogIn, WORD *Buffer)
+ 135          { 
+ 136   1        memcpy(Buffer, &(ReaderA2D0SamplesBuffer[FirstAnalogIn]), (LastAnalogIn - FirstAnalogIn + 1) * sizeof(WOR
+             -D));    
+ 137   1      }
+ 138          
+ 139          void A2D0Reader_GetHeadsVoltages(WORD* Voltages)
+ 140          {
+ 141   1        A2D0Reader_GetBlockReadings(HEAD_1_VOLTAGE_SENSOR, HEAD_8_VOLTAGE_SENSOR, Voltages);
+ 142   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    414    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     41    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,64 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{a2dbb931-e38c-4210-a44e-15297becd0d2}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\..\..\..\SharedFiles\Components\Objet.cbproj" />
+    <Projects Include="..\..\..\..\SharedFiles\PythonForDelphi\Components\Python_d7.dproj" />
+    <Projects Include="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" />
+    <Projects Include="Objet350.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="Objet">
+    <MSBuild Projects="..\..\..\..\SharedFiles\Components\Objet.cbproj" Targets="" />
+  </Target>
+  <Target Name="Objet:Clean">
+    <MSBuild Projects="..\..\..\..\SharedFiles\Components\Objet.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="Objet:Make">
+    <MSBuild Projects="..\..\..\..\SharedFiles\Components\Objet.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Python_d7">
+    <MSBuild Projects="..\..\..\..\SharedFiles\PythonForDelphi\Components\Python_d7.dproj" Targets="" />
+  </Target>
+  <Target Name="Python_d7:Clean">
+    <MSBuild Projects="..\..\..\..\SharedFiles\PythonForDelphi\Components\Python_d7.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="Python_d7:Make">
+    <MSBuild Projects="..\..\..\..\SharedFiles\PythonForDelphi\Components\Python_d7.dproj" Targets="Make" />
+  </Target>
+  <Target Name="QLibProject">
+    <MSBuild Projects="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="" />
+  </Target>
+  <Target Name="QLibProject:Clean">
+    <MSBuild Projects="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="QLibProject:Make">
+    <MSBuild Projects="..\..\..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Objet350">
+    <MSBuild Projects="Objet350.cbproj" Targets="" />
+  </Target>
+  <Target Name="Objet350:Clean">
+    <MSBuild Projects="Objet350.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="Objet350:Make">
+    <MSBuild Projects="Objet350.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="Objet;Python_d7;QLibProject;Objet350" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="Objet:Clean;Python_d7:Clean;QLibProject:Clean;Objet350:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="Objet:Make;Python_d7:Make;QLibProject:Make;Objet350:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

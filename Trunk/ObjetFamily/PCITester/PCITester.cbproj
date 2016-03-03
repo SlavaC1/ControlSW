@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{465f47fb-fd96-432f-91f9-57b889ac3555}</ProjectGuid>
+    <ProjectType>CppVCLApplication</ProjectType>
+    <MainSource>PCITester.cpp</MainSource>
+    <Config Condition="'$(Config)'==''">Debug Build</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug Build' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release Build' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <DCC_Optimize>false</DCC_Optimize>
+    <OutputExt>exe</OutputExt>
+    <ILINK_IntermediateOutputPath>Temp_Debug</ILINK_IntermediateOutputPath>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <BCC_OutputDir>Temp_Debug\</BCC_OutputDir>
+    <DynamicRTL>true</DynamicRTL>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <BCC_InstructionSet>6</BCC_InstructionSet>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <BRCC_OutputDir>Temp_Debug\</BRCC_OutputDir>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+    <ILINK_AppType>Windows</ILINK_AppType>
+    <ILINK_ObjectSearchPath>..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\EdenPCI;..\..\ObjetFamily;C:\SharedFiles\QLib\Monitor\Windows;..\Base\Sources\EdenPCI;..\..\SharedFiles\QLib\Monitor\Windows</ILINK_ObjectSearchPath>
+    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <BCC_ZeroLengthEmptyMemberFuncs>true</BCC_ZeroLengthEmptyMemberFuncs>
+    <DCC_MakeModifiedUnits>true</DCC_MakeModifiedUnits>
+    <FinalOutputDir>PCITester\</FinalOutputDir>
+    <TASM_AdditionalSwitches> /w2 Temp_Debug\</TASM_AdditionalSwitches>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi</PackageImports>
+    <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <BRCC_UserSuppliedOptions> -I..\;..;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles\QLib\LogFile;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
+    <IncludePath>..\..\SharedFiles\QLib\Monitor\Windows;..\..\SharedFiles\QLib;..\..\SharedFiles\QLib\OSWrappers;..\Base\Sources\EdenPCI;..\Base\Sources\EdenPCI\WD_lib\include;..\..\ObjetFamily;..\Base\Sources\General</IncludePath>
+    <BCC_PCHCache>true</BCC_PCHCache>
+    <DCC_DcuOutput>Temp_Debug\</DCC_DcuOutput>
+    <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
+    <BCC_IncludePath>..\;..;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BCC_IncludePath>
+    <TASM_IncludePath>..\;..;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles\QLib\LogFile;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <AllPackageLibs>vcl.lib;rtl.lib</AllPackageLibs>
+    <BRCC_IncludePath>..\;..;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles\QLib\LogFile;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BDS)\include;$(BDS)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General;$(BDS)\include\dinkumware</BRCC_IncludePath>
+    <DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
+    <ILINK_LibraryPath>..\;..;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\..\SharedFiles\QLib\LogFile;$(BDS)\Projects\Lib;$(BDS)\lib\obj;$(BDS)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows;..\..\EdenPCI;..\..\ObjetFamily;C:\SharedFiles\QLib\Monitor\Windows;..\Base\Sources\EdenPCI;..\..\SharedFiles\QLib\Monitor\Windows</ILINK_LibraryPath>
+    <BCC_Defines>NO_STRICT;OS_WINDOWS;USE_KERNEL_PLUGIN;_MT;WIN32;KERNEL_64BIT;OBJET_1000</BCC_Defines>
+    <DCC_ObjOutput>Temp_Debug\</DCC_ObjOutput>
+    <BRCC_Defines>OS_WINDOWS;USE_KERNEL_PLUGIN;EDEN_500;_MT;WIN32;_DEBUG</BRCC_Defines>
+    <TASM_Defines>OS_WINDOWS USE_KERNEL_PLUGIN EDEN_500 _MT WIN32 _DEBUG</TASM_Defines>
+    <Multithreaded>true</Multithreaded>
+    <TASM_Debugging>Full</TASM_Debugging>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <DCC_Optimize>true</DCC_Optimize>
+    <ILINK_FullDebugInfo>false</ILINK_FullDebugInfo>
+    <DynamicRTL>false</DynamicRTL>
+    <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
+    <DCC_DebugInformation>false</DCC_DebugInformation>
+    <BCC_DebugLineNumbers>false</BCC_DebugLineNumbers>
+    <BCC_SmartPCHCache>false</BCC_SmartPCHCache>
+    <IntermediateOutputDir>Release_Build</IntermediateOutputDir>
+    <BCC_StackFrames>false</BCC_StackFrames>
+    <BCC_PCHCache>false</BCC_PCHCache>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>None</TASM_Debugging>
+    <BCC_SourceDebuggingOn>false</BCC_SourceDebuggingOn>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">1</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1033</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName">Stratasys Ltd.</VersionInfoKeys><VersionInfoKeys Name="FileDescription">Data PCI card tester</VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.1.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright">Stratasys Ltd.</VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.1.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">30</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">..\..\SharedFiles\QLib\Monitor\Windows;..\..\SharedFiles\QLib;..\..\SharedFiles\QLib\OSWrappers;..\Base\Sources\EdenPCI;..\Base\Sources\EdenPCI\WD_lib\include;..\..\ObjetFamily;..\Base\Sources\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">..\..\SharedFiles\QLib\Monitor\Windows;..\..\SharedFiles\QLib;..\..\SharedFiles\QLib\OSWrappers;..\Base\Sources\EdenPCI;..\Base\Sources\EdenPCI\WD_lib\include;..\..\ObjetFamily</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item2">..\..\SharedFiles\QLib\Monitor\Windows;..\Base\Sources\EdenPCI;..\..\ObjetFamily;..\Base\Sources\EdenPCI\WD_lib\include;..\..\SharedFiles\QLib;..\..\SharedFiles\QLib\OSWrappers</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item3">..\..\SharedFiles\QLib\Monitor\Windows;..\Base\Sources\EdenPCI;..\..\ObjetFamily;..\Base\Sources\EdenPCI\WD_lib\include;..\..\SharedFiles\QLib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item4">..\..\SharedFiles\QLib\Monitor\Windows;..\Base\Sources\EdenPCI;..\..\ObjetFamily;..\Base\Sources\EdenPCI\WD_lib\include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item5">..\..\SharedFiles\QLib\Monitor\Windows;..\Base\Sources\EdenPCI;..\..\ObjetFamily</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item6">..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\EdenPCI</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item7">..\;..;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles\QLib\LogFile;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item8">..\;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles\QLib\LogFile;..;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item9">..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles\QLib\LogFile;..\;..;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item10">..\..\..\..\..\SharedFiles\QLib\LogFile;..\;..;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item11">..\;..;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item12">..\;..;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item13">..\;..;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item14">..\;..;..\WD_lib\include;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General;..\..\..\..\..\SharedFiles\QLib\OSWrappers\Windows</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item15">..\;..\WD_lib\include;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item16">..\WD_lib\include;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item17">..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item18">..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General;C:\SVN\Branches\Slava\Eden_XP_Jungo_driver\SharedFiles\QLib\LogFile</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item19">..\;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item20">..\;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General;C:\SVN\Branches\Slava\Eden_XP_Jungo_driver\EdenFamily\Base\Sources\EdenPCI\WD_lib\include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item21">..\;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General;..\\WD_lib\kp_include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item22">..\;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers;..\..\General;..\\WD_lib\include;..\\WD_lib\kp_include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item23">..\;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows;..\..\..\..\..\SharedFiles\Qlib\OSWrappers</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item24">..\;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib;..\..\..\..\..\SharedFiles\Qlib\Monitor\Windows</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item25">..\;..;..\..\..\..\..\SharedFiles;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item26">..\;..\..\..\..\..\SharedFiles;..;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include;..\..\..\..\..\SharedFiles\Qlib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item27">..\;..\..\..\..\..\SharedFiles;..;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item28">..\..\..\..\..\SharedFiles;..\;$(BCB)\include;$(BCB)\include\vcl;..\WD_lib\include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item29">..\;..\..\SharedFiles\QLib\LibraryProject\Windows;C:\DevTools\Borland\CBuilder6\Projects;..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;$(BCB)\include;$(BCB)\include\vcl;..\..\SharedFiles\QLib;..\..\SharedFiles\QLib\OSWrappers;..\..\Quadra2\Q2RT\Sources\General</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Count">16</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item0">..\;..;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\..\SharedFiles\QLib\LogFile;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item1">..\;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\..\SharedFiles\QLib\LogFile;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item2">..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\..\SharedFiles\QLib\LogFile;..\;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item3">..\;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item4">..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item5">..\;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows;C:\SVN\Branches\Slava\Eden_XP_Jungo_driver\EdenFamily\Base\Sources\EdenPCI\WD_lib\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item6">..\;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows;..\WD_lib\kp_lib;..\WD_lib\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item7">..\;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item8">..\;..;C:\DevTools\Borland\CBuilder6\Projects;..\..\SharedFiles\QLib\LibraryProject\Windows;..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item9">..\;C:\DevTools\Borland\CBuilder6\Projects;..\..\SharedFiles\QLib\LibraryProject\Windows;..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item10">..\..\SharedFiles\QLib\LibraryProject\Windows;..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item11">..\..\SharedFiles\QLib\LibraryProject\Windows;C:\DevTools\Borland\CBuilder6\Projects;..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;D:\Projects\Quadra2\PCITester;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;D:\Projects\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item12">..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;D:\Projects\Quadra2\PCITester;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;D:\Projects\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item13">..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;D:\Projects\Quadra2\PCITester;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item14">D:\Projects\Quadra2\PCITester;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item15">..\Q2RT\Sources\EdenPCI\windows\Kernel_Plug_In;..\Q2RT\Sources\EdenPCI;C:\DevTools\Borland\CBuilder6\Projects;D:\Projects\Quadra2\PCITester;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath></HistoryLists_hlLibraryPath><HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath></HistoryLists_hlDebugSourcePath><HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Count">10</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item0">OS_WINDOWS;USE_KERNEL_PLUGIN;EDEN_500;_MT;WIN32;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item1">OS_WINDOWS;USE_KERNEL_PLUGIN;EDEN_500;_MT;WIN32</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item2">OS_WINDOWS;USE_KERNEL_PLUGIN;_DEBUG;EDEN_500;_MT;WIN32</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item3">OS_WINDOWS;USE_KERNEL_PLUGIN;_DEBUG;EDEN_500</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item4">OS_WINDOWS;USE_KERNEL_PLUGIN;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item5">OS_WINDOWS;USE_KERNEL_PLUGIN</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item6">OS_WINDOWS</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item7">OS_WINDOWS;_DEBUG</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item8">_DEBUG;OS_WINDOWS</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item9">_DEBUG</HistoryLists_hlConditionals></HistoryLists_hlConditionals><HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Count">2</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item0">Temp_Debug</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item1">Temp_Release</HistoryLists_hlIntOutputDir></HistoryLists_hlIntOutputDir><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">2</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">PCITester\</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item1">PCITester</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir><Debugging><Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Compiler><Compiler Name="ShowInfoMsgs">0</Compiler><Compiler Name="LinkDebugVcl">0</Compiler><Compiler Name="LinkCGLIB">0</Compiler></Compiler><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><Source><Source Name="MainSource">PCITester.cpp</Source></Source><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\debug;..\;..;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\..\SharedFiles\QLib\LogFile;$(BDS)\Projects\Lib;$(BDS)\lib\obj;$(BDS)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows;..\..\EdenPCI;..\..\ObjetFamily;C:\SharedFiles\QLib\Monitor\Windows;..\Base\Sources\EdenPCI;..\..\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item1">$(BDS)\lib\debug;..\;..;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows;..\..\..\..\..\SharedFiles\QLib\LogFile;$(BDS)\Projects\Lib;$(BDS)\lib\obj;$(BDS)\lib;..\..\..\..\..\SharedFiles\QLib\LibraryProject\Windows;..\..\EdenPCI</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item0">..\;..;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</HistoryLists_hlBCC_IncludePath></HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Count">2</HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Item0">NO_STRICT;OS_WINDOWS;USE_KERNEL_PLUGIN;_MT;WIN32;KERNEL_64BIT;OBJET_1000</HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Item1">NO_STRICT;OS_WINDOWS;USE_KERNEL_PLUGIN;_MT;WIN32;KERNEL_64BIT</HistoryLists_hlBCC_Defines></HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Count">1</HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Item0">Temp_Debug\</HistoryLists_hlBCC_OutputDir></HistoryLists_hlBCC_OutputDir><Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+    </Excluded_Packages><HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength></HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors></HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment></HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment></HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_BaseAddress Name="Count">1</HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_BaseAddress Name="Item0">0x00400000</HistoryLists_hlILINK_BaseAddress></HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapCommitSize Name="Count">1</HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapCommitSize Name="Item0">0x00001000</HistoryLists_hlILINK_HeapCommitSize></HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_HeapReserveSize Name="Count">1</HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_HeapReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_HeapReserveSize></HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackCommitSize Name="Count">1</HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackCommitSize Name="Item0">0x00002000</HistoryLists_hlILINK_StackCommitSize></HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_StackReserveSize Name="Count">1</HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_StackReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_StackReserveSize></HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlILINK_IntermediateOutputPath Name="Count">1</HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlILINK_IntermediateOutputPath Name="Item0">Temp_Debug</HistoryLists_hlILINK_IntermediateOutputPath></HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Count">1</HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Item0">Debug_Build</HistoryLists_hlIntermediateOutputDir></HistoryLists_hlIntermediateOutputDir></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <ResFiles Include="PCITester.res">
+      <BuildOrder>0</BuildOrder>
+    </ResFiles>
+    <CppCompile Include="..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.cpp">
+      <Form>QMonitorForm</Form>
+      <DependentOn>..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.h</DependentOn>
+      <BuildOrder>11</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\Base\Sources\EdenPCI\EdenPCI.c">
+      <BuildOrder>6</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\Base\Sources\EdenPCI\EdenPCISys.cpp">
+      <BuildOrder>9</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\Base\Sources\EdenPCI\FIFOPci.cpp">
+      <BuildOrder>8</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\Base\Sources\EdenPCI\plx_defs.c">
+      <BuildOrder>7</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\Base\Sources\EdenPCI\plx_lib.c">
+      <BuildOrder>5</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="ContinousWriteDlg.cpp">
+      <Form>ContinousWriteForm</Form>
+      <DependentOn>ContinousWriteDlg.h</DependentOn>
+      <BuildOrder>3</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="HelpDlg.cpp">
+      <Form>HelpForm</Form>
+      <DependentOn>HelpDlg.h</DependentOn>
+      <BuildOrder>4</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="PCITester.cpp">
+      <BuildOrder>1</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="PCITesterMainUnit.cpp">
+      <Form>MainForm</Form>
+      <DependentOn>PCITesterMainUnit.h</DependentOn>
+      <BuildOrder>2</BuildOrder>
+    </CppCompile>
+    <LibFiles Include="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.lib">
+      <BuildOrder>12</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="..\Base\Sources\EdenPCI\WD_lib\lib\wd_utils_borland.lib">
+      <BuildOrder>10</BuildOrder>
+    </LibFiles>
+    <FormResources Include="..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.dfm" />
+    <FormResources Include="ContinousWriteDlg.dfm" />
+    <FormResources Include="HelpDlg.dfm" />
+    <FormResources Include="PCITesterMainUnit.dfm" />
+    <BuildConfiguration Include="Debug Build">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release Build">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>

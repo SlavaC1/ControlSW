@@ -1,0 +1,553 @@
+/* MadCap Table Style: */
+
+/*<meta Version="9" />*/
+
+mcTableStyle
+{
+	margin-left: 95px;
+	name: Table-no-borders;
+	margin-bottom: 5px;
+	max-id: 2;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	id: 1;
+	name: Header;
+	font-size: 10pt;
+	font-family: Arial;
+	font-weight: bold;
+	background-color: #d3d3d3;
+	type: Manual;
+	separator-style: solid;
+	separator-width: 1px;
+	text-align: left;
+	vertical-align: top;
+	cell-padding-left: 2px;
+	cell-padding-right: 2px;
+	cell-padding-top: 2px;
+	cell-padding-bottom: 2px;
+}
+
+mcTableBodyStyle
+{
+	span: 1;
+	id: 0;
+	name: Body1;
+	font-size: 10pt;
+	font-family: Arial;
+	separator-style: solid;
+	separator-width: 0px;
+}
+
+
+/* Cell Styles: */
+ 
+.TableStyle-Table-no-borders
+{
+	margin-left: 95px;
+	margin-bottom: 5px;
+	border-spacing: 0px 0px;
+}
+
+.TableStyle-Table-no-borders-HeadI--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadI-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadE--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadE-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadF--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadF-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadH--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadH-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadD--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadD-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadC--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadC-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadB--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadB-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadA--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadA-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadG--
+{
+	
+}
+
+.TableStyle-Table-no-borders-HeadG-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootI--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootI-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootE--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootE-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootF--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootF-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootH--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootH-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootD--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootD-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootC--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootC-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootB--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootB-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootA--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootA-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootG--
+{
+	
+}
+
+.TableStyle-Table-no-borders-FootG-- p
+{
+	
+}
+
+.TableStyle-Table-no-borders-Body-Header
+{
+	
+}
+
+.TableStyle-Table-no-borders-BodyI--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.TableStyle-Table-no-borders-BodyI--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyE--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+.TableStyle-Table-no-borders-BodyE--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyF--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+.TableStyle-Table-no-borders-BodyF--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyH--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.TableStyle-Table-no-borders-BodyH--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyD--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+.TableStyle-Table-no-borders-BodyD--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyC--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.TableStyle-Table-no-borders-BodyC--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyB--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.TableStyle-Table-no-borders-BodyB--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyA--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.TableStyle-Table-no-borders-BodyA--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-BodyG--Header
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+	background-color: #d3d3d3;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.TableStyle-Table-no-borders-BodyG--Header p
+{
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TableStyle-Table-no-borders-Body-Body1
+{
+	
+}
+
+.TableStyle-Table-no-borders-BodyI--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyI--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyE--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+}
+
+.TableStyle-Table-no-borders-BodyE--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyF--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+}
+
+.TableStyle-Table-no-borders-BodyF--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyH--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyH--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyD--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+}
+
+.TableStyle-Table-no-borders-BodyD--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyC--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyC--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyB--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyB--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyA--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyA--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyG--Body1
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+.TableStyle-Table-no-borders-BodyG--Body1 p
+{
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+

@@ -1,0 +1,44 @@
+/*--------------------------------------------------------------*\                                                                                                                                                                                                               
+ * Check Operating System Version
+\*--------------------------------------------------------------*/
+
+function CheckOSVersion()
+
+    LONG    lMajorVersion;
+    LONG    lMinorVersion;
+    NUMBER  nvSPMajor;
+    NUMBER  nvSPMinor;  
+    NUMBER  is64Bit;
+    STRING  svServicePack; 
+    //STRING  szFormat;
+    BOOL    bInstallDemo;
+
+	begin
+    is64Bit = SYSINFO.bIsWow64;
+// 	Get the operating system service pack number.
+//	---------------------------------------------  
+	if (GetNTServicePack(lMajorVersion,lMinorVersion,svServicePack, nvSPMajor, nvSPMinor)<0)then
+	    MessageBox("The running Operating System is not one of the WINDOWS NT family", WARNING );
+	    abort;
+	else      
+
+//      Display the returned values of the service pack request
+//      -------------------------------------------------------	    
+		//szFormat = "MajorOSVersion: %d  MinorOSVersion: %d ServicePack: %s   SP_Major: %d  SP_Minor: %d is64Bit: %d";
+		//SprintfBox(INFORMATION, "Service Pack Info", szFormat,lMajorVersion,lMinorVersion,svServicePack,nvSPMajor,nvSPMinor,is64Bit);
+		if ((lMajorVersion != 6) || (lMinorVersion != 1) || (is64Bit==0)) then //  || (nvSPMajor < 1)))
+           if (AskYesNo("This application is designed for systems \nrunning Windows 7 64bit with Service Pack 1 or above\n" +
+               "Do you want to install a demo version?", NO) = YES) then
+               bInstallDemo = TRUE;
+	    	else
+	    	
+//          Gracefully abort the installation
+//          ---------------------------------	    	
+		    abort;
+			endif;
+		endif;
+	endif;
+ 
+    return bInstallDemo;
+	end;
+

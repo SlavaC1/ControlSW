@@ -1,0 +1,8 @@
+HSW_PrintingAllowedForMode={'base': (1,1,1,1), 'upDelta': (0, 0, 0, 0), 'downDelta': (0, 0, 0, 0), 'str': 0}
+NozzlesTestYCloneDistance_pixel={'base': 30, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+NozzlesTestYOffset={'base': 30, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+NozzleTest={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+RunScript1={'base': 'ModesManager.EnterMode("High Speed Mode", "HighSpeedModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript2={'base': 'ModesManager.EnterMode("~Trns commands", "GeneralModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript3={'base': 'ModesManager.EnterMode("~PerMachine_HM", "HighMixModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript4={'base': 'MachineManager.Load4LocalPrintJob("CalibrationFiles\\\\Adjustment Files\\\\Clone Model Rev3_DM3_H4.bmp","CalibrationFiles\\\\Adjustment Files\\\\Clone Support Rev3_DM3_H1.bmp","CalibrationFiles\\\\Adjustment Files\\\\Clone Model Rev3_DM3_H3.bmp","CalibrationFiles\\\\Adjustment Files\\\\Clone Support Rev3_DM3_H2.bmp",600,"HS",1)', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
