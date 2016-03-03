@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{9c59da54-c977-4d1f-b8bd-3ae21e2fb4f2}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" />
+    <Projects Include="Updater.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="QLibProject">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="" />
+  </Target>
+  <Target Name="QLibProject:Clean">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="QLibProject:Make">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Updater">
+    <MSBuild Projects="Updater.cbproj" Targets="" />
+  </Target>
+  <Target Name="Updater:Clean">
+    <MSBuild Projects="Updater.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="Updater:Make">
+    <MSBuild Projects="Updater.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="QLibProject;Updater" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="QLibProject:Clean;Updater:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="QLibProject:Make;Updater:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

@@ -1,0 +1,45 @@
+//---------------------------------------------------------------------------
+
+#ifndef LicenseManagerH
+#define LicenseManagerH             
+
+#include <XMLDoc.hpp>
+#include <vector>
+#include "LicenseManagerInterface.h"
+#include "LicenseManagerDefs.h"
+
+//---------------------------------------------------------------------------
+
+class CLicenseManager : public ILicenseManager
+{
+private:
+
+	BYTE *m_FileBuffer;
+
+	QString m_DatabasePath;
+	
+	TPackagesList          m_PackagesList;
+	TLicensedMaterialsList m_LicensedMaterialsList;
+	TPropertiesList        m_PropertiesList;
+
+	float m_PackagesDatabaseVersion;
+
+	QString      __stdcall DecryptDatabaseFile(QString FilePath);
+	unsigned int __stdcall ReadFileIntoBuffer (QString FilePath);
+	void 		 __stdcall ParseMaterialsList (_di_IXMLNode &MaterialsNode,      TLicensedMaterialsList &MaterialsList, const QString &PackageName);
+	void 		 __stdcall ParseProperties    (_di_IXMLNode &TrayPropertiesNode, const QString &PackageName);
+	TLMStatus    __stdcall ParsePackagesXML   ();
+
+public:
+
+	CLicenseManager();
+	~CLicenseManager();
+
+	TLMStatus   __stdcall ReadDatabase              (const char*       DatabasePath);
+	bool        __stdcall IsMaterialLicensed        (const char*       MaterialName);
+	bool        __stdcall IsPropertyLicensed        (const TPropertyID PropertyID);
+	float       __stdcall GetPackagesDatabaseVersion();
+};
+
+//---------------------------------------------------------------------------
+#endif

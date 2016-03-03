@@ -1,0 +1,9 @@
+ModelBlockTemperature={'base': (800, 800), 'upDelta': (200, 200), 'downDelta': (200, 200), 'str': 0}
+ModelHeadsTemperature={'base': (865, 865, 865, 865), 'upDelta': (150, 150, 150, 150), 'downDelta': (150, 150, 150, 150), 'str': 0}
+PotentiometerValues={'base': (210, 210, 210, 210, 210, 210, 210, 210), 'upDelta': (45, 45, 45, 45, 45, 45, 45, 45), 'downDelta': (195, 195, 195, 195, 195, 195, 195, 195), 'str': 0}
+RequestedHeadVoltages={'base': (32, 32, 32, 32, 32, 32, 32, 32), 'upDelta': (4, 4, 4, 4, 4, 4, 4, 4), 'downDelta': (12, 12, 12, 12, 12, 12, 12, 12), 'str': 0}
+SupportBlockTemperature={'base': (800, 800), 'upDelta': (200, 200), 'downDelta': (200, 200), 'str': 0}
+SupportHeadsTemperature={'base': (865, 865, 865, 865), 'upDelta': (200, 200, 200, 200), 'downDelta': (200, 200, 200, 200), 'str': 0}
+UVLeftLampPSValue={'base': 1495, 'upDelta': 2350, 'downDelta': 0, 'str': 0}
+UVRightLampPSValue={'base': 1495, 'upDelta': 2350, 'downDelta': 0, 'str': 0}
+ContainerHeater={'base': 850, 'upDelta': 0, 'downDelta': 0, 'str': 0}

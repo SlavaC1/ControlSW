@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="Package1.bpl"/>
+    <OBJFILES value="Package1.obj Delphi\MicDelphiAgent.obj Delphi\AgentExtensibilitySDK.obj 
+      Delphi\DlphVDEPAgentImpl.obj Delphi\MicAOFactory.obj 
+      Delphi\MicAOFactoryMgr.obj Delphi\MicDelphiGridSupport.obj"/>
+    <RESFILES value="Package1.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="visualdbclx.lib adortl.lib bcb2kaxserver.lib indy.lib dbxcds.lib 
+      dclocx.lib soaprtl.lib bcbie.lib nmfast.lib ibxpress.lib teeqr.lib tee.lib 
+      teedb.lib teeui.lib bdecds.lib cds.lib dsnap.lib vcldbx.lib qrpt.lib 
+      bcbsmp.lib dbexpress.lib inetdbxpress.lib inetdb.lib inetdbbde.lib 
+      inet.lib xmlrtl.lib ThemeManagerC6.lib Objet.lib Python_cb6.lib"/>
+    <SPARELIBS value="rtl.lib bdertl.lib dbrtl.lib Python_cb6.lib Objet.lib ThemeManagerC6.lib 
+      vcldb.lib xmlrtl.lib inet.lib inetdbbde.lib inetdb.lib inetdbxpress.lib 
+      dbexpress.lib bcbsmp.lib qrpt.lib vcldbx.lib dsnap.lib cds.lib bdecds.lib 
+      teeui.lib teedb.lib tee.lib teeqr.lib ibxpress.lib nmfast.lib bcbie.lib 
+      soaprtl.lib dclocx.lib dbxcds.lib indy.lib bcb2kaxserver.lib adortl.lib 
+      visualdbclx.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bdertl.bpi dbrtl.bpi vcldb.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;Delphi"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="Package1.cpp"/>
+    <INCLUDEPATH value="C:\DevTools\Borland\CBuilder6\Lib\Obj;Delphi;C:\DevTools\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\Projects\Lib;C:\SVN\Trunk\SharedFiles\PythonForDelphi\Components;Delphi;C:\DevTools\Borland\CBuilder6\Projects;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
+      -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpp -x -Gn -Gl -Gi -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0pkg32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="Package1.res" FORMNAME="" UNITNAME="Package1.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Package1.cpp" FORMNAME="" UNITNAME="Package1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\SVN\Trunk\SharedFiles\PythonForDelphi\Components\rtl.bpi" FORMNAME="" UNITNAME="rtl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\MicDelphiAgent.pas" FORMNAME="" UNITNAME="MicDelphiAgent" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\AgentExtensibilitySDK.pas" FORMNAME="" UNITNAME="AgentExtensibilitySDK" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\DlphVDEPAgentImpl.pas" FORMNAME="" UNITNAME="DlphVDEPAgentImpl" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\MicAOFactory.pas" FORMNAME="" UNITNAME="MicAOFactory" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\MicAOFactoryMgr.pas" FORMNAME="" UNITNAME="MicAOFactoryMgr" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\MicDelphiGridSupport.pas" FORMNAME="" UNITNAME="MicDelphiGridSupport" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\vcl.bpi" FORMNAME="" UNITNAME="vcl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\vclx.bpi" FORMNAME="" UNITNAME="vclx" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\bdertl.bpi" FORMNAME="" UNITNAME="bdertl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\dbrtl.bpi" FORMNAME="" UNITNAME="dbrtl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Delphi\vcldb.bpi" FORMNAME="" UNITNAME="vcldb" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=2
+Item0=C:\DevTools\Borland\CBuilder6\Lib\Obj;Delphi;C:\DevTools\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl
+Item1=Delphi;C:\DevTools\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=2
+Item0=$(BCB)\lib\obj;$(BCB)\Projects\Lib;C:\SVN\Trunk\SharedFiles\PythonForDelphi\Components;Delphi;C:\DevTools\Borland\CBuilder6\Projects;$(BCB)\lib
+Item1=$(BCB)\Projects\Lib;C:\SVN\Trunk\SharedFiles\PythonForDelphi\Components;Delphi;C:\DevTools\Borland\CBuilder6\Projects;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+
+[Linker]
+LibPrefix=
+LibSuffix=
+LibVersion=
+  </IDEOPTIONS>
+</PROJECT>

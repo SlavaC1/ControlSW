@@ -1,0 +1,18 @@
+<Test>
+<Machine Type = "1" />
+<HollowGrid>
+<Scan Color = "Yellow" />
+<Grid SizeX = "9" SizeY = "5" SizeX_mm = "0.381" SizeY_mm = "0.423" ExpectedSizeX = "9" ExpectedSizeY = "5"/>
+<Grid SpacingX = "9" SpacingY = "5" SpacingX_mm = "0.381" SpacingY_mm = "0.423" ExpectedSpacingX = "9" ExpectedSpacingY = "5"/>
+<Result pass = "True" />
+</HollowGrid>
+
+<HollowShield>
+<Pixels Left = "31" Right = "33" Bottom = "16" Top = "18" />
+<Length Left_mm = "1.312" Right_mm = "1.397" Bottom_mm = "1.355" Top_mm = "1.524" />
+<ExpectedPixels SizeX = "32" SizeY = "17" />
+<Result pass = "True" />
+</HollowShield>
+
+<Result Pass = "True" />
+</Test>

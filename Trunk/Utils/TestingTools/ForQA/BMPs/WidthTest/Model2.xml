@@ -1,0 +1,11 @@
+<Test>
+<Machine Type = "1" />
+<Rectangle num="1">
+<Coordinates x_From = "20" x_To = "80" yFrom = "2900" yTo = "3000" />
+<Scan Color = "Black" AlternativeColor = "Yellow" />
+<Count pixels = "2424" expected = "2424" />
+<Result pass = "True" />
+</Rectangle>
+
+<Result Pass = "True" />
+</Test>

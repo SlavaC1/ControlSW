@@ -1,0 +1,14 @@
+Connex parameters that not updated -
+
+1. MODEL_1_FILLING_M0_M1,"Model 1(M0,M1) Pump"
+2. SUPPORT_1_FILLING,"Support 1 Pump"
+3. MODEL_2_FILLING_M2_M3,"Model 2(M2,M3) Pump"
+4. SUPPORT_2_FILLING,"Support 2 Pump"
+5. MODEL_1_FILLING_M2_M3,"Model 1(M2,M3) Pump"
+6. MODEL_2_FILLING_M0_M1,"Model 2(M0,M1) Pump"
+7. MODEL_1_RESIN_FILTER,"Model 1 Resin Filter"
+8. SUPPORT_1_RESIN_FILTER,"Support 1 Resin Filter"
+9. MODEL_2_RESIN_FILTER,"Model 2 Resin Filter"
+10. SUPPORT_2_RESIN_FILTER,"Support 2 Resin Filter"
+11. LAST_HCW_ACTIVATION_TIME,"Last HCW activation"
+12. ROLLER_SUCTION_PUMP,"Roller Suction Pump"

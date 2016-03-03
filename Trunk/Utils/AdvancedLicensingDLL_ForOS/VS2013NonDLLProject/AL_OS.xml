@@ -1,0 +1,30 @@
+<Project version="1.0">	
+	<Package feature="1000" name="Advanced PFF 1">
+		<Materials>
+			<Material>VeroClear</Material>				
+			<Material>VeroWhite</Material>				
+			<Material>VeroBlue</Material>				
+			<Material>VeroGrey</Material>				
+			<Material>VeroBlack</Material>				
+			<Material>DurusWhite</Material>				
+			<Material>TangoGrey</Material>				
+			<Material>TangoBlack</Material>				
+			<Material>TangoBlack+</Material>				
+			<Material>Tango+</Material>																				
+			<Material>RGD525</Material>							
+			<Material>MED610</Material>																	
+			<Material>FullCure720</Material>							
+			<Material>RGD515</Material>				
+			<Material>RGD535</Material>				
+			<Material>RGD531</Material>				
+			<Material>FullCure705</Material>																						
+			<Material>M.Cleanser</Material>																						
+			<Material>S.Cleanser</Material>																						
+		</Materials>				
+		<Properties>
+			<Property ID="0" name="Support" state="true"></Property>
+			<Property ID="1" name="Void" state="true"></Property>				
+			<Property ID="2" name="All materials allowed" state="false"></Property>
+		</Properties>						
+	</Package>	
+</Project>

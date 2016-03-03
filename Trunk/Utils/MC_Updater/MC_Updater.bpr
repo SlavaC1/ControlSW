@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="MC_Updater.exe"/>
+    <OBJFILES value="MC_UpdaterUnit.obj ..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.obj 
+      MaintenanceCountersFile.obj"/>
+    <RESFILES value="MC_Updater.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) ..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.dfm"/>
+    <LIBFILES value="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.lib"/>
+    <LIBRARIES value="visualclx.lib vcl.lib rtl.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib visualclx.lib"/>
+    <PACKAGES value="vcl.bpi rtl.bpi vclx.bpi bdertl.bpi Objet.bpi dbrtl.bpi ThemeManagerC6.bpi 
+      vcldb.bpi bcbsmp.bpi adortl.bpi qrpt.bpi vcldbx.bpi dsnap.bpi cds.bpi 
+      bdecds.bpi teeui.bpi teedb.bpi tee.bpi teeqr.bpi ibxpress.bpi 
+      visualclx.bpi visualdbclx.bpi vclie.bpi xmlrtl.bpi inet.bpi inetdbbde.bpi 
+      inetdbxpress.bpi inetdb.bpi nmfast.bpi bcbie.bpi soaprtl.bpi dclocx.bpi 
+      dbexpress.bpi dbxcds.bpi indy.bpi bcb2kaxserver.bpi"/>
+    <PATHCPP value=".;..\..\SharedFiles\QLib\Monitor\Windows"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="OS_WINDOWS"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="MC_Updater.bpf"/>
+    <INCLUDEPATH value="..\..\SharedFiles\QLib\Monitor\Windows;..\..\SharedFiles\QLib\Utils;$(BCB)\include;$(BCB)\include\vcl;..\..\SharedFiles\QLib;..\..\SharedFiles\QLib\OSWrappers"/>
+    <LIBPATH value="..\..\SharedFiles\QLib\Monitor\Windows;..\..\SharedFiles\QLib\Utils;..\..\SharedFiles\QLib;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-O2 -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -a8 -b- -k- -vi -tWC -tWM -c"/>
+    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-D&quot;&quot; -ap -Tpe -x -Gn"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0x32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.lib" FORMNAME="" UNITNAME="QLibProject.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MC_Updater.res" FORMNAME="" UNITNAME="MC_Updater.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MC_Updater.bpf" FORMNAME="" UNITNAME="MC_Updater" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MC_UpdaterUnit.cpp" FORMNAME="" UNITNAME="MC_UpdaterUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.cpp" FORMNAME="QMonitorForm" UNITNAME="QMonitorDlg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MaintenanceCountersFile.cpp" FORMNAME="" UNITNAME="MaintenanceCountersFile" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Excluded Packages]
+c:\devtools\borland\cbuilder6\Bin\dclite60.bpl=Borland Integrated Translation Environment
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=..\..\SharedFiles\QLib\Monitor\Windows;..\..\SharedFiles\QLib\Utils;$(BCB)\include;$(BCB)\include\vcl;..\..\SharedFiles\QLib;..\..\SharedFiles\QLib\OSWrappers
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=..\..\SharedFiles\QLib\Monitor\Windows;..\..\SharedFiles\QLib\Utils;..\..\SharedFiles\QLib;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=OS_WINDOWS
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=C:\SVN\Trunk\Utils\MC_Updater\MaintE500.dat MaintC500.dat C:\SVN\Trunk\Utils\MC_Updater\defs.cfg
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+  </IDEOPTIONS>
+</PROJECT>

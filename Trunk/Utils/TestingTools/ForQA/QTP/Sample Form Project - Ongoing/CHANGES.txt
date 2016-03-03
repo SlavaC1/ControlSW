@@ -1,0 +1,3 @@
+First EXE - when opening the BPR, add to the EXE the file "MicDelphiAgent.pas", and from the project->options->Packages, choose "Build with runtime packages"
+
+the second EXE that i compiled, is with the section "IDLCFLAGS" that i saw in the corrected project

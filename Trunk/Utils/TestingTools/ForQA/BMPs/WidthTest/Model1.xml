@@ -1,0 +1,36 @@
+<Test>
+<Machine Type = "1" />
+<Line num="1">
+<Coordinates x = "350" yFrom = "2800" yTo = "3030" />
+<Scan Color = "Brown" AlternativeColor = "None" />
+<Count pixels = "46" expected = "44" />
+<Length_Y mm = "3.894" expected = "3.725" />
+<Result pass = "False" />
+</Line>
+
+<Line num="2">
+<Coordinates x = "700" yFrom = "2800" yTo = "3030" />
+<Scan Color = "Brown" AlternativeColor = "None" />
+<Count pixels = "58" expected = "57" />
+<Length_Y mm = "4.910" expected = "4.826" />
+<Result pass = "True" />
+</Line>
+
+<Line num="3">
+<Coordinates x = "1100" yFrom = "2800" yTo = "3030" />
+<Scan Color = "Brown" AlternativeColor = "None" />
+<Count pixels = "133" expected = "133" />
+<Length_Y mm = "11.260" expected = "11.260" />
+<Result pass = "True" />
+</Line>
+
+<Line num="4">
+<Coordinates y = "2820" xFrom = "10" xTo = "100" />
+<Scan Color = "Yellow" AlternativeColor = "Orange" />
+<Count pixels = "29" expected = "25" />
+<Length_X mm = "1.228" expected = "1.058" />
+<Result pass = "False" />
+</Line>
+
+<Result Pass = "False" />
+</Test>

@@ -1,0 +1,17 @@
+ContainerHeater={'base': 850, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+DPI_InXAxis={'base': 1200, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+ModelWorkTemperature={'base': 65, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+MotorsVelocity={'base': (378, 190, 4.8, 1192), 'upDelta': (0, 0, 0.0, 0), 'downDelta': (0, 0, 0.0, 0), 'str': 0}
+PulseDelay={'base': 15, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+PumpsTimeDutyOff={'base': 1000, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+PumpsTimeDutyOn={'base': 1500, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+RunScript1={'base': '', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 1}
+RunScript2={'base': '', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 1}
+TestPatternNoOfFires={'base': 200, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+TestPatternTempDelta={'base': 220, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+TimeBetweenFireAllInSec={'base': 900, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+TimeBetweenPurgesInSec={'base': 2400, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+UVDesiredPercentageLeftLampValue={'base': 110, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+UVDesiredPercentageRightLampValue={'base': 130, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+SupportWorkTemperature={'base': 65, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+

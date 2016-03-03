@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016-02-01 16:31:34.117.cpp,C:\Users\slavac\Documents\RAD Studio\Projects\Unit1.cpp=C:\SVN\Trunk\Utils\BHCBTester\BHCBTester.cpp</Transaction>
+    <Transaction>2016-02-01 16:31:34.117.h,C:\Users\slavac\Documents\RAD Studio\Projects\Unit1.h=C:\SVN\Trunk\Utils\BHCBTester\BHCBTester.h</Transaction>
+    <Transaction>2016-02-01 16:31:34.117.dfm,C:\Users\slavac\Documents\RAD Studio\Projects\Unit1.dfm=C:\SVN\Trunk\Utils\BHCBTester\BHCBTester.dfm</Transaction>
+    <Transaction>2016-02-01 16:32:00.351.cbproj,C:\Users\slavac\Documents\RAD Studio\Projects\Project1.cbproj=C:\SVN\Trunk\Utils\BHCBTester\BHCBTesterProj.cbproj</Transaction>
+    <Transaction>2016-02-01 16:51:50.485.lib,C:\SVN\Releases\Eden260V_27.4\SharedFiles\QLib\LibraryProject\Windows\QLibProject.lib=</Transaction>
+    <Transaction>2016-02-03 12:58:02.736.cpp,C:\SVN\Trunk\Utils\BHCBTester\Unit1.cpp=C:\SVN\Trunk\Utils\BHCBTester\Reader.cpp</Transaction>
+    <Transaction>2016-02-03 12:58:02.736.h,C:\SVN\Trunk\Utils\BHCBTester\Unit1.h=C:\SVN\Trunk\Utils\BHCBTester\Reader.h</Transaction>
+  </Transactions>
+</BorlandProject>

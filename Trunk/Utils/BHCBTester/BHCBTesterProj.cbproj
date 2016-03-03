@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{bc174fe2-6e50-451c-8910-60be28d5894e}</ProjectGuid>
+    <MainSource>BHCBTesterProj.cpp</MainSource>
+    <Config Condition="'$(Config)'==''">Debug</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <OutputExt>exe</OutputExt>
+    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+    <Defines>NO_STRICT</Defines>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <DynamicRTL>true</DynamicRTL>
+    <ILINK_ObjectSearchPath>C:\SVN\Trunk\Utils\BHCBTester;..\..\SharedFiles\QLib\Monitor\Windows</ILINK_ObjectSearchPath>
+    <ProjectType>CppVCLApplication</ProjectType>
+    <PackageImports>rtl.bpi;vcl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;dbrtl.bpi;vcldb.bpi;bdertl.bpi;vcldbx.bpi;dsnap.bpi;dsnapcon.bpi;teeUI.bpi;tee.bpi;teedb.bpi;vclib.bpi;ibxpress.bpi;adortl.bpi;dbxcds.bpi;dbexpress.bpi;DbxCommonDriver.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;IntrawebDB_90_100.bpi;Intraweb_90_100.bpi;VclSmp.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;Objet.bpi;JclDeveloperTools.bpi;Jcl.bpi;JclVcl.bpi;JclContainers.bpi</PackageImports>
+    <BCC_wpar>false</BCC_wpar>
+    <IncludePath>$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;C:\SVN\Trunk\Utils\BHCBTester;..\..\SharedFiles\QLib\Monitor\Windows</IncludePath>
+    <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+    <BCC_IncludePath>..\..\SharedFiles\QLib\OSWrappers;..\..\SharedFiles\QLib</BCC_IncludePath>
+    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\SVN\Trunk\Utils\BHCBTester;..\..\SharedFiles\QLib\Monitor\Windows</ILINK_LibraryPath>
+    <Multithreaded>true</Multithreaded>
+    <BCC_Defines>OS_WINDOWS</BCC_Defines>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_Optimize>false</DCC_Optimize>
+    <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+    <Defines>_DEBUG;$(Defines)</Defines>
+    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+    <DCC_Define>DEBUG</DCC_Define>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <IntermediateOutputDir>Debug</IntermediateOutputDir>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <TASM_Debugging>Full</TASM_Debugging>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <Defines>NDEBUG;$(Defines)</Defines>
+    <DynamicRTL>false</DynamicRTL>
+    <IntermediateOutputDir>Release</IntermediateOutputDir>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <TASM_Debugging>None</TASM_Debugging>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><Source><Source Name="MainSource">BHCBTesterProj.cpp</Source></Source><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1033</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">2</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;C:\SVN\Trunk\Utils\BHCBTester;..\..\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlIncludePath>  <HistoryLists_hlIncludePath Name="Item1">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;C:\SVN\Trunk\Utils\BHCBTester</HistoryLists_hlIncludePath>
+    </HistoryLists_hlIncludePath><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">2</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\release;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\SVN\Trunk\Utils\BHCBTester;..\..\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlILINK_LibraryPath>  <HistoryLists_hlILINK_LibraryPath Name="Item1">$(BDS)\lib\debug;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\SVN\Trunk\Utils\BHCBTester;..\..\SharedFiles\QLib\Monitor\Windows</HistoryLists_hlILINK_LibraryPath>
+    </HistoryLists_hlILINK_LibraryPath><HistoryLists_hlDefines><HistoryLists_hlDefines Name="Count">2</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item0">NDEBUG;NO_STRICT</HistoryLists_hlDefines>  <HistoryLists_hlDefines Name="Item1">_DEBUG;NO_STRICT</HistoryLists_hlDefines>
+    </HistoryLists_hlDefines><HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Count">2</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item0">..\..\SharedFiles\QLib\OSWrappers;..\..\SharedFiles\QLib</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item1">..\..\..\Branches\MultipleDataPCI_Keshet\SharedFiles\QLib\OSWrappers</HistoryLists_hlBCC_IncludePath></HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Count">1</HistoryLists_hlBCC_Defines><HistoryLists_hlBCC_Defines Name="Item0">OS_WINDOWS</HistoryLists_hlBCC_Defines></HistoryLists_hlBCC_Defines>  <HistoryLists_hlIntermediateOutputDir>
+      <HistoryLists_hlIntermediateOutputDir Name="Count">2</HistoryLists_hlIntermediateOutputDir>
+      <HistoryLists_hlIntermediateOutputDir Name="Item0">Release</HistoryLists_hlIntermediateOutputDir>
+      <HistoryLists_hlIntermediateOutputDir Name="Item1">Debug</HistoryLists_hlIntermediateOutputDir>
+    </HistoryLists_hlIntermediateOutputDir>
+    <Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+    </Excluded_Packages>
+    <HistoryLists_hlILINK_MaxErrors>
+      <HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors>
+      <HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors>
+    </HistoryLists_hlILINK_MaxErrors>
+    <HistoryLists_hlILINK_FileAlignment>
+      <HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment>
+      <HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment>
+    </HistoryLists_hlILINK_FileAlignment>
+    <HistoryLists_hlILINK_ObjectAlignment>
+      <HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment>
+      <HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment>
+    </HistoryLists_hlILINK_ObjectAlignment>
+  </CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <ResFiles Include="BHCBTesterProj.res">
+      <BuildOrder>0</BuildOrder>
+    </ResFiles>
+    <CppCompile Include="..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.cpp">
+      <Form>QMonitorForm</Form>
+      <DependentOn>..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.h</DependentOn>
+      <BuildOrder>4</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="BHCBTester.cpp">
+      <Form>BHCBTesterForm</Form>
+      <DependentOn>BHCBTester.h</DependentOn>
+      <BuildOrder>1</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="BHCBTesterProj.cpp">
+      <BuildOrder>2</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="Reader.cpp">
+      <DependentOn>Reader.h</DependentOn>
+      <BuildOrder>5</BuildOrder>
+    </CppCompile>
+    <LibFiles Include="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.lib">
+      <BuildOrder>3</BuildOrder>
+    </LibFiles>
+    <FormResources Include="..\..\SharedFiles\QLib\Monitor\Windows\QMonitorDlg.dfm" />
+    <FormResources Include="BHCBTester.dfm" />
+    <BuildConfiguration Include="Debug">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>

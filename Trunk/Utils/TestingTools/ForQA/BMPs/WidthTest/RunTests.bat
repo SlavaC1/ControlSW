@@ -1,0 +1,10 @@
+RunTests.exe Model1
+RunTests.exe Model2
+RunTests.exe 1st_Slice_full
+RunTests.exe 1st_Slice_strong
+RunTests.exe 1st_Slice_medium
+RunTests.exe 1st_Slice_weak
+RunTests.exe Tray
+RunTests.exe 3colors_Tray
+RunTests.exe Hollow
+RunTests.exe Tray-less

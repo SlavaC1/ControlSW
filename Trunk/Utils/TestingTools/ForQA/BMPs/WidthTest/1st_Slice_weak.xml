@@ -1,0 +1,11 @@
+<Test>
+<Machine Type = "1" />
+<Adherence num="1">
+<Coordinates UpperLeftX = "60" UpperLeftY = "35" LowerRightX = "120" LowerRightY = "70" />
+<Scan Color = "Orange" />
+<Pattern Type = "Weak" Expected = "Weak" />
+<Result pass = "True" />
+</Adherence>
+
+<Result Pass = "True" />
+</Test>

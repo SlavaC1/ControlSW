@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{c8a9f8da-f99f-4b8f-9bda-5dc22614a11d}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" />
+    <Projects Include="RFIDCrosstalkDetector.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="QLibProject">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="" />
+  </Target>
+  <Target Name="QLibProject:Clean">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="QLibProject:Make">
+    <MSBuild Projects="..\..\SharedFiles\QLib\LibraryProject\Windows\QLibProject.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="RFIDCrosstalkDetector">
+    <MSBuild Projects="RFIDCrosstalkDetector.cbproj" Targets="" />
+  </Target>
+  <Target Name="RFIDCrosstalkDetector:Clean">
+    <MSBuild Projects="RFIDCrosstalkDetector.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="RFIDCrosstalkDetector:Make">
+    <MSBuild Projects="RFIDCrosstalkDetector.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="QLibProject;RFIDCrosstalkDetector" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="QLibProject:Clean;RFIDCrosstalkDetector:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="QLibProject:Make;RFIDCrosstalkDetector:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

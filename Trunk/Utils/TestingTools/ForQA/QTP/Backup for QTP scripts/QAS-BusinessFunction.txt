@@ -1,0 +1,193 @@
+' The function returns the UninstallString, if the application is installed and can be removed.
+' Otherwise, it returns an empty string
+Function GetAddRemove(byRef IsInstalled, byRef CanBeUninstalled, byVal sApp)
+
+	Dim oReg, sBaseKey, iRC, aSubKeys, sComp
+	Dim HKLM 
+	HKLM = CLng("&H80000002") 			'  'HKEY_LOCAL_MACHINE
+
+	sComp = "."
+
+	Set oReg = GetObject("winmgmts:{impersonationLevel=impersonate}!\\" & sComp & "/root/default:StdRegProv")
+	sBaseKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\"
+	iRC = oReg.EnumKey(HKLM, sBaseKey, aSubKeys)
+
+	Dim sKey, sValue, UninstallStr
+	UninstallStr = ""
+	IsInstalled = False
+	CanBeUninstalled = False
+
+	For Each sKey In aSubKeys
+
+		iRC = oReg.GetStringValue(HKLM, sBaseKey & sKey, "DisplayName", sValue)
+		If iRC <> 0 Then
+			oReg.GetStringValue HKLM, sBaseKey & sKey, "QuietDisplayName", sValue
+		End If
+
+		If sValue <> "" Then  ' found an add-remove entry
+			If sValue = sApp Then  ' found our app name
+				IsInstalled = True
+				'print "Found '" & sApp & "' in the Add-Remove registry table"
+				RC = oReg.GetStringValue(HKLM, sBaseKey & sKey, "UninstallString", UninstallStr)
+				If UninstallStr <> "" Then
+					CanBeUninstalled =True
+					'print "Uninstall string found"  'sValue = sValue & vbTab & "Ver: " & sVersion
+				'Else
+				'	print "No Uninstall string"  'sValue = sValue & vbTab 
+				End If
+			'Else
+			'	print "Skipping: " & sValue
+			End If
+		End If
+	Next
+	GetAddRemove = UninstallStr
+End Function
+
+Public function IsProgramInstalled(program_name, boolExitAfterFailure)
+
+	CanBeUninstalled = False
+	IsInstalled = False
+
+	GetAddRemove IsInstalled, CanBeUninstalled, program_name
+
+	If(IsInstalled = True) Then
+		Call ReportResult("Pass", "IsProgramInstalled","The program is currently installed on windows",true,boolExitAfterFailure)
+	Else
+		Call ReportResult("Fail", "IsProgramInstalled","The program is currently NOT installed on windows",true,boolExitAfterFailure)
+	End If
+    
+	IsProgramInstalled = IsInstalled
+	
+End Function
+
+Public function IsProgramRemovable(program_name, boolExitAfterFailure)
+
+	CanBeUninstalled = False
+	IsInstalled = False
+
+	GetAddRemove IsInstalled, CanBeUninstalled, program_name
+
+	If(CanBeUninstalled = True) Then
+		Call ReportResult("Pass", "IsProgramRemovable","The program can be uninstalled from windows",true,boolExitAfterFailure)
+	Else
+		Call ReportResult("Fail", "IsProgramRemovable","The program CANNOT be uninstalled from windows",true,boolExitAfterFailure)
+	End If
+    
+	IsProgramRemovable = CanBeUninstalled
+	
+End Function
+
+Public function UninstallProgram(program_name, boolExitAfterFailure)
+
+	Dim WshShell
+	Set WshShell = CreateObject("WScript.Shell")
+
+	CanBeInstalled = False
+	IsInstalled = False
+	UninstallString = ""
+	retVal = False
+
+	UninstallString = GetAddRemove(IsInstalled, CanBeInstalled, program_name)
+    
+	If UninstallString <> "" Then
+
+		On Error Resume Next
+		Err.Clear
+
+		' I must not wait for the Uninstaller to finish because the script is supposed to run
+		' also the Uninstaller automatically (so if i wait so the automation will get stuck)
+		WshShell.Run UninstallString
+		'WshShell.Run "c:\windows\notepad.exe", 1, True
+
+		If Err.Number<>0 Then
+			retVal = False
+		Else
+			retVal = True  ' the function "Run" went with no errors
+		End If
+
+		On Error GoTo 0
+
+	Else
+		retVal = False  ' UninstallString is an empty string
+	End If
+
+	If(retVal = True) Then
+		Call ReportResult("Pass", "UninstallProgram","Uninstallation of program was activated",true,boolExitAfterFailure)
+	Else
+		Call ReportResult("Fail", "UninstallProgram","Uninstallation of program was Failed to activate",true,boolExitAfterFailure)
+	End If
+
+	UninstallProgram = retVal
+	
+End Function
+
+' ConvertHour2Decimal : return the hours in decimal format.
+' Assuming that the function receives a time format of hhh:mm 
+Public Function ConvertHour2Decimal(HourString)
+
+	Dim arr, DecimalFormatHour, Hours, Minutes
+
+	DecimalFormatHour = 0.0
+
+	arr = Split(HourString, ":")
+
+	Hours = CInt( arr(0) )
+	Minutes = CInt( arr(1) )
+
+	DecimalFormatHour = CDbl( Hours )
+	DecimalFormatHour = DecimalFormatHour + CDbl( CDbl(Minutes) / CDbl(60) )
+
+	ConvertHour2Decimal = DecimalFormatHour
+
+End Function
+
+'	Return if the estimated time is in allowed error range
+'  ReferenceTime = actual  printing time (this is our 100% reference)
+'  AllowedErrorDeviation is given in percentage
+'	Note: Time values are in hhh:mm format
+Public Function IsEstimationInRange(ReferenceTime, EstimatedTime, AllowedErrorDeviation, boolExitAfterFailure)
+	result = True
+
+	dev_time = GetEstimationErrorDeviation(ReferenceTime, EstimatedTime)
+
+	If( ( dev_time <= AllowedErrorDeviation ) and ( dev_time >= ( AllowedErrorDeviation * -1 ) ) ) Then
+		result = True
+        Call ReportResult("Pass", "IsEstimationInRange","Estimation is inside the given range",true,boolExitAfterFailure)
+	Else
+		result = False
+        Call ReportResult("Fail", "IsEstimationInRange","Estimation is OUTSIDE the given range",true,boolExitAfterFailure)
+	End If
+
+	IsEstimationInRange = result
+End Function
+
+'	Return the error deviation percentage of the estimated refering to the actual printing time (ReferenceTime is the 100%)
+'  ReferenceTime = actual  printing time (this is our 100% reference)
+'	Note: Time values are in hhh:mm format
+Public Function GetEstimationErrorDeviation(ReferenceTime, EstimatedTime)
+
+	ref_time = ConvertHour2Decimal(ReferenceTime)
+	est_time = ConvertHour2Decimal(EstimatedTime)
+
+	dev_time = CDbl(  ( CDbl(est_time) * 100 ) / CDbl(ref_time)  ) - CDbl(100)
+
+	GetEstimationErrorDeviation = dev_time
+End Function
+
+' This function returns True (and Pass value) if the estimation is equal or below the actual reference
+Public Function IsEstimationBelowActual(ReferenceTime, EstimatedTime, boolExitAfterFailure)
+	result = True
+
+	ref_time = ConvertHour2Decimal(ReferenceTime)
+	est_time = ConvertHour2Decimal(EstimatedTime)
+
+	If( est_time <= ref_time ) Then
+		result = True
+        Call ReportResult("Pass", "IsEstimationBelowActual","Estimation is equal or below the given actual reference",true,boolExitAfterFailure)
+	Else
+		result = False
+        Call ReportResult("Fail", "IsEstimationBelowActual","Estimation is higher below the given actual reference",true,boolExitAfterFailure)
+	End If
+
+	IsEstimationBelowActual = result
+End Function

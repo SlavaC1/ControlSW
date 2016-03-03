@@ -1,0 +1,8 @@
+before i started this, i made a new copy of the folder 'Sample Form Project - Original' and worked on that...
+
+1. Copy the 'Delphi' folder into the projects folder
+2. Add "MicDelphiAgent.pas" to the project
+3. From project->options->Packages, choose "Build with runtime packages"
+
+the string of the packages is:
+vcl;rtl;vclx;bdertl;Python_cb6;Objet;dbrtl;ThemeManagerC6;vcldb;vclie;xmlrtl;inet;inetdbbde;inetdbxpress;bcbsmp;qrpt;vcldbx;dsnap;cds;bdecds;teeui;teedb;tee;teeqr;ibxpress;visualclx;inetdb;nmfast;bcbie;soaprtl;dclocx;dbexpress;dbxcds;indy;bcb2kaxserver;adortl;visualdbclx

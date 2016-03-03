@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2016-02-01 16:52:41.413.groupproj,C:\Users\slavac\Documents\RAD Studio\Projects\ProjectGroup1.groupproj=C:\SVN\Trunk\Utils\BHCBTester\ProjectGroup1.groupproj</Transaction>
+  </Transactions>
+  <Default.Personality>
+    <Projects ActiveProject="BHCBTesterProj.exe"/>
+  </Default.Personality>
+</BorlandProject>

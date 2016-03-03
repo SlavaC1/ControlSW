@@ -1,0 +1,294 @@
+/********************************************************************
+ *                        Stratasys LTD.                            *
+ *                        ---------------------                     *
+ * Project: Advanced Licensing library for Objet Studio.            *
+ * Module: Licesne Manager                                          *
+ * Module Description: Advanced Licensing implementation.           *
+ *                                                                  *
+ * Compilation: Standard C++ , BCB                                  *
+ *                                                                  *
+ * Author: Slava Chuhovich                                          *
+ * Start date: 26/02/2014                                           *
+ * Last upate:                                                      *
+ ********************************************************************/
+
+#pragma hdrstop
+#include "LicenseManager.h"
+#pragma package(smart_init)
+
+#include "hasp_api_cpp_.h"
+#include <stdio.h>
+
+ILicenseManager *LicenseManager = NULL;
+
+// Create License Manager
+ILicenseManager* CALLINGAPI CreateLicenseManager()
+{
+	if(LicenseManager == NULL)
+		LicenseManager = new CLicenseManager();
+
+	return LicenseManager;
+}
+
+// Release License Manager
+void CALLINGAPI DeleteLicenseManager()
+{
+   Q_SAFE_DELETE(LicenseManager);
+}
+
+// -------------------------------------------------------------------------------------------------------
+
+CLicenseManager::CLicenseManager()
+{
+	m_PackagesList.clear();
+	m_LicensedMaterialsList.clear();
+	m_PropertiesList.clear();
+
+	m_PackagesDatabaseVersion = 0.0;
+
+	CoInitializeEx(NULL, COINIT_MULTITHREADED);
+}
+
+CLicenseManager::~CLicenseManager()
+{
+    m_PackagesList.clear();
+	m_LicensedMaterialsList.clear();
+	m_PropertiesList.clear();   
+
+	Q_SAFE_DELETE_ARRAY(m_FileBuffer);
+
+	CoUninitialize();
+}
+
+TLMStatus __stdcall CLicenseManager::ReadDatabase(const char* DatabasePath)
+{
+	m_PackagesList.clear();
+	m_LicensedMaterialsList.clear();
+	m_PropertiesList.clear();
+
+	m_DatabasePath = DatabasePath;
+	
+	try
+	{  
+		return ParsePackagesXML();
+	}
+	catch(ELicenseManager &Err)
+	{
+		return static_cast<TLMStatus>(Err.GetErrorCode());
+	}
+	catch(...)
+	{
+		return LM_STATUS_OTHER_ERR;
+	}
+}
+
+QString __stdcall CLicenseManager::DecryptDatabaseFile(QString FilePath)
+{
+	unsigned int FileSize = ReadFileIntoBuffer(FilePath.c_str());
+	if(FileSize == 0)
+		throw ELicenseManager(LM_ERR_OPEN_FILE, LM_STATUS_OPEN_FILE_ERR);
+
+	int Feature = 0;
+	Chasp hasp(ChaspFeature::fromFeature(Feature));
+	try
+	{
+		haspStatus status = hasp.login(HASP_OBJET_VENDOR_CODE, HASP_LOCAL_SCOPE);
+
+		if(HASP_SUCCEEDED(status))
+		{
+		   status = hasp.decrypt(m_FileBuffer, FileSize);
+		   if(HASP_SUCCEEDED(status))
+		   {
+		   	   m_FileBuffer[FileSize] = '\0';	
+			   return reinterpret_cast<const char*>(m_FileBuffer);
+		   }
+		}
+		else
+			throw ELicenseManager(LM_ERR_LOGIN, LM_STATUS_LOGIN_ERR);
+	}
+	__finally
+	{
+		hasp.logout();
+	}
+
+	return "";
+}
+
+unsigned int __stdcall CLicenseManager::ReadFileIntoBuffer(QString FilePath)
+{
+	FILE *File = fopen(FilePath.c_str(),"rb");
+
+	try
+	{
+		if(File != NULL)
+		{
+			fseek(File, 0, SEEK_END);
+			long FileSize = ftell(File);
+			rewind(File);
+
+			m_FileBuffer = new BYTE[FileSize + 1];
+
+			return fread(m_FileBuffer,sizeof(BYTE),FileSize,File);
+		}
+	}
+	__finally
+	{
+		if(File != NULL)
+		{
+			fclose(File);
+		}
+    }
+
+	return 0;
+}
+
+TLMStatus __stdcall CLicenseManager::ParsePackagesXML()
+{
+	_di_IXMLDocument XMLDoc = NewXMLDocument();
+
+	AnsiString XML = (DecryptDatabaseFile(m_DatabasePath)).c_str();
+
+	XMLDoc->LoadFromXML(XML);
+
+	AnsiString DatabaseVersion = XMLDoc->DocumentElement->Attributes["version"];
+	m_PackagesDatabaseVersion  = StrToFloat(DatabaseVersion.c_str());
+	
+	_di_IXMLNode PackageNode = XMLDoc->DocumentElement->ChildNodes->FindNode("Package");
+
+	while(PackageNode)
+	{
+		// Get package name information
+		AnsiString PackageFeature = PackageNode->Attributes["feature"];
+		AnsiString PackageName    = PackageNode->Attributes["name"];
+		
+		// Feature check in HASP dongle
+		int Feature = StrToInt(PackageFeature.c_str());
+		Chasp hasp(ChaspFeature::fromFeature(Feature));
+		try
+		{
+			haspStatus status = hasp.login(HASP_OBJET_VENDOR_CODE, HASP_LOCAL_SCOPE);
+		
+			if(! HASP_SUCCEEDED(status))
+			{
+                // If package is not licensed, continue to next package
+				PackageNode = PackageNode->NextSibling();
+				continue;
+			}
+		}				
+		__finally
+		{
+			hasp.logout();
+		}
+
+		// Add package to the list
+		TLicensedPackage LicensedPackage;
+		LicensedPackage.PackageName = PackageName.c_str();
+		LicensedPackage.HaspFeature = Feature;
+		m_PackagesList.push_back(LicensedPackage);
+
+		// Get materials list
+		_di_IXMLNode MaterialsNode = PackageNode->ChildNodes->FindNode("Materials");
+		ParseMaterialsList(MaterialsNode, m_LicensedMaterialsList, PackageName.c_str());
+
+		// Get properties list
+		_di_IXMLNode PropertiesNode = PackageNode->ChildNodes->FindNode("Properties");
+		ParseProperties(PropertiesNode, PackageName.c_str());
+		
+		// Check for next package
+		PackageNode = PackageNode->NextSibling();
+	}
+
+	if(m_PackagesList.empty())
+		return LM_STATUS_NO_PACKAGE_ERR;
+	else
+		return LM_STATUS_OK;	
+}
+
+void __stdcall CLicenseManager::ParseProperties(_di_IXMLNode &PropertiesNode, const QString &PackageName)
+{
+	if(PropertiesNode)
+	{
+		TLicensedProperty Property;
+
+		_di_IXMLNode PropertyNode = PropertiesNode->ChildNodes->FindNode("Property");
+		while(PropertyNode)
+		{
+			AnsiString PropertyID   = PropertyNode->Attributes["ID"];
+			AnsiString PropertyName = PropertyNode->Attributes["name"];
+			AnsiString State        = PropertyNode->Attributes["state"];
+
+			Property.PackageName  = PackageName.c_str();
+			Property.ID           = StrToInt(PropertyID.c_str());
+			Property.PropertyName = PropertyName.c_str();
+			Property.State        = (State == "true") ? true : false;
+
+           	// Find if property already in the list
+			TPropertiesList::iterator it = m_PropertiesList.begin();
+			for(; it < m_PropertiesList.end() ; ++it)
+				if(it->PropertyName.compare(Property.PropertyName) == 0)
+					break;
+
+             // Add property if it's not already present
+			if(it == m_PropertiesList.end())
+				m_PropertiesList.push_back(Property);
+
+			PropertyNode = PropertyNode->NextSibling();
+		}
+	}
+}
+
+void __stdcall CLicenseManager::ParseMaterialsList(_di_IXMLNode &MaterialsNode, TLicensedMaterialsList &MaterialsList, const QString &PackageName)
+{
+	if(MaterialsNode)
+	{
+		TLicensedMaterialItem LicensedMaterialItem;
+
+		_di_IXMLNode MaterialNode = MaterialsNode->ChildNodes->FindNode("Material");
+		while(MaterialNode)
+		{
+			AnsiString Material = MaterialNode->Text;
+
+			LicensedMaterialItem.PackageName  = PackageName.c_str();
+			LicensedMaterialItem.MaterialName = Material.c_str();
+
+			// Find if a material already in the list
+			TLicensedMaterialsList::iterator it = MaterialsList.begin();
+			for(; it < MaterialsList.end() ; ++it)
+				if(it->MaterialName.compare(LicensedMaterialItem.MaterialName) == 0)
+					break;
+
+            // Add the material if it's not already present
+			if(it == MaterialsList.end())
+				MaterialsList.push_back(LicensedMaterialItem);
+
+			MaterialNode = MaterialNode->NextSibling();
+		}
+	}
+}
+
+bool __stdcall CLicenseManager::IsMaterialLicensed(const char* MaterialName)
+{
+	// If all metarials are allowed, mark any material as 'licensed'
+	if(IsPropertyLicensed(propAllMatAllowed))
+		return true;
+
+	for(TLicensedMaterialsList::const_iterator it = m_LicensedMaterialsList.begin() ; it != m_LicensedMaterialsList.end() ; ++it)
+		if(it->MaterialName.compare(MaterialName) == 0)
+			return true;
+
+	return false;
+}
+
+bool __stdcall CLicenseManager::IsPropertyLicensed(const TPropertyID PropertyID)
+{
+	for(TPropertiesList::const_iterator it = m_PropertiesList.begin() ; it != m_PropertiesList.end() ; ++it)
+		if(it->ID == PropertyID && it->State)
+			return true;
+
+	return false;
+}
+
+float __stdcall CLicenseManager::GetPackagesDatabaseVersion()
+{
+    return m_PackagesDatabaseVersion;
+}

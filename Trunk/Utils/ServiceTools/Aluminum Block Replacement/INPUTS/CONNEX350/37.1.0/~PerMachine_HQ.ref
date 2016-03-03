@@ -1,0 +1,5 @@
+HeatersTemperatureArray={'base': (865,865,865,865, 865,865,865,865,800,800,800,800,850), 'upDelta': (200, 200, 200, 200, 150, 150, 150, 150, 150, 150, 150, 150, 0), 'downDelta': (200, 200, 200, 200, 150, 150, 150, 150, 150, 150, 150, 150, 0), 'str': 0}
+LayerHeightDPI_um={'base': 16.5, 'upDelta': 0, 'downDelta': 3.5, 'str': 0}
+PotentiometerValues={'base': (210, 210, 210, 210, 210, 210, 210, 210), 'upDelta': (45, 45, 45, 45, 45, 45, 45, 45), 'downDelta': (195, 195, 195, 195, 195, 195, 195, 195), 'str': 0}
+RequestedHeadVoltages={'base': (32, 32, 32, 32, 32, 32, 32, 32), 'upDelta': (4, 4, 4, 4, 4, 4, 4, 4), 'downDelta': (10, 10, 10, 10, 10, 10, 10, 10), 'str': 0}
+UVLampPSValueArray={'base': (1495, 1495), 'upDelta': (2350, 2350), 'downDelta': (0, 0), 'str': 0}

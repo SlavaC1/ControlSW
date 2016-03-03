@@ -1,0 +1,12 @@
+<Test>
+<Machine Type = "1" />
+<Line num="1">
+<Coordinates y = "200" xFrom = "3000" xTo = "3100" />
+<Scan Color = "Green" AlternativeColor = "None" />
+<Count pixels = "83" expected = "83" />
+<Length_X mm = "3.513" expected = "3.513" />
+<Result pass = "True" />
+</Line>
+
+<Result Pass = "True" />
+</Test>
