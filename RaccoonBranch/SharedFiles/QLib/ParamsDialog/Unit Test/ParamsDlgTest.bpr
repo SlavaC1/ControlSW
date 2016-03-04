@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="ParamsDlgTest.exe"/>
+    <OBJFILES value="ParamsDlgTest.obj ParamsDlgTestMainUnit.obj ..\ParamsDialog.obj 
+      ..\ArrayParamsEditorDlg.obj"/>
+    <RESFILES value="ParamsDlgTest.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) ParamsDlgTestMainUnit.dfm ..\ParamsDialog.dfm 
+      ..\ArrayParamsEditorDlg.dfm"/>
+    <LIBFILES value="..\..\LibraryProject\Windows\QLibProject.lib"/>
+    <LIBRARIES value="visualclx.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib visualclx.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi qrpt.bpi dbrtl.bpi vcldb.bpi 
+      bdertl.bpi ibsmp.bpi vcldbx.bpi teeui.bpi teedb.bpi tee.bpi teeqr.bpi 
+      ibxpress.bpi bcbie.bpi vclie.bpi inetdb.bpi inet.bpi nmfast.bpi dclocx.bpi 
+      bcb2kaxserver.bpi"/>
+    <PATHCPP value=".;.."/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG;OS_WINDOWS"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="ParamsDlgTest.cpp"/>
+    <INCLUDEPATH value="..\;..;$(BCB)\include;$(BCB)\include\vcl;..\.."/>
+    <LIBPATH value="..\;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I..\. -I.. -I$(BCB)\include -I$(BCB)\include\vcl -I..\.. -src_suffix cpp 
+      -D_DEBUG -DOS_WINDOWS -boa"/>
+    <CFLAG1 value="-vGc -vGt -vGd -Od -H=c:\devtools\borland\CBUILD~2\lib\vcl60.csm -Hc -Vx 
+      -Ve -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -V4.1 -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="cg32.lib $(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="ParamsDlgTest.cpp" FORMNAME="" UNITNAME="ParamsDlgTest" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ParamsDlgTest.res" FORMNAME="" UNITNAME="ParamsDlgTest" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ParamsDlgTestMainUnit.cpp" FORMNAME="MainForm" UNITNAME="ParamsDlgTestMainUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\LibraryProject\Windows\QLibProject.lib" FORMNAME="" UNITNAME="QLibProject" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\ParamsDialog.cpp" FORMNAME="ParamsForm" UNITNAME="ParamsDialog" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\ArrayParamsEditorDlg.cpp" FORMNAME="ArrayParamsEditorForm" UNITNAME="ArrayParamsEditorDlg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=7
+Item0=..\;..;$(BCB)\include;$(BCB)\include\vcl;..\..
+Item1=..;$(BCB)\include;$(BCB)\include\vcl;..\..
+Item2=..\;C:\DevTools\Borland\CBuilder5\Projects\;..;$(BCB)\include;$(BCB)\include\vcl;..\..
+Item3=C:\DevTools\Borland\CBuilder5\Projects;..\;..;$(BCB)\include;$(BCB)\include\vcl;..\..
+Item4=..\;$(BCB)\include;$(BCB)\include\vcl;C:\PROJECTS\SharedFiles\QLib
+Item5=..\;$(BCB)\include;$(BCB)\include\vcl
+Item6=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=8
+Item0=..\;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item1=..\;..;C:\DevTools\Borland\CBuilder5\Projects;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item2=..\;C:\DevTools\Borland\CBuilder5\Projects\;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item3=C:\DevTools\Borland\CBuilder5\Projects;..\;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item4=..\;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item5=$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item6=$(BCB)\lib\obj;$(BCB)\lib;C:\PROJECTS\SharedFiles\QLib\Monitor\Windows
+Item7=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG;OS_WINDOWS
+Item1=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=1
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

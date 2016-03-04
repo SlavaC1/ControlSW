@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="QLibTest.exe"/>
+    <OBJFILES value="QLibTest.obj QLibTestMainUnit.obj 
+      ..\..\MiniDebugger\Windows\MiniDebugger.obj"/>
+    <RESFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) QLibTestMainUnit.dfm ..\..\MiniDebugger\Windows\MiniDebugger.dfm"/>
+    <LIBFILES value="..\..\LibraryProject\Windows\QLibProject.lib"/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="rtl.lib vcl.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi"/>
+    <PATHCPP value=".;..\..\MiniDebugger\Windows"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="OS_WINDOWS;_DEBUG"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="QLibTest.cpp"/>
+    <INCLUDEPATH value="..\..\OSWrappers\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..;..\..\OSWrappers;..\..\MiniDebugger\Windows"/>
+    <LIBPATH value="..\..\OSWrappers\Windows;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\MiniDebugger\Windows;..\..\Monitor\Windows"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-vGc -vGt -vGd -Od -H=c:\devtools\borland\CBUILD~2\lib\vcl60.csm -Hc -Vx 
+      -Ve -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="cg32.lib $(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="QLibTest.cpp" FORMNAME="" UNITNAME="QLibTest" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="QLibTestMainUnit.cpp" FORMNAME="MainForm" UNITNAME="QLibTestMainUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\LibraryProject\Windows\QLibProject.lib" FORMNAME="" UNITNAME="QLibProject" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\MiniDebugger\Windows\MiniDebugger.cpp" FORMNAME="MiniDebuggerForm" UNITNAME="MiniDebugger" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=15
+Item0=..\..\OSWrappers\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..;..\..\OSWrappers;..\..\MiniDebugger\Windows
+Item1=$(BCB)\include;$(BCB)\include\vcl;..\..;..\..\OSWrappers;..\..\MiniDebugger\Windows
+Item2=$(BCB)\include;$(BCB)\include\vcl;..\..;..\..\OSWrappers;C:\Projects\SharedFiles\QLib\MiniDebugger\Windows
+Item3=$(BCB)\include;$(BCB)\include\vcl;..\..;..\..\OSWrappers
+Item4=$(BCB)\include;$(BCB)\include\vcl;..\..;C:\Projects\SharedFiles\QLib\OSWrappers
+Item5=$(BCB)\include;$(BCB)\include\vcl;..\..
+Item6=$(BCB)\include;$(BCB)\include\vcl;C:\Projects\SharedFiles\QLib
+Item7=$(BCB)\include;$(BCB)\include\vcl
+Item8=..\..\Monitor\VxWorks;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects\;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\include;$(BCB)\include\vcl;..\OSWrappers
+Item9=..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects\;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\include;$(BCB)\include\vcl;..\OSWrappers
+Item10=..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects\;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\include;$(BCB)\include\vcl;..\OSWrappers
+Item11=..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects;..\;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\include;$(BCB)\include\vcl;..\OSWrappers
+Item12=..\;..\MiniSequencer;..\OSWrappers\Windows;..;$(BCB)\include;$(BCB)\include\vcl;..\OSWrappers
+Item13=..\MiniSequencer;..\OSWrappers\Windows;..\;$(BCB)\include;$(BCB)\include\vcl;C:\AllSorts\RansSources\QLib\OSWrappers
+Item14=..\MiniSequencer;..\OSWrappers\Windows;..\;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=9
+Item0=..\..\OSWrappers\Windows;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\MiniDebugger\Windows;..\..\Monitor\Windows
+Item1=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;C:\Projects\SharedFiles\QLib\MiniDebugger\Windows;C:\Projects\SharedFiles\QLib\Monitor\Windows
+Item2=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item3=..\..\Monitor\VxWorks;..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects\;..\OSWrappers;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item4=..\..\Monitor\Windows;..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects\;..\OSWrappers;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item5=..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects\;..\OSWrappers;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item6=..\..\OSWrappers\Windows;..\..\OSWrappers\VxWorks;..\..\OSWrappers;..\..;..\..\MiniDebugger\Windows;..\..\MiniSequencer;..\MiniDebugger\Windows;C:\DevTools\Borland\CBuilder5\Projects;..\OSWrappers;..\;..;..\MiniSequencer;..\OSWrappers\Windows;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item7=..\;..\MiniSequencer;..\OSWrappers\Windows;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item8=..\MiniSequencer;..\OSWrappers\Windows;..\;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=4
+Item0=OS_WINDOWS;_DEBUG
+Item1=OS_WINDOWS
+Item2=_DEBUG;OS_WINDOWS
+Item3=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=1
+  </IDEOPTIONS>
+</PROJECT>

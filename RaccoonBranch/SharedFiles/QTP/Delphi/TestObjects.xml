@@ -1,0 +1,1904 @@
+<TypeInformation Load="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ClassesDefintions.xsd"
+	AddinName="Delphi" PackageName="DelphiPackage">
+
+	<!-- This xml file serves the following purposes:
+       1. Provides definitions of Delphi TO methods for use by inetllisense and step generator.
+       2. Defines associations of helpids and corresponding methods to enable opening of correct help files with F1. 
+       3. 'Description' elements for objects and methods are to be used as helpstrings when generating the idl used to generate 
+          the help files themselves. The 'Description' elements for methods also serve as tooltip strings
+          in keyword view.
+          
+       Several methods do not require helpids and helpstrings at all (those defined in DispTestObjectDefs.h).
+       Methods which are common to all Delphi objects (such as Click) are defined only once, in DelphiButton object with 
+       Delphi_Common helpids. All other objects, inherit from DelphiButton and thus all these methods. 
+       All other methods have their own specific definition for each specific object -->
+
+	<!-- DelphiButton definition -->
+	<ClassInfo Name="DelphiButton">
+		<Description>A Delphi button.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025002"/>
+		<TypeInfo>
+
+			<!-- the following methods are don't require helpids (are defined in DispTestObjectDefs.h) -->
+			<Operation Name="CaptureBitmap" PropertyType="Method">
+				<Description>Saves a screen capture of the object as a .png or .bmp image using the specified file name.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="3062"/>
+				<Argument Name="FullFileName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="OverrideExisting" Direction="In" IsMandatory="false">
+					<Type VariantType="Boolean"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="CheckProperty" PropertyType="Method">
+				<Description>Checks whether the actual value of the specified object property achieves the specified expected value within the specified timeout.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="4001000"/>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="ChildObjects" PropertyType="Method">
+				<Description>Returns the collection of child objects contained within the object.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="3192"/>
+				<Argument Name="Description" Direction="In" IsMandatory="false">
+					<Type VariantType="IDispatch"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="IDispatch"/>
+				</ReturnValueType>
+			</Operation>
+
+
+			<Operation Name="GetROProperty" PropertyType="Method">
+				<Description>Returns the current value of the test object property from the object in the application.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="2659"/>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyData" Direction="In" IsMandatory="false">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetTOProperties" PropertyType="Method">
+				<Description>Returns the collection of properties and values used to identify the object.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="3096"/>
+				<ReturnValueType>
+					<Type VariantType="IDispatch"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetTOProperty" PropertyType="Method">
+				<Description>Returns the value of the specified property from the test object description.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="2660"/>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="SetTOProperty" PropertyType="Method">
+				<Description>Sets the value of the specified property in the test object description.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="2662"/>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="Value" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ToString" PropertyType="Method">
+				<Description>Returns a string that represents the current test object.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="4001001"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="WaitProperty" PropertyType="Method">
+				<Description>Waits until the specified object property achieves the specified value or exceeds the specified timeout before continuing to the next step.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="3212"/>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Exist" PropertyType="Property_Get">
+				<Description>Checks whether the object currently exists in the open application.</Description>
+				<HelpInfo
+					HelpFile="INSTALLDIR\help\Delphi.chm"
+					HelpContext="2658"/>
+				 <Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					 <Type VariantType="Integer"/>
+				</Argument>
+				 <ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<!-- the following methods are common to all Delphi TOs -->
+			<Operation Name="GetTextLocation" PropertyType="Method">
+				<Description>Checks whether the specified text string is contained in the specified window area.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025317"/>
+				<Argument Name="TextToFind" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="Left" Direction="InOut" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Top" Direction="InOut" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Right" Direction="InOut" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Bottom" Direction="InOut" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+		        <Argument Name="MatchWholeWordOnly" Direction="In" IsMandatory="false">
+					 <Type VariantType="Boolean"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Click" PropertyType="Method">
+				<Description>Clicks an object.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025311"/>
+				<Argument Name="X" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Y" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="DblClick" PropertyType="Method">
+				<Description>Double-clicks an object.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025312"/>
+				<Argument Name="X" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Y" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Drag" PropertyType="Method">
+				<Description>Performs the 'drag' part of a drag and drop operation.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025313"/>
+				<Argument Name="X" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Y" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Drop" PropertyType="Method">
+				<Description>Performs the 'drop' part of a drag and drop operation.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025314"/>
+				<Argument Name="X" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Y" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="GetVisibleText" PropertyType="Method">
+				<Description>Returns the text from the specified area.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025320"/>
+				<Argument Name="Left" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Top" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Right" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Bottom" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="MouseMove" PropertyType="Method">
+				<Description>Moves the mouse pointer to the designated position inside the object.</Description>
+				<HelpInfo
+				 HelpFile="INSTALLDIR\help\Delphi.chm"
+				 HelpContext="4025321"/>
+				<Argument Name="X" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Y" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Type" PropertyType="Method">
+				<Description>Types the specified string in the object.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025324"/>
+				<Argument Name="KeyboardInput" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+			</Operation>
+
+			<!-- a method specific to Delphi Addin TOs -->
+			<Operation Name="SetROProperty" PropertyType="Method">
+				<Description>Sets the value of the specified property of the object in the application.</Description>
+				<Documentation><![CDATA[Set the value of the %l %t's %a1 property to %a2 in the application.]]></Documentation>
+			    <HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025389"/>  
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="Value" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiStatic-->
+	<ClassInfo Name="DelphiStatic" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi Static control, such as an image or label.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025390"/>
+	</ClassInfo>
+
+
+	<!-- DelphiList -->
+	<ClassInfo Name="DelphiList" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi List.</Description>
+		<HelpInfo
+		 HelpFile="INSTALLDIR\help\Delphi.chm"
+		 HelpContext="4025114"/>
+		<TypeInfo>
+
+			<Operation Name="Activate" PropertyType="Method">
+				<Description>Activates (double-clicks) the specified item in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025115"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="CheckItemProperty" PropertyType="Method">
+				<Description>Checks whether the specified item property achieves the specified value within the specified timeout.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025146"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Deselect" PropertyType="Method">
+				<Description>Deselects an item in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025121"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ExtendSelect" PropertyType="Method">
+				<Description>Selects an additional item from the multi-selection list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025125"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="GetContent" PropertyType="Method">
+				<Description>Returns all of the items in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025126"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItem" PropertyType="Method">
+				<Description>Returns the value of the item specified by the index.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025127"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemProperty" PropertyType="Method">
+				<Description>Returns the current value of a property for an item in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025128"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemsCount" PropertyType="Method">
+				<Description>Returns the number of items in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025135"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetSelection" PropertyType="Method">
+				<Description>Returns all of the selected items in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025130"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Select" PropertyType="Method">
+				<Description>Selects an item from the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025138"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Offset" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="SelectRange" PropertyType="Method">
+				<Description>Selects all list items between (and including) the two specified items.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025139"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="ItemTo" Direction="In" IsMandatory="false">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="WaitItemProperty" PropertyType="Method">
+				<Description>Waits until the specified item property achieves the specified value or exceeds the specified timeout before continuing to the next step.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025145"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiScrollBar -->
+	<ClassInfo Name="DelphiScrollBar" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi scroll bar.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025207"/>
+		<TypeInfo>
+
+			<Operation Name="NextLine" PropertyType="Method">
+				<Description>Moves the scroll bar downward, or to the right, the specified number of lines.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025222"/>
+				<Argument Name="Item" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="NextPage" PropertyType="Method">
+				<Description>Moves the scroll bar downward, or to the right, the specified number of pages.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025223"/>
+				<Argument Name="Item" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="PrevLine" PropertyType="Method">
+				<Description>Moves the scroll bar upward, or to the left, the specified number of lines.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025225"/>
+				<Argument Name="Item" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="PrevPage" PropertyType="Method">
+				<Description>Moves the scroll bar upward, or to the left, the specified number of pages.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025226"/>
+				<Argument Name="Item" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Set" PropertyType="Method">
+				<Description>Sets the scroll bar position.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025227"/>
+				<Argument Name="Position" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiStatusBar -->
+	<ClassInfo Name="DelphiStatusBar" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi status bar.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025359"/>
+		<TypeInfo>
+
+			<Operation Name="CheckItemProperty" PropertyType="Method">
+				<Description>Checks whether the specified item property achieves the specified value within the specified timeout.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025365"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetContent" PropertyType="Method">
+				<Description>Returns a string representation of all the items (parts) in the status bar.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025360"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItem" PropertyType="Method">
+				<Description>Returns the name of the specified status bar item.</Description>
+				<HelpInfo
+				 HelpFile="INSTALLDIR\help\Delphi.chm"
+				 HelpContext="4025361"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemProperty" PropertyType="Method">
+				<Description>Returns the current value of a property for an item (part) in the status bar.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025362"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemsCount" PropertyType="Method">
+				<Description>Returns the number of items in the status bar.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025363"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="WaitItemProperty" PropertyType="Method">
+				<Description>Waits until the specified item property achieves the specified value or exceeds the specified timeout before continuing to the next step.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025364"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiSpin -->
+	<ClassInfo Name="DelphiSpin" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi spin box.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025366"/>
+		<TypeInfo>
+
+			<Operation Name="Next" PropertyType="Method">
+				<Description>Sets the spin object to its next value.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025367"/>
+			</Operation>
+
+			<Operation Name="Prev" PropertyType="Method">
+				<Description>Sets the spin object to its previous value.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025368"/>
+			</Operation>
+
+			<Operation Name="Set" PropertyType="Method">
+				<Description>Sets the spin object to the specified value.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025369"/>
+				<Argument Name="Position" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiRadioButton -->
+	<ClassInfo Name="DelphiRadioButton" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi radio button.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025186"/>
+		<TypeInfo>
+
+			<Operation Name="Set" PropertyType="Method">
+				<Description>Sets the radio button as the selected radio button.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025202"/>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiCheckBox -->
+	<ClassInfo Name="DelphiCheckBox" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi check box.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025022"/>
+		<TypeInfo>
+
+			<Operation Name="Set" PropertyType="Method">
+				<Description>Sets the value of the check box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025038"/>
+				<Argument Name="Value" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiTabStrip -->
+	<ClassInfo Name="DelphiTabStrip" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi tab strip in a dialog box.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025329"/>
+		<TypeInfo>
+
+			<Operation Name="GetSelection" PropertyType="Method">
+				<Description>Returns the selected tab in the tab strip.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025333"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Select" PropertyType="Method">
+				<Description>Selects the specified tab item.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025330"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="CheckItemProperty" PropertyType="Method">
+				<Description>Checks whether the specified item property achieves the specified value within the specified timeout.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025337"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetContent" PropertyType="Method">
+				<Description>Returns a list of all of the tabs in the tab strip.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025332"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItem" PropertyType="Method">
+				<Description>Returns the value of the tab specified by the index.</Description>
+				<HelpInfo
+				 HelpFile="INSTALLDIR\help\Delphi.chm"
+				 HelpContext="3958"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemProperty" PropertyType="Method">
+				<Description>Returns the current value of a property for a tab item in the tab strip.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025335"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemsCount" PropertyType="Method">
+				<Description>Returns the number of tabs in the tab strip.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025331"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="WaitItemProperty" PropertyType="Method">
+				<Description>Waits until the specified item property achieves the specified value or exceeds the specified timeout before continuing to the next step.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025336"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiObject -->
+	<ClassInfo Name="DelphiObject" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi object.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025347"/>
+		<TypeInfo>
+			<Operation Name="HScroll" PropertyType="Method">
+				<Description>Horizontally scrolls an object that has embedded scrollbars.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025371"/>
+				<Argument Name="Option" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Item" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="VScroll" PropertyType="Method">
+				<Description>Vertically scrolls an object that has embedded scrollbars.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025372"/>
+				<Argument Name="Option" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Item" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!--DelphiWindow -->
+	<ClassInfo Name="DelphiWindow" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi window or dialog box.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025280"/>
+		<TypeInfo>
+
+			<Operation Name="Activate" PropertyType="Method">
+				<Description>Activates the window or dialog box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025281"/>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Close" PropertyType="Method">
+				<Description>Closes the window or dialog box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025286"/>
+			</Operation>
+
+			<Operation Name="Maximize" PropertyType="Method">
+				<Description>Maximizes the window or dialog box to fill the entire screen.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025296"/>
+			</Operation>
+
+			<Operation Name="Minimize" PropertyType="Method">
+				<Description>Minimizes the window or dialog box to an icon.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025297"/>
+			</Operation>
+
+			<Operation Name="Move" PropertyType="Method">
+				<Description>Moves the window or dialog box to the specified absolute location on the screen.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025298"/>
+				<Argument Name="X" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Y" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Resize" PropertyType="Method">
+				<Description>Resizes the window or dialog box to the specified dimensions.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025301"/>
+				<Argument Name="Width" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Height" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Restore" PropertyType="Method">
+				<Description>Restores the window or dialog box to its previous size.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025302"/>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiComboBox -->
+	<ClassInfo Name="DelphiComboBox" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi combo box.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025043"/>
+		<TypeInfo>
+
+			<Operation Name="GetContent" PropertyType="Method">
+				<Description>Returns a string containing the names of all of the items in the combo box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025052"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItem" PropertyType="Method">
+				<Description>Returns the value of the item specified by the index.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025053"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemsCount" PropertyType="Method">
+				<Description>Returns the number of items in the combo box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025060"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetSelection" PropertyType="Method">
+				<Description>Returns the selected item in the combo box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025055"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Select" PropertyType="Method">
+				<Description>Selects an item from the combo box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025063"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiEdit -->
+	<ClassInfo Name="DelphiEdit" BaseClassInfoName="DelphiEditor">
+		<Description>A Delphi edit box.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025068"/>
+		<TypeInfo>
+
+			<Operation Name="SetCaretPos" PropertyType="Method">
+				<Description>Places the cursor at the specified point in the edit box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025085"/>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="SetSelection" PropertyType="Method">
+				<Description>Selects text in the edit box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025087"/>
+				<Argument Name="ColumnFrom" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="ColumnTo" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Set" PropertyType="Method">
+				<Description>Sets the value of the edit box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025084"/>
+				<Argument Name="Text" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="SetSecure" PropertyType="Method">
+				<Description>Sets the encrypted value of the edit box.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025086"/>
+				<Argument Name="Text" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiEditor -->
+	<ClassInfo Name="DelphiEditor" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi multi-line editor.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025092"/>
+		<TypeInfo>
+
+			<Operation Name="SetCaretPos" PropertyType="Method">
+				<Description>Places the cursor at the specified point in the multi-line editor.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025108"/>
+				<Argument Name="Line" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="SetSelection" PropertyType="Method">
+				<Description>Selects text in the multi-line editor.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025109"/>
+				<Argument Name="LineFrom" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="ColumnFrom" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="LineTo" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="ColumnTo" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiListView -->
+	<ClassInfo Name="DelphiListView" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi list-view control.</Description>
+		<HelpInfo
+		  HelpFile="INSTALLDIR\help\Delphi.chm"
+		  HelpContext="4025147"/>
+		<TypeInfo>
+
+			<Operation Name="Activate" PropertyType="Method">
+				<Description>Activates (double-clicks) the specified item in the object's list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025148"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="CheckItemProperty" PropertyType="Method">
+				<Description>Checks whether the specified item property achieves the specified value within the specified timeout.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025183"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Deselect" PropertyType="Method">
+				<Description>Deselects an item in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025154"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ExtendSelect" PropertyType="Method">
+				<Description>Selects an additional item from the multi-selection list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025161"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="GetContent" PropertyType="Method">
+				<Description>Returns all of the items in the list.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025163"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItem" PropertyType="Method">
+				<Description>Returns the value of the item specified by the index.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025164"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemProperty" PropertyType="Method">
+				<Description>Returns the current value of the specified property for the specified item in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025181"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemsCount" PropertyType="Method">
+				<Description>Returns the number of items in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025171"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetSelection" PropertyType="Method">
+				<Description>Returns all of the selected items in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025166"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Select" PropertyType="Method">
+				<Description>Selects an item from the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025174"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Offset" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="SelectRange" PropertyType="Method">
+				<Description>Selects all list items between (and including) the two specified items.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025175"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="ItemTo" Direction="In" IsMandatory="false">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="WaitItemProperty" PropertyType="Method">
+				<Description>Waits until the specified item property achieves the specified value or exceeds the specified timeout before continuing to the next step.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025182"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="ColumnCount" PropertyType="Method">
+				<Description>Returns the number of columns in the (report-style) list-view object.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025185"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="DragItem" PropertyType="Method">
+				<Description>Performs the 'drag' part of a drag and drop operation.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025156"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="DropOnItem" PropertyType="Method">
+				<Description>Performs the 'drop' part of a drag and drop operation.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025158"/>
+				<Argument Name="TargetItem" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="EditLabel" PropertyType="Method">
+				<Description>Activates the edit mode for the list's label to enable renaming.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025159"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="GetCheckMarks" PropertyType="Method">
+				<Description>Retrieves the number and the value of items marked as checked.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025162"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetColumnHeader" PropertyType="Method">
+				<Description>Returns the text header of the specified (report-style) list-view column.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025184"/>
+				<Argument Name="vColumn" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetSubItem" PropertyType="Method">
+				<Description>Returns the text value of the (report-style) list-view subitem.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025376"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="SubItem" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="SetItemState" PropertyType="Method">
+				<Description>Sets the state of the check box icon of the specified item in the list.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025176"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="State" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiTreeView -->
+	<ClassInfo Name="DelphiTreeView" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi tree-view control.</Description>
+		<HelpInfo
+		   HelpFile="INSTALLDIR\help\Delphi.chm"
+		   HelpContext="4025243"/>
+		<TypeInfo>
+
+			<Operation Name="GetSelection" PropertyType="Method">
+				<Description>Returns all of the selected nodes in the tree-view control.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025263"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Select" PropertyType="Method">
+				<Description>Selects a node in the tree-view control.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025271"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<Argument Name="Offset" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="CheckItemProperty" PropertyType="Method">
+				<Description>Checks whether the specified item property achieves the specified value within the specified timeout.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025279"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetContent" PropertyType="Method">
+				<Description>Returns all of the nodes in the tree-view control.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025260"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItem" PropertyType="Method">
+				<Description>Returns the value of the node specified by the index.</Description>
+				<HelpInfo
+				 HelpFile="INSTALLDIR\help\Delphi.chm"
+				 HelpContext="4025261"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemProperty" PropertyType="Method">
+				<Description>Returns the current value of a property for a node in the tree-view control.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025277"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Property" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="GetItemsCount" PropertyType="Method">
+				<Description>Returns the number of nodes in the tree-view control.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025268"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="WaitItemProperty" PropertyType="Method">
+				<Description>Waits until the specified item property achieves the specified value or exceeds the specified timeout before continuing to the next step.</Description>
+				<HelpInfo
+				  HelpFile="INSTALLDIR\help\Delphi.chm"
+				  HelpContext="4025278"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="PropertyName" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+				<Argument Name="PropertyValue" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="TimeOut" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Boolean"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="Activate" PropertyType="Method">
+				<Description>Activates (double-clicks) a node in the tree-view control.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025244"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Collapse" PropertyType="Method">
+				<Description>Hides sub-nodes of the specified node in the expanded tree-view control.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025249"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="DragItem" PropertyType="Method">
+				<Description>Performs the 'drag' part of a drag and drop operation.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025252"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="DropOnItem" PropertyType="Method">
+				<Description>Performs the 'drop' part of a drag and drop operation.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025254"/>
+				<Argument Name="TargetItem" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Button" Direction="In" IsMandatory="false">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="EditLabel" PropertyType="Method">
+				<Description>Activates the edit mode for a node in the tree-view control to enable renaming.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025255"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="Expand" PropertyType="Method">
+				<Description>Displays hidden sub-nodes of the specified node in the tree-view control.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025257"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ExpandAll" PropertyType="Method">
+				<Description>Expands the node in the tree-view control and all of the nodes below it.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025258"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="GetCheckMarks" PropertyType="Method">
+				<Description>Retrieves the index value for each node marked as checked.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025259"/>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="SetItemState" PropertyType="Method">
+				<Description>Sets the state of the check box icon of the specified node in the tree-view control.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025272"/>
+				<Argument Name="Item" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="State" Direction="In" IsMandatory="true">
+					<Type VariantType="Integer"/>
+				</Argument>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiTable -->
+	<ClassInfo Name="DelphiTable" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi table.</Description>
+		<HelpInfo
+           HelpFile="INSTALLDIR\help\Delphi.chm"
+           HelpContext="4025346"/>
+		<TypeInfo>
+
+			<Operation Name="SelectCell" PropertyType="Method">
+				<Description>Selects (clicks) the specified cell in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025348"/>
+				<Argument Name="Row" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ActivateCell" PropertyType="Method">
+				<Description>Activates (double-clicks) the specified cell in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025349"/>
+				<Argument Name="Row" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+      
+			<Operation Name="SelectRow" PropertyType="Method">
+				<Description>Selects (clicks) the specified row in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025350"/>
+				<Argument Name="Row" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ActivateRow" PropertyType="Method">
+				<Description>Activates (double-clicks) the specified row in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025355"/>
+				<Argument Name="Row" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ActivateColumn" PropertyType="Method">
+				<Description>Activates (double-clicks) the specified column in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025373"/>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="SelectColumn" PropertyType="Method">
+				<Description>Selects (clicks) the specified column in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025374"/>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="SetCellData" PropertyType="Method">
+				<Description>Sets the contents of a cell to the specified text.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025351"/>
+				<Argument Name="Row" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Data" Direction="In" IsMandatory="true">
+					<Type VariantType="String"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="GetCellData" PropertyType="Method">
+				<Description>Retrieves the contents of the specified cell from the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025352"/>
+				<Argument Name="Row" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<ReturnValueType>
+					<Type VariantType="Variant"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="MakeCellVisible" PropertyType="Method">
+				<Description>Scrolls the specified cell into view if it is not visible in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025375"/>
+				<Argument Name="Row" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+				<Argument Name="Column" Direction="In" IsMandatory="true">
+					<Type VariantType="Variant"/>
+				</Argument>
+			</Operation>
+
+			<Operation Name="ColumnCount" PropertyType="Property_Get">
+				<Description>Returns the number of columns in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025354"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+			<Operation Name="RowCount" PropertyType="Property_Get">
+				<Description>Returns the number of rows in the table.</Description>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025353"/>
+				<ReturnValueType>
+					<Type VariantType="Integer"/>
+				</ReturnValueType>
+			</Operation>
+
+		</TypeInfo>
+	</ClassInfo>
+
+
+	<!-- DelphiNavigator -->
+	<ClassInfo Name="DelphiNavigator" BaseClassInfoName="DelphiButton">
+		<Description>A Delphi navigator control.</Description>
+		<HelpInfo
+		   HelpFile="INSTALLDIR\help\Delphi.chm"
+		   HelpContext="4025377"/>
+		<TypeInfo>
+
+			<Operation Name="ClickFirst" PropertyType="Method">
+				<Description>Clicks the 'First' navigator button and selects the first record in the database.</Description>
+				<Documentation><![CDATA[Click the First button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025378"/>
+			</Operation>
+
+			<Operation Name="ClickPrior" PropertyType="Method">
+				<Description>Clicks the 'Prior' navigator button and selects the previous record in the database.</Description>
+				<Documentation><![CDATA[Click the Prior button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025381"/>
+			</Operation>
+
+			<Operation Name="ClickNext" PropertyType="Method">
+				<Description>Clicks the 'Next' navigator button and selects the next record in the database.</Description>
+				<Documentation><![CDATA[Click the Next button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025380"/>
+			</Operation>
+
+			<Operation Name="ClickLast" PropertyType="Method">
+				<Description>Clicks the 'Last' navigator button and selects the last record in the database.</Description>
+				<Documentation><![CDATA[Click the Last button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025379"/>
+			</Operation>
+
+			<Operation Name="ClickInsert" PropertyType="Method">
+				<Description>Clicks the 'Insert' navigator button and inserts a record in the database before the current record.</Description>
+				<Documentation><![CDATA[Click the Insert button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025382"/>
+			</Operation>
+
+			<Operation Name="ClickDelete" PropertyType="Method">
+				<Description>Clicks the 'Delete' navigator button and deletes the current record.</Description>
+				<Documentation><![CDATA[Click the Delete button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025383"/>
+			</Operation>
+
+			<Operation Name="ClickEdit" PropertyType="Method">
+				<Description>Clicks the 'Edit' navigator button and enables the current record for editing.</Description>
+				<Documentation><![CDATA[Click the Edit button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025384"/>
+			</Operation>
+
+			<Operation Name="ClickPost" PropertyType="Method">
+				<Description>Clicks the 'Post' navigator button and saves all changes to the database.</Description>
+				<Documentation><![CDATA[Click the Post button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025385"/>
+			</Operation>
+
+			<Operation Name="ClickCancel" PropertyType="Method">
+				<Description>Clicks the 'Cancel' navigator button and reverts to the previously saved data.</Description>
+				<Documentation><![CDATA[Click the Cancel button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025386"/>
+			</Operation>
+
+			<Operation Name="ClickRefresh" PropertyType="Method">
+				<Description>Clicks the 'Refresh' navigator button and refreshes the displayed data.</Description>
+				<Documentation><![CDATA[Click the Refresh button in the %l %t.]]></Documentation>
+				<HelpInfo
+				   HelpFile="INSTALLDIR\help\Delphi.chm"
+				   HelpContext="4025387"/>
+			</Operation>
+
+		</TypeInfo>
+
+	</ClassInfo>
+
+</TypeInformation>
+

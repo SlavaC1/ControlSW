@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="QPythonTest.exe"/>
+    <OBJFILES value="QPythonTest.obj ..\PythonConsole.obj ..\QPythonIntegrator.obj 
+      QPythonTestMainUnit.obj ..\PythonBreakpointDlg.obj 
+      ..\BreakpointPropertiesDlg.obj"/>
+    <RESFILES value="QPythonTest.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) ..\PythonConsole.dfm ..\QPythonIntegrator.dfm 
+      QPythonTestMainUnit.dfm ..\PythonBreakpointDlg.dfm 
+      ..\BreakpointPropertiesDlg.dfm"/>
+    <LIBFILES value="..\..\LibraryProject\Windows\QLibProject.lib"/>
+    <LIBRARIES value="Objet.lib Python_cb6.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib Python_cb6.lib Objet.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi ibsmp.bpi dbrtl.bpi vcldb.bpi 
+      bdertl.bpi qrpt.bpi vcldbx.bpi teeui.bpi teedb.bpi tee.bpi teeqr.bpi 
+      ibxpress.bpi bcbie.bpi vclie.bpi inetdb.bpi inet.bpi nmfast.bpi dclocx.bpi 
+      bcb2kaxserver.bpi"/>
+    <PATHCPP value=".;.."/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG;OS_WINDOWS"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="QPythonTest.cpp"/>
+    <INCLUDEPATH value="..\;..;..\..\..\..\components;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core"/>
+    <LIBPATH value="..\;..;$(BCB)\Projects\Lib;..\..\..\..\components;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-vGc -vGt -vGd -Od -H=c:\devtools\borland\CBUILD~2\lib\vcl60.csm -Hc -Vx 
+      -Ve -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="cg32.lib $(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="QPythonTest.cpp" FORMNAME="" UNITNAME="QPythonTest" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="QPythonTest.res" FORMNAME="" UNITNAME="QPythonTest.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\PythonConsole.cpp" FORMNAME="PythonConsoleForm" UNITNAME="PythonConsole" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\LibraryProject\Windows\QLibProject.lib" FORMNAME="" UNITNAME="QLibProject" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\QPythonIntegrator.cpp" FORMNAME="QPythonIntegratorDM" UNITNAME="QPythonIntegrator" CONTAINERID="CCompiler" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>
+      <FILE FILENAME="QPythonTestMainUnit.cpp" FORMNAME="Form1" UNITNAME="QPythonTestMainUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\PythonBreakpointDlg.cpp" FORMNAME="PythonBreakpointForm" UNITNAME="PythonBreakpointDlg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\BreakpointPropertiesDlg.cpp" FORMNAME="BreakpointPropertiesForm" UNITNAME="BreakpointPropertiesDlg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Excluded Packages]
+c:\devtools\borland\cbuilder6\Bin\dclite60.bpl=Borland Integrated Translation Environment
+
+[HistoryLists\hlIncludePath]
+Count=29
+Item0=..\;..;..\..\..\..\components;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core
+Item1=C:\DevTools\Borland\CBuilder6\Projects;..\;..;..\..\..\..\components;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core;D:\Projects\SharedFiles\QLib\Sequencer
+Item2=..\;..\..\..\..\components;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core;D:\Projects\SharedFiles\QLib\Sequencer
+Item3=..\..\..\..\components;..\;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core;D:\Projects\SharedFiles\QLib\Sequencer
+Item4=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core;D:\Projects\SharedFiles\QLib\Sequencer
+Item5=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core
+Item6=..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;..\..\..\..\PythonForDelphi\Components\Sources\Core
+Item7=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;D:\Projects\SharedFiles\PythonForDelphi\Components\Sources\Core
+Item8=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core
+Item9=..\;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core
+Item10=..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core
+Item11=..\;C:\DevTools\Borland\CBuilder6\Projects;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core
+Item12=C:\DevTools\Borland\CBuilder6\Projects;..\;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core
+Item13=..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core
+Item14=..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core;C:\DevTools\Python\include
+Item15=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers;C:\DevTools\PythonForDelphi\Components\Sources\Core;C:\DevTools\Python\include
+Item16=..\;..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers
+Item17=..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..\..;..\..\..\OSWrappers
+Item18=..\..\..\LibraryProject\Windows;$(BCB)\include;$(BCB)\include\vcl;..\..;..\..\OSWrappers
+Item19=$(BCB)\include;$(BCB)\include\vcl;..\..;..\..\OSWrappers
+Item20=$(BCB)\include;$(BCB)\include\vcl;..\..;C:\PROJECTS\SharedFiles\QLib\OSWrappers
+Item21=$(BCB)\include;$(BCB)\include\vcl;..\..
+Item22=$(BCB)\include;$(BCB)\include\vcl;C:\PROJECTS\SharedFiles\QLib
+Item23=$(BCB)\include;$(BCB)\include\vcl
+Item24=..\;..;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows
+Item25=..\;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers;C:\PROJECTS\SharedFiles\QLib\Monitor\Windows
+Item26=..\;$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers
+Item27=$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\SharedFiles\QLib;..\..\..\..\..\SharedFiles\QLib\OSWrappers
+Item28=$(BCB)\include;$(BCB)\include\vcl;C:\PROJECTS\SharedFiles\QLib;C:\PROJECTS\SharedFiles\QLib\OSWrappers
+
+[HistoryLists\hlLibraryPath]
+Count=25
+Item0=..\;..;$(BCB)\Projects\Lib;..\..\..\..\components;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components
+Item1=..\;C:\DevTools\Borland\CBuilder6\Projects;..;$(BCB)\Projects\Lib;..\..\..\..\components;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components
+Item2=C:\DevTools\Borland\CBuilder6\Projects;..\;..;$(BCB)\Projects\Lib;..\..\..\..\components;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components
+Item3=..\;$(BCB)\Projects\Lib;..\..\..\..\components;..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components
+Item4=$(BCB)\Projects\Lib;..\..\..\..\components;..\;..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components
+Item5=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components
+Item6=..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components
+Item7=..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components\Sources\Core
+Item8=..\;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\Monitor\Windows;..\..\..\..\PythonForDelphi\Components\Sources\Core
+Item9=..\;..;C:\DevTools\Borland\CBuilder6\Projects;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows;C:\DevTools\PythonForDelphi\Components
+Item10=..\;C:\DevTools\Borland\CBuilder6\Projects;..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows;C:\DevTools\PythonForDelphi\Components
+Item11=C:\DevTools\Borland\CBuilder6\Projects;..\;..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows;C:\DevTools\PythonForDelphi\Components
+Item12=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows;C:\DevTools\PythonForDelphi\Components
+Item13=..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows;C:\DevTools\PythonForDelphi\Components
+Item14=..\;..;..\..\..\LibraryProject\Windows;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows
+Item15=..\;..\..\..\LibraryProject\Windows;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows
+Item16=..\..\..\LibraryProject\Windows;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows;..\..\..\Monitor\Windows
+Item17=..\..\..\LibraryProject\Windows;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item18=..;$(BCB)\lib\obj;$(BCB)\lib;..\..\Monitor\Windows
+Item19=..;$(BCB)\lib\obj;$(BCB)\lib;C:\PROJECTS\SharedFiles\QLib\Monitor\Windows
+Item20=..;$(BCB)\lib\obj;$(BCB)\lib;C:\SharedFiles\QLib\Monitor\Windows\
+Item21=..\;..;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows
+Item22=..\;$(BCB)\lib\obj;$(BCB)\lib;..\..\..\..\..\SharedFiles\QLib\Monitor\Windows
+Item23=$(BCB)\lib\obj;$(BCB)\lib;C:\PROJECTS\SharedFiles\QLib\Monitor\Windows
+Item24=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG;OS_WINDOWS
+Item1=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=1
+  </IDEOPTIONS>
+</PROJECT>

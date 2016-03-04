@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="AutoWizardUnitTest.exe"/>
+    <OBJFILES value="AutoWizardUnitTest.obj MainUnit.obj ..\AutoWizard.obj ..\WizardViewer.obj 
+      ..\AutoWizardDlg.obj ..\..\QLib\QPython\Windows\PythonConsole.obj 
+      ..\..\QLib\QPython\Windows\QPythonIntegrator.obj 
+      ..\PythonWizard\Windows\PythonWizardPages.obj 
+      ..\PythonWizard\Windows\PythonAutoWizard.obj"/>
+    <RESFILES value="AutoWizardUnitTest.res"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) MainUnit.dfm ..\WizardViewer.dfm ..\AutoWizardDlg.dfm 
+      ..\..\QLib\QPython\Windows\PythonConsole.dfm 
+      ..\..\QLib\QPython\Windows\QPythonIntegrator.dfm"/>
+    <LIBFILES value="..\..\QLib\LibraryProject\Windows\QLibProject.lib"/>
+    <LIBRARIES value="Objet.lib bcb2kaxserver.lib indy.lib dbxcds.lib dclocx.lib soaprtl.lib 
+      bcbie.lib dbexpress.lib inetdbxpress.lib inetdb.lib inetdbbde.lib inet.lib 
+      xmlrtl.lib visualdbclx.lib ibxpress.lib teeqr.lib tee.lib teedb.lib 
+      teeui.lib bdecds.lib cds.lib dsnap.lib vcldbx.lib bdertl.lib qrpt.lib 
+      adortl.lib dbrtl.lib vcldb.lib nmfast.lib Python_cb6.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib bcbsmp.lib vclx.lib Python_cb6.lib nmfast.lib vcldb.lib 
+      dbrtl.lib adortl.lib qrpt.lib bdertl.lib vcldbx.lib dsnap.lib cds.lib 
+      bdecds.lib teeui.lib teedb.lib tee.lib teeqr.lib ibxpress.lib 
+      visualdbclx.lib xmlrtl.lib inet.lib inetdbbde.lib inetdb.lib 
+      inetdbxpress.lib dbexpress.lib bcbie.lib soaprtl.lib dclocx.lib dbxcds.lib 
+      indy.lib bcb2kaxserver.lib Objet.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi"/>
+    <PATHCPP value=".;..;..\..\QLib\QPython\Windows;..\PythonWizard\Windows"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG;OS_WINDOWS"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="AutoWizardUnitTest.cpp"/>
+    <INCLUDEPATH value="..\PythonWizard\Windows;..\;..\..\PythonForDelphi\Components\Sources\Core;..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers;D:\Projects\SharedFiles\PythonForDelphi\Components\Sources\Core"/>
+    <LIBPATH value="..\PythonWizard\Windows;..\;..\..\PythonForDelphi\Components\Sources\Core;..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows;D:\Projects\SharedFiles\PythonForDelphi\Components;D:\Projects\SharedFiles\PythonForDelphi\Components\Sources\Core"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-vGc -vGt -vGd -Od -H=c:\devtools\borland\CBUILD~2\lib\vcl60.csm -Hc -Vx 
+      -Ve -X- -r- -a8 -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="cg32.lib $(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="AutoWizardUnitTest.cpp" FORMNAME="" UNITNAME="AutoWizardUnitTest" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="AutoWizardUnitTest.res" FORMNAME="" UNITNAME="AutoWizardUnitTest" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MainUnit.cpp" FORMNAME="TestForm" UNITNAME="MainUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\AutoWizard.cpp" FORMNAME="" UNITNAME="AutoWizard" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\WizardViewer.cpp" FORMNAME="WizardViewerFrame" UNITNAME="WizardViewer" CONTAINERID="CCompiler" DESIGNCLASS="TFrame" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\QLib\LibraryProject\Windows\QLibProject.lib" FORMNAME="" UNITNAME="QLibProject" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\AutoWizardDlg.cpp" FORMNAME="WizardForm" UNITNAME="AutoWizardDlg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\QLib\QPython\Windows\PythonConsole.cpp" FORMNAME="PythonConsoleForm" UNITNAME="PythonConsole" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\..\QLib\QPython\Windows\QPythonIntegrator.cpp" FORMNAME="QPythonIntegratorDM" UNITNAME="QPythonIntegrator" CONTAINERID="CCompiler" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\PythonWizard\Windows\PythonWizardPages.cpp" FORMNAME="" UNITNAME="PythonWizardPages.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\PythonWizard\Windows\PythonAutoWizard.cpp" FORMNAME="" UNITNAME="PythonAutoWizard.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Excluded Packages]
+c:\devtools\borland\cbuilder6\Bin\dclite60.bpl=Borland Integrated Translation Environment
+
+[HistoryLists\hlIncludePath]
+Count=11
+Item0=..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers;D:\Projects\SharedFiles\PythonForDelphi\Components\Sources\Core
+Item1=C:\DevTools\Borland\CBuilder6\Projects;..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers
+Item2=C:\DevTools\Borland\CBuilder6\Projects;..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers;D:\Projects\SharedFiles\PythonForDelphi\Components\Sources\Core
+Item3=..\PythonWizards\Windows;..\;..;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers;D:\Projects\SharedFiles\PythonForDelphi\Components\Sources\Core
+Item4=..\PythonWizards\Windows;..\;..;c:\devtools\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers
+Item5=..\;..;c:\devtools\CBuilder5\Projects\;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers
+Item6=..;c:\devtools\CBuilder5\Projects\;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers
+Item7=..\;c:\devtools\CBuilder5\Projects;$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers
+Item8=$(BCB)\include;$(BCB)\include\vcl;..\..\QLib;..\..\QLib\OSWrappers
+Item9=$(BCB)\include;$(BCB)\include\vcl;C:\Projects\SharedFiles\QLib;C:\Projects\SharedFiles\QLib\OSWrappers
+Item10=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=12
+Item0=..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows;D:\Projects\SharedFiles\PythonForDelphi\Components;D:\Projects\SharedFiles\PythonForDelphi\Components\Sources\Core
+Item1=..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows;D:\Projects\SharedFiles\PythonForDelphi\Components
+Item2=C:\DevTools\Borland\CBuilder6\Projects;..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows;D:\Projects\SharedFiles\PythonForDelphi\Components
+Item3=..\..\QLib\QPython\Windows;..\PythonWizards\Windows;..;c:\devtools\CBuilder5\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows
+Item4=..\PythonWizards\Windows;..\;..;c:\devtools\CBuilder5\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows
+Item5=..\;..;c:\devtools\CBuilder5\Projects\;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows
+Item6=..;c:\devtools\CBuilder5\Projects\;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor\Windows
+Item7=..;c:\devtools\CBuilder5\Projects\;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;C:\Projects\SharedFiles\QLib\Monitor\Windows
+Item8=..;c:\devtools\CBuilder5\Projects\;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\QLib\Monitor
+Item9=..\;c:\devtools\CBuilder5\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;C:\Projects\SharedFiles\QLib\Monitor
+Item10=..\;c:\devtools\CBuilder5\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item11=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=_DEBUG;OS_WINDOWS
+Item1=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=1
+  </IDEOPTIONS>
+</PROJECT>

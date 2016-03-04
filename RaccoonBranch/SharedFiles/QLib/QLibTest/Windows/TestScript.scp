@@ -1,0 +1,13 @@
+Monitor.StrOut = --1--
+MiniSequencer.Sleep(1000)
+Monitor.StrOut = --2--
+MiniSequencer.Sleep(1000)
+Monitor.StrOut = --3--
+MiniSequencer.Sleep(1000)
+Monitor.StrOut = --4--
+MiniSequencer.Sleep(1000)
+Monitor.NotificationMessage(Notification)
+MiniSequencer.Sleep(1000)
+Monitor.ErrorMessage(Error)
+MiniSequencer.Sleep(1000)
+Monitor.StrOut = Done
