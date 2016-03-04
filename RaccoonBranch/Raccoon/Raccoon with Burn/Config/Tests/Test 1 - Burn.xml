@@ -1,0 +1,22 @@
+<test>
+  <Scenario>
+    <BurnIDC ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <TagStructID>4983</TagStructID>
+      <MaterialType>3</MaterialType>
+      <MfgDateTime>01/08/2014 13:00:04</MfgDateTime>
+      <BatchNo>1A2B3C4D5F</BatchNo>
+      <InitialWeight>50000</InitialWeight>
+      <ExpirationDate>01/08/2017 13:00:04</ExpirationDate>
+      <PrvKS>Keys\prvKS.key</PrvKS>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </BurnIDC>
+  </Scenario>
+
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+  </Scenario>
+</test>

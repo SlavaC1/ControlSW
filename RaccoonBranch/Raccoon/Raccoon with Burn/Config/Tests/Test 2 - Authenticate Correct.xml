@@ -1,0 +1,8 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+  </Scenario>
+</Test>

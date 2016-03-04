@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="RaccoonTags">
+  <DataContextMoniker Name="/RaccoonTagsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5cc9f768-59e5-4f1f-987c-308649575799" absoluteBounds="3.5, 1, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/RaccoonTagsDataContext/Batch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4fe32c6b-e56c-4f15-b088-6b220bcb9144" absoluteBounds="3.515, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4cc622a5-aaf0-4bea-beed-e4eefc6e3247" absoluteBounds="3.5, 5.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/RaccoonTagsDataContext/Tag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d80ac645-17bf-40e9-88a2-ef9ff02e0695" absoluteBounds="3.515, 5.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da20d68d-8f08-4ba3-af15-716746bc6041" absoluteBounds="6.25, 1.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/RaccoonTagsDataContext/BurningAction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7fea9b97-c30b-499b-b518-305283e83499" absoluteBounds="6.2650000000000006, 1.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 2.42390055338542); (6.25 : 2.42390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RaccoonTagsDataContext/Batch/Batch_BurningAction" />
+      <nodes>
+        <classShapeMoniker Id="5cc9f768-59e5-4f1f-987c-308649575799" />
+        <classShapeMoniker Id="da20d68d-8f08-4ba3-af15-716746bc6041" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.48159912109375); (7.25 : 6.48159912109375); (7.25 : 3.59780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RaccoonTagsDataContext/Tag/Tag_BurningAction" />
+      <nodes>
+        <classShapeMoniker Id="4cc622a5-aaf0-4bea-beed-e4eefc6e3247" />
+        <classShapeMoniker Id="da20d68d-8f08-4ba3-af15-716746bc6041" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8207ac35-e059-422b-8b9d-13d3e377a4a0" absoluteBounds="0.75, 1.875, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/RaccoonTagsDataContext/Material" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b0fbc468-96ac-4834-ba1c-49a56b8f34b5" absoluteBounds="0.76499999999999968, 2.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.47199625651042); (3.5 : 2.47199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RaccoonTagsDataContext/Material/Material_Batch" />
+      <nodes>
+        <classShapeMoniker Id="8207ac35-e059-422b-8b9d-13d3e377a4a0" />
+        <classShapeMoniker Id="5cc9f768-59e5-4f1f-987c-308649575799" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

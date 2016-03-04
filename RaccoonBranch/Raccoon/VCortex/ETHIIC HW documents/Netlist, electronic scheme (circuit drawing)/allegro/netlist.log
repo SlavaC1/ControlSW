@@ -1,0 +1,14 @@
+{ Using PSTWRITER 16.6.0 d001Mar-13-2015 at 23:47:01 }
+
+#1 WARNING(ORCAP-36006): Part Name "TEST POINT_2_KEYSTONE-5000_TEST POINT" is renamed to "TEST POINT_2_KEYSTONE-5000_TEST".
+#2 WARNING(ORCAP-36006): Part Name "TM4C1294NCPDTI_TQFP-128_(S1+S2+S3+S4)_TM4C1294NCPDTI" is renamed to "TM4C1294NCPDTI_TQFP-128_(S1+S2+".
+INFO(ORCAP-36080): Scanning netlist files ...
+
+Loading... D:\WORK\VCORTEX\ETHIIC\SCHEMATICS\VER 1.004\allegro/pstchip.dat
+
+Loading... D:\WORK\VCORTEX\ETHIIC\SCHEMATICS\VER 1.004\allegro/pstchip.dat
+
+Loading... D:\WORK\VCORTEX\ETHIIC\SCHEMATICS\VER 1.004\allegro/pstxprt.dat
+
+Loading... D:\WORK\VCORTEX\ETHIIC\SCHEMATICS\VER 1.004\allegro/pstxnet.dat
+packaging the design view...

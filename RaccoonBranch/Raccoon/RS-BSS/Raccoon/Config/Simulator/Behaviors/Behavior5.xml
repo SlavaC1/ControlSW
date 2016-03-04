@@ -1,0 +1,51 @@
+<Simulator>
+  <Cartridges Count="16" state="1">
+    <Cartridge Num="11">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="12">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="13">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="14">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="15">
+      <State>0</State>
+    </Cartridge>
+  </Cartridges>
+ <Behavior>
+   <Method Name="AuthenticateCartridge" CartridgeID="0">
+     <ReturnValue>e110</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="1">
+     <ReturnValue>e207</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="2">
+     <ReturnValue>6581</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="3">
+     <ReturnValue>6981</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="4">
+     <ReturnValue>6a82</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="5">
+     <ReturnValue>6700</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="6">
+     <ReturnValue>6985</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="7">
+     <ReturnValue>e300</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="8">
+     <ReturnValue>e301</ReturnValue>
+   </Method>
+   <Method Name="AuthenticateCartridge" CartridgeID="9">
+     <ReturnValue>e000</ReturnValue>
+   </Method>
+  </Behavior>
+</Simulator>

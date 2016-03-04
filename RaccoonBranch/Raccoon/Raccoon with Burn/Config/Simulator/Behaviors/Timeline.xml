@@ -1,0 +1,16 @@
+<Timeline>
+  <Behavior>Behavior1.xml</Behavior>
+  <Behavior Interval="300">Behavior2.xml</Behavior>
+  <Behavior Interval="300">Behavior3.xml</Behavior>
+  <Behavior Interval="300">Behavior4.xml</Behavior>
+  <Behavior Interval="300">Behavior5.xml</Behavior>
+  <Behavior interval="300">Stress Behavior1.xml</Behavior>
+  <Behavior Interval="0">Stress Behavior2.xml</Behavior>
+  <Behavior Interval="0">Stress Behavior3.xml</Behavior>
+  <Behavior Interval="0">Stress Behavior4.xml</Behavior>
+  <Behavior Interval="0">Stress Behavior5.xml</Behavior>
+</Timeline>
+
+<Timeline>
+  
+</Timeline>

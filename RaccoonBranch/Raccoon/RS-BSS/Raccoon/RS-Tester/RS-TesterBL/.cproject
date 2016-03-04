@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cdt.managedbuild.config.gnu.so.debug.1627915390">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.so.debug.1627915390" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/RS-TesterBL"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/RS-TesterBL/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="RS-TesterBL" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.so.debug.1627915390" name="Debug" parent="cdt.managedbuild.config.gnu.so.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.so.debug.1627915390." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.so.debug.212985998" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.so.debug">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.so.debug.235474951" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.so.debug"/>
+							<builder buildPath="${workspace_loc:/RS-TesterBL}/Debug" id="cdt.managedbuild.target.gnu.builder.so.debug.1169179536" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.so.debug"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1937237339" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.so.debug.1139090274" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.so.debug">
+								<option id="gnu.cpp.compiler.so.debug.option.optimization.level.1789096269" name="Optimization Level" superClass="gnu.cpp.compiler.so.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.so.debug.option.debugging.level.1915416073" name="Debug Level" superClass="gnu.cpp.compiler.so.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.880529954" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon}&quot;"/>
+									<listOptionValue builtIn="false" value="../../../IDT-Lib/RSCommon"/>
+									<listOptionValue builtIn="false" value="../../../IDT-Lib"/>
+									<listOptionValue builtIn="false" value="../../../../cryptopp562"/>
+									<listOptionValue builtIn="false" value="../../../../tinyxml2-master"/>
+									<listOptionValue builtIn="false" value="../../../../log4cplus-1.2.0-rc2/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.359155749" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.so.debug.2055883338" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.so.debug">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.so.debug.option.optimization.level.1537661052" name="Optimization Level" superClass="gnu.c.compiler.so.debug.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.so.debug.option.debugging.level.802084235" name="Debug Level" superClass="gnu.c.compiler.so.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.628692818" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1419028757" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.so.debug.1431974068" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.so.debug">
+								<option defaultValue="true" id="gnu.c.link.so.debug.option.shared.53568238" name="Shared (-shared)" superClass="gnu.c.link.so.debug.option.shared" valueType="boolean"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.debug.955950267" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.debug">
+								<option defaultValue="true" id="gnu.cpp.link.so.debug.option.shared.942853862" name="Shared (-shared)" superClass="gnu.cpp.link.so.debug.option.shared" valueType="boolean"/>
+								<option id="gnu.cpp.link.option.libs.2015554746" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="IDT-Srv"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="vaultic_api_1xx"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="IDT-HW-Inf"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="IO_Extender"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="RSCommon"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="TinyXml"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="cryptopp"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="log4cplus"/>
+								</option>
+								<option id="gnu.cpp.link.option.paths.816020306" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/IDT-Srv/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="../../../IDT-Lib/vaultic-api-release_1.2.0/src/build/linux/VaultIC_API_1XX/dist/GNU-Linux-x86/Debug_Static"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/IDT-HW-Inf/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/IO_Extender/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="../../../../log4cplus-1.2.0-rc2/.libs"/>
+									<listOptionValue builtIn="false" value="../../../../cryptopp562"/>
+								</option>
+								<option id="gnu.cpp.link.option.flags.1802274995" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-ldl" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.972483858" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.so.debug.1281185003" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.so.debug">
+								<option id="gnu.both.asm.option.include.paths.1764644521" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.725853598" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="RSCommon;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/RSCommon"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/RSCommon/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="RSCommon" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="TinyXml;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/TinyXml"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/TinyXml/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="TinyXml" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.config.gnu.so.release.1777733280">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.so.release.1777733280" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/RS-TesterBL"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/RS-TesterBL/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="RS-TesterBL" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.so.release.1777733280" name="Release" parent="cdt.managedbuild.config.gnu.so.release">
+					<folderInfo id="cdt.managedbuild.config.gnu.so.release.1777733280." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.so.release.1296654878" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.so.release">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.so.release.115890793" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.so.release"/>
+							<builder buildPath="${workspace_loc:/RS-TesterBL}/Release" id="cdt.managedbuild.target.gnu.builder.so.release.815180830" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.so.release"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.863213906" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.so.release.2017688847" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.so.release">
+								<option id="gnu.cpp.compiler.so.release.option.optimization.level.1827725515" name="Optimization Level" superClass="gnu.cpp.compiler.so.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.so.release.option.debugging.level.1764467021" name="Debug Level" superClass="gnu.cpp.compiler.so.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.105731942" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon}&quot;"/>
+									<listOptionValue builtIn="false" value="../../../IDTLib/RSCommon"/>
+									<listOptionValue builtIn="false" value="../../../IDT-Lib"/>
+									<listOptionValue builtIn="false" value="../../../../tinyxml2-master"/>
+									<listOptionValue builtIn="false" value="../../../../cryptopp562"/>
+									<listOptionValue builtIn="false" value="../../../../log4cplus-1.2.0-rc2/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2051676475" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.so.release.1886153245" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.so.release">
+								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.so.release.option.optimization.level.1340552510" name="Optimization Level" superClass="gnu.c.compiler.so.release.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.so.release.option.debugging.level.1478507889" name="Debug Level" superClass="gnu.c.compiler.so.release.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.165042187" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.162125099" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.so.release.1145319723" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.so.release">
+								<option defaultValue="true" id="gnu.c.link.so.release.option.shared.2110405133" name="Shared (-shared)" superClass="gnu.c.link.so.release.option.shared" valueType="boolean"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.release.1720712501" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.release">
+								<option defaultValue="true" id="gnu.cpp.link.so.release.option.shared.280851086" name="Shared (-shared)" superClass="gnu.cpp.link.so.release.option.shared" valueType="boolean"/>
+								<option id="gnu.cpp.link.option.libs.817256565" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="TinyXml"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="RSCommon"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="IDT-Srv"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="log4cplus"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="cryptopp"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/RSCommon/Debug/libRSCommon.a}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/TinyXml/Debug/libTinyXml.a}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/IDT-HW-Inf/Debug/libIDT-HW-Inf.a}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="&quot;${workspace_loc:/IO_Extender/Debug/libIO_Extender.a}&quot;"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="vaultic_api_1xx"/>
+								</option>
+								<option id="gnu.cpp.link.option.paths.993725073" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/IDT-Srv/Release}&quot;"/>
+									<listOptionValue builtIn="false" value="../../../IDT-Lib/vaultic-api-release_1.2.0/src/build/linux/VaultIC_API_1XX/dist/GNU-Linux-x86/Release_Static"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/IDT-HW-Inf/Release}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/IO_Extender/Release}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon/Release}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml/Release}&quot;"/>
+									<listOptionValue builtIn="false" value="../../../../log4cplus-1.2.0-rc2/.libs"/>
+									<listOptionValue builtIn="false" value="../../../../cryptopp562"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1462056386" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.so.release.379844091" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.so.release">
+								<option id="gnu.both.asm.option.include.paths.597879062" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TinyXml}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RSCommon}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1868178324" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="RSCommon;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/RSCommon"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/RSCommon/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="RSCommon" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="TinyXml;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/TinyXml"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/TinyXml/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="TinyXml" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="RS-TesterBL.cdt.managedbuild.target.gnu.so.2144488338" name="Shared Library" projectType="cdt.managedbuild.target.gnu.so"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.lib.debug.795115225;cdt.managedbuild.config.gnu.lib.debug.795115225.;cdt.managedbuild.tool.gnu.c.compiler.lib.debug.595755194;cdt.managedbuild.tool.gnu.c.compiler.input.696103244">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.so.debug.1627915390;cdt.managedbuild.config.gnu.so.debug.1627915390.;cdt.managedbuild.tool.gnu.c.compiler.so.debug.2055883338;cdt.managedbuild.tool.gnu.c.compiler.input.1419028757">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.lib.release.1206580081;cdt.managedbuild.config.gnu.lib.release.1206580081.;cdt.managedbuild.tool.gnu.c.compiler.lib.release.656357640;cdt.managedbuild.tool.gnu.c.compiler.input.347781638">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.lib.release.1206580081;cdt.managedbuild.config.gnu.lib.release.1206580081.;cdt.managedbuild.tool.gnu.cpp.compiler.lib.release.1198150381;cdt.managedbuild.tool.gnu.cpp.compiler.input.127097677">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.so.release.1777733280;cdt.managedbuild.config.gnu.so.release.1777733280.;cdt.managedbuild.tool.gnu.c.compiler.so.release.1886153245;cdt.managedbuild.tool.gnu.c.compiler.input.162125099">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.lib.debug.795115225;cdt.managedbuild.config.gnu.lib.debug.795115225.;cdt.managedbuild.tool.gnu.cpp.compiler.lib.debug.1861492885;cdt.managedbuild.tool.gnu.cpp.compiler.input.2096751412">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.so.release.1777733280;cdt.managedbuild.config.gnu.so.release.1777733280.;cdt.managedbuild.tool.gnu.cpp.compiler.so.release.2017688847;cdt.managedbuild.tool.gnu.cpp.compiler.input.2051676475">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.so.debug.1627915390;cdt.managedbuild.config.gnu.so.debug.1627915390.;cdt.managedbuild.tool.gnu.cpp.compiler.so.debug.1139090274;cdt.managedbuild.tool.gnu.cpp.compiler.input.359155749">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/RS-TesterBL"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/RS-TesterBL"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cproject>

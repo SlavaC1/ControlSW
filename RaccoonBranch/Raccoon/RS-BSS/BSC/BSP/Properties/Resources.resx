@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ArgumentNullMessage" xml:space="preserve">
+    <value>{0} is null.</value>
+  </data>
+  <data name="BsaSessionEnded" xml:space="preserve">
+    <value>Session with {0} ended.</value>
+  </data>
+  <data name="BsaSessionStarted" xml:space="preserve">
+    <value>Session with {0} started.</value>
+  </data>
+  <data name="BuildingSignedIDD" xml:space="preserve">
+    <value>Building signed IDD and send to {0}...</value>
+  </data>
+  <data name="CannotDecryptHsmPassword" xml:space="preserve">
+    <value>Cannot decrypt HSM password.</value>
+  </data>
+  <data name="CannotLoadISPublicKey" xml:space="preserve">
+    <value>Inside Secure public key cannot be loaded.</value>
+  </data>
+  <data name="ContinueClosedLot" xml:space="preserve">
+    <value>Continuing a closed Lot.</value>
+  </data>
+  <data name="ContinueOpenedLot" xml:space="preserve">
+    <value>Continuing an open Lot.</value>
+  </data>
+  <data name="CounterValueUnverified" xml:space="preserve">
+    <value>Counter value of tag #{0} is unverified.</value>
+  </data>
+  <data name="CounterValueVerified" xml:space="preserve">
+    <value>Counter value of tag #{0} is verified.</value>
+  </data>
+  <data name="DecrementValueSentToBSA" xml:space="preserve">
+    <value>Decremental value {0} was sent to {1}.</value>
+  </data>
+  <data name="ErrorCode" xml:space="preserve">
+    <value>(error code {0})</value>
+  </data>
+  <data name="ErrorGettingPublicKey" xml:space="preserve">
+    <value>Error getting public key from HSM.</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Error occurred, connection is faulted:</value>
+  </data>
+  <data name="ErrorReadingConfig" xml:space="preserve">
+    <value>Error reading configuration file, use default values instead.</value>
+  </data>
+  <data name="ErrorSigningData" xml:space="preserve">
+    <value>Error signing data with HSM.</value>
+  </data>
+  <data name="FailedConnectingToDB" xml:space="preserve">
+    <value>Cannot connect to DB.</value>
+  </data>
+  <data name="FailedInitializingHsmClient" xml:space="preserve">
+    <value>Failed initializing HSM client.</value>
+  </data>
+  <data name="GettingPublicKey" xml:space="preserve">
+    <value>Getting public key:</value>
+  </data>
+  <data name="HsmClientInitializedSuccessfully" xml:space="preserve">
+    <value>HSM client was initialized successfully.</value>
+  </data>
+  <data name="HsmLibNotFound" xml:space="preserve">
+    <value>HSM library '{0}' was not found.</value>
+  </data>
+  <data name="HsmLoadedSuccessfully" xml:space="preserve">
+    <value>HSM library was loaded successfully.</value>
+  </data>
+  <data name="HsmNotInitialized" xml:space="preserve">
+    <value>HSM client was not successfully initialized.</value>
+  </data>
+  <data name="InitializingHsmClient" xml:space="preserve">
+    <value>Initializing HSM client...</value>
+  </data>
+  <data name="InsertingTagToDB" xml:space="preserve">
+    <value>Inserting tag {0} to DB...</value>
+  </data>
+  <data name="InvalidTag" xml:space="preserve">
+    <value>DB record of tag {0} is corrupted.</value>
+  </data>
+  <data name="LdfMismatch" xml:space="preserve">
+    <value>LDF does not match existing Lot.</value>
+  </data>
+  <data name="LdfRead" xml:space="preserve">
+    <value>Reading LDF...</value>
+  </data>
+  <data name="LoadingHsm" xml:space="preserve">
+    <value>Loading HSM library...</value>
+  </data>
+  <data name="LoadingList" xml:space="preserve">
+    <value>Loading Vault IC list file '{0}':</value>
+  </data>
+  <data name="LoadingTagToDB" xml:space="preserve">
+    <value>Loading tag {0} with public key {1} to DB...</value>
+  </data>
+  <data name="LotNotFound" xml:space="preserve">
+    <value>Lot file was not loaded.</value>
+  </data>
+  <data name="MaterialInfoDetails" xml:space="preserve">
+    <value>material info version number: {0}, material ID: {1}, model/support: {2}, manufacturing Time: {3}, batch number: {4}, initial weight: {5}, expiration Date: {6}</value>
+  </data>
+  <data name="OracleDirectoryNotFound" xml:space="preserve">
+    <value>'{0}' directory was not found.</value>
+  </data>
+  <data name="OracleFileNotFound" xml:space="preserve">
+    <value>No valid file was found in Oracle folder.</value>
+  </data>
+  <data name="PublicKey" xml:space="preserve">
+    <value>Public key: '{0}'</value>
+  </data>
+  <data name="SerialNumberReceived" xml:space="preserve">
+    <value>Tag serial number '{0}' was received from {1}.</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>Signature: '{0}'</value>
+  </data>
+  <data name="SigningMessage" xml:space="preserve">
+    <value>Signing message '{0}':</value>
+  </data>
+  <data name="StartNewLot" xml:space="preserve">
+    <value>Starting a new Lot.</value>
+  </data>
+  <data name="TagFoundInDB" xml:space="preserve">
+    <value>Tag {0} was found in DB; tag status: {1}.</value>
+  </data>
+  <data name="TagInfoDetails" xml:space="preserve">
+    <value>{0}, serial number: {1}, current tag weight: {2}</value>
+  </data>
+  <data name="TagIsUsed" xml:space="preserve">
+    <value>Tag {0} is already used.</value>
+  </data>
+  <data name="TagNotFound" xml:space="preserve">
+    <value>Tag {0} was not found in VLL.</value>
+  </data>
+  <data name="UpdatingDB" xml:space="preserve">
+    <value>Updating DB.</value>
+  </data>
+  <data name="UserNotAllowed" xml:space="preserve">
+    <value>User '{0}' is not allowed to access central burning server.</value>
+  </data>
+  <data name="UserRequests" xml:space="preserve">
+    <value>User '{0}' requests for SSYS public key...</value>
+  </data>
+  <data name="VerfyingMessage" xml:space="preserve">
+    <value>Verifying message '{0}' with signature '{1}'...</value>
+  </data>
+  <data name="VllEnded" xml:space="preserve">
+    <value>Vll service ended.</value>
+  </data>
+  <data name="VllStarted" xml:space="preserve">
+    <value>VLL service started.</value>
+  </data>
+</root>

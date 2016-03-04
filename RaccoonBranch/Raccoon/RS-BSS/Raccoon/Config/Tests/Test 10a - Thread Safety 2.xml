@@ -1,0 +1,20 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+  </Scenario>
+  <Scenario>
+    <GetInPlaceStatus ExpectedResults="0" Repeating="1" Timeout="86400" Interval="10">
+    </GetInPlaceStatus>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="10">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="10">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+</Test>

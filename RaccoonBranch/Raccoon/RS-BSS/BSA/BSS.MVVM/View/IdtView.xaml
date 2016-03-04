@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="BSS.MVVM.View.IdtView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:properties="clr-namespace:BSS.MVVM.Properties"
+             xmlns:view="clr-namespace:BSS.MVVM.View"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="Resources.xaml" />
+    </UserControl.Resources>
+
+    <Border LocalizationScope.ResourceManager="{ResourceManager properties:Resources}"
+            MinWidth="{StaticResource IdtViewMinWidth}" Padding="8">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label Style="{StaticResource LargeLabel}" Content="{Loc CartridgeNumber}" />
+                <Label Style="{StaticResource LargeLabel}" Content="{Binding CartridgeNumber}" />
+            </StackPanel>
+
+            <ContentControl Content="{Binding Data}">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+
+            <Label Name="lblTrafficLight" Margin="2" VerticalContentAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Border Style="{StaticResource Circle}"
+                            Background="{Binding TrafficLightColor, Converter={StaticResource TrafficLightColorToBrushConverter}}" />
+                    <Label Style="{StaticResource LargeLabel}"
+                           Content="{Binding TrafficLightColor, Converter={StaticResource TrafficLightColorToTextConverter}}" />
+                </StackPanel>
+            </Label>
+            <Label Visibility="{Binding ElementName=prgOperation, Path=Visibility}">
+                <Label.Style>
+                    <Style TargetType="Label" BasedOn="{StaticResource LargeLabel}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Operation}" Value="Correction">
+                                <Setter Property="Content" Value="{Loc Correcting}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Operation}" Value="Burning">
+                                <Setter Property="Content" Value="{Loc Burning}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Operation}" Value="Verification">
+                                <Setter Property="Content" Value="{Loc Verifying}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
+            <ProgressBar Name="prgOperation" Margin="2" Value="{Binding Progress}"
+                         Height="{Binding ElementName=lblTrafficLight, Path=ActualHeight}"
+                         MaxWidth="800"
+                         Visibility="{Binding Progress, Converter={StaticResource ProgressToVisibilityConverter}}" />
+        </StackPanel>
+    </Border>
+</UserControl>

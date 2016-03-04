@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="84">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f1" displayName="arch" projectFiles="true" kind="ROOT">
+      <logicalFolder name="f1" displayName="shared" projectFiles="true" kind="ROOT">
+        <logicalFolder name="f2"
+                       displayName="Header Files"
+                       projectFiles="true"
+                       kind="ROOT">
+          <itemPath>../../../arch/pc/shared/aardvark.h</itemPath>
+          <itemPath>../../../arch/pc/shared/aardvark_peripheral.h</itemPath>
+          <itemPath>../../../arch/pc/shared/cheetah.h</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_spi_aardvark.h</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_spi_cheetah.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f1"
+                       displayName="Source Files"
+                       projectFiles="true"
+                       kind="ROOT">
+          <itemPath>../../../arch/pc/shared/aardvark.c</itemPath>
+          <itemPath>../../../arch/pc/shared/aardvark_peripheral.c</itemPath>
+          <itemPath>../../../arch/pc/shared/cheetah.c</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_iso7816_protocol.c</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_mem.c</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_spi_aardvark.c</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_spi_cheetah.c</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_spi_peripheral.c</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_timer_delay.c</itemPath>
+          <itemPath>../../../arch/pc/shared/vaultic_twi_peripheral.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="f2" displayName="common" projectFiles="true" kind="ROOT">
+      <logicalFolder name="f2"
+                     displayName="Header Files"
+                     projectFiles="true"
+                     kind="ROOT">
+        <itemPath>../../../common/vaultic_AES.h</itemPath>
+        <itemPath>../../../common/vaultic_DES.h</itemPath>
+        <itemPath>../../../common/vaultic_DES_stats.h</itemPath>
+        <itemPath>../../../common/vaultic_TDES.h</itemPath>
+        <itemPath>../../../common/vaultic_apdu.h</itemPath>
+        <itemPath>../../../common/vaultic_block_protocol.h</itemPath>
+        <itemPath>../../../common/vaultic_cipher.h</itemPath>
+        <itemPath>../../../common/vaultic_cipher_tests.h</itemPath>
+        <itemPath>../../../common/vaultic_command.h</itemPath>
+        <itemPath>../../../common/vaultic_common.h</itemPath>
+        <itemPath>../../../common/vaultic_comms.h</itemPath>
+        <itemPath>../../../common/vaultic_crc16.h</itemPath>
+        <itemPath>../../../common/vaultic_err.h</itemPath>
+        <itemPath>../../../common/vaultic_file_system.h</itemPath>
+        <itemPath>../../../common/vaultic_identity_authentication.h</itemPath>
+        <itemPath>../../../common/vaultic_iso7816_protocol.h</itemPath>
+        <itemPath>../../../common/vaultic_key_wrapping.h</itemPath>
+        <itemPath>../../../common/vaultic_main.h</itemPath>
+        <itemPath>../../../common/vaultic_mem.h</itemPath>
+        <itemPath>../../../common/vaultic_ms_auth.h</itemPath>
+        <itemPath>../../../common/vaultic_options.h</itemPath>
+        <itemPath>../../../common/vaultic_padding.h</itemPath>
+        <itemPath>../../../common/vaultic_peripheral.h</itemPath>
+        <itemPath>../../../common/vaultic_protocol.h</itemPath>
+        <itemPath>../../../common/vaultic_scp02.h</itemPath>
+        <itemPath>../../../common/vaultic_scp03.h</itemPath>
+        <itemPath>../../../common/vaultic_secure_channel.h</itemPath>
+        <itemPath>../../../common/vaultic_signer_aes_cmac.h</itemPath>
+        <itemPath>../../../common/vaultic_signer_iso9797.h</itemPath>
+        <itemPath>../../../common/vaultic_spi_peripheral.h</itemPath>
+        <itemPath>../../../common/vaultic_symmetric_signer.h</itemPath>
+        <itemPath>../../../common/vaultic_timer_delay.h</itemPath>
+        <itemPath>../../../common/vaultic_twi_peripheral.h</itemPath>
+        <itemPath>../../../common/vaultic_typedefs.h</itemPath>
+        <itemPath>../../../common/vaultic_utils.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="Source Files"
+                     projectFiles="true"
+                     kind="ROOT">
+        <itemPath>../../../common/vaultic_AES.c</itemPath>
+        <itemPath>../../../common/vaultic_DES.c</itemPath>
+        <itemPath>../../../common/vaultic_TDES.c</itemPath>
+        <itemPath>../../../common/vaultic_block_protocol.c</itemPath>
+        <itemPath>../../../common/vaultic_cipher.c</itemPath>
+        <itemPath>../../../common/vaultic_cipher_tests.c</itemPath>
+        <itemPath>../../../common/vaultic_command.c</itemPath>
+        <itemPath>../../../common/vaultic_comms.c</itemPath>
+        <itemPath>../../../common/vaultic_crc16.c</itemPath>
+        <itemPath>../../../common/vaultic_file_system.c</itemPath>
+        <itemPath>../../../common/vaultic_identity_authentication.c</itemPath>
+        <itemPath>../../../common/vaultic_key_wrapping.c</itemPath>
+        <itemPath>../../../common/vaultic_ms_auth.c</itemPath>
+        <itemPath>../../../common/vaultic_padding.c</itemPath>
+        <itemPath>../../../common/vaultic_protocol.c</itemPath>
+        <itemPath>../../../common/vaultic_scp02.c</itemPath>
+        <itemPath>../../../common/vaultic_scp03.c</itemPath>
+        <itemPath>../../../common/vaultic_secure_channel.c</itemPath>
+        <itemPath>../../../common/vaultic_signer_aes_cmac.c</itemPath>
+        <itemPath>../../../common/vaultic_signer_iso9797.c</itemPath>
+        <itemPath>../../../common/vaultic_symmetric_signer.c</itemPath>
+        <itemPath>../../../common/vaultic_utils.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="f3" displayName="device" projectFiles="true" kind="ROOT">
+      <logicalFolder name="f2"
+                     displayName="Header Files"
+                     projectFiles="true"
+                     kind="ROOT">
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_ApiLib.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_api.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_config.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_consts.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_crypto.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_lib.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_putkey_aux.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_readkey_aux.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_structs.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_version.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="Source Files"
+                     projectFiles="true"
+                     kind="ROOT">
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_api.c</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_lib.c</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_putkey_aux.c</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_readkey_aux.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+          </incDir>
+          <commandLine>-lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>VAULTIC_4XX_FIPS</Elem>
+            <Elem>_DEBUG</Elem>
+            <Elem>_MACOS</Elem>
+          </preprocessorList>
+        </cTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libVaultIC_API_4XX.${CND_DLIB_EXT}</output>
+          <commandLine>-lpcsclite</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+          </incDir>
+          <commandLine>-lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>VAULTIC_4XX_FIPS</Elem>
+            <Elem>_MACOS</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libVaultIC_API_4XX.${CND_DLIB_EXT}</output>
+          <commandLine>-lpcsclite</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Debug_Static" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+          </incDir>
+          <commandLine>-lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>VAULTIC_4XX_FIPS</Elem>
+            <Elem>_DEBUG</Elem>
+            <Elem>_MACOS</Elem>
+          </preprocessorList>
+        </cTool>
+        <archiverTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libvaultic_api_4xx.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+    <conf name="Release_Static" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+          </incDir>
+          <commandLine>-lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>VAULTIC_4XX_FIPS</Elem>
+            <Elem>_MACOS</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libvaultic_api_4xx.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

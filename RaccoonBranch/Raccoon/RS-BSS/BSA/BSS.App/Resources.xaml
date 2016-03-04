@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    xmlns:vm="clr-namespace:BSS.App.ViewModel">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/BSS.MVVM;component/View/Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <System:Double x:Key="AppMinWidth">640</System:Double>
+    <System:Double x:Key="ToolbarButtonLength">48</System:Double>
+
+    <Image x:Key="VerificationModeImage" Source="Resources/certificate_info.png" />
+    <Image x:Key="BurningModeImage" Source="Resources/certificate_pencil.png" />
+    <Image x:Key="CorrectionModeImage" Source="Resources/certificate_refresh.png" />
+    <Image x:Key="IdleModeImage" Source="Resources/Idle.png" />
+    <Image x:Key="ReportingModeImage" Source="Resources/reporting.png" />
+    <Image x:Key="MaintenanceModeImage" Source="Resources/Maintenance.png" />
+
+    <Image x:Key="ExitImage" Source="Resources/exit.png" />
+    
+    <BitmapImage x:Key="App" UriSource="Resources/App.png" />
+    <BitmapImage x:Key="Logo" UriSource="Resources/logo.png" />
+
+</ResourceDictionary>

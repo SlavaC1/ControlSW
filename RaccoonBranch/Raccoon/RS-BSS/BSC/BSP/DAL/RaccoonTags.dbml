@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RTDB" Class="RaccoonTagsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=IL01-DTITAYS\EMSDATABASE;Initial Catalog=RTDB;Integrated Security=True" SettingsObjectName="CBS.BSP.Properties.Settings" SettingsPropertyName="RTDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Batches" Member="Batches">
+    <Type Name="Batch">
+      <Column Name="BatchNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdtVersion" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialKind" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ManufacturingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ExpirationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="InitialWeight" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="ExtraWeight" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="BurnStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BurnEndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Batch_BurningAction" Member="BurningActions" ThisKey="BatchNumber" OtherKey="BatchNumber" Type="BurningAction" />
+      <Association Name="Material_Batch" Member="Material" ThisKey="MaterialID" OtherKey="ID" Type="Material" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tags" Member="Tags">
+    <Type Name="Tag">
+      <Column Name="SerialNumber" Type="System.Data.Linq.Binary" DbType="Binary(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="PublicKey" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Tag_BurningAction" Member="BurningActions" ThisKey="SerialNumber" OtherKey="SerialNumber" Type="BurningAction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BurningActions" Member="BurningActions">
+    <Type Name="BurningAction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SerialNumber" Type="System.Data.Linq.Binary" DbType="Binary(8) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="BatchNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="StationName" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="BurningTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsReference" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Batch_BurningAction" Member="Batch" ThisKey="BatchNumber" OtherKey="BatchNumber" Type="Batch" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Tag_BurningAction" Member="Tag" ThisKey="SerialNumber" OtherKey="SerialNumber" Type="Tag" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Materials" Member="Materials">
+    <Type Name="Material">
+      <Column Name="ID" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Association Name="Material_Batch" Member="Batches" ThisKey="ID" OtherKey="MaterialID" Type="Batch" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spBurnedTagsCount" Method="spBurnedTagsCount">
+    <Parameter Name="batchNumber" Type="System.String" DbType="NChar(10)" />
+    <ElementType Name="spBurnedTagsCountResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spHasReferenceTags" Method="spHasReferenceTags">
+    <Parameter Name="batchNumber" Type="System.String" DbType="NChar(10)" />
+    <ElementType Name="spHasReferenceTagsResult">
+      <Column Name="" Member="Column1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spBurningAttemptsCount" Method="spBurningAttemptsCount">
+    <Parameter Name="batchNumber" Type="System.String" DbType="NChar(10)" />
+    <ElementType Name="spBurningAttemptsCountResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spFailuresCount" Method="spFailuresCount">
+    <Parameter Name="batchNumber" Type="System.String" DbType="NChar(10)" />
+    <ElementType Name="spFailuresCountResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

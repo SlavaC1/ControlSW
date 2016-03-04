@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="RSTesterCLI" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug_Sim x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug_Sim Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release_Tester Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug_Tester x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug_Tester Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug_Tester_Sim Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release_Tester_Sim x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release_Sim x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release_Tester_Sim Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release_Tester x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release_Sim Win32">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug_Tester_Sim x64">
+				<Option output="RSTesterCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add directory="$(SolutionDir)Third Party/zeromq-4.0.4/include" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="AssemblyInfo.cpp" />
+		<Unit filename="LogEventArgs.cpp" />
+		<Unit filename="LogEventArgs.h" />
+		<Unit filename="RSTesterCLI.cpp" />
+		<Unit filename="RSTesterCLI.h" />
+		<Unit filename="Stdafx.cpp" />
+		<Unit filename="Stdafx.h" />
+		<Unit filename="app.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="resource.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,31 @@
+<Simulator>
+  <Cartridges Count="16" state="0">
+    <Cartridge Num="2">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="4">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="5">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="8">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="9">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="10">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="11">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="12">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="13">
+      <State>1</State>
+    </Cartridge>
+  </Cartridges>
+</Simulator>

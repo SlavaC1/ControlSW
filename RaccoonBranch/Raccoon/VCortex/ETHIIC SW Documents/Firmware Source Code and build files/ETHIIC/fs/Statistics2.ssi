@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<!-- Copyright (c) 2013-2014 VCortex Ltd  All rights reserved. -->
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Board Statistics</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="app.ico" />
+    <script src="javascript.js" language="JavaScript1.2" charset="utf-8"></script>
+</head>
+
+<body>
+<!--#FormVars-->
+ <div id="heading">
+      <table width="100%">
+        <tr>
+          <td>
+              &nbsp;</td>
+          <td width="100%">
+          <img src="topMenuBG.jpg" alt="TM4C">
+              &nbsp;</td>
+          <td>
+              &nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            <a id="heading_ti" target="_" href="http://www.vcortex.com">
+              &nbsp;</a></td>
+          <td width="100%">
+            <div id="heading_h1">
+                <br />
+                ETHIIC-1 IO Extender
+            </div>
+            <div id="heading_h2">
+                VC-EP2030
+            </div>
+          </td>
+          <td>
+            <a id="heading_ethiic" target="_" href="http://www.vcortex.com">
+              </a></td>
+        </tr>
+      </table>
+      <hr><hr>
+    </div>
+	   <div id="menu">
+      <ul>
+        <li><a href="about.htm" id="about">About  </a></li>
+        <li><a href="board_data.ssi" id="board_data">Board Data</a></li>
+		<li><a href="Statistics.ssi" id="A1">Statistics1</a></li>
+      </ul>
+    </div>
+    <div id="content">
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td align="left" valign="top" width="75%">
+                    <center>
+                        <h2 align="center">Board Statistics</h2>
+                    </center>
+                    <hr size="2" width="100%">
+                    <ul></ul>
+                    <br>
+                    <br>
+                    <table align="center" border="1" width="80%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <form method="get" action="iocontrol.cgi" name="iocontrol">
+                                        <table align="center" border="1" cellpadding="1" cellspacing="1" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" valign="top">
+                                                        <b>Item</b>
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <b>Received</b>
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <b>Transmitted</b>
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">INIT</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd1-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns1-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">INIT_IIC</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd2-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns2-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">WRITE_BYTES</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd3-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns3-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">READ_BYTES</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd4-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns4-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">WRITE_AND_READ_BYTE</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd5-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns5-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">WAKEUP_IIC</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd6-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns6-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">WRITE_OK</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd7-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns7-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">READ_OK</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd8-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns8-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">WAKEUP_OK</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd9-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns9-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">SLAVE_NOT_READY</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd10-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns10-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">WRITE_ERROR</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd11-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns11-->
+                                                    </td>
+                                                </tr>
+									            <tr>
+                                                    <td align="left" valign="top">READ_ERROR</td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Rcvd12-->
+                                                    </td>
+                                                    <td align="center" valign="top">
+                                                        <!--#Trns12-->
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ul></ul>
+                    <br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+   <div id="footing">
+      <hr><hr>
+        <div class="style1">
+      Copyright &copy; 
+        VCortex Ltd.  All rights reserved.
+        </div>
+    </div>
+
+</body>
+</html>

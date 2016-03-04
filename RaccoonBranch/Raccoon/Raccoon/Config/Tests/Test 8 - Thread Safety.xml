@@ -1,0 +1,18 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>      
+    </AuthenticateCartridge>
+  </Scenario>
+  <Scenario>
+    <GetInPlaceStatus ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+    </GetInPlaceStatus>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>0</CartridgeNum>      
+    </AuthenticateCartridge>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+</Test>

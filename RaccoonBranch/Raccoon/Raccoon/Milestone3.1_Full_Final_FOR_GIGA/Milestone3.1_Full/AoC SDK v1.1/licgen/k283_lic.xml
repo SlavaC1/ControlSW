@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <sentinel_ldk:license schema_version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sentinel_ldk="http://www.safenet-inc.com/sentinelldk">
+   <!-- You can specify the acknowledgement request flag. Possible values are "Yes" or "No"-->
+   <acknowledgement_request>Yes</acknowledgement_request>
+   <enforcement_type>HL</enforcement_type>
+   <dynamic_resource>
+      <vm_resource>
+         <!-- You can specify the vm resource file id -->
+         <id>33</id>
+         <content>
+ujQBAKoBAACKW5z7jt5Vafv1bBMLi4G/UBfrVv8iYpK7P6XbuqqYvbfqRVRSVf81nF0XZJVy1jYGOv4xV6+K+XjTnLOiZD+j5NoVPWYfHEvlf/kPrNm41IUl0r2Ikr6tUb2FzQ1buF2opyDvuoqadZErZbhnSmSbmr4achQyr8Os+/JNeZLcUrnasbRwYjrT+lWtoSaC90lymduParNZvgwetGjbfjBypPCYkKDQaMSOk0gxjzycP0Iv+ybjA96H2DwzKzXWt+KavfitgaQLjHk1Zd7JHe601h0V9q/uWXBRbcwBj9BrZj4mklWWozkSPCiIOGZ5nOESPbZExlcB2848NWBHnPyqtYPAN+vY37DtQXo3FcyC7po1NUwwqrFybU2/S5ZabhTIhHJdEAcI1XBKUbRLqF+BeeEfzx8V+sS/XXODWYKLEkRSENfia07w3wS/FGQTZXrtqVFR8DH+0gIKyldDV/grgwfJZvywOk4XOW1P2AqJOlKbWJtIx0X44Jje/NiaX7oKrLtIQMuT+jaqy6KGmTNFBfjl4VIunMfenMktBMhK5xoBy0USpFhAC0wABAAFBQICAQ==
+         </content>
+      </vm_resource>
+   </dynamic_resource>
+</sentinel_ldk:license>

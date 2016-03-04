@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="90">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>../../common/common.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../../common/vaultic_4XX_sample_code.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandlineTool>g++</commandlineTool>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>_DEBUG</Elem>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+          <useLinkerLibraries>false</useLinkerLibraries>
+        </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vaultic_4xx_sample</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>DynamicLinking</linkerLibStdlibItem>
+            <linkerLibLibItem>pthread-2.15</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-ldl</commandLine>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/vaultic4xxsample.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../common/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../common/vaultic_4XX_sample_code.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+          <useLinkerLibraries>false</useLinkerLibraries>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vaultic_4xx_sample</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibStdlibItem>DynamicLinking</linkerLibStdlibItem>
+          </linkerLibItems>
+          <commandLine>-ldl</commandLine>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/vaultic4xxsample.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../common/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../common/vaultic_4XX_sample_code.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug_With_Static_API" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandlineTool>g++</commandlineTool>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>USE_STATIC_API</Elem>
+            <Elem>VAULTIC_4XX_FIPS</Elem>
+            <Elem>_DEBUG</Elem>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+          <useLinkerLibraries>false</useLinkerLibraries>
+        </ccTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vaultic_4xx_sample</output>
+          <linkerLibItems>
+            <linkerLibLibItem>pthread-2.15</linkerLibLibItem>
+            <linkerLibFileItem>../../../build/linux/VaultIC_API_4XX/dist/GNU-Linux-x86/Debug_Static/libvaultic_api_4xx.a</linkerLibFileItem>
+            <linkerLibLibItem>pcsclite</linkerLibLibItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibStdlibItem>DynamicLinking</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/vaultic4xxsample.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../common/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../common/vaultic_4XX_sample_code.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release_With_Static_API" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>../../../device/vaultic_4XX_family</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>USE_STATIC_API</Elem>
+            <Elem>VAULTIC_4XX_FIPS</Elem>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+          <useLinkerLibraries>false</useLinkerLibraries>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vaultic_4xx_sample</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibStdlibItem>DynamicLinking</linkerLibStdlibItem>
+            <linkerLibFileItem>../../../build/linux/VaultIC_API_4XX/dist/GNU-Linux-x86/Release_Static/libvaultic_api_4xx.a</linkerLibFileItem>
+            <linkerLibLibItem>pcsclite</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/vaultic4xxsample.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../common/common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../common/vaultic_4XX_sample_code.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

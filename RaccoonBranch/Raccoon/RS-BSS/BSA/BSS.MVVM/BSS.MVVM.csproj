@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{129E94C8-BCFA-41CB-B3A1-813DE0D89389}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BSS.MVVM</RootNamespace>
+    <AssemblyName>BSS.MVVM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FtdAdapter">
+      <HintPath>..\packages\Modbus\FtdAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform">
+      <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Modbus\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Modbus">
+      <HintPath>..\packages\Modbus\Modbus.dll</HintPath>
+    </Reference>
+    <Reference Include="Modbus.Extensions">
+      <HintPath>..\packages\Modbus\Modbus.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Unme.Common, Version=1.1.0.0, Culture=neutral, PublicKeyToken=da57c01ae4598fdd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Modbus\Unme.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\BurningPaneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CommunicationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DeviceCommunicationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IdtCorrectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IdtIdleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IdtOperationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IdtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LotView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReportingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Skins\BureauBlack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Skins\BureauBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Skins\ExpressionDark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Skins\ExpressionLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Skins\ShinyBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Skins\ShinyRed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Skins\WhistlerBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IdtBurningView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MaterialInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IdtReadingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TagInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\BusinessLogic\CommunicationsManager.cs" />
+    <Compile Include="Model\BusinessLogic\ConfigurationParameters.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\ActionsDispatcher.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\IdtBurner.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\IdtCorrector.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\IdtErrorInterpreter.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\IdtOperator.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\IdtReader.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\InPlaceManager.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\InPlaceStatusChangedEventArgs.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\IdtOperationEventArgs.cs" />
+    <Compile Include="Model\BusinessLogic\IdtSrv\TaglInfoEventArgs.cs" />
+    <Compile Include="Model\BusinessLogic\MainModel.cs" />
+    <Compile Include="Model\BusinessLogic\Messages\ExceptionMessage.cs" />
+    <Compile Include="Model\BusinessLogic\Messages\LogMessage.cs" />
+    <Compile Include="Model\BusinessLogic\Messages\MessengerUtils.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\AsyncLock.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\IPlc.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\PlcBase.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\PlcDeviceWrapper.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\PlcSimulator.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\PlcWrapperFactory.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\TrafficLightColor.cs" />
+    <Compile Include="Model\BusinessLogic\Plc\TrafficLightColorChangedEventArgs.cs" />
+    <Compile Include="Model\BusinessLogic\Report\LotHistoryProvider.cs" />
+    <Compile Include="Model\BusinessLogic\States\BssState.cs" />
+    <Compile Include="Model\BusinessLogic\States\BurningState.cs" />
+    <Compile Include="Model\BusinessLogic\States\CorrectionState.cs" />
+    <Compile Include="Model\BusinessLogic\States\IdleState.cs" />
+    <Compile Include="Model\BusinessLogic\States\IdtNonOperationState.cs" />
+    <Compile Include="Model\BusinessLogic\States\IdtOperationState.cs" />
+    <Compile Include="Model\BusinessLogic\States\ManagementState.cs" />
+    <Compile Include="Model\BusinessLogic\States\ReportState.cs" />
+    <Compile Include="Model\BusinessLogic\States\StatesManager.cs" />
+    <Compile Include="Model\BusinessLogic\States\VerificationState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewModel\BSSViewModel.cs" />
+    <Compile Include="ViewModel\BurningPaneViewModel.cs" />
+    <Compile Include="ViewModel\CommunicationViewModel.cs" />
+    <Compile Include="ViewModel\DeviceCommunicationViewModel.cs" />
+    <Compile Include="ViewModel\IdtBurningViewModel.cs" />
+    <Compile Include="ViewModel\IdtCorrectionViewModel.cs" />
+    <Compile Include="ViewModel\IdtIdleViewModel.cs" />
+    <Compile Include="ViewModel\IdtOperationViewModel.cs" />
+    <Compile Include="ViewModel\IdtReadingViewModel.cs" />
+    <Compile Include="ViewModel\IdtStatusViewModel.cs" />
+    <Compile Include="ViewModel\LogViewModel.cs" />
+    <Compile Include="ViewModel\LotViewModel.cs" />
+    <Compile Include="ViewModel\ManagementViewModel.cs" />
+    <Compile Include="ViewModel\ReportingViewModel.cs" />
+    <Compile Include="View\Behaviors\GridViewColumnResizeBehavior.cs" />
+    <Compile Include="View\Behaviors\ScrollToLastItemBehavior.cs" />
+    <Compile Include="View\Bindings\CultureAwareBinding.cs" />
+    <Compile Include="View\BurningPaneView.xaml.cs">
+      <DependentUpon>BurningPaneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CommunicationView.xaml.cs">
+      <DependentUpon>CommunicationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Converters\ByteArrayToHexStringConverter.cs" />
+    <Compile Include="View\Converters\ChassisConverter.cs" />
+    <Compile Include="View\Converters\ConsumptionCounterConverter.cs" />
+    <Compile Include="View\Converters\DeviceSimulatorConverter.cs" />
+    <Compile Include="View\Converters\EnumValueConverter.cs" />
+    <Compile Include="View\Converters\MultiBooleanToVisibilityConverter.cs" />
+    <Compile Include="View\Converters\RowIndexConverter.cs" />
+    <Compile Include="View\Converters\InitialWeightConverter.cs" />
+    <Compile Include="View\Converters\TextToLocalizedConverter.cs" />
+    <Compile Include="View\Converters\TimeSpanConverter.cs" />
+    <Compile Include="View\Converters\ToStringConverter.cs" />
+    <Compile Include="View\Converters\TrimmingConverter.cs" />
+    <Compile Include="View\DeviceCommunicationView.xaml.cs">
+      <DependentUpon>DeviceCommunicationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IdtCorrectionView.xaml.cs">
+      <DependentUpon>IdtCorrectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IdtIdleView.xaml.cs">
+      <DependentUpon>IdtIdleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IdtOperationView.xaml.cs">
+      <DependentUpon>IdtOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IdtView.xaml.cs">
+      <DependentUpon>IdtView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Converters\TrafficLightColorToBrushConverter.cs" />
+    <Compile Include="View\Converters\TrafficLightColorToTextConverter.cs" />
+    <Compile Include="View\Converters\ProgressToVisibilityConverter.cs" />
+    <Compile Include="View\IdtBurningView.xaml.cs">
+      <DependentUpon>IdtBurningView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogView.xaml.cs">
+      <DependentUpon>LogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LotView.xaml.cs">
+      <DependentUpon>LotView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagementView.xaml.cs">
+      <DependentUpon>ManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MaterialInfoView.xaml.cs">
+      <DependentUpon>MaterialInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IdtReadingView.xaml.cs">
+      <DependentUpon>IdtReadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReportingView.xaml.cs">
+      <DependentUpon>ReportingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TagInfoView.xaml.cs">
+      <DependentUpon>TagInfoView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.he-IL.resx" />
+    <None Include="app.config" />
+    <None Include="Model\BusinessLogic\BusinessLogicClassDiagram.cd" />
+    <None Include="Model\BusinessLogic\Plc\Plc.cd" />
+    <None Include="Model\BusinessLogic\States\States.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\BSS.Contracts\BSS.Contracts.csproj">
+      <Project>{d243aa71-77d1-4248-a98e-49c0952fba33}</Project>
+      <Name>BSS.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Contracts\Hsm.Contracts\Hsm.Contracts.csproj">
+      <Project>{83bd3374-2c88-4d49-b1a4-27d79ea04c76}</Project>
+      <Name>Hsm.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RaccoonCLI\RaccoonCLI.vcxproj">
+      <Project>{880b08c4-a1ba-41f7-b3fe-41a37ac4a91a}</Project>
+      <Name>RaccoonCLI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Contracts\WcfInfras\WcfInfras.csproj">
+      <Project>{d3c821b9-f8e9-48ee-af50-7925de371e7b}</Project>
+      <Name>WcfInfras</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfLocalization\WpfLocalization.csproj">
+      <Project>{6d1e1b21-85fb-495f-a190-5100188a00ae}</Project>
+      <Name>WpfLocalization</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Uncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Excel.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

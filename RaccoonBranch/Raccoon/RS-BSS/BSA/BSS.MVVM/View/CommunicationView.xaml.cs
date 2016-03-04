@@ -1,0 +1,41 @@
+﻿using BSS.MVVM.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace BSS.MVVM.View
+{
+    /// <summary>
+    /// Interaction logic for CommunicationView.xaml
+    /// </summary>
+    public partial class CommunicationView : UserControl
+    {
+        public CommunicationView()
+        {
+            InitializeComponent();
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            CommunicationViewModel cvm = DataContext as CommunicationViewModel;
+            if (cvm != null)
+            {
+                cvm.Password.Clear();
+                foreach (char c in ((PasswordBox)sender).Password)
+                {
+                    cvm.Password.AppendChar(c);
+                }
+            }
+        }
+    }
+}

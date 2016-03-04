@@ -1,0 +1,750 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <style>
+h1 {
+font: normal normal bold 175%sans-serif;
+font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+color: #f7941c;
+}
+h2, {
+font: normal normal bold 150% font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;color: #f7941c;
+}
+h3, {
+font: normal normal bold 100% font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;color: #f7941c;
+}
+h4, {
+font: normal normal bold 100% font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;color: black;
+}
+body, {
+font: normal normal normal smaller sans-serif;<font size="+1"></font>
+font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+background-color: White;
+Color: Black;
+margin: 16px;
+}
+ul, {
+font: normal normal normal 100%
+font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+list-style: disc outside;
+list-style-position: outside;
+text-align: left;
+margin: 16px;
+}
+li {
+font: normal normal normal 100%
+font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+text-align: left;
+}
+p{
+font-family: sans-serif;
+}
+pre{
+font-family: monospace;
+}
+note{
+font-family: "Times New Roman", Times, serif;
+font-size: x-small;
+}
+code {
+font-family: "Courier New", Courier, monospace;
+font-size: 98%;
+}
+a:link {
+text-decoration: none;
+}
+a:visited {
+text-decoration: none;
+}
+  </style>
+  <title>Sentinel LDK and Sentinel HASP Run-time Environment
+Command-line Installer: Readme</title>
+</head>
+<body>
+<h1>Sentinel<sup>&reg;</sup>
+LDK and Sentinel HASP<sup>&reg;</sup>
+Run-time Environment Command-line Installer: Readme</h1>
+<h2>Installer Version 6.65</h2>
+<h2>Package Version 6.65</h2>
+<h3>November 2014</h3>
+<hr align="left">
+<p>This document provides
+information regarding the Run-time
+Environment Command-line Installer for Sentinel HASP and Sentinel LDK,
+including enhancements and limitations. Using this installer, you can
+use HASP4, Hardlock, Sentinel HL, Sentinel HASP, and Sentinel LDK
+under any of the supported operating systems. ("Sentinel LDK" is the
+next generation of Sentinel HASP.)</p>
+<h2>Operating Systems Supported</h2>
+<ul>
+  <li>Windows XP (X86) SP3</li>
+  <li> Windows XP (X64) SP2</li>
+  <li> Windows Vista SP2</li>
+  <li> Windows 7 SP1</li>
+  <li> Windows 8.1 SP1</li>
+  <li> Windows Server 2003 SP2</li>
+  <li> Windows Server 2008 SP2</li>
+  <li> Windows Server 2008 R2 SP1</li>
+  <li> Windows Server 2012 R2</li>
+  <li> Windows 7 SP1 Embedded
+    standard (x86)<br>
+  </li>
+</ul>
+<p>The latest service packs and
+security updates must be installed.</p>
+<p> The installer detects the version of the operating system at run-time,
+before
+installing the relevant drivers. </p>
+<p><strong>Note:</strong> Windows XP Embedded is not supported with this installer. To install the Run-time Environment under Windows XP Embedded, use <strong>akshasp.sld</strong>. This file can be found under <strong>\Runtime Environment\win_xp_embedded\</strong> in your installation of Sentinel LDK or Sentinel HASP.</p>
+<h2>Changes in Terminology</h2>
+<p>With the introduction of
+Sentinel LDK, changes to terminology were incorporated in Sentinel
+Admin Control Center user interface and help files as follows:</p>
+<ul>
+  <li>The Sentinel HASP product is
+now referred to as Sentinel LDK.</li>
+  <li>SL keys that were created
+with Sentinel HASP Business Studio now
+appear in the user interface as "SL-Legacy" keys.</li>
+  <li>References to Sentinel EMS
+in the help files are also valid for
+Sentinel HASP Business Studio. </li>
+</ul>
+<h2>Installation</h2>
+<ul>
+  <li>Type <b><code>haspdinst.exe
+-?</code></b>
+for command-line help.</li>
+  <br>
+  <br>
+  <li>To use Sentinel EMS to
+produce Run-time Environment installers in the Sentinel LDK v.6.0 or
+later environment, overwrite the <code>haspdinst.exe</code>
+file in <br>
+    <b>%SystemDrive%\Program Files
+(x86)\SafeNet Sentinel\Sentinel EMS\EMSServer\webapps\ems\haspTools\</b>
+with the file in this package. (For Win32 systems, go to <b>\Program
+Files\...</b>)</li>
+  <br>
+  <br>
+  <li>A log file of the
+installation process is written to <b>aksdrvsetup.log</b>
+in the Windows directory.</li>
+</ul>
+<b>Note</b>
+<ul>
+  <li>By default, Windows Vista
+(and later) operating systems display a <b>User
+Account Control</b> message during
+driver installation. Users must click <b>Continue</b>
+to continue the installation. Alternatively, users can change the
+default setting from the Control Panel of their operating system.</li>
+</ul>
+<h2>Upgrade Notes</h2>
+<ul>
+  <li>When upgrading the Run-time
+Environment, ensure that it is not currently being accessed (for
+example: by closing all applications). Although the installation
+program can
+terminate applications that are accessing the Run-time, it cannot
+terminate running services. </li>
+  <br>
+  <br>
+  <li>If you are running HASP
+License Manager (HASP4 and HASP HL legacy
+License Manager) as a service, you must stop the License Manager before
+proceeding with the installation.</li>
+</ul>
+<h2>Accessing Admin Control Center
+in Internet Explorer Metro Mode</h2>
+<p>Under Windows 8, Internet
+Explorer 10 can be operated in "desktop" style or "Metro" style. When
+users attempt to access Admin Control Center for the local License
+Manager in the Metro style browser, they get the message "This page
+can't be displayed". (This problem does not occur when a user attempt
+to access Admin Control Center for a remote License Manager.)</p>
+<p>To access Admin Control Center
+for the local License Manager under Windows 8 with Internet Explorer
+10, the user must do either of the following:</p>
+<ul>
+  <li>Operate Internet Explorer in
+desktop style:
+    <ol>
+      <br>
+      <li>After you receive the
+message "This page can't be displayed" in Metro style, click the wrench
+icon at the bottom right of the browser window.</li>
+      <br>
+      <br>
+      <li>Click <b>View
+on the desktop</b>. Admin Control
+Center is displayed.</li>
+    </ol>
+  </li>
+  <br>
+  <li>Enable Internet Explorer to
+access Admin Control Center in Metro style:
+    <ol>
+      <br>
+      <li>After you receive the
+message "This page can't be displayed" in Metro style, click the wrench
+icon at the bottom right of the browser window.</li>
+      <br>
+      <br>
+      <li>Click <b>View
+on the desktop</b>. Admin Control
+Center is displayed.</li>
+      <br>
+      <br>
+      <li>Click the cogwheel
+("Tools") icon at the top right of the browser window. From the menu,
+select <b>Internet options
+&gt; Security</b>. Select the <b>Trusted
+sites</b> zone. Click the <b>Sites</b>
+button.</li>
+      <br>
+      <br>
+      <li>"http://localhost" is
+already filled in. Click <b>Add</b>.
+Close the screen.</li>
+    </ol>
+  </li>
+</ul>
+<h2>Compatibility Issues</h2>
+<h3>Control Guard Agent</h3>
+<p> When Control Guard Agent
+  version 4.0.0.27 is present on a computer, installation of the Run-time
+  Environment will cause the operating system to crash. If this occurs,
+  update to a later version of Control Guard Agent. </p>
+<h3>Trend Micro OfficeScan</h3>
+<p>When Trend Micro OfficeScan  is present on a computer, installation of the Run-time Environment may stall.</p>
+<p>Trend Micro has released the following hotfix to resolve this issue: Trend Micro OfficeScan 10.6 Service  Pack 3 Patch 1.1  Hot Fix - Server Build  5592 and Client Module Build 5445.</p>
+<p> Contact  the Trend Micro support team to obtain this hotfix. See the readme file included in the hotfix for more details.</p>
+<h2>Enhancements in This Release</h2>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-4468</td>
+      <td><p>The template for customizing entries for the Access log in  Sentinel License Manager has been enhanced. </p>
+        <ul>
+          <li><span dir="LTR"> </span>A new log element  (functionparams2) is available.</li>
+          <li><span dir="LTR"> </span>Tags for special characters  that could not be used in the template until now are provided.</li>
+          <li><span dir="LTR"> </span>Existing elements  (sessioncount, logincount, loginlimit) that did not provide reliable results  have been corrected.</li>
+          <li><span dir="LTR"> </span>The following events are  now logged correctly: session timeout, orphaned session logout, manual  disconnect, AdminAPI disconnect.</li>
+        </ul>
+        <p>In addition, the template is now used for log entries  generated by Embedded License Managers and External License Managers.</p>
+For  information on the log template, see the Edit Log Parameters screen and related  help screen in Admin Control Center. (Click the Edit Log Parameters button from  the Configuration - Basic Settings screen.)</td>
+    </tr>
+    <tr>
+      <td>LDK-735</td>
+      <td><p>Admin Control Center now enables the user to generate a C2V  file without the requirement of installing the RUS utility. This is supported  for Windows, Mac and Linux platforms. The following limitations apply:</p>
+        <ul>
+          <li><span dir="LTR"> </span>HL Basic keys are not  supported.<span dir="LTR"> </span></li>
+          <li>C2V  files fetched from HASP HL and Sentinel HL (HASP Configuration) keys will not work with  Business Studio.</li>
+        </ul>
+      The C2V file can be  generated for locally-connected Sentinel HL, HASP HL, and SL AdminMode keys.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Issues Resolved in This Release</h2>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-7893 </td>
+      <td>The License Manager would fail when it attempted to scan  more than 128 remote servers. The message &ldquo;Failed to begin fridge  transaction:327683&rdquo; was displayed.</td>
+    </tr>
+    <tr>
+      <td>LDK-7084</td>
+      <td>The hasp_get_info() function in the Licensing API did not  return consistent results for localhost when no IP address set in etc\hosts  file for localhost. The function would return either localhost(127.0.0.1) or  IPv4.</td>
+    </tr>
+    <tr>
+      <td>LDK-5710</td>
+      <td>When the real-time clock battery in a Sentinel HL  (Driverless configuration) keys is exhausted, the error code returned by the  hasp_login or hasp_login_scope function was HASP_INT_ERR instead of HASP_NO_BATTERY_POWER.</td>
+    </tr>
+    <tr>
+      <td>LDK-5390</td>
+      <td>If hasplms.exe is locked at the time the user attempts to upgrade the Run-time Environment, a misleading error message was displayed. The error message now provides an appropriate description of the issue.</td>
+    </tr>
+    <tr>
+      <td>LDK-8895</td>
+      <td>When an activated SL-Legacy license is installed on a machine that contains Products that have  clone protection disabled, and a user then attempts to detach a license, error 64 (clone detected) was generated. Now a license can be successfully detached.</td>
+    </tr>
+    <tr>
+      <td>LDK-8936</td>
+      <td>Installation of certain third party tools would cause the removal of a symbolic link from Hardlock drivers. As a result,  HL keys would become inaccessible.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Version History</h2>
+<h3><strong>Issues Resolved in</strong>&nbsp;Version 6.64</h3>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-6857 </td>
+      <td>A  compilation error would occur when the RTE 6.62 haspds.msm merge module is used with a WIX-MSI installer.</td>
+    </tr>
+    <tr>
+      <td>LDK-7030</td>
+      <td>A Stop error (BSoD) would occur when the customer applied a V2C on a machine with a  dynamic disk.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><strong>Issues Resolved in</strong>&nbsp;Version 6.63</h3>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-6642 </td>
+      <td>A Stop error (BSoD) was reported with
+        certain flash drives (if connected).</td>
+    </tr>
+  </tbody>
+</table>
+<h3><strong>Issues Resolved in</strong>&nbsp;Version 6.62</h3>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-6113</td>
+      <td>
+      <p>After an end user installed Sentinel LDK Run-time Environment
+v.6.61, applications that are protected using older versions of HASP4
+or Hardlock would not start. Applications that are protected using
+older versions of HASP4 or Hardlock, or that use older versions of
+HASP4/Hardlock API would display the message: <strong>Driver version
+mismatch</strong>.</p>
+      <p>These issues existed under the following circumstances:</p>
+      <ul>
+        <li><span dir="ltr"> </span>These issues existed only with
+HASP4 API version 8.x or earlier or Hardlock API version 3.83 or
+earlier.</li>
+        <li><span dir="ltr"> </span><span dir="ltr"> </span><span
+ dir="ltr"> </span>These issues do not exist with the Sentinel LDK API
+library that also supports the HASP4 and Hardlock API.</li>
+      </ul>
+Support for legacy HASP4 and Hardlock APIs has been restored in
+Sentinel LDK Run-time Environment v.6.62.</td>
+    </tr>
+  </tbody>
+</table>
+<span style="font-weight: bold;"></span>
+<h3>Enhancements in Version 6.61</h3>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-3483</td>
+      <td>Admin Control Center now
+correctly displays information regarding Sentinel HL Board</td>
+    </tr>
+    <tr>
+      <td>LDK-3366</td>
+      <td>The Local License
+Manager is now more resistant to potential sources of corruption, such
+as power failure.</td>
+    </tr>
+    <tr>
+      <td>LDK-2877</td>
+      <td>Cloned SL-AdminMode keys
+are now correctly identified by the License Manager and become
+inaccessible. As soon as the cloned keys or machines are removed, the
+single remaining key is automatically be re-enabled.</td>
+    </tr>
+    <tr>
+      <td>LDK-3129</td>
+      <td>Support for SL keys
+under VM live migration solutions is now provided.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Issues Resolved in Version 6.61</h3>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-4821</td>
+      <td>Protected application
+with encrypted swf would not start under Windows 8.1 32-bit. The
+message "Error E0025 - unknown error" was returned.</td>
+    </tr>
+    <tr>
+      <td>LDK-4787</td>
+      <td>Documentation has been
+corrected to state that it is not possible to install vendor-specific
+SL-UserMode V2C bundled in a branded Run-time Environment.</td>
+    </tr>
+    <tr>
+      <td>LDK-4543</td>
+      <td>When a Feature that is
+disabled for virtual machines is installed on a virtual machine, the
+Run-time Environment did not return the usable tag as false.</td>
+    </tr>
+    <tr>
+      <td>LDK-4533</td>
+      <td>Memory leaks in the
+Sentinel Licensing API have been resolved.</td>
+    </tr>
+    <tr>
+      <td>LDK-3970</td>
+      <td>When a Provisional
+SL-Legacy license is installed on a machine with Run-time Environment
+v.6.60, its Product names were not displayed in Admin Control Center.</td>
+    </tr>
+    <tr>
+      <td>LDK-3283</td>
+      <td>The License Manager
+would require several minutes to load when Flash Media Bay Reader is
+connected to the system.</td>
+    </tr>
+    <tr>
+      <td>LDK-3255</td>
+      <td>A Stratus server would
+stop responding during synchronization when the Run-time Environment is
+installed.</td>
+    </tr>
+    <tr>
+      <td>LDK-3092</td>
+      <td>The Sentinel Admin API
+function sntl_admin_get would not filter information correctly based on
+scope template for feature/machine/user tags (Feature ID, computer name
+or IP address, License Manager user name).</td>
+    </tr>
+    <tr>
+      <td>LDK-3005</td>
+      <td>In Admin Control Center,
+an inconsistency existed regarding the display of "allow=all" in
+"Users" and "Access from Remote Clients" restriction tabs of the
+Configuration page.</td>
+    </tr>
+    <tr>
+      <td>LDK-3885</td>
+      <td>
+      <p>Under Windows 8.1 (x86
+platform), the Hardlock driver would not detect NtTerminateProcess and
+NtTerminateThread SST indexes. As a result:</p>
+      <ul>
+        <li>When starting a
+protected application, the Secure Channel Communication error (H0046)
+would occur.</li>
+        <li>A Stop error (BSoD)
+would occur.</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>LDK-2975</td>
+      <td>When SkyRecon
+StormShield Agent version 5.6 is present on a computer, installation of
+the Run-time Environment would cause the operating system to crash.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Enhancements in Version 6.60</h3>
+<p>Support has been added for
+ Window 7 Embedded.</p>
+<p><strong>Issues
+Resolved in Version 6.60</strong></p>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>LDK-2119</td>
+      <td>After cancellation of an
+SL AdminMode license on a machine, Features would disappear from other
+Products and become unusable.</td>
+    </tr>
+    <tr>
+      <td>189473</td>
+      <td>Under certain
+circumstances, the License Manager would fail with HTTP scanners.</td>
+    </tr>
+    <tr>
+      <td>LDK-1892</td>
+      <td>For a "6to4" IPv6
+address, network licenses would not be available (disconnect from the
+NetKey) after a short period. Now the License Manager scans the network
+interfaces to detect local IP addresses, similar to the Runtimeless
+API. The License Manager no longer asks for the DNS.</td>
+    </tr>
+    <tr>
+      <td>LDK-1683</td>
+      <td>Product names displayed
+in Admin Control Center were different from the names specified at
+creation time. Product names are now handles as follows:
+      <ul type="square">
+        <li>Names provided within
+a license container (for example, a V2C file) are valid just for that
+container.</li>
+        <li>Names provided
+manually in a vendorid.xml file always override those container names,
+retaining backward compatibility (for examples, for translations)</li>
+        <li>vendorid.xml files are
+never overwritten by the License Manager, so different names for
+licenses on different machines are no longer mixed up</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>LDK-2052</td>
+      <td>When the login to a
+Feature would fail, the log file would not contain the username,
+hostname, FeatureID (and haspid, if specified in scope)&nbsp;.</td>
+    </tr>
+    <tr>
+      <td>LDK-2718</td>
+      <td>Under certain
+circumstances, Sentinel HL (Driverless configuration) keys did not
+appear in Admin Control Center.</td>
+    </tr>
+    <tr>
+      <td>LDK-1965</td>
+      <td>Under certain
+circumstances, a protected application under Windows 7 would cause a
+"Key not found" error.</td>
+    </tr>
+    <tr>
+      <td>LDK-2235</td>
+      <td>False positive VM
+detection would occur on a physical machine that had a Hyper-V virtual
+machine.&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LDK-2107</td>
+      <td>A reference finger print
+would not contain the NIC_UID value when the NIC address has an OUI
+(Organizational Unique Identifier) value of
+&ldquo;00:50:56:XX:YY:ZZ&rdquo; OR
+&ldquo;00:05:69:XX:YY:ZZ&rdquo;. These OUIs
+(&ldquo;00:50:56&rdquo; OR &ldquo;00:05:69&rdquo;) are
+assigned to VMware, and are used by VMware when the NIC address for a
+VM guest m/c is manually generated.</td>
+    </tr>
+    <tr>
+      <td>LDK-1175</td>
+      <td>Intermittent H0043
+errors would occur when a USB camera was connected to the machine.</td>
+    </tr>
+    <tr>
+      <td>LDK-2564</td>
+      <td>Under certain
+circumstances, the bundled RTE installer created using Sentinel EMS
+would fail.</td>
+    </tr>
+    <tr>
+      <td>LDK-1194</td>
+      <td>Under certain
+circumstances, termination of a protected application would cause a
+Stop error.</td>
+    </tr>
+    <tr>
+      <td>LDK-2502</td>
+      <td>When using RTE version
+6.56: After logging off and then logging on to the machine, a HASP 4
+key was not detected.</td>
+    </tr>
+    <tr>
+      <td>LDK-2240</td>
+      <td>Under Windows XP, when
+installing haspdinst v.6.51 or 6.55 on an HP 8200 ELITE SFF machine, a
+stop error would occur.</td>
+    </tr>
+    <tr>
+      <td>LDK-2074</td>
+      <td>The RTE installer would
+not add the registry entry
+&ldquo;HKLM\SYSTEM\CurrentControlSet\Control\VirtualDeviceDrivers"
+if it was not present. As a result, end users would receive Error 16
+(Inconsistent Filesystem Structure) errors during RTE installation.</td>
+    </tr>
+    <tr>
+      <td>LDK-2034</td>
+      <td>Licenses that were
+installed with a bundled RTE were not visible in Admin Control Center
+if a branded RTE had been first uninstalled and then reinstalled.</td>
+    </tr>
+    <tr>
+      <td>LDK-2428</td>
+      <td>When a proxy server is
+used, Admin Control Center was not able to obtain language packs
+automatically.</td>
+    </tr>
+    <tr>
+      <td>LDK-3014</td>
+      <td>When no HL key is
+connected to a machine, the driver package version was shown as as 0.0.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Issues Resolved in Version 6.56</h3>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>170463</td>
+      <td> When the user attempted
+to install Microsoft Office 2010 on a computer that contains the
+Run-time Environment, the installation would fail and display an "Error
+1046" message</td>
+    </tr>
+    <tr>
+      <td>185897</td>
+      <td>Run-time Environment
+v6.55 would not recognize a HASP HL key with Firmware v2.16. The key
+would not be displayed in Sentinel Admin Control Center</td>
+    </tr>
+    <tr>
+      <td>186197</td>
+      <td>When an application is
+protected with "Enable data file encryption" selected in Sentinel LDK
+Envelope, and file extensions are added in the filter, it was not
+possible to save the encrypted files to a network location.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Issues Resolved in Version 6.55</h3>
+<table border="1" width="983">
+  <tbody>
+    <tr>
+      <th scope="col" width="85">Reference</th>
+      <th scope="col" width="836">Description</th>
+    </tr>
+    <tr>
+      <td>MKS177499</td>
+      <td> Under Windows 7 64-bit,
+protected application process would not exit from the Task Manager
+after closing. </td>
+    </tr>
+    <tr>
+      <td>MKS180520</td>
+      <td>A Stop message (BSoD)
+would occur while running a DataHASP protected application when Norton
+Internet Security is installed.</td>
+    </tr>
+    <tr>
+      <td>MKS179112</td>
+      <td> A delay would occur in
+obtaining the current remaining executions count when using the
+Licensing API hasp_get_sessioninfo() call soon after the hasp_login()
+call. </td>
+    </tr>
+    <tr>
+      <td>MKS177029</td>
+      <td> The NX flag for
+hasplms.exe was not enabled. </td>
+    </tr>
+    <tr>
+      <td>MKS178460</td>
+      <td> LM ID content of the LM
+Server whose information has not been refreshed for a long time would
+not be shown when more than 512 LM servers exist.</td>
+    </tr>
+    <tr>
+      <td>MKS168507</td>
+      <td>If the HL key was
+changed while a machine was sleeping, then afterwards the License
+Manager would show that the original HL key is still present. The new
+HL key would not be recognized and would not work.</td>
+    </tr>
+    <tr>
+      <td>MKS175770</td>
+      <td> hasplms.exe would crash
+and record an Access Violation error in the system log</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Known Issues - Run-time
+Environment</h2>
+<table border="1" height="97" width="988">
+  <tbody>
+    <tr>
+      <th scope="col" width="90">Reference</th>
+      <th scope="col" width="882">Description</th>
+    </tr>
+    <tr>
+      <td>12506</td>
+      <td> Sentinel LDK
+communicates via TCP and UDP on port 1947. This port is IANA-registered
+exclusively for this purpose. At the end user site, the firewall must
+be configured so that communication via this port is not blocked.</td>
+    </tr>
+    <tr>
+      <td>180256</td>
+      <td>When a computer names
+contains UTF-16 characters, Admin Control Center displays the short
+name for the computer (similar to Windows Explorer). Similarly, the
+sntl_admin_get function in Admin API returns the short name.</td>
+    </tr>
+    <tr>
+      <td>182646</td>
+      <td>After Windows 7 is
+upgraded to Windows 8, the user is not able to use existing SL licenses
+or to install new SL licenses.<br>
+      <b>Workaround:</b>
+After you upgrade from Windows 7 to Windows 8, reinstall the Run-time
+Environment. </td>
+    </tr>
+    <tr>
+      <td>LDK-2471</td>
+      <td>Sentinel Licensing API:
+On a computer with the Nvidia chip set GeForce 7025/nForce 630a, and
+where the CPU is AMD Athlon 64 X2, the hasp_read and hasp_encrypt
+functions may fail with error 39, HASP_BROKEN_SESSION. This problem
+only exists with HASP HL keys with Firmware version 3.25.<br>
+      <br>
+      <strong>Workaround 1</strong>:
+On the computer described above, when error 39 is returned, call the
+hasp_read or hasp_encrypt function again. It is not necessary to call
+hasp_login again.<br>
+      <br>
+      <strong>Workaround 2</strong>:
+Use Sentinel HL keys with Firmware version 4.2x. </td>
+    </tr>
+    <tr>
+      <td>LDK-5038</td>
+      <td>It is not possible to
+retrieve the hard disk drive ID in SL-AdminMode
+fingerprints for Dell PowerEdge R710 and PowerEdge T410 machines.</td>
+    </tr>
+    <tr>
+      <td>LDK-8480</td>
+      <td>With some new USB chipsets, it is possible that the API hasp_update() call, used to update the firmware of Sentinel HL keys to version 3.25, will generate the HASP_BROKEN_SESSION return code, even if the firmware is correctly updated. (This issue does not occur with Sentinel HL Driverless keys with firmware version 4.x.)<br>
+        <strong>Workaround:</strong> Install the latest Run-time Environment. The automatic firmware update feature of the License Manager will automatically update the firmware of the key the first time that the key is connected, without the need to call hasp_update().</td>
+    </tr>
+  </tbody>
+</table>
+<p><font color="#000000" face="Palatino Linotype">Copyright
+&copy; 2014 SafeNet, Inc. All rights reserved.<br>
+</font></p>
+<div align="right"><font size="-2">DocID 129r Revision 1411-3</font></div>
+</body>
+</html>

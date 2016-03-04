@@ -1,0 +1,15 @@
+\t (00:00:01) allegro_free_viewer 16.6 S002 (v16-6-0A) Windows 32
+\t (00:00:01)     Journal start - Sat Mar 14 13:29:06 2015
+\t (00:00:01)         Host=GREGORYK User=Gregory Pid=7164 CPUs=8
+\t (00:00:01) 
+\t (00:00:01) Starting new design...
+\i (00:00:01) trapsize 760
+\i (00:00:01) trapsize 744
+\i (00:00:01) trapsize 702
+\i (00:00:01) trapsize 871
+\i (00:00:03) open 
+\i (00:00:33) fillin "C:\Users\Gregory\Downloads\ETHIIc 1.004.brd"
+\i (00:00:33) cd "C:\Users\Gregory\Downloads"
+\t (00:00:33) Opening existing design...
+\i (00:00:34) trapsize 5052
+\t (00:00:34)     Journal end - Sat Mar 14 13:29:39 2015

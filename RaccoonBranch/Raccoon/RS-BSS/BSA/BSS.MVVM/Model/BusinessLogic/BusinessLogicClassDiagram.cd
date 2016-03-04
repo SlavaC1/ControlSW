@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BSS.MVVM.Model.BusinessLogic.IdtSrv.IdtOperator">
+    <Position X="7.25" Y="5" Width="2.5" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="HandleInPlaceStatusChanged" Hidden="true" />
+      <Method Name="IdtOperator" Hidden="true" />
+      <Method Name="OnOperationEnded" Hidden="true" />
+      <Method Name="OnOperationStarted" Hidden="true" />
+      <Method Name="OnTrafficLightColorChanged" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAACEAAxUEAAEQAAJADBAAAEARRAAEmgAABAA=</HashCode>
+      <FileName>Model\BusinessLogic\IdtSrv\IdtOperator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="configurationParameters" />
+      <Field Name="idtOperationDispatcher" />
+      <Field Name="inPlaceManager" />
+      <Field Name="plcWrapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.IdtSrv.IdtBurner">
+    <Position X="7.25" Y="14" Width="2.75" />
+    <Members>
+      <Method Name="Burn" Hidden="true" />
+      <Method Name="BurnSignedTagInfo" Hidden="true" />
+      <Field Name="currentSessionID" Hidden="true" />
+      <Method Name="GetSignedTagInfo" Hidden="true" />
+      <Method Name="GetTagSerialNumber" Hidden="true" />
+      <Method Name="GetWeightToDecrease" Hidden="true" />
+      <Method Name="IdtBurner" Hidden="true" />
+      <Method Name="InitTagCounter" Hidden="true" />
+      <Method Name="IsTagRegistrationValid" Hidden="true" />
+      <Method Name="ResetCartridge" Hidden="true" />
+      <Field Name="VllFileName" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IBEAAQACQBGQkQAAAAEAkAE0ggABSQDAACAAoCEARAQ=</HashCode>
+      <FileName>Model\BusinessLogic\IdtSrv\IdtBurner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.IdtSrv.IdtReader">
+    <Position X="7.25" Y="11.25" Width="2.5" />
+    <Members>
+      <Method Name="AuthenticateCartridge" Hidden="true" />
+      <Method Name="IdtReader" Hidden="true" />
+      <Method Name="OnTagInfoRead" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAEAAAUAAAAAAAAAAAAAAAAAAAAAAgAAQBAA=</HashCode>
+      <FileName>Model\BusinessLogic\IdtSrv\IdtReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.IdtSrv.ActionsDispatcher&lt;T&gt;">
+    <Position X="11.75" Y="3.75" Width="1.75" />
+    <Members>
+      <Method Name="ActionsDispatcher" Hidden="true" />
+      <Method Name="RunDispatcherThread" Hidden="true" />
+      <Method Name="TryDequeue" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAgIgAABAAAAAAAAAAIAAABAgAAAAQAAAAAAAABAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\IdtSrv\ActionsDispatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.IdtSrv.InPlaceManager">
+    <Position X="1.25" Y="0.75" Width="2" />
+    <Members>
+      <Method Name="HandleConfigurationParameterChanged" Hidden="true" />
+      <Method Name="InPlaceManager" Hidden="true" />
+      <Property Name="InPlaceStatus" Hidden="true" />
+      <Field Name="isReady" Hidden="true" />
+      <Method Name="OnInPlaceStatusChanged" Hidden="true" />
+      <Method Name="OnIsReadyChanged" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAIQAAQCMAAAGAEAAAIAAIAAAIECABDAEAEoAAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\IdtSrv\InPlaceManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="configurationParameters" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.MainModel">
+    <Position X="4.25" Y="11.25" Width="2" />
+    <Members>
+      <Method Name="MainModel" Hidden="true" />
+      <Method Name="SendExceptionMessage" Hidden="true" />
+      <Method Name="SendMessage" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAgAAIAACAAAAAkAiJBAAAAAAIEAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Model\BusinessLogic\MainModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ConfigurationParameters" />
+      <Property Name="IdtBurner" />
+      <Property Name="IdtCorrector" />
+      <Property Name="IdtReader" />
+      <Property Name="InPlaceManager" />
+      <Property Name="LotHistoryProvider" />
+      <Property Name="PlcWrapper" />
+      <Property Name="StatesManager" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.ConfigurationParameters" Collapsed="true">
+    <Position X="5.25" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CABhgIAKQAEADARIgQBBQBHEQ0AIQKAAEEIAABiCAAA=</HashCode>
+      <FileName>Model\BusinessLogic\ConfigurationParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.StatesManager">
+    <Position X="0.75" Y="13" Width="2.75" />
+    <Members>
+      <Field Name="allStates" Hidden="true" />
+      <Method Name="AreCartridgesInsertedUnintentionally" Hidden="true" />
+      <Field Name="currentState" Hidden="true" />
+      <Field Name="mainModel" Hidden="true" />
+      <Method Name="OnCurrentStateChanged" Hidden="true" />
+      <Field Name="skipUserConfirmation" Hidden="true" />
+      <Method Name="StartLot" Hidden="true" />
+      <Method Name="StatesManager" Hidden="true" />
+      <Field Name="userConfirmationPredicate" Hidden="true" />
+      <Property Name="UserConfirmationPredicate" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BIAAAEAEgCAAlAAAIDAAIiMAAAAAIAAAOAIACAGAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\StatesManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.IdtSrv.IdtCorrector">
+    <Position X="7.5" Y="22.5" Width="2.75" />
+    <Members>
+      <Method Name="IdtCorrector" Hidden="true" />
+      <Field Name="tagInfoOnCorrection" Hidden="true" />
+      <Field Name="userConfirmationPredicate" Hidden="true" />
+      <Property Name="UserConfirmationPredicate" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AJEAAQAAAACAAQAAAAAAAAAAAAAAAAAAAAAAIACABAQ=</HashCode>
+      <FileName>Model\BusinessLogic\IdtSrv\IdtCorrector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.Report.LotHistoryProvider">
+    <Position X="2.5" Y="9.25" Width="2" />
+    <Members>
+      <Method Name="BuildReportHeader" Hidden="true" />
+      <Method Name="BuildReportRow" Hidden="true" />
+      <Field Name="CommaSeparator" Hidden="true" />
+      <Method Name="LotHistoryProvider" Hidden="true" />
+      <Method Name="ReleaseComObject" Hidden="true" />
+      <Field Name="ReportsDirectory" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAAAAEAQAAEABAAAAgACAAAABAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Model\BusinessLogic\Report\LotHistoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WcfInfras.Client.ProxyInvoker&lt;T&gt;">
+    <Position X="11.5" Y="15.25" Width="2" />
+    <Members>
+      <Method Name="OnError" Hidden="true" />
+      <Method Name="OnException" Hidden="true" />
+      <Method Name="ProxyInvoker" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RaccoonCLI.MaterialMonitorWrapper">
+    <Position X="8.75" Y="0.75" Width="2.25" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="MaterialMonitorWrapper" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BSS.MVVM.Model.BusinessLogic.Plc.IPlc">
+    <Position X="4.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAASAAABAAAAAAAAAAAAAAAAAAACAACAgAAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\Plc\IPlc.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BSS.Contracts.ITagInfoProvider">
+    <Position X="11.5" Y="12.75" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

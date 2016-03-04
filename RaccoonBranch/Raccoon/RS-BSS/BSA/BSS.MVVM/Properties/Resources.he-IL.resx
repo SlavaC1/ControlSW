@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BatchEndTime" xml:space="preserve">
+    <value>זמן סיום צריבת האצווה:</value>
+  </data>
+  <data name="BatchNumber" xml:space="preserve">
+    <value>מספר האצווה:</value>
+  </data>
+  <data name="BatchStartTime" xml:space="preserve">
+    <value>זמן תחילת צריבת האצווה:</value>
+  </data>
+  <data name="BurningEndedSuccessfully" xml:space="preserve">
+    <value>המידע נצרב בהצלחה על גבי המיכל בתושבת {0}.</value>
+  </data>
+  <data name="BurningFailed" xml:space="preserve">
+    <value>כשלון בצריבת המידע על גבי המיכל בתושבת {0}.</value>
+  </data>
+  <data name="BurningInProcess" xml:space="preserve">
+    <value>צריבת המידע על גבי המיכל בתושבת {0} החלה...</value>
+  </data>
+  <data name="BurnsCountLot" xml:space="preserve">
+    <value>מספר הצריבות הכולל באצווה הנוכחית:</value>
+  </data>
+  <data name="BurnsCountLotSuccess" xml:space="preserve">
+    <value>מספר הצריבות התקינות באצווה הנוכחית:</value>
+  </data>
+  <data name="BurnsCountSession" xml:space="preserve">
+    <value>מספר הצריבות הכולל בסשן הנוכחי:</value>
+  </data>
+  <data name="BurnsCountSessionSuccess" xml:space="preserve">
+    <value>מספר הצריבות התקינות בסשן הנוכחי:</value>
+  </data>
+  <data name="CannotTransitMessage" xml:space="preserve">
+    <value>לא ניתן לעבור ממצב {0} למצב {1}.</value>
+  </data>
+  <data name="CartridgeInserted" xml:space="preserve">
+    <value>מיכל הוכנס</value>
+  </data>
+  <data name="CartridgesCount" xml:space="preserve">
+    <value>מספר המיכלים:</value>
+  </data>
+  <data name="CartridgeXInserted" xml:space="preserve">
+    <value>מיכל הוכנס לתושבת {0}.</value>
+  </data>
+  <data name="CartridgeXRemoved" xml:space="preserve">
+    <value>מיכל הוצא מתושבת {0}.</value>
+  </data>
+  <data name="ChassisEmpty" xml:space="preserve">
+    <value>התושבת ריקה</value>
+  </data>
+  <data name="ConsumptionCounter" xml:space="preserve">
+    <value>מונה צריכה:</value>
+  </data>
+  <data name="ConsumptionCounterValue" xml:space="preserve">
+    <value>{0} ק"ג ({1} גרם)</value>
+  </data>
+  <data name="EndLot" xml:space="preserve">
+    <value>סיים מנה</value>
+  </data>
+  <data name="EndOfLot" xml:space="preserve">
+    <value>מנה הסתיימה.</value>
+  </data>
+  <data name="EndSession" xml:space="preserve">
+    <value>סיים סשן</value>
+  </data>
+  <data name="ExpirationDate" xml:space="preserve">
+    <value>תאריך תפוגה:</value>
+  </data>
+  <data name="FailuresCount" xml:space="preserve">
+    <value>מספר הכישלונות:</value>
+  </data>
+  <data name="InitialWeight" xml:space="preserve">
+    <value>משקל התחלתי:</value>
+  </data>
+  <data name="InitialWeightValue" xml:space="preserve">
+    <value>{0} ק"ג</value>
+  </data>
+  <data name="IsReference" xml:space="preserve">
+    <value>מיכל Ref</value>
+  </data>
+  <data name="ManufacturingTime" xml:space="preserve">
+    <value>תאריך ייצור:</value>
+  </data>
+  <data name="MaterialType" xml:space="preserve">
+    <value>סוג חומר:</value>
+  </data>
+  <data name="MissingLot" xml:space="preserve">
+    <value>נתוני מנה לא נקראו מהאוראקל</value>
+  </data>
+  <data name="NoCartridgeLeft" xml:space="preserve">
+    <value>אנא וודא שכל התושבות ריקות.</value>
+  </data>
+  <data name="NoMaterialInfoWasRead" xml:space="preserve">
+    <value>המידע לצריבה לא נקרא.</value>
+  </data>
+  <data name="ReadingEndedSuccessfully" xml:space="preserve">
+    <value>המידע שבתג {0} אומת בהצלחה.</value>
+  </data>
+  <data name="ReadingFailed" xml:space="preserve">
+    <value>לא ניתן לאמת את תג {0}.</value>
+  </data>
+  <data name="ReadingInProcess" xml:space="preserve">
+    <value>אימות תג {0} החל...</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>מספר סידורי:</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>סיכום</value>
+  </data>
+  <data name="BurningAttemptsCount" xml:space="preserve">
+    <value>מספר נסיונות צריבה:</value>
+  </data>
+  <data name="TagStructID" xml:space="preserve">
+    <value>מספר גירסא:</value>
+  </data>
+  <data name="TransitionSucceeded" xml:space="preserve">
+    <value>המערכת עברה ממצב {0} למצב {1}.</value>
+  </data>
+  <data name="Burning" xml:space="preserve">
+    <value>צורב...</value>
+  </data>
+  <data name="EmptyCartridge" xml:space="preserve">
+    <value>מיכל ריק</value>
+  </data>
+  <data name="IdleState" xml:space="preserve">
+    <value>אדיש</value>
+  </data>
+  <data name="MaterialExpired" xml:space="preserve">
+    <value>חומר פג תוקף.</value>
+  </data>
+  <data name="MaterialTypeUndefined" xml:space="preserve">
+    <value>חומר מספר '{0}' אינו מזוהה.</value>
+  </data>
+  <data name="OperationNotAllowedOnCartridge" xml:space="preserve">
+    <value>פעולת ה{0} אינה חוקית בתושבת {1}.</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>אימות</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Connect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\View\Resources\Connect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectionFailed" xml:space="preserve">
+    <value>כשלון בהתחברות ל-{0}.</value>
+  </data>
+  <data name="CannotTransitMessageForReason" xml:space="preserve">
+    <value>לא ניתן לעבור ממצב {0} למצב {1}:
+{2}</value>
+  </data>
+  <data name="Inline" xml:space="preserve">
+    <value>אין ליין</value>
+  </data>
+  <data name="InPlaceStatusInterval" xml:space="preserve">
+    <value>תדירות בדיקת סטאטוס (ms):</value>
+  </data>
+  <data name="Standalone" xml:space="preserve">
+    <value>עצמאית</value>
+  </data>
+  <data name="StationType" xml:space="preserve">
+    <value>סוג העמדה:</value>
+  </data>
+  <data name="PlcMode" xml:space="preserve">
+    <value>מוד PLC</value>
+  </data>
+  <data name="BurningAttemptCount" xml:space="preserve">
+    <value>מספר צריבות</value>
+  </data>
+  <data name="BurningDate" xml:space="preserve">
+    <value>תאריך צריבה</value>
+  </data>
+  <data name="BurningStation" xml:space="preserve">
+    <value>שם עמדת הצריבה</value>
+  </data>
+  <data name="BurningTime" xml:space="preserve">
+    <value>זמן הצריבה</value>
+  </data>
+  <data name="Check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\View\Resources\Check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>שגיאה</value>
+  </data>
+  <data name="FindBatchBy" xml:space="preserve">
+    <value>מצא אצווה בעזרת</value>
+  </data>
+  <data name="GetReport" xml:space="preserve">
+    <value>יצר דו"ח</value>
+  </data>
+  <data name="MaterialID" xml:space="preserve">
+    <value>מספר חומר</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>הודעה</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>שם</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>Ref</value>
+  </data>
+  <data name="RowNumber" xml:space="preserve">
+    <value>מס'</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>תג</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>זמן</value>
+  </data>
+  <data name="Uncheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\View\Resources\Uncheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CollapseSymbol" xml:space="preserve">
+    <value>&gt;&gt;</value>
+  </data>
+  <data name="ExpandSymbol" xml:space="preserve">
+    <value>&lt;&lt;</value>
+  </data>
+  <data name="ConnectionOK" xml:space="preserve">
+    <value>תקשורת ל-{0} הוקמה בהצלחה.</value>
+  </data>
+  <data name="OperationInProcess" xml:space="preserve">
+    <value>פעולת ה{0} טרם הסתיימה.
+אנא המתן שתושלם.</value>
+  </data>
+  <data name="PlcNotReady" xml:space="preserve">
+    <value>לא בוצעה התקשרות ל PLC.</value>
+  </data>
+  <data name="CartridgeNumber" xml:space="preserve">
+    <value>מספר מיכל:</value>
+  </data>
+  <data name="Verifying" xml:space="preserve">
+    <value>מאמת...</value>
+  </data>
+  <data name="ArgumentMustNotBeGreaterMessage" xml:space="preserve">
+    <value>{0} אינו יכול להיות גדול מ - {1}.</value>
+  </data>
+  <data name="PlcReady" xml:space="preserve">
+    <value>PLC מוכן לפעולה.</value>
+  </data>
+  <data name="MaterialTypeError" xml:space="preserve">
+    <value>מיכל עם חומר מסוג {0} אינו יכול להיות מטופל בתושבת #{1}.</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>מודל</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>תמיכה</value>
+  </data>
+  <data name="ChassisCount" xml:space="preserve">
+    <value>מספר התושבות:</value>
+  </data>
+  <data name="ChassisNumber" xml:space="preserve">
+    <value>תושבת {0}:</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>התקן</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>שפה</value>
+  </data>
+  <data name="Simulator" xml:space="preserve">
+    <value>סימולטור</value>
+  </data>
+  <data name="StationName" xml:space="preserve">
+    <value>שם העמדה:</value>
+  </data>
+  <data name="ArgumentMustNotBeSmallerMessage" xml:space="preserve">
+    <value>{0} אינו יכול להיות קטן מ - {1}.</value>
+  </data>
+  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\View\Resources\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlcPort" xml:space="preserve">
+    <value>פורט PLC:</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>ישם</value>
+  </data>
+  <data name="Revert" xml:space="preserve">
+    <value>בטל</value>
+  </data>
+  <data name="SessionNotStarted" xml:space="preserve">
+    <value>סשן לא החל.</value>
+  </data>
+  <data name="EndOfLotReported" xml:space="preserve">
+    <value>דווח על סיום מנה.</value>
+  </data>
+  <data name="LotIsAlreadyOpened" xml:space="preserve">
+    <value>מנה פתוחה</value>
+  </data>
+  <data name="NewLot" xml:space="preserve">
+    <value>מנה חדשה נקראה.</value>
+  </data>
+  <data name="NoReferenceCartridgesInLot" xml:space="preserve">
+    <value>לא נצרב במנה זו שום מיכל Ref.
+האם לסיים את המנה בכל זאת?</value>
+  </data>
+  <data name="ProceedMessage" xml:space="preserve">
+    <value>האם ניתן להמשיך?</value>
+  </data>
+  <data name="UserCancelled" xml:space="preserve">
+    <value>הפעולה בוטלה</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>ראקון</value>
+  </data>
+  <data name="ConfigurationParametersChanged" xml:space="preserve">
+    <value>ערכי התצורה השתנו.
+לחץ אשר לשמירה ויציאה, או לחץ בטל כדי לשחזר את התצורה הנוכחית.</value>
+  </data>
+  <data name="CannotCommunicateWithCBS" xml:space="preserve">
+    <value>אין תקשורת עם השרת המרכזי</value>
+  </data>
+  <data name="TagNotFound" xml:space="preserve">
+    <value>תג {0} לא נמצא ב VLL.</value>
+  </data>
+  <data name="TagUsed" xml:space="preserve">
+    <value>התג {0} אינו חדש.</value>
+  </data>
+  <data name="IdtError" xml:space="preserve">
+    <value>שגיאת תג (קוד 0x{0}).</value>
+  </data>
+  <data name="IdtError_6581" xml:space="preserve">
+    <value>שגיאת זיכרון תג.</value>
+  </data>
+  <data name="IdtError_65FF" xml:space="preserve">
+    <value>שגיאת תקשורת לתג.</value>
+  </data>
+  <data name="IdtError_CC13" xml:space="preserve">
+    <value>תג יצא מסינכרון.</value>
+  </data>
+  <data name="IdtError_CF0D" xml:space="preserve">
+    <value>לא ניתן לשלוח נתונים לתג.</value>
+  </data>
+  <data name="IdtError_CF0F" xml:space="preserve">
+    <value>לא ניתן לקבל נתונים מהתג.</value>
+  </data>
+  <data name="IdtError_E200" xml:space="preserve">
+    <value>אתחול ה FCB נכשל.</value>
+  </data>
+  <data name="IdtError_E201" xml:space="preserve">
+    <value>בחירת FCB נכשלה..</value>
+  </data>
+  <data name="IdtError_E202" xml:space="preserve">
+    <value>לא ניתן לקבל סטאטוס.</value>
+  </data>
+  <data name="IdtError_E203" xml:space="preserve">
+    <value>לא ניתן לבחור ערוץ ב FCB.</value>
+  </data>
+  <data name="IdtError_E204" xml:space="preserve">
+    <value>פרמטר לא חוקי הועבר ל FCB.</value>
+  </data>
+  <data name="IdtError_E205" xml:space="preserve">
+    <value>לא התבצע אתחול לחומרה.</value>
+  </data>
+  <data name="IdtError_E206" xml:space="preserve">
+    <value>שגיאה בריאת המפתח הציבורי של התג.</value>
+  </data>
+  <data name="IdtError_E207" xml:space="preserve">
+    <value>אימות נכשל.</value>
+  </data>
+  <data name="IdtError_E300" xml:space="preserve">
+    <value>חתימה לא תקינה.</value>
+  </data>
+  <data name="IdtError_E301" xml:space="preserve">
+    <value>חתימה לא תקינה.</value>
+  </data>
+  <data name="IdtError_E302" xml:space="preserve">
+    <value>קובץ לא חוקי.</value>
+  </data>
+  <data name="IdtError_E303" xml:space="preserve">
+    <value>מפתח ציבורי לא חוקי.</value>
+  </data>
+  <data name="IdtError_E304" xml:space="preserve">
+    <value>פרמטר לא חוקי הועבר לפונקציית האימות.</value>
+  </data>
+  <data name="IdtError_E305" xml:space="preserve">
+    <value>התג ריק.</value>
+  </data>
+  <data name="IdtError_E400" xml:space="preserve">
+    <value>התג לא אומת.</value>
+  </data>
+  <data name="IdtError_E401" xml:space="preserve">
+    <value>חתימה לא תקינה.</value>
+  </data>
+  <data name="IdtError_E402" xml:space="preserve">
+    <value>זוהתה צריכת יתר.</value>
+  </data>
+  <data name="IdtError_E403" xml:space="preserve">
+    <value>לא ניתן ליצר מספר אקראי.</value>
+  </data>
+  <data name="IdtError_E404" xml:space="preserve">
+    <value>פרמטר לא חוקי הועבר לפונקציית הצריכה.</value>
+  </data>
+  <data name="IdtError_E308" xml:space="preserve">
+    <value>לא ניתן לבחור קובץ.</value>
+  </data>
+  <data name="IdtError_E511" xml:space="preserve">
+    <value>שגיאה בכתיבת נתוני הזיהוי.</value>
+  </data>
+  <data name="IdtError_E512" xml:space="preserve">
+    <value>שגיאה בכתיבת החתימה.</value>
+  </data>
+  <data name="IdtError_E210" xml:space="preserve">
+    <value>לא ניתן לקבל את מספר התג.</value>
+  </data>
+  <data name="IdtError_E505" xml:space="preserve">
+    <value>שגיאה בייצור המפתחות.</value>
+  </data>
+  <data name="CannotExitMessage" xml:space="preserve">
+    <value>לא ניתן לצאת ממצב {0}.</value>
+  </data>
+  <data name="NoCartridgeBurned" xml:space="preserve">
+    <value>אף מיכל עוד לא נצרב במנה זו.
+לא ניתן לצרוב מיכלי Ref.</value>
+  </data>
+  <data name="FCBNotReady" xml:space="preserve">
+    <value>FCB אינו מוכן</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>יצא לאקסל</value>
+  </data>
+  <data name="DBConnectionError" xml:space="preserve">
+    <value>לא ניתן להתחבר לבסיס הנתונים.</value>
+  </data>
+  <data name="HWNotReady" xml:space="preserve">
+    <value>לא כל הרכיבים מוכנים</value>
+  </data>
+  <data name="OperationCompleted" xml:space="preserve">
+    <value>פעולה הושלמה בהצלחה</value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>פעולה נכשלה</value>
+  </data>
+  <data name="BurningState" xml:space="preserve">
+    <value>צריבה</value>
+  </data>
+  <data name="MaintenanceState" xml:space="preserve">
+    <value>תחזוקה</value>
+  </data>
+  <data name="ReportState" xml:space="preserve">
+    <value>דיווח</value>
+  </data>
+  <data name="VerificationState" xml:space="preserve">
+    <value>אימות</value>
+  </data>
+  <data name="PlcIsBusy" xml:space="preserve">
+    <value>PLC תפוס.</value>
+  </data>
+  <data name="IdtError_FFFFFFFF" xml:space="preserve">
+    <value>שגיאת FCB, אנא אתחל FCB מחדש.</value>
+  </data>
+  <data name="PlcTimeout" xml:space="preserve">
+    <value>PLC לא הגיב ב {0} השניות האחרונות: תקשורת ניתקה.</value>
+  </data>
+  <data name="Debug" xml:space="preserve">
+    <value>דיבאג</value>
+  </data>
+  <data name="ExecutionMode" xml:space="preserve">
+    <value>מוד הרצה:</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>רגיל</value>
+  </data>
+  <data name="BurningEnded" xml:space="preserve">
+    <value>צריבת המידע על גבי המיכל בתושבת {0} הסתיימה.</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>אפס</value>
+  </data>
+  <data name="Application" xml:space="preserve">
+    <value>אפליקציה</value>
+  </data>
+  <data name="ConnectTo" xml:space="preserve">
+    <value>התחבר</value>
+  </data>
+  <data name="Hardware" xml:space="preserve">
+    <value>חומרה</value>
+  </data>
+  <data name="Station" xml:space="preserve">
+    <value>תחנה</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>קונפיגורציה</value>
+  </data>
+  <data name="BurningVerificationPrivileges" xml:space="preserve">
+    <value>הרשאות צריבה/אימות:</value>
+  </data>
+  <data name="Chassis" xml:space="preserve">
+    <value>תושבות</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>דומיין:</value>
+  </data>
+  <data name="InvalidUserNamePassword" xml:space="preserve">
+    <value>שם משתמש או סיסמא לא תקינים.</value>
+  </data>
+  <data name="ModelSupportPrivileges" xml:space="preserve">
+    <value>הרשאות מודל/תמיכה:</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>אשר</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>סיסמא:</value>
+  </data>
+  <data name="SendingClientCredential" xml:space="preserve">
+    <value>שולח פרטי לקוח...</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>שם משתמש:</value>
+  </data>
+  <data name="BatchNumbersReadSuccessfully" xml:space="preserve">
+    <value>מספרי האצוות נקראו בהצלחה.</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>חפש</value>
+  </data>
+  <data name="GeneratingReport" xml:space="preserve">
+    <value>מחולל דו"ח עבור אצווה {0}...</value>
+  </data>
+  <data name="ReadingBatchNumbers" xml:space="preserve">
+    <value>קורא את מספרי האצוות מבסיס הנתונים...</value>
+  </data>
+  <data name="ReportGeneratedSuccessfully" xml:space="preserve">
+    <value>הדו"ח עבור אצווה {0} חולל בהצלחה.</value>
+  </data>
+  <data name="ExportingToExcel" xml:space="preserve">
+    <value>מייצא דו"ח לקובץ {0}...</value>
+  </data>
+  <data name="ExportToExcelSucceeded" xml:space="preserve">
+    <value>הדו"ח יוצא לאקסל בהצלחה.</value>
+  </data>
+  <data name="CorrectionState" xml:space="preserve">
+    <value>תיקון</value>
+  </data>
+  <data name="CannotCorrectBlankTag" xml:space="preserve">
+    <value>התג ריק:
+אנא צרוב את התג במוד צריבה.</value>
+  </data>
+  <data name="CartridgeCannotBeRead" xml:space="preserve">
+    <value>מיכל הוכנס לתושבת {0} אינו קריא.</value>
+  </data>
+  <data name="OverrideTagConfirmation" xml:space="preserve">
+    <value>האם אתה בטוח שיש לדרוס את המידע שעל גבי התג?</value>
+  </data>
+  <data name="ContinueCorrection" xml:space="preserve">
+    <value>האם נותרו מיכלים נוספים לתיקון עבור מנה זו?</value>
+  </data>
+  <data name="Correcting" xml:space="preserve">
+    <value>מתקן....</value>
+  </data>
+  <data name="IdtError_CF0E" xml:space="preserve">
+    <value>לא ניתן לקבל נתונים מהתג.</value>
+  </data>
+  <data name="IdtError_E307" xml:space="preserve">
+    <value>שגיאה באתגר אימות.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>בטל</value>
+  </data>
+  <data name="ExportReportToExcel" xml:space="preserve">
+    <value>מייצא דו"ח לאקסל...</value>
+  </data>
+  <data name="FillingReport" xml:space="preserve">
+    <value>מייצר דו"ח...</value>
+  </data>
+  <data name="CorrectionFailed" xml:space="preserve">
+    <value>תיקון נכשל: חזרה למצב אדיש.</value>
+  </data>
+  <data name="NoCartridgesInLot" xml:space="preserve">
+    <value>לא נצרב במנה זו שום מיכל.
+האם לסיים את המנה בכל זאת?</value>
+  </data>
+  <data name="SignatureError" xml:space="preserve">
+    <value>שגיאה בחתימה על המידע.</value>
+  </data>
+</root>

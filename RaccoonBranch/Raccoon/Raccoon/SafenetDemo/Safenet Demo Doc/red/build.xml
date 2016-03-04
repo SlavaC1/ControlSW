@@ -1,0 +1,28 @@
+<project name="RED" default="compile_demo" basedir=".">
+  <description>
+    Ant build file for RED-App and demo project
+  </description>
+
+  <target name="compile_app" description="compile the RED-App source" depends="clean">
+    <mkdir dir="out/app"/>
+    <javac srcdir="src/app" destdir="out/app"/>
+  </target>
+
+  <!--target name="vmbuilder" description="" depends="compile_app">
+    <exec executable="../bin/windows/vmbuilder.exe">
+      <arg line="-v3 -n REDApp -c out/app -o out/app -l out/app/vmbuilder.log -i 16827 -p ffffff -f 0 -j 1 -u REDApp"/>
+    </exec>
+  </target-->
+
+  <target name="compile_demo" description="compile the RED-Demo source" depends="compile_app">
+    <exec executable="cl.exe" dir="out">
+      <!--arg line="/nologo ../src/red_demo.c ../src/REDApp_utils.c ../src/hasp_io_buffer.c ../src/libhasp_windows_demo.lib -D DEMOMA"/-->
+	  <arg line="/nologo ../src/red_demo.c ../src/REDApp_utils.c ../src/hasp_io_buffer.c ../src/libhasp_windows_92199.lib"/>
+    </exec>
+  </target>
+
+  <target name="clean" description="">
+    <delete failonerror="false" dir="out"/>
+  </target>
+
+</project>

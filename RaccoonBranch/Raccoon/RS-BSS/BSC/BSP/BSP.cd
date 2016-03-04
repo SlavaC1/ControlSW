@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CBS.BSP.TagInfoProviderService">
+    <Position X="6.25" Y="3" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="TagInfoProviderService" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CAAAAEIEAiAAGAAAMAAAAEAAAAiAAgAAgBiAABAIAAA=</HashCode>
+      <FileName>TagInfoProviderService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CBS.BSP.HsmService">
+    <Position X="0.75" Y="8.5" Width="1.75" />
+    <Members>
+      <Method Name="GetPublicKey" Hidden="true" />
+      <Method Name="HsmService" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABAAQAABIACAAAIAABABAIBAAAAAAAAAAAIAAIAAAAA=</HashCode>
+      <FileName>HsmService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CBS.BSP.VllService">
+    <Position X="0.75" Y="3" Width="1.75" />
+    <NestedTypes>
+      <Class Name="CBS.BSP.VllService.TagEqualityComparer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>VllService.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAAAAAAAAAAAABAAAAoAAAAAAAAAA=</HashCode>
+      <FileName>VllService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BSS.Contracts.ITagInfoProvider">
+    <Position X="6.25" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CBS.VLL.Contracts.IVll">
+    <Position X="0.75" Y="1.5" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Hsm.Contracts.IHsm">
+    <Position X="0.75" Y="6" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

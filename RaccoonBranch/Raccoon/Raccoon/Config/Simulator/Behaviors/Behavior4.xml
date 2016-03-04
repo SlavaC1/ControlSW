@@ -1,0 +1,51 @@
+<Simulator>
+  <Cartridges Count="16" state="1">
+    <Cartridge Num="7">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="8">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="9">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="10">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="11">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="12">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="13">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="14">
+      <State>0</State>
+    </Cartridge>
+    <Cartridge Num="15">
+      <State>0</State>
+    </Cartridge>
+  </Cartridges>
+ <Behavior>
+   <Method Name="UpdateConsumption" CartridgeID="0">
+      <ReturnValue>e110</ReturnValue>
+    </Method>
+   <Method Name="UpdateConsumption" CartridgeID="1">
+     <ReturnValue>e207</ReturnValue>
+   </Method>
+   <Method Name="UpdateConsumption" CartridgeID="2">
+     <ReturnValue>e400</ReturnValue>
+   </Method>
+   <Method Name="UpdateConsumption" CartridgeID="3">
+     <ReturnValue>e401</ReturnValue>
+   </Method>
+   <Method Name="UpdateConsumption" CartridgeID="4">
+     <ReturnValue>e402</ReturnValue>
+   </Method>
+   <Method Name="UpdateConsumption" CartridgeID="5">
+     <ReturnValue>6a80</ReturnValue>
+   </Method>
+  </Behavior>
+</Simulator>

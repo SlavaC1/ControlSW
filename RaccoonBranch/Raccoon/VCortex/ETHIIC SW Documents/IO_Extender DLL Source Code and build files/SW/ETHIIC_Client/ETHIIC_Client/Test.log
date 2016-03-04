@@ -1,0 +1,18 @@
+13727 [8200] TRACE IOX_logger <> - IOX_initDevice()
+13728 [8200] INFO IOX_logger <> - Sending INIT message, device name is ETHIIC-1
+14729 [8200] INFO IOX_logger <> - Retry INIT message
+14729 [8200] INFO IOX_logger <> - Sending INIT message, device name is ETHIIC-1
+15731 [8200] INFO IOX_logger <> - Retry INIT message
+15731 [8200] INFO IOX_logger <> - Sending INIT message, device name is ETHIIC-1
+16732 [8200] INFO IOX_logger <> - Retry INIT message
+19823 [8200] TRACE IOX_logger <> - IOX_getCommStat()
+19823 [8200] TRACE IOX_logger <> - handleToNum()
+5146 [6464] TRACE IOX_logger <> - IOX_initDevice()
+5146 [6464] INFO IOX_logger <> - Sending INIT message, device name is ETHIIC-1
+6148 [6464] INFO IOX_logger <> - Retry INIT message
+6148 [6464] INFO IOX_logger <> - Sending INIT message, device name is ETHIIC-1
+7148 [6464] INFO IOX_logger <> - Retry INIT message
+7148 [6464] INFO IOX_logger <> - Sending INIT message, device name is ETHIIC-1
+8149 [6464] INFO IOX_logger <> - Retry INIT message
+10485 [6464] TRACE IOX_logger <> - IOX_getCommStat()
+10485 [6464] TRACE IOX_logger <> - handleToNum()

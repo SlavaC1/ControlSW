@@ -1,0 +1,7 @@
+<Test>
+  <Scenario>
+    <InPlaceStatusModified ExpectedResults="0" Repeating="1" Timeout="900" Interval="1">
+      <PubKS>Keys\pubKS.key</PubKS>
+    </InPlaceStatusModified>
+  </Scenario>
+</Test>

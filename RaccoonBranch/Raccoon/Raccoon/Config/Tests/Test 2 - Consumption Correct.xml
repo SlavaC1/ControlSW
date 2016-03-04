@@ -1,0 +1,13 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>      
+    </AuthenticateCartridge>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>50</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+</Test>

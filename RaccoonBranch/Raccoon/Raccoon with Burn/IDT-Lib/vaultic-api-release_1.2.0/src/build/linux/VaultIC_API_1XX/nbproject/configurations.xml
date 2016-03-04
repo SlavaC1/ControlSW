@@ -1,0 +1,1272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="90">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f2" displayName="arch" projectFiles="true">
+      <logicalFolder name="f2" displayName="Header Files" projectFiles="true">
+        <itemPath>../../../arch/pc/shared/aardvark.h</itemPath>
+        <itemPath>../../../arch/pc/shared/cheetah.h</itemPath>
+        <itemPath>../../../arch/pc/shared/vaultic_spi_aardvark.h</itemPath>
+        <itemPath>../../../arch/pc/shared/vaultic_spi_cheetah.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="Source Files" projectFiles="true">
+        <itemPath>../../../arch/pc/shared/aardvark.c</itemPath>
+        <itemPath>../../../arch/pc/shared/vaultic_iso7816_protocol.c</itemPath>
+        <itemPath>../../../arch/pc/shared/vaultic_mem.c</itemPath>
+        <itemPath>../../../arch/pc/shared/vaultic_timer_delay.c</itemPath>
+        <itemPath>../../../arch/pc/shared/vaultic_twi_peripheral.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="f1" displayName="common" projectFiles="true">
+      <logicalFolder name="f1" displayName="Header Files" projectFiles="true">
+        <itemPath>../../../common/vaultic_apdu.h</itemPath>
+        <itemPath>../../../common/vaultic_block_protocol.h</itemPath>
+        <itemPath>../../../common/vaultic_cipher.h</itemPath>
+        <itemPath>../../../common/vaultic_cipher_tests.h</itemPath>
+        <itemPath>../../../common/vaultic_command.h</itemPath>
+        <itemPath>../../../common/vaultic_common.h</itemPath>
+        <itemPath>../../../common/vaultic_comms.h</itemPath>
+        <itemPath>../../../common/vaultic_crc16.h</itemPath>
+        <itemPath>../../../common/vaultic_err.h</itemPath>
+        <itemPath>../../../common/vaultic_main.h</itemPath>
+        <itemPath>../../../common/vaultic_mem.h</itemPath>
+        <itemPath>../../../common/vaultic_options.h</itemPath>
+        <itemPath>../../../common/vaultic_padding.h</itemPath>
+        <itemPath>../../../common/vaultic_peripheral.h</itemPath>
+        <itemPath>../../../common/vaultic_protocol.h</itemPath>
+        <itemPath>../../../common/vaultic_timer_delay.h</itemPath>
+        <itemPath>../../../common/vaultic_typedefs.h</itemPath>
+        <itemPath>../../../common/vaultic_utils.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Source Files" projectFiles="true">
+        <itemPath>../../../common/vaultic_block_protocol.c</itemPath>
+        <itemPath>../../../common/vaultic_command.c</itemPath>
+        <itemPath>../../../common/vaultic_comms.c</itemPath>
+        <itemPath>../../../common/vaultic_crc16.c</itemPath>
+        <itemPath>../../../common/vaultic_protocol.c</itemPath>
+        <itemPath>../../../common/vaultic_utils.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="f3" displayName="VaultIC_1XX_family" projectFiles="true">
+      <logicalFolder name="f1" displayName="Header Files" projectFiles="true">
+        <itemPath>../../../arch/pc/shared/aardvark_peripheral.h</itemPath>
+        <itemPath>../../../device/vaultic_4XX_family/vaultic_ApiLib.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_api.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_bigdigits.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_config.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_consts.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ecdsa_strong_authentication.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ff2n.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_id_key_aux.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_key_aux.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_lib.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_raw_key_aux.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_sha256.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_structs.h</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_version.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Source Files" projectFiles="true">
+        <itemPath>../../../arch/pc/shared/aardvark_peripheral.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_api.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_bigdigits.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ecsda_strong_authentication.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_ff2n.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_id_key_aux.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_key_aux.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_lib.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_raw_key_aux.c</itemPath>
+        <itemPath>../../../device/vaultic_1XX_family/vaultic_sha256.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>../../../device/vaultic_1XX_family</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+          </incDir>
+          <commandLine>-L/lib/ -lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>_DEBUG</Elem>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libvaultic_api_1xx.so</output>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/libvaultic_api_1xx.so.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../../arch/pc/shared/aardvark.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/cheetah.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_iso7816_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_mem.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_aardvark.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_cheetah.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_timer_delay.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_twi_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_apdu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_err.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_mem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_options.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_padding.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_timer_delay.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_typedefs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_config.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_consts.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_strong_authentication.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecsda_strong_authentication.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_structs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_version.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>../../../device/vaultic_1XX_family</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+          </incDir>
+          <commandLine>-L/lib/ -lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libvaultic_api_1xx.so</output>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/libvaultic_api_1xx.so.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../../arch/pc/shared/aardvark.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/cheetah.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_iso7816_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_mem.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_aardvark.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_cheetah.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_timer_delay.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_twi_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_apdu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_err.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_mem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_options.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_padding.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_timer_delay.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_typedefs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_config.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_consts.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_strong_authentication.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecsda_strong_authentication.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_structs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_version.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug_Static" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>true</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>../../../device/vaultic_1XX_family</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+          </incDir>
+          <commandLine>-L/usr/local/lib/ -lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>_DEBUG</Elem>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <archiverTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libvaultic_api_1xx.a</output>
+          <runRanlib>false</runRanlib>
+        </archiverTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/libvaultic_api_1xx.so.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../../arch/pc/shared/aardvark.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/cheetah.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_iso7816_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_mem.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_aardvark.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_cheetah.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_timer_delay.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_twi_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_apdu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_err.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_mem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_options.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_padding.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_timer_delay.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_typedefs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_config.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_consts.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_strong_authentication.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecsda_strong_authentication.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_structs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_version.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_4XX_family/vaultic_ApiLib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release_Static" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../../common</pElem>
+            <pElem>../../../arch/pc/shared</pElem>
+            <pElem>/usr/include/PCSC</pElem>
+            <pElem>../../../device/vaultic_1XX_family</pElem>
+            <pElem>/usr/local/include/PCSC</pElem>
+          </incDir>
+          <commandLine>-L/usr/local/lib/ -lpcsclite</commandLine>
+          <preprocessorList>
+            <Elem>_LINUX</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/libvaultic_api_1xx.a</output>
+        </archiverTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_PLATFORM}/${CND_CONF}/package/libvaultic_api_1xx.so.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="../../../arch/pc/shared/aardvark.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/aardvark_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/cheetah.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_iso7816_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_mem.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_aardvark.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_spi_cheetah.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_timer_delay.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../arch/pc/shared/vaultic_twi_peripheral.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_apdu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_block_protocol.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_cipher_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_command.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_comms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_crc16.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_err.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_mem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_options.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_padding.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_peripheral.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_protocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_timer_delay.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_typedefs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../../common/vaultic_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_api.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_bigdigits.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_config.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_consts.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_signer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecdsa_strong_authentication.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ecsda_strong_authentication.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_elliptic-ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_ff2n.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_id_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_lib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_raw_key_aux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_sha256.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_structs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_1XX_family/vaultic_version.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../../device/vaultic_4XX_family/vaultic_ApiLib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

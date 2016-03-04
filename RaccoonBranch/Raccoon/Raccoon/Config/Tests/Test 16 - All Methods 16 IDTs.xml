@@ -1,0 +1,200 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>1</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>2</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>3</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>4</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>5</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>6</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>7</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>8</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>9</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>10</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>11</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>12</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>13</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>14</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>15</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+  </Scenario>
+  <Scenario>
+    <GetInPlaceStatus ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+    </GetInPlaceStatus>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>1</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>2</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>3</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>4</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>5</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>6</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>7</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>8</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>9</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>10</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>11</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>12</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>13</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>14</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>15</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>1</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>2</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>3</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>4</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>5</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>6</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>7</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>8</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>9</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>10</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>11</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>12</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>13</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>14</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+    <UpdateConsumption ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>15</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+</Test>

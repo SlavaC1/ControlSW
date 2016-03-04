@@ -1,0 +1,7 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>      
+    </AuthenticateCartridge>
+  </Scenario>
+</Test>

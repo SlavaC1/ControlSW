@@ -1,0 +1,68 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+</Test>

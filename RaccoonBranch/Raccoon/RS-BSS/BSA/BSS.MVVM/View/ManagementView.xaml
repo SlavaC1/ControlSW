@@ -1,0 +1,267 @@
+﻿<UserControl x:Class="BSS.MVVM.View.ManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:linq="clr-namespace:System.Linq;assembly=System.Core"
+             xmlns:m="clr-namespace:BSS.MVVM.Model.BusinessLogic"
+             xmlns:entities="clr-namespace:BSS.Contracts;assembly=BSS.Contracts"
+             xmlns:idtsrv="clr-namespace:BSS.MVVM.Model.BusinessLogic.IdtSrv"
+             xmlns:ports="clr-namespace:System.IO.Ports;assembly=System"
+             xmlns:converters="clr-namespace:BSS.MVVM.View.Converters"
+             xmlns:properties="clr-namespace:BSS.MVVM.Properties"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ObjectDataProvider x:Key="BssStationValuesProvider" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="m:BssStation" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="ChassisNumbersProvider" MethodName="Range" ObjectType="{x:Type linq:Enumerable}">
+                <ObjectDataProvider.MethodParameters>
+                    <System:Int32>1</System:Int32>
+                    <System:Int32>8</System:Int32>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="MaterialGroupValuesProvider" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="entities:MaterialKind" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="IdtOperationValuesProvider" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="idtsrv:IdtOperationPrivileges" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="LanguagesProvider" MethodName="GetSupportedCultures" ObjectType="{x:Type m:ConfigurationParameters}">
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="ExecutionModeValuesProvider" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="m:ExecutionMode" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="SerialPortsProvider" MethodName="GetPortNames" ObjectType="{x:Type ports:SerialPort}">
+            </ObjectDataProvider>
+
+            <converters:ChassisConverter x:Key="ChassisConverter" />
+            <converters:DeviceSimulatorConverter x:Key="DeviceSimulatorConverter" />
+
+            <Style TargetType="GroupBox" BasedOn="{StaticResource {x:Type GroupBox}}">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="MaxWidth" Value="600" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border Grid.IsSharedSizeScope="True" LocalizationScope.ResourceManager="{ResourceManager properties:Resources}">
+        <GroupBox HorizontalAlignment="Left" Header="{Loc Configuration}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Row="0" Header="{Loc Station}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Property" />
+                                <ColumnDefinition SharedSizeGroup="Value" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc StationType}" />
+                            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc StationName}" />
+
+                            <ComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueComboBox}"
+                                      DataContext="{Binding LocalParameters}"
+                                      ItemsSource="{Binding Source={StaticResource BssStationValuesProvider}}"
+                                      SelectedItem="{Binding StationType, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Converter={StaticResource TextToLocalizedConverter}}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueTextBox}"
+                                     DataContext="{Binding LocalParameters}"
+                                     Text="{Binding StationName, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Header="{Loc Chassis}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Property" />
+                                <ColumnDefinition SharedSizeGroup="Value" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc ChassisCount}" />
+                            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc ModelSupportPrivileges}" />
+                            <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc BurningVerificationPrivileges}" />
+
+                            <ComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueComboBox}"
+                                      DataContext="{Binding LocalParameters}"
+                                      ItemsSource="{Binding Source={StaticResource ChassisNumbersProvider}}"
+                                      SelectedItem="{Binding ChassisCount, UpdateSourceTrigger=PropertyChanged}">
+                            </ComboBox>
+                            <ItemsControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AlternationCount="8"
+                                          ItemsSource="{Binding ChassisPrivileges}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="Property" />
+                                                <ColumnDefinition SharedSizeGroup="Value" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Style="{StaticResource PropertyLabel}"
+                                                   Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
+                                                                     Path=(ItemsControl.AlternationIndex),
+                                                                     Converter={StaticResource ChassisConverter}}" />
+                                            <ComboBox Grid.Column="1" Style="{StaticResource ValueComboBox}"
+                                                      ItemsSource="{Binding Source={StaticResource MaterialGroupValuesProvider}}"
+                                                      SelectedItem="{Binding MaterialKind, UpdateSourceTrigger=PropertyChanged}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <ItemsControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" AlternationCount="8"
+                                          ItemsSource="{Binding ChassisPrivileges}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" SharedSizeGroup="Property" />
+                                                <ColumnDefinition SharedSizeGroup="Value" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Style="{StaticResource PropertyLabel}"
+                                                   Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
+                                                                     Path=(ItemsControl.AlternationIndex),
+                                                                     Converter={StaticResource ChassisConverter}}" />
+                                            <ComboBox Grid.Column="1" Style="{StaticResource ValueComboBox}"
+                                                      ItemsSource="{Binding Source={StaticResource IdtOperationValuesProvider}}"
+                                                      SelectedItem="{Binding Operation, UpdateSourceTrigger=PropertyChanged}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="2" Header="{Loc Application}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Property" />
+                                <ColumnDefinition SharedSizeGroup="Value" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc Language}" />
+                            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc ExecutionMode}" />
+
+                            <ComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueComboBox}"
+                                      DataContext="{Binding LocalParameters}"
+                                      ItemsSource="{Binding Source={StaticResource LanguagesProvider}}"
+                                      SelectedItem="{Binding Culture, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding NativeName}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueComboBox}"
+                                      DataContext="{Binding LocalParameters}"
+                                      ItemsSource="{Binding Source={StaticResource ExecutionModeValuesProvider}}"
+                                      SelectedItem="{Binding ExecutionMode, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Converter={StaticResource TextToLocalizedConverter}}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="3" Header="{Loc Hardware}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                                <RowDefinition Height="Auto" SharedSizeGroup="Row" />
+                                <RowDefinition>
+                                    <RowDefinition.Style>
+                                        <Style TargetType="RowDefinition">
+                                            <Setter Property="Height" Value="Auto" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding LocalParameters.UsePlcSimulator}" Value="True">
+                                                    <Setter Property="Height" Value="0" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </RowDefinition.Style>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Property" />
+                                <ColumnDefinition SharedSizeGroup="Value" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc InPlaceStatusInterval}" />
+                            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc PlcMode}" />
+                            <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource PropertyLabel}" Content="{Loc PlcPort}" />
+
+                            <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueTextBox}"
+                                     DataContext="{Binding LocalParameters}"
+                                     Text="{Binding InPlaceStatusInterval, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, Converter={StaticResource TimeSpanConverter}}" />
+                            <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabel}"
+                                   DataContext="{Binding LocalParameters}"
+                                   Content="{Binding UsePlcSimulator, Converter={StaticResource DeviceSimulatorConverter}}" />
+                            <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource ValueComboBox}"
+                                      DataContext="{Binding LocalParameters}"
+                                      ItemsSource="{Binding Source={StaticResource SerialPortsProvider}}"
+                                      SelectedItem="{Binding PlcPort, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                    </GroupBox>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="{Loc Apply}" Command="{Binding ApplyParametersCommand}" />
+                        <Button Grid.Column="1" Content="{Loc Revert}" Command="{Binding RevertCommand}" />
+                        <Button Grid.Column="2" Content="{Loc Reset}" Command="{Binding ResetCommand}" />
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </GroupBox>
+    </Border>
+</UserControl>

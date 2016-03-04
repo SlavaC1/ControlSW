@@ -1,0 +1,36 @@
+<Test>
+  <Scenario>
+    <ResetCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+    </ResetCartridge>
+  </Scenario>
+
+  <Scenario>
+    <BurnSignedIdd ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <TagStructID>1</TagStructID>
+      <MaterialType>430</MaterialType>
+      <MfgDateTime>01/08/2014 13:00:04</MfgDateTime>
+      <BatchNo>MTL64890</BatchNo>
+      <InitialWeight>3600</InitialWeight>
+      <ExpirationDate>01/08/2017 13:00:04</ExpirationDate>
+      <ExtraWeight>180</ExtraWeight>
+      <PrvKS>Keys\prvKS.key</PrvKS>
+    </BurnSignedIdd>
+  </Scenario>
+  
+  <Scenario>
+    <UpdateConsumption ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>199996220</Consumption>
+      <Skip>1</Skip>
+    </UpdateConsumption>
+  </Scenario>
+
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+  </Scenario>
+</Test>

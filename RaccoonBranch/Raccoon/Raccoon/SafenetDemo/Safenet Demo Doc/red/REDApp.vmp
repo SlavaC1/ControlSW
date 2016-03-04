@@ -1,0 +1,6 @@
+-v3
+-n REDApp
+-o D:\Views\Stratasys\branches\SafeNet\red\out
+-c D:\Views\Stratasys\branches\SafeNet\red\out\app
+REDApp$Tag
+REDApp

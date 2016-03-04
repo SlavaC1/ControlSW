@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.BssState">
+    <Position X="7.75" Y="2" Width="2" />
+    <Members>
+      <Method Name="BssState" Hidden="true" />
+      <Method Name="CanSwitchState" Hidden="true" />
+      <Method Name="IsCartridgeRemovalRequired" Hidden="true" />
+      <Method Name="IsExitAllowed" Hidden="true" />
+      <Method Name="IsHWPrepared" Hidden="true" />
+      <Method Name="IsLotRequired" Hidden="true" />
+      <Method Name="Prepare" Hidden="true" />
+      <Method Name="Shutdown" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAABAAAIAQAAQEAAAAABASAAAAAAAAQAAAIAAAEAIAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\BssState.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StateID" />
+      <Property Name="StationType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.BurningState" Collapsed="true">
+    <Position X="4.5" Y="12" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAIAAAAREAAAAAAAQAAAAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\BurningState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.CorrectionState" Collapsed="true">
+    <Position X="7" Y="12" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAIAAAAREAAAAAAAQAAAAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\CorrectionState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.IdleState" Collapsed="true">
+    <Position X="2.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAEAAAAAAAAAAAAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\IdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.IdtOperationState">
+    <Position X="6.75" Y="6.5" Width="2.25" />
+    <Members>
+      <Field Name="communicationsManager" Hidden="true" />
+      <Method Name="IdtOperationState" Hidden="true" />
+      <Field Name="idtOperator" Hidden="true" />
+      <Method Name="OnTerminated" Hidden="true" />
+      <Method Name="Prepare" Hidden="true" />
+      <Method Name="Shutdown" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAQQAAAAEAASIAAAAAAAAAAAAgAAAEMAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\IdtOperationState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.IdtOperationState&lt;T&gt;">
+    <Position X="7" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\IdtOperationState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.ManagementState" Collapsed="true">
+    <Position X="9.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAEAAAAAAAAAAAAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\ManagementState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.ReportState" Collapsed="true">
+    <Position X="4.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAEAAAAAAAAIAAAAAAAQAAAAAAAEAIAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\ReportState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.StatesManager">
+    <Position X="2.5" Y="1.75" Width="2.75" />
+    <Members>
+      <Field Name="allStates" Hidden="true" />
+      <Method Name="AreCartridgesInsertedUnintentionally" Hidden="true" />
+      <Field Name="currentState" Hidden="true" />
+      <Field Name="mainModel" Hidden="true" />
+      <Method Name="OnCurrentStateChanged" Hidden="true" />
+      <Field Name="skipUserConfirmation" Hidden="true" />
+      <Method Name="StartLot" Hidden="true" />
+      <Method Name="StatesManager" Hidden="true" />
+      <Field Name="userConfirmationPredicate" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BIAAAEAEgCAAlAAAIDAAIiMAAAAAIAAAOAIACAGAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\StatesManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CurrentState" />
+      <Property Name="PreviousState" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.VerificationState" Collapsed="true">
+    <Position X="9.25" Y="12" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAIAQAAAEAAAAAAAAAAAAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\VerificationState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.States.IdtNonOperationState" Collapsed="true">
+    <Position X="5.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAQAAAAAAAASAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Model\BusinessLogic\States\IdtNonOperationState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BSS.MVVM.Model.BusinessLogic.States.BssStateID">
+    <Position X="11" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAEAAAAAAAAAAAAAAACAAAAAAAAABABAE=</HashCode>
+      <FileName>Model\BusinessLogic\States\BssState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BSS.MVVM.Model.BusinessLogic.BssStation">
+    <Position X="11" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\ConfigurationParameters.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

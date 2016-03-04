@@ -1,0 +1,15 @@
+; command file for vmbuilder
+
+-v3
+-u1
+-n ECCK283
+-j 1
+-c .\java_sample\build\classes\apps
+-o .\java_sample\out
+-s .\java_sample\src\apps
+-l .\java_sample\out\ECCK283.log
+-k .\java_sample\out\ECCK283.h
+; classes to load
+ECCK283
+
+

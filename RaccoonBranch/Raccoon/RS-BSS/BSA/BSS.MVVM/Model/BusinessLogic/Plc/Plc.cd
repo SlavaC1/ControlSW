@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BSS.MVVM.Model.BusinessLogic.Plc.PlcBase">
+    <Position X="4.75" Y="2.5" Width="2" />
+    <Members>
+      <Method Name="GetTrafficLightColor" Hidden="true" />
+      <Method Name="Init" Hidden="true" />
+      <Field Name="isDeviceReady" Hidden="true" />
+      <Method Name="IsReady" Hidden="true" />
+      <Event Name="IsReadyChanged" Hidden="true" />
+      <Method Name="OnIsReadyChanged" Hidden="true" />
+      <Method Name="PlcBase" Hidden="true" />
+      <Method Name="SetTrafficLightColor" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAASgAABAAAAABAAABIQAAAAAAACEACAgAAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\Plc\PlcBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.Plc.PlcDeviceWrapper">
+    <Position X="3.25" Y="5.75" Width="2.25" />
+    <Members>
+      <Field Name="asyncLock" Hidden="true" />
+      <Field Name="BuzzerRegisterAddress" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="DisposeModbusSerialMaster" Hidden="true" />
+      <Method Name="GetTrafficLightColor" Hidden="true" />
+      <Method Name="GetTrafficLightColorInternal" Hidden="true" />
+      <Method Name="Init" Hidden="true" />
+      <Method Name="InitInternal" Hidden="true" />
+      <Method Name="InvokePlcInternal" Hidden="true" />
+      <Method Name="InvokePlcTask" Hidden="true" />
+      <Field Name="modbusSerialMaster" Hidden="true" />
+      <Method Name="PlcDeviceWrapper" Hidden="true" />
+      <Method Name="ResetInternal" Hidden="true" />
+      <Method Name="SetTrafficLightColor" Hidden="true" />
+      <Method Name="SetTrafficLightColorInternal" Hidden="true" />
+      <Field Name="slaveAddress" Hidden="true" />
+      <Field Name="TrafficLightsRegisterAddress" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Struct Name="BSS.MVVM.Model.BusinessLogic.Plc.PlcDeviceWrapper.SetTrafficLightColorArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Model\BusinessLogic\Plc\PlcDeviceWrapper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEICAAACCAABAgAIABgAAACCAGBgAAAEQACAgAAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\Plc\PlcDeviceWrapper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.MVVM.Model.BusinessLogic.Plc.PlcSimulator">
+    <Position X="6.5" Y="5.75" Width="1.75" />
+    <Members>
+      <Method Name="GetTrafficLightColor" Hidden="true" />
+      <Method Name="Init" Hidden="true" />
+      <Method Name="PlcSimulator" Hidden="true" />
+      <Method Name="SetTrafficLightColor" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAABAAAAAAAAAAAAAAAAAAAAAACAgAAgAA=</HashCode>
+      <FileName>Model\BusinessLogic\Plc\PlcSimulator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BSS.MVVM.Model.BusinessLogic.Plc.IPlc">
+    <Position X="2.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAASAAABAAAAAAAAAAAAAAAAAAACAACAgAAAAA=</HashCode>
+      <FileName>Model\BusinessLogic\Plc\IPlc.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

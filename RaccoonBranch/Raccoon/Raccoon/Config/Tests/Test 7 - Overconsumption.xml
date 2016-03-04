@@ -1,0 +1,14 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0">
+      <CartridgeNum>0</CartridgeNum>
+      <PubKS>Keys\pubKS.key</PubKS>
+    </AuthenticateCartridge>
+  </Scenario>
+  <Scenario>
+    <UpdateConsumption ExpectedResults="e402">
+      <CartridgeNum>0</CartridgeNum>
+      <Consumption>1234567890</Consumption>
+    </UpdateConsumption>
+  </Scenario>
+</Test>

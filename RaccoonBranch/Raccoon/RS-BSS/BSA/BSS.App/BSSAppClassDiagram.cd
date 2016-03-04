@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BSS.App.ViewModel.MainViewModel">
+    <Position X="10.5" Y="2.25" Width="2.25" />
+    <Members>
+      <Method Name="AskUser" Hidden="true" />
+      <Method Name="Cleanup" Hidden="true" />
+      <Method Name="ConvertIdtSrvMessage" Hidden="true" />
+      <Method Name="ExitState" Hidden="true" />
+      <Method Name="HandleCurrentStateChanged" Hidden="true" />
+      <Field Name="IdtSrvPrefix" Hidden="true" />
+      <Method Name="InitLogger" Hidden="true" />
+      <Field Name="log" Hidden="true" />
+      <Method Name="MainViewModel" Hidden="true" />
+      <Method Name="RegisterMessage" Hidden="true" />
+      <Method Name="RegisterMessages" Hidden="true" />
+      <Field Name="selectedViewModel" Hidden="true" />
+      <Field Name="status" Hidden="true" />
+      <Method Name="TransitState" Hidden="true" />
+      <Field Name="viewModels" Hidden="true" />
+      <Method Name="WriteMessageToLog" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAQAAAgFCCAAAAAQgDVgCJAABAiAAAABEIIAAUIAIAA=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BSS.App.ViewModel.ViewModelLocator">
+    <Position X="14.5" Y="2.25" Width="1.75" />
+    <Members>
+      <Field Name="main" Hidden="true" />
+      <Method Name="ViewModelLocator" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAQ=</HashCode>
+      <FileName>ViewModel\ViewModelLocator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Main" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.IdtOperationViewModel&lt;T&gt;">
+    <Position X="7.25" Y="9" Width="2" />
+    <Members>
+      <Method Name="IdtOperationViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.BSSViewModel">
+    <Position X="7.25" Y="2.25" Width="2" />
+    <Members>
+      <Method Name="BSSViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.LogViewModel">
+    <Position X="14.5" Y="5.5" Width="1.75" />
+    <Members>
+      <Method Name="LogViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.IdtIdleViewModel">
+    <Position X="10.75" Y="7" Width="2" />
+    <Members>
+      <Method Name="IdtIdleViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.LotViewModel">
+    <Position X="14.5" Y="3.5" Width="1.75" />
+    <Members>
+      <Method Name="LotViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.ReportingViewModel">
+    <Position X="10.75" Y="8.75" Width="2.25" />
+    <Members>
+      <Method Name="ReportingViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.BurningPaneViewModel">
+    <Position X="13.25" Y="7" Width="3" />
+    <Members>
+      <Method Name="BurningPaneViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.IdtBurningViewModel">
+    <Position X="7" Y="12.5" Width="2.5" />
+    <Members>
+      <Method Name="IdtBurningViewModel" Hidden="true" />
+      <Property Name="Step" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.IdtReadingViewModel">
+    <Position X="7" Y="10.75" Width="2.5" />
+    <Members>
+      <Method Name="IdtReadingViewModel" Hidden="true" />
+      <Property Name="Step" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.IdtCorrectionViewModel">
+    <Position X="10.75" Y="12.75" Width="2.5" />
+    <Members>
+      <Method Name="IdtCorrectionViewModel" Hidden="true" />
+      <Property Name="Step" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BSS.MVVM.ViewModel.IdtOperationViewModel">
+    <Position X="7.25" Y="5.75" Width="2" />
+    <Members>
+      <Field Name="communicationsManager" Hidden="true" />
+      <Field Name="currentCartridgeNumber" Hidden="true" />
+      <Method Name="IdtOperationViewModel" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

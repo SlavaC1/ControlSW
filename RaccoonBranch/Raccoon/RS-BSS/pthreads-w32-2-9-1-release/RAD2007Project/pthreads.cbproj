@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{69b9c4cb-6640-41fe-a378-19e4ca76d3c3}</ProjectGuid>
+    <Config Condition="'$(Config)'==''">Debug</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <OutputExt>lib</OutputExt>
+    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+    <Defines>NO_STRICT;PTW32_STATIC_LIB</Defines>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <BCC_weff>false</BCC_weff>
+    <BCC_wrch>false</BCC_wrch>
+    <ProjectType>CppStaticLibrary</ProjectType>
+    <PackageImports>rtl.bpi;vcl.bpi;Objet.bpi;Python_d7.bpi;vclx.bpi;dbrtl.bpi;Rave75VCL.bpi;bdertl.bpi;bcbie.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;vcldb.bpi;vcldbx.bpi;dsnap.bpi;dsnapcon.bpi;teeUI.bpi;tee.bpi;teedb.bpi;vclib.bpi;ibxpress.bpi;adortl.bpi;dbxcds.bpi;dbexpress.bpi;DbxCommonDriver.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;IntrawebDB_90_100.bpi;Intraweb_90_100.bpi;VclSmp.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;JclDeveloperTools.bpi;Jcl.bpi;JclVcl.bpi;JclContainers.bpi</PackageImports>
+    <BCC_wpar>false</BCC_wpar>
+    <IncludePath>$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\..\pthreads-w32-2-9-1-release</IncludePath>
+    <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
+    <Multithreaded>true</Multithreaded>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_Optimize>false</DCC_Optimize>
+    <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+    <Defines>_DEBUG;$(Defines)</Defines>
+    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+    <DCC_Define>DEBUG</DCC_Define>
+    <BCC_PCHWithExternalTypeFiles>false</BCC_PCHWithExternalTypeFiles>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <FinalOutputDir>.</FinalOutputDir>
+    <BCC_SmartPCHCache>false</BCC_SmartPCHCache>
+    <IntermediateOutputDir>Debug</IntermediateOutputDir>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <BCC_PCHUsage>None</BCC_PCHUsage>
+    <TLIB_PageSize>64</TLIB_PageSize>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <TASM_Debugging>Full</TASM_Debugging>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <Defines>NDEBUG;$(Defines)</Defines>
+    <IntermediateOutputDir>Release</IntermediateOutputDir>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <TASM_Debugging>None</TASM_Debugging>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppStaticLibrary</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1033</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">2</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\..\pthreads-w32-2-9-1-release</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlDefines><HistoryLists_hlDefines Name="Count">1</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item0">NO_STRICT;PTW32_STATIC_LIB</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item1">NO_STRICT;PTW32_STATIC_LIB;__MINGW64__</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item2">NO_STRICT;PTW32_STATIC_LIB;__CLEANUP_C</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item3">NO_STRICT;PTW32_STATIC_LIB;__CLEANUP_CXX</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item4">NO_STRICT</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item5">NO_STRICT;__MSVCRT__</HistoryLists_hlDefines></HistoryLists_hlDefines><HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength></HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlTLIB_PageSize><HistoryLists_hlTLIB_PageSize Name="Count">3</HistoryLists_hlTLIB_PageSize><HistoryLists_hlTLIB_PageSize Name="Item0">64</HistoryLists_hlTLIB_PageSize><HistoryLists_hlTLIB_PageSize Name="Item1">32</HistoryLists_hlTLIB_PageSize><HistoryLists_hlTLIB_PageSize Name="Item2">16</HistoryLists_hlTLIB_PageSize></HistoryLists_hlTLIB_PageSize><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">.</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <CppCompile Include="..\attr.c">
+      <BuildOrder>1</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\autostatic.c">
+      <BuildOrder>2</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\barrier.c">
+      <BuildOrder>3</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\cancel.c">
+      <BuildOrder>4</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\cleanup.c">
+      <BuildOrder>5</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\condvar.c">
+      <BuildOrder>6</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\create.c">
+      <BuildOrder>7</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\dll.c">
+      <BuildOrder>8</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\errno.c">
+      <BuildOrder>9</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\exit.c">
+      <BuildOrder>10</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\fork.c">
+      <BuildOrder>11</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\global.c">
+      <BuildOrder>12</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\misc.c">
+      <BuildOrder>13</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\mutex.c">
+      <BuildOrder>14</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\nonportable.c">
+      <BuildOrder>15</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\private.c">
+      <BuildOrder>16</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread.c">
+      <BuildOrder>17</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_destroy.c">
+      <BuildOrder>18</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_getdetachstate.c">
+      <BuildOrder>19</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_getinheritsched.c">
+      <BuildOrder>20</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_getschedparam.c">
+      <BuildOrder>21</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_getschedpolicy.c">
+      <BuildOrder>22</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_getscope.c">
+      <BuildOrder>23</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_getstackaddr.c">
+      <BuildOrder>24</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_getstacksize.c">
+      <BuildOrder>25</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_init.c">
+      <BuildOrder>26</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_setdetachstate.c">
+      <BuildOrder>27</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_setinheritsched.c">
+      <BuildOrder>28</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_setschedparam.c">
+      <BuildOrder>29</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_setschedpolicy.c">
+      <BuildOrder>30</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_setscope.c">
+      <BuildOrder>31</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_setstackaddr.c">
+      <BuildOrder>32</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_attr_setstacksize.c">
+      <BuildOrder>33</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_barrierattr_destroy.c">
+      <BuildOrder>37</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_barrierattr_getpshared.c">
+      <BuildOrder>38</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_barrierattr_init.c">
+      <BuildOrder>39</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_barrierattr_setpshared.c">
+      <BuildOrder>40</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_barrier_destroy.c">
+      <BuildOrder>34</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_barrier_init.c">
+      <BuildOrder>35</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_barrier_wait.c">
+      <BuildOrder>36</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_cancel.c">
+      <BuildOrder>41</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_condattr_destroy.c">
+      <BuildOrder>46</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_condattr_getpshared.c">
+      <BuildOrder>47</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_condattr_init.c">
+      <BuildOrder>48</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_condattr_setpshared.c">
+      <BuildOrder>49</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_cond_destroy.c">
+      <BuildOrder>42</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_cond_init.c">
+      <BuildOrder>43</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_cond_signal.c">
+      <BuildOrder>44</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_cond_wait.c">
+      <BuildOrder>45</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_delay_np.c">
+      <BuildOrder>50</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_detach.c">
+      <BuildOrder>51</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_equal.c">
+      <BuildOrder>52</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_exit.c">
+      <BuildOrder>53</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_getconcurrency.c">
+      <BuildOrder>54</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_getschedparam.c">
+      <BuildOrder>55</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_getspecific.c">
+      <BuildOrder>56</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_getunique_np.c">
+      <BuildOrder>57</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_getw32threadhandle_np.c">
+      <BuildOrder>58</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_join.c">
+      <BuildOrder>59</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_key_create.c">
+      <BuildOrder>60</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_key_delete.c">
+      <BuildOrder>61</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_kill.c">
+      <BuildOrder>62</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_destroy.c">
+      <BuildOrder>70</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_getkind_np.c">
+      <BuildOrder>71</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_getpshared.c">
+      <BuildOrder>72</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_getrobust.c">
+      <BuildOrder>73</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_gettype.c">
+      <BuildOrder>74</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_init.c">
+      <BuildOrder>75</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_setkind_np.c">
+      <BuildOrder>76</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_setpshared.c">
+      <BuildOrder>77</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_setrobust.c">
+      <BuildOrder>78</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutexattr_settype.c">
+      <BuildOrder>79</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutex_consistent.c">
+      <BuildOrder>63</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutex_destroy.c">
+      <BuildOrder>64</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutex_init.c">
+      <BuildOrder>65</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutex_lock.c">
+      <BuildOrder>66</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutex_timedlock.c">
+      <BuildOrder>67</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutex_trylock.c">
+      <BuildOrder>68</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_mutex_unlock.c">
+      <BuildOrder>69</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_num_processors_np.c">
+      <BuildOrder>80</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_once.c">
+      <BuildOrder>81</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlockattr_destroy.c">
+      <BuildOrder>91</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlockattr_getpshared.c">
+      <BuildOrder>92</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlockattr_init.c">
+      <BuildOrder>93</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlockattr_setpshared.c">
+      <BuildOrder>94</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_destroy.c">
+      <BuildOrder>82</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_init.c">
+      <BuildOrder>83</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_rdlock.c">
+      <BuildOrder>84</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_timedrdlock.c">
+      <BuildOrder>85</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_timedwrlock.c">
+      <BuildOrder>86</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_tryrdlock.c">
+      <BuildOrder>87</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_trywrlock.c">
+      <BuildOrder>88</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_unlock.c">
+      <BuildOrder>89</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_rwlock_wrlock.c">
+      <BuildOrder>90</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_self.c">
+      <BuildOrder>95</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_setcancelstate.c">
+      <BuildOrder>96</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_setcanceltype.c">
+      <BuildOrder>97</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_setconcurrency.c">
+      <BuildOrder>98</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_setschedparam.c">
+      <BuildOrder>99</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_setspecific.c">
+      <BuildOrder>100</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_spin_destroy.c">
+      <BuildOrder>101</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_spin_init.c">
+      <BuildOrder>102</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_spin_lock.c">
+      <BuildOrder>103</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_spin_trylock.c">
+      <BuildOrder>104</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_spin_unlock.c">
+      <BuildOrder>105</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_testcancel.c">
+      <BuildOrder>106</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_timechange_handler_np.c">
+      <BuildOrder>107</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\pthread_win32_attach_detach_np.c">
+      <BuildOrder>108</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_calloc.c">
+      <BuildOrder>109</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_callUserDestroyRoutines.c">
+      <BuildOrder>110</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_cond_check_need_init.c">
+      <BuildOrder>111</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_getprocessors.c">
+      <BuildOrder>112</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_is_attr.c">
+      <BuildOrder>113</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_MCS_lock.c">
+      <BuildOrder>114</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_mutex_check_need_init.c">
+      <BuildOrder>115</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_new.c">
+      <BuildOrder>116</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_processInitialize.c">
+      <BuildOrder>117</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_processTerminate.c">
+      <BuildOrder>118</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_relmillisecs.c">
+      <BuildOrder>119</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_reuse.c">
+      <BuildOrder>120</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_rwlock_cancelwrwait.c">
+      <BuildOrder>121</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_rwlock_check_need_init.c">
+      <BuildOrder>122</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_semwait.c">
+      <BuildOrder>123</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_spinlock_check_need_init.c">
+      <BuildOrder>124</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_threadDestroy.c">
+      <BuildOrder>125</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_threadStart.c">
+      <BuildOrder>126</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_throw.c">
+      <BuildOrder>127</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_timespec.c">
+      <BuildOrder>128</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_tkAssocCreate.c">
+      <BuildOrder>129</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\ptw32_tkAssocDestroy.c">
+      <BuildOrder>130</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\rwlock.c">
+      <BuildOrder>131</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sched.c">
+      <BuildOrder>132</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sched_getscheduler.c">
+      <BuildOrder>135</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sched_get_priority_max.c">
+      <BuildOrder>133</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sched_get_priority_min.c">
+      <BuildOrder>134</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sched_setscheduler.c">
+      <BuildOrder>136</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sched_yield.c">
+      <BuildOrder>137</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\semaphore.c">
+      <BuildOrder>149</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_close.c">
+      <BuildOrder>138</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_destroy.c">
+      <BuildOrder>139</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_getvalue.c">
+      <BuildOrder>140</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_init.c">
+      <BuildOrder>141</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_open.c">
+      <BuildOrder>142</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_post.c">
+      <BuildOrder>143</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_post_multiple.c">
+      <BuildOrder>144</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_timedwait.c">
+      <BuildOrder>145</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_trywait.c">
+      <BuildOrder>146</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_unlink.c">
+      <BuildOrder>147</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sem_wait.c">
+      <BuildOrder>148</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\signal.c">
+      <BuildOrder>150</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\spin.c">
+      <BuildOrder>151</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\sync.c">
+      <BuildOrder>152</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\tsd.c">
+      <BuildOrder>153</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\w32_CancelableWait.c">
+      <BuildOrder>0</BuildOrder>
+    </CppCompile>
+    <BuildConfiguration Include="Debug">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,152 @@
+﻿<Window x:Class="BSS.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.ignore.com"
+        xmlns:threading="clr-namespace:System.Windows.Threading;assembly=WindowsBase"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:converters="clr-namespace:BSS.App.Converters"
+        xmlns:view="clr-namespace:BSS.MVVM.View;assembly=BSS.MVVM"
+        xmlns:model="clr-namespace:BSS.MVVM.Model.BusinessLogic;assembly=BSS.MVVM"
+        xmlns:states="clr-namespace:BSS.MVVM.Model.BusinessLogic.States;assembly=BSS.MVVM"
+        mc:Ignorable="d ignore"
+        Title="{Loc AppName}"
+        Background="{StaticResource WindowBackgroundBrush}"
+        Icon="Resources/App.png"
+        MinWidth="{DynamicResource AppMinWidth}"
+        WindowState="Maximized"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <threading:DispatcherTimer x:Key="timer" Tick="DispatcherTimer_Tick" Interval="0:0:1" />
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ToolBar Grid.Row="0" Grid.Column="0">
+            <Image Source="{StaticResource Logo}" />
+        </ToolBar>
+
+        <DockPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+
+            <ToolBar DockPanel.Dock="Right">
+                <Label Name="lblCurrentTime" FontSize="36" VerticalContentAlignment="Center" Margin="6,2" />
+            </ToolBar>
+
+            <ToolBar>
+                <ToolBar.Resources>
+                    <converters:EqualityConverter x:Key="EqualityConverter" />
+                    <Style x:Key="ToolBarRadioButtonStyle" TargetType="RadioButton">
+                        <Setter Property="Command" Value="{Binding SelectModeCommand}" />
+                        <Setter Property="ToolTipService.ShowOnDisabled" Value="True" />
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToolBar.Resources>
+
+                <RadioButton x:Name="rdbIdle" CommandParameter="{x:Static states:BssStateID.Idle}" ToolTip="{Loc IdleMode}"
+                             Style="{StaticResource ToolBarRadioButtonStyle}"
+                             IsChecked="{Binding CurrentSystemState.StateID, Mode=OneWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static states:BssStateID.Idle}}"
+                             Content="{StaticResource IdleModeImage}" />
+
+                <RadioButton CommandParameter="{x:Static states:BssStateID.Burning}" ToolTip="{Loc BurningMode}"
+                             Style="{StaticResource ToolBarRadioButtonStyle}"
+                             IsChecked="{Binding CurrentSystemState.StateID, Mode=OneWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static states:BssStateID.Burning}}"
+                             Content="{StaticResource BurningModeImage}" />
+
+                <RadioButton CommandParameter="{x:Static states:BssStateID.Correction}" ToolTip="{Loc CorrectionMode}"
+                             Style="{StaticResource ToolBarRadioButtonStyle}"
+                             IsChecked="{Binding CurrentSystemState.StateID, Mode=OneWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static states:BssStateID.Correction}}"
+                             Content="{StaticResource CorrectionModeImage}" />
+
+                <RadioButton CommandParameter="{x:Static states:BssStateID.Verification}" ToolTip="{Loc VerificationMode}"
+                             Style="{StaticResource ToolBarRadioButtonStyle}"
+                             IsChecked="{Binding CurrentSystemState.StateID, Mode=OneWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static states:BssStateID.Verification}}"
+                             Content="{StaticResource VerificationModeImage}" />
+                <Separator Visibility="{Binding Visibility, ElementName=rdbIdle}" />
+
+                <RadioButton x:Name="rdbReport" CommandParameter="{x:Static states:BssStateID.Report}" ToolTip="{Loc ReportingMode}"
+                             Style="{StaticResource ToolBarRadioButtonStyle}"
+                             IsChecked="{Binding CurrentSystemState.StateID, Mode=OneWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static states:BssStateID.Report}}"
+                             Content="{StaticResource ReportingModeImage}" />
+
+                <RadioButton CommandParameter="{x:Static states:BssStateID.Management}" ToolTip="{Loc MaintenanceMode}"
+                             Style="{StaticResource ToolBarRadioButtonStyle}"
+                             IsChecked="{Binding CurrentSystemState.StateID, Mode=OneWay, Converter={StaticResource EqualityConverter}, ConverterParameter={x:Static states:BssStateID.Management}}"
+                             Content="{StaticResource MaintenanceModeImage}" />
+                <Separator Visibility="{Binding Visibility, ElementName=rdbReport}" />
+
+                <Button x:Name="rdbExit" Command="{Binding ExitCommand}" Content="{StaticResource ExitImage}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Separator Visibility="{Binding Visibility, ElementName=rdbExit}" />
+            </ToolBar>
+        </DockPanel>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <ItemsControl>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ContentControl Content="{Binding CommunicationViewModel}" />
+                <ContentControl Content="{Binding LotViewModel}" />
+                <ContentControl Content="{Binding BurningPaneViewModel}">
+                    <ContentControl.Style>
+                        <Style TargetType="ContentControl">
+                            <Setter Property="Visibility" Value="Hidden" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentSystemState.StateID}" Value="{x:Static states:BssStateID.Burning}">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CurrentSystemState.StateID}" Value="{x:Static states:BssStateID.Correction}">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ContentControl.Style>
+                </ContentControl>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Rectangle Grid.Column="1" Stroke="{DynamicResource NormalBorderBrush}" Grid.RowSpan="2" />
+
+        <ContentControl Grid.Row="1" Grid.Column="2" Content="{Binding SelectedViewModel}" Background="{DynamicResource TabItemSelectedBrush}" />
+        <GridSplitter Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+        <ContentControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding LogViewModel}" />
+        <StatusBar x:Name="statusBar" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Collapsed">
+            <StatusBarItem Content="{Binding Status}" />
+        </StatusBar>
+    </Grid>
+</Window>

@@ -1,0 +1,6 @@
+-v3
+-n REDApp
+-o C:/Development/MKS/PS/Projects/Stratasys/Code/proj/red/out
+-c C:/Development/MKS/PS/Projects/Stratasys/Code/proj/red/out/app
+REDApp$Tag
+REDApp

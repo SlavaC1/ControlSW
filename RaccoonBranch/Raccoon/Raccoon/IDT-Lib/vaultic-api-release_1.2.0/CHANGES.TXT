@@ -1,0 +1,68 @@
+Since version 1.1.8
+-> Fix VaultIC 1XX generate ramdom with length 256 issue 
+-> Add Secures Counters for VaultIC 100 ONLY
+-> Add example for VaultIC 100 Secure Counters
+-> Update documentation for VaultIC 1XX
+
+Since version 1.1.7
+-> Improve demo code
+-> BAT files added to launch examples
+
+Since version 1.1.6
+-> Add AES CCM, AES_GCM, AES CRT modes
+-> Key derivation sample updated
+-> Add support of Deactivation/activation command set for VaultIC 1XX
+-> Add examples for Deactivation/activation feature
+-> Fix aardvark revision issue
+-> Fix Vaultic 1XX aardvark mode link errors
+-> Fix Vaultic 100 read key issue
+-> Add example for signature/verification with 1XX
+
+Since version 1.1.5
+-> Fix VltInitLibrary error for Vaultic1XX devices
+-> Make Vaultic 1XX examples functional
+-> Manuf Password now must be provided by argument for Vaultic1XX examples
+
+Since version 1.1.4
+-> Improve Aardvark SPI configuration
+-> New release of the Aardvark.dll (30/08/2013)
+
+Since version 1.1.3
+-> Fix bad algorithm Id error for VLT_ALG_KTS_RSA_OAEP_BASIC
+-> Modification for key wrapping with RSA encryption
+-> Add key wrapping with RSA encryption example
+
+Since version 1.1.2
+-> Fix mismatch between Wrapkey/Unwrapkey
+-> Add example for Key wrapping
+
+Since version 1.1.1
+-> Update of aardwark DLL
+-> Demo code improved (release communication)
+-> Add some missing parameters on setconfig for VaultIC 4XX
+-> Minor changes on VaultIC 1XX
+
+Since version 1.1.0
+-> Add missing file for VaultIC 4XX demo code
+
+Since version 1.0.10
+-> Add Key derivation & DH features for VaultIC 4XX 
+-> Add demo example for these 2 features
+-> Fix minor issue on demo code (Aardwark SPI mode)
+
+Since version 1.0.9
+-> Add Linux demo using static API        
+-> Fix some path issues
+
+Since version 1.0.8
+-> Clean Linux demo project files
+
+Since version 1.0.7
+-> Fix issue with aardwark use on VaultIC 4XX sample 
+
+Since version 1.0.6
+-> Add lib folder with Aardwark.dll
+
+Demo folder improvements :
+-> Remove useless vcproj.
+-> Add sln files to compile more easily examples.

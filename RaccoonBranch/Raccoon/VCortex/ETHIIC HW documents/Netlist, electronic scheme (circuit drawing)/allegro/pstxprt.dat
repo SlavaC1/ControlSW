@@ -1,0 +1,811 @@
+FILE_TYPE = EXPANDEDPARTLIST;
+{ Using PSTWRITER 16.6.0 d001Mar-13-2015 at 23:47:05 }
+DIRECTIVES
+ PST_VERSION='PST_HDL_CENTRIC_VERSION_0';
+ ROOT_DRAWING='ETHIIC 1';
+ POST_TIME='Sep 10 2012 04:46:09';
+ SOURCE_TOOL='CAPTURE_WRITER';
+END_DIRECTIVES;
+
+PART_NAME
+ C1 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS140962@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins140962@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins140962@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C10 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126503@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126503@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126503@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C11 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126487@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126487@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126487@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C12 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126471@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126471@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126471@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C13 'C_0603_12PF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS133322@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins133322@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins133322@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C14 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128175@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128175@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128175@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C15 'C_1_0603_4.7UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126423@ORISOLSERVO.C_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126423@orisolservo.\c_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126423@orisolservo.\c_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C16 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126407@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126407@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126407@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C17 'C_1_0603_4.7UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS129401@ORISOLSERVO.C_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins129401@orisolservo.\c_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins129401@orisolservo.\c_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C18 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128159@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128159@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128159@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C19 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128602@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128602@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128602@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C2 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137120@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137120@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137120@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C20 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126455@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126455@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126455@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C21 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS135536@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins135536@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins135536@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C22 'C_1_0603_4.7UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS136476@ORISOLSERVO.C_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins136476@orisolservo.\c_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins136476@orisolservo.\c_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C23 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS136492@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins136492@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins136492@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C24 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS136508@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins136508@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins136508@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C25 'C_0603_22PF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS132729@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins132729@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins132729@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C26 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128586@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128586@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128586@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C27 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126639@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126639@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126639@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C28 'C_0603_22PF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS131107@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins131107@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins131107@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C29 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128191@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128191@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128191@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C3 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137146@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137146@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137146@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C30 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128255@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128255@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128255@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C31 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128666@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128666@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128666@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C32 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS135520@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins135520@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins135520@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C33 'C_1_0603_4.7UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS135504@ORISOLSERVO.C_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins135504@orisolservo.\c_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins135504@orisolservo.\c_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C34 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS128570@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins128570@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins128570@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C4 'C_0603_1000PF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS167764@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins167764@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins167764@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C5 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137172@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137172@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137172@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C6 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137311@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137311@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137311@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C7 'C_1_0603_4.7UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS140946@ORISOLSERVO.C_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins140946@orisolservo.\c_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins140946@orisolservo.\c_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C8 'C_0603_12PF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS133370@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins133370@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins133370@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C9 'C_0603_0.1UF':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS126439@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins126439@analog.\c.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins126439@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D1 'D_5_LED0603_598-8070-107F':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS141444@ORISOLSERVO.D_5.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins141444@orisolservo.\d_5.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins141444@orisolservo.\d_5.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D2 'D_5_LED0603_598-8070-107F':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS141426@ORISOLSERVO.D_5.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins141426@orisolservo.\d_5.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins141426@orisolservo.\d_5.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D3 'D_5_LED0603_598-8070-107F':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS141408@ORISOLSERVO.D_5.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins141408@orisolservo.\d_5.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins141408@orisolservo.\d_5.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J1 'CON8_1_1-406541-5_ETH':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS138837@ETHIIC.CON8_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins138837@ethiic.\con8_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins138837@ethiic.\con8_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J2 'CON8_2_HEADER_TH_2X4_CON8':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS155984@ETHIIC.CON8_2.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins155984@ethiic.\con8_2.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins155984@ethiic.\con8_2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J3 'CON20_0_HEADER_TH_2X10_CON20':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS159810@ETHIIC.CON20_0.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins159810@ethiic.\con20_0.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins159810@ethiic.\con20_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J4 'CON20_0_HEADER_TH_2X10_CON20':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS160099@ETHIIC.CON20_0.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins160099@ethiic.\con20_0.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page2_ins160099@ethiic.\con20_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MH1 'FIDUCIAL_1_PMH276D126_HOLE':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS159435@ORISOLSERVO.FIDUCIAL_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins159435@orisolservo.\fiducial_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins159435@orisolservo.\fiducial_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MH2 'FIDUCIAL_1_PMH276D126_HOLE':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS159409@ORISOLSERVO.FIDUCIAL_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins159409@orisolservo.\fiducial_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins159409@orisolservo.\fiducial_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MH3 'FIDUCIAL_1_PMH276D126_HOLE':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS159391@ORISOLSERVO.FIDUCIAL_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins159391@orisolservo.\fiducial_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins159391@orisolservo.\fiducial_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MH4 'FIDUCIAL_1_PMH276D126_HOLE':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS159457@ORISOLSERVO.FIDUCIAL_1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins159457@orisolservo.\fiducial_1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins159457@orisolservo.\fiducial_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R1 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS143356@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins143356@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins143356@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R10 'R_0402_49.9R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137587@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137587@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137587@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R11 'R_0402_75R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS138392@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins138392@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins138392@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R12 'R_0402_49.9R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137571@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137571@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137571@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R13 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS134281@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins134281@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins134281@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R14 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS134297@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins134297@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins134297@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R15 'R_0402_4.87K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS141198@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins141198@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins141198@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R16 'R_0402_75R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS141328@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins141328@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins141328@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R17 'R_0402_2K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS132055@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins132055@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins132055@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R18 'R_0402_75R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS141312@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins141312@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins141312@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R19 'R_0402_75R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS141296@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins141296@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins141296@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R2 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS143382@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins143382@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins143382@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R20 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS129489@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins129489@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins129489@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R21 'R_0402_0R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS146052@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins146052@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins146052@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R22 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS164461@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins164461@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins164461@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R23 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS164876@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins164876@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins164876@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R24 'R_0402_0R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS145901@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins145901@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins145901@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R25 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS165027@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins165027@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins165027@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R26 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS165324@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins165324@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins165324@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R27 'R_0402_0R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS130170@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins130170@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins130170@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R3 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS143304@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins143304@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins143304@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R4 'R_0402_10K':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS143330@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins143330@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins143330@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R5 'R_0402_75R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS138428@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins138428@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins138428@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R6 'R_0402_49.9R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137619@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137619@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137619@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R7 'R_0402_75R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS138444@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins138444@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins138444@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R8 'R_0402_75R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS138376@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins138376@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins138376@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R9 'R_0402_49.9R':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS137603@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins137603@analog.\r.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins137603@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ TP1 'TEST POINT_2_KEYSTONE-5000_TEST':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS134055@ORISOLSERVO.TEST POINT_2.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins134055@orisolservo.\test point_2.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins134055@orisolservo.\test point_2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U1 'SLVU2.8-4A1_SOIC-8_SLVU2.8-4A1':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS159307@LIBRARY1.SLVU2.8-4A1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins159307@library1.\slvu2.8-4a1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins159307@library1.\slvu2.8-4a1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U2 'HX1198FNL_HX1198FNL_HX1198FNL':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS136785@LIBRARY1.HX1198FNL.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins136785@library1.\hx1198fnl.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins136785@library1.\hx1198fnl.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U3 'TM4C1294NCPDTI_TQFP-128_(S1+S2+':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS1325@LIBRARY1.TM4C1294NCPDTIA.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins1325@library1.\tm4c1294ncpdtia.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins1325@library1.\tm4c1294ncpdtia.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='A';
+
+SECTION_NUMBER 2
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS1557@LIBRARY1.TM4C1294NCPDTIB.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins1557@library1.\tm4c1294ncpdtib.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page1_ins1557@library1.\tm4c1294ncpdtib.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='B';
+
+SECTION_NUMBER 3
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS934@LIBRARY1.TM4C1294NCPDTIC.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins934@library1.\tm4c1294ncpdtic.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page2_ins934@library1.\tm4c1294ncpdtic.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='C';
+
+SECTION_NUMBER 4
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS986@LIBRARY1.TM4C1294NCPDTID.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins986@library1.\tm4c1294ncpdtid.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page2_ins986@library1.\tm4c1294ncpdtid.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='D';
+
+PART_NAME
+ Y1 'ATS250BSM-1_ATS_ATS160SM-1':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS133296@LIBRARY1.ATS250BSM-1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins133296@library1.\ats250bsm-1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins133296@library1.\ats250bsm-1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ Y2 'ATS250BSM-1_ATS_ATS250SM-1':;
+
+SECTION_NUMBER 1
+ '@ETHIIC 1.004.TIVA MCU(SCH_1):INS130199@LIBRARY1.ATS250BSM-1.NORMAL(CHIPS)':
+ C_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):ins130199@library1.\ats250bsm-1.normal\(chips)',
+ P_PATH='@\ethiic 1.004\.\tiva mcu\(sch_1):page3_ins130199@library1.\ats250bsm-1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+END.

@@ -1,0 +1,205 @@
+\t (00:00:14) allegro_free_viewer 16.6 S002 (v16-6-0A) Windows 32
+\t (00:00:14)     Journal start - Fri Mar 13 23:55:41 2015
+\t (00:00:14)         Host=GREGORYK User=Gregory Pid=10500 CPUs=8
+\t (00:00:14) 
+\d (00:00:14) Database opened: D:/Work/VCortex/ETHIIC/Package/Electronic layout/ETHIIC.brd
+\i (00:33:10) zoom out 1 
+\i (00:33:10) setwindow pcb
+\i (00:33:10) zoom out -802.51 1668.34
+\i (00:33:10) trapsize 4014
+\i (00:33:10) zoom out 1 
+\i (00:33:10) setwindow pcb
+\i (00:33:10) zoom out -181.05 1668.35
+\i (00:33:10) trapsize 8028
+\i (00:33:11) zoom out 1 
+\i (00:33:11) setwindow pcb
+\i (00:33:11) zoom out 5133.78 2632.83
+\i (00:33:11) trapsize 11371
+\i (00:33:15) setwindow form.vf_vis
+\i (00:33:15) FORM vf_vis colorview_list Film: DRILL 
+\i (00:33:17) setwindow pcb
+\i (00:33:17) zoom in 1 
+\i (00:33:17) setwindow pcb
+\i (00:33:17) zoom in 1304.13 850.42
+\i (00:33:17) trapsize 5686
+\i (00:33:21) zoom in 1 
+\i (00:33:21) setwindow pcb
+\i (00:33:21) zoom in 565.00 645.74
+\i (00:33:21) trapsize 2843
+\i (00:33:23) zoom out 1 
+\i (00:33:23) setwindow pcb
+\i (00:33:23) zoom out 565.00 645.74
+\i (00:33:23) trapsize 5686
+\i (00:33:39) zoom in 1 
+\i (00:33:39) setwindow pcb
+\i (00:33:39) zoom in 3237.25 3761.46
+\i (00:33:39) trapsize 2843
+\i (00:33:40) zoom out 1 
+\i (00:33:40) setwindow pcb
+\i (00:33:40) zoom out 3237.26 3761.46
+\i (00:33:40) trapsize 5686
+\i (00:33:48) zoom out 1 
+\i (00:33:48) setwindow pcb
+\i (00:33:48) zoom out 7819.86 2328.68
+\i (00:33:48) trapsize 11371
+\i (00:33:50) zoom in 1 
+\i (00:33:50) setwindow pcb
+\i (00:33:50) zoom in 4078.71 668.48
+\i (00:33:50) trapsize 5686
+\i (00:33:50) zoom in 1 
+\i (00:33:50) setwindow pcb
+\i (00:33:50) zoom in 4078.71 668.48
+\i (00:33:50) trapsize 2843
+\i (00:33:51) zoom out 1 
+\i (00:33:51) setwindow pcb
+\i (00:33:51) zoom out 4078.72 668.49
+\i (00:33:51) trapsize 5686
+\i (11:40:10) zoom in 1 
+\i (11:40:10) setwindow pcb
+\i (11:40:10) zoom in -321.96 1953.43
+\i (11:40:10) trapsize 2843
+\i (11:40:10) zoom in 1 
+\i (11:40:10) setwindow pcb
+\i (11:40:10) zoom in -321.96 1953.43
+\i (11:40:10) trapsize 1421
+\i (11:40:12) show measure 
+\i (11:40:13) pick grid 320.52 1998.92
+\t (11:40:13) last pick:  320.00  2000.00
+\i (11:40:17) pick grid 317.68 1461.62
+\t (11:40:17) last pick:  320.00  1460.00
+\i (11:42:47) setwindow text
+\i (11:42:47) close 
+\i (11:42:51) setwindow pcb
+\i (11:42:51) zoom out 1 
+\i (11:42:51) setwindow pcb
+\i (11:42:51) zoom out 294.94 2061.46
+\i (11:42:51) trapsize 2843
+\i (11:42:54) roam y 96 
+\i (11:42:54) roam y 96
+\i (11:42:54) roam x -96 
+\i (11:42:54) roam x -96
+\i (11:42:55) roam y 96 
+\i (11:42:55) roam y 96
+\i (11:42:57) roam x -96 
+\i (11:42:57) roam x -96
+\i (11:42:57) roam x 96 
+\i (11:42:57) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:42:59) roam x 96 
+\i (11:42:59) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam x 96 
+\i (11:43:00) roam x 96
+\i (11:43:00) roam y 96 
+\i (11:43:00) roam y 96
+\i (11:43:01) zoom out 1 
+\i (11:43:01) setwindow pcb
+\i (11:43:01) zoom out 11811.16 -669.97
+\i (11:43:01) trapsize 5686
+\i (11:43:03) zoom out 1 
+\i (11:43:03) setwindow pcb
+\i (11:43:03) zoom out 11811.15 -669.98
+\i (11:43:03) trapsize 11371
+\i (11:43:05) zoom in 1 
+\i (11:43:05) setwindow pcb
+\i (11:43:05) zoom in 12311.49 -3629.84
+\i (11:43:05) trapsize 5686
+\i (11:43:05) zoom in 1 
+\i (11:43:05) setwindow pcb
+\i (11:43:05) zoom in 12311.49 -3629.84
+\i (11:43:05) trapsize 2843
+\i (11:43:06) zoom out 1 
+\i (11:43:06) setwindow pcb
+\i (11:43:06) zoom out 12311.49 -3629.84
+\i (11:43:06) trapsize 5686
+\i (11:43:06) zoom out 1 
+\i (11:43:06) setwindow pcb
+\i (11:43:06) zoom out 12311.49 -3629.83
+\i (11:43:06) trapsize 11371
+\i (11:43:08) zoom in 1 
+\i (11:43:08) setwindow pcb
+\i (11:43:08) zoom in 11492.76 -4130.18
+\i (11:43:08) trapsize 5686
+\i (11:43:09) zoom out 1 
+\i (11:43:09) setwindow pcb
+\i (11:43:09) zoom out 11492.76 -4130.18
+\i (11:43:09) trapsize 11371
+\i (11:43:09) zoom out 1 
+\i (11:43:09) setwindow pcb
+\i (11:43:09) zoom out 11492.76 -4130.18
+\i (11:43:09) trapsize 11371
+\i (11:43:12) pick grid 2554.97 1782.87
+\t (11:43:12) last pick:  2555.00  1785.00
+\i (11:43:12) pick grid 2850.62 2647.08
+\t (11:43:13) last pick:  2850.00  2645.00
+\i (11:43:14) setwindow text
+\i (11:43:14) close 
+\i (11:43:15) setwindow pcb
+\i (11:43:15) zoom in 1 
+\i (11:43:15) setwindow pcb
+\i (11:43:15) zoom in -1061.09 10061.13
+\i (11:43:15) trapsize 5686
+\i (11:43:17) zoom out 1 
+\i (11:43:17) setwindow pcb
+\i (11:43:17) zoom out 1531.55 8685.21
+\i (11:43:17) trapsize 11371
+\i (11:43:19) pick grid 7853.97 3829.69
+\t (11:43:19) last pick:  7855.00  3830.00
+\i (11:43:21) setwindow text
+\i (11:43:21) close 
+\i (11:43:22) setwindow pcb
+\i (11:43:22) pick grid 8786.41 5944.74
+\t (11:43:22) last pick:  8785.00  5945.00
+\i (11:43:24) setwindow text
+\i (11:43:24) close 
+\i (11:43:30) setwindow pcb
+\i (11:43:30) pick grid 10674.03 11630.36
+\t (11:43:30) last pick:  10675.00  11630.00
+\i (11:43:32) pick grid 9377.71 10129.36
+\t (11:43:32) last pick:  9380.00  10130.00
+\i (11:43:34) setwindow text
+\i (11:43:34) close 
+\i (11:43:35) setwindow pcb
+\i (11:43:35) pick grid 6352.96 7377.52
+\t (11:43:35) last pick:  6355.00  7380.00
+\i (11:43:36) setwindow text
+\i (11:43:36) close 
+\i (11:46:15) setwindow pcb
+\i (11:46:15) exit 
+\t (11:46:17)     Journal end - Sat Mar 14 11:41:44 2015

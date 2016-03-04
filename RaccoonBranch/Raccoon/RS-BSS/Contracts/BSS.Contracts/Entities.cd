@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BSS.MVVM.Model.Entities.TagStatistics">
+    <Position X="5.5" Y="1.75" Width="2.25" />
+    <Members>
+      <Field Name="batchStatistics" Hidden="true" />
+      <Field Name="burningAttemptCount" Hidden="true" />
+      <Field Name="burningStation" Hidden="true" />
+      <Field Name="burningTime" Hidden="true" />
+      <Field Name="isReference" Hidden="true" />
+      <Field Name="lastError" Hidden="true" />
+      <Field Name="sessionID" Hidden="true" />
+      <Field Name="tagInfo" Hidden="true" />
+      <Method Name="TagStatistics" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAoIAIAAGACQkAAAAJgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Entities\TagStatistics.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BatchStatistics" />
+      <Property Name="TagInfo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BSS.MVVM.Model.Entities.BatchStatistics">
+    <Position X="1.25" Y="1.75" Width="2.75" />
+    <Members>
+      <Field Name="batchEndTime" Hidden="true" />
+      <Field Name="batchStartTime" Hidden="true" />
+      <Method Name="BatchStatistics" Hidden="true" />
+      <Field Name="currentSessionID" Hidden="true" />
+      <Field Name="hasReferenceTags" Hidden="true" />
+      <Field Name="lotBurnedCartridgesCount" Hidden="true" />
+      <Field Name="lotBurningAttemptsCount" Hidden="true" />
+      <Field Name="lotFailuresCount" Hidden="true" />
+      <Field Name="materialInfo" Hidden="true" />
+      <Field Name="sessionBurnedCartridgesCount" Hidden="true" />
+      <Field Name="sessionBurningAttemptCount" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABEwEQAAAAAQCAIAAgAAgAAAABACGQCAAEAAAABAAAE=</HashCode>
+      <FileName>Model\Entities\BatchStatistics.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MaterialInfo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BSS.Contracts.TagInfo">
+    <Position X="9.75" Y="1.75" Width="2" />
+    <Members>
+      <Method Name="Clone" Hidden="true" />
+      <Method Name="Decode" Hidden="true" />
+      <Method Name="Encode" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Property Name="Error" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="OnPropertyChanged" Hidden="true" />
+      <Method Name="op_Inequality" Hidden="true" />
+      <Method Name="op_Equality" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Method Name="TagInfo" Hidden="true" />
+      <Property Name="Item" Hidden="true" />
+    </Members>
+    <AssociationLine Name="MaterialInfo" Type="BSS.Contracts.MaterialInfo">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.091" Y="1.193" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="MaterialInfo" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BSS.Contracts.MaterialInfo">
+    <Position X="9.75" Y="5.25" Width="2" />
+    <Members>
+      <Method Name="Clone" Hidden="true" />
+      <Method Name="Decode" Hidden="true" />
+      <Method Name="Encode" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Property Name="Error" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="MaterialInfo" Hidden="true" />
+      <Method Name="OnPropertyChanged" Hidden="true" />
+      <Method Name="op_Inequality" Hidden="true" />
+      <Method Name="op_Equality" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Property Name="Item" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

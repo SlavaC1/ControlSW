@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="BSS.MVVM.View.LogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:BSS.MVVM.View.Behaviors"
+             xmlns:converters="clr-namespace:BSS.MVVM.View.Converters"
+             xmlns:properties="clr-namespace:BSS.MVVM.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="Resources.xaml" />
+    </UserControl.Resources>
+
+    <Grid LocalizationScope.ResourceManager="{ResourceManager properties:Resources}">
+        <ListView behaviors:GridViewColumnResize.Enabled="True"
+                  ItemsSource="{Binding Log}">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Level, Converter={StaticResource ToStringConverter}}" Value="ERROR">
+                            <Setter Property="Foreground" Value="{StaticResource FailureBrush}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
+
+            <i:Interaction.Behaviors>
+                <behaviors:ScrollToLastItemBehavior />
+            </i:Interaction.Behaviors>
+            
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn LocalizationScope.ResourceManager="{ResourceManager properties:Resources}"
+                                    Header="{Loc Time}" DisplayMemberBinding="{Binding TimeStamp}" />
+                    <GridViewColumn LocalizationScope.ResourceManager="{ResourceManager properties:Resources}"
+                                    behaviors:GridViewColumnResize.Width="*"
+                                    Header="{Loc Message}" DisplayMemberBinding="{Binding RenderedMessage}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

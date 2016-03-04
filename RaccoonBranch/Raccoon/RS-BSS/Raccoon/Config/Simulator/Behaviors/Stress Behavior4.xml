@@ -1,0 +1,16 @@
+<Simulator>
+  <Cartridges Count="16" state="0">
+    <Cartridge Num="1">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="3">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="7">
+      <State>1</State>
+    </Cartridge>
+    <Cartridge Num="14">
+      <State>1</State>
+    </Cartridge>
+  </Cartridges>
+</Simulator>

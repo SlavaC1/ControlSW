@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BSS.MVVM.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InPlaceStatusInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:01</Value>
+    </Setting>
+    <Setting Name="StationType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Standalone</Value>
+    </Setting>
+    <Setting Name="BurningChassis" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="VerificationChassis" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="UsePlcSimulator" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PlcCallTimeout" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:01</Value>
+    </Setting>
+    <Setting Name="PlcBuzzTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:01</Value>
+    </Setting>
+    <Setting Name="PlcPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM1</Value>
+    </Setting>
+    <Setting Name="AllowCartridgeReset" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

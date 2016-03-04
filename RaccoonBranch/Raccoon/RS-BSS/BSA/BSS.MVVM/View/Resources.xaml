@@ -1,0 +1,191 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:BSS.MVVM.View.Converters"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:m="clr-namespace:BSS.Contracts;assembly=BSS.Contracts"
+                    xmlns:vm="clr-namespace:BSS.MVVM.ViewModel"
+                    xmlns:v="clr-namespace:BSS.MVVM.View">
+
+    <!-- resources -->
+    <sys:Double x:Key="IdtViewMinWidth">256</sys:Double>
+
+    <!-- brushes -->
+    <SolidColorBrush x:Key="SuccessBrush" Color="Green" />
+    <SolidColorBrush x:Key="FailureBrush" Color="Red" />
+
+    <!-- converters -->
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:MultiBooleanToVisibilityConverter x:Key="MultiBooleanToVisibilityConverter" />
+    <converters:ByteArrayToHexStringConverter x:Key="ByteArrayToHexStringConverter" />
+    <converters:EnumValueConverter x:Key="EnumValueConverter" />
+    <converters:ConsumptionCounterConverter x:Key="ConsumptionCounterConverter" />
+    <converters:InitialWeightConverter x:Key="InitialWeightConverter" />
+    <converters:ProgressToVisibilityConverter x:Key="ProgressToVisibilityConverter" />
+    <converters:RowIndexConverter x:Key="RowIndexConverter" />
+    <converters:TimeSpanConverter x:Key="TimeSpanConverter" />
+    <converters:TextToLocalizedConverter x:Key="TextToLocalizedConverter" />
+    <converters:ToStringConverter x:Key="ToStringConverter" />
+    <converters:TrafficLightColorToTextConverter x:Key="TrafficLightColorToTextConverter" />
+    <converters:TrafficLightColorToBrushConverter x:Key="TrafficLightColorToBrushConverter" />
+    <converters:TrimmingConverter x:Key="TrimmingConverter" />
+
+    <!-- images -->
+    <BitmapImage x:Key="Connect" UriSource="Resources/Connect.png" />
+    <BitmapImage x:Key="Check" UriSource="Resources/Check.png" />
+    <BitmapImage x:Key="Uncheck" UriSource="Resources/Uncheck.png" />
+    <BitmapImage x:Key="Search" UriSource="Resources/Search.png" />
+    <BitmapImage x:Key="Report" UriSource="Resources/Report.png" />
+    <BitmapImage x:Key="Excel" UriSource="Resources/Excel.png" />
+
+    <!-- styles -->
+    <Style x:Key="PropertyLabel" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ValueLabel" BasedOn="{StaticResource PropertyLabel}" TargetType="Label">
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                <Setter Property="Foreground" Value="{StaticResource FailureBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="LargeLabel" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+        <Setter Property="Margin" Value="2,6" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="ExtraLargeLabel" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+        <Setter Property="Margin" Value="2,6" />
+        <Setter Property="FontSize" Value="36" />
+    </Style>
+
+    <Style x:Key="ValueTextBox" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Margin" Value="2" />
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ValueComboBox" TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="IsEditable" Value="False" />
+    </Style>
+
+    <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="Button">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Padding" Value="4,2" />
+    </Style>
+
+    <Style TargetType="Border">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}" />
+        <Setter Property="CornerRadius" Value="3" />
+    </Style>
+
+    <Style x:Key="ViewBorder" TargetType="Border" BasedOn="{StaticResource {x:Type Border}}">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+
+    <Style x:Key="Circle" TargetType="Border">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}" />
+        <Setter Property="CornerRadius" Value="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" />
+        <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" />
+    </Style>
+
+    <Style x:Key="ExpandCollapseToggleButton" TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+        <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" />
+        <Setter Property="Content" Value="{Loc ExpandSymbol}" />
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Content" Value="{Loc CollapseSymbol}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="GridSplitter">
+        <Setter Property="Height" Value="3" />
+        <Setter Property="ShowsPreview" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource NormalBorderBrush}" />
+    </Style>
+
+    <Style TargetType="Image">
+        <Setter Property="FlowDirection" Value="LeftToRight" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- templates -->
+    <DataTemplate DataType="{x:Type vm:LotViewModel}">
+        <v:LotView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:BurningPaneViewModel}">
+        <v:BurningPaneView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:IdtReadingViewModel}">
+        <v:IdtReadingView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:IdtBurningViewModel}">
+        <v:IdtBurningView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:IdtCorrectionViewModel}">
+        <v:IdtCorrectionView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:IdtIdleViewModel}">
+        <v:IdtIdleView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:LogViewModel}">
+        <v:LogView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:IdtStatusViewModel}">
+        <v:IdtView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type m:MaterialInfo}">
+        <v:MaterialInfoView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type m:TagInfo}">
+        <v:TagInfoView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ReportingViewModel}">
+        <v:ReportingView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ManagementViewModel}">
+        <v:ManagementView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:CommunicationViewModel}">
+        <v:CommunicationView />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:DeviceCommunicationViewModel}">
+        <v:DeviceCommunicationView />
+    </DataTemplate>
+
+</ResourceDictionary>

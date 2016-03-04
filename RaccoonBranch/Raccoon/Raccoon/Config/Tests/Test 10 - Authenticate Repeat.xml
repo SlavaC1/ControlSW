@@ -1,0 +1,7 @@
+<Test>
+  <Scenario>
+    <AuthenticateCartridge ExpectedResults="0" Repeating="1" Timeout="86400" Interval="1">
+      <CartridgeNum>0</CartridgeNum>      
+    </AuthenticateCartridge>
+  </Scenario>
+</Test>
