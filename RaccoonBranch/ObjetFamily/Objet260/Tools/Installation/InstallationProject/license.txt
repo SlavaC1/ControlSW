@@ -1,0 +1,112 @@
+PLEASE READ THE FOLLOWING TERMS AND CONDITIONS CAREFULLY.
+
+BY DOWNLOADING OR INSTALLING THIS SOFTWARE, YOU, ON BEHALF OF YOURSELF AS AN INDIVIDUAL, AND YOUR EMPLOYER OR ANOTHER ENTITY WHICH HAS NOT PREVIOUSLY ACCEPTED THIS AGREEMENT (YOU AND SUCH ENTITIES, EACH AND TOGETHER, “LICENSEE”), REPRESENT AND WARRANT THAT LICENSEE HAS FULL AUTHORITY TO BECOME A PARTY TO THIS AGREEMENT AND THAT IT AGREES TO BE BOUND ACCORDINGLY.   OTHERWISE, DO NOT USE THIS WEBSITE OR THE SERVICES OFFERED ON IT, OR ABORT THE INSTALLATION WIZARD, AS APPLICABLE. 
+ 
+
+ 
+
+ 
+I.  DEFINITIONS
+ 
+For purposes of this Agreement, the following definitions shall apply:
+ 
+1.  “Licensed Software” shall mean the software provided by Stratasys, in object code format only, that in any way relates to use of the 3D Printing System (as defined below).   
+ 
+2.  “Documentation” shall mean Stratasys's relevant user manuals, maintenance manuals, technical documentation, algorithms, specifications, and other technical materials relating to the Licensed Software, provided to Licensee by Stratasys, as may be updated from time to time. 
+ 
+3.  “Licensed Software Package” shall mean the Licensed Software and the Documentation. 
+ 
+4.  3D Printing System shall mean Stratasys's product for rapid prototyping and rapid manufacturing applications. 
+ 
+
+ 
+
+ 
+5.  “Desktop Computer” shall mean any machine capable of preparing and forwarding data for use by the 3D Printing System. 
+ 
+6.  Stratasys shall mean Stratasys Geometries Ltd. , having offices at 2 Holzman St. , Weizmann Science Park P. O. B 2496 Rehovot 76124, Israel. 
+    
+
+ 
+II.  GRANT OF LICENSE
+
+Stratasys hereby grants to Licensee an exclusive and non-transferable license to use the Licensed Software Package for the sole purpose of using and/or maintaining a 3D Printing System. 
+ 
+III.  LIMITATIONS ON USE
+
+If Licensee is owner of a 3D Printing System sold by Stratasys, Licensee's use of the Licensed Software shall be: (a) for Licensee's internal business purposes; (b) , limited to such single system and a single Desktop Computer on which it is installed; (c) only on the site where the 3D Printing System was installed by Stratasys.  If Licensee is using a 3D Printing System sold by Stratasys to a third party, Licensee’s use of the Licensed Software is subject to the license granted to, and the authorized use of such system by, such party.  Licensee shall not pool or share the Licensed Software between or among multiple computers, except as authorized by Stratasys in writing.  Stratasys may terminate the License, without liability, if Licensee breaches this Agreement and fails to cure such breach within fifteen (15) days after receipt of Stratasys's written notice thereof.  
+ 
+IV.  DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS
+
+
+ 
+(a)  Modifications.  Except to the extent that any such limitation might be expressly prohibited by applicable law, Licensee shall not without the express prior written authorization of Stratasys, (i) modify, enhance, supplement, reverse engineer, reverse assemble, recompile, decrypt, decompile, disassemble or otherwise reduce the Licensed Software, to any human or machine perceivable form or otherwise circumvent any technological measure that controls access to the Licensed Software; or (ii)  alter the Licensed Software in any way; or (iii)  adapt, translate, make improvements to the Licensed Software or create derivative works based upon the Licensed Software or any part thereof; or (iv)  merge the Licensed Software into any other program; or (v)  use all or any portion of the Licensed Software for the purpose of deriving its source code.  
+ 
+(b)  Transferability.  This Agreement and the license contained herein are made solely between Stratasys and the Licensee.  Licensee shall not transfer any rights under this Agreement to any third party or entity, without the express prior written authorization of Stratasys. 
+
+(c)  Rental.  Licensee shall not rent, lease, sell, transfer, assign or sub-license the Licensed Software Package or any portion thereof to a third party. 
+ 
+(d)  Assignment.  Licensee may not assign this Agreement or any rights or obligations hereunder, without the prior written consent of Stratasys, and any such purported or attempted assignment of this Agreement or any right or benefit conferred upon Licensee hereby, shall be void and unenforceable, except for an assignment based on a sale or transfer of all or substantially all of the shares or assets of Licensee, or of a controlling interest of Licensee, including the entirety of Licensee's rights and/or obligations under this Agreement. 
+ 
+(e)  Ownership.  Licensee acknowledges that ownership of, and title to, the Licensed Software Package is and will be held by Stratasys.  Licensee acknowledges that Stratasys or its licensors are the owners of all rights, title, and interest, including all trademarks, copyrights to all of the Documentation and computer-recorded data comprising or included in the Licensed Software Package, and source code relating thereto.  Stratasys or its licensors reserve all rights not expressly granted to Licensee hereunder.  Notwithstanding anything herein to the contrary, this Agreement does not grant Licensee any title or rights of ownership in the Licensed Software Package and any use of the terms "sell", "sale", "purchase" or "acquire" in relation to the Licensed Software shall be deemed to mean "license on the terms contained in this Agreement".  
+ 
+(f)  Copies.  Neither Licensee nor any of its agents or employees may copy any part of the Licensed Software, except for one (1) complete copy for archival and back-up purposes, provided such copy contains all proprietary notices and other markings appearing on the Software.  Licensee shall not make any copies of the Documentation or any part thereof without the express prior written authorization of Stratasys.  
+ 
+(g)  Intellectual Property Notices.  Licensee agrees that all copyright and other proprietary notices that are embedded in the Licensed Software Package, shall remain as embedded, in the same manner as embedded by Stratasys, in each copy of the Licensed Software and/or Documentation.  Licensee will not make or permit alteration of the Licensed Software Package or removal or modification of any tags, proprietary or copyright notices, labels, or other identifying marks placed by Stratasys on the Licensed Software or Documentation.  Licensee shall not do or permit to be done any act or thing that would impair Stratasys's rights in its trademarks or damage the reputation for quality inherent in its trademarks.  
+ 
+(h)  The Licensed Software may include programs owned by non-affiliated entities.  These entities are third party beneficiaries of this Agreement and may enforce the provisions hereof that relate to their rights in the Licensed Software, if any. 
+ 
+V.  UPGRADES
+
+Upgrades to the Licensed Software Package may be provided to the Licensee from time to time by Stratasys, which upgrades shall be licensed subject to the terms and conditions of this Agreement. 
+ 
+VI.  CONFIDENTIALITY AND PROTECTION OF MATERIALS
+ 
+(a)  Acknowledgment of Confidentiality.  Licensee acknowledges that the Licensed Software Package provided by Stratasys contains and constitutes commercially valuable proprietary and confidential information of Stratasys.  Furthermore, Licensee acknowledges that it may obtain or have possession of certain other proprietary and confidential information including, but not limited to, technical, financial, product, client, statistical, or personnel information relating to Stratasys's business.  Proprietary and confidential information shall not include information that is:
+(1)  already in the public domain;
+(2)  rightfully discovered or created by Licensee independent of any involvement with Stratasys or the Licensed Software Package;
+(3)  otherwise learned by Licensee through legitimate means other than from Stratasys or anyone connected with Stratasys or otherwise bound in a confidential relationship with Stratasys; or
+(4)  becomes publicly available through no breach by Licensee. 
+ 
+Licensee acknowledges that such proprietary and confidential information is disclosed to it on a confidential basis to be used only as may be expressly permitted by the terms and conditions of this Agreement, and that during the term of this Agreement and at all times thereafter, Licensee shall not, without the prior written consent of Stratasys, disclose, transfer, or release any such information, in whole or in part, alone or in combination with any other information, to any individual or entity, except as expressly provided herein.  Licensee agrees to use its best efforts to prevent disclosure or unauthorized use of Stratasys's proprietary and confidential information as described herein.  Licensee agrees that any proprietary and confidential information divulged to 
+it by Stratasys shall be solely for Licensee's internal use on Licensee's premises only, solely for the purposes of this Agreement. 
+ 
+(b)  Employee Confidentiality.  Licensee hereby covenants and agrees that, during the term of this Agreement and at all times thereafter, it shall require all of its employees (or those of its affiliates), agents, and independent contractors, who may have any access to the proprietary and confidential information, to abide by the confidentiality provisions of this Agreement. 
+ 
+(c)  Trademark and Trade Name.  Licensee acknowledges that it shall not be permitted to use the corporate name of Stratasys, or any of its trademarks or service marks, whether registered or arising under the any applicable law, in connection with any advertising, marketing, or sale of any existing or future products or services of Licensee or its affiliates, except with the prior written consent of Stratasys. 
+ 
+VII.  LIMITATION OF WARRANTIES AND REMEDIES
+ 
+(a)  Limitation of Stratasys's Warranties.  THE LICENSED SOFTWARE PACKAGE IS PROVIDED "AS IS," AND Stratasys DISCLAIMS ANY AND ALL REPRESENTATIONS OR WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, MADE WITH RESPECT TO IT, INCLUDING, WITHOUT  LIMITATION, ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  THIS LIMITED WARRANTY GRANTS LICENSEE SPECIFIC LEGAL RIGHTS.  LICENSEE MAY HAVE ADDITIONAL RIGHTS THAT VARY FROM JURISDICTION TO JURISDICTION. 
+ 
+(b)  Limitation of Damages.  Stratasys SHALL HAVE NO LIABILITY TO LICENSEE OR ANY OTHER INDIVIDUAL OR ENTITY CONNECTED WITH LICENSEE FOR ANY CLAIM, LOSS, OR DAMAGE OF ANY KIND OR NATURE WHATSOEVER ARISING OUT OF OR IN CONNECTION WITH THE PERFORMANCE OF THIS AGREEMENT OR ARISING OUT OF OR IN CONNECTION WITH (1) THE DEFICIENCY OR INADEQUACY OF THE LICENSED SOFTWARE PACKAGE FOR ANY PURPOSE, WHETHER OR NOT KNOWN OR DISCLOSED TO LICENSEE; (2) THE USE OR PERFORMANCE OF THE LICENSED SOFTWARE OR ANY FILES, DATA, OR COMPUTER SYSTEMS RELATED THERETO OR USED IN CONNECTION THEREWITH; (3) ANY INTERRUPTION OR LOSS OF SERVICE OR USE OF THE LICENSED SOFTWARE, OR ANY FILES, DATA, OR OTHER COMPUTER SYSTEMS; (4) ANY LICENSED SOFTWARE FAILURE; (5) ANY CLAIM THAT THE LICENSED SOFTWARE PACKAGE OR ANY PART THEREOF INFRINGES ANY U. S.  OR FOREIGN PATENT, COPYRIGHT, TRADEMARK, OR OTHER PROPRIETARY RIGHT (6) ANY LOSS OF PROFITS, SALES, BUSINESS, OR OTHER INCIDENTAL, CONSEQUENTIAL, OR SPECIAL LOSS OR DAMAGE OF ANY KIND OR NATURE RESULTING FROM THE FOREGOING.  Stratasys SHALL IN NO EVENT BE LIABLE TO LICENSEE FOR DAMAGES RESULTING FROM ANY CLAIMS AGAINST LICENSEE BY ANY THIRD PARTY.  THIS SECTION SURVIVES THE TERMINATION OF ALL OR ANY PART OF THIS AGREEMENT. 
+ 
+(c)  Licensee is aware that the Licensed Software does not provide protection against network intrusion from the Internet.  Consequently Stratasys and its parent corporation, subsidiaries, affiliates, suppliers or licensors may not be held liable for such intrusion in case the Desktop Computer includes a connection to the Internet.  Licensee shall hold harmless and indemnify Stratasys and its parent corporation, subsidiaries, affiliates, suppliers or licensors against any third-party claims relating to breaches of security pertaining to the Internet.  
+ 
+VIII.  TERM AND TERMINATION
+ 
+(a)  TERM.  The term of this Agreement with respect to the Licensed Software Package shall begin on the date of the Licensed Software installation or downloading and continue for so long as Licensee uses the Licensed Software (including any upgrades thereto) or until breach of this Agreement .  The obligations of the parties as set forth in Sections IV, VI, VII and VIII shall survive the termination of all or any part of this Agreement. 
+ 
+(b)  Termination for Breach.  Stratasys may terminate all or any part of this Agreement, at its option, if Licensee is in breach or default of any of the terms or conditions of this Agreement and fails to correct such default within ten (10) days after written notice by Stratasys or otherwise after becoming aware of such breach or default.  Alternatively, in the event of such breach or default by Licensee, Stratasys may, at its option and sole discretion, terminate all or any part of Licensee's rights as set forth in this Agreement.  
+ 
+(c)  Destruction of Licensed Software after Termination.   In the event of termination, Licensee will immediately discontinue use of the Licensed Software Package.  Within thirty (30) days of termination of this Agreement, Licensee will destroy the original and all copies (if any) of materials relating to the Licensed Software Package in its possession or otherwise furnished to it, in their entirety, including any such materials which may have been furnished to Licensee's contractors or consultants under the provisions of this Agreement, and furnish to Stratasys a written certificate evidencing the complete and full execution of the provisions of this Section. 
+ 
+(d)  Irreparable Injury.  Licensee acknowledges that any use of the Licensed Software Package by Licensee after the termination of this Agreement or after breach of any of the terms or conditions of this Agreement shall constitute an immediate and irreparable injury to Stratasys which is not adequately compensable by monetary damages alone, and that Stratasys may seek such redress as may be available at law or in equity.  
+ 
+X.   MISCELLANEOUS
+ 
+(a)  Notice.  Any notice, demand or consent required hereunder shall, unless otherwise set forth herein, be in writing and be sent by hand delivery, express courier, or by postage-prepaid certified mail, return receipt requested, addressed to the recipient party.   Licensee's address shall be as specified in the 3D Printing System’s quotation or applicable online registration, or at such further address as shall be requested in writing from time to time by the recipient party. 
+ 
+(b)  Amendments and Waiver.  Except as expressly set forth herein, no provision of this Agreement may be changed, waived, discharged, or amended except by an instrument in writing signed by both parties hereto.  No delay or failure on the part of any party hereto to exercise any power, right or remedy hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any power or right preclude any other further exercise thereof, or the exercise of any other power, right or remedy granted hereby or by any applicable law. 
+ 
+ 
+(c)  Integration.  This Agreement contains the full, final, and exclusive statement and agreement between the parties hereto, relating to the subject matter hereof, and supersedes any and all other inconsistent documents, agreements, correspondence, or oral statements.  This Agreement supersedes any and all prior written or oral agreements between the parties relating, in whole or in part, to the subject matter of this Agreement. 
+ 
+(d)   Governing Law.   This Agreement shall be governed by and construed in accordance with the laws of the Commonwealth of Massachusetts, excluding its conflicts of law rules.   Litigation to enforce rights in connection hereto shall be brought only in a court of competent jurisdiction in Middlesex or Suffolk counties, Massachusetts, and each party hereby consents to the venue and jurisdiction of such court. 
+ 
+(e)  Severability.  If any provision of this Agreement, or application thereof to any person, place, or circumstance, shall be held by a court of competent jurisdiction to be invalid, unenforceable, or void, the remainder of this Agreement and such provisions as otherwise applied shall remain in full force.  
+  
+
+(f)  Independent Parties.  Performance by the parties under this Agreement shall be as independent contractors.  Nothing contained herein or done in furtherance of this Agreement shall constitute the parties entering upon a joint venture or partnership, or shall constitute either party the agent for the other for any purpose or in any sense whatsoever. 
+ 
+Updated as of January 2013. 

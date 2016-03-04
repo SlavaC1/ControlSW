@@ -1,0 +1,21 @@
+Installation instruction for the Eden PCI card
+----------------------------------------------
+
+1) Copy the file "windrvr.sys" and "wdpnp.sys" files to the "Drivers" directory
+   (e.g. c:\windows\system32\drivers).
+
+2) Run command line window, go to the ...\EdenPCI\Windows directory and
+   run: "wdreg install".
+
+3) Open the "hardware devices dialog"
+  (right-click on the "My Computer" icon + properties), find the PCI card and
+   choose properties -> Update driver -> Search for driver and than choose
+   "specify location" and choose the "EdenPCI.inf" file.
+
+4) Copy the file ".\Kernel_Plug_In\kerplug\msdev\objfre_win2k\i386\KP_EDENP.sys"
+   "Drivers" directory (e.g. c:\windows\system32\drivers).
+
+5) Run command line window, go to the ...\EdenPCI\Windows directory and run:
+   "wdreg -name kp_edenp install".
+
+6) Restart the computer.         

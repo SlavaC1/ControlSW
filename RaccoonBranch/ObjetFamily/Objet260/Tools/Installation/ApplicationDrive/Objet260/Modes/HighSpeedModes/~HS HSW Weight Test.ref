@@ -1,0 +1,4 @@
+RunScript1={'base': 'ModesManager.EnterMode("~WT commands", "GeneralModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript2={'base': 'ModesManager.EnterMode("~WT commands HS", "HighSpeedModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript3={'base': 'ModesManager.EnterMode("~HS HSW Calibrate", "HighSpeedModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+

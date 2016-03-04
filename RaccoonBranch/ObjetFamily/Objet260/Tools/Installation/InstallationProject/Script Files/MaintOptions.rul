@@ -1,0 +1,250 @@
+/*--------------------------------------------------------------*\                                                                                                                                                                                                               
+ *
+ *Deletes the shortcut of the machine(Installed now), 
+ *can be from previous version from Desktop before 
+ *installing the new one(or updated one)
+ *
+\*--------------------------------------------------------------*/ 
+function DelShortcut()
+string  szNameApp , svResult;
+begin  
+
+szNameApp = @PREVIOUS_VERSION_NAME + "*.*";        
+    
+//find the full name with the prev version:
+FindFile ( FOLDER_DESKTOP , szNameApp, svResult );
+//remove the files suffix (to get only the name) 
+svResult = RemoveString(svResult, ".lnk");
+DeleteFolderIcon (FOLDER_DESKTOP, svResult);
+    
+end;  
+/*--------------------------------------------------------------*\                                                                                                                                                                                                               
+ *
+ *find the SubStrings and remove it from the string 
+ *
+\*--------------------------------------------------------------*/    
+function STRING RemoveString(szString, szSubString)
+NUMBER nPos;
+STRING sTemp;
+begin
+
+nPos = StrFind(szString, szSubString);
+while (nPos >= 0)
+StrSub(sTemp, szString, 0, nPos);
+StrSub(szString, szString, nPos + StrLength(szSubString),
+StrLength(szString));
+szString = sTemp + szString;
+nPos = StrFind(szString, szSubString);
+endwhile;
+
+return szString;
+end;     
+/*--------------------------------------------------------------*\                                                                                                                                                                                                               
+ *
+ * During the Upgrade of a machine,   
+ * if wizard was not finished - abort upgrade 
+ *
+\*--------------------------------------------------------------*/  
+function IsWithInWizard(szQ2rtFile,szFileName) 
+string svLine ;
+number svRes,nvFileHandle ;
+begin 
+svRes = 0; 
+// Set the file mode to normal. 
+OpenFileMode (FILE_MODE_NORMAL); 
+if (OpenFile ( nvFileHandle, szQ2rtFile, szFileName ) = 0)then
+   		while (GetLine ( nvFileHandle, svLine ) = 0 )     
+   			// check if the line equals to the Parameter name 
+   			if (svLine % "RR_WithinWizard") then 
+   			 if !(svLine % "0")then 
+   			 	svRes = 1; 
+   			 	MessageBox( "Resin Replacement wizard was aborted.\n"+
+   			 	"Before installing the new application version,you must completed the procedure.\n"+
+				"Click OK to cancel this installation wizard.", INFORMATION ); 
+   			 	abort;
+   			 endif;	
+   			endif;  
+   			if (svLine % "HR_LastState") then 
+   			 if !(svLine % "0")then
+   			 	svRes = 1; 
+   			 	MessageBox( "Head Replacement wizard was aborted.\n"+
+   			 	"Before installing the new application version,you must completed the procedure.\n"+
+				"Click OK to cancel this installation wizard.", INFORMATION ); 
+   			 	abort;
+   			 endif;	
+   			endif; 
+   			if (svLine % "QR_LastState") then 
+   			 if !(svLine % "0")then
+   			 	svRes = 1;
+   			 	MessageBox( "Quick Head Replacement wizard was aborted.\n"+
+   			 	"Before installing the new application version,you must completed the procedure.\n"+
+				"Click OK to cancel this installation wizard.", INFORMATION ); 
+   			 	abort;
+   			 endif;	
+   			endif; 
+   		endwhile; 
+  endif;
+   	//delete old file 
+  CloseFile (nvFileHandle); 
+  
+  if(svRes != 0 )then 
+    MessageBox( "Please finish all Wizards before upgrading the system.", WARNING ); 
+    abort;
+  endif; 
+end; 
+/*--------------------------------------------------------------*\                                                                                                                                                                                                               
+ *
+ * InstallShield Example Script
+ *
+ * Demonstrates the SdOptionsButtons function.
+ *
+ * This script allows the user to select a setup type.  First,
+ * two lists are created, one for the setup type button icons,
+ * another for the setup type descriptions.  Then the buttons
+ * and descriptions are added to the lists.  Next, the dialog
+ * is presented.  When the user clicks a setup type button, the
+ * dialog closes and the user's selection is displayed in a
+ * message box.
+ *
+\*--------------------------------------------------------------*/
+
+//#include "ifx.h"
+
+function DisplayMaintenanceOptions()
+
+   STRING  szTitle, szMsg;
+   LIST    listButtons, listDesc;
+   NUMBER  nResult;
+   
+     begin
+   
+// 	 Disable the Back and Next buttons in setup dialogs.
+//   ---------------------------------------------------
+     Disable (BACKBUTTON);
+     Disable (NEXTBUTTON);
+    // Disable (CANCELBUTTON);
+
+//   Create the lists for buttons and descriptions.
+//   ----------------------------------------------
+     listButtons = ListCreate (STRINGLIST);
+     listDesc = ListCreate (STRINGLIST);
+
+     if (listButtons = LIST_NULL) || (listDesc = LIST_NULL) then
+
+//     Report the error; then terminate.
+//     ---------------------------------
+       MessageBox ("Unable to create lists.", INFORMATION);
+       abort;
+       endif;
+
+//   Add the bitmap buttons to listButtons.
+//   --------------------------------------
+     ListAddString (listButtons, "@12001;1;255,0,255", AFTER);
+     ListAddString (listButtons, "@12002;1;255,0,255", AFTER);
+     
+//     ListAddString (listButtons, "@12003;1;255,0,255", AFTER);
+//     ListAddString (listButtons, "@12004;1;255,0,255", AFTER);
+
+//   Add the descriptions to listDesc.
+//   ---------------------------------
+     ListAddString (listDesc, "Upgrade\n" +
+                              "Upgrade from version 29.11.XXX to 29.2.000", AFTER);
+        
+     ListAddString (listDesc, "Remove\n" +
+                              "Remove all installed features ", AFTER);
+                              
+//     ListAddString (listDesc, "Compact\n" +
+//                              "To save disk space, none of the " +
+//                              "optional components will be " +
+//                              "installed.", AFTER);
+//     ListAddString (listDesc, "Custom\n" +
+//                              "For advanced users and system " +
+//                              "administrators only.  You can " +
+//                              "customize all available Setup " +
+//                              "options.", AFTER);
+ 
+//   Display the dialog box.
+//   -----------------------   
+     szTitle = "Maintenance Options";
+     szMsg = "Please Select Required Option";
+     nResult = SdOptionsButtons (szTitle, szMsg, listButtons, listDesc);
+
+//   Display a message showing which button was selected.
+//   ----------------------------------------------------
+//     switch (nResult)
+//        case 101:
+//           MessageBox ("Upgrade selected.", INFORMATION);
+//        case 102:
+//           MessageBox ("Maintenance selected.", INFORMATION);
+//        case 103:
+//           MessageBox ("Compact installation selected.", INFORMATION);
+//        case 104:
+//           MessageBox ("Custom installation selected.", INFORMATION);
+//        default:
+//           MessageBox ("SdOptionsButtons:\n\n An error occurred.", SEVERE);
+//     endswitch;
+
+     Enable(NEXTBUTTON);
+     Enable(CANCELBUTTON);
+
+
+//   Destroy the lists.
+//   --------------------
+     ListDestroy (listButtons);
+     ListDestroy (listDesc); 
+     return nResult;
+	 end;
+
+
+ 
+/*--------------------------------------------------------------*\                                                                                                                                                                                                               
+ *
+ * function name: IsProcesRunning
+ * returns true if the "exe_name" is running and false otherwise.
+ *
+ *
+\*--------------------------------------------------------------*/
+function BOOL IsProcesRunning( exe_name )
+
+  NUMBER hProcessSnap;
+  LONG hProcess;
+  PROCESSENTRY32 pe32;
+  LONG dwPriorityClass; 
+  BOOL res;
+begin     
+
+  res = FALSE;
+
+  // Take a snapshot of all processes in the system
+  hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+                      
+  if( hProcessSnap = INVALID_HANDLE_VALUE ) then
+      // error message  
+      return( FALSE );
+  endif;                                             
+  
+  // Set the size of the structure before using it.
+  pe32.dwSize = SizeOf( pe32/*PROCESSENTRY328*/ ) + 4;
+  // Retrieve information about the first process,
+  // and exit if unsuccessful
+  if( ! Process32First( hProcessSnap, &pe32 ) ) then
+    //error message
+    CloseHandle( hProcessSnap );          // clean the snapshot object
+    return( FALSE );
+  endif;
+                     
+  // Now walk the snapshot of processes, and
+  // display information about each process in turn
+  repeat
+    
+    //MessageBox( pe32.szExeFile, WARNING);
+    if( pe32.szExeFile = exe_name ) then
+      res = TRUE;
+    endif;
+    
+  until ( Process32Next( hProcessSnap, &pe32 ) = FALSE );
+
+  CloseHandle( hProcessSnap );
+  return( res );
+
+end;

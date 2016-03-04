@@ -1,0 +1,18 @@
+################################################################################################
+#
+# 	Description:
+#
+# 	Version:	$Rev$
+# 	Date:		$Date$
+# 	Path:		$HeadURL$ 
+#
+################################################################################################
+
+from Q2RT import *
+
+Args = AppParams.MaterialPythonArgs.split("\,")
+AppParams.MaterialPythonRes = Args[0]
+for x in Args:
+	if float(x) < float(AppParams.MaterialPythonRes):
+		AppParams.MaterialPythonRes = x
+

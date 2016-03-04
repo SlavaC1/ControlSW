@@ -1,0 +1,4 @@
+AmbientFanControlByPass={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+BumperCalibrationPermissiveArray[]={'base': 0, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+HeadAmbientTemperatureHighLimit={'base': 400, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+MaterialsWeightFactorArray[]={'base': 1.06, 'upDelta': 0.0, 'downDelta': 0.0, 'str': 0}

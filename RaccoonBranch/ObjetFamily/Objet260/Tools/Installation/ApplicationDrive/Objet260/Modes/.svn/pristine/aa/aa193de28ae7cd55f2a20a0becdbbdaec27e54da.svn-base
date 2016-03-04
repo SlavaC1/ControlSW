@@ -1,0 +1,5 @@
+AmbientFanControlByPass=1
+BumperCalibrationPermissiveArray[]=0
+HeadAmbientTemperatureHighLimit=395
+MaterialsWeightFactorArray[]=1.06
+RollerVelocity=600

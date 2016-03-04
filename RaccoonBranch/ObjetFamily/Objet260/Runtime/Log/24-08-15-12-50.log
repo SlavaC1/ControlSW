@@ -1,0 +1,121 @@
+---------------------------------------------------------
+Tags dictionary:
+<0> - General
+<1> - Layer process
+<2> - Host communication
+<3> - Printing
+<4> - Motors
+<5> - Head heating
+<6> - Tray heating
+<7> - UV lamps
+<8> - End-of-liquid
+<9> - Head filling
+<10> - Head vacuum
+<11> - Ambient temperature
+<12> - Power
+<13> - Head filling thermistor readings
+<14> - HASP
+<15> - Roller Suction System
+<17> - Raccoon System<16> - Objet machine log
+<18> - Customer Service Log
+---------------------------------------------------------
+<0> 24/08/15 12:50:54 : Objet 260 is up (version: 29.2.0.0 Build: Aug 24 2015 12:30:08)
+---------------------------------------------------------
+<0> 24/08/15 12:50:55 : ModesManager: '~PerMachineDefault' Mode was entered
+<0> 24/08/15 12:50:55 : ModesManager: 'DefaultMode' Mode was entered
+<0> 24/08/15 12:50:55 : ModesManager: '~DigitalMaterial' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroYellow' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroWhite' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroPureWhite' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroMgnt' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroGrey' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroCyan' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroClear' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroBlue' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'VeroBlack' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'TangoGrey' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'TangoBlack+' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'TangoBlack' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'Tango+' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'RGD535' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'RGD531' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'RGD525' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'RGD515' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'RGD450' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'MED690' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'MED670' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'MED620' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'MED610' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'FullCure720' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'DurusWhite' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'Agilus30Clear' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'Agilus30Black' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'M.Cleanser' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'SUP707' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'FullCure705' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: 'S.Cleanser' Mode was entered
+<0> 24/08/15 12:50:56 : ModesManager: Going one mode back
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 430 DurusWhite
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 450 RGD450
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 515 RGD515
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 525 RGD525
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 531 RGD531
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 535 RGD535
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 610 MED610
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 620 MED620
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 670 MED670
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 690 MED690
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 720 FullCure720
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 810 VeroClear
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 830 VeroWhite
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 836 VeroYellow
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 837 VeroPureWhite
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 840 VeroBlue
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 841 VeroCyan
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 850 VeroGrey
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 851 VeroMgnt
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 870 VeroBlack
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 930 Tango+
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 935 Agilus30Clear
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 950 TangoGrey
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 970 TangoBlack
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 980 TangoBlack+
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Material: 985 Agilus30Black
+<0> 24/08/15 12:50:56 : ModesManager: Identified Model Service Material: 10 M.Cleanser
+<0> 24/08/15 12:50:56 : ModesManager: Identified Support Material: 705 FullCure705
+<0> 24/08/15 12:50:56 : ModesManager: Identified Support Material: 707 SUP707
+<0> 24/08/15 12:50:56 : ModesManager: Identified Support Service Material: 11 S.Cleanser
+<14> 24/08/15 12:50:56 : LicenseManager: login, line: 98, status: 7
+<14> 24/08/15 12:50:56 : LicenseManager: Cannot decrypt packages file. HASP dongle is missing.
+<0> 24/08/15 12:50:56 : Monitor: Cannot decrypt packages file. HASP dongle is missing.
+<0> 24/08/15 12:51:01 : Objet 260 is down
+---------------------------------------------------------

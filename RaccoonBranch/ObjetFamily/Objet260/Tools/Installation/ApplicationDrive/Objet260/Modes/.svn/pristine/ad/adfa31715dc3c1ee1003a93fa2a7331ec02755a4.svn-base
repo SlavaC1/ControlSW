@@ -1,0 +1,17 @@
+AmbientFanControlByPass={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+AtLeastDelayTimeBetweenLayers={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+EnableSuperPurge={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+HCW_EnableAlertMsgs={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+HCW_TimeoutBetweenAlertMsgs={'base': '~MIN.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+HeadAmbientTemperatureHighLimit={'base': '~MIN.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+MaterialWarningAfterText={'base': '~SmartAppend.py', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+NumberOfScanningPasses={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RollerVelocity={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+SuperPurge_NumOfPurges={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+SuperPurge_NumOfWipes={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+TimeBetweenPurgesInSec={'base': '~MIN.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+TimeBetweenSuperPurgesInMinutes={'base': '~MIN.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+UVSingleLampEnabledArray={'base': '~ArrayMin.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+WipesAfterPurge={'base': '~MAX.PY', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+
+

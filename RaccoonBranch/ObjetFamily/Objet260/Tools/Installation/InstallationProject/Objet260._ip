@@ -1,0 +1,12 @@
+[Project:General]
+Version:=1
+SubVersion:=0
+
+[Project:Properties:DepManager]
+Mode:=
+LogResults:=
+Component:=
+
+[Project:Properties:General]
+CurrentMedia:=OBJET500
+

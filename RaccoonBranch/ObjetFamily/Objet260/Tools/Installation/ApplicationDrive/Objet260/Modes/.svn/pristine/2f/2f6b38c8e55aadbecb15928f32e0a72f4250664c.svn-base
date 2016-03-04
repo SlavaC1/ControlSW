@@ -1,0 +1,3 @@
+HeadAmbientTemperatureHighLimit=400
+AmbientFanControlByPass=1
+BumperCalibrationPermissiveArray[]=0

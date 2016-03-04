@@ -1,0 +1,20 @@
+################################################################################################
+#
+# 	Description:
+#
+# 	Version:	$Rev$
+# 	Date:		$Date$
+# 	Path:		$HeadURL$ 
+#
+################################################################################################
+
+from Q2RT import *
+
+Args = AppParams.MaterialPythonArgs.split("\,")
+ElementSize = len(Args) / AppParams.MaterialPythonArraySize
+Res = range(0, ElementSize, 1)
+for x in Res:
+        Res[x] = min(Args[x::ElementSize])
+AppParams.MaterialPythonRes = ",".join(Res)
+
+

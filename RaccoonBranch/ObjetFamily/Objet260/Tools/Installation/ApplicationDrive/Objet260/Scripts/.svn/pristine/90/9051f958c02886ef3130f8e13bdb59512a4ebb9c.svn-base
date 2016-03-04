@@ -1,0 +1,19 @@
+################################################################################################
+#
+# 	Description:
+#
+# 	Version:	$Rev$
+# 	Date:		$Date$
+# 	Path:		$HeadURL$ 
+#
+################################################################################################
+
+from Q2RT import *
+
+Args = AppParams.MaterialPythonArgs.split("\,")
+Res = ''
+for x in Args:
+	if x != '':
+		if Res.find(x) == -1:
+			Res += x + '\n\r'
+AppParams.MaterialPythonRes = Res

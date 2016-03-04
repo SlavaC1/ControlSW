@@ -1,0 +1,1 @@
+﻿print r'This file/folder serves as a simbolic link
