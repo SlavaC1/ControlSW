@@ -1,0 +1,51 @@
+The DriverWizard has created:
+* A Kernel PlugIn driver project kp_eden.sys, which demonstrates how to communicate with your hardware directly from the kernel mode.
+* A sample diagnostics application for testing the communication with
+  your hardware from the user mode.
+* Library files, which include API for controling your hardware and communicating between the user-mode application and Kernel PlugIn driver.
+ The library is used by both the user-mode application and the Kernel PlugIn project
+
+  C:/WinDriver/wizard/my_projects/objet/eden_files.txt
+         A detailed overview of all the generated files.
+
+  C:/WinDriver/wizard/my_projects/objet/eden_lib.h
+         A library for controlling your hardware through WinDriver.
+
+  C:/WinDriver/wizard/my_projects/objet/eden_lib.c
+         Contains the implementation of the functions used for
+         accessing each of the resources defined in the Wizard.
+
+  C:/WinDriver/wizard/my_projects/objet/eden_diag.c
+         The sample user-mode application which diagnoses your
+         hardware using the eden_lib.h library.
+
+  C:/WinDriver/wizard/my_projects/objet/kermode/kp_eden.c
+         The Kernel-PlugIn source code.
+
+  C:/WinDriver/wizard/my_projects/objet/amd64/msdev_2010/eden_diag.sln
+         Microsoft Developer Studio 2010 Solution File
+         for the AMD 64 bit (x64) Platform.
+
+  C:/WinDriver/wizard/my_projects/objet/amd64/msdev_2010/eden_diag.vcxproj
+         Microsoft Developer Studio 10.0 (.NET 2010) Project File
+         for the AMD 64 bit (x64) Platform.
+
+ C:/WinDriver/wizard/my_projects/objet/kermode/amd64/msdev_2010/kp_eden.vcxproj
+         Microsoft Developer Studio 10.0 (.NET 2010) Project File
+         for the Kernel PlugIn.
+
+  C:/WinDriver/wizard/my_projects/objet/eden.inf
+         A formatted reference file for Windows that contains
+         information about installation files and devices, such as
+         filenames, version information and so on.
+
+Compiling this project:
+  For MSDEV.NET 2010, open Visual Studio 2010 .NET, load amd64\msdev_2010\eden_diag.sln and compile
+
+Converting to a GUI application:
+  This sample was written as a console mode application (rather than
+  a GUI application) that uses standard input and standard output.
+  This was done in order to simplify the source code. You may change it
+  into a GUI application by removing all calls to printf() and scanf()
+  functions, and calling MessageBox() instead.
+

@@ -1,0 +1,117 @@
+#ifdef OBJET_MACHINE
+DEFINE_ACTUATOR(SPARE_1,"Actuator: 0","")
+DEFINE_ACTUATOR(SPARE_2,"Actuator: 1","")
+#else
+DEFINE_ACTUATOR(SPARE_1,"Actuator: 0","")
+DEFINE_ACTUATOR(SPARE_2,"Actuator: 1","")
+
+#endif
+
+/*RSS, itamar added*/
+DEFINE_ACTUATOR(ROLLER_SUCTION_PUMP,"Actuator: Roller Suction Pump","")
+DEFINE_ACTUATOR(ROLLER_SUCTION_VALVE,"Actuator: Roller Suction Valve","")
+//DEFINE_ACTUATOR(OUT_SPARE_2,"Actuator: 2","")
+//DEFINE_ACTUATOR(OUT_SPARE_1,"Actuator: 3","")
+
+
+DEFINE_ACTUATOR(DIMMER,"Actuator: Dimmer","")
+DEFINE_ACTUATOR(LIGHT,"Actuator: 5","")
+DEFINE_ACTUATOR(PC_POWER_ON,"Actuator: PC Power On","")
+DEFINE_ACTUATOR(BUZZER,"Actuator: Buzzer","")
+DEFINE_ACTUATOR(PORT_ENABLE,"Actuator: Port Enable","")
+//#ifdef OBJET_MACHINE
+DEFINE_ACTUATOR(SPARE_3,"Actuator: 9","")
+DEFINE_ACTUATOR(SPARE_4,"Actuator: 10","")
+DEFINE_ACTUATOR(SPARE_5,"Actuator: 11","")
+DEFINE_ACTUATOR(SPARE_6,"Actuator: 12","")
+DEFINE_ACTUATOR(SPARE_7,"Actuator: 13","")
+DEFINE_ACTUATOR(SPARE_8,"Actuator: 14","")
+
+
+
+//#else
+//DEFINE_ACTUATOR(SPARE_1,"Actuator: 9","")
+//DEFINE_ACTUATOR(SPARE_2,"Actuator: 10","")
+//DEFINE_ACTUATOR(SPARE_3,"Actuator: 11","")
+//DEFINE_ACTUATOR(SPARE_4,"Actuator: 12","")
+//DEFINE_ACTUATOR(SPARE_5,"Actuator: 13","")
+//DEFINE_ACTUATOR(SPARE_6,"Actuator: 14","")
+//#endif
+
+DEFINE_ACTUATOR(PUMPS,"Actuator: Pumps","")
+DEFINE_ACTUATOR(ODOR_FAN,"Actuator: Odor Fan","")
+DEFINE_ACTUATOR(INTERLOCK,"Actuator: Interlock","")
+DEFINE_ACTUATOR(ROLLER_PUMP,"Actuator: Roller Pump","")
+DEFINE_ACTUATOR(WASTE_PUMP,"Actuator: Waste Pump","")
+DEFINE_ACTUATOR(VACUUM_VALVE,"Actuator: Vacuum Valve","")
+DEFINE_ACTUATOR(AIR_VALVE,"Actuator: Air Valve","")
+DEFINE_ACTUATOR(SPARE_AIR_VALVE_1,"Actuator: 22","")
+DEFINE_ACTUATOR(SPARE_AIR_VALVE_2,"Actuator: 23","")
+DEFINE_ACTUATOR(Y_Z_T_ON,"Actuator: Y,Z,T On","")
+DEFINE_ACTUATOR(LEFT_UV_LAMP,"Actuator: Left UV Lamp","")
+DEFINE_ACTUATOR(RIGHT_UV_LAMP,"Actuator: Right UV Lamp","")
+DEFINE_ACTUATOR(TRAY_HEATER,"Actuator: Tray Heater","")
+DEFINE_ACTUATOR(AC_CONTROL,"Actuator: AC Control","")
+DEFINE_ACTUATOR(VPP_POWER_SUPPLY,"Actuator: VPP Power Supply","")
+DEFINE_ACTUATOR(24V_POWER_SUPPLY,"Actuator: 24V Power Supply","")
+DEFINE_ACTUATOR(SPARE_POWER_SUPPLY,"Actuator: 31","")
+
+#ifndef LIMIT_TO_DM2
+DEFINE_ACTUATOR(SUPPORT_PUMP_1,"Actuator: Support Left","")
+DEFINE_ACTUATOR(SUPPORT_PUMP_2,"Actuator: Support Right","")
+DEFINE_ACTUATOR(MODEL1_H0_1_PUMP,"Actuator: Model 1 Left Pump","")
+DEFINE_ACTUATOR(MODEL2_H0_1_PUMP,"Actuator: Model 1 Right Pump","")
+#else
+DEFINE_ACTUATOR(MODEL1_H0_1_PUMP,"Actuator: Model 1 Left Pump","")
+DEFINE_ACTUATOR(MODEL2_H0_1_PUMP,"Actuator: Model 1 Right Pump","")
+DEFINE_ACTUATOR(MODEL3_H2_3_PUMP,"Actuator: Model 2 (H2,3) Pump","")
+DEFINE_ACTUATOR(MODEL4_H2_3_PUMP,"Actuator: Model 2 (H2,3) Pump","")
+#endif
+DEFINE_ACTUATOR(SPARE_9,"Actuator: 36","")
+DEFINE_ACTUATOR(SPARE_10,"Actuator: 37","")
+DEFINE_ACTUATOR(SPARE_11,"Actuator: 38","")
+DEFINE_ACTUATOR(SPARE_12,"Actuator: 39","")
+#ifndef LIMIT_TO_DM2
+DEFINE_ACTUATOR(MODEL3_H2_3_PUMP,"Actuator: Model 2 Left Pump","")
+DEFINE_ACTUATOR(MODEL4_H2_3_PUMP,"Actuator: Model 2 Right Pump","")
+#else
+DEFINE_ACTUATOR(SUPPORT_PUMP_1,"Actuator: Support Pump 1","")
+DEFINE_ACTUATOR(SUPPORT_PUMP_2,"Actuator: Support Pump 2","")
+#endif
+DEFINE_ACTUATOR(MODEL5_H4_5_PUMP,"Actuator: Model 3 Left Pump","")
+DEFINE_ACTUATOR(MODEL6_H4_5_PUMP,"Actuator: Model 3 Right Pump","")
+DEFINE_ACTUATOR(SPARE_13,"Actuator: 44","")
+DEFINE_ACTUATOR(SPARE_14,"Actuator: 45","")
+DEFINE_ACTUATOR(SPARE_15,"Actuator: 46","")
+DEFINE_ACTUATOR(SPARE_16,"Actuator: 47","")
+
+
+
+
+
+DEFINE_SENSOR(0,"")
+DEFINE_SENSOR(1,"")
+DEFINE_SENSOR(2,"")
+DEFINE_SENSOR(3,"")
+DEFINE_SENSOR(4,"")
+DEFINE_SENSOR(5,"")
+DEFINE_SENSOR(6,"")
+DEFINE_SENSOR(7,"")
+DEFINE_SENSOR(8,"")
+DEFINE_SENSOR(9,"")
+DEFINE_SENSOR(10,"")
+DEFINE_SENSOR(11,"")
+DEFINE_SENSOR(12,"")
+DEFINE_SENSOR(13,"")
+DEFINE_SENSOR(14,"")
+DEFINE_SENSOR(15,"")
+DEFINE_SENSOR(16,"")
+DEFINE_SENSOR(17,"")
+DEFINE_SENSOR(18,"")
+DEFINE_SENSOR(19,"")
+DEFINE_SENSOR(20,"")
+DEFINE_SENSOR(21,"")
+DEFINE_SENSOR(22,"")
+DEFINE_SENSOR(23,"")
+
+

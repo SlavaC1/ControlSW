@@ -1,0 +1,11 @@
+# The sources for the KP_EDEN device driver:
+
+TARGETNAME=KP_EDEN
+TARGETTYPE=DRIVER
+TARGETPATH=obj
+NO_SAFESEH=1
+INCLUDES=$(WD_BASEDIR)\include;$(WD_BASEDIR)
+TARGETLIBS= \
+    $(WD_BASEDIR)\lib\kp_nt1040.lib $(WD_BASEDIR)\lib\kp_wdapi1040.lib
+
+SOURCES=kp_eden.c ..\eden_lib.c 
