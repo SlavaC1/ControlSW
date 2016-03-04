@@ -1,0 +1,5 @@
+IsWeightTest={'base': 1, 'upDelta': 0, 'downDelta': 0, 'str': 0}
+HSW_PrintingAllowedForMode={'base': (1,1,1,1), 'upDelta': (0, 0, 0, 0), 'downDelta': (0, 0, 0, 0), 'str': 0}
+RunScript1={'base': 'ModesManager.EnterMode("Digital Materials Mode", "DigitalMaterialsModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript2={'base': 'ModesManager.EnterMode("~WT commands", "GeneralModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript3={'base': 'MachineManager.LoadLocalPrintJob("CalibrationFiles\\\\Weight Test\\\\DJ - Weight Test (Model) 1200.bmp","CalibrationFiles\\\\Weight Test\\\\DJ - Weight Test (Support) 1200.bmp",1200,"HS",15)', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}

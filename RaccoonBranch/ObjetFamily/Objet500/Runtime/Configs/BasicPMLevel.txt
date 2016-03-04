@@ -1,0 +1,1 @@
+To update checksum for BasicPMLevel use Triplex Tester->Application->Generate checksum

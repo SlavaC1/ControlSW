@@ -1,0 +1,7 @@
+MRW_DMPumpsNumOfCycles={'base': (0, 0, 33, 33, 33, 33, 33, 33), 'upDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'downDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'str': 0}
+MRW_SingleBothPumpsNumOfCycles={'base': (0, 12, 0, 0, 0, 0, 0, 0), 'upDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'downDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'str': 0}
+MRW_SingleLeftPumpsNumOfCycles={'base': (0, 0, 37, 0, 0, 37, 0, 37), 'upDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'downDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'str': 0}
+MRW_SingleRightPumpsNumOfCycles={'base': (12, 0, 0, 0, 0, 0, 0, 0), 'upDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'downDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'str': 0}
+MRW_SupportBothPumpsNumOfCycles={'base': (8, 8, 0, 0, 0, 0, 0, 0), 'upDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'downDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'str': 0}
+MRW_SupportLeftPumpsNumOfCycles={'base': (0, 0, 33, 0, 33, 0, 33, 0), 'upDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'downDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'str': 0}
+MRW_SupportRightPumpsNumOfCycles={'base': (0, 0, 0, 33, 0, 33, 0, 33), 'upDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'downDelta': (0, 0, 0, 0, 0, 0, 0, 0), 'str': 0}

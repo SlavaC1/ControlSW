@@ -1,0 +1,25 @@
+[Start-Up]
+Communication|Sub-System Communications
+Environment|System Information
+Parameters|Paramemeter Sanity Check
+
+[Before Print]
+Communication|Sub-System Communications
+Data Card|FIFO Non-interrupt Test
+Data Card|FIFO Interrupt Test
+Environment|System Information
+Head Cards|Head EEPROMs
+Parameters|Paramemeter Sanity Check
+RFID|RF ID
+
+[Quick Test]
+Communication|Sub-System Communications
+UVLamps|UV Lamps
+Data Card|FIFO Interrupt Test
+Data Card|FIFO Non-interrupt Test
+Data Card|Data Card Communication Test
+Environment|System Information
+General|Cabin Temperature
+Head Cards|Head EEPROMs
+General|Interlock 
+

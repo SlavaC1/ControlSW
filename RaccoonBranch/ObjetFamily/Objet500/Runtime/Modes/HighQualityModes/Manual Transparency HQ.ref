@@ -1,0 +1,6 @@
+HSW_PrintingAllowedForMode={'base': (1,1,1,1), 'upDelta': (0, 0, 0, 0), 'downDelta': (0, 0, 0, 0), 'str': 0}
+RunScript1={'base': 'ModesManager.EnterMode("High Quality Mode", "HighQualityModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript2={'base': 'ModesManager.EnterMode("~Trns commands", "GeneralModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript3={'base': 'ModesManager.EnterMode("~Trns commands HQ", "HighQualityModes")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript4={'base': 'MachineManager.LoadLocalPrintJob("CalibrationFiles\\\\Adjustment Files\\\\DJ - 500 Adjustment (Model).bmp","CalibrationFiles\\\\Adjustment Files\\\\DJ - 500 Adjustment (Support).bmp",600,"HQ",1)', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
+RunScript5={'base': 'BackEndInterface.SetMachineActionsDate("Transparency HQ")', 'upDelta': 0, 'downDelta': 0, 'str': 1, 'list': 0, 'no check': 0}
